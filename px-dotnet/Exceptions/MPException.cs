@@ -7,8 +7,8 @@ namespace px_dotnet.Exceptions
 {
 	class MPException : Exception
 	{
-		private string RequestId { get; private set; }
-		private int? StatusCode { get; private set; }
+		public string RequestId { get; private set; }
+		public int? StatusCode { get; private set; }
 
 		public MPException(string message) : base(message) {
 		}

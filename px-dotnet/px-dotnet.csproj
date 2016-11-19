@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="MPConf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
