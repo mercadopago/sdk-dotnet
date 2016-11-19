@@ -1,8 +1,5 @@
 ﻿using px_dotnet.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace px_dotnet
 {
@@ -17,15 +14,15 @@ namespace px_dotnet
         {
             get
             {
-                return clientSecret;
+                return _clientSecret;
             }
             set
             {
-                if (!string.IsNullOrEmpty(clientSecret))
+                if (!string.IsNullOrEmpty(_clientSecret))
                     throw new MPConfException("clientSecret setting can not be changed");
-                clientSecret = value;
+                _clientSecret = value;
             }
-        } static string clientSecret = null;
+        } static string _clientSecret = null;
 
         /// <summary>
         /// Getter/Setter for ClientId
@@ -34,15 +31,15 @@ namespace px_dotnet
         {
             get
             {
-                return clientId;
+                return _clientId;
             }
             set
             {
-                if (!string.IsNullOrEmpty(clientId))
+                if (!string.IsNullOrEmpty(_clientId))
                     throw new MPConfException("clientId setting can not be changed");
-                clientId = value;
+                _clientId = value;
             }
-        } static string clientId = null;
+        } static string _clientId = null;
 
         /// <summary>
         /// Getter/Setter for AccessToken
@@ -51,15 +48,15 @@ namespace px_dotnet
         {
             get
             {
-                return accessToken;
+                return _accessToken;
             }
             set
             {
-                if (!string.IsNullOrEmpty(accessToken))
+                if (!string.IsNullOrEmpty(_accessToken))
                     throw new MPConfException("accessToken setting can not be changed");
-                accessToken = value;
+                _accessToken = value;
             }
-        } static string accessToken = null;
+        } static string _accessToken = null;
 
         /// <summary>
         /// Getter/Setter for AppId
@@ -68,16 +65,23 @@ namespace px_dotnet
         {
             get
             {
-                return appId;
+                return _appId;
             }
             set
             {
-                if (!string.IsNullOrEmpty(appId))
-                    throw new MPConfException("accessToken setting can not be changed");
-                appId = value;
+                if (!string.IsNullOrEmpty(_appId))
+                    throw new MPConfException("appId setting can not be changed");
+                _appId = value;
             }
-        } static String appId = null;
+        } static String _appId = null;
 
+        public static string BaseUrl
+        {
+            get
+            {
+                return _baseUrl;
+            }
+        } static string _baseUrl = DEFAULT_BASE_URL;
     }
 
 }

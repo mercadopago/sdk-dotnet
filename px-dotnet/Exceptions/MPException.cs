@@ -5,7 +5,7 @@ using System.Text;
 
 namespace px_dotnet.Exceptions
 {
-	class MPException : Exception
+	public class MPException : Exception
 	{
 		public string RequestId { get; private set; }
 		public int? StatusCode { get; private set; }

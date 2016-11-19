@@ -5,7 +5,7 @@ using System.Text;
 
 namespace px_dotnet.Exceptions
 {
-    class MPConfException : MPException
+    public class MPConfException : MPException
     {
         public MPConfException(string message) : base(message) {
         }
