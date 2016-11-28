@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.Text;
 
 namespace px_dotnet.Exceptions
 {
+    [Serializable]
 	public class MPException : Exception
 	{
 		public string RequestId { get; private set; }
@@ -36,5 +39,17 @@ namespace px_dotnet.Exceptions
 				statCodeStr = "; status_code: " + StatusCode.Value;
 			return base.ToString() + reqIdStr + statCodeStr;
 		}
-	}
+
+        #region ISerializable Members
+
+        [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            base.GetObjectData(info, context);
+            info.AddValue("RequestId", RequestId);
+            info.AddValue("StatusCode", StatusCode);
+        }
+
+        #endregion
+    }
 }
