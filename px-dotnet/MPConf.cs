@@ -1,9 +1,9 @@
-﻿using px_dotnet.Exceptions;
+﻿using Mercadopago.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace px_dotnet
+namespace Mercadopago
 {
     public class MPConf
     {
@@ -117,7 +117,7 @@ namespace px_dotnet
         }
 
         /// <summary>
-        /// 
+        /// Inicializa las configuracones en base a un objeto Configuration
         /// </summary>
         /// <param name="config"></param>
         public static void SetConfiguration(Configuration config)

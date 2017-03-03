@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using px_dotnet.Exceptions;
+using Mercadopago.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace px_dotnet.Test
+namespace Mercadopago.Test
 {
 	[TestClass]
 	public class MPConfTest
@@ -23,15 +23,15 @@ namespace px_dotnet.Test
 			MPConf.AccessToken = "ACCESS_TOKEN";
 			MPConf.AppId = "APP_ID";
 
-			Assert.AreEqual(MPConf.ClientSecret, "CLIENT_SECRET",
+			Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret,
 				"Client Secret must be \"CLIENT_SECRET\" at this point");
-			Assert.AreEqual(MPConf.ClientId, "CLIENT_ID",
+            Assert.AreEqual("CLIENT_ID", MPConf.ClientId, 
 				"Client Id must be \"CLIENT_ID\" at this point");
-			Assert.AreEqual(MPConf.AccessToken, "ACCESS_TOKEN",
+            Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, 
 				"Access Token must be \"ACCESS_TOKEN\" at this point");
-			Assert.AreEqual(MPConf.AppId, "APP_ID",
+            Assert.AreEqual("APP_ID", MPConf.AppId, 
 				"App Id must be \"APP_ID\" at this point");
-			Assert.AreEqual(MPConf.BaseUrl, "https://api.mercadopago.com",
+            Assert.AreEqual("https://api.mercadopago.com", MPConf.BaseUrl, 
 				"MPBase url must be default \"https://api.mercadopago.com\" at this point");
 
 			// Test for value locking
@@ -42,12 +42,12 @@ namespace px_dotnet.Test
 			}
 			catch (MPConfException mpConfException)
 			{
-				Assert.AreEqual(mpConfException.Message, "clientSecret setting can not be changed",
+                Assert.AreEqual("clientSecret setting can not be changed", mpConfException.Message, 
 					"Exception must have \"clientSecret setting can not be changed\" message");
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOfType(auxException, typeof(MPConfException), "Exception type must be \"MPConfException\"");
-			Assert.AreEqual(MPConf.ClientSecret, "CLIENT_SECRET", "Client Secret must be \"CLIENT_SECRET\" at this point");
+            Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
 
 			auxException = null;
 			try
@@ -56,12 +56,12 @@ namespace px_dotnet.Test
 			}
 			catch (MPConfException mpConfException)
 			{
-				Assert.AreEqual(mpConfException.Message, "clientId setting can not be changed",
+                Assert.AreEqual("clientId setting can not be changed", mpConfException.Message, 
 					"Exception must have \"clientId setting can not be changed\" message");
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOfType(auxException, typeof(MPConfException), "Exception type must be \"MPConfException\"");
-			Assert.AreEqual(MPConf.ClientId, "CLIENT_ID", "Client Id must be \"CLIENT_ID\" at this point");
+            Assert.AreEqual("CLIENT_ID", MPConf.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
 
 			auxException = null;
 			try
@@ -70,12 +70,12 @@ namespace px_dotnet.Test
 			}
 			catch (MPConfException mpConfException)
 			{
-				Assert.AreEqual(mpConfException.Message, "accessToken setting can not be changed",
+                Assert.AreEqual("accessToken setting can not be changed", mpConfException.Message, 
 					"Exception must have \"accessToken setting can not be changed\" message");
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOfType(auxException, typeof(MPConfException), "Exception type must be \"MPConfException\"");
-			Assert.AreEqual(MPConf.AccessToken, "ACCESS_TOKEN", "Access Token must be \"ACCESS_TOKEN\" at this point");
+            Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
 
 			auxException = null;
 			try
@@ -84,12 +84,12 @@ namespace px_dotnet.Test
 			}
 			catch (MPConfException mpConfException)
 			{
-				Assert.AreEqual(mpConfException.Message, "appId setting can not be changed",
+                Assert.AreEqual("appId setting can not be changed", mpConfException.Message, 
 					"Exception must have \"appId setting can not be changed\" message");
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOfType(auxException, typeof(MPConfException), "Exception type must be \"MPConfException\"");
-			Assert.AreEqual(MPConf.AppId, "APP_ID", "App Id must be \"APP_ID\" at this point");
+            Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
 		[TestMethod]
@@ -105,7 +105,7 @@ namespace px_dotnet.Test
 			}
 			catch (ArgumentException exception)
 			{
-				Assert.AreEqual(exception.Message, "Invalid configurationParams parameter",
+                Assert.AreEqual("Invalid configurationParams parameter", exception.Message, 
 					"Exception must have \"Invalid configurationParams parameter\" message");
 				auxException = exception;
 			}
@@ -136,7 +136,7 @@ namespace px_dotnet.Test
 				auxException = exception;
 			}
 			Assert.IsNull(auxException, "Exception must be \"null\"");
-			Assert.AreEqual(MPConf.ClientSecret, "CLIENT_SECRET", "Client Secret must be \"CLIENT_SECRET\" at this point");
+            Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
 		}
 
 		[TestMethod]
@@ -152,10 +152,10 @@ namespace px_dotnet.Test
 			hashConfigurations.Add("ignoredKey", "IGNORED_DATA");
 			MPConf.SetConfiguration(hashConfigurations);
 
-			Assert.AreEqual(MPConf.ClientSecret, "CLIENT_SECRET", "Client Secret must be \"CLIENT_SECRET\" at this point");
-			Assert.AreEqual(MPConf.ClientId, "CLIENT_ID", "Client Id must be \"CLIENT_ID\" at this point");
-			Assert.AreEqual(MPConf.AccessToken, "ACCESS_TOKEN", "Access Token must be \"ACCESS_TOKEN\" at this point");
-			Assert.AreEqual(MPConf.AppId, "APP_ID", "App Id must be \"APP_ID\" at this point");
+            Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
+            Assert.AreEqual("CLIENT_ID", MPConf.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
+            Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
+            Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
 		[TestMethod]
@@ -171,7 +171,7 @@ namespace px_dotnet.Test
 			}
 			catch (ArgumentException exception)
 			{
-				Assert.AreEqual(exception.Message, "config parameter cannot be null", "Exception must have \"config parameter cannot be null\" message");
+                Assert.AreEqual("config parameter cannot be null", exception.Message, "Exception must have \"config parameter cannot be null\" message");
 				auxException = exception;
 			}
 			Assert.IsInstanceOfType(auxException, typeof(ArgumentException), "Exception type must be \"ArgumentException\"");
@@ -199,10 +199,10 @@ namespace px_dotnet.Test
 			MPConf.CleanConfiguration();
 
 			MPConf.SetConfiguration(GetConfigurationByFileName("MPConf_valid_App.config"));
-			Assert.AreEqual(MPConf.ClientSecret, "CLIENT_SECRET", "Client Secret must be \"CLIENT_SECRET\" at this point");
-			Assert.AreEqual(MPConf.ClientId, "CLIENT_ID", "Client Id must be \"CLIENT_ID\" at this point");
-			Assert.AreEqual(MPConf.AccessToken, "ACCESS_TOKEN", "Access Token must be \"ACCESS_TOKEN\" at this point");
-			Assert.AreEqual(MPConf.AppId, "APP_ID", "App Id must be \"APP_ID\" at this point");
+            Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
+            Assert.AreEqual("CLIENT_ID", MPConf.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
+            Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
+            Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
 		private Configuration GetConfigurationByFileName(string fileName)

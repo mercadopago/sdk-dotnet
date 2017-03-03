@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace px_dotnet.Exceptions
+namespace Mercadopago.Exceptions
 {
     [Serializable]
     public class MPConfException : MPException

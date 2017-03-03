@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Text;
 
-namespace px_dotnet.Exceptions
+namespace Mercadopago.Exceptions
 {
     [Serializable]
 	public class MPException : Exception
@@ -31,12 +31,14 @@ namespace px_dotnet.Exceptions
 		}
 
 		public override string ToString() {
-			string reqIdStr = "";
-			if (string.IsNullOrEmpty(RequestId))
+			string reqIdStr = string.Empty;
+			if (!string.IsNullOrEmpty(RequestId))
 				reqIdStr = "; request-id: " + RequestId;
-			string statCodeStr = "";
+
+            string statCodeStr = string.Empty;
 			if (StatusCode.HasValue)
 				statCodeStr = "; status_code: " + StatusCode.Value;
+
 			return base.ToString() + reqIdStr + statCodeStr;
 		}
 
