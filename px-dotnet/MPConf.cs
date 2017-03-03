@@ -1,9 +1,9 @@
-﻿using Mercadopago.Exceptions;
+﻿using MercadoPago;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Mercadopago
+namespace MercadoPago
 {
     public class MPConf
     {

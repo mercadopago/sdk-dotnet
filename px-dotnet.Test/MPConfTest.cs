@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Mercadopago.Exceptions;
+using MercadoPago;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Mercadopago.Test
+namespace MercadoPago.Test
 {
 	[TestClass]
 	public class MPConfTest
