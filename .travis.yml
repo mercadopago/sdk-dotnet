@@ -1,3 +1,4 @@
 language: csharp
 solution: px-dotnet.sln
-
+script:
+        - xbuild px-dotnet.sln
