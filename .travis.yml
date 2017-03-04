@@ -2,9 +2,7 @@ language: csharp
 solution: px-dotnet.sln
 script:
         - xbuild px-dotnet.sln
-before_install:
-        - sudo apt-get install nunit-console
-before_script:
-        - nuget restore px-dotnet.sln
-after_script:
         - nunit-console MercadoPagoSDK.Test/bin/Debug/MercadoPagoSDK.Test.dll
+install:
+        - sudo apt-get install nunit-console
+        - nuget restore px-dotnet.sln
