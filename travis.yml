@@ -1,0 +1,3 @@
+language: csharp
+solution: px-dotnet.sln
+
