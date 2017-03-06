@@ -3,6 +3,8 @@ using System;
 using MercadoPago;
 using System.Configuration;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace MercadoPagoSDK.Test
 {
@@ -108,7 +110,7 @@ namespace MercadoPagoSDK.Test
 					"Exception must have \"Invalid configurationParams parameter\" message");
 				auxException = exception;
 			}
-			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"ArgumentException\"");
+			Assert.IsInstanceOf<ArgumentException>(auxException, "Exception type must be \"ArgumentException\"");
 
 			hashConfigurations = new Dictionary<string, string>();
 			hashConfigurations.Add("clientSecret", null);
@@ -155,7 +157,7 @@ namespace MercadoPagoSDK.Test
 				Assert.AreEqual("config parameter cannot be null", exception.Message, "Exception must have \"config parameter cannot be null\" message");
 				auxException = exception;
 			}
-			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"ArgumentException\"");
+			Assert.IsInstanceOf<ArgumentException>(auxException, "Exception type must be \"ArgumentException\"");
 
 			auxException = null;
 			try
@@ -167,7 +169,6 @@ namespace MercadoPagoSDK.Test
 				auxException = exception;
 			}
 			Assert.IsNull(auxException, "Exception must be \"null\"");
-
 			Assert.IsNull(MPConf.ClientSecret, "Client Secret must be \"null\" at this point");
 			Assert.IsNull(MPConf.ClientId, "Client Id must be \"null\" at this point");
 			Assert.IsNull(MPConf.AccessToken, "Access Token must be \"null\" at this point");
@@ -186,12 +187,14 @@ namespace MercadoPagoSDK.Test
 			Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
-		[Test()]
+
 		public Configuration GetConfigurationByFileName(string fileName)
-		{
-			ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
-			configFileMap.ExeConfigFilename = string.Format("Data/{0}", fileName);
-			Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+		{  
+			ExeConfigurationFileMap map = new ExeConfigurationFileMap { ExeConfigFilename = fileName };
+			Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
+			Console.WriteLine("mapped application config path: {0}", ConfigurationManager.AppSettings["clientId"]);
+			FileInfo fi = new FileInfo(config.FilePath);
+			Console.WriteLine(fi.Name);
 			return config;
 		}
 
