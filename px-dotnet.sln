@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "px-dotnet", "px-dotnet\px-dotnet.csproj", "{DDF43089-BD23-4C5C-898D-A779118B563E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadoPagoSDK", "px-dotnet\MercadoPagoSDK.csproj", "{DDF43089-BD23-4C5C-898D-A779118B563E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "px-dotnet.Test", "px-dotnet.Test\px-dotnet.Test.csproj", "{2A3509E5-4A8B-4D0F-87E0-E529287B81EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadoPagoSDK.Test", "MercadoPagoSDK.Test\MercadoPagoSDK.Test.csproj", "{8E0E8C0D-3015-4978-9CCC-E7AA401ED183}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,10 @@ Global
 		{DDF43089-BD23-4C5C-898D-A779118B563E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDF43089-BD23-4C5C-898D-A779118B563E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDF43089-BD23-4C5C-898D-A779118B563E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A3509E5-4A8B-4D0F-87E0-E529287B81EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A3509E5-4A8B-4D0F-87E0-E529287B81EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A3509E5-4A8B-4D0F-87E0-E529287B81EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A3509E5-4A8B-4D0F-87E0-E529287B81EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0E8C0D-3015-4978-9CCC-E7AA401ED183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0E8C0D-3015-4978-9CCC-E7AA401ED183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0E8C0D-3015-4978-9CCC-E7AA401ED183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0E8C0D-3015-4978-9CCC-E7AA401ED183}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
