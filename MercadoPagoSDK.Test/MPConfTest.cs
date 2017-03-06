@@ -189,12 +189,13 @@ namespace MercadoPagoSDK.Test
 
 
 		public Configuration GetConfigurationByFileName(string fileName)
-		{  
-			ExeConfigurationFileMap map = new ExeConfigurationFileMap { ExeConfigFilename = fileName };
-			Configuration config = ConfigurationManager.OpenMappedExeConfiguration(map, ConfigurationUserLevel.None);
-			Console.WriteLine("mapped application config path: {0}", ConfigurationManager.AppSettings["clientId"]);
-			FileInfo fi = new FileInfo(config.FilePath);
-			Console.WriteLine(fi.Name);
+		{    
+			string current_path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			string configFile = current_path + "/Data/" + fileName; 
+			ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+			configFileMap.ExeConfigFilename = configFile;
+			Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+ 
 			return config;
 		}
 
