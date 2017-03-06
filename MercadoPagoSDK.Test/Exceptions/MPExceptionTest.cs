@@ -1,6 +1,6 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using MercadoPago;
-using NUnit.Framework;
 
 namespace MercadoPagoSDK.Test
 {
