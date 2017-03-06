@@ -14,6 +14,12 @@ namespace MercadoPago
             return id;
         }
 
+        /// <summary>
+        /// Loads specified customer by ID.
+        /// </summary>
+        /// <param name="id">Customer ID.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <returns>Searched customer.</returns>
         [GETEndpoint("/v1/customers/:id")]
         public static Customer load(string id, bool useCache)
         {
