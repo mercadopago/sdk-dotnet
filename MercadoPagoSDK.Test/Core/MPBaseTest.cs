@@ -57,6 +57,29 @@ namespace MercadoPagoSDK.Test.Core
 
             Assert.Pass();
         }
+
+        [GETEndpoint("/v1/createSomethingMPBaseTest")]
+        public MPBaseTest loadWithAnnotation_createMPBaseTest()
+        {
+            return (MPBaseTest)base.processMethod<MPBaseTest>("loadWithAnnotation_createMPBaseTest", false);
+        }
+
+        [Test()]
+        public void MPBaseTest_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
+        {
+            try
+            {
+                var result = loadWithAnnotation_createMPBaseTest();
+            }
+            catch (MPException mpException)
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.Pass();
+        }
     }
 
     [TestFixture()]
@@ -99,6 +122,30 @@ namespace MercadoPagoSDK.Test.Core
             try
             {
                 var result = DummyClass.loadWithAnnotation();
+            }
+            catch (MPException mpException)
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.Pass();
+        }
+
+
+        [GETEndpoint("/v1/createSomething")]
+        public DummyClass loadWithAnnotation_create()
+        {
+            return (DummyClass)base.processMethod<DummyClass>("loadWithAnnotation_create", false);
+        }
+
+        [Test()]
+        public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
+        {
+            try
+            {
+                var result = loadWithAnnotation_create();
             }
             catch (MPException mpException)
             {
