@@ -137,7 +137,7 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
-            DummyClass resource = null;
+            DummyClass resource = new DummyClass();
             try
             {
                 resource = create();
@@ -157,7 +157,7 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
-            DummyClass resource = null;
+            DummyClass resource = new DummyClass();
             try
             {
                 resource = update("1234");
@@ -187,7 +187,7 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void AnotherDummyClass_EmptyEndPoint_ShouldRaiseExcep()
         {
-            AnotherDummyClass resource = null;
+            AnotherDummyClass resource = new AnotherDummyClass();
             try
             {
                 resource = update("1234");
