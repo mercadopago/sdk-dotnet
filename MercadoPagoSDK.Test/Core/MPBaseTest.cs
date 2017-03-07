@@ -120,9 +120,11 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
         {
+            DummyClass resource = new DummyClass();
+            DummyClass result = new DummyClass();
             try
             {
-                var result = create();
+                result = resource.create();
             }
             catch  
             {
@@ -138,9 +140,10 @@ namespace MercadoPagoSDK.Test.Core
         public void DummyClassMethod_Create_CheckUri()
         {
             DummyClass resource = new DummyClass();
+            DummyClass result = new DummyClass();
             try
             {
-                resource = create();
+                result = resource.create();
             }
             catch
             {
@@ -149,18 +152,19 @@ namespace MercadoPagoSDK.Test.Core
                 return;
             }
 
-            Assert.AreEqual("POST", resource.Method);
-            Assert.AreEqual("/v1/postpath/slug", resource.Url);
-            Assert.AreEqual("DummyClass", resource.Instance);
+            Assert.AreEqual("POST", result.Method);
+            Assert.AreEqual("/v1/postpath/slug", result.Url);
+            Assert.AreEqual("DummyClass", result.Instance);
         }
 
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
             DummyClass resource = new DummyClass();
+            DummyClass result = new DummyClass();
             try
             {
-                resource = update("1234");
+                result = resource.update("1234");
             }
             catch
             {
@@ -169,9 +173,9 @@ namespace MercadoPagoSDK.Test.Core
                 return;
             }
 
-            Assert.AreEqual("PUT", resource.Method);
-            Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
-            Assert.AreEqual("DummyClass", resource.Instance);
+            Assert.AreEqual("PUT", result.Method);
+            Assert.AreEqual("/v1/putpath/slug/1234", result.Url);
+            Assert.AreEqual("DummyClass", result.Instance);
         }
     }
 
@@ -188,9 +192,10 @@ namespace MercadoPagoSDK.Test.Core
         public void AnotherDummyClass_EmptyEndPoint_ShouldRaiseExcep()
         {
             AnotherDummyClass resource = new AnotherDummyClass();
+            AnotherDummyClass result = new AnotherDummyClass();
             try
             {
-                resource = update("1234");
+                result = resource.update("1234");
             }
             catch (MPException ex)
             {
