@@ -173,5 +173,53 @@ namespace MercadoPagoSDK.Test.Core
             Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
             Assert.AreEqual("DummyClass", resource.Instance);
         }
+
+        [Test()]
+        public void DummyClassMethod_EmptyEndPoint_ShouldRaiseExcep()
+        {
+            DummyClass resource = null;
+            try
+            {
+                resource = update("1234");
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("PUT", resource.Method);
+            Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
+            Assert.AreEqual("DummyClass", resource.Instance);
+        }
     }
+
+    [TestFixture()]
+    public class AnotherDummyClass : MPBase
+    {
+        [PUTEndpoint("")]
+        public AnotherDummyClass update(string id)
+        {
+            return (AnotherDummyClass)AnotherDummyClass.processMethod(typeof(AnotherDummyClass), "update", id, false);
+        }
+
+        [Test()]
+        public void DummyClassMethod_EmptyEndPoint_ShouldRaiseExcep()
+        {
+            AnotherDummyClass resource = null;
+            try
+            {
+                resource = update("1234");
+            }
+            catch (MPException ex)
+            {
+                Assert.AreEqual("Path not found for PUT method", ex.Message);
+                return;
+            }
+
+            Assert.Fail();
+        }
+    }
+    
 }

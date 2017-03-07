@@ -86,49 +86,21 @@ namespace MercadoPago
             Dictionary<string, object> hashAnnotation = new Dictionary<string, object>();
             foreach (Attribute annotation in element.GetCustomAttributes(false))
             {
-                if (annotation is GETEndpoint)
+                if (annotation is BaseEndpoint)
                 {
-                    GETEndpoint get = (GETEndpoint)annotation;
-                    if (string.IsNullOrEmpty(get.Path))
+                    if (string.IsNullOrEmpty(((BaseEndpoint)annotation).Path))
                     {
-                        throw new MPException("Path not found for GET method");
+                        throw new MPException(string.Format("Path not found for {0} method", ((BaseEndpoint)annotation).HttpMethod.ToString()));
                     }
-
-                    hashAnnotation = new Dictionary<string, object>();
-                    hashAnnotation.Add("method", "GET");
-                    hashAnnotation.Add("url", get.Path);
-                    hashAnnotation.Add("instance", element.ReturnType.Name);
                 }
-                else if (annotation is POSTEndpoint)
-                {
-                    POSTEndpoint post = (POSTEndpoint)annotation;
-                    if (string.IsNullOrEmpty(post.Path))
-                    {
-                        throw new MPException("Path not found for POST method");
-                    }
-
-                    hashAnnotation = new Dictionary<string, object>();
-                    hashAnnotation.Add("method", "POST");
-                    hashAnnotation.Add("url", post.Path);
-                    hashAnnotation.Add("instance", element.ReturnType.Name);
-                }
-                else if (annotation is PUTEndpoint)
-                {
-                    PUTEndpoint put = (PUTEndpoint)annotation;
-                    if (string.IsNullOrEmpty(put.Path))
-                    {
-                        throw new MPException("Path not found for PUT method");
-                    }
-
-                    hashAnnotation = new Dictionary<string, object>();
-                    hashAnnotation.Add("method", "PUT");
-                    hashAnnotation.Add("url", put.Path);
-                    hashAnnotation.Add("instance", element.ReturnType.Name);
-                }
-
                 else {
                     throw new MPException("Not supported method found");
                 }
+
+                hashAnnotation = new Dictionary<string, object>();
+                hashAnnotation.Add("method", ((BaseEndpoint)annotation).HttpMethod.ToString());
+                hashAnnotation.Add("url", ((BaseEndpoint)annotation).Path);
+                hashAnnotation.Add("instance", element.ReturnType.Name);
             }
 
             return hashAnnotation;

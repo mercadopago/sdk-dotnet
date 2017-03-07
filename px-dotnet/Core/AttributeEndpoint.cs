@@ -8,6 +8,7 @@ namespace MercadoPago
     public class BaseEndpoint : Attribute
     {
         public string Path { get; protected set; }
+        public HttpMethod HttpMethod { get; set; }
     }
 
     public class GETEndpoint : BaseEndpoint
@@ -15,6 +16,7 @@ namespace MercadoPago
         public GETEndpoint(string path)
         {
             this.Path = path;
+            HttpMethod = HttpMethod.GET;
         }
     }
 
@@ -23,6 +25,7 @@ namespace MercadoPago
         public POSTEndpoint(string path)
         {
             this.Path = path;
+            HttpMethod = HttpMethod.POST;
         }
     }
 
@@ -31,6 +34,7 @@ namespace MercadoPago
         public PUTEndpoint(string path)
         {
             this.Path = path;
+            HttpMethod = HttpMethod.PUT;
         }
     }
 
@@ -39,6 +43,7 @@ namespace MercadoPago
         public DELETEEndpoint(string path)
         {
             this.Path = path;
+            HttpMethod = HttpMethod.DELETE;
         }
     }
 }

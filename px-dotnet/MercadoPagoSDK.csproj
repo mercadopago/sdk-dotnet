@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\HttpMethod.cs" />
     <Compile Include="Core\MPBase.cs" />
     <Compile Include="Core\AttributeEndpoint.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
