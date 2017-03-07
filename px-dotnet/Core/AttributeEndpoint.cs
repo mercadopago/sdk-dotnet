@@ -8,11 +8,16 @@ namespace MercadoPago
 
     public class GETEndpoint : Attribute
     {
-        private string Path;
+        private string _path;
 
         public GETEndpoint(string path)
         {
-            this.Path = path;
+            this._path = path;
+        }
+
+        public string Path()
+        {
+            return _path;
         }
 
     }
