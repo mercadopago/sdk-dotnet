@@ -173,26 +173,6 @@ namespace MercadoPagoSDK.Test.Core
             Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
             Assert.AreEqual("DummyClass", resource.Instance);
         }
-
-        [Test()]
-        public void DummyClassMethod_EmptyEndPoint_ShouldRaiseExcep()
-        {
-            DummyClass resource = null;
-            try
-            {
-                resource = update("1234");
-            }
-            catch
-            {
-                // should never get here
-                Assert.Fail();
-                return;
-            }
-
-            Assert.AreEqual("PUT", resource.Method);
-            Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
-            Assert.AreEqual("DummyClass", resource.Instance);
-        }
     }
 
     [TestFixture()]
@@ -205,7 +185,7 @@ namespace MercadoPagoSDK.Test.Core
         }
 
         [Test()]
-        public void DummyClassMethod_EmptyEndPoint_ShouldRaiseExcep()
+        public void AnotherDummyClass_EmptyEndPoint_ShouldRaiseExcep()
         {
             AnotherDummyClass resource = null;
             try
