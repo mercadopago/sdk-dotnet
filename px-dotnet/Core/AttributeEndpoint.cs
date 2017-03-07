@@ -5,61 +5,40 @@ using System.Text;
 
 namespace MercadoPago
 {
-
-    public class GETEndpoint : Attribute
+    public class BaseEndpoint : Attribute
     {
-        private string _path;
+        public string Path { get; protected set; }
+    }
 
+    public class GETEndpoint : BaseEndpoint
+    {
         public GETEndpoint(string path)
         {
-            this._path = path;
+            this.Path = path;
         }
-
-        public string Path()
-        {
-            return _path;
-        }
-
     }
 
-    public class POSTEndpoint : Attribute  
+    public class POSTEndpoint : BaseEndpoint  
     {
-        private string _path;
-
         public POSTEndpoint(string path)
         {
-            this._path = path;
-        }
-
-        public string Path()
-        {
-            return _path;
+            this.Path = path;
         }
     }
 
-    public class PUTEndpoint : Attribute
+    public class PUTEndpoint : BaseEndpoint
     {
-        private string _path;
-
         public PUTEndpoint(string path)
         {
-            this._path = path;
-        }
-
-        public string Path()
-        {
-            return _path;
+            this.Path = path;
         }
     }
 
-    public class DELETEEndpoint : Attribute
+    public class DELETEEndpoint : BaseEndpoint
     {
-        private string Path;
-
         public DELETEEndpoint(string path)
         {
             this.Path = path;
         }
-
     }
 }

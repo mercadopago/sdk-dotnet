@@ -89,40 +89,40 @@ namespace MercadoPago
                 if (annotation is GETEndpoint)
                 {
                     GETEndpoint get = (GETEndpoint)annotation;
-                    if (string.IsNullOrEmpty(get.Path()))
+                    if (string.IsNullOrEmpty(get.Path))
                     {
                         throw new MPException("Path not found for GET method");
                     }
 
                     hashAnnotation = new Dictionary<string, object>();
                     hashAnnotation.Add("method", "GET");
-                    hashAnnotation.Add("url", get.Path());
+                    hashAnnotation.Add("url", get.Path);
                     hashAnnotation.Add("instance", element.ReturnType.Name);
                 }
                 else if (annotation is POSTEndpoint)
                 {
                     POSTEndpoint post = (POSTEndpoint)annotation;
-                    if (string.IsNullOrEmpty(post.Path()))
+                    if (string.IsNullOrEmpty(post.Path))
                     {
                         throw new MPException("Path not found for POST method");
                     }
 
                     hashAnnotation = new Dictionary<string, object>();
                     hashAnnotation.Add("method", "POST");
-                    hashAnnotation.Add("url", post.Path());
+                    hashAnnotation.Add("url", post.Path);
                     hashAnnotation.Add("instance", element.ReturnType.Name);
                 }
                 else if (annotation is PUTEndpoint)
                 {
                     PUTEndpoint put = (PUTEndpoint)annotation;
-                    if (string.IsNullOrEmpty(put.Path()))
+                    if (string.IsNullOrEmpty(put.Path))
                     {
                         throw new MPException("Path not found for PUT method");
                     }
 
                     hashAnnotation = new Dictionary<string, object>();
                     hashAnnotation.Add("method", "PUT");
-                    hashAnnotation.Add("url", put.Path());
+                    hashAnnotation.Add("url", put.Path);
                     hashAnnotation.Add("instance", element.ReturnType.Name);
                 }
 
