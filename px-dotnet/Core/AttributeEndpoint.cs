@@ -24,24 +24,32 @@ namespace MercadoPago
 
     public class POSTEndpoint : Attribute  
     {
-        private string Path;
+        private string _path;
 
         public POSTEndpoint(string path)
         {
-            this.Path = path;
+            this._path = path;
         }
 
+        public string Path()
+        {
+            return _path;
+        }
     }
 
     public class PUTEndpoint : Attribute
     {
-        private string Path;
+        private string _path;
 
         public PUTEndpoint(string path)
         {
-            this.Path = path;
+            this._path = path;
         }
 
+        public string Path()
+        {
+            return _path;
+        }
     }
 
     public class DELETEEndpoint : Attribute

@@ -9,13 +9,16 @@ namespace MercadoPagoSDK.Test.Core
 {
     [TestFixture()]
     public class MPBaseTest : MPBase
-    {
-        //MPBaseTest va a ser Customer, cualquier otro recurso, o cquier clase que se la adorne con una annotation
-
-        
-        public static MPBaseTest loadNoAtt(string id)
+    {    
+        public static MPBaseTest load(string id)
         {
-            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "loadNoAtt", id, false);
+            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "load", id, false);
+        }
+
+        [GETEndpoint("/v1/getpath/slug")]
+        public static MPBaseTest load_all()
+        {
+            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "load_all", false);
         }
 
         [Test()]
@@ -23,7 +26,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = MPBaseTest.loadNoAtt("666");
+                var result = MPBaseTest.load("666");
             }
             catch (MPException mpException)
             {
@@ -34,42 +37,13 @@ namespace MercadoPagoSDK.Test.Core
             // should never get here
             Assert.Fail();
         }
-
-        [GETEndpoint("/v1/customers/:id")]
-        public static MPBaseTest load(string id)
-        {
-            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "load", id, false);
-        }
-
+     
         [Test()]
         public void MPBaseTest_WitAttributes_ShouldFindAttribute()
         {
             try
             {
-                var result = MPBaseTest.load("666");
-            }
-            catch (MPException mpException)
-            {
-                // should never get here
-                Assert.Fail();
-                return;
-            }
-
-            Assert.Pass();
-        }
-
-        [GETEndpoint("/v1/createSomethingMPBaseTest")]
-        public MPBaseTest loadWithAnnotation_createMPBaseTest()
-        {
-            return (MPBaseTest)base.processMethod<MPBaseTest>("loadWithAnnotation_createMPBaseTest", false);
-        }
-
-        [Test()]
-        public void MPBaseTest_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
-        {
-            try
-            {
-                var result = loadWithAnnotation_createMPBaseTest();
+                var result = MPBaseTest.load_all();
             }
             catch (MPException mpException)
             {
@@ -85,11 +59,28 @@ namespace MercadoPagoSDK.Test.Core
     [TestFixture()]
     public class DummyClass : MPBase
     {
-        //DummyClass va a ser Customer, cualquier otro recurso, o cquier clase que se la adorne con una annotation
-
-        public static DummyClass loadDummy()
+        public static DummyClass load_all()
         {
-            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "loadDummy", false);
+            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "load_all", false);
+        }
+
+        [GETEndpoint("/v1/getpath/load/:id")]
+        public static DummyClass load(string id)
+        {
+            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "load", id, false);
+        }
+
+        [POSTEndpoint("/v1/postpath/slug")]
+        public DummyClass create()
+        {
+            return (DummyClass)base.processMethod<DummyClass>("create", false);
+        }
+
+
+        [PUTEndpoint("/v1/putpath/slug/:id")]
+        public DummyClass update(string id)
+        {
+            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "update", id, false);
         }
 
         [Test()]
@@ -97,7 +88,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = DummyClass.loadDummy();
+                var result = DummyClass.load_all();
             }
             catch (MPException mpException)
             {
@@ -107,23 +98,16 @@ namespace MercadoPagoSDK.Test.Core
 
             // should never get here
             Assert.Fail();
-        }
-
-
-        [GETEndpoint("/v1/loadSomething")]
-        public static DummyClass loadWithAnnotation()
-        {
-            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "loadWithAnnotation", false);
-        }
+        }      
 
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
         {
             try
             {
-                var result = DummyClass.loadWithAnnotation();
+                var result = DummyClass.load("1234");
             }
-            catch (MPException mpException)
+            catch 
             {
                 // should never get here
                 Assert.Fail();
@@ -132,22 +116,15 @@ namespace MercadoPagoSDK.Test.Core
 
             Assert.Pass();
         }
-
-
-        [GETEndpoint("/v1/createSomething")]
-        public DummyClass loadWithAnnotation_create()
-        {
-            return (DummyClass)base.processMethod<DummyClass>("loadWithAnnotation_create", false);
-        }
-
+   
         [Test()]
         public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
         {
             try
             {
-                var result = loadWithAnnotation_create();
+                var result = create();
             }
-            catch (MPException mpException)
+            catch  
             {
                 // should never get here
                 Assert.Fail();
@@ -155,6 +132,46 @@ namespace MercadoPagoSDK.Test.Core
             }
 
             Assert.Pass();
+        }
+
+        [Test()]
+        public void DummyClassMethod_Create_CheckUri()
+        {
+            DummyClass resource = null;
+            try
+            {
+                resource = create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("POST", resource.Method);
+            Assert.AreEqual("/v1/postpath/slug", resource.Url);
+            Assert.AreEqual("DummyClass", resource.Instance);
+        }
+
+        [Test()]
+        public void DummyClassMethod_Update_CheckUri()
+        {
+            DummyClass resource = null;
+            try
+            {
+                resource = update("1234");
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("PUT", resource.Method);
+            Assert.AreEqual("/v1/putpath/slug/1234", resource.Url);
+            Assert.AreEqual("DummyClass", resource.Instance);
         }
     }
 }
