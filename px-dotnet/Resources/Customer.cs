@@ -23,7 +23,7 @@ namespace MercadoPago
         [GETEndpoint("/v1/customers/:id")]
         public static Customer load(string id, bool useCache)
         {
-            return (Customer)Customer.processMethod(typeof(Customer), "load", "id", useCache);
+            return (Customer)Customer.processMethod("load", "id", useCache);
         }
     }
 }

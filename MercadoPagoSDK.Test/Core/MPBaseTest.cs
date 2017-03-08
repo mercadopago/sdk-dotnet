@@ -12,13 +12,13 @@ namespace MercadoPagoSDK.Test.Core
     {    
         public static MPBaseTest load(string id)
         {
-            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "load", id, false);
+            return (MPBaseTest)MPBaseTest.processMethod("load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/slug")]
         public static MPBaseTest load_all()
         {
-            return (MPBaseTest)MPBaseTest.processMethod(typeof(MPBaseTest), "load_all", false);
+            return (MPBaseTest)MPBaseTest.processMethod("load_all", false);
         }
 
         [Test()]
@@ -61,13 +61,13 @@ namespace MercadoPagoSDK.Test.Core
     {
         public static DummyClass load_all()
         {
-            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "load_all", false);
+            return (DummyClass)DummyClass.processMethod("load_all", false);
         }
 
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass load(string id)
         {
-            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "load", id, false);
+            return (DummyClass)DummyClass.processMethod("load", id, false);
         }
 
         [POSTEndpoint("/v1/postpath/slug")]
@@ -80,7 +80,7 @@ namespace MercadoPagoSDK.Test.Core
         [PUTEndpoint("/v1/putpath/slug/:id")]
         public DummyClass update(string id)
         {
-            return (DummyClass)DummyClass.processMethod(typeof(DummyClass), "update", id, false);
+            return (DummyClass)DummyClass.processMethod("update", id, false);
         }
 
         [Test()]
@@ -177,6 +177,23 @@ namespace MercadoPagoSDK.Test.Core
             Assert.AreEqual("/v1/putpath/slug/1234", result.Url);
             Assert.AreEqual("DummyClass", result.Instance);
         }
+
+        [Test()]
+        public void DummyClassMethod_WithoutClassReference()
+        {
+            try
+            {
+                var result = DummyClass.load_all();
+            }
+            catch (MPException mpException)
+            {
+                Assert.AreEqual("No annotated method found", mpException.Message);
+                return;
+            }
+
+            // should never get here
+            Assert.Fail();
+        }
     }
 
     [TestFixture()]
@@ -185,7 +202,7 @@ namespace MercadoPagoSDK.Test.Core
         [PUTEndpoint("")]
         public AnotherDummyClass update(string id)
         {
-            return (AnotherDummyClass)AnotherDummyClass.processMethod(typeof(AnotherDummyClass), "update", id, false);
+            return (AnotherDummyClass)AnotherDummyClass.processMethod("update", id, false);
         }
 
         [Test()]

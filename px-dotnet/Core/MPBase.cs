@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Net;
+using System.Diagnostics;
 
 namespace MercadoPago
 {
@@ -16,18 +17,20 @@ namespace MercadoPago
         public string Url { get; set; }
         public string Instance { get; set; }
 
-        public static MPBase processMethod(Type clazz, string methodName, bool useCache)
+        public static MPBase processMethod(string methodName, bool useCache)
         {
+            Type classType = GetTypeFromStack();
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            return processMethod<MPBase>(clazz, null, methodName, null, useCache);
+            return processMethod<MPBase>(classType, null, methodName, null, useCache);
         }
 
-        public static MPBase processMethod(Type clazz, string methodName, string param, bool useCache)
+        public static MPBase processMethod(string methodName, string param, bool useCache)
         {
+            Type classType = GetTypeFromStack();
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param1", param);
 
-            return processMethod<MPBase>(clazz, null, methodName, mapParams, useCache);
+            return processMethod<MPBase>(classType, null, methodName, mapParams, useCache);
         }
 
         public MPBase processMethod<T>(string methodName, bool useCache) where T : MPBase
@@ -105,5 +108,27 @@ namespace MercadoPago
 
             return hashAnnotation;
         }
+
+        #region Tracking Methods
+        /// <summary>
+        /// Get Type of a required class string name.
+        /// </summary>
+        /// <param name="typeName">Class name.</param>
+        /// <returns>Type of required class.</returns>
+        public static Type GetTypeFromStack()
+        {
+            MethodBase methodBase = new StackTrace().GetFrame(2).GetMethod();
+            var className = methodBase.DeclaringType.FullName;
+            var type = Type.GetType(className);
+            if (type != null) return type;
+            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                type = a.GetType(className);
+                if (type != null)
+                    return type;
+            }
+            return null;
+        }
+        #endregion
     }
 }
