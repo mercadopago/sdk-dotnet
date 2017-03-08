@@ -77,10 +77,10 @@ namespace MercadoPagoSDK.Test.Core
         }
 
 
-        [PUTEndpoint("/v1/putpath/slug/:id")]
-        public DummyClass update(string id)
+        [PUTEndpoint("/v1/putpath/slug")]
+        public DummyClass update()
         {
-            return (DummyClass)DummyClass.processMethod("update", id, false);
+            return (DummyClass)DummyClass.processMethod("update", false);
         }
 
         [Test()]
@@ -164,7 +164,7 @@ namespace MercadoPagoSDK.Test.Core
             DummyClass result = new DummyClass();
             try
             {
-                result = resource.update("1234");
+                result = resource.update();
             }
             catch
             {
@@ -174,7 +174,7 @@ namespace MercadoPagoSDK.Test.Core
             }
 
             Assert.AreEqual("PUT", result.Method);
-            Assert.AreEqual("/v1/putpath/slug/1234", result.Url);
+            Assert.AreEqual("/v1/putpath/slug", result.Url);
             Assert.AreEqual("DummyClass", result.Instance);
         }
 
@@ -200,9 +200,9 @@ namespace MercadoPagoSDK.Test.Core
     public class AnotherDummyClass : MPBase
     {
         [PUTEndpoint("")]
-        public AnotherDummyClass update(string id)
+        public AnotherDummyClass update()
         {
-            return (AnotherDummyClass)AnotherDummyClass.processMethod("update", id, false);
+            return (AnotherDummyClass)AnotherDummyClass.processMethod("update", false);
         }
 
         [Test()]
@@ -212,7 +212,7 @@ namespace MercadoPagoSDK.Test.Core
             AnotherDummyClass result = new AnotherDummyClass();
             try
             {
-                result = resource.update("1234");
+                result = resource.update();
             }
             catch (MPException ex)
             {
