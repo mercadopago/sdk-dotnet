@@ -37,16 +37,21 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\HttpMethod.cs" />
+    <Compile Include="Core\MPBase.cs" />
+    <Compile Include="Core\AttributeEndpoint.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="MPConf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Customer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MercadoPagoSDKBETA.1.nupkg" />
