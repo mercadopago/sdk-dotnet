@@ -253,16 +253,16 @@ namespace MercadoPagoSDK.Test.Core
             Assert.AreEqual("/v1/getpath/slug", processedPath0);
 
             string processedPath1 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/666/pEmail/rwilliner@something.com", processedPath1);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
 
             string processedPath2 = MPBase.ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/666/pHasCreditCard/True", processedPath2);
+            Assert.AreEqual("/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
 
             string processedPath3 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/666/pEmail/rwilliner@something.com/pAddress/Evergreen 123", processedPath3);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
 
-            string processedPath4 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalstatus/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/666/pEmail/rwilliner@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
+            string processedPath4 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
 
         }
     }
