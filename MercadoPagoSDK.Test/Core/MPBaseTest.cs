@@ -59,6 +59,12 @@ namespace MercadoPagoSDK.Test.Core
     [TestFixture()]
     public class DummyClass : MPBase
     {
+        public int id { get; set; }
+        public string email { get; set; }
+        public string address { get; set; }
+        public string maritalStatus { get; set; }
+        public bool hasCreditCard { get; set; }
+
         public static DummyClass load_all()
         {
             return (DummyClass)DummyClass.processMethod("load_all", false);
@@ -221,6 +227,43 @@ namespace MercadoPagoSDK.Test.Core
             }
 
             Assert.Fail();
+        }
+
+        [Test()]
+        public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
+        {
+            DummyClass dummy = new DummyClass();
+            dummy.id = 111;
+            dummy.email = "person@something.com";
+            dummy.address = "Evergreen 123";
+            dummy.maritalStatus = "divorced";
+            dummy.hasCreditCard = true;
+
+            try
+            {
+                string processedPath = MPBase.ParsePath("/v1/getpath/slug/:id/pUnexist/:unexist", null, dummy);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("No argument supplied/found for method path", ex.Message);
+            }
+
+
+            string processedPath0 = MPBase.ParsePath("/v1/getpath/slug", null, dummy);
+            Assert.AreEqual("/v1/getpath/slug", processedPath0);
+
+            string processedPath1 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
+
+            string processedPath2 = MPBase.ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
+            Assert.AreEqual("/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
+
+            string processedPath3 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
+
+            string processedPath4 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
+            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
+
         }
     }
     

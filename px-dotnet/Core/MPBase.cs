@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Net;
 using System.Diagnostics;
+using Newtonsoft.Json.Linq;
 
 namespace MercadoPago
 {
@@ -173,6 +174,86 @@ namespace MercadoPago
                     return type;
             }
             return null;
+        }
+        #endregion
+
+        #region Core Utilities
+        /// <summary>
+        /// Generates a final Path based on parameters in Dictionary and resource properties.
+        /// </summary>
+        /// <typeparam name="T">MPBase resource.</typeparam>
+        /// <param name="path">Path we are processing.</param>
+        /// <param name="mapParams">Collection of parameters that we will use to process the final path.</param>
+        /// <param name="resource">Resource containing parameters values to include in the final path.</param>
+        /// <returns>Processed path to call the API.</returns>
+        public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
+        {
+            StringBuilder result = new StringBuilder();
+            if (path.Contains(':'))
+            {
+                int paramIterator = 0;
+                while (path.Contains(':'))
+                {
+                    result.Append(path.Substring(0, path.IndexOf(':')));
+                    path = path.Substring(path.IndexOf(':') + 1);
+                    string param = path;
+                    if (path.Contains('/'))
+                    {
+                        param = path.Substring(0, path.IndexOf('/'));
+                    }
+
+                    string value = string.Empty;
+                    if (paramIterator <= 2 &&
+                            mapParams != null &&
+                            !string.IsNullOrEmpty(mapParams[string.Format("param{0}", paramIterator.ToString())]))
+                    {
+                        value = mapParams[string.Format("param{0}", paramIterator.ToString())];
+                    }
+                    else if (mapParams != null &&
+                         !string.IsNullOrEmpty(mapParams[param]))
+                    {
+                        value = mapParams[param];
+                    }
+                    else
+                    {
+                        if (resource != null)
+                        {
+                            JObject json = JObject.FromObject(resource);
+                            var jValue = json.GetValue(param);
+
+                            if (jValue != null)
+                            {
+                                value = jValue.ToString();
+                            }
+                        }
+                    }
+                    if (string.IsNullOrEmpty(value))
+                    {
+                        throw new MPException("No argument supplied/found for method path");
+                    }
+
+                    result.Append(value);
+                    if (path.Contains('/'))
+                    {
+                        path = path.Substring(path.IndexOf('/'));
+                    }
+                    else
+                    {
+                        path = string.Empty;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(path))
+                {
+                    result.Append(path);
+                }
+            }
+            else
+            {
+                result.Append(path);
+            }
+
+            return result.ToString();
         }
         #endregion
     }
