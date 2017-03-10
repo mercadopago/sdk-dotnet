@@ -1,6 +1,9 @@
 ﻿using MercadoPago;
+using MercadoPago.Core;
+using MercadoPago.Core.Annotations;
 using MercadoPago.Exceptions;
 using MercadoPago.Net;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -31,7 +34,7 @@ namespace MercadoPagoSDK.Test.Net
         [Test()]
         public void GetRequestMethod_ShouldBePOST()
         {
-            WebRequest request = client.GetRequestMethod(HttpMethod.POST, "http://www.google.com", "");
+            WebRequest request = client.GetRequestMethod(HttpMethod.POST, "http://www.google.com", new Request());
 
             Assert.AreEqual(request.Method, "POST");
         }
@@ -39,7 +42,7 @@ namespace MercadoPagoSDK.Test.Net
         [Test()]
         public void GetRequestMethod_ShouldBePUT()
         {
-            WebRequest request = client.GetRequestMethod(HttpMethod.PUT, "http://www.google.com", "");
+            WebRequest request = client.GetRequestMethod(HttpMethod.PUT, "http://www.google.com", new Request());
 
             Assert.AreEqual(request.Method, "PUT");
         }
@@ -65,7 +68,7 @@ namespace MercadoPagoSDK.Test.Net
         {
             try
             {
-                requestDelete = client.GetRequestMethod(HttpMethod.DELETE, "http://www.google.com", "");
+                requestDelete = client.GetRequestMethod(HttpMethod.DELETE, "http://www.google.com", new Request());
             }
             catch (MPRESTException ex)
             {
@@ -74,7 +77,7 @@ namespace MercadoPagoSDK.Test.Net
 
             try
             {
-                requestGet = client.GetRequestMethod(HttpMethod.GET, "http://www.google.com", "");
+                requestGet = client.GetRequestMethod(HttpMethod.GET, "http://www.google.com", new Request());
             }
             catch (MPRESTException ex)
             {
@@ -87,7 +90,7 @@ namespace MercadoPagoSDK.Test.Net
         {
             try
             {
-                requestPost = client.GetRequestMethod(HttpMethod.POST, "http://www.google.com", "");
+                requestPost = client.GetRequestMethod(HttpMethod.POST, "http://www.google.com", new Request());
             }
             catch (MPRESTException ex)
             {
@@ -96,7 +99,7 @@ namespace MercadoPagoSDK.Test.Net
 
             try
             {
-                WebRequest requestPut = client.GetRequestMethod(HttpMethod.PUT, "http://www.google.com", "");
+                WebRequest requestPut = client.GetRequestMethod(HttpMethod.PUT, "http://www.google.com", new Request());
             }
             catch (MPRESTException ex)
             {
@@ -109,7 +112,7 @@ namespace MercadoPagoSDK.Test.Net
         {
             try
             {
-                WebRequest request = client.GetRequestMethod(HttpMethod.GET, "", "");
+                WebRequest request = client.GetRequestMethod(HttpMethod.GET, "", new Request());
             }
             catch(MPRESTException ex)
             {
@@ -117,5 +120,11 @@ namespace MercadoPagoSDK.Test.Net
             }
         }
         #endregion
+
+        [Test()]
+        public void ExecuteRequest_MockData()
+        {
+            var response = client.ExecuteRequest(HttpMethod.GET, "http://mockbin.com/request?foo=bar&foo=baz", PayloadType.JSON, new JObject(), new WebHeaderCollection());            
+        }
     }
 }

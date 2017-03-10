@@ -58,6 +58,7 @@
     <Compile Include="Exceptions\MPRESTException.cs" />
     <Compile Include="MPConf.cs" />
     <Compile Include="Net\MPRESTClient.cs" />
+    <Compile Include="Net\Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Customer.cs" />
   </ItemGroup>
