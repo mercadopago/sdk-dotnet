@@ -37,6 +37,7 @@
     <Compile Include="Core\MPBaseTest.cs" />
     <Compile Include="MPConfTest.cs" />
     <Compile Include="Exceptions\MPExceptionTest.cs" />
+    <Compile Include="Net\MPRESTClientTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">
