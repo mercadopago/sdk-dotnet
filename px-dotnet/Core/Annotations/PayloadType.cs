@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPago.Core.Annotations
+namespace MercadoPago
 {
     public enum PayloadType
     {        

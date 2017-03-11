@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace MercadoPago.Net
+namespace MercadoPago
 {
     /// <summary>
     /// class to simulate HttpClient class, available from .NET 4.0 onward.

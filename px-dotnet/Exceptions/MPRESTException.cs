@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPago.Exceptions
+namespace MercadoPago
 {
     [Serializable]
     public class MPRESTException : MPException
