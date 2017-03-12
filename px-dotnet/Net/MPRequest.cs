@@ -9,9 +9,9 @@ namespace MercadoPago
     /// <summary>
     /// class to simulate HttpClient class, available from .NET 4.0 onward.
     /// </summary>
-    public class Request
+    public class MPRequest
     {
-        public WebClient Client { get; set; }
-        public string JsonData { get; set; }
+        public HttpWebRequest Request { get; set; }
+        public byte[] RequestPayload { get; set; }
     }
 }

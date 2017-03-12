@@ -24,7 +24,7 @@ namespace MercadoPago
             new MPRESTClient(null, -1);
         }
 
-        public MPRESTClient(String proxyHostName, int proxyPort)
+        public MPRESTClient(string proxyHostName, int proxyPort)
         {
             this.ProxyHostName = proxyHostName;
             this.ProxyPort = proxyPort;
@@ -42,59 +42,49 @@ namespace MercadoPago
             }
         }
 
-
-        public MPAPIResponse ExecuteRequest(HttpMethod httpMethod, string uri, PayloadType payloadType, JObject payload, WebHeaderCollection colHeaders, int retries, int connectionTimeout, int socketTimeout)
+        public MPAPIResponse ExecuteRequest(
+            HttpMethod httpMethod, 
+            string uri,
+            PayloadType payloadType, 
+            JObject payload, 
+            WebHeaderCollection colHeaders, 
+            int retries, 
+            int connectionTimeout, 
+            int socketTimeout)
         {
             try
             {
+                MPRequest mpRequest = CreateRequest(httpMethod, uri, payloadType, payload, colHeaders);
+                string result = string.Empty;
 
-                if (httpMethod == HttpMethod.GET)
+                if (new HttpMethod[] { HttpMethod.GET, HttpMethod.DELETE }.Contains(httpMethod))
                 {
-                    HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
-                    request.Method = "GET";
-
-                    String result = string.Empty;
-                    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
                     {
                         Stream dataStream = response.GetResponseStream();
                         StreamReader reader = new StreamReader(dataStream);
                         result = reader.ReadToEnd();
                         reader.Close();
                         dataStream.Close();
-
                         return new MPAPIResponse(result);
                     }
                 }
 
-
-                if (httpMethod == HttpMethod.POST)
+                if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
                 {
-                    string postData = "param1=value1sended&param2=value2sended";
-
-                    HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
-                    request.Method = "POST";
-
-                    byte[] data = Encoding.ASCII.GetBytes(postData);
-
-                    request.ContentType = "application/x-www-form-urlencoded";
-                    request.ContentLength = data.Length;
-
-                    Stream requestStream = request.GetRequestStream();
-                    requestStream.Write(data, 0, data.Length);
+                    Stream requestStream = mpRequest.Request.GetRequestStream();
+                    requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
                     requestStream.Close();
 
-                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
+                    {                              
+                        Stream responseStream = response.GetResponseStream();
+                        StreamReader reader = new StreamReader(responseStream, Encoding.Default);
+                        result = reader.ReadToEnd();
 
-                    Stream responseStream = response.GetResponseStream();
-
-                    StreamReader reader = new StreamReader(responseStream, Encoding.Default);
-
-                    string result = reader.ReadToEnd();
-
-                    reader.Close();
-                    responseStream.Close();
-
-                    response.Close();
+                        reader.Close();
+                        responseStream.Close();
+                    }
 
                     return new MPAPIResponse(result);
                 }
@@ -107,6 +97,69 @@ namespace MercadoPago
             }
         }
 
+        public MPRequest CreateRequest(HttpMethod httpMethod,
+            string uri,
+            PayloadType payloadType,
+            JObject payload,
+            WebHeaderCollection colHeaders)
+        {
+
+            if (string.IsNullOrEmpty(uri))
+                throw new MPRESTException("Uri can not be an empty string.");
+
+            if (httpMethod.Equals(HttpMethod.GET))
+            {
+                if (payload != null)
+                {
+                    throw new MPRESTException("Payload not supported for this method.");
+                }
+            }
+            else if (httpMethod.Equals(HttpMethod.POST))
+            {
+                if (payload == null)
+                {
+                    throw new MPRESTException("Must include payload for this method.");
+                }
+            }
+            else if (httpMethod.Equals(HttpMethod.PUT))
+            {
+                if (payload == null)
+                {
+                    throw new MPRESTException("Must include payload for this method.");
+                }
+            }
+            else if (httpMethod.Equals(HttpMethod.DELETE))
+            {
+                if (payload != null)
+                {
+                    throw new MPRESTException("Payload not supported for this method.");
+                }
+            }
+
+            MPRequest mpRequest = new MPRequest();
+            mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(uri);
+            mpRequest.Request.Method = httpMethod.ToString();
+
+            if (payload != null) // POST & PUT
+            {
+                var parametersDict = payload.ToObject<Dictionary<string, string>>();
+                StringBuilder parametersString = new StringBuilder();
+                parametersString.Append(string.Format("{0}={1}", parametersDict.First().Key, parametersDict.First().Value));
+                parametersDict.Remove(parametersDict.First().Key);
+                foreach(var value in parametersDict)
+                {
+                    parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value));
+                }
+
+                byte[] data = Encoding.ASCII.GetBytes(parametersString.ToString());
+                mpRequest.Request.ContentLength = data.Length;
+                mpRequest.Request.ContentType = payloadType == PayloadType.JSON ? "application/json" : "application/x-www-form-urlencoded";
+                mpRequest.RequestPayload = data;
+            }
+
+            return mpRequest;
+        }
+               
         #endregion
     }
 }
