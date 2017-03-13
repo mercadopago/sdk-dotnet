@@ -18,18 +18,35 @@ namespace MercadoPago
         public int ProxyPort = -1;
         #endregion
 
-        #region Core
+        #region Core Methods
+        /// <summary>
+        /// Class constructor.
+        /// </summary>
         public MPRESTClient()
         {
             new MPRESTClient(null, -1);
         }
 
+        /// <summary>
+        /// Set class variables.
+        /// </summary>
+        /// <param name="proxyHostName">Proxy host to use.</param>
+        /// <param name="proxyPort">Proxy port to use in the proxy host.</param>
         public MPRESTClient(string proxyHostName, int proxyPort)
         {
             this.ProxyHostName = proxyHostName;
             this.ProxyPort = proxyPort;
         }
 
+        /// <summary>
+        /// Execute a request to an endpoint.
+        /// </summary>
+        /// <param name="httpMethod">Method to use in the request.</param>
+        /// <param name="uri">Endpoint we are pointing.</param>
+        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
+        /// <param name="payload">The data we are sending.</param>
+        /// <param name="colHeaders">Extra headers to send with the request.</param>
+        /// <returns>Api response with the result of the call.</returns>
         public MPAPIResponse ExecuteRequest(HttpMethod httpMethod, String uri, PayloadType payloadType, JObject payload, WebHeaderCollection colHeaders)
         {
             try
@@ -42,6 +59,18 @@ namespace MercadoPago
             }
         }
 
+        /// <summary>
+        /// Core module implementation. Execute a request to an endpoint.
+        /// </summary>
+        /// <param name="httpMethod">Method to use in the request.</param>
+        /// <param name="uri">Endpoint we are pointing.</param>
+        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
+        /// <param name="payload">The data we are sending.</param>
+        /// <param name="colHeaders">Extra headers to send with the request.</param>
+        /// <param name="retries">Number of retries to do in case of call error.</param>
+        /// <param name="connectionTimeout">Number of miliseconds that the connection lasts.</param>
+        /// <param name="socketTimeout">Socket timeout, detailed in miliseconds.</param>
+        /// <returns>Api response with the result of the call.</returns>
         public MPAPIResponse ExecuteRequest(
             HttpMethod httpMethod, 
             string uri,
@@ -97,6 +126,15 @@ namespace MercadoPago
             }
         }
 
+        /// <summary>
+        /// Create a request to use in the call to a certain endpoint.
+        /// </summary>
+        /// <param name="httpMethod">Method to use in the request.</param>
+        /// <param name="uri">Endpoint we are pointing.</param>
+        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
+        /// <param name="payload">The data we are sending.</param>
+        /// <param name="colHeaders">Extra headers to send with the request.</param>
+        /// <returns>Api response with the result of the call.</returns>
         public MPRequest CreateRequest(HttpMethod httpMethod,
             string uri,
             PayloadType payloadType,

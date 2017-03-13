@@ -11,7 +11,9 @@ namespace MercadoPago
     /// </summary>
     public class MPRequest
     {
+        #region Variables
         public HttpWebRequest Request { get; set; }
         public byte[] RequestPayload { get; set; }
+        #endregion
     }
 }

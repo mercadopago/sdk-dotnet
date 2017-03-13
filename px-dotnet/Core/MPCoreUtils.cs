@@ -8,6 +8,13 @@ namespace MercadoPago
 {
     public static class MPCoreUtils
     {
+        #region Core Methods
+        /// <summary>
+        /// Find specified tokens.
+        /// </summary>
+        /// <param name="containerToken">Token container.</param>
+        /// <param name="name">Name of the token we are searching.</param>
+        /// <returns>List of tokens that match with the search parameter.</returns>
         public static List<JToken> FindTokens(this JToken containerToken, string name)
         {
             List<JToken> matches = new List<JToken>();
@@ -15,6 +22,12 @@ namespace MercadoPago
             return matches;
         }
 
+        /// <summary>
+        /// Core implementation of FindTokens
+        /// </summary>
+        /// <param name="containerToken">Token container.</param>
+        /// <param name="name">Name of the token we are searching.</param>
+        /// <param name="matches">List of tokens that match with the search parameter.</param>
         private static void FindTokens(JToken containerToken, string name, List<JToken> matches)
         {
             if (containerToken.Type == JTokenType.Object)
@@ -36,6 +49,7 @@ namespace MercadoPago
                     FindTokens(child, name, matches);
                 }
             }
-        }   
+        }
+        #endregion
     }
 }

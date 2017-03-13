@@ -5,12 +5,21 @@ using System.Text;
 
 namespace MercadoPago
 {
+    #region Base Endpoint Attribute
+    /// <summary>
+    /// Represents the top level attribute type.
+    /// </summary>
     public class BaseEndpoint : Attribute
     {
         public string Path { get; protected set; }
         public HttpMethod HttpMethod { get; set; }
     }
+    #endregion
 
+    #region Request Types attributes
+    /// <summary>
+    /// Attribute to perform GET request.
+    /// </summary>
     public class GETEndpoint : BaseEndpoint
     {
         public GETEndpoint(string path)
@@ -20,6 +29,9 @@ namespace MercadoPago
         }
     }
 
+    /// <summary>
+    /// Attribute to perform POST request.
+    /// </summary>
     public class POSTEndpoint : BaseEndpoint  
     {
         public POSTEndpoint(string path)
@@ -29,6 +41,9 @@ namespace MercadoPago
         }
     }
 
+    /// <summary>
+    /// Attribute to perform PUT request.
+    /// </summary>
     public class PUTEndpoint : BaseEndpoint
     {
         public PUTEndpoint(string path)
@@ -38,6 +53,9 @@ namespace MercadoPago
         }
     }
 
+    /// <summary>
+    /// Attibute to perform DELETE request.
+    /// </summary>
     public class DELETEEndpoint : BaseEndpoint
     {
         public DELETEEndpoint(string path)
@@ -46,4 +64,5 @@ namespace MercadoPago
             HttpMethod = HttpMethod.DELETE;
         }
     }
+    #endregion
 }

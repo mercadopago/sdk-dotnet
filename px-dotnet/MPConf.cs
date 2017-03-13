@@ -7,10 +7,12 @@ namespace MercadoPago
 {
     public class MPConf
     {
+        #region Variables
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
+        #endregion
 
         /// <summary>  
-        ///  Propiedad que representa el ClientSecret
+        ///  Property that represent the client secret token.
         /// </summary>
         public static string ClientSecret
         {
@@ -30,7 +32,7 @@ namespace MercadoPago
         static string _clientSecret = null;
 
         /// <summary>
-        /// Propiedad que representa el ClientId
+        /// Property that represents a client id.
         /// </summary>
         public static string ClientId
         {
@@ -50,7 +52,7 @@ namespace MercadoPago
         static string _clientId = null;
 
         /// <summary>
-        /// AccessToken de MercadoPago
+        /// MercadoPago AccessToken.
         /// </summary>
         public static string AccessToken
         {
@@ -70,7 +72,7 @@ namespace MercadoPago
         static string _accessToken = null;
 
         /// <summary>
-        /// Id de aplicación en MercadoPAgo
+        /// MercadoPAgo app id.
         /// </summary>
         public static string AppId
         {
@@ -90,7 +92,7 @@ namespace MercadoPago
         static String _appId = null;
 
         /// <summary>
-        /// URL Base del API de MercadoPago, actualmente https://api.mercadopago.com
+        /// Api base URL. Currently https://api.mercadopago.com
         /// </summary>
         public static string BaseUrl
         {
@@ -102,7 +104,7 @@ namespace MercadoPago
         static string _baseUrl = DEFAULT_BASE_URL;
 
         /// <summary>
-        /// Configuración en base a un diccionario. Claves válidas para la configuración:
+        /// Dictionary based configuration. Valid configuration keys:
         /// clientSecret, clientId, accessToken, appId
         /// </summary>
         /// <param name="configurationParams"></param>
@@ -117,7 +119,7 @@ namespace MercadoPago
         }
 
         /// <summary>
-        /// Inicializa las configuracones en base a un objeto Configuration
+        /// Initializes the configurations based in a confiiguration object.
         /// </summary>
         /// <param name="config"></param>
         public static void SetConfiguration(Configuration config)
@@ -132,7 +134,7 @@ namespace MercadoPago
 
         /// <summary>
         /// Clean all the configuration variables
-        /// (FOR TESTING ONLY)
+        /// (FOR TESTING PURPOSES ONLY)
         /// </summary>
         public static void CleanConfiguration()
         {

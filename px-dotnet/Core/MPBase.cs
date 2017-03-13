@@ -27,11 +27,11 @@ namespace MercadoPago
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase processMethod(string methodName, bool useCache)
+        public static MPBase ProcessMethod(string methodName, bool useCache)
         {
             Type classType = GetTypeFromStack();
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            return processMethod<MPBase>(classType, null, methodName, null, useCache);
+            return ProcessMethod<MPBase>(classType, null, methodName, null, useCache);
         }
 
         /// <summary>
@@ -41,13 +41,13 @@ namespace MercadoPago
         /// <param name="param">Parameters to use in the retrieve process.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase processMethod(string methodName, string param, bool useCache)
+        public static MPBase ProcessMethod(string methodName, string param, bool useCache)
         {
             Type classType = GetTypeFromStack();
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param1", param);
 
-            return processMethod<MPBase>(classType, null, methodName, mapParams, useCache);
+            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
         }
 
         /// <summary>
@@ -57,10 +57,10 @@ namespace MercadoPago
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="useCache">Cache configuration</param>
         /// <returns>MPBase resource.</returns>
-        public MPBase processMethod<T>(string methodName, bool useCache) where T : MPBase
+        public MPBase ProcessMethod<T>(string methodName, bool useCache) where T : MPBase
         {
             Dictionary<string, string> mapParams = null;
-            T resource = processMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
+            T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
 
             return (T)this;
         }       
@@ -75,7 +75,7 @@ namespace MercadoPago
         /// <param name="parameters">Parameters to use in the process.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>Generic type object, containing information about retrieval process.</returns>
-        protected static T processMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
+        protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
         {
             if (resource == null)
             {
@@ -90,8 +90,8 @@ namespace MercadoPago
             }
 
 
-            var clazzMethod = getAnnotatedMethod(clazz, methodName);
-            var apiData = getRestInformation(clazzMethod);
+            var clazzMethod = GetAnnotatedMethod(clazz, methodName);
+            var apiData = GetRestInformation(clazzMethod);
 
             resource.Method = apiData["method"].ToString();
             resource.Url = string.Format("{0}", parameters != null ? apiData["url"].ToString().Replace(":id", parameters["param1"]) : apiData["url"].ToString());
@@ -106,7 +106,7 @@ namespace MercadoPago
         /// <param name="clazz">Type of class we are using.</param>
         /// <param name="methodName">Method we are trying to call.</param>
         /// <returns>Info about the method we are searching.</returns>
-        private static MethodInfo getAnnotatedMethod(Type clazz, String methodName)
+        private static MethodInfo GetAnnotatedMethod(Type clazz, String methodName)
         {
             foreach (MethodInfo method in clazz.GetMethods())
             {
@@ -124,7 +124,7 @@ namespace MercadoPago
         /// </summary>
         /// <param name="element">MethodInfo containing information about the method we are trying to call.</param>
         /// <returns>Dictionary with custom information.</returns>
-        private static Dictionary<string, object> getRestInformation(MethodInfo element)
+        private static Dictionary<string, object> GetRestInformation(MethodInfo element)
         {
             if (element.GetCustomAttributes(false).Length == 0)
             {

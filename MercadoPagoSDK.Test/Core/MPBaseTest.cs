@@ -12,13 +12,13 @@ namespace MercadoPagoSDK.Test
     {    
         public static MPBaseTest load(string id)
         {
-            return (MPBaseTest)MPBaseTest.processMethod("load", id, false);
+            return (MPBaseTest)MPBaseTest.ProcessMethod("load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/slug")]
         public static MPBaseTest load_all()
         {
-            return (MPBaseTest)MPBaseTest.processMethod("load_all", false);
+            return (MPBaseTest)MPBaseTest.ProcessMethod("load_all", false);
         }
 
         [Test()]
@@ -67,26 +67,26 @@ namespace MercadoPagoSDK.Test
 
         public static DummyClass load_all()
         {
-            return (DummyClass)DummyClass.processMethod("load_all", false);
+            return (DummyClass)DummyClass.ProcessMethod("load_all", false);
         }
 
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass load(string id)
         {
-            return (DummyClass)DummyClass.processMethod("load", id, false);
+            return (DummyClass)DummyClass.ProcessMethod("load", id, false);
         }
 
         [POSTEndpoint("/v1/postpath/slug")]
         public DummyClass create()
         {
-            return (DummyClass)base.processMethod<DummyClass>("create", false);
+            return (DummyClass)base.ProcessMethod<DummyClass>("create", false);
         }
 
 
         [PUTEndpoint("/v1/putpath/slug")]
         public DummyClass update()
         {
-            return (DummyClass)DummyClass.processMethod("update", false);
+            return (DummyClass)DummyClass.ProcessMethod("update", false);
         }
 
         [Test()]
@@ -208,7 +208,7 @@ namespace MercadoPagoSDK.Test
         [PUTEndpoint("")]
         public AnotherDummyClass update()
         {
-            return (AnotherDummyClass)AnotherDummyClass.processMethod("update", false);
+            return (AnotherDummyClass)AnotherDummyClass.ProcessMethod("update", false);
         }
 
         [Test()]
