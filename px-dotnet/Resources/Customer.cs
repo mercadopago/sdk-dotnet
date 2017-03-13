@@ -26,7 +26,7 @@ namespace MercadoPago
         [GETEndpoint("/v1/customers/:id")]
         public static Customer Load(string id, bool useCache)
         {
-            return (Customer)Customer.ProcessMethod("load", "id", useCache);
+            return (Customer)ProcessMethod("load", "id", useCache);
         }
         #endregion
     }
