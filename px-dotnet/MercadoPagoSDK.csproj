@@ -53,6 +53,7 @@
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />
     <Compile Include="Core\AttributeEndpoint.cs" />
+    <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />

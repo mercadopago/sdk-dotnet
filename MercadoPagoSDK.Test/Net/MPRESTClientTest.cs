@@ -81,10 +81,31 @@ namespace MercadoPagoSDK.Test
             jsonObject.Add("lastName", "Kent");
             jsonObject.Add("year", 2018);
 
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.X_WWW_FORM_URLENCODED, jsonObject, null);
+            JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
+
+            List<JToken> contentType = MPCoreUtils.FindTokens(jsonResponse, "Content-Type");
+            Assert.AreEqual("application/x-www-form-urlencoded", contentType.First().ToString());
+        }
+
+        [Test()]
+        public void ExecuteRequest_Post_Json()
+        {
+            MPRESTClient client = new MPRESTClient();
+
+            var jsonObject = new JObject();
+            jsonObject.Add("firstName", "Clark");
+            jsonObject.Add("lastName", "Kent");
+            jsonObject.Add("year", 2018);
+
             MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
-            JToken value = jsonResponse.Properties().ToList().Where(x => x.Name == "data").Single().Value;
-            Assert.AreEqual("firstName=Clark&lastName=Kent&year=2018", value.ToString());
+
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
+            Assert.AreEqual("Kent", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
+            Assert.AreEqual("2018", year.First().ToString());
         }
     }
 }

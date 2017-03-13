@@ -142,16 +142,25 @@ namespace MercadoPago
 
             if (payload != null) // POST & PUT
             {
-                var parametersDict = payload.ToObject<Dictionary<string, string>>();
-                StringBuilder parametersString = new StringBuilder();
-                parametersString.Append(string.Format("{0}={1}", parametersDict.First().Key, parametersDict.First().Value));
-                parametersDict.Remove(parametersDict.First().Key);
-                foreach(var value in parametersDict)
+                byte[] data = null;
+                if(payloadType != PayloadType.JSON)
                 {
-                    parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value));
-                }
+                    var parametersDict = payload.ToObject<Dictionary<string, string>>();
+                    StringBuilder parametersString = new StringBuilder();
+                    parametersString.Append(string.Format("{0}={1}", parametersDict.First().Key, parametersDict.First().Value));
+                    parametersDict.Remove(parametersDict.First().Key);
+                    foreach (var value in parametersDict)
+                    {
+                        parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value));
+                    }
 
-                byte[] data = Encoding.ASCII.GetBytes(parametersString.ToString());
+                    data = Encoding.ASCII.GetBytes(parametersString.ToString());
+                }
+                else
+                {
+                    data = Encoding.ASCII.GetBytes(payload.ToString());
+                }
+                                
                 mpRequest.Request.ContentLength = data.Length;
                 mpRequest.Request.ContentType = payloadType == PayloadType.JSON ? "application/json" : "application/x-www-form-urlencoded";
                 mpRequest.RequestPayload = data;
