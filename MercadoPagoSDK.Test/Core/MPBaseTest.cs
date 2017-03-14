@@ -5,20 +5,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPagoSDK.Test.Core
+namespace MercadoPagoSDK.Test
 {
     [TestFixture()]
     public class MPBaseTest : MPBase
     {    
-        public static MPBaseTest load(string id)
+        public static MPBaseTest Load(string id)
         {
-            return (MPBaseTest)MPBaseTest.processMethod("load", id, false);
+            return (MPBaseTest)ProcessMethod("Load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/slug")]
-        public static MPBaseTest load_all()
+        public static MPBaseTest Load_all()
         {
-            return (MPBaseTest)MPBaseTest.processMethod("load_all", false);
+            return (MPBaseTest)ProcessMethod("Load_all", false);
         }
 
         [Test()]
@@ -26,7 +26,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = MPBaseTest.load("666");
+                var result = Load("666");
             }
             catch (MPException mpException)
             {
@@ -43,7 +43,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = MPBaseTest.load_all();
+                var result = Load_all();
             }
             catch (MPException mpException)
             {
@@ -65,28 +65,28 @@ namespace MercadoPagoSDK.Test.Core
         public string maritalStatus { get; set; }
         public bool hasCreditCard { get; set; }
 
-        public static DummyClass load_all()
+        public static DummyClass Load_all()
         {
-            return (DummyClass)DummyClass.processMethod("load_all", false);
+            return (DummyClass)ProcessMethod("Load_all", false);
         }
 
         [GETEndpoint("/v1/getpath/load/:id")]
-        public static DummyClass load(string id)
+        public static DummyClass Load(string id)
         {
-            return (DummyClass)DummyClass.processMethod("load", id, false);
+            return (DummyClass)ProcessMethod("Load", id, false);
         }
 
         [POSTEndpoint("/v1/postpath/slug")]
-        public DummyClass create()
+        public DummyClass Create()
         {
-            return (DummyClass)base.processMethod<DummyClass>("create", false);
+            return (DummyClass)ProcessMethod<DummyClass>("Create", false);
         }
 
 
         [PUTEndpoint("/v1/putpath/slug")]
-        public DummyClass update()
+        public DummyClass Update()
         {
-            return (DummyClass)DummyClass.processMethod("update", false);
+            return (DummyClass)ProcessMethod("Update", false);
         }
 
         [Test()]
@@ -94,7 +94,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = DummyClass.load_all();
+                var result = Load_all();
             }
             catch (MPException mpException)
             {
@@ -111,7 +111,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = DummyClass.load("1234");
+                var result = Load("1234");
             }
             catch 
             {
@@ -130,7 +130,7 @@ namespace MercadoPagoSDK.Test.Core
             DummyClass result = new DummyClass();
             try
             {
-                result = resource.create();
+                result = resource.Create();
             }
             catch  
             {
@@ -149,7 +149,7 @@ namespace MercadoPagoSDK.Test.Core
             DummyClass result = new DummyClass();
             try
             {
-                result = resource.create();
+                result = resource.Create();
             }
             catch
             {
@@ -170,7 +170,7 @@ namespace MercadoPagoSDK.Test.Core
             DummyClass result = new DummyClass();
             try
             {
-                result = resource.update();
+                result = resource.Update();
             }
             catch
             {
@@ -189,7 +189,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                var result = DummyClass.load_all();
+                var result = Load_all();
             }
             catch (MPException mpException)
             {
@@ -206,9 +206,9 @@ namespace MercadoPagoSDK.Test.Core
     public class AnotherDummyClass : MPBase
     {
         [PUTEndpoint("")]
-        public AnotherDummyClass update()
+        public AnotherDummyClass Update()
         {
-            return (AnotherDummyClass)AnotherDummyClass.processMethod("update", false);
+            return (AnotherDummyClass)ProcessMethod("Update", false);
         }
 
         [Test()]
@@ -218,7 +218,7 @@ namespace MercadoPagoSDK.Test.Core
             AnotherDummyClass result = new AnotherDummyClass();
             try
             {
-                result = resource.update();
+                result = resource.Update();
             }
             catch (MPException ex)
             {
@@ -241,7 +241,7 @@ namespace MercadoPagoSDK.Test.Core
 
             try
             {
-                string processedPath = MPBase.ParsePath("/v1/getpath/slug/:id/pUnexist/:unexist", null, dummy);
+                string processedPath = ParsePath("/v1/getpath/slug/:id/pUnexist/:unexist", null, dummy);
             }
             catch (Exception ex)
             {
@@ -249,19 +249,19 @@ namespace MercadoPagoSDK.Test.Core
             }
 
 
-            string processedPath0 = MPBase.ParsePath("/v1/getpath/slug", null, dummy);
+            string processedPath0 = ParsePath("/v1/getpath/slug", null, dummy);
             Assert.AreEqual("/v1/getpath/slug", processedPath0);
 
-            string processedPath1 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
+            string processedPath1 = ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
             Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
 
-            string processedPath2 = MPBase.ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
+            string processedPath2 = ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
             Assert.AreEqual("/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
 
-            string processedPath3 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
+            string processedPath3 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
             Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
 
-            string processedPath4 = MPBase.ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
+            string processedPath4 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
             Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
 
         }

@@ -9,11 +9,14 @@ namespace MercadoPago
 {
     [Serializable]
 	public class MPException : Exception
-	{
-		public string RequestId { get; private set; }
+    {
+        #region Variables
+        public string RequestId { get; private set; }
 		public int? StatusCode { get; private set; }
+        #endregion
 
-		public MPException(string message) : base(message) {
+        #region Constructors
+        public MPException(string message) : base(message) {
 		}
 
 		public MPException(string message, Exception innerException) : base(message, innerException) {
@@ -29,8 +32,14 @@ namespace MercadoPago
 			RequestId = requestId;
 			StatusCode = statusCode;
 		}
+        #endregion
 
-		public override string ToString() {
+        #region Class Utils
+        /// <summary>
+        /// Format a exception error.
+        /// </summary>
+        /// <returns>Formated exception.</returns>
+        public override string ToString() {
 			string reqIdStr = string.Empty;
 			if (!string.IsNullOrEmpty(RequestId))
 				reqIdStr = "; request-id: " + RequestId;
@@ -41,6 +50,7 @@ namespace MercadoPago
 
 			return base.ToString() + reqIdStr + statCodeStr;
 		}
+        #endregion
 
         #region ISerializable Members
 
