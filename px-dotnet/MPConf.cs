@@ -11,6 +11,16 @@ namespace MercadoPago
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
         #endregion
 
+        /// <summary>
+        /// Property that represent the access token.
+        /// </summary>
+        public static string UserAccessToken { get; set; }
+
+        /// <summary>
+        /// Property that represent the refresh token.
+        /// </summary>
+        public static string RefreshToken { get; set; }
+
         /// <summary>  
         ///  Property that represent the client secret token.
         /// </summary>
@@ -154,6 +164,30 @@ namespace MercadoPago
                 value = keyValue.Value;
             }
             return value;
+        }
+
+        /// <summary>
+        /// Gets access token for current ClientId and ClientSecret
+        /// </summary>
+        /// <returns>Access token when this is empty</returns>
+        public static string GetAccessToken()
+        {
+            if (!string.IsNullOrEmpty(UserAccessToken))
+                AccessToken = UserAccessToken;
+            else if (string.IsNullOrEmpty(AccessToken))
+                AccessToken = MPCredentials.GetAccessToken();
+
+            return AccessToken;
+        }
+
+        /// <summary>
+        /// Refreshes access token for current refresh token
+        /// </summary>
+        /// <returns>Refreshed access token</returns>
+        public static string RefreshAccessToken()
+        {
+            AccessToken = MPCredentials.RefreshAccessToken();
+            return AccessToken;
         }
     }
 }

@@ -95,7 +95,7 @@ namespace MercadoPago
                         result = reader.ReadToEnd();
                         reader.Close();
                         dataStream.Close();
-                        return new MPAPIResponse(result);
+                        return new MPAPIResponse(200, result);
                     }
                 }
 
@@ -115,7 +115,7 @@ namespace MercadoPago
                         responseStream.Close();
                     }
 
-                    return new MPAPIResponse(result);
+                    return new MPAPIResponse(200, result);
                 }
 
                 throw new MPRESTException("Method not foud");
