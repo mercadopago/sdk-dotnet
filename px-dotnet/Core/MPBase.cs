@@ -6,16 +6,17 @@ using System.Text;
 using System.Net;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace MercadoPago
 {
     public abstract class MPBase
     {
         #region Variables
-        public static bool WITHOUT_CACHE = false;               
+        public static bool WITHOUT_CACHE = false;
         public static bool WITH_CACHE = true;
-        
-        public string Method { get; set; }               
+
+        public string Method { get; set; }
         public string Url { get; set; }
         public string Instance { get; set; }
         #endregion
@@ -63,7 +64,7 @@ namespace MercadoPago
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
 
             return (T)this;
-        }       
+        }
 
         /// <summary>
         /// Core implementation of processMethod. Retrieves a generic type. 
@@ -141,7 +142,8 @@ namespace MercadoPago
                         throw new MPException(string.Format("Path not found for {0} method", ((BaseEndpoint)annotation).HttpMethod.ToString()));
                     }
                 }
-                else {
+                else
+                {
                     throw new MPException("Not supported method found");
                 }
 
@@ -254,6 +256,64 @@ namespace MercadoPago
             }
 
             return result.ToString();
+        }
+        #endregion
+
+        #region Validation Methods
+        public static bool Validate(object o)
+        {
+            Type type = o.GetType();
+            PropertyInfo[] properties = type.GetProperties();
+            Type attrType = typeof(ValidationAttribute);
+            ValidationResult result = new ValidationResult();
+            string FinalMessageError = "There are errors in the object you're trying to create. Review them to continue: ";
+
+            foreach (var propertyInfo in properties)
+            {
+                object[] customAttributes = propertyInfo.GetCustomAttributes(attrType, inherit: true);
+
+                foreach (var customAttribute in customAttributes)
+                {
+                    var validationAttribute = (ValidationAttribute)customAttribute;
+
+                    bool isValid = validationAttribute.IsValid(propertyInfo.GetValue(o, BindingFlags.GetProperty, null, null, null));
+
+                    if (!isValid)
+                    {
+                        result.Errors.Add(new ValidationError() { Message = validationAttribute.ErrorMessage });
+
+                    }
+                }
+            }
+
+            if (result.Errors.Count() != 0)
+            {
+                foreach (ValidationError error in result.Errors)
+                {
+                    FinalMessageError += error.Message;
+                }
+
+                throw new Exception(FinalMessageError);
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///Class that represents the validation results. 
+        /// </summary>
+        public partial class ValidationResult
+        {
+            public List<ValidationError> Errors = new List<ValidationError>();
+        }
+
+        /// <summary>
+        /// Class that represents the Error contained in the ValidationResult class
+        /// </summary>
+        public partial class ValidationError
+        {
+            public int Code { get; set; }
+            public string Message { get; set; }
         }
         #endregion
     }

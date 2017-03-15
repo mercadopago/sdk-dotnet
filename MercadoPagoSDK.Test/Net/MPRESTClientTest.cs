@@ -3,8 +3,11 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 
 namespace MercadoPagoSDK.Test
@@ -56,7 +59,7 @@ namespace MercadoPagoSDK.Test
             catch (MPRESTException ex)
             {
                 Assert.AreEqual("Must include payload for this method.", ex.Message);
-            }   
+            }
         }
 
         [Test()]
@@ -106,6 +109,59 @@ namespace MercadoPagoSDK.Test
 
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
             Assert.AreEqual("2018", year.First().ToString());
+        }
+
+        [Test()]
+        public void ClassIntance_ShouldThrowValidationException()
+        {
+            try
+            {
+                DummyClass objectToValidate = new DummyClass("Payment description", DateTime.Now, -1000);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("There are errors in the object you're trying to create. Review them to continue: -CODE 31-Transaction amount must be greather than 0.", ex.Message);
+            }
+
+            Assert.Pass();
+        }
+
+        [Test()]
+        public void ClassIntance_ShouldPass()
+        {
+            try
+            {
+                DummyClass objectToValidate = new DummyClass("Payment description", DateTime.Now, 1000);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("There are errors in the object you're trying to create. Review them to continue: -CODE 31-Transaction amount must be greather than 0.", ex.Message);
+            }
+
+            Assert.Pass();
+        }
+
+        [TestFixture()]
+        public class DummyClass : MPBase
+        {
+            [Required(ErrorMessage = "-CODE 10-Payment description is not present.")]
+            [RegularExpression(@"^(?:.*[a-z]){7,}$", ErrorMessage = "-CODE 11- Payment description length must have at least 7 characters.")]
+            public string Description { get; set; }
+            [Required(ErrorMessage = "-CODE 20-Payment date is not present.")]
+            [DataType(DataType.Date, ErrorMessage = "-CODE 21-Payment date format has an incorrect format or value.")]
+            public DateTime PaymentDate { get; set; }
+            [Required(ErrorMessage = "-CODE 30-TransactionAmount is not present.")]
+            [System.ComponentModel.DataAnnotations.Range(0.0, Double.MaxValue, ErrorMessage = "-CODE 31-Transaction amount must be greather than 0.")]
+            public double TransactionAmount { get; set; }
+
+            public DummyClass(string description, DateTime date, double transationAmount)
+            {
+                Description = description;
+                PaymentDate = date;
+                TransactionAmount = transationAmount;
+
+                Validate(this);
+            }
         }
     }
 }
