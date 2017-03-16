@@ -21,6 +21,13 @@ namespace MercadoPago
         public string Instance { get; set; }
         #endregion
 
+        #region Errors Definitions
+        public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
+        public static string RangeError = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
+        public static string RequiredError = "Error on property #PROPERTY. There is no value for this required property. ";
+        public static string RegularExpressionError = "Error on property #PROPERTY. The specified value is not valid. RegExp: #REGEXPR . ";
+        #endregion
+
         #region Core Methods
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method and configuration.
@@ -280,8 +287,29 @@ namespace MercadoPago
 
                     if (!isValid)
                     {
-                        result.Errors.Add(new ValidationError() { Message = validationAttribute.ErrorMessage });
-
+                        switch (validationAttribute.GetType().Name)
+                        {
+                            case "RangeAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RangeError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                            case "RequiredAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RequiredError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                            case "RegularExpressionAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RegularExpressionError.Replace("#PROPERTY", propertyInfo.Name).Replace("#REGEXPR", ((RegularExpressionAttribute)customAttribute).Pattern) });
+                                }
+                                break;
+                            case "DataTypeAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = DataTypeError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                        }                        
                     }
                 }
             }
