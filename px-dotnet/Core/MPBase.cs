@@ -6,18 +6,26 @@ using System.Text;
 using System.Net;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
 
 namespace MercadoPago
 {
     public abstract class MPBase
     {
         #region Variables
-        public static bool WITHOUT_CACHE = false;               
+        public static bool WITHOUT_CACHE = false;
         public static bool WITH_CACHE = true;
-        
-        public string Method { get; set; }               
+
+        public string Method { get; set; }
         public string Url { get; set; }
         public string Instance { get; set; }
+        #endregion
+
+        #region Errors Definitions
+        public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
+        public static string RangeError = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
+        public static string RequiredError = "Error on property #PROPERTY. There is no value for this required property. ";
+        public static string RegularExpressionError = "Error on property #PROPERTY. The specified value is not valid. RegExp: #REGEXPR . ";
         #endregion
 
         #region Core Methods
@@ -63,7 +71,7 @@ namespace MercadoPago
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
 
             return (T)this;
-        }       
+        }
 
         /// <summary>
         /// Core implementation of processMethod. Retrieves a generic type. 
@@ -141,7 +149,8 @@ namespace MercadoPago
                         throw new MPException(string.Format("Path not found for {0} method", ((BaseEndpoint)annotation).HttpMethod.ToString()));
                     }
                 }
-                else {
+                else
+                {
                     throw new MPException("Not supported method found");
                 }
 
@@ -254,6 +263,85 @@ namespace MercadoPago
             }
 
             return result.ToString();
+        }
+        #endregion
+
+        #region Validation Methods
+        public static bool Validate(object o)
+        {
+            Type type = o.GetType();
+            PropertyInfo[] properties = type.GetProperties();
+            Type attrType = typeof(ValidationAttribute);
+            ValidationResult result = new ValidationResult();
+            string FinalMessageError = "There are errors in the object you're trying to create. Review them to continue: ";
+
+            foreach (var propertyInfo in properties)
+            {
+                object[] customAttributes = propertyInfo.GetCustomAttributes(attrType, inherit: true);
+
+                foreach (var customAttribute in customAttributes)
+                {
+                    var validationAttribute = (ValidationAttribute)customAttribute;
+
+                    bool isValid = validationAttribute.IsValid(propertyInfo.GetValue(o, BindingFlags.GetProperty, null, null, null));
+
+                    if (!isValid)
+                    {
+                        switch (validationAttribute.GetType().Name)
+                        {
+                            case "RangeAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RangeError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                            case "RequiredAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RequiredError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                            case "RegularExpressionAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = RegularExpressionError.Replace("#PROPERTY", propertyInfo.Name).Replace("#REGEXPR", ((RegularExpressionAttribute)customAttribute).Pattern) });
+                                }
+                                break;
+                            case "DataTypeAttribute":
+                                {
+                                    result.Errors.Add(new ValidationError() { Message = DataTypeError.Replace("#PROPERTY", propertyInfo.Name) });
+                                }
+                                break;
+                        }                        
+                    }
+                }
+            }
+
+            if (result.Errors.Count() != 0)
+            {
+                foreach (ValidationError error in result.Errors)
+                {
+                    FinalMessageError += error.Message;
+                }
+
+                throw new Exception(FinalMessageError);
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///Class that represents the validation results. 
+        /// </summary>
+        public partial class ValidationResult
+        {
+            public List<ValidationError> Errors = new List<ValidationError>();
+        }
+
+        /// <summary>
+        /// Class that represents the Error contained in the ValidationResult class
+        /// </summary>
+        public partial class ValidationError
+        {
+            public int Code { get; set; }
+            public string Message { get; set; }
         }
         #endregion
     }

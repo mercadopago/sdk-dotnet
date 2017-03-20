@@ -3,9 +3,13 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
+using ValidationRange = System.ComponentModel.DataAnnotations.RangeAttribute;
 
 namespace MercadoPagoSDK.Test
 {
@@ -56,7 +60,7 @@ namespace MercadoPagoSDK.Test
             catch (MPRESTException ex)
             {
                 Assert.AreEqual("Must include payload for this method.", ex.Message);
-            }   
+            }
         }
 
         [Test()]
@@ -106,6 +110,61 @@ namespace MercadoPagoSDK.Test
 
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
             Assert.AreEqual("2018", year.First().ToString());
+        }
+
+        [Test()]
+        public void ClassIntance_ShouldThrowValidationException()
+        {
+            try
+            {
+                DummyClass objectToValidate = new DummyClass("Pay", DateTime.Now, -1000);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual(@"There are errors in the object you're trying to create. Review them to continue: Error on property Description. " +
+                                "The specified value is not valid. RegExp: ^(?:.*[a-z]){7,}$ . " +
+                                "Error on property TransactionAmount. The value you are trying to assign is not in the specified range. ", ex.Message);
+            }
+
+            Assert.Pass();
+        }
+
+        [Test()]
+        public void ClassIntance_ShouldPass()
+        {
+            try
+            {
+                DummyClass objectToValidate = new DummyClass("Payment description", DateTime.Now, 1000);
+            }
+            catch (Exception ex)
+            {
+                Assert.AreEqual("There are errors in the object you're trying to create. Review them to continue: -CODE 31-Transaction amount must be greather than 0.", ex.Message);
+            }
+
+            Assert.Pass();
+        }
+
+        [TestFixture()]
+        public class DummyClass : MPBase
+        {            
+            [Required]
+            [RegularExpression(@"^(?:.*[a-z]){7,}$")]
+            public string Description { get; set; }
+            [Required]
+            [DataType(DataType.Date)]
+            public DateTime PaymentDate { get; set; }
+            [Required]
+            [ValidationRange(0.0, Double.MaxValue)]
+            public double TransactionAmount { get; set; }
+
+            public DummyClass(string description, DateTime date, double transationAmount)
+            {
+                Description = description;
+                PaymentDate = date;
+                TransactionAmount = transationAmount;
+
+                Validate(this);
+            }
         }
     }
 }
