@@ -19,6 +19,7 @@ namespace MercadoPago
         public string Method { get; set; }
         public string Url { get; set; }
         public string Instance { get; set; }
+        public static string IdempotencyKey { get; set; }
         #endregion
 
         #region Errors Definitions
@@ -26,9 +27,26 @@ namespace MercadoPago
         public static string RangeError = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
         public static string RequiredError = "Error on property #PROPERTY. There is no value for this required property. ";
         public static string RegularExpressionError = "Error on property #PROPERTY. The specified value is not valid. RegExp: #REGEXPR . ";
-        #endregion
+        #endregion        
 
         #region Core Methods
+        /// <summary>
+        /// Checks if current resource needs idempotency key and set IdempotencyKey if positive.
+        /// </summary>
+        /// <param name="classType">ClassType.</param>        
+        public static void AdmitIdempotencyKey(Type classType)
+        {            
+            var attribute = classType.GetCustomAttributes(true);
+
+            foreach (Attribute attr in attribute)
+            {
+                if (attr.GetType() == typeof(Idempotent))
+                {
+                    IdempotencyKey = attr.GetType().GUID.ToString();                    
+                }
+            }            
+        }
+        
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method and configuration.
         /// </summary>
@@ -38,6 +56,7 @@ namespace MercadoPago
         public static MPBase ProcessMethod(string methodName, bool useCache)
         {
             Type classType = GetTypeFromStack();
+            AdmitIdempotencyKey(classType);            
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             return ProcessMethod<MPBase>(classType, null, methodName, null, useCache);
         }
@@ -52,6 +71,7 @@ namespace MercadoPago
         public static MPBase ProcessMethod(string methodName, string param, bool useCache)
         {
             Type classType = GetTypeFromStack();
+            AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param1", param);
 
