@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
     <Compile Include="Core\HttpMethod.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />

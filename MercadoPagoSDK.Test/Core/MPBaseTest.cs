@@ -56,7 +56,8 @@ namespace MercadoPagoSDK.Test
         }
     }
 
-    [TestFixture()]
+    [Idempotent]
+    [TestFixture()]    
     public class DummyClass : MPBase
     {
         public int id { get; set; }

@@ -178,6 +178,14 @@ namespace MercadoPago
             mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(uri);
             mpRequest.Request.Method = httpMethod.ToString();
 
+            if (colHeaders != null)
+            {
+                foreach (var header in colHeaders)
+                {
+                    mpRequest.Request.Headers.Add(header.ToString(), colHeaders[header.ToString()]);
+                }                
+            }
+
             if (payload != null) // POST & PUT
             {
                 byte[] data = null;

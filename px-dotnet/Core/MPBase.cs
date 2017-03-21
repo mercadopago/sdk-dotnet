@@ -158,6 +158,7 @@ namespace MercadoPago
                 hashAnnotation.Add("method", ((BaseEndpoint)annotation).HttpMethod.ToString());
                 hashAnnotation.Add("url", ((BaseEndpoint)annotation).Path);
                 hashAnnotation.Add("instance", element.ReturnType.Name);
+                hashAnnotation.Add("Header", element.ReturnType.GUID);
             }
 
             return hashAnnotation;
