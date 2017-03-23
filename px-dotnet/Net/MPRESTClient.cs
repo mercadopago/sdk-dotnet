@@ -13,10 +13,9 @@ namespace MercadoPago
 {
     public class MPRESTClient
     {
-        #region Variables
+
         public string ProxyHostName = null;
         public int ProxyPort = -1;
-        #endregion
 
         #region Core Methods
         /// <summary>
@@ -86,37 +85,17 @@ namespace MercadoPago
                 MPRequest mpRequest = CreateRequest(httpMethod, uri, payloadType, payload, colHeaders);
                 string result = string.Empty;
 
-                if (new HttpMethod[] { HttpMethod.GET, HttpMethod.DELETE }.Contains(httpMethod))
-                {
-                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
-                    {
-                        Stream dataStream = response.GetResponseStream();
-                        StreamReader reader = new StreamReader(dataStream);
-                        result = reader.ReadToEnd();
-                        reader.Close();
-                        dataStream.Close();
-                        return new MPAPIResponse(200, result);
-                    }
-                }
-
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
                 {
                     Stream requestStream = mpRequest.Request.GetRequestStream();
                     requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
-                    requestStream.Close();
-
-                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
-                    {                              
-                        Stream responseStream = response.GetResponseStream();
-                        StreamReader reader = new StreamReader(responseStream, Encoding.Default);
-                        result = reader.ReadToEnd();
-
-                        reader.Close();
-                        responseStream.Close();
-                    }
-
-                    return new MPAPIResponse(200, result);
+                    requestStream.Close();                  
                 }
+
+                using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
+                {
+                    return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
+                }  
 
                 throw new MPRESTException("Method not foud");
             }

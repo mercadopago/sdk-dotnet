@@ -11,14 +11,10 @@ namespace MercadoPago
 {
     public abstract class MPBase
     {
-        #region Variables
         public static bool WITHOUT_CACHE = false;               
         public static bool WITH_CACHE = true;
-        
-        public string Method { get; set; }               
-        public string Url { get; set; }
-        public string Instance { get; set; }
-        #endregion
+
+        protected MPAPIResponse LastApiResponse { get; private set; }
 
         #region Core Methods
         /// <summary>
@@ -45,7 +41,7 @@ namespace MercadoPago
         {
             Type classType = GetTypeFromStack();
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param1", param);
+            mapParams.Add("param0", param);
 
             return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
         }
@@ -91,13 +87,78 @@ namespace MercadoPago
 
 
             var clazzMethod = GetAnnotatedMethod(clazz, methodName);
-            var apiData = GetRestInformation(clazzMethod);
+            var restData = GetRestInformation(clazzMethod);
 
-            resource.Method = apiData["method"].ToString();
-            resource.Url = string.Format("{0}", parameters != null ? apiData["url"].ToString().Replace(":id", parameters["param1"]) : apiData["url"].ToString());
-            resource.Instance = apiData["instance"].ToString();
+            //resource.Method = apiData["method"].ToString();
+            //resource.Url = string.Format("{0}", parameters != null ? apiData["url"].ToString().Replace(":id", parameters["param1"]) : apiData["url"].ToString());
+            //resource.Instance = apiData["instance"].ToString();
 
+            HttpMethod httpMethod = (HttpMethod)restData["method"];
+            string path = ParsePath(restData["path"].ToString(), parameters, resource); 
+            PayloadType payloadType = (PayloadType)restData["payloadType"];
+            JObject payload = GeneratePayload(httpMethod, resource);
+            WebHeaderCollection colHeaders = new WebHeaderCollection();
+
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache);
+
+            if (response.StatusCode >= 200 &&
+                    response.StatusCode < 300)
+            {   
+                if (httpMethod != HttpMethod.DELETE)
+                {
+                    //resource = fillResourceWithResponseData(resource, response);
+                }
+                else
+                {
+                    //resource = cleanResource(resource);
+                }
+            }
+
+            resource.LastApiResponse = response;
             return resource;
+        }
+        
+        /// <summary>
+        /// Transforms all attributes members of the instance in a JSON String. Only for POST and PUT methods.
+        /// POST gets the full object in a JSON object.
+        /// PUT gets only the differences with the last known state of the object.
+        /// </summary>
+        /// <returns>a JSON Object with the attributes members of the instance. Null for GET and DELETE methods</returns>
+        public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase 
+        {
+            JObject payload = null;
+            if(new string[]{ "POST", "PUT" }.Contains( httpMethod.ToString()))
+            {
+                payload = MPCoreUtils.GetJsonFromResource(resource);
+            }            
+            
+            return payload;
+        }
+
+        /// <summary>
+        /// Calls the api and returns an MPApiResponse.
+        /// </summary>
+        /// <returns>A MPAPIResponse object with the results.</returns>
+        public static MPAPIResponse CallAPI(
+            HttpMethod httpMethod,
+            string path,
+            PayloadType payloadType,
+            JObject payload,
+            WebHeaderCollection colHeaders,
+            Boolean useCache)
+        {
+            MPAPIResponse response = null;
+            if(response == null)
+            {
+                response = new MPRESTClient().ExecuteRequest(
+                    httpMethod,
+                    path,
+                    payloadType,
+                    payload,
+                    colHeaders);
+            }
+
+            return response;
         }
 
         /// <summary>
@@ -141,14 +202,16 @@ namespace MercadoPago
                         throw new MPException(string.Format("Path not found for {0} method", ((BaseEndpoint)annotation).HttpMethod.ToString()));
                     }
                 }
-                else {
+                else
+                {
                     throw new MPException("Not supported method found");
                 }
 
                 hashAnnotation = new Dictionary<string, object>();
-                hashAnnotation.Add("method", ((BaseEndpoint)annotation).HttpMethod.ToString());
-                hashAnnotation.Add("url", ((BaseEndpoint)annotation).Path);
+                hashAnnotation.Add("method", ((BaseEndpoint)annotation).HttpMethod);
+                hashAnnotation.Add("path", ((BaseEndpoint)annotation).Path);
                 hashAnnotation.Add("instance", element.ReturnType.Name);
+                hashAnnotation.Add("payloadType",  ((BaseEndpoint)annotation).PayloadType);
             }
 
             return hashAnnotation;
@@ -253,8 +316,11 @@ namespace MercadoPago
                 result.Append(path);
             }
 
+            result.Insert(0, MPConf.BaseUrl);
+
             return result.ToString();
         }
+
         #endregion
     }
 }

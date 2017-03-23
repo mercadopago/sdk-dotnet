@@ -107,5 +107,27 @@ namespace MercadoPagoSDK.Test
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
             Assert.AreEqual("2018", year.First().ToString());
         }
+
+        [Test()]
+        public void ExecuteRequest_Post_MPAPIRequestResponseParser()
+        {
+            MPRESTClient client = new MPRESTClient();
+
+            var jsonObject = new JObject();
+            jsonObject.Add("firstName", "Comander");
+            jsonObject.Add("lastName", "Shepard");
+            jsonObject.Add("year", 2126);
+
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null);
+
+            Assert.AreEqual(200, response.StatusCode);
+
+            JObject jsonResponse = response.JsonObjectResponse;
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
+            Assert.AreEqual("Shepard", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
+            Assert.AreEqual("2126", year.First().ToString());
+        }
     }
 }
