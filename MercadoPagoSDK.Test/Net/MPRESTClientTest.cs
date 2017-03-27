@@ -102,7 +102,14 @@ namespace MercadoPagoSDK.Test
             jsonObject.Add("lastName", "Kent");
             jsonObject.Add("year", 2018);
 
-            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null);
+            DummyClass dummy = new DummyClass("Dummy description", DateTime.Now, 1000);
+
+            WebHeaderCollection headers = new WebHeaderCollection();
+
+            headers.Add("x-idempotency-key", dummy.GetType().GUID.ToString());
+            
+
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, headers);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
 
             List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
@@ -144,6 +151,15 @@ namespace MercadoPagoSDK.Test
             Assert.Pass();
         }
 
+        [Test()]
+        public void IdempotentKey_MustBePresent()
+        {
+            DummyClass dummy = new DummyClass("Dummy description", DateTime.Now, 1000);
+
+            Assert.IsNotEmpty(dummy.GetType().GUID.ToString());
+        }
+
+        [Idempotent]
         [TestFixture()]
         public class DummyClass : MPBase
         {            
