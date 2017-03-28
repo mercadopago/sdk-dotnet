@@ -176,7 +176,20 @@ namespace MercadoPago
             WebHeaderCollection colHeaders,
             Boolean useCache)
         {
+            string cacheKey = httpMethod.ToString() + "_" + path;            
             MPAPIResponse response = null;
+
+
+            if (useCache)
+            {
+                response = MPCache.GetFromCache(cacheKey);                
+                
+                if(response != null)
+                {
+                    response.isFromCache = true;
+                }
+            }
+
             if(response == null)
             {
                 response = new MPRESTClient().ExecuteRequest(
@@ -185,6 +198,15 @@ namespace MercadoPago
                     payloadType,
                     payload,
                     colHeaders);
+
+                if (useCache)
+                {
+                    MPCache.AddToCache(cacheKey, response);                    
+                }
+                else
+                {
+                    MPCache.RemoveFromCache(cacheKey);
+                }
             }
 
             return response;

@@ -2,24 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace MercadoPago
 {
+    /// <summary>
+    /// Class for managing cached resources.
+    /// </summary>
     public class MPCache
     {
-        public static System.Web.Caching.Cache cache = null;
-
-        public static System.Web.Caching.Cache GetCache()
-        {
-            if (cache == null)
-            {
-                cache = new System.Web.Caching.Cache();
-            }
-
-            return cache;
-        }
-
-
         /// <summary>
         /// Adds a response to the cache structure.
         /// </summary>
@@ -29,11 +20,11 @@ namespace MercadoPago
         {
             try
             {
-                System.Web.HttpRuntime.Cache.Add(key, response, null, DateTime.MaxValue, new TimeSpan(0, 60, 0), System.Web.Caching.CacheItemPriority.Default, null);                                
+                HttpRuntime.Cache.Add(key, response, null, DateTime.MaxValue, new TimeSpan(0, 480, 0), System.Web.Caching.CacheItemPriority.Default, null);                                
             }
             catch (Exception ex)
             {
-                Console.Write(ex.Message);
+                throw new Exception("An error has occured in the cache structure (ADD): " + ex.Message);
             }
         }
 
@@ -44,8 +35,14 @@ namespace MercadoPago
         /// <returns>Cached response.</returns>
         public static MPAPIResponse GetFromCache(string key)
         {
-            
-            return (MPAPIResponse)System.Web.HttpRuntime.Cache.Get(key);            
+            try
+            {
+                return (MPAPIResponse)HttpRuntime.Cache.Get(key);            
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error has occured in the cache structure (GET): " + ex.Message);
+            }            
         }
 
         /// <summary>
@@ -54,8 +51,14 @@ namespace MercadoPago
         /// <param name="key">Key of the element to remove from cache.</param>
         public static void RemoveFromCache(string key)
         {
-            System.Web.Caching.Cache mapCache = GetCache();
-            mapCache.Remove(key);
+            try
+            {
+                HttpRuntime.Cache.Remove(key);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error has occured in the cache structure (REMOVE): " + ex.Message);
+            }            
         }
     }
 }
