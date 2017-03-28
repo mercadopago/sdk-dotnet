@@ -202,8 +202,7 @@ namespace MercadoPagoSDK.Test
                 Assert.AreEqual("No annotated method found", mpException.Message);
                 return;
             }
-
-            // should never get here
+            
             Assert.Fail();
         }
     }
@@ -233,7 +232,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Fail();
-        }
+        }        
 
         [Test()]
         public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
