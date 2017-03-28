@@ -146,7 +146,11 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
+            //Change.
             DummyClass resource = new DummyClass();
+            resource.address = "Evergreen 123";
+            resource.email = "fake@email.com";
+
             DummyClass result = new DummyClass();
             try
             {
@@ -159,15 +163,17 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("POST", result.Method);
-            Assert.AreEqual("/v1/postpath/slug", result.Url);
-            Assert.AreEqual("DummyClass", result.Instance);
+            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://api.mercadopago.com/v1/postpath/slug", result.LastApiResponse.Url);
         }
 
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
             DummyClass resource = new DummyClass();
+            resource.address = "Evergreen 123";
+            resource.email = "fake@email.com";
+
             DummyClass result = new DummyClass();
             try
             {
@@ -180,9 +186,8 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("PUT", result.Method);
-            Assert.AreEqual("/v1/putpath/slug", result.Url);
-            Assert.AreEqual("DummyClass", result.Instance);
+            Assert.AreEqual("PUT", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug", result.LastApiResponse.Url);
         }
 
         [Test()]
@@ -242,28 +247,27 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                string processedPath = ParsePath("/v1/getpath/slug/:id/pUnexist/:unexist", null, dummy);
+                string processedPath = ParsePath("https://api.mercadopago.com/v1/getpath/slug/:id/pUnexist/:unexist", null, dummy);
             }
             catch (Exception ex)
             {
                 Assert.AreEqual("No argument supplied/found for method path", ex.Message);
             }
 
-
             string processedPath0 = ParsePath("/v1/getpath/slug", null, dummy);
-            Assert.AreEqual("/v1/getpath/slug", processedPath0);
+            Assert.AreEqual("https://api.mercadopago.com/v1/getpath/slug", processedPath0);
 
             string processedPath1 = ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
 
             string processedPath2 = ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
 
             string processedPath3 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
 
             string processedPath4 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
 
         }
     }

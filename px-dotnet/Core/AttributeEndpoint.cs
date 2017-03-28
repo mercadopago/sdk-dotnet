@@ -11,17 +11,23 @@ namespace MercadoPago
     /// </summary>
     public class BaseEndpoint : Attribute
     {
-        #region Variables
+        #region Properties
+
         public string Path { get; protected set; }
         public HttpMethod HttpMethod { get; set; }
+        public PayloadType PayloadType { get; set; }
+
         #endregion
 
         #region Constructors
+
         public BaseEndpoint(string path, HttpMethod methodType)
         {
             this.Path = path;
             HttpMethod = methodType;
+            PayloadType = PayloadType.JSON;
         }
+
         #endregion
     }
     #endregion

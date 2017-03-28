@@ -7,9 +7,7 @@ namespace MercadoPago
 {
     public class MPConf
     {
-        #region Variables
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
-        #endregion
 
         /// <summary>  
         ///  Property that represent the client secret token.

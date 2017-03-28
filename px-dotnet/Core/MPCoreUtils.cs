@@ -8,7 +8,6 @@ namespace MercadoPago
 {
     public static class MPCoreUtils
     {
-        #region Core Methods
         /// <summary>
         /// Find specified tokens.
         /// </summary>
@@ -50,6 +49,14 @@ namespace MercadoPago
                 }
             }
         }
-        #endregion
+
+        /// <summary>
+        /// Static method that transforms all attributes members of the instance in a JSON Object.
+        /// </summary>
+        /// <returns>a JSON Object with the attributes members of the instance</returns>
+        public static JObject GetJsonFromResource<T>(T resource) where T : MPBase
+        {
+            return JObject.FromObject(resource);
+        }
     }
 }

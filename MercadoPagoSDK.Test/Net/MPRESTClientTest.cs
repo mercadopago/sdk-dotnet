@@ -107,7 +107,7 @@ namespace MercadoPagoSDK.Test
             WebHeaderCollection headers = new WebHeaderCollection();
 
             headers.Add("x-idempotency-key", dummy.GetType().GUID.ToString());
-            
+
 
             MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, headers);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
@@ -120,6 +120,7 @@ namespace MercadoPagoSDK.Test
         }
 
         [Test()]
+
         public void ClassIntance_ShouldThrowValidationException()
         {
             try
@@ -162,7 +163,7 @@ namespace MercadoPagoSDK.Test
         [Idempotent]
         [TestFixture()]
         public class DummyClass : MPBase
-        {            
+        {
             [Required]
             [RegularExpression(@"^(?:.*[a-z]){7,}$")]
             public string Description { get; set; }
@@ -180,6 +181,27 @@ namespace MercadoPagoSDK.Test
                 TransactionAmount = transationAmount;
 
                 Validate(this);
+            }
+
+            public void ExecuteRequest_Post_MPAPIRequestResponseParser()
+            {
+                MPRESTClient client = new MPRESTClient();
+
+                var jsonObject = new JObject();
+                jsonObject.Add("firstName", "Comander");
+                jsonObject.Add("lastName", "Shepard");
+                jsonObject.Add("year", 2126);
+
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null);
+
+                Assert.AreEqual(200, response.StatusCode);
+
+                JObject jsonResponse = response.JsonObjectResponse;
+                List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
+                Assert.AreEqual("Shepard", lastName.First().ToString());
+
+                List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
+                Assert.AreEqual("2126", year.First().ToString());
             }
         }
     }
