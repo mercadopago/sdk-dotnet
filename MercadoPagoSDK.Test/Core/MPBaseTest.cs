@@ -41,6 +41,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void MPBaseTest_WitAttributes_ShouldFindAttribute()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             try
             {
                 var result = Load_all();
@@ -110,6 +113,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             try
             {
                 var result = Load("1234");
@@ -123,30 +129,13 @@ namespace MercadoPagoSDK.Test
 
             Assert.Pass();
         }
-   
-        [Test()]
-        public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
-        {
-            DummyClass resource = new DummyClass();
-            DummyClass result = new DummyClass();
-            try
-            {
-                result = resource.Create();
-            }
-            catch  
-            {
-                // should never get here
-                Assert.Fail();
-                return;
-            }
-
-            Assert.Pass();
-        }
 
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
-            //Change.
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
             resource.email = "fake@email.com";
@@ -170,6 +159,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
             resource.email = "fake@email.com";
@@ -270,6 +262,53 @@ namespace MercadoPagoSDK.Test
             Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
 
         }
+    }
+
+    [Idempotent]
+    [TestFixture()]
+    public class CustomerTestClass : MPBase
+    {
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+
+        [POSTEndpoint("/post")]
+        public CustomerTestClass Create()
+        {
+            return (CustomerTestClass)ProcessMethod<CustomerTestClass>("Create", false);
+        }
+
+
+        [Test()]
+        public void CustomerTestClass_Create_ParsesCustomerTestClassObjectResponse()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            CustomerTestClass resource = new CustomerTestClass();
+            resource.Name = "Bruce";
+            resource.LastName = "Wayne";
+            resource.Age = 45;
+
+            CustomerTestClass result = new CustomerTestClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+            Assert.AreEqual("Bruce", result.Name);
+            Assert.AreEqual("Wayne", result.LastName);
+            Assert.AreEqual(45, result.Age);
+        }
+
     }
     
 }

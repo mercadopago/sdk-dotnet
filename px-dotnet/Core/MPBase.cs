@@ -18,6 +18,7 @@ namespace MercadoPago
         public static string IdempotencyKey { get; set; }
 
         protected MPAPIResponse LastApiResponse { get; private set; }
+        protected JObject LastKnownJson { get; private set; }
 
         #region Errors Definitions
         public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
@@ -135,7 +136,7 @@ namespace MercadoPago
             {   
                 if (httpMethod != HttpMethod.DELETE)
                 {
-                    //resource = fillResourceWithResponseData(resource, response);
+                    resource = (T)FillResourceWithResponseData(resource, response);
                 }
                 else
                 {
@@ -162,6 +163,40 @@ namespace MercadoPago
             }            
             
             return payload;
+        }
+
+        protected static MPBase FillResourceWithResponseData<T>(T resource, MPAPIResponse response) where T : MPBase
+        {
+            if (response.JsonObjectResponse != null &&
+                    response.JsonObjectResponse is JObject)
+            {
+                JObject jsonObject = (JObject)response.JsonObjectResponse;
+                T resourceObject = (T)MPCoreUtils.GetResourceFromJson<T>(resource.GetType(), jsonObject);
+                resource = (T)FillResource(resourceObject, resource);
+                resource.LastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+            }
+
+            return resource;
+        }
+
+        private static MPBase FillResource<T>(T sourceResource, T destinationResource) where T : MPBase
+        {
+            FieldInfo[] declaredFields = destinationResource.GetType().GetFields();
+            foreach (FieldInfo field in declaredFields)
+            {
+                try
+                {
+                    FieldInfo originField = sourceResource.GetType().GetField(field.Name, BindingFlags.Instance | BindingFlags.NonPublic);
+                    field.SetValue(destinationResource, originField.GetValue(sourceResource));
+
+                }
+                catch (Exception ex)
+                {
+                    throw new MPException(ex.Message);
+                }
+            }
+
+            return destinationResource;
         }
 
         /// <summary>
