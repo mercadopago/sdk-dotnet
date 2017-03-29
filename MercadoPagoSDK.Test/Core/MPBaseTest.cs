@@ -1,4 +1,5 @@
 ﻿using MercadoPago;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void MPBaseTest_WitAttributes_ShouldFindAttribute()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             try
             {
                 var result = Load_all();
@@ -172,6 +176,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             try
             {
                 var result = Load("1234");                
@@ -208,7 +215,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
-            //Change.
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
             resource.email = "fake@email.com";
@@ -232,6 +241,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
             resource.email = "fake@email.com";
@@ -332,5 +344,84 @@ namespace MercadoPagoSDK.Test
 
         }
     }
-    
+
+    [Idempotent]
+    [TestFixture()]
+    public class CustomerTestClass : MPBase
+    {
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+
+        [POSTEndpoint("/post")]
+        public CustomerTestClass Create()
+        {
+            return (CustomerTestClass)ProcessMethod<CustomerTestClass>("Create", false);
+        }
+
+
+        [Test()]
+        public void CustomerTestClass_Create_ParsesCustomerTestClassObjectResponse()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            CustomerTestClass resource = new CustomerTestClass();
+            resource.Name = "Bruce";
+            resource.LastName = "Wayne";
+            resource.Age = 45;
+
+            CustomerTestClass result = new CustomerTestClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+            Assert.AreEqual("Bruce", result.Name);
+            Assert.AreEqual("Wayne", result.LastName);
+            Assert.AreEqual(45, result.Age);
+        }
+
+        [Test()]
+        public void CustomerTestClass_Create_CheckFullJsonResponse()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            CustomerTestClass resource = new CustomerTestClass();
+            resource.Name = "Bruce";
+            resource.LastName = "Wayne";
+            resource.Age = 45;
+
+            CustomerTestClass result = new CustomerTestClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+
+            JObject jsonResponse = result.GetJsonSource();
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "LastName");
+            Assert.AreEqual("Wayne", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Name");
+            Assert.AreEqual("Bruce", year.First().ToString());
+        }
+    }  
 }

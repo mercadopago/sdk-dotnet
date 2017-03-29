@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -18,13 +18,14 @@ namespace MercadoPago
         public static string IdempotencyKey { get; set; }
 
         protected MPAPIResponse LastApiResponse { get; private set; }
+        protected JObject LastKnownJson { get; private set; }
 
         #region Errors Definitions
         public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
         public static string RangeError = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
         public static string RequiredError = "Error on property #PROPERTY. There is no value for this required property. ";
         public static string RegularExpressionError = "Error on property #PROPERTY. The specified value is not valid. RegExp: #REGEXPR . ";
-        #endregion        
+        #endregion
 
         #region Core Methods
         /// <summary>
@@ -32,18 +33,18 @@ namespace MercadoPago
         /// </summary>
         /// <param name="classType">ClassType.</param>        
         public static void AdmitIdempotencyKey(Type classType)
-        {            
+        {
             var attribute = classType.GetCustomAttributes(true);
 
             foreach (Attribute attr in attribute)
             {
                 if (attr.GetType() == typeof(Idempotent))
                 {
-                    IdempotencyKey = attr.GetType().GUID.ToString();                    
+                    IdempotencyKey = attr.GetType().GUID.ToString();
                 }
-            }            
+            }
         }
-        
+
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method and configuration.
         /// </summary>
@@ -53,7 +54,7 @@ namespace MercadoPago
         public static MPBase ProcessMethod(string methodName, bool useCache)
         {
             Type classType = GetTypeFromStack();
-            AdmitIdempotencyKey(classType);            
+            AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             return ProcessMethod<MPBase>(classType, null, methodName, null, useCache);
         }
@@ -114,16 +115,11 @@ namespace MercadoPago
                 }
             }
 
-
             var clazzMethod = GetAnnotatedMethod(clazz, methodName);
             var restData = GetRestInformation(clazzMethod);
 
-            //resource.Method = apiData["method"].ToString();
-            //resource.Url = string.Format("{0}", parameters != null ? apiData["url"].ToString().Replace(":id", parameters["param1"]) : apiData["url"].ToString());
-            //resource.Instance = apiData["instance"].ToString();
-
             HttpMethod httpMethod = (HttpMethod)restData["method"];
-            string path = ParsePath(restData["path"].ToString(), parameters, resource); 
+            string path = ParsePath(restData["path"].ToString(), parameters, resource);
             PayloadType payloadType = (PayloadType)restData["payloadType"];
             JObject payload = GeneratePayload(httpMethod, resource);
             WebHeaderCollection colHeaders = new WebHeaderCollection();
@@ -132,10 +128,10 @@ namespace MercadoPago
 
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
-            {   
+            {
                 if (httpMethod != HttpMethod.DELETE)
                 {
-                    //resource = fillResourceWithResponseData(resource, response);
+                    resource = (T)FillResourceWithResponseData(resource, response);
                 }
                 else
                 {
@@ -144,24 +140,70 @@ namespace MercadoPago
             }
 
             resource.LastApiResponse = response;
+
             return resource;
         }
-        
+
         /// <summary>
         /// Transforms all attributes members of the instance in a JSON String. Only for POST and PUT methods.
         /// POST gets the full object in a JSON object.
         /// PUT gets only the differences with the last known state of the object.
         /// </summary>
         /// <returns>a JSON Object with the attributes members of the instance. Null for GET and DELETE methods</returns>
-        public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase 
+        public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase
         {
             JObject payload = null;
-            if(new string[]{ "POST", "PUT" }.Contains( httpMethod.ToString()))
+            if (new string[] { "POST", "PUT" }.Contains(httpMethod.ToString()))
             {
                 payload = MPCoreUtils.GetJsonFromResource(resource);
-            }            
-            
+            }
+
             return payload;
+        }
+
+        /// <summary>
+        /// Fills all the attributes members of the Resource obj.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        protected static MPBase FillResourceWithResponseData<T>(T resource, MPAPIResponse response) where T : MPBase
+        {
+            if (response.JsonObjectResponse != null &&
+                    response.JsonObjectResponse is JObject)
+            {
+                JObject jsonObject = (JObject)response.JsonObjectResponse;
+                T resourceObject = (T)MPCoreUtils.GetResourceFromJson<T>(resource.GetType(), jsonObject);
+                resource = (T)FillResource(resourceObject, resource);
+                resource.LastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+            }
+
+            return resource;
+        }
+
+        /// <summary>
+        /// Fills all the attributes members of the Resource obj.
+        /// </summary>
+        /// <returns>MPBase object with response attributes.</returns>
+        private static MPBase FillResource<T>(T sourceResource, T destinationResource) where T : MPBase
+        {
+            FieldInfo[] declaredFields = destinationResource.GetType().GetFields();
+            foreach (FieldInfo field in declaredFields)
+            {
+                try
+                {
+                    FieldInfo originField = sourceResource.GetType().GetField(field.Name, BindingFlags.Instance | BindingFlags.NonPublic);
+                    field.SetValue(destinationResource, originField.GetValue(sourceResource));
+
+                }
+                catch (Exception ex)
+                {
+                    throw new MPException(ex.Message);
+                }
+            }
+
+            return destinationResource;
         }
 
         /// <summary>
@@ -178,8 +220,7 @@ namespace MercadoPago
         {
             string cacheKey = httpMethod.ToString() + "_" + path;            
             MPAPIResponse response = null;
-
-
+          
             if (useCache)
             {
                 response = MPCache.GetFromCache(cacheKey);                
@@ -263,7 +304,7 @@ namespace MercadoPago
                 hashAnnotation.Add("path", ((BaseEndpoint)annotation).Path);
                 hashAnnotation.Add("instance", element.ReturnType.Name);
                 hashAnnotation.Add("Header", element.ReturnType.GUID);
-                hashAnnotation.Add("payloadType",  ((BaseEndpoint)annotation).PayloadType);
+                hashAnnotation.Add("payloadType", ((BaseEndpoint)annotation).PayloadType);
             }
 
             return hashAnnotation;
@@ -293,6 +334,8 @@ namespace MercadoPago
         #endregion
 
         #region Core Utilities
+
+
         /// <summary>
         /// Generates a final Path based on parameters in Dictionary and resource properties.
         /// </summary>
@@ -373,9 +416,23 @@ namespace MercadoPago
             return result.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public JObject GetJsonSource()
+        {
+            return LastApiResponse != null ? LastApiResponse.JsonObjectResponse : null;
+        }
+
         #endregion
 
         #region Validation Methods
+
+        /// <summary>
+        /// Vaidates an object.
+        /// </summary>
+        /// <returns>True, if validations are correct. False otherwise.</returns>
         public static bool Validate(object o)
         {
             Type type = o.GetType();
@@ -418,7 +475,7 @@ namespace MercadoPago
                                     result.Errors.Add(new ValidationError() { Message = DataTypeError.Replace("#PROPERTY", propertyInfo.Name) });
                                 }
                                 break;
-                        }                        
+                        }
                     }
                 }
             }
@@ -436,6 +493,10 @@ namespace MercadoPago
             return true;
         }
 
+        #endregion
+
+        #region Testing helpers
+
         /// <summary>
         ///Class that represents the validation results. 
         /// </summary>
@@ -452,6 +513,7 @@ namespace MercadoPago
             public int Code { get; set; }
             public string Message { get; set; }
         }
+
         #endregion
     }
 }
