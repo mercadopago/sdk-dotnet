@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -218,8 +218,20 @@ namespace MercadoPago
             WebHeaderCollection colHeaders,
             Boolean useCache)
         {
+            string cacheKey = httpMethod.ToString() + "_" + path;            
             MPAPIResponse response = null;
-            if (response == null)
+          
+            if (useCache)
+            {
+                response = MPCache.GetFromCache(cacheKey);                
+                
+                if(response != null)
+                {
+                    response.isFromCache = true;
+                }
+            }
+
+            if(response == null)
             {
                 response = new MPRESTClient().ExecuteRequest(
                     httpMethod,
@@ -227,6 +239,15 @@ namespace MercadoPago
                     payloadType,
                     payload,
                     colHeaders);
+
+                if (useCache)
+                {
+                    MPCache.AddToCache(cacheKey, response);                    
+                }
+                else
+                {
+                    MPCache.RemoveFromCache(cacheKey);
+                }
             }
 
             return response;

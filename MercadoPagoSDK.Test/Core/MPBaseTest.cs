@@ -81,6 +81,12 @@ namespace MercadoPagoSDK.Test
             return (DummyClass)ProcessMethod("Load", id, false);
         }
 
+        [GETEndpoint("/v1/getpath/load/:id")]
+        public static DummyClass LoadWithCache(string id, bool useCache)
+        {
+            return (DummyClass)ProcessMethod("Load", id, useCache);
+        }
+
         [POSTEndpoint("/v1/postpath/slug")]
         public DummyClass Create()
         {
@@ -93,6 +99,62 @@ namespace MercadoPagoSDK.Test
         {
             return (DummyClass)ProcessMethod("Update", false);
         }
+
+        #region Cache Test
+        [Test()]
+        public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
+        {
+            var firstResult = LoadWithCache("1234", true);
+            
+            Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
+        }
+
+        [Test()]
+        public void DummyClassMethod_RequestMustBeRetrievedFromCache()
+        {
+            var firstResult = LoadWithCache("1234", true);
+            var cachedResult = LoadWithCache("1234", true);
+
+            Assert.IsTrue(cachedResult.LastApiResponse.isFromCache);
+        }
+
+        [Test()]
+        public void DummyClassMethod_RequestMustBeRetrievedFromCacheButItsNotThere()
+        {
+            var firstResult = LoadWithCache("1234", true);
+            var notRetrievedFromCacheResult = LoadWithCache("4567", true);
+
+            Assert.IsFalse(notRetrievedFromCacheResult.LastApiResponse.isFromCache);
+        }
+
+        [Test()]
+        public void DummyClassMethod_SeveralRequestsMustBeCached()
+        {
+            var firstResult = LoadWithCache("123", true);
+            var secondResult = LoadWithCache("456", true);
+            var thirdResult = LoadWithCache("789", true);
+
+            var firstCachedResult = LoadWithCache("123", true);
+            var secondCachedResult = LoadWithCache("456", true);
+            var thirdCachedResult = LoadWithCache("789", true);            
+
+            Assert.IsTrue(firstCachedResult.LastApiResponse.isFromCache);
+            Assert.IsTrue(secondCachedResult.LastApiResponse.isFromCache);
+            Assert.IsTrue(thirdCachedResult.LastApiResponse.isFromCache);
+        }
+
+        [Test()]
+        public void DummyClassMethod_SeveralRequestAreNotRetrievedFromCacheInFirstAttempt()
+        {
+            var firstResult = LoadWithCache("123", true);
+            var secondResult = LoadWithCache("456", true);
+            var thirdResult = LoadWithCache("789", true);
+
+            Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
+            Assert.IsFalse(secondResult.LastApiResponse.isFromCache);
+            Assert.IsFalse(thirdResult.LastApiResponse.isFromCache);
+        }
+        #endregion
 
         [Test()]
         public void DummyClassMethod_WithNoAttributes_ShouldraiseException()
@@ -119,9 +181,28 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                var result = Load("1234");
+                var result = Load("1234");                
             }
             catch 
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.Pass();
+        }        
+
+        [Test()]
+        public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
+        {
+            DummyClass resource = new DummyClass();
+            DummyClass result = new DummyClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch  
             {
                 // should never get here
                 Assert.Fail();
@@ -195,8 +276,7 @@ namespace MercadoPagoSDK.Test
                 Assert.AreEqual("No annotated method found", mpException.Message);
                 return;
             }
-
-            // should never get here
+            
             Assert.Fail();
         }
     }
@@ -226,7 +306,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Fail();
-        }
+        }        
 
         [Test()]
         public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
