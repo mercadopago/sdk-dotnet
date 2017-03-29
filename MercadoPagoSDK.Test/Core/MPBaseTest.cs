@@ -1,4 +1,5 @@
 ﻿using MercadoPago;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -309,6 +310,38 @@ namespace MercadoPagoSDK.Test
             Assert.AreEqual(45, result.Age);
         }
 
-    }
-    
+        [Test()]
+        public void CustomerTestClass_Create_CheckFullJsonResponse()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            CustomerTestClass resource = new CustomerTestClass();
+            resource.Name = "Bruce";
+            resource.LastName = "Wayne";
+            resource.Age = 45;
+
+            CustomerTestClass result = new CustomerTestClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+
+            JObject jsonResponse = result.GetJsonSource();
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "LastName");
+            Assert.AreEqual("Wayne", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Name");
+            Assert.AreEqual("Bruce", year.First().ToString());
+        }
+    }  
 }
