@@ -346,6 +346,7 @@ namespace MercadoPagoSDK.Test
     }
 
     [Idempotent]
+    [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     [TestFixture()]
     public class CustomerTestClass : MPBase
     {
@@ -365,6 +366,8 @@ namespace MercadoPagoSDK.Test
         {
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://httpbin.org");
+            MPConf.ClientId = "12346";
+            MPConf.ClientSecret = "456789";
 
             CustomerTestClass resource = new CustomerTestClass();
             resource.Name = "Bruce";
@@ -376,7 +379,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch
+            catch(Exception ex)
             {
                 // should never get here
                 Assert.Fail();

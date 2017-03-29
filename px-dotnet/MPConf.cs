@@ -8,6 +8,8 @@ namespace MercadoPago
     public class MPConf
     {
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
+                
+        private static string UserToken = null;
 
         /// <summary>  
         ///  Property that represent the client secret token.
@@ -163,5 +165,57 @@ namespace MercadoPago
             return value;
         }
 
+        /// <summary>
+        /// Get the access token pointing to OAuth.
+        /// </summary>
+        /// <returns>A valid access token.</returns>
+        public static string GetAccessToken() 
+        {
+            if (string.IsNullOrEmpty(AccessToken))
+            {
+                AccessToken = MPCredentials.GetAccessToken();
+            }
+            return AccessToken;
+        }
+
+        /// <summary>
+        /// Sets the access token.
+        /// </summary>
+        /// <param name="accessToken">Value of the access token.</param>
+        public static void SetAccessToken(string accessToken)
+        {
+            if (!string.IsNullOrEmpty(AccessToken))
+            {
+                throw new MPException("Access_Token setting cannot be changed.");   
+            }
+
+            AccessToken = accessToken;
+        }
+
+        /// <summary>
+        /// Gets the custom user token.
+        /// </summary>
+        /// <returns>User token to return.</returns>
+        public static string GetUserToken()
+        {
+            return UserToken;
+        }
+
+        /// <summary>
+        /// Sets the user custom token.
+        /// </summary>
+        /// <param name="value">Class type to retrieve the custom UserToken Attribute.</param>
+        public static void SetUserToken(Type classType)
+        {
+            var attribute = classType.GetCustomAttributes(true);
+
+            foreach (Attribute attr in attribute)
+            {
+                if (attr.GetType() == typeof(UserToken))
+                {
+                    UserToken = attr.GetType().GUID.ToString();
+                }
+            }            
+        }
     }
 }
