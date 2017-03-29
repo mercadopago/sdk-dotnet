@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace MercadoPago
 {
@@ -57,6 +55,15 @@ namespace MercadoPago
         public static JObject GetJsonFromResource<T>(T resource) where T : MPBase
         {
             return JObject.FromObject(resource);
+        }
+
+        /// <summary>
+        /// Static method that transforms JObject in to a resource.
+        /// </summary>
+        /// <returns>an object obteined from obj</returns>
+        public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
+        {
+            return (T)jObj.ToObject<T>();
         }
     }
 }

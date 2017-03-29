@@ -143,6 +143,15 @@ namespace MercadoPago
             _baseUrl = DEFAULT_BASE_URL;
         }
 
+        /// <summary>
+        /// Changes base Url
+        /// (FOR TESTING PURPOSES ONLY)
+        /// </summary>
+        public static void SetBaseUrl(string baseUrl)
+        {
+            _baseUrl = baseUrl;
+        }
+
         private static string GetConfigValue(Configuration config, string key)
         {
             string value = null;
@@ -153,5 +162,6 @@ namespace MercadoPago
             }
             return value;
         }
+
     }
 }
