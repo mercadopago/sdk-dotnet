@@ -413,7 +413,7 @@ namespace MercadoPago
 
             result.Insert(0, MPConf.BaseUrl);
 
-            string accessToken = null;
+            string accessToken = null;            
 
             if (!string.IsNullOrEmpty(MPConf.GetUserToken()))
             {

@@ -179,6 +179,11 @@ namespace MercadoPagoSDK.Test
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
 
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add("clientSecret", "9WE8Kjum3aXeBzjCnyE1pbNZdENyc4UI");
+            config.Add("clientId", "8355802880924986");
+            MPConf.SetConfiguration(config);
+
             try
             {
                 var result = Load("1234");                

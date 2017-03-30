@@ -10,6 +10,7 @@ namespace MercadoPago
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
                 
         private static string UserToken = null;
+        public static string RefreshToken = null;
 
         /// <summary>  
         ///  Property that represent the client secret token.
