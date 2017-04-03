@@ -24,7 +24,7 @@ namespace MercadoPago
             }
             catch (Exception ex)
             {
-                throw new Exception("An error has occured in the cache structure (ADD): " + ex.Message);
+                throw new MPException("An error has occured in the cache structure (ADD): " + ex.Message);
             }
         }
 
@@ -41,7 +41,7 @@ namespace MercadoPago
             }
             catch (Exception ex)
             {
-                throw new Exception("An error has occured in the cache structure (GET): " + ex.Message);
+                throw new MPException("An error has occured in the cache structure (GET): " + ex.Message);
             }            
         }
 
@@ -57,7 +57,7 @@ namespace MercadoPago
             }
             catch (Exception ex)
             {
-                throw new Exception("An error has occured in the cache structure (REMOVE): " + ex.Message);
+                throw new MPException("An error has occured in the cache structure (REMOVE): " + ex.Message);
             }            
         }
     }

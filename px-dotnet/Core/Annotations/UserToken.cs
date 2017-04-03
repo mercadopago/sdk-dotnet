@@ -13,7 +13,7 @@ namespace MercadoPago
         /// <summary>
         /// Custom token to use in the resource.
         /// </summary>
-        public string Token { get; set; }
+        private string UserAsignedToken { get; set; }
 
         /// <summary>
         /// Basic constructor for attribute.
@@ -21,7 +21,16 @@ namespace MercadoPago
         /// <param name="token"></param>
         public UserToken(string token)
         {
-            this.Token = token;
+            this.UserAsignedToken = token;
+        }
+
+        /// <summary>
+        /// Getter for attribute.
+        /// </summary>
+        /// <returns>User asigned token.</returns>
+        public string GetUserToken()
+        {
+            return this.UserAsignedToken;
         }
     }
 }

@@ -200,23 +200,6 @@ namespace MercadoPago
         public static string GetUserToken()
         {
             return UserToken;
-        }
-
-        /// <summary>
-        /// Sets the user custom token.
-        /// </summary>
-        /// <param name="value">Class type to retrieve the custom UserToken Attribute.</param>
-        public static void SetUserToken(Type classType)
-        {
-            var attribute = classType.GetCustomAttributes(true);
-
-            foreach (Attribute attr in attribute)
-            {
-                if (attr.GetType() == typeof(UserToken))
-                {
-                    UserToken = attr.GetType().GUID.ToString();
-                }
-            }            
-        }
+        }        
     }
 }
