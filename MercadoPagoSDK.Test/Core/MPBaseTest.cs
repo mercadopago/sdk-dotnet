@@ -40,18 +40,21 @@ namespace MercadoPagoSDK.Test
         }
      
         [Test()]
-        public void MPBaseTest_WitAttributes_ShouldFindAttribute()
+        public void MPBaseTest_WithAttributes_ShouldFindAttribute()
         {
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
+            MPConf.SetConfiguration(config);
 
             try
             {
                 var result = Load_all();
             }
             catch (MPException mpException)
-            {
-                // should never get here
+            {                
                 Assert.Fail();
                 return;
             }
@@ -61,7 +64,8 @@ namespace MercadoPagoSDK.Test
     }
 
     [Idempotent]
-    [TestFixture()]    
+    [TestFixture()]
+    [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     public class DummyClass : MPBase
     {
         public int id { get; set; }
@@ -154,7 +158,37 @@ namespace MercadoPagoSDK.Test
             Assert.IsFalse(secondResult.LastApiResponse.isFromCache);
             Assert.IsFalse(thirdResult.LastApiResponse.isFromCache);
         }
+
+        [Test()]
+        public void AddToCache_ShouldExecuteWithoutProblems()
+        {
+            try
+            {
+                System.Net.HttpWebRequest request = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create("https://httpbin.org?mock=12345");
+                MPCache.AddToCache("NewCache", new MPAPIResponse(HttpMethod.GET, request, new JObject() { }, (System.Net.HttpWebResponse)request.GetResponse()));
+            }
+            catch (MPException ex)
+            {
+                Assert.Fail();
+            }
+
+            Assert.Pass();
+        }
         #endregion
+
+        [Test()]
+        public void GetAccessToken_ShouldThrowException()
+        {
+            try
+            {
+                MPCredentials.GetAccessToken();
+            }
+            catch (MPException mpException)
+            {
+                Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
+                return;
+            }            
+        }
 
         [Test()]
         public void DummyClassMethod_WithNoAttributes_ShouldraiseException()
@@ -179,6 +213,11 @@ namespace MercadoPagoSDK.Test
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
 
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
+            MPConf.SetConfiguration(config);
+
             try
             {
                 var result = Load("1234");                
@@ -198,6 +237,10 @@ namespace MercadoPagoSDK.Test
         {
             DummyClass resource = new DummyClass();
             DummyClass result = new DummyClass();
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
+            MPConf.SetConfiguration(config);
             try
             {
                 result = resource.Create();
@@ -216,33 +259,32 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_Create_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            MPConf.SetBaseUrl("https://api.mercadopago.com");            
 
-            DummyClass resource = new DummyClass();
+            DummyClass resource = new DummyClass();           
             resource.address = "Evergreen 123";
-            resource.email = "fake@email.com";
-
+            resource.email = "fake@email.com";            
+                        
             DummyClass result = new DummyClass();
             try
             {
                 result = resource.Create();
             }
             catch
-            {
-                // should never get here
+            {                
                 Assert.Fail();
                 return;
             }
 
             Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://api.mercadopago.com/v1/postpath/slug", result.LastApiResponse.Url);
+            Assert.AreEqual("https://api.mercadopago.com/v1/postpath/slug?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
         }
 
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            MPConf.SetBaseUrl("https://api.mercadopago.com");            
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -261,7 +303,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("PUT", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug", result.LastApiResponse.Url);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
         }
 
         [Test()]
@@ -282,6 +324,7 @@ namespace MercadoPagoSDK.Test
     }
 
     [TestFixture()]
+    [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     public class AnotherDummyClass : MPBase
     {
         [PUTEndpoint("")]
@@ -328,24 +371,25 @@ namespace MercadoPagoSDK.Test
             }
 
             string processedPath0 = ParsePath("/v1/getpath/slug", null, dummy);
-            Assert.AreEqual("https://api.mercadopago.com/v1/getpath/slug", processedPath0);
+            Assert.AreEqual("https://api.mercadopago.com/v1/getpath/slug?access_token=as987ge9ev6s5df4g32z1xv54654", processedPath0);
 
             string processedPath1 = ParsePath("/v1/putpath/slug/:id/pEmail/:email", null, dummy);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com", processedPath1);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com?access_token=as987ge9ev6s5df4g32z1xv54654", processedPath1);
 
             string processedPath2 = ParsePath("/v1/putpath/slug/:id/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pHasCreditCard/True", processedPath2);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pHasCreditCard/True?access_token=as987ge9ev6s5df4g32z1xv54654", processedPath2);
 
             string processedPath3 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address", null, dummy);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123", processedPath3);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123?access_token=as987ge9ev6s5df4g32z1xv54654", processedPath3);
 
             string processedPath4 = ParsePath("/v1/putpath/slug/:id/pEmail/:email/pAddress/:address/pMaritalstatus/:maritalStatus/pHasCreditCard/:hasCreditCard", null, dummy);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True", processedPath4);
+            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug/111/pEmail/person@something.com/pAddress/Evergreen 123/pMaritalstatus/divorced/pHasCreditCard/True?access_token=as987ge9ev6s5df4g32z1xv54654", processedPath4);
 
         }
     }
 
     [Idempotent]
+    [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     [TestFixture()]
     public class CustomerTestClass : MPBase
     {
@@ -365,6 +409,8 @@ namespace MercadoPagoSDK.Test
         {
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://httpbin.org");
+            MPConf.ClientId = "12346";
+            MPConf.ClientSecret = "456789";
 
             CustomerTestClass resource = new CustomerTestClass();
             resource.Name = "Bruce";
@@ -376,7 +422,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch
+            catch(Exception ex)
             {
                 // should never get here
                 Assert.Fail();
@@ -384,7 +430,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
             Assert.AreEqual("Bruce", result.Name);
             Assert.AreEqual("Wayne", result.LastName);
             Assert.AreEqual(45, result.Age);
@@ -414,7 +460,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post", result.LastApiResponse.Url);
+            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
 
             JObject jsonResponse = result.GetJsonSource();
             List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "LastName");

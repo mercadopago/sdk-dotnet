@@ -52,12 +52,14 @@
   <ItemGroup>
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
+    <Compile Include="Core\Annotations\UserToken.cs" />
     <Compile Include="Core\HttpMethod.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />
     <Compile Include="Core\AttributeEndpoint.cs" />
     <Compile Include="Core\MPCache.cs" />
     <Compile Include="Core\MPCoreUtils.cs" />
+    <Compile Include="Core\MPCredentials.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />

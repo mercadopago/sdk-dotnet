@@ -413,7 +413,41 @@ namespace MercadoPago
 
             result.Insert(0, MPConf.BaseUrl);
 
+            string accessToken = null;            
+
+            if (!string.IsNullOrEmpty(GetUserToken(resource.GetType())))
+            {
+                accessToken = GetUserToken(resource.GetType());
+            }
+            else
+            {
+                accessToken = MPConf.GetAccessToken();
+            }
+
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                result.Append(string.Format("{0}{1}", "?access_token=", accessToken));            
+            }            
+
             return result.ToString();
+        }
+
+        /// <summary>
+        /// Gets the user custom token.
+        /// </summary>
+        /// <param name="value">Class type to retrieve the custom UserToken Attribute.</param>
+        public static string GetUserToken(Type classType)
+        {            
+            UserToken userTokenAttribute = null;
+            var userToken = "";
+            userTokenAttribute = ((UserToken)Attribute.GetCustomAttribute(classType, typeof(UserToken)));
+
+            if (userTokenAttribute != null)
+            {
+                userToken = userTokenAttribute.GetUserToken();
+            }            
+
+            return userToken;
         }
 
         /// <summary>
