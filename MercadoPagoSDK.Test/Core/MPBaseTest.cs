@@ -40,13 +40,13 @@ namespace MercadoPagoSDK.Test
         }
      
         [Test()]
-        public void MPBaseTest_WitAttributes_ShouldFindAttribute()
+        public void MPBaseTest_WithAttributes_ShouldFindAttribute()
         {
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", "9WE8Kjum3aXeBzjCnyE1pbNZdENyc4UI");
-            config.Add("clientId", "8355802880924986");
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET", EnvironmentVariableTarget.Machine));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID", EnvironmentVariableTarget.Machine));
             MPConf.SetConfiguration(config);
 
             try
@@ -214,8 +214,8 @@ namespace MercadoPagoSDK.Test
             MPConf.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", "9WE8Kjum3aXeBzjCnyE1pbNZdENyc4UI");
-            config.Add("clientId", "8355802880924986");
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET", EnvironmentVariableTarget.Machine));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID", EnvironmentVariableTarget.Machine));
             MPConf.SetConfiguration(config);
 
             try
@@ -238,8 +238,8 @@ namespace MercadoPagoSDK.Test
             DummyClass resource = new DummyClass();
             DummyClass result = new DummyClass();
             Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", "9WE8Kjum3aXeBzjCnyE1pbNZdENyc4UI");
-            config.Add("clientId", "8355802880924986");
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET", EnvironmentVariableTarget.Machine));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID", EnvironmentVariableTarget.Machine));
             MPConf.SetConfiguration(config);
             try
             {
