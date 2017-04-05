@@ -30,7 +30,9 @@ namespace MercadoPago
                     MPConf.BaseUrl + "/oauth/token",
                     PayloadType.X_WWW_FORM_URLENCODED,
                     jsonPayload,
-                    null);
+                    null, 
+                    0, 
+                    0);
 
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
 
@@ -82,7 +84,9 @@ namespace MercadoPago
                     MPConf.BaseUrl + "/oauth/token",
                     PayloadType.X_WWW_FORM_URLENCODED,
                     jsonPayload,
-                    null);
+                    null,
+                    0,
+                    0);
 
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
 
