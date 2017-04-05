@@ -59,6 +59,25 @@ namespace MercadoPago
             return ProcessMethod<MPBase>(classType, null, methodName, null, useCache);
         }
 
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod(Type type, string methodName, string param, bool useCache)
+        {
+            Type classType = GetTypeFromStack();
+            AdmitIdempotencyKey(classType);
+            Dictionary<string, string> mapParams = new Dictionary<string, string>();
+            mapParams.Add("param0", param);
+
+            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
+        }
+
+
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
         /// </summary>
