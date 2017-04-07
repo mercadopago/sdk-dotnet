@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MercadoPago.Resources.DataStructures.Payment;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPago.Resources.DataStructures
+namespace MercadoPago.Resources
 {
     public class Payment : MPBase
     {
@@ -258,7 +259,7 @@ namespace MercadoPago.Resources.DataStructures
             get { return this.differentialPricingId.Value; }
             set { this.differentialPricingId = value; }
         }
-
+        
         public decimal ApplicationFee
         {
             set { this.applicationFee = value; }
