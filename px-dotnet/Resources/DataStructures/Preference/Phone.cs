@@ -11,9 +11,9 @@ namespace MercadoPago.Resources.DataStructures.Preference
         #region Properties
 
         [StringLength(256)]
-        private string areaCode = null;
+        private string areaCode;
         [StringLength(256)]
-        private string number = null;
+        private string number;
 
         #endregion
 

@@ -8,7 +8,21 @@ namespace MercadoPago.Resources.DataStructures.Preference
 {
     public class ExcludedPaymentMethod
     {
+        #region Properties
+
         [StringLength(256)]
-        private string ID { get; set; }
+        private string id;
+
+        #endregion
+
+        #region Accessors
+
+        public string ID
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
+        #endregion
     }
 }

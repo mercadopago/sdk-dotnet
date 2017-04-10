@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPago.Resources.DataStructures.Preference
+namespace MercadoPago.Resources.DataStructures.Customer
 {
-    public class ExcludedPaymentType
+    public class City
     {
         #region Properties
 
-        [StringLength(256)]
         private string id;
+        private string name;
 
         #endregion
 
@@ -19,8 +18,12 @@ namespace MercadoPago.Resources.DataStructures.Preference
 
         public string ID
         {
-            get { return this.id; }
-            set { this.id = value; }
+            get { return id; }
+        }
+
+        public string Name
+        {
+            get { return name; }
         }
 
         #endregion

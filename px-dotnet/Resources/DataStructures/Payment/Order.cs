@@ -22,7 +22,7 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         #region Accessors
 
-        public Type Type
+        public Type OrderType
         {
             get { return type; }
             set { type = value; }

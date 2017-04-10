@@ -8,14 +8,51 @@ namespace MercadoPago.Resources.DataStructures.Preference
 {
     public class PaymentMethod
     {
-        private ExcludedPaymentMethod ExcludedPaymentMethod { get; set; }
-        private ExcludedPaymentType ExcludedPaymentType { get; set; }
-        
+        #region Properties
+
+        private ExcludedPaymentMethod excludedPaymentMethod;
+        private ExcludedPaymentType excludedPaymentType;
+
         [StringLength(256)]
-        private string DefaultPaymentMethodId { get; set; }
+        private string defaultPaymentMethodId;
+        private int installment;
+        private int defaultInstallment;
 
-        private int Installment { get; set; }
+        #endregion
 
-        private int DefaultInstallment { get; set; }
+        #region Accessors
+
+        public ExcludedPaymentMethod ExcludePaymentMethod
+        {
+            get { return this.excludedPaymentMethod; }
+            set { this.excludedPaymentMethod = value; }
+        }
+
+        public ExcludedPaymentType ExcludePaymentType
+        {
+            get { return this.excludedPaymentType; }
+            set { this.excludedPaymentType = value; }
+        }
+
+        public string DefaultPaymentMethodId
+        {
+            get { return this.defaultPaymentMethodId; }
+            set { this.defaultPaymentMethodId = value; }
+        }
+
+        public int Installment
+        {
+            get { return this.installment; }
+            set { this.installment = value; }
+        }
+
+        public int DefaultInstallment
+        {
+            get { return this.defaultInstallment; }
+            set { this.defaultInstallment = value; }
+        }
+
+        #endregion
+
     }
 }

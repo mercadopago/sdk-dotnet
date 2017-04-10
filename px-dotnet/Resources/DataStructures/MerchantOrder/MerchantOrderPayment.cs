@@ -67,7 +67,7 @@ namespace MercadoPago.Resources.DataStructures.MerchantOrder
             set { shippingCost = value; }
         }
              
-        public CurrencyId CurrencyId
+        public CurrencyId PaymentCurrencyId
         {
             get { return currencyId; }
             set { currencyId = value; }
@@ -84,8 +84,8 @@ namespace MercadoPago.Resources.DataStructures.MerchantOrder
             get { return statusDetail; }
             set { statusDetail = value; }
         }
-               
-        public OperationType OperationType
+
+        public OperationType PaymentOperationType
         {
             get { return operationType; }
             set { operationType = value; }

@@ -38,37 +38,43 @@ namespace MercadoPago.Resources
 
         #region Properties
 
-        private List<Item> items = null;
-        private Payer payer = null;
-        private PaymentMethod paymentMethod = null;
-        private Shipment shipment = null;
-        private BackUrl backUrl = null;
+        private List<Item> items;
+        private Payer payer;
+        private PaymentMethod paymentMethod;
+        private Shipment shipment;
+        private BackUrl backUrl;
 
         [StringLength(500)]
-        private string notificationUrl = null;
-        private string id = null;
-        private string initPoint = null;
-        private string sandboxInitPoint = null;
-        private DateTime? dateCreated = null;
-        
-        private OperationTypes? operationType = null;
+        private string notificationUrl;
+        private string id;
+        private string initPoint;
+        private string sandboxInitPoint;
+        private DateTime dateCreated;
+
+        public enum OperationTypes
+        {
+            RegularPayment,
+            MoneyTransfer
+        }
+
+        private OperationTypes operationType;
 
         [StringLength(600)]
-        private string additionalInfo = null;
-        private AutoReturnTypes? autoReturn = null;
+        private string additionalInfo;
+        private AutoReturnTypes autoReturn;
         [StringLength(256)]
-        private string externalReference = null;
-        private bool? expires = null;
-        private DateTime? expirationDateFrom = null;
-        private DateTime? expirationDateTo = null;
-        private int? collectorId = null;
-        private int? clientId = null;
+        private string externalReference;
+        private bool expires;
+        private DateTime expirationDateFrom;
+        private DateTime expirationDateTo;
+        private int collectorId;
+        private int clientId;
 
         [StringLength(256)]
-        private string marketplace = null;
+        private string marketplace;
 
-        private float? marketplaceFee = null;
-        private DifferentialPricing differentialPricing = null;
+        private float marketplaceFee;
+        private DifferentialPricing differentialPricing;        
         
         #endregion
 
@@ -129,15 +135,13 @@ namespace MercadoPago.Resources
 
         public DateTime DateCreated 
         { 
-            get { return this.dateCreated.Value; } 
+            get { return this.dateCreated; } 
             set { this.dateCreated = value; } 
-        }
-        
-        private enum OperationTypes { RegularPayment, MoneyTransfer }
+        }               
         
         public OperationTypes OperationType 
         { 
-            get { return this.operationType.Value; }
+            get { return this.operationType; }
             set { this.operationType = value; } 
         }                
         
@@ -147,11 +151,11 @@ namespace MercadoPago.Resources
             set { this.additionalInfo = value; } 
         }
         
-        private enum AutoReturnTypes { Approved, All }
+        public enum AutoReturnTypes { Approved, All }
         
         public AutoReturnTypes AutoReturn 
         { 
-            get { return this.autoReturn.Value; } 
+            get { return this.autoReturn; } 
             set { this.autoReturn = value; } 
         }
         
@@ -163,31 +167,31 @@ namespace MercadoPago.Resources
 
         public bool Expires 
         { 
-            get { return this.expires.Value; } 
+            get { return this.expires; } 
             set { this.expires = value; } 
         }
 
         public DateTime ExpirationDateFrom 
         { 
-            get { return this.expirationDateFrom.Value; } 
+            get { return this.expirationDateFrom; } 
             set { this.expirationDateFrom = value; } 
         }
         
         public DateTime ExpirationDateTo 
         { 
-            get { return this.expirationDateTo.Value; } 
+            get { return this.expirationDateTo; } 
             set { this.expirationDateTo = value; } 
         }
 
         public int CollectorId 
         { 
-            get { return this.collectorId.Value; } 
+            get { return this.collectorId; } 
             set { this.collectorId = value; } 
         }
         
         public int ClientId 
         { 
-            get { return this.clientId.Value; } 
+            get { return this.clientId; } 
             set { this.clientId = value; } 
         }
         
@@ -199,7 +203,7 @@ namespace MercadoPago.Resources
         
         public float MarketplaceFee 
         { 
-            get { return this.marketplaceFee.Value; } 
+            get { return this.marketplaceFee; } 
             set { this.marketplaceFee = value; } 
         }
         

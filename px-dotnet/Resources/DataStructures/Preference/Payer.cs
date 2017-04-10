@@ -11,14 +11,14 @@ namespace MercadoPago.Resources.DataStructures.Preference
         #region Properties
 
         [StringLength(256)]
-        private string name { get; set; }
+        private string name;
         [StringLength(256)]
-        private string surname { get; set; }
+        private string surname;
         [StringLength(256)]
-        private string email { get; set; }
-        private Phone phone { get; set; }
-        private Identification identification { get; set; }
-        private DateTime dateCreated { get; set; }
+        private string email;
+        private Phone phone;
+        private Identification identification;
+        private DateTime dateCreated;
         
         #endregion        
 

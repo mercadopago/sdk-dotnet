@@ -34,19 +34,17 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         #region Accessors
 
-        public Type Type
+        public Type FeeDetailType
         {
             get { return type; }
             set { type = value; }
         }
 
-        public FeePayer FeePayer
+        public FeePayer Payer
         {
             get { return feePayer; }
             set { feePayer = value; }
-        }
-
-        
+        }    
 
         public decimal Amount
         {

@@ -8,13 +8,40 @@ namespace MercadoPago.Resources.DataStructures.Preference
 {
     public class BackUrl
     {
-        [StringLength(600)]
-        private string Success { get; set; }
+        #region Properties
 
         [StringLength(600)]
-        private string Pending { get; set; }
+        private string success;
 
         [StringLength(600)]
-        private string Failure { get; set; }
+        private string pending;
+
+        [StringLength(600)]
+        private string failure;
+
+        #endregion
+
+        #region Accessors
+
+        public string Success
+        {
+            get { return this.success; }
+            set { this.success = value; }
+        }
+
+        public string Pending
+        {
+            get { return this.pending; }
+            set { this.pending = value; }
+        }
+
+        public string Failure
+        {
+            get { return this.failure; }
+            set { this.failure = value; }
+        }
+
+        #endregion
+
     }
 }

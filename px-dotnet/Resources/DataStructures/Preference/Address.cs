@@ -11,12 +11,12 @@ namespace MercadoPago.Resources.DataStructures.Preference
         #region Properties
 
         [StringLength(256)]
-        private string zipCode = null;
+        private string zipCode;
 
         [StringLength(256)]
-        private string streetName = null;
+        private string streetName;
 
-        private int? streetNumber = null;
+        private int streetNumber;
 
         #endregion
 
@@ -36,7 +36,7 @@ namespace MercadoPago.Resources.DataStructures.Preference
 
         public int StreetNumber 
         {
-            get { return this.streetNumber.Value; }
+            get { return this.streetNumber; }
             set { this.streetNumber = value; }
         }
 

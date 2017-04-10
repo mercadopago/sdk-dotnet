@@ -28,7 +28,7 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         #region Accesors
 
-        public Type Type
+        public Type PayerType
         {
             get { return type; }
             set { type = value; }

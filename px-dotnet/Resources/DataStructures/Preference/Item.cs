@@ -11,21 +11,21 @@ namespace MercadoPago.Resources.DataStructures.Preference
         #region Properties
 
         [StringLength(256)]
-        private string id = null;
+        private string id;
         [StringLength(256)]
-        private string title = null;
+        private string title;
         [StringLength(256)]
-        private string description = null;
+        private string description;
         [StringLength(600)]
-        private string pictureUrl = null;
+        private string pictureUrl;
         [StringLength(256)]
-        private int? categoryId = null;
-        private int? quantity = null;
+        private int categoryId;
+        private int quantity;
         [StringLength(3)]
-        private string currencyId = null;
+        private string currencyId;
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
-        private decimal? unitPrice = null;
+        private decimal unitPrice;
 
         #endregion
 
@@ -57,13 +57,13 @@ namespace MercadoPago.Resources.DataStructures.Preference
 
         public int CategoryId 
         {
-            get { return this.categoryId.Value; }
+            get { return this.categoryId; }
             set { this.categoryId = value; } 
         }        
 
         public int Quantity 
         {
-            get { return this.quantity.Value; }
+            get { return this.quantity; }
             set { this.quantity = value; }
         }        
 
@@ -75,7 +75,7 @@ namespace MercadoPago.Resources.DataStructures.Preference
 
         public decimal UnitPrice 
         {
-            get { return this.unitPrice.Value; }
+            get { return this.unitPrice; }
             set { this.unitPrice = value; }
         }
 

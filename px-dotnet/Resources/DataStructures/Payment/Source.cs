@@ -34,7 +34,7 @@ namespace MercadoPago.Resources.DataStructures.Payment
             get { return name; }            
         }        
        
-        public Type Type
+        public Type SourceType
         {
             get { return type; }
         }

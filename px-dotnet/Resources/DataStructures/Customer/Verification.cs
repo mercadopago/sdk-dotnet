@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MercadoPago.Resources.DataStructures.Preference
+namespace MercadoPago.Resources.DataStructures.Customer
 {
-    public class DifferentialPricing
+    public class Verification
     {
         #region Properties
 
-        private int id;
+        private List<Shipment> shipments;
 
         #endregion
 
         #region Accessors
 
-        public int ID
+        public List<Shipment> Shipments
         {
-            get{ return this.ID; }
-            set{ this.id = value; }
+            get { return shipments; }
         }
-        
+
         #endregion
     }
 }
