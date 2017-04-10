@@ -18,14 +18,12 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return name; }            
         }
 
         public Identification Identification
         {
-            get { return identification; }
-            set { identification = value; }
+            get { return identification; }            
         }
 
         #endregion

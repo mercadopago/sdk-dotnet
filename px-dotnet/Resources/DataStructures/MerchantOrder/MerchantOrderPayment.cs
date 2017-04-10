@@ -45,74 +45,62 @@ namespace MercadoPago.Resources.DataStructures.MerchantOrder
 
         public string ID
         {
-            get { return id; }
-            set { id = value; }
+            get { return id; }            
         }
        
         public decimal TransactionAmount
         {
-            get { return transactionAmount; }
-            set { transactionAmount = value; }
+            get { return transactionAmount; }            
         }
        
         public decimal TotalPaidAmount
         {
-            get { return totalPaidAmount; }
-            set { totalPaidAmount = value; }
+            get { return totalPaidAmount; }            
         }
        
         public decimal ShippingCost
         {
-            get { return shippingCost; }
-            set { shippingCost = value; }
+            get { return shippingCost; }            
         }
              
         public CurrencyId PaymentCurrencyId
         {
-            get { return currencyId; }
-            set { currencyId = value; }
+            get { return currencyId; }            
         }
        
         public string Status
         {
-            get { return status; }
-            set { status = value; }
+            get { return status; }            
         }
        
         public string StatusDetail
         {
-            get { return statusDetail; }
-            set { statusDetail = value; }
+            get { return statusDetail; }            
         }
 
         public OperationType PaymentOperationType
         {
-            get { return operationType; }
-            set { operationType = value; }
+            get { return operationType; }            
         }
         
         public DateTime DateApproved
         {
-            get { return dateApproved; }
-            set { dateApproved = value; }
+            get { return dateApproved; }            
         }
        
         public DateTime DateCreated
         {
-            get { return dateCreated; }
-            set { dateCreated = value; }
+            get { return dateCreated; }            
         }        
 
         public DateTime LastModified
         {
-            get { return lastModified; }
-            set { lastModified = value; }
+            get { return lastModified; }            
         }
        
         public decimal AmountRefunded
         {
-            get { return amountRefunded; }
-            set { amountRefunded = value; }
+            get { return amountRefunded; }            
         }
 
         #endregion

@@ -19,20 +19,17 @@ namespace MercadoPago.Resources.DataStructures.Customer
 
         public bool Success
         {
-            get { return success; }
-            set { success = value; }
+            get { return success; }            
         }
 
         public List<Error> Errors
         {
-            get { return errors; }
-            set { errors = value; }
+            get { return errors; }            
         }
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return name; }            
         }
 
         #endregion

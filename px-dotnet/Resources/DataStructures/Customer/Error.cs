@@ -19,20 +19,17 @@ namespace MercadoPago.Resources.DataStructures.Customer
 
         public string Code
         {
-            get { return code; }
-            set { code = value; }
+            get { return code; }            
         }
 
         public string Description
         {
-            get { return description; }
-            set { description = value; }
+            get { return description; }            
         }
 
         public string Field
         {
-            get { return field; }
-            set { field = value; }
+            get { return field; }            
         }
 
         #endregion

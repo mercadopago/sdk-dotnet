@@ -12,8 +12,7 @@ namespace MercadoPago.Resources.DataStructures.MerchantOrder
 
         private string id;
         private string categoryId;
-        [RegularExpression(@"^.{3,}$")]
-        [StringLength(3)]
+        [RegularExpression(@"^.{3,3}$")]        
         private string currencyId;
         private string description;
         private string pictureUrl;

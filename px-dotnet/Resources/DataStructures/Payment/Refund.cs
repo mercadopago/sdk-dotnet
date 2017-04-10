@@ -24,44 +24,37 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         public int ID
         {
-            get { return id; }
-            set { id = value; }
+            get { return id; }            
         }
         
         public int PaymentId
         {
-            get { return paymentId; }
-            set { paymentId = value; }
+            get { return paymentId; }            
         }
        
         public decimal Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return amount; }            
         }
        
         public JObject Metadata
         {
-            get { return metadata; }
-            set { metadata = value; }
+            get { return metadata; }            
         }
        
         public Source Source
         {
-            get { return source; }
-            set { source = value; }
+            get { return source; }            
         }
         
         public DateTime CreatedDate
         {
-            get { return createdDate; }
-            set { createdDate = value; }
+            get { return createdDate; }            
         }
        
         public string UniqueSequenceNumber
         {
-            get { return uniqueSequenceNumber; }
-            set { uniqueSequenceNumber = value; }
+            get { return uniqueSequenceNumber; }            
         }
 
         #endregion

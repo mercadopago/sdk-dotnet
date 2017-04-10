@@ -32,98 +32,82 @@ namespace MercadoPago.Resources.DataStructures.Customer
 
         public string ID
         {
-            get { return id; }
-            set { id = value; }
+            get { return id; }            
         }
 
         public string Phone
         {
-            get { return phone; }
-            set { phone = value; }
+            get { return phone; }            
         }
 
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get { return name; }            
         }
 
         public string Floor
         {
-            get { return floor; }
-            set { floor = value; }
+            get { return floor; }            
         }
 
         public string Apartment
         {
-            get { return apartment; }
-            set { apartment = value; }
+            get { return apartment; }            
         }
 
         public string StreetName
         {
-            get { return streetName; }
-            set { streetName = value; }
+            get { return streetName; }            
         }
 
         public string StreetNumber
         {
-            get { return streetNumber; }
-            set { streetNumber = value; }
+            get { return streetNumber; }            
         }
 
         public string ZipCode
         {
-            get { return zipCode; }
-            set { zipCode = value; }
+            get { return zipCode; }            
         }
 
         public City City
         {
-            get { return city; }
-            set { city = value; }
+            get { return city; }            
         }
 
         public State State
         {
-            get { return state; }
-            set { state = value; }
+            get { return state; }            
         }
 
         public Country Country
         {
-            get { return country; }
-            set { country = value; }
+            get { return country; }            
         }
 
         public Neighborhood Neighborhood
         {
-            get { return neighborhood; }
-            set { neighborhood = value; }
+            get { return neighborhood; }            
         }
 
         public Municipality Municipality
         {
-            get { return municipality; }
-            set { municipality = value; }
+            get { return municipality; }            
         }
 
         public string Comments
         {
-            get { return comments; }
-            set { comments = value; }
+            get { return comments; }            
         }
 
         public DateTime DateCreated
         {
-            get { return dateCreated; }
-            set { dateCreated = value; }
+            get { return dateCreated; }            
         }
 
         public List<Verification> Verifications
         {
-            get { return verifications; }
-            set { verifications = value; }
+            get { return verifications; }            
         }
 
         #endregion

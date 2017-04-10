@@ -7,7 +7,7 @@ namespace MercadoPago.Resources.DataStructures.Payment
 {
     public class Source
     {
-        #region Properties        
+        #region Properties
 
         private string id;
         private string name;

@@ -105,7 +105,6 @@
     <Compile Include="Resources\DataStructures\Payment\Refund.cs" />
     <Compile Include="Resources\DataStructures\Payment\Shipment.cs" />
     <Compile Include="Resources\DataStructures\Payment\Source.cs" />
-    <Compile Include="Resources\DataStructures\Payment\StringLenght.cs" />
     <Compile Include="Resources\DataStructures\Payment\TransactionDetail.cs" />
     <Compile Include="Resources\MerchantOrder.cs" />
     <Compile Include="Resources\Payment.cs" />
