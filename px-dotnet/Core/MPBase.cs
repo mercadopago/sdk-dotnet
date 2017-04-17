@@ -59,6 +59,25 @@ namespace MercadoPago
             return ProcessMethod<MPBase>(classType, null, methodName, null, useCache);
         }
 
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod(Type type, string methodName, string param, bool useCache)
+        {
+            Type classType = GetTypeFromStack();
+            AdmitIdempotencyKey(classType);
+            Dictionary<string, string> mapParams = new Dictionary<string, string>();
+            mapParams.Add("param0", param);
+
+            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
+        }
+
+
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
         /// </summary>
@@ -377,11 +396,21 @@ namespace MercadoPago
                         if (resource != null)
                         {
                             JObject json = JObject.FromObject(resource);
-                            var jValue = json.GetValue(param);
+                            
+                            //Add control to verify JSON's case properties. Must be removed after testing approved status.
+                            var jValueUC = json.GetValue(param.ToUpper());
+                            var jValueLC = json.GetValue(param);
 
-                            if (jValue != null)
+                            if (jValueUC != null)
                             {
-                                value = jValue.ToString();
+                                value = jValueUC.ToString();
+                            }
+                            else
+                            {
+                                if (jValueLC != null)
+                                {
+                                    value = jValueLC.ToString();
+                                }                                
                             }
                         }
                     }

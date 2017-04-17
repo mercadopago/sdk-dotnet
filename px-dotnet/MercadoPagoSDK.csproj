@@ -67,13 +67,70 @@
     <Compile Include="Net\MPRESTClient.cs" />
     <Compile Include="Net\MPRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Card.cs" />
     <Compile Include="Resources\Customer.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\CardHolder.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\Identification.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\Issuer.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\PaymentMethod.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\SecurityCode.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Address.cs" />
+    <Compile Include="Resources\DataStructures\Customer\City.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Country.cs" />
+    <Compile Include="Resources\DataStructures\Customer\DefaultAddress.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Error.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Identification.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Municipality.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Neighborhood.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Phone.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Shipment.cs" />
+    <Compile Include="Resources\DataStructures\Customer\State.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Verification.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Address.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Collector.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Item.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\MerchantOrderPayment.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Payer.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Shipment.cs" />
+    <Compile Include="Resources\DataStructures\Payment\AdditionalInfo.cs" />
+    <Compile Include="Resources\DataStructures\Payment\AdditionalInfoPayer.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Address.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Card.cs" />
+    <Compile Include="Resources\DataStructures\Payment\CardHolder.cs" />
+    <Compile Include="Resources\DataStructures\Payment\FeeDetail.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Item.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Order.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Phone.cs" />
+    <Compile Include="Resources\DataStructures\Payment\ReceiverAddress.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Refund.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Shipment.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Source.cs" />
+    <Compile Include="Resources\DataStructures\Payment\TransactionDetail.cs" />
+    <Compile Include="Resources\MerchantOrder.cs" />
+    <Compile Include="Resources\Payment.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Identification.cs" />
+    <Compile Include="Resources\DataStructures\Payment\Payer.cs" />
+    <Compile Include="Resources\DataStructures\Payment\PayerPhone.cs" />
+    <Compile Include="Resources\DataStructures\Preference\BackUrl.cs" />
+    <Compile Include="Resources\DataStructures\Preference\DifferentialPricing.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentMethod.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentType.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Item.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Address.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Identification.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Payer.cs" />
+    <Compile Include="Resources\DataStructures\Preference\PaymentMethod.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Phone.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ReceiverAddress.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Shipment.cs" />
+    <Compile Include="Resources\Preference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MercadoPagoSDKBETA.1.nupkg" />
     <None Include="packages.config" />
     <None Include="px-dotnet.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -43,6 +43,10 @@
     <Compile Include="MPConfTest.cs" />
     <Compile Include="Exceptions\MPExceptionTest.cs" />
     <Compile Include="Net\MPRESTClientTest.cs" />
+    <Compile Include="Resources\DataStructures\Payment\AdditionalInfoTest.cs" />
+    <Compile Include="Resources\MerchantOrderTest.cs" />
+    <Compile Include="Resources\PaymentTest.cs" />
+    <Compile Include="Resources\PreferenceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">
