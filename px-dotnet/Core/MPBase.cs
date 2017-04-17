@@ -141,9 +141,12 @@ namespace MercadoPago
             string path = ParsePath(restData["path"].ToString(), parameters, resource);
             PayloadType payloadType = (PayloadType)restData["payloadType"];
             JObject payload = GeneratePayload(httpMethod, resource);
+            int requestTimeout = (int)restData["requestTimeout"];
+            int retries = (int)restData["retries"];
+
             WebHeaderCollection colHeaders = new WebHeaderCollection();
 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache);
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
 
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
@@ -235,7 +238,9 @@ namespace MercadoPago
             PayloadType payloadType,
             JObject payload,
             WebHeaderCollection colHeaders,
-            Boolean useCache)
+            Boolean useCache,
+            int requestTimeout,
+            int retries)
         {
             string cacheKey = httpMethod.ToString() + "_" + path;            
             MPAPIResponse response = null;
@@ -257,7 +262,9 @@ namespace MercadoPago
                     path,
                     payloadType,
                     payload,
-                    colHeaders);
+                    colHeaders,
+                    requestTimeout,
+                    retries);
 
                 if (useCache)
                 {
@@ -324,6 +331,8 @@ namespace MercadoPago
                 hashAnnotation.Add("instance", element.ReturnType.Name);
                 hashAnnotation.Add("Header", element.ReturnType.GUID);
                 hashAnnotation.Add("payloadType", ((BaseEndpoint)annotation).PayloadType);
+                hashAnnotation.Add("requestTimeout", ((BaseEndpoint)annotation).RequestTimeout);
+                hashAnnotation.Add("retries", ((BaseEndpoint)annotation).Retries);
             }
 
             return hashAnnotation;

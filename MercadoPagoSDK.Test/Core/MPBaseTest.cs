@@ -469,5 +469,83 @@ namespace MercadoPagoSDK.Test
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Name");
             Assert.AreEqual("Bruce", year.First().ToString());
         }
+    }
+
+    [TestFixture()]
+    [UserToken("as987ge9ev6s5df4g32z1xv54654")]
+    public class ResourceTestClass : MPBase
+    {
+        public string CardNumber { get; set; }
+        public string Holder { get; set; }
+
+        [GETEndpoint("/getpath/load/:id", requestTimeout: 5, retries: 3)]
+        public ResourceTestClass Load(string id)
+        {
+            return (ResourceTestClass)ProcessMethod("Load", id, false);
+        }
+
+        [POSTEndpoint("/post", requestTimeout: 2000, retries: 0)]
+        public ResourceTestClass Create()
+        {
+            return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Create", false);
+        }
+
+        [Test()]
+
+        public void CustomerTestClass_Load_TimeoutFail()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
+
+            Dictionary<string, string> config = new Dictionary<string, string>();
+            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
+            MPConf.SetConfiguration(config);
+
+            ResourceTestClass resource = new ResourceTestClass();
+            ResourceTestClass result = new ResourceTestClass();
+
+            try
+            {
+                result = resource.Load("567");
+            }
+            catch (Exception ex)
+            {
+                Assert.Pass();
+                return;
+            }
+
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void ResourceTestClass_Create_ProperTimeoutSuccess()
+        {
+            MPConf.CleanConfiguration();
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            ResourceTestClass resource = new ResourceTestClass();
+            resource.CardNumber = "123456789";
+            resource.Holder = "Wayne";
+
+            ResourceTestClass result = new ResourceTestClass();
+            try
+            {
+                result = resource.Create();
+            }
+            catch
+            {
+                // should never get here
+                Assert.Fail();
+                return;
+            }
+
+            JObject jsonResponse = result.GetJsonSource();
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "CardNumber");
+            Assert.AreEqual("123456789", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Holder");
+            Assert.AreEqual("Wayne", year.First().ToString());
+        }
     }  
 }

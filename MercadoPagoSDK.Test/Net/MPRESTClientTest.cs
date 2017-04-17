@@ -23,7 +23,7 @@ namespace MercadoPagoSDK.Test
             MPRESTClient client = new MPRESTClient();
             try
             {
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null);
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null, 0 , 0);
             }
             catch (MPRESTException ex)
             {
@@ -32,7 +32,7 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.DELETE, "https://httpbin.org/delete", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null);
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.DELETE, "https://httpbin.org/delete", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null, 0, 0);
             }
             catch (MPRESTException ex)
             {
@@ -46,7 +46,7 @@ namespace MercadoPagoSDK.Test
             MPRESTClient client = new MPRESTClient();
             try
             {
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.X_WWW_FORM_URLENCODED, null, null);
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.X_WWW_FORM_URLENCODED, null, null, 0, 0);
             }
             catch (MPRESTException ex)
             {
@@ -55,7 +55,7 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.PUT, "https://httpbin.org/put", PayloadType.X_WWW_FORM_URLENCODED, null, null);
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.PUT, "https://httpbin.org/put", PayloadType.X_WWW_FORM_URLENCODED, null, null, 0, 0);
             }
             catch (MPRESTException ex)
             {
@@ -67,7 +67,7 @@ namespace MercadoPagoSDK.Test
         public void ExecuteRequest_Get()
         {
             MPRESTClient client = new MPRESTClient();
-            MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, null, null);
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, null, null, 0, 0);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
             JProperty prop = jsonResponse.Properties().FirstOrDefault(p => p.Name.Contains("url"));
             string url = prop != null ? prop.Value.ToString() : string.Empty;
@@ -85,7 +85,7 @@ namespace MercadoPagoSDK.Test
             jsonObject.Add("lastName", "Kent");
             jsonObject.Add("year", 2018);
 
-            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.X_WWW_FORM_URLENCODED, jsonObject, null);
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.X_WWW_FORM_URLENCODED, jsonObject, null, 0, 0);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
 
             List<JToken> contentType = MPCoreUtils.FindTokens(jsonResponse, "Content-Type");
@@ -109,7 +109,7 @@ namespace MercadoPagoSDK.Test
             headers.Add("x-idempotency-key", dummy.GetType().GUID.ToString());
 
 
-            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, headers);
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, headers, 0, 0);
             JObject jsonResponse = JObject.Parse(response.StringResponse.ToString());
 
             List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
@@ -120,7 +120,6 @@ namespace MercadoPagoSDK.Test
         }
 
         [Test()]
-
         public void ClassIntance_ShouldThrowValidationException()
         {
             try
@@ -160,6 +159,72 @@ namespace MercadoPagoSDK.Test
             Assert.IsNotEmpty(dummy.GetType().GUID.ToString());
         }
 
+        [Test()]
+        public void ExecuteRequest_Post_MPAPIRequestResponseParser()
+        {
+            MPRESTClient client = new MPRESTClient();
+
+            var jsonObject = new JObject();
+            jsonObject.Add("firstName", "Comander");
+            jsonObject.Add("lastName", "Shepard");
+            jsonObject.Add("year", 2126);
+
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null, 0, 0);
+
+            Assert.AreEqual(200, response.StatusCode);
+
+            JObject jsonResponse = response.JsonObjectResponse;
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
+            Assert.AreEqual("Shepard", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
+            Assert.AreEqual("2126", year.First().ToString());
+        }
+
+        [Test()]
+        public void ExecuteRequest_Get_ShortTimeoutWillFail()
+        {
+            MPRESTClient client = new MPRESTClient();
+
+            var jsonObject = new JObject();
+            jsonObject.Add("firstName", "Comander");
+            jsonObject.Add("lastName", "Shepard");
+            jsonObject.Add("year", 2126);
+
+            try
+            {
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null, 5, 0);
+            }
+            catch
+            {
+                Assert.Pass();
+            }
+
+            Assert.Fail();
+        }
+
+        [Test()]
+        public void ExecuteRequest_Get_ProperTimeoutWillWork()
+        {
+            MPRESTClient client = new MPRESTClient();
+
+            var jsonObject = new JObject();
+            jsonObject.Add("firstName", "Comander");
+            jsonObject.Add("lastName", "Shepard");
+            jsonObject.Add("year", 2126);
+
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null, 2000, 0);
+
+            Assert.AreEqual(200, response.StatusCode);
+
+            JObject jsonResponse = response.JsonObjectResponse;
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
+            Assert.AreEqual("Shepard", lastName.First().ToString());
+
+            List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
+            Assert.AreEqual("2126", year.First().ToString());
+        }
+
         [Idempotent]
         [TestFixture()]
         public class DummyClass : MPBase
@@ -181,28 +246,7 @@ namespace MercadoPagoSDK.Test
                 TransactionAmount = transationAmount;
 
                 Validate(this);
-            }
-
-            public void ExecuteRequest_Post_MPAPIRequestResponseParser()
-            {
-                MPRESTClient client = new MPRESTClient();
-
-                var jsonObject = new JObject();
-                jsonObject.Add("firstName", "Comander");
-                jsonObject.Add("lastName", "Shepard");
-                jsonObject.Add("year", 2126);
-
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null);
-
-                Assert.AreEqual(200, response.StatusCode);
-
-                JObject jsonResponse = response.JsonObjectResponse;
-                List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "lastName");
-                Assert.AreEqual("Shepard", lastName.First().ToString());
-
-                List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "year");
-                Assert.AreEqual("2126", year.First().ToString());
-            }
+            }                       
         }
     }
 }

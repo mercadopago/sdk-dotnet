@@ -46,11 +46,18 @@ namespace MercadoPago
         /// <param name="payload">The data we are sending.</param>
         /// <param name="colHeaders">Extra headers to send with the request.</param>
         /// <returns>Api response with the result of the call.</returns>
-        public MPAPIResponse ExecuteRequest(HttpMethod httpMethod, String uri, PayloadType payloadType, JObject payload, WebHeaderCollection colHeaders)
+        public MPAPIResponse ExecuteRequest(
+            HttpMethod httpMethod, 
+            String uri, 
+            PayloadType payloadType,
+            JObject payload, 
+            WebHeaderCollection colHeaders,
+            int requestTimeout,
+            int retries)
         {
             try
             {
-                return ExecuteRequest(httpMethod, uri, payloadType, payload, colHeaders, 0, 0, 0);
+                return ExecuteRequestCore(httpMethod, uri, payloadType, payload, colHeaders, requestTimeout, retries);
             }
             catch (Exception ex)
             {
@@ -61,28 +68,19 @@ namespace MercadoPago
         /// <summary>
         /// Core module implementation. Execute a request to an endpoint.
         /// </summary>
-        /// <param name="httpMethod">Method to use in the request.</param>
-        /// <param name="uri">Endpoint we are pointing.</param>
-        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
-        /// <param name="payload">The data we are sending.</param>
-        /// <param name="colHeaders">Extra headers to send with the request.</param>
-        /// <param name="retries">Number of retries to do in case of call error.</param>
-        /// <param name="connectionTimeout">Number of miliseconds that the connection lasts.</param>
-        /// <param name="socketTimeout">Socket timeout, detailed in miliseconds.</param>
         /// <returns>Api response with the result of the call.</returns>
-        public MPAPIResponse ExecuteRequest(
+        public MPAPIResponse ExecuteRequestCore(
             HttpMethod httpMethod, 
             string uri,
             PayloadType payloadType, 
             JObject payload, 
-            WebHeaderCollection colHeaders, 
-            int retries, 
-            int connectionTimeout, 
-            int socketTimeout)
+            WebHeaderCollection colHeaders,
+            int connectionTimeout,
+            int retries)
         {
             try
             {
-                MPRequest mpRequest = CreateRequest(httpMethod, uri, payloadType, payload, colHeaders);
+                MPRequest mpRequest = CreateRequest(httpMethod, uri, payloadType, payload, colHeaders, connectionTimeout, retries);
                 string result = string.Empty;
 
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
@@ -92,12 +90,22 @@ namespace MercadoPago
                     requestStream.Close();                  
                 }
 
-                using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
+                try
                 {
-                    return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
-                }  
+                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
+                    {
+                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
+                    }
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
+                        if (--retries == 0)
+                            throw;
 
-                throw new MPRESTException("Method not foud");
+                    return ExecuteRequestCore(httpMethod, uri, payloadType, payload, colHeaders, connectionTimeout, retries);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -108,17 +116,14 @@ namespace MercadoPago
         /// <summary>
         /// Create a request to use in the call to a certain endpoint.
         /// </summary>
-        /// <param name="httpMethod">Method to use in the request.</param>
-        /// <param name="uri">Endpoint we are pointing.</param>
-        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
-        /// <param name="payload">The data we are sending.</param>
-        /// <param name="colHeaders">Extra headers to send with the request.</param>
         /// <returns>Api response with the result of the call.</returns>
         public MPRequest CreateRequest(HttpMethod httpMethod,
             string uri,
             PayloadType payloadType,
             JObject payload,
-            WebHeaderCollection colHeaders)
+            WebHeaderCollection colHeaders,
+            int connectionTimeout,
+            int retries)
         {
 
             if (string.IsNullOrEmpty(uri))
@@ -156,6 +161,11 @@ namespace MercadoPago
             MPRequest mpRequest = new MPRequest();
             mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(uri);
             mpRequest.Request.Method = httpMethod.ToString();
+
+            if(connectionTimeout > 0)
+            {
+                mpRequest.Request.Timeout = connectionTimeout;
+            }            
 
             if (colHeaders != null)
             {
