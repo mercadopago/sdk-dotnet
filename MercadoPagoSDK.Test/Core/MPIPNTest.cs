@@ -85,9 +85,7 @@ namespace MercadoPagoSDK.Test.Core
             MPConf.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            config.Add("accessToken", "TEST-8355802880924986-120615-819fbafd97c7daabde85c7aa97ca4ed5__LB_LC__-236939761");
-            config.Add("appId", "mp-app-236939761");
+            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));            
             MPConf.SetConfiguration(config);
             
             var resource = MPIPN.Manage(MPIPN.Topic.payment, "2278812");
