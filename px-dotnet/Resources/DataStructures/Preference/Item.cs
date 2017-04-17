@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace MercadoPago.Resources.DataStructures.Preference
-{
+{    
     public class Item
     {
         #region Properties
@@ -30,7 +30,7 @@ namespace MercadoPago.Resources.DataStructures.Preference
         #endregion
 
         #region Accessors
-
+       
         public string ID 
         {
             get { return this.id; }

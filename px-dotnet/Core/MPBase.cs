@@ -396,11 +396,21 @@ namespace MercadoPago
                         if (resource != null)
                         {
                             JObject json = JObject.FromObject(resource);
-                            var jValue = json.GetValue(param);
+                            
+                            //Add control to verify JSON's case properties. Must be removed after testing approved status.
+                            var jValueUC = json.GetValue(param.ToUpper());
+                            var jValueLC = json.GetValue(param);
 
-                            if (jValue != null)
+                            if (jValueUC != null)
                             {
-                                value = jValue.ToString();
+                                value = jValueUC.ToString();
+                            }
+                            else
+                            {
+                                if (jValueLC != null)
+                                {
+                                    value = jValueLC.ToString();
+                                }                                
                             }
                         }
                     }

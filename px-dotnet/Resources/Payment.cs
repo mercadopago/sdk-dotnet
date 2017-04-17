@@ -12,27 +12,27 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public static Payment Load(String id) 
+        public Payment Load(String id) 
         {
             return Load(id, WITHOUT_CACHE);
         }
         
-        [GETEndpoint("/v1/payments/:id")]
+        [GETEndpoint("/v1/payment/:id")]
         public static Payment Load(String id, Boolean useCache) 
         {
             return (Payment)ProcessMethod(typeof(Payment), "Load", id, useCache);
         }
         
-        [POSTEndpoint("/v1/payments")]
+        [POSTEndpoint("/v1/payment")]
         public Payment Create()
         {
             return (Payment)ProcessMethod("Create", WITHOUT_CACHE);
         }
         
-        [PUTEndpoint("/v1/payments/:id")]
+        [PUTEndpoint("/v1/payment/:id")]
         public Payment Update()
         {
-            return (Payment)ProcessMethod("Update", WITHOUT_CACHE);
+            return (Payment)ProcessMethod<Payment>("Update", WITHOUT_CACHE);
         }
 
         #endregion
@@ -83,7 +83,7 @@ namespace MercadoPago.Resources
         private decimal couponAmount;
         private int campaignId;
         private string couponCode ;
-        private TransactionDetail transactionDetails;
+        private TransactionDetail transactionDetail;
         private List<FeeDetail> feeDetails;
         private int differentialPricingId;
         private decimal applicationFee;
@@ -246,7 +246,7 @@ namespace MercadoPago.Resources
 
         public TransactionDetail TransactionDetail 
         {
-            get { return this.TransactionDetail; }
+            get { return this.transactionDetail; }
         }
 
         public List<FeeDetail> FeeDetails

@@ -11,27 +11,27 @@ namespace MercadoPago.Resources
     {
         #region Actions
         
-        public static MerchantOrder Load(string id) 
+        public MerchantOrder Load(string id) 
         {
             return Load(id, WITHOUT_CACHE);
         }
 
-        [GETEndpoint("/merchant_orders/:id")]
-        public static MerchantOrder Load(string id, bool useCache)
+        [GETEndpoint("/merchant_order/:id")]
+        public MerchantOrder Load(string id, bool useCache)
         {
             return (MerchantOrder)ProcessMethod(typeof(MerchantOrder), "Load", id, useCache);
         }
         
-        [POSTEndpoint("/merchant_orders")]
-        public MerchantOrder create() 
+        [POSTEndpoint("/merchant_order")]
+        public MerchantOrder Create() 
         {
             return (MerchantOrder)ProcessMethod("Create", WITHOUT_CACHE);
         }
         
-        [PUTEndpoint("/merchant_orders/:id")]
+        [PUTEndpoint("/merchant_order/:id")]
         public MerchantOrder Update() 
         {
-            return (MerchantOrder)ProcessMethod("Update", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE);
         }
 
         #endregion
@@ -71,7 +71,8 @@ namespace MercadoPago.Resources
        
         public string ID
         {
-            get { return id; }            
+            get { return id; }
+            set { this.id = value; } //This Accessor must be removed after testing approvement.
         }
        
         public string PreferenceId
@@ -159,14 +160,13 @@ namespace MercadoPago.Resources
             set { items = value; }
         }
 
-        public MerchantOrder AppendItem(Item item)
+        public void AppendItem(Item item)
         {
             if (items == null)
             {
                 items = new List<Item>();
             }
-            items.Add(item);
-            return this;
+            items.Add(item);            
         }        
 
         public List<Shipment> Shipments
@@ -175,14 +175,13 @@ namespace MercadoPago.Resources
             set { shipments = value; }
         }
 
-        public MerchantOrder AppendShipment(Shipment shipment)
+        public void AppendShipment(Shipment shipment)
         {
             if (shipments == null)
             {
                 shipments = new List<Shipment>();
             }
-            shipments.Add(shipment);
-            return this;
+            shipments.Add(shipment);            
         }
 
         public string NotificationUrl

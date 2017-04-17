@@ -72,8 +72,8 @@ namespace MercadoPago.Resources.DataStructures.MerchantOrder
 
         public DateTime DateCreated
         {
-            get { return DateCreated; }
-            set { DateCreated = value; }
+            get { return dateCreated; }
+            set { dateCreated = value; }
         }
 
         public DateTime LastModified

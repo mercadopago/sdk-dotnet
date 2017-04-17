@@ -11,27 +11,27 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public static Preference Load(string id)
+        public Preference Load(string id)
         {
             return Load(id, WITHOUT_CACHE);
         }
 
-        [GETEndpoint("/checkout/preferences/:id")]
+        [GETEndpoint("/checkout/preference/:id")]
         public static Preference Load(string id, bool useCache)
         {            
             return (Preference)ProcessMethod(typeof(Preference), "Load", id, useCache);
         }
 
-        [POSTEndpoint("/checkout/preferences")]
+        [POSTEndpoint("/checkout/preference")]
         public Preference Create()
         {
             return (Preference)ProcessMethod("Create", WITHOUT_CACHE);
         }
 
-        [PUTEndpoint("/checkout/preferences/:id")]
+        [PUTEndpoint("/checkout/preference/:id")]
         public Preference Update()
         {
-            return (Preference)ProcessMethod("update", WITHOUT_CACHE);
+            return (Preference)ProcessMethod<Preference>("Update", WITHOUT_CACHE);
         }        
                 
         #endregion

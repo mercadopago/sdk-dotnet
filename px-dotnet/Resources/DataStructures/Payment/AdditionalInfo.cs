@@ -19,6 +19,7 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         public List<Item> Items
         {            
+            get { return this.items; } // Must be removed after testing approval.
             set { items = value; }
         }
 
