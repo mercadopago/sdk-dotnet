@@ -9,7 +9,7 @@ namespace MercadoPago.Resources.DataStructures.Customer
     {
         #region Properties
 
-        private string areaCode;
+        private string area_code;
         private string number;
 
         #endregion
@@ -18,8 +18,8 @@ namespace MercadoPago.Resources.DataStructures.Customer
 
         public string AreaCode
         {
-            get { return areaCode; }
-            set { areaCode = value; }
+            get { return area_code; }
+            set { area_code = value; }
         }
 
         public string Number
@@ -28,6 +28,6 @@ namespace MercadoPago.Resources.DataStructures.Customer
             set { number = value; }
         }
 
-        #endregion       
+        #endregion
     }
 }

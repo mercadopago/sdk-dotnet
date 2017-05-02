@@ -10,10 +10,10 @@ namespace MercadoPagoSDK.Test
 {
     [TestFixture()]
     public class MPBaseTest : MPBase
-    {    
+    {
         public static MPBaseTest Load(string id)
         {
-            return (MPBaseTest)ProcessMethod("Load", id, false);
+            return (MPBaseTest)ProcessMethod<MPBaseTest>("Load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/slug")]
@@ -38,7 +38,7 @@ namespace MercadoPagoSDK.Test
             // should never get here
             Assert.Fail();
         }
-     
+
         [Test()]
         public void MPBaseTest_WithAttributes_ShouldFindAttribute()
         {
@@ -54,7 +54,7 @@ namespace MercadoPagoSDK.Test
                 var result = Load_all();
             }
             catch (MPException mpException)
-            {                
+            {
                 Assert.Fail();
                 return;
             }
@@ -82,13 +82,13 @@ namespace MercadoPagoSDK.Test
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass Load(string id)
         {
-            return (DummyClass)ProcessMethod("Load", id, false);
+            return (DummyClass)ProcessMethod<DummyClass>("Load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass LoadWithCache(string id, bool useCache)
         {
-            return (DummyClass)ProcessMethod("Load", id, useCache);
+            return (DummyClass)ProcessMethod<DummyClass>("Load", id, useCache);
         }
 
         [POSTEndpoint("/v1/postpath/slug")]
@@ -109,7 +109,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
             var firstResult = LoadWithCache("1234", true);
-            
+
             Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
         }
 
@@ -140,7 +140,7 @@ namespace MercadoPagoSDK.Test
 
             var firstCachedResult = LoadWithCache("123", true);
             var secondCachedResult = LoadWithCache("456", true);
-            var thirdCachedResult = LoadWithCache("789", true);            
+            var thirdCachedResult = LoadWithCache("789", true);
 
             Assert.IsTrue(firstCachedResult.LastApiResponse.isFromCache);
             Assert.IsTrue(secondCachedResult.LastApiResponse.isFromCache);
@@ -187,7 +187,7 @@ namespace MercadoPagoSDK.Test
             {
                 Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
                 return;
-            }            
+            }
         }
 
         [Test()]
@@ -205,7 +205,7 @@ namespace MercadoPagoSDK.Test
 
             // should never get here
             Assert.Fail();
-        }      
+        }
 
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
@@ -220,9 +220,9 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                var result = Load("1234");                
+                var result = Load("1234");
             }
-            catch 
+            catch
             {
                 // should never get here
                 Assert.Fail();
@@ -230,7 +230,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Pass();
-        }        
+        }
 
         [Test()]
         public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
@@ -245,7 +245,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch  
+            catch
             {
                 // should never get here
                 Assert.Fail();
@@ -259,19 +259,19 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_Create_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");            
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
 
-            DummyClass resource = new DummyClass();           
+            DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
-            resource.email = "fake@email.com";            
-                        
+            resource.email = "fake@email.com";
+
             DummyClass result = new DummyClass();
             try
             {
                 result = resource.Create();
             }
             catch
-            {                
+            {
                 Assert.Fail();
                 return;
             }
@@ -284,7 +284,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_Update_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");            
+            MPConf.SetBaseUrl("https://api.mercadopago.com");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -318,7 +318,7 @@ namespace MercadoPagoSDK.Test
                 Assert.AreEqual("No annotated method found", mpException.Message);
                 return;
             }
-            
+
             Assert.Fail();
         }
     }
@@ -349,7 +349,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Fail();
-        }        
+        }
 
         [Test()]
         public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
@@ -422,7 +422,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // should never get here
                 Assert.Fail();
@@ -481,7 +481,7 @@ namespace MercadoPagoSDK.Test
         [GETEndpoint("/getpath/load/:id", requestTimeout: 5, retries: 3)]
         public ResourceTestClass Load(string id)
         {
-            return (ResourceTestClass)ProcessMethod("Load", id, false);
+            return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Load", id, false);
         }
 
         [POSTEndpoint("/post", requestTimeout: 2000, retries: 0)]
@@ -547,5 +547,5 @@ namespace MercadoPagoSDK.Test
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Holder");
             Assert.AreEqual("Wayne", year.First().ToString());
         }
-    }  
+    }
 }

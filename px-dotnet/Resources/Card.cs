@@ -6,8 +6,51 @@ using System.Text;
 
 namespace MercadoPago.Resources
 {
-    public class Card
+    public class Card : MPBase
     {
+        #region Actions
+
+        public static List<Card> loadAll(String customerId) {
+            return LoadAll(customerId, WITHOUT_CACHE);
+        }
+        
+        [GETEndpoint("/v1/customers/:customer_id/cards")]
+        public static List<Card> LoadAll(String customerId, Boolean useCache)
+        {
+            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "LoadAll", customerId, useCache);
+        }
+
+        public static Card Load(string customerId, string id)
+        {
+            return Load(customerId, id, WITHOUT_CACHE);
+        }
+
+        [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
+        public static Card Load(string customerId, string id, bool useCache)
+        {            
+            return (Card)ProcessMethod<Card>(typeof(Card), "Load", customerId, id, useCache);
+        }
+
+        [POSTEndpoint("/v1/customers/:customer_id/cards/")]
+        public Card Create()
+        {
+            return (Card)ProcessMethod("Create", WITHOUT_CACHE);
+        }
+
+        [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]
+        public Card Update()
+        {
+            return (Card)ProcessMethod("Update", WITHOUT_CACHE);
+        }
+
+        [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
+        public Card Delete()
+        {
+            return (Card)ProcessMethod("Delete", WITHOUT_CACHE);
+        }
+
+        #endregion
+
         #region Properties
 
         private string token;
@@ -21,8 +64,8 @@ namespace MercadoPago.Resources
         private SecurityCode securityCode;
         private Issuer issuer;
         private CardHolder cardHolder;
-        private DateTime dateCreated;
-        private DateTime dateLastUpdated;
+        private DateTime? dateCreated;
+        private DateTime? dateLastUpdated;
 
         #endregion
 
@@ -38,7 +81,7 @@ namespace MercadoPago.Resources
         {
             get { return id; }
             set { id = value; }
-        }        
+        }
 
         public string CustomerId
         {
@@ -94,13 +137,13 @@ namespace MercadoPago.Resources
             set { cardHolder = value; }
         }
 
-        public DateTime DateCreated
+        public DateTime? DateCreated
         {
             get { return dateCreated; }
             set { dateCreated = value; }
         }
 
-        public DateTime DateLastUpdated
+        public DateTime? DateLastUpdated
         {
             get { return dateLastUpdated; }
             set { dateLastUpdated = value; }

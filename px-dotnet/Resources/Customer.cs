@@ -7,11 +7,22 @@ using System.Linq;
 using System.Text;
 
 namespace MercadoPago
-{
+{    
     public class Customer : MPBase
     {
         #region Actions
-        
+
+        public static List<Customer> Search()
+        {
+            return Search(WITHOUT_CACHE);
+        }
+
+        [GETEndpoint("/v1/customers/search")]
+        public static List<Customer> Search(Boolean useCache)
+        {
+            return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", useCache);
+        }
+
         /// <summary>
         /// Loads specified customer by ID.
         /// </summary>
@@ -21,38 +32,62 @@ namespace MercadoPago
         [GETEndpoint("/v1/customers/:id")]
         public static Customer Load(string id, bool useCache)
         {
-            return (Customer)ProcessMethod("load", "id", useCache);
+            return (Customer)ProcessMethod<Customer>("Load", id, useCache);
         }
-        
+
+        public static Customer Load(String id)
+        {
+            return Load(id, WITHOUT_CACHE);
+        }
+
+        [POSTEndpoint("/v1/customers")]
+        public Customer Create()
+        {
+            return (Customer)ProcessMethod<Customer>("Create", WITHOUT_CACHE);
+        }
+
+        [PUTEndpoint("/v1/customers/:id")]
+        public Customer Update()
+        {
+            return (Customer)ProcessMethod<Customer>("Update", WITHOUT_CACHE);
+        }
+
+        [DELETEEndpoint("/v1/customers/:id")]
+        public Customer Delete()
+        {
+            return (Customer)ProcessMethod("Delete", WITHOUT_CACHE);
+        }
+
         #endregion
-        
+
         #region Properties
 
-        private string id;        
-        private string email;        
-        private string firstName;
-        private string lastName;       
-        private Phone phone;        
-        private Identification identification;        
-        private string defaultAddress;        
-        private DefaultAddress address;        
-        private DateTime dateRegistered;        
-        private string description;        
-        private DateTime dateCreated;        
-        private DateTime dateLastUpdated;        
-        private JObject metadata;        
-        private string defaultCard;        
-        private List<Card> cards;        
-        private List<Address> addresses;        
-        private bool liveMode;        
-        
+        private string id;
+        private string email;
+        private string first_name;
+        private string last_name;
+        private Phone phone;
+        private Identification identification;
+        private string default_address;
+        private DefaultAddress address;
+        private DateTime? date_registered;
+        private string description;
+        private DateTime? date_created;
+        private DateTime? date_last_updated;
+        private JObject metadata;
+        private string default_card;
+        private List<Card> cards;
+        private List<Address> addresses;
+        private bool? live_mode;
+
         #endregion
 
         #region Accessors
 
-        public string getId()
+        public string ID
         {
-            return id;
+            get { return id; }
+            set { id = value; }
         }
 
         public string Email
@@ -63,14 +98,14 @@ namespace MercadoPago
 
         public string FirstName
         {
-            get { return firstName; }
-            set { firstName = value; }
+            get { return first_name; }
+            set { last_name = value; }
         }
 
         public string LastName
         {
-            get { return lastName; }
-            set { lastName = value; }
+            get { return last_name; }
+            set { last_name = value; }
         }
 
         public Phone Phone
@@ -87,8 +122,8 @@ namespace MercadoPago
 
         public string DefaultAddress
         {
-            get { return defaultAddress; }
-            set { defaultAddress = value; }
+            get { return default_address; }
+            set { default_address = value; }
         }
 
         public DefaultAddress Address
@@ -97,10 +132,10 @@ namespace MercadoPago
             set { address = value; }
         }
 
-        public DateTime DateRegistered
+        public DateTime? DateRegistered
         {
-            get { return dateRegistered; }
-            set { dateRegistered = value; }
+            get { return date_registered; }
+            set { date_registered = value; }
         }
 
         public string Description
@@ -109,16 +144,16 @@ namespace MercadoPago
             set { description = value; }
         }
 
-        public DateTime DateCreated
+        public DateTime? DateCreated
         {
-            get { return dateCreated; }
-            set { dateCreated = value; }
+            get { return date_created; }
+            set { date_created = value; }
         }
 
-        public DateTime DateLastUpdated
+        public DateTime? DateLastUpdated
         {
-            get { return dateLastUpdated; }
-            set { dateLastUpdated = value; }
+            get { return date_last_updated; }
+            set { date_last_updated = value; }
         }
 
         public JObject Metadata
@@ -129,8 +164,8 @@ namespace MercadoPago
 
         public string DefaultCard
         {
-            get { return defaultCard; }
-            set { defaultCard = value; }
+            get { return default_card; }
+            set { default_card = value; }
         }
 
         public List<Card> Cards
@@ -145,12 +180,12 @@ namespace MercadoPago
             set { addresses = value; }
         }
 
-        public bool LiveMode
+        public bool? LiveMode
         {
-            get { return liveMode; }
-            set { liveMode = value; }
+            get { return live_mode; }
+            set { live_mode = value; }
         }
 
-        #endregion        
+        #endregion
     }
 }

@@ -40,10 +40,10 @@ namespace MercadoPago.Resources
         #region Properties
 
         private string id ;
-        private DateTime dateTimeCreated;
-        private DateTime dateTimeApproved;
-        private DateTime dateTimeLastUpdateTimed;
-        private DateTime moneyReleaseDateTime;
+        private DateTime? dateTimeCreated;
+        private DateTime? dateTimeApproved;
+        private DateTime? dateTimeLastUpdateTimed;
+        private DateTime? moneyReleaseDateTime;
         private int collectorId ;
 
         public enum OperationType {regular_payment,
@@ -58,8 +58,8 @@ namespace MercadoPago.Resources
         private OperationType operationType;
         
         private Payer payer;
-        private bool binaryMode ;
-        private bool liveMode ;
+        private bool? binaryMode ;
+        private bool? liveMode ;
         private Order order ;
         private string externalReference;
         private string description;
@@ -78,15 +78,15 @@ namespace MercadoPago.Resources
         
         [StringLength(3)]
         private CurrencyId currencyId ;        
-        private decimal transactionAmount ;
-        private decimal transactionAmountRefunded;
-        private decimal couponAmount;
-        private int campaignId;
+        private decimal? transactionAmount ;
+        private decimal? transactionAmountRefunded;
+        private decimal? couponAmount;
+        private int? campaignId;
         private string couponCode ;
         private TransactionDetail transactionDetail;
         private List<FeeDetail> feeDetails;
-        private int differentialPricingId;
-        private decimal applicationFee;
+        private int? differentialPricingId;
+        private decimal? applicationFee;
         
         public enum Status {
             pending,
@@ -102,8 +102,8 @@ namespace MercadoPago.Resources
 
         private Status status ;        
         private string statusDetail ;
-        private bool capture ;
-        private bool captured ;
+        private bool? capture ;
+        private bool? captured ;
         private string callForAuthorizeId ;
         private string paymentMethodId ;
         private string issuerId ;
@@ -125,7 +125,7 @@ namespace MercadoPago.Resources
         private string statementDescriptor ;
         [RegularExpression(@"^\n+\.\d{0,0}$")]
         [Range(0, 9)]
-        private int installment ;
+        private int? installment ;
         private string notificationUrl ;
         private List<Refund> refunds ;
         private AdditionalInfo additionalInfo ;
@@ -140,25 +140,25 @@ namespace MercadoPago.Resources
             set { this.id = value; }
         }
 
-        public DateTime DateTimeCreated 
+        public DateTime? DateTimeCreated 
         {
             get { return this.dateTimeCreated; }
             set { this.dateTimeCreated = value; }
         }
 
-        public DateTime DateTimeApproved
+        public DateTime? DateTimeApproved
         {
             get { return this.dateTimeApproved; }
             set { this.dateTimeApproved = value; }
         }
 
-        public DateTime DateTimeLastUpdateTimed
+        public DateTime? DateTimeLastUpdateTimed
         {
             get { return this.dateTimeLastUpdateTimed; }
             set { this.dateTimeLastUpdateTimed = value ; }
         }
 
-        public DateTime MoneyReleaseDateTime
+        public DateTime? MoneyReleaseDateTime
         {
             get { return this.moneyReleaseDateTime; }
             set { this.moneyReleaseDateTime = value; }
@@ -176,13 +176,13 @@ namespace MercadoPago.Resources
             set { this.payer = value; }
         }
 
-        public bool BinaryMode
+        public bool? BinaryMode
         {
             get { return this.binaryMode; }
             set { this.binaryMode = value; }
         }
 
-        public bool LiveMode
+        public bool? LiveMode
         {
             get { return this.liveMode; }
             set { this.liveMode = value; }
@@ -217,18 +217,18 @@ namespace MercadoPago.Resources
             get { return this.currencyId; }
         }
 
-        public decimal TransactionAmount
+        public decimal? TransactionAmount
         {
             get { return this.transactionAmount; }
             set { this.transactionAmount = value; }
         }
 
-        public decimal TransactionAmountRefunded
+        public decimal? TransactionAmountRefunded
         {
             get { return this.transactionAmountRefunded; }
         }
 
-        public decimal CouponAmount
+        public decimal? CouponAmount
         {
             get { return this.couponAmount; }
             set { this.couponAmount = value; }
@@ -254,7 +254,7 @@ namespace MercadoPago.Resources
             get { return this.feeDetails; }
         }
 
-        public int DifferentialPricingId
+        public int? DifferentialPricingId
         {
             get { return this.differentialPricingId; }
             set { this.differentialPricingId = value; }
@@ -280,7 +280,7 @@ namespace MercadoPago.Resources
             set { this.capture = value; }
         }
 
-        public bool Captured
+        public bool? Captured
         {
             get { return this.captured; }
         }
@@ -324,7 +324,7 @@ namespace MercadoPago.Resources
             set { this.statementDescriptor = value; }
         }
 
-        public int Installment
+        public int? Installment
         {
             get { return this.installment; }
             set { this.installment = value; }

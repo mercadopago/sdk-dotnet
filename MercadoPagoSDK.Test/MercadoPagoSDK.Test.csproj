@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Core\MPBaseTest.cs" />
     <Compile Include="Core\MPIPNTest.cs" />
+    <Compile Include="FullIntegrationTest.cs" />
     <Compile Include="MPConfTest.cs" />
     <Compile Include="Exceptions\MPExceptionTest.cs" />
     <Compile Include="Net\MPRESTClientTest.cs" />
