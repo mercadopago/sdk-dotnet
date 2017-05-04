@@ -105,8 +105,8 @@ namespace MercadoPago
         public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param1", param1);
-            mapParams.Add("param2", param2);
+            mapParams.Add("param0", param1);
+            mapParams.Add("param1", param2);
 
             return ProcessMethod<T>(clazz, null, methodName, mapParams, useCache);
         }
@@ -215,8 +215,8 @@ namespace MercadoPago
 
             WebHeaderCollection colHeaders = new WebHeaderCollection();
 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
-
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);            
+            
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
             {
@@ -264,7 +264,20 @@ namespace MercadoPago
             if (response.JsonObjectResponse != null &&
                     response.JsonObjectResponse is JObject)
             {
-                JObject jsonObject = (JObject)response.JsonObjectResponse;
+                JObject jsonObject = null;
+
+                //Added as a workaround to manage the Httpbin response and allow the framework to bind correctly to the resource.
+                //Must be removed after testing approvement.
+                if (response.Url.Contains("https://httpbin.org") && response.HttpMethod == "POST")
+                {
+                    string responseDataJson = response.JsonObjectResponse["data"].ToString();
+                    jsonObject = JObject.Parse(responseDataJson);
+                }
+                else
+                {
+                    jsonObject = (JObject)response.JsonObjectResponse;
+                }
+
                 T resourceObject = (T)MPCoreUtils.GetResourceFromJson<T>(resource.GetType(), jsonObject);
                 resource = (T)FillResource(resourceObject, resource);
                 resource.LastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
@@ -306,7 +319,10 @@ namespace MercadoPago
             {
                 try
                 {
-                    FieldInfo originField = sourceResource.GetType().GetField(field.Name, BindingFlags.Instance | BindingFlags.NonPublic);
+                    FieldInfo originField = sourceResource.GetType().GetField(field.Name, BindingFlags.Instance |
+                                                                                   BindingFlags.Static |
+                                                                                   BindingFlags.NonPublic |
+                                                                                   BindingFlags.Public);
                     field.SetValue(destinationResource, originField.GetValue(sourceResource));
 
                 }

@@ -10,7 +10,8 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public static List<Card> loadAll(String customerId) {
+        public static List<Card> LoadAll(String customerId)
+        {
             return LoadAll(customerId, WITHOUT_CACHE);
         }
         
@@ -34,13 +35,13 @@ namespace MercadoPago.Resources
         [POSTEndpoint("/v1/customers/:customer_id/cards/")]
         public Card Create()
         {
-            return (Card)ProcessMethod("Create", WITHOUT_CACHE);
+            return (Card)ProcessMethod<Card>("Create", WITHOUT_CACHE);
         }
 
         [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]
         public Card Update()
         {
-            return (Card)ProcessMethod("Update", WITHOUT_CACHE);
+            return (Card)ProcessMethod<Card>("Update", WITHOUT_CACHE);
         }
 
         [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
@@ -83,7 +84,7 @@ namespace MercadoPago.Resources
             set { id = value; }
         }
 
-        public string CustomerId
+        public string customer_id
         {
             get { return customerId; }
             set { customerId = value; }

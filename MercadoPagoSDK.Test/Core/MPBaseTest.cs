@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace MercadoPagoSDK.Test
 {
@@ -390,12 +391,32 @@ namespace MercadoPagoSDK.Test
 
     [Idempotent]
     [UserToken("as987ge9ev6s5df4g32z1xv54654")]
-    [TestFixture()]
+    [TestFixture()]    
     public class CustomerTestClass : MPBase
     {
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
+        public string Name;
+
+        public string LastName;
+
+        public int Age;
+
+        public string name
+        {
+            get { return Name; }
+            set { this.Name = value; }
+        }
+
+        public string lastName
+        {
+            get { return LastName; }
+            set { this.LastName = value; }
+        }
+
+        public int age
+        {
+            get { return Age; }
+            set { this.Age = value; }
+        }
 
         [POSTEndpoint("/post")]
         public CustomerTestClass Create()
@@ -433,7 +454,7 @@ namespace MercadoPagoSDK.Test
             Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
             Assert.AreEqual("Bruce", result.Name);
             Assert.AreEqual("Wayne", result.LastName);
-            Assert.AreEqual(45, result.Age);
+            Assert.AreEqual(45, result.age);
         }
 
         [Test()]
@@ -443,9 +464,9 @@ namespace MercadoPagoSDK.Test
             MPConf.SetBaseUrl("https://httpbin.org");
 
             CustomerTestClass resource = new CustomerTestClass();
-            resource.Name = "Bruce";
-            resource.LastName = "Wayne";
-            resource.Age = 45;
+            resource.name = "Bruce";
+            resource.lastName = "Wayne";
+            resource.age = 45;
 
             CustomerTestClass result = new CustomerTestClass();
             try

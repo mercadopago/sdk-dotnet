@@ -19,10 +19,7 @@ namespace MercadoPagoSDK.Test
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
-            MPConf.AccessToken = "TEST-8876669324953893-042713-c02e3e934c654495202e2c06c61b26de__LC_LB__-194275989";
-            //config.Add("clientSecret", "Y2Oy31v1myOFK6wGjJsXY4DOZRwnxZuN");
-            //config.Add("clientId", "8876669324953893");            
-            //MPConf.SetConfiguration(config);
+            MPConf.AccessToken = "TEST-8876669324953893-042713-c02e3e934c654495202e2c06c61b26de__LC_LB__-194275989";            
 
             Customer customer = new Customer();
 
@@ -35,8 +32,7 @@ namespace MercadoPagoSDK.Test
             Customer customerResult = new Customer();
 
             customer = customer.Create();
-
-            //customer = customer.GetLastApiResponse().JsonObjectResponse.ToObject<Customer>();
+            
             var newCustomerTwo = (Customer)customer.GetLastApiResponse().JsonObjectResponse.ToObject<Customer>();
             var newCustomer = JsonConvert.DeserializeObject<Customer>(customer.GetLastApiResponse().JsonObjectResponse.ToString());
             Assert.AreEqual(201, customer.GetLastApiResponse().StatusCode);
@@ -53,7 +49,7 @@ namespace MercadoPagoSDK.Test
             customer = Customer.Load(customer.ID, MPBase.WITH_CACHE);
             Assert.IsTrue(customer.GetLastApiResponse().isFromCache);
 
-
+            //Give a 401 error.
             //List<Customer> resourceArray = null;
             //resourceArray = Customer.Search(MPBase.WITH_CACHE);
             //Assert.AreEqual(200, resourceArray.FirstOrDefault().GetLastApiResponse().StatusCode);
