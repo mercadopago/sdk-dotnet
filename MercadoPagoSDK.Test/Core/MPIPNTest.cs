@@ -79,14 +79,14 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void MPIPN_ShouldBeOk()
         { 
-            MPConf.CleanConfiguration();            
+            SDK.CleanConfiguration();            
 
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));            
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
             
             var resource = MPIPN.Manage(MPIPN.Topic.payment, "2278812");
             Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));           

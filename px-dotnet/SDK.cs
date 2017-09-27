@@ -5,7 +5,7 @@ using System.Configuration;
 
 namespace MercadoPago
 {
-    public class MPConf
+    public class SDK
     {
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
                 

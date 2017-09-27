@@ -15,13 +15,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Payment_LoadShouldbeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Payment paymentInternal = new Payment();
             try
@@ -39,13 +39,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Payment_UpdateShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Payment PaymentInternal = new Payment() { ID = "1" };
 
@@ -83,13 +83,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Payment_CreateShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Payment PaymentInternal = new Payment();
 

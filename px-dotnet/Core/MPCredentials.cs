@@ -14,20 +14,20 @@ namespace MercadoPago
         /// <returns>Access token.</returns>
         public static string GetAccessToken()
         {
-            if (string.IsNullOrEmpty(MPConf.ClientId) || string.IsNullOrEmpty(MPConf.ClientSecret))
+            if (string.IsNullOrEmpty(SDK.ClientId) || string.IsNullOrEmpty(SDK.ClientSecret))
             {
                 throw new MPException("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"");
             }
 
             JObject jsonPayload = new JObject();
             jsonPayload.Add("grant_type", "client_credentials");
-            jsonPayload.Add("client_id", MPConf.ClientId);
-            jsonPayload.Add("client_secret", MPConf.ClientSecret);
+            jsonPayload.Add("client_id", SDK.ClientId);
+            jsonPayload.Add("client_secret", SDK.ClientSecret);
 
             string access_token, refresh_token = null;
             MPAPIResponse response = new MPRESTClient().ExecuteRequest(
                     HttpMethod.POST,
-                    MPConf.BaseUrl + "/oauth/token",
+                    SDK.BaseUrl + "/oauth/token",
                     PayloadType.X_WWW_FORM_URLENCODED,
                     jsonPayload,
                     null, 
@@ -58,7 +58,7 @@ namespace MercadoPago
                 throw new MPException("Can not retrieve the \"access_token\"");
             }
 
-            MPConf.RefreshToken = refresh_token;
+            SDK.RefreshToken = refresh_token;
             return access_token;
         }
 
@@ -68,20 +68,20 @@ namespace MercadoPago
         /// <returns>Refreshed access token</returns>
         public static string RefreshAccessToken()
         {
-            if (string.IsNullOrEmpty(MPConf.RefreshToken))
+            if (string.IsNullOrEmpty(SDK.RefreshToken))
             {
                 throw new MPException("\"RefreshToken\" can not be \"null\". Refresh access token could not be completed.");
             }
 
             JObject jsonPayload = new JObject();
-            jsonPayload.Add("client_secret", MPConf.ClientSecret);
+            jsonPayload.Add("client_secret", SDK.ClientSecret);
             jsonPayload.Add("grant_type", "refresh_token");
-            jsonPayload.Add("refresh_token", MPConf.RefreshToken);
+            jsonPayload.Add("refresh_token", SDK.RefreshToken);
 
             string new_access_token = null;
             MPAPIResponse response = new MPRESTClient().ExecuteRequest(
                     HttpMethod.POST,
-                    MPConf.BaseUrl + "/oauth/token",
+                    SDK.BaseUrl + "/oauth/token",
                     PayloadType.X_WWW_FORM_URLENCODED,
                     jsonPayload,
                     null,
