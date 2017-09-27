@@ -14,13 +14,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Preference_LoadShouldbeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Preference preferenceInternal = new Preference();
             try
@@ -38,13 +38,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Preference_UpdateShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Preference preferenceInternal = new Preference() { ID = "1" };
 
@@ -82,13 +82,13 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Preference_CreateShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             Preference PreferenceInternal = new Preference();
 

@@ -449,7 +449,7 @@ namespace MercadoPago
                 result.Append(path);
             }
 
-            result.Insert(0, MPConf.BaseUrl);
+            result.Insert(0, SDK.BaseUrl);
 
             string accessToken = null;            
 
@@ -459,7 +459,7 @@ namespace MercadoPago
             }
             else
             {
-                accessToken = MPConf.GetAccessToken();
+                accessToken = SDK.GetAccessToken();
             }
 
             if (!string.IsNullOrEmpty(accessToken))
