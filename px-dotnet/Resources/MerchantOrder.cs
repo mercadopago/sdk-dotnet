@@ -40,8 +40,8 @@ namespace MercadoPago.Resources
 
         private string id;
         private string preferenceId;
-        private DateTime dateCreated;
-        private DateTime lastUpdate;
+        private DateTime? dateCreated;
+        private DateTime? lastUpdate;
         private string applicationId;
         private string status;
         private string siteId;
@@ -49,10 +49,10 @@ namespace MercadoPago.Resources
         private Collector collector;
         private int sponsorId;
         private List<MerchantOrderPayment> payments;
-        private decimal paidAmount;
-        private decimal refundedAmount;
-        private decimal shippingCost;
-        private bool cancelled;
+        private decimal? paidAmount;
+        private decimal? refundedAmount;
+        private decimal? shippingCost;
+        private bool? cancelled;
         private List<Item> items;
         private List<Shipment> shipments;
         [StringLength(500)]
@@ -63,7 +63,7 @@ namespace MercadoPago.Resources
         private string externalReference;
         [StringLength(256)]
         private string marketplace;
-        private decimal totalAmount;
+        private decimal? totalAmount;
 
         #endregion
 
@@ -81,14 +81,14 @@ namespace MercadoPago.Resources
             set { preferenceId = value; }
         }        
 
-        public DateTime DateCreated
+        public DateTime? DateCreated
         {
             get { return dateCreated; }            
         }
 
         
 
-        public DateTime LastUpdate
+        public DateTime? LastUpdate
         {
             get { return lastUpdate; }            
         }
@@ -133,22 +133,22 @@ namespace MercadoPago.Resources
             get { return payments; }            
         }        
 
-        public decimal PaidAmount
+        public decimal? PaidAmount
         {
             get { return paidAmount; }            
         }
        
-        public decimal RefundedAmount
+        public decimal? RefundedAmount
         {
             get { return refundedAmount; }            
         }
 
-        public decimal ShippingCost
+        public decimal? ShippingCost
         {
             get { return shippingCost; }            
         }
 
-        public bool Cancelled
+        public bool? Cancelled
         {
             get { return cancelled; }
             set { cancelled = value; }
@@ -208,7 +208,7 @@ namespace MercadoPago.Resources
             set { marketplace = value; }
         }
        
-        public decimal TotalAmount
+        public decimal? TotalAmount
         {
             get { return totalAmount; }
         }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -63,7 +64,21 @@ namespace MercadoPago
         /// <returns>an object obteined from obj</returns>
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
+            var resource = (T)jObj.ToObject<T>();
+            dynamic resourceDynamic = JsonConvert.DeserializeObject(jObj.ToString());
             return (T)jObj.ToObject<T>();
         }
+
+        public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
+        {
+            JArray jsonArray = null;
+            if (jsonElement is JObject)
+            {
+                jsonArray = (JArray)jsonElement.ToString();
+            }
+
+            return jsonArray;
+        }
+
     }
 }

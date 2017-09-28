@@ -14,17 +14,17 @@ namespace MercadoPago.Resources.DataStructures.Customer
         private string name;
         private string floor;
         private string apartment;
-        private string streetName;
-        private string streetNumber;
-        private string zipCode;
+        private string street_name;
+        private string street_number;
+        private string zip_code;
         private City city;
         private State state;
         private Country country;
         private Neighborhood neighborhood;
         private Municipality municipality;
         private string comments;
-        private DateTime dateCreated;
-        private List<Verification> verifications;        
+        private DateTime date_created;
+        private List<Verification> verifications;
 
         #endregion
 
@@ -32,82 +32,82 @@ namespace MercadoPago.Resources.DataStructures.Customer
 
         public string ID
         {
-            get { return id; }            
+            get { return id; }
         }
 
         public string Phone
         {
-            get { return phone; }            
+            get { return phone; }
         }
 
         public string Name
         {
-            get { return name; }            
+            get { return name; }
         }
 
         public string Floor
         {
-            get { return floor; }            
+            get { return floor; }
         }
 
         public string Apartment
         {
-            get { return apartment; }            
+            get { return apartment; }
         }
 
         public string StreetName
         {
-            get { return streetName; }            
+            get { return street_name; }
         }
 
         public string StreetNumber
         {
-            get { return streetNumber; }            
+            get { return street_number; }
         }
 
         public string ZipCode
         {
-            get { return zipCode; }            
+            get { return zip_code; }
         }
 
         public City City
         {
-            get { return city; }            
+            get { return city; }
         }
 
         public State State
         {
-            get { return state; }            
+            get { return state; }
         }
 
         public Country Country
         {
-            get { return country; }            
+            get { return country; }
         }
 
         public Neighborhood Neighborhood
         {
-            get { return neighborhood; }            
+            get { return neighborhood; }
         }
 
         public Municipality Municipality
         {
-            get { return municipality; }            
+            get { return municipality; }
         }
 
         public string Comments
         {
-            get { return comments; }            
+            get { return comments; }
         }
 
         public DateTime DateCreated
         {
-            get { return dateCreated; }            
+            get { return date_created; }
         }
 
         public List<Verification> Verifications
         {
-            get { return verifications; }            
+            get { return verifications; }
         }
 
         #endregion

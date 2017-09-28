@@ -49,7 +49,7 @@ namespace MercadoPago.Resources
         private string id;
         private string initPoint;
         private string sandboxInitPoint;
-        private DateTime dateCreated;
+        private DateTime? dateCreated;
 
         public enum OperationTypes
         {
@@ -64,11 +64,11 @@ namespace MercadoPago.Resources
         private AutoReturnTypes autoReturn;
         [StringLength(256)]
         private string externalReference;
-        private bool expires;
-        private DateTime expirationDateFrom;
-        private DateTime expirationDateTo;
-        private int collectorId;
-        private int clientId;
+        private bool? expires;
+        private DateTime? expirationDateFrom;
+        private DateTime? expirationDateTo;
+        private int? collectorId;
+        private int? clientId;
 
         [StringLength(256)]
         private string marketplace;
@@ -133,7 +133,7 @@ namespace MercadoPago.Resources
             set { this.sandboxInitPoint = value; } 
         }
 
-        public DateTime DateCreated 
+        public DateTime? DateCreated 
         { 
             get { return this.dateCreated; } 
             set { this.dateCreated = value; } 
@@ -165,31 +165,31 @@ namespace MercadoPago.Resources
             set { this.externalReference = value; } 
         }
 
-        public bool Expires 
+        public bool? Expires 
         { 
             get { return this.expires; } 
             set { this.expires = value; } 
         }
 
-        public DateTime ExpirationDateFrom 
+        public DateTime? ExpirationDateFrom 
         { 
             get { return this.expirationDateFrom; } 
             set { this.expirationDateFrom = value; } 
         }
         
-        public DateTime ExpirationDateTo 
+        public DateTime? ExpirationDateTo 
         { 
             get { return this.expirationDateTo; } 
             set { this.expirationDateTo = value; } 
         }
 
-        public int CollectorId 
+        public int? CollectorId 
         { 
             get { return this.collectorId; } 
             set { this.collectorId = value; } 
         }
         
-        public int ClientId 
+        public int? ClientId 
         { 
             get { return this.clientId; } 
             set { this.clientId = value; } 

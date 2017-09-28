@@ -65,11 +65,11 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage("MercadoPago.Resources.Card", "1234567");
+                MPIPN.Manage("MercadoPago.Resources.DataStructures.Customer.City", "1234567");
             }
             catch (MPException ex)
             {
-                Assert.AreEqual("Card does not extend from MPBase", ex.Message);
+                Assert.AreEqual("City does not extend from MPBase", ex.Message);
                 return;
             }
 

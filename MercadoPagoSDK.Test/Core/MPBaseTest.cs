@@ -5,15 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace MercadoPagoSDK.Test
 {
     [TestFixture()]
     public class MPBaseTest : MPBase
-    {    
+    {
         public static MPBaseTest Load(string id)
         {
-            return (MPBaseTest)ProcessMethod("Load", id, false);
+            return (MPBaseTest)ProcessMethod<MPBaseTest>("Load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/slug")]
@@ -38,7 +39,7 @@ namespace MercadoPagoSDK.Test
             // should never get here
             Assert.Fail();
         }
-     
+
         [Test()]
         public void MPBaseTest_WithAttributes_ShouldFindAttribute()
         {
@@ -54,7 +55,7 @@ namespace MercadoPagoSDK.Test
                 var result = Load_all();
             }
             catch (MPException mpException)
-            {                
+            {
                 Assert.Fail();
                 return;
             }
@@ -82,13 +83,13 @@ namespace MercadoPagoSDK.Test
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass Load(string id)
         {
-            return (DummyClass)ProcessMethod("Load", id, false);
+            return (DummyClass)ProcessMethod<DummyClass>("Load", id, false);
         }
 
         [GETEndpoint("/v1/getpath/load/:id")]
         public static DummyClass LoadWithCache(string id, bool useCache)
         {
-            return (DummyClass)ProcessMethod("Load", id, useCache);
+            return (DummyClass)ProcessMethod<DummyClass>("Load", id, useCache);
         }
 
         [POSTEndpoint("/v1/postpath/slug")]
@@ -109,7 +110,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
             var firstResult = LoadWithCache("1234", true);
-            
+
             Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
         }
 
@@ -140,7 +141,7 @@ namespace MercadoPagoSDK.Test
 
             var firstCachedResult = LoadWithCache("123", true);
             var secondCachedResult = LoadWithCache("456", true);
-            var thirdCachedResult = LoadWithCache("789", true);            
+            var thirdCachedResult = LoadWithCache("789", true);
 
             Assert.IsTrue(firstCachedResult.LastApiResponse.isFromCache);
             Assert.IsTrue(secondCachedResult.LastApiResponse.isFromCache);
@@ -187,7 +188,7 @@ namespace MercadoPagoSDK.Test
             {
                 Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
                 return;
-            }            
+            }
         }
 
         [Test()]
@@ -205,7 +206,7 @@ namespace MercadoPagoSDK.Test
 
             // should never get here
             Assert.Fail();
-        }      
+        }
 
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
@@ -220,9 +221,9 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                var result = Load("1234");                
+                var result = Load("1234");
             }
-            catch 
+            catch
             {
                 // should never get here
                 Assert.Fail();
@@ -230,7 +231,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Pass();
-        }        
+        }
 
         [Test()]
         public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
@@ -245,7 +246,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch  
+            catch
             {
                 // should never get here
                 Assert.Fail();
@@ -258,20 +259,21 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
+ 
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");            
-
-            DummyClass resource = new DummyClass();           
+ 
+            DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
-            resource.email = "fake@email.com";            
-                        
+            resource.email = "fake@email.com";
+
             DummyClass result = new DummyClass();
             try
             {
                 result = resource.Create();
             }
             catch
-            {                
+            {
                 Assert.Fail();
                 return;
             }
@@ -283,9 +285,10 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
+ 
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");            
-
+ 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
             resource.email = "fake@email.com";
@@ -318,7 +321,7 @@ namespace MercadoPagoSDK.Test
                 Assert.AreEqual("No annotated method found", mpException.Message);
                 return;
             }
-            
+
             Assert.Fail();
         }
     }
@@ -349,7 +352,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.Fail();
-        }        
+        }
 
         [Test()]
         public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
@@ -390,12 +393,32 @@ namespace MercadoPagoSDK.Test
 
     [Idempotent]
     [UserToken("as987ge9ev6s5df4g32z1xv54654")]
-    [TestFixture()]
+    [TestFixture()]    
     public class CustomerTestClass : MPBase
     {
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
+        public string Name;
+
+        public string LastName;
+
+        public int Age;
+
+        public string name
+        {
+            get { return Name; }
+            set { this.Name = value; }
+        }
+
+        public string lastName
+        {
+            get { return LastName; }
+            set { this.LastName = value; }
+        }
+
+        public int age
+        {
+            get { return Age; }
+            set { this.Age = value; }
+        }
 
         [POSTEndpoint("/post")]
         public CustomerTestClass Create()
@@ -422,7 +445,7 @@ namespace MercadoPagoSDK.Test
             {
                 result = resource.Create();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // should never get here
                 Assert.Fail();
@@ -433,7 +456,7 @@ namespace MercadoPagoSDK.Test
             Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
             Assert.AreEqual("Bruce", result.Name);
             Assert.AreEqual("Wayne", result.LastName);
-            Assert.AreEqual(45, result.Age);
+            Assert.AreEqual(45, result.age);
         }
 
         [Test()]
@@ -443,9 +466,9 @@ namespace MercadoPagoSDK.Test
             SDK.SetBaseUrl("https://httpbin.org");
 
             CustomerTestClass resource = new CustomerTestClass();
-            resource.Name = "Bruce";
-            resource.LastName = "Wayne";
-            resource.Age = 45;
+            resource.name = "Bruce";
+            resource.lastName = "Wayne";
+            resource.age = 45;
 
             CustomerTestClass result = new CustomerTestClass();
             try
@@ -481,7 +504,7 @@ namespace MercadoPagoSDK.Test
         [GETEndpoint("/getpath/load/:id", requestTimeout: 5, retries: 3)]
         public ResourceTestClass Load(string id)
         {
-            return (ResourceTestClass)ProcessMethod("Load", id, false);
+            return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Load", id, false);
         }
 
         [POSTEndpoint("/post", requestTimeout: 2000, retries: 0)]
@@ -547,5 +570,5 @@ namespace MercadoPagoSDK.Test
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "Holder");
             Assert.AreEqual("Wayne", year.First().ToString());
         }
-    }  
+    }
 }
