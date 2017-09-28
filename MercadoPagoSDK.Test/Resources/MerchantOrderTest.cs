@@ -154,7 +154,7 @@ namespace MercadoPagoSDK.Test.Resources
 
             try
             {
-                var result = merchantOrderInternal.Create();
+                var result = merchantOrderInternal.Save();
             }
             catch (MPException mpException)
             {

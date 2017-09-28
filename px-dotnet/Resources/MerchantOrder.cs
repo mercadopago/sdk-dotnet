@@ -23,7 +23,7 @@ namespace MercadoPago.Resources
         }
         
         [POSTEndpoint("/merchant_order")]
-        public MerchantOrder Create() 
+        public MerchantOrder Save() 
         {
             return (MerchantOrder)ProcessMethod("Create", WITHOUT_CACHE);
         }

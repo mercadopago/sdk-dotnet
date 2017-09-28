@@ -23,7 +23,7 @@ namespace MercadoPago.Resources
         }
 
         [POSTEndpoint("/checkout/preference")]
-        public Preference Create()
+        public Preference Save()
         {
             return (Preference)ProcessMethod("Create", WITHOUT_CACHE);
         }

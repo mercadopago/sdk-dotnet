@@ -94,7 +94,7 @@ namespace MercadoPagoSDK.Test.Resources
 
             try
             {
-                var result = PreferenceInternal.Create();
+                var result = PreferenceInternal.Save();
             }
             catch (MPException mpException)
             {
