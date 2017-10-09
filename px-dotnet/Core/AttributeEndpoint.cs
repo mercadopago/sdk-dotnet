@@ -29,7 +29,7 @@ namespace MercadoPago
             this.Path = path;
             HttpMethod = methodType;
             RequestTimeout = requestTimeout;
-            Retries = retries;
+            Retries = retries == 0 ? 1 : retries;
             PayloadType = PayloadType.JSON;
         }
 

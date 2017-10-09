@@ -1,6 +1,8 @@
 ﻿using MercadoPago;
 using MercadoPago.Core;
 using MercadoPago.Resources;
+using MercadoPago.Resources.DataStructures.Payment;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage(null, null);
+                MPIPN.Manage<Payment>(null, null);
             }
             catch (MPException ex)
             {
@@ -33,7 +35,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage(MPIPN.Topic.payment, null);
+                MPIPN.Manage<Payment>(MPIPN.Topic.payment, null);
             }
             catch (MPException ex)
             {
@@ -49,7 +51,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage(null, "id");
+                MPIPN.Manage<Payment>(null, "id");
             }
             catch (MPException ex)
             {
@@ -65,7 +67,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage("MercadoPago.Resources.DataStructures.Customer.City", "1234567");
+                MPIPN.Manage<Payment>("MercadoPago.Resources.DataStructures.Customer.City", "1234567");
             }
             catch (MPException ex)
             {
@@ -78,18 +80,31 @@ namespace MercadoPagoSDK.Test.Core
 
         [Test()]
         public void MPIPN_ShouldBeOk()
-        { 
-            MPConf.CleanConfiguration();            
+        {
+            MPConf.CleanConfiguration();
 
             MPConf.CleanConfiguration();
             MPConf.SetBaseUrl("https://api.mercadopago.com");
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));            
-            MPConf.SetConfiguration(config);
-            
-            var resource = MPIPN.Manage(MPIPN.Topic.payment, "2278812");
-            Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));           
+            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+
+            Payment payment = new Payment();
+            Payer payer = new Payer();
+            payer.email = "mlovera@kinexo.com";
+
+            payment.transaction_amount = 100M;
+            payment.token = GenerateSingleUseToken(); // 1 use card token
+            payment.description = "Pago de seguro";
+            payment.payment_method_id = "visa";
+            payment.installments = 1;
+            payment.payer = payer;
+
+            Payment response = payment.Create();
+
+            var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, response.id.ToString());
+            Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));
+            Assert.AreEqual(response.id, ((Payment)resource).id);
+            Assert.AreEqual(response.description, ((Payment)resource).description);
+            Assert.AreEqual(response.payment_method_id, ((Payment)resource).payment_method_id);
         }
 
         [Test()]
@@ -131,6 +146,24 @@ namespace MercadoPagoSDK.Test.Core
             {
                 Assert.Fail();
             }
+        }
+
+        public string GenerateSingleUseToken()
+        {
+            JObject payload = JObject.Parse("{ \"card_number\": \"4544610257481730\", \"security_code\": \"122\", \"expiration_month\": \"7\", \"expiration_year\": \"2030\", \"cardholder\": { \"name\": \"Test test\", \"identification\": { \"type\": \"DNI\", \"number\": \"12345678\" } } }");
+            MPRESTClient client = new MPRESTClient();
+            MPAPIResponse responseCardToken = client.ExecuteRequestCore(
+                HttpMethod.POST,
+                "https://api.mercadopago.com/v1/card_tokens?public_key=TEST-075f3392-6936-4201-8777-bd9dc45edef7",
+                PayloadType.JSON,
+               payload,
+                null,
+                0,
+                1);
+
+            JObject jsonResponse = JObject.Parse(responseCardToken.StringResponse.ToString());
+            List<JToken> tokens = MPCoreUtils.FindTokens(jsonResponse, "id");
+            return tokens.First().ToString();
         }
     }
 }

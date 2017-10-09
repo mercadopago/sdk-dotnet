@@ -24,10 +24,7 @@ namespace MercadoPago
         public string StringResponse { get; protected set; }
         public JObject JsonObjectResponse { get; protected set; }
 
-        //TEMPORAL, for testing purposes only
-        //-----------------------------------
-        public bool isFromCache { get; set; }
-        //-----------------------------------
+        public bool IsFromCache = false;
 
         #endregion
 

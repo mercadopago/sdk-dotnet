@@ -99,9 +99,15 @@ namespace MercadoPago
                 }
                 catch (WebException ex)
                 {
-                    if (ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
-                        if (--retries == 0)
-                            throw;
+                    //if (ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
+                    HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
+                    if (errorResponse != null && errorResponse.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse);
+                    }
+
+                    if (--retries == 0)
+                        throw;
 
                     return ExecuteRequestCore(httpMethod, uri, payloadType, payload, colHeaders, connectionTimeout, retries);
                 }

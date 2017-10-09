@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace MercadoPagoSDK.Test
 {
     [TestFixture()]
     public class MPBaseTest : MPBase
     {
-        public static MPBaseTest Load(string id)
+        public static MPBaseTest Load(string id, bool useCache)
         {
             return (MPBaseTest)ProcessMethod<MPBaseTest>("Load", id, false);
         }
@@ -28,7 +29,7 @@ namespace MercadoPagoSDK.Test
         {
             try
             {
-                var result = Load("666");
+                var result = MPBaseTest.Load("666", false);
             }
             catch (MPException mpException)
             {
@@ -80,84 +81,112 @@ namespace MercadoPagoSDK.Test
             return (DummyClass)ProcessMethod("Load_all", false);
         }
 
-        [GETEndpoint("/v1/getpath/load/:id")]
-        public static DummyClass Load(string id)
-        {
-            return (DummyClass)ProcessMethod<DummyClass>("Load", id, false);
-        }
-
-        [GETEndpoint("/v1/getpath/load/:id")]
-        public static DummyClass LoadWithCache(string id, bool useCache)
+        [GETEndpoint("/get/:id")]
+        public static DummyClass Load(string id, bool useCache)
         {
             return (DummyClass)ProcessMethod<DummyClass>("Load", id, useCache);
         }
 
-        [POSTEndpoint("/v1/postpath/slug")]
+        [POSTEndpoint("/post")]
         public DummyClass Create()
         {
             return (DummyClass)ProcessMethod<DummyClass>("Create", false);
         }
 
 
-        [PUTEndpoint("/v1/putpath/slug")]
+        [PUTEndpoint("/put")]
         public DummyClass Update()
         {
-            return (DummyClass)ProcessMethod("Update", false);
+            return (DummyClass)ProcessMethod<DummyClass>("Update", false);
         }
 
         #region Cache Test
+
         [Test()]
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
-            var firstResult = LoadWithCache("1234", true);
+            string id = new Random().Next(0, int.MaxValue).ToString();
 
-            Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
+            MPConf.SetBaseUrl("https://httpbin.org");
+
+            var firstResult = DummyClass.Load(id, true);
+            Assert.IsFalse(firstResult.GetLastApiResponse().IsFromCache);
         }
 
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCache()
         {
-            var firstResult = LoadWithCache("1234", true);
-            var cachedResult = LoadWithCache("1234", true);
+            MPConf.SetBaseUrl("https://httpbin.org");
 
-            Assert.IsTrue(cachedResult.LastApiResponse.isFromCache);
+            string id = new Random().Next(0, int.MaxValue).ToString();
+
+            var firstResult = DummyClass.Load(id, true);
+
+            Thread.Sleep(1000);
+
+            var cachedResult = DummyClass.Load(id, true);
+
+            Assert.IsTrue(cachedResult.GetLastApiResponse().IsFromCache);
         }
 
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCacheButItsNotThere()
         {
-            var firstResult = LoadWithCache("1234", true);
-            var notRetrievedFromCacheResult = LoadWithCache("4567", true);
+            MPConf.SetBaseUrl("https://httpbin.org");
 
-            Assert.IsFalse(notRetrievedFromCacheResult.LastApiResponse.isFromCache);
+            string id1 = (new Random().Next(0, int.MaxValue) - 78).ToString();
+            string id2 = (new Random().Next(0, int.MaxValue) - 3).ToString();
+
+            var firstResult = DummyClass.Load(id1, true);
+
+            Thread.Sleep(1000);
+
+            var notRetrievedFromCacheResult = DummyClass.Load(id2, true);
+
+            Assert.IsFalse(notRetrievedFromCacheResult.GetLastApiResponse().IsFromCache);
         }
 
         [Test()]
         public void DummyClassMethod_SeveralRequestsMustBeCached()
         {
-            var firstResult = LoadWithCache("123", true);
-            var secondResult = LoadWithCache("456", true);
-            var thirdResult = LoadWithCache("789", true);
+            MPConf.SetBaseUrl("https://httpbin.org");
 
-            var firstCachedResult = LoadWithCache("123", true);
-            var secondCachedResult = LoadWithCache("456", true);
-            var thirdCachedResult = LoadWithCache("789", true);
+            string id1 = (new Random().Next(0, int.MaxValue) - 5).ToString();
+            string id2 = (new Random().Next(0, int.MaxValue) - 88).ToString();
+            string id3 = (new Random().Next(0, int.MaxValue) - 9).ToString();
 
-            Assert.IsTrue(firstCachedResult.LastApiResponse.isFromCache);
-            Assert.IsTrue(secondCachedResult.LastApiResponse.isFromCache);
-            Assert.IsTrue(thirdCachedResult.LastApiResponse.isFromCache);
+            var firstResult = DummyClass.Load(id1, true);
+            var secondResult = DummyClass.Load(id2, true);
+            var thirdResult = DummyClass.Load(id3, true);
+
+            Thread.Sleep(1000);
+
+            var firstCachedResult = DummyClass.Load(id1, true);
+            var secondCachedResult = DummyClass.Load(id2, true);
+            var thirdCachedResult = DummyClass.Load(id3, true);
+
+            Assert.IsTrue(firstCachedResult.GetLastApiResponse().IsFromCache);
+            Assert.IsTrue(secondCachedResult.GetLastApiResponse().IsFromCache);
+            Assert.IsTrue(thirdCachedResult.GetLastApiResponse().IsFromCache);
         }
 
         [Test()]
         public void DummyClassMethod_SeveralRequestAreNotRetrievedFromCacheInFirstAttempt()
         {
-            var firstResult = LoadWithCache("123", true);
-            var secondResult = LoadWithCache("456", true);
-            var thirdResult = LoadWithCache("789", true);
+            MPConf.SetBaseUrl("https://httpbin.org");
 
-            Assert.IsFalse(firstResult.LastApiResponse.isFromCache);
-            Assert.IsFalse(secondResult.LastApiResponse.isFromCache);
-            Assert.IsFalse(thirdResult.LastApiResponse.isFromCache);
+            string id1 = (new Random().Next(0, int.MaxValue) - 15).ToString();
+            string id2 = (new Random().Next(0, int.MaxValue) - 666).ToString();
+            string id3 = (new Random().Next(0, int.MaxValue) - 71).ToString();
+
+
+            var firstResult = DummyClass.Load(id1, true);
+            var secondResult = DummyClass.Load(id2, true);
+            var thirdResult = DummyClass.Load(id3, true);
+
+            Assert.IsFalse(firstResult.GetLastApiResponse().IsFromCache);
+            Assert.IsFalse(secondResult.GetLastApiResponse().IsFromCache);
+            Assert.IsFalse(thirdResult.GetLastApiResponse().IsFromCache);
         }
 
         [Test()]
@@ -221,7 +250,7 @@ namespace MercadoPagoSDK.Test
 
             try
             {
-                var result = Load("1234");
+                var result = DummyClass.Load("1234", false);
             }
             catch
             {
@@ -260,7 +289,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_Create_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            MPConf.SetBaseUrl("https://httpbin.org");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -277,15 +306,15 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://api.mercadopago.com/v1/postpath/slug?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
+            Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
         }
 
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
             MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            MPConf.SetBaseUrl("https://httpbin.org");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -303,8 +332,8 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("PUT", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://api.mercadopago.com/v1/putpath/slug?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
+            Assert.AreEqual("PUT", result.GetLastApiResponse().HttpMethod);
+            Assert.AreEqual("https://httpbin.org/put?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
         }
 
         [Test()]
@@ -450,8 +479,8 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
+            Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
             Assert.AreEqual("Bruce", result.Name);
             Assert.AreEqual("Wayne", result.LastName);
             Assert.AreEqual(45, result.age);
@@ -480,8 +509,8 @@ namespace MercadoPagoSDK.Test
                 return;
             }
 
-            Assert.AreEqual("POST", result.LastApiResponse.HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.LastApiResponse.Url);
+            Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
+            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
 
             JObject jsonResponse = result.GetJsonSource();
             List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "LastName");

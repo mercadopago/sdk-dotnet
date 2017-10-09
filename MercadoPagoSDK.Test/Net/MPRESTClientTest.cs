@@ -213,7 +213,7 @@ namespace MercadoPagoSDK.Test
             jsonObject.Add("lastName", "Shepard");
             jsonObject.Add("year", 2126);
 
-            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null, 2000, 0);
+            MPAPIResponse response = client.ExecuteRequest(HttpMethod.POST, "https://httpbin.org/post", PayloadType.JSON, jsonObject, null, 20000, 0);
 
             Assert.AreEqual(200, response.StatusCode);
 

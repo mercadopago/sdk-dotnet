@@ -18,14 +18,14 @@ namespace MercadoPago.Resources
 
         [GETEndpoint("/checkout/preference/:id")]
         public static Preference Load(string id, bool useCache)
-        {            
-            return (Preference)ProcessMethod(typeof(Preference), "Load", id, useCache);
+        {
+            return (Preference)ProcessMethod<Preference>(typeof(Preference), "Load", id, useCache);
         }
 
         [POSTEndpoint("/checkout/preference")]
         public Preference Create()
         {
-            return (Preference)ProcessMethod("Create", WITHOUT_CACHE);
+            return (Preference)ProcessMethod<Preference>("Create", WITHOUT_CACHE);
         }
 
         [PUTEndpoint("/checkout/preference/:id")]

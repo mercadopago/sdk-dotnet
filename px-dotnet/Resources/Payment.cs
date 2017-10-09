@@ -1,4 +1,5 @@
 ﻿using MercadoPago.Resources.DataStructures.Payment;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,24 +13,24 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public Payment Load(String id) 
+        public Payment Load(string id)
         {
             return Load(id, WITHOUT_CACHE);
         }
         
-        [GETEndpoint("/v1/payment/:id")]
-        public static Payment Load(String id, Boolean useCache) 
+        [GETEndpoint("/v1/payments/:id")]
+        public static Payment Load(string id, bool useCache) 
         {
-            return (Payment)ProcessMethod(typeof(Payment), "Load", id, useCache);
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "Load", id, useCache);
         }
         
-        [POSTEndpoint("/v1/payment")]
+        [POSTEndpoint("/v1/payments")]
         public Payment Create()
         {
-            return (Payment)ProcessMethod("Create", WITHOUT_CACHE);
+            return (Payment)ProcessMethod<Payment>("Create", WITHOUT_CACHE);
         }
         
-        [PUTEndpoint("/v1/payment/:id")]
+        [PUTEndpoint("/v1/payments/:id")]
         public Payment Update()
         {
             return (Payment)ProcessMethod<Payment>("Update", WITHOUT_CACHE);
@@ -39,33 +40,50 @@ namespace MercadoPago.Resources
 
         #region Properties
 
-        private string id ;
-        private DateTime? dateTimeCreated;
-        private DateTime? dateTimeApproved;
-        private DateTime? dateTimeLastUpdateTimed;
-        private DateTime? moneyReleaseDateTime;
-        private int collectorId ;
+        private int? _id;
+        private DateTime? _date_created;
+        private DateTime? _date_approved;
+        private DateTime? _date_last_updated;
+        private DateTime? _money_release_date;
+        private int? _collector_id;
+        private string _operation_type;        
+        private Payer _payer;
+        private bool? _binary_mode;
+        private bool? _live_mode;
+        private Order _order ;
+        private string _external_reference;
+        private string _description;
+        private JObject _metadata;              
+        [StringLength(3)]
+        private CurrencyId _currency_id;
+        private decimal? _transaction_amount;
+        private decimal? _transaction_amount_refunded;
+        private decimal? _coupon_amount;
+        private int? _campaign_id;
+        private string _coupon_code;
+        private TransactionDetail _transaction_details;
+        private FeeDetail[] _fee_details;
+        private int? _differential_pricing_id;
+        private decimal? _application_fee;      
+        private Status _status ;        
+        private string _status_detail ;
+        private bool? _capture ;
+        private bool? _captured ;
+        private string _call_for_authorize_id ;
+        private string _payment_method_id ;
+        private string _issuer_id ;       
+        private string _payment_type_id ;        
+        private string _token ;
+        private Card _card ;
+        private string _statement_descriptor ;
+        private int? _installments ;
+        private string _notification_url;
+        private string _callback_url;
+        private Refund[] _refunds ;
+        private AdditionalInfo _additional_info ;
 
-        public enum OperationType {regular_payment,
-            money_transfer,
-            recurring_payment,
-            account_fund,
-            payment_addition,
-            cellphone_recharge,
-            pos_payment
-        }
-        
-        private OperationType operationType;
-        
-        private Payer payer;
-        private bool? binaryMode ;
-        private bool? liveMode ;
-        private Order order ;
-        private string externalReference;
-        private string description;
-        private JObject metadata;
-        
-        public enum CurrencyId {
+        public enum CurrencyId
+        {
             ARS,
             BRL,
             VEF,
@@ -75,20 +93,9 @@ namespace MercadoPago.Resources
             PEN,
             UYU
         }
-        
-        [StringLength(3)]
-        private CurrencyId currencyId ;        
-        private decimal? transactionAmount ;
-        private decimal? transactionAmountRefunded;
-        private decimal? couponAmount;
-        private int? campaignId;
-        private string couponCode ;
-        private TransactionDetail transactionDetail;
-        private List<FeeDetail> feeDetails;
-        private int? differentialPricingId;
-        private decimal? applicationFee;
-        
-        public enum Status {
+
+        public enum Status
+        {
             pending,
             approved,
             authorized,
@@ -100,15 +107,8 @@ namespace MercadoPago.Resources
             charged_back
         }
 
-        private Status status ;        
-        private string statusDetail ;
-        private bool? capture ;
-        private bool? captured ;
-        private string callForAuthorizeId ;
-        private string paymentMethodId ;
-        private string issuerId ;
-        
-        public enum PaymentTypeId {
+        public enum PaymentTypeId
+        {
             account_money,
             ticket,
             bank_transfer,
@@ -118,232 +118,248 @@ namespace MercadoPago.Resources
             prepaid_card
         }
 
-        private PaymentTypeId paymentTypeId ;
-        
-        private string token ;
-        private Card card ;
-        private string statementDescriptor ;
-        [RegularExpression(@"^\n+\.\d{0,0}$")]
-        [Range(0, 9)]
-        private int? installment ;
-        private string notificationUrl ;
-        private List<Refund> refunds ;
-        private AdditionalInfo additionalInfo ;
-
         #endregion
 
         #region Accessors
-        
-        public string ID 
+
+        public int? id 
         {
-            get { return this.id; }
-            set { this.id = value; }
+            get { return this._id; }
+            private set { this._id = value; }
         }
 
-        public DateTime? DateTimeCreated 
+        public DateTime? date_created 
         {
-            get { return this.dateTimeCreated; }
-            set { this.dateTimeCreated = value; }
+            get { return this._date_created; }
+            private set { this._date_created = value; }
         }
 
-        public DateTime? DateTimeApproved
+        public DateTime? date_approved
         {
-            get { return this.dateTimeApproved; }
-            set { this.dateTimeApproved = value; }
+            get { return this._date_approved; }
+            private set { this._date_approved = value; }
         }
 
-        public DateTime? DateTimeLastUpdateTimed
+        public DateTime? date_last_updated
         {
-            get { return this.dateTimeLastUpdateTimed; }
-            set { this.dateTimeLastUpdateTimed = value ; }
+            get { return this._date_last_updated; }
+            private set { this._date_last_updated = value; }
         }
 
-        public DateTime? MoneyReleaseDateTime
+        public DateTime? money_release_date
         {
-            get { return this.moneyReleaseDateTime; }
-            set { this.moneyReleaseDateTime = value; }
+            get { return this._money_release_date; }
+            private set { this._money_release_date = value; }
         }
 
-        public OperationType PaymentOperationType 
+        public int? collector_id
         {
-            get { return this.operationType; }
-            set { this.operationType = value; }
+            get { return this._collector_id; }
+            private set { this._collector_id = value; }
         }
 
-        public Payer Payer 
+        public string operation_type 
         {
-            get { return this.payer; }
-            set { this.payer = value; }
+            get { return this._operation_type; }
+            private set { this._operation_type = value; }
         }
 
-        public bool? BinaryMode
+        public Payer payer 
         {
-            get { return this.binaryMode; }
-            set { this.binaryMode = value; }
+            get { return this._payer; }
+            set { this._payer = value; }
         }
 
-        public bool? LiveMode
+        public bool? binary_mode
         {
-            get { return this.liveMode; }
-            set { this.liveMode = value; }
+            get { return this._binary_mode; }
+            set { this._binary_mode = value; }
         }
 
-        public Order Order 
+        public bool? live_mode
         {
-            get { return this.order; }
-            set { this.order = value; }
+            get { return this._live_mode; }
+            private set { this._live_mode = value; }
         }
 
-        public string ExternalReference
+        public Order order
         {
-            get { return this.externalReference; }
-            set { this.externalReference = value; }
+            get { return this._order; }
+            set { this._order = value; }
         }
 
-        public string Description
+        public string external_reference
         {
-            get { return this.description; }
-            set { this.description = value; }
+            get { return this._external_reference; }
+            set { this._external_reference = value; }
         }
 
-        public JObject Metadata 
+        public string description
         {
-            get { return this.metadata; }
-            set { this.metadata = value; }
+            get { return this._description; }
+            set { this._description = value; }
         }
 
-        public CurrencyId PaymentCurrencyId
+        public JObject metadata
         {
-            get { return this.currencyId; }
+            get { return this._metadata; }
+            set { this._metadata = value; }
         }
 
-        public decimal? TransactionAmount
+        public CurrencyId currency_id
         {
-            get { return this.transactionAmount; }
-            set { this.transactionAmount = value; }
+            get { return this._currency_id; }
+            private set { this._currency_id = value; }
         }
 
-        public decimal? TransactionAmountRefunded
+        public decimal? transaction_amount
         {
-            get { return this.transactionAmountRefunded; }
+            get { return this._transaction_amount; }
+            set { this._transaction_amount = value; }
         }
 
-        public decimal? CouponAmount
+        public decimal? transaction_amount_refunded
         {
-            get { return this.couponAmount; }
-            set { this.couponAmount = value; }
+            get { return this._transaction_amount_refunded; }
+            private set { this._transaction_amount_refunded = value; }
         }
 
-        public int CampaignId
+        public decimal? coupon_amount
         {
-            set { this.campaignId = value; }
-        }
-        
-        public string CouponCode
-        {
-            set { this.couponCode = value; }
+            get { return this._coupon_amount; }
+            set { this._coupon_amount = value; }
         }
 
-        public TransactionDetail TransactionDetail 
+        public int? campaign_id
         {
-            get { return this.transactionDetail; }
+            private get { return this._campaign_id; }
+            set { this._campaign_id = value; }
         }
 
-        public List<FeeDetail> FeeDetails
+        public string coupon_code
         {
-            get { return this.feeDetails; }
+            private get { return this._coupon_code; }
+            set { this._coupon_code = value; }
         }
 
-        public int? DifferentialPricingId
+        public TransactionDetail transaction_details
         {
-            get { return this.differentialPricingId; }
-            set { this.differentialPricingId = value; }
-        }
-        
-        public decimal ApplicationFee
-        {
-            set { this.applicationFee = value; }
+            get { return this._transaction_details; }
+            private set { this._transaction_details = value; }
         }
 
-        public Status PaymentStatus
+        public FeeDetail[] fee_details
         {
-            get { return this.status; }
+            get { return this._fee_details; }
+            private set { this._fee_details = value; }
         }
 
-        public string StatusDetail
+        public int? differential_pricing_id
         {
-            get { return this.statusDetail; }
+            get { return this._differential_pricing_id; }
+            set { this._differential_pricing_id = value; }
         }
 
-        public bool Capture
+        public decimal? application_fee
         {
-            set { this.capture = value; }
+            private get { return this._application_fee; }
+            set { this._application_fee = value; }
         }
 
-        public bool? Captured
+        public Status status
         {
-            get { return this.captured; }
+            get { return this._status; }
+            private set { this._status = value; }
         }
 
-        public string CallForAuthorizeId 
+        public string status_detail
         {
-            get { return this.callForAuthorizeId; }
+            get { return this._status_detail; }
+            private set { this._status_detail = value; }
         }
 
-        public string PaymentMethodId
+        public bool? capture
         {
-            get { return this.paymentMethodId; }
-            set { this.paymentMethodId = value; }
+            private get { return this._capture; }
+            set { this._capture = value; }
         }
 
-        public string IssuerId
+        public bool? captured
         {
-            get { return this.issuerId; }
-            set { this.issuerId = value; }
+            get { return this._captured; }
+            private set { this._captured = value; }
         }
 
-        public PaymentTypeId TypeId
+        public string call_for_authorize_id
         {
-            get { return this.paymentTypeId; }
-            set { this.paymentTypeId = value; }
+            get { return this._call_for_authorize_id; }
+            private set { this._call_for_authorize_id = value; }
         }
 
-        public string Token
+        public string payment_method_id
         {
-            set { this.token = value; }
+            get { return this._payment_method_id; }
+            set { this._payment_method_id = value; }
         }
 
-        public Card Card
+        public string issuer_id
         {
-            get { return this.card; }
+            get { return this._issuer_id; }
+            set { this._issuer_id = value; }
         }
 
-        public string StatementDescriptor
+        public string payment_type_id
         {
-            get { return this.statementDescriptor; }
-            set { this.statementDescriptor = value; }
+            get { return this._payment_type_id; }
+            private set { this._payment_type_id = value; }
         }
 
-        public int? Installment
+        public string token
         {
-            get { return this.installment; }
-            set { this.installment = value; }
+            private get { return this._token; }
+            set { this._token = value; }
         }
 
-        public string NotificationUrl
+        public Card card
         {
-            get { return this.notificationUrl; }
-            set { this.notificationUrl = value; }
+            get { return this._card; }
+            private set { this._card = value; }
         }
 
-        public List<Refund> Refunds
+        public string statement_descriptor
         {
-            get { return this.refunds; }
+            get { return this._statement_descriptor; }
+            set { this._statement_descriptor = value; }
         }
 
-        public AdditionalInfo AdditionalInfo
+        public int? installments
         {
-            set { this.additionalInfo = value; }
+            get { return this._installments; }
+            set { this._installments = value; }
+        }
+
+        public string notification_url
+        {
+            get { return this._notification_url; }
+            set { this._notification_url = value; }
+        }
+
+        public string callback_url
+        {
+            get { return this._callback_url; }
+            set { this._callback_url = value; }
+        }
+
+        public Refund[] refunds
+        {
+            get { return this._refunds; }
+            private set { this._refunds = value; }
+        }
+
+        public AdditionalInfo additional_info
+        {
+            private get { return this._additional_info; }
+            set { this._additional_info = value; }
         }
         
         #endregion

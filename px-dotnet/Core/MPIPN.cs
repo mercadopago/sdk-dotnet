@@ -28,37 +28,36 @@ namespace MercadoPago.Core
             return null;
         }
 
-        public static MPBase Manage(string topic, string id)
+        public static MPBase Manage<T>(string topic, string id) where T : MPBase
         {
             
-            if (topic == null || id == null)
+            if (string.IsNullOrEmpty(topic) || string.IsNullOrEmpty(id))
             {
                 throw new MPException("Topic and Id can not be null in the IPN request.");
             }
 
             MPBase resourceObject = null;
-            Type classType = null;
-            
+                        
             try 
             {
-                classType = GetType(topic);
+                Type classType = GetType(topic);
                 if (!classType.IsSubclassOf(typeof(MPBase))) 
                 {
                     throw new MPException(classType.Name + " does not extend from MPBase");
                 }
 
-                MethodInfo method = classType.GetMethod("Load", new [] { typeof(string)});
+                MethodInfo method = classType.GetMethod("Load", new[] { typeof(string) });
 
                 object classInstance = Activator.CreateInstance(classType, null);
                 object[] parametersArray = new object[] { id };
 
-                resourceObject = (MPBase) method.Invoke(classInstance, parametersArray);
-
+                resourceObject = (T)method.Invoke(classInstance, parametersArray);
             } 
             catch (Exception ex) 
             {
                 throw new MPException(ex.Message);
             }
+
             return resourceObject;            
         }        
     }

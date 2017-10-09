@@ -20,7 +20,7 @@ namespace MercadoPago
         {
             try
             {
-                HttpRuntime.Cache.Add(key, response, null, DateTime.MaxValue, new TimeSpan(0, 480, 0), System.Web.Caching.CacheItemPriority.Default, null);                                
+                HttpRuntime.Cache.Add(key, response, null, DateTime.MaxValue, new TimeSpan(0, 1, 0), System.Web.Caching.CacheItemPriority.Default, null);                                
             }
             catch (Exception ex)
             {

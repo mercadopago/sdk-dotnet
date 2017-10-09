@@ -47,6 +47,7 @@
     <Compile Include="Exceptions\MPExceptionTest.cs" />
     <Compile Include="Net\MPRESTClientTest.cs" />
     <Compile Include="Resources\CardTest.cs" />
+    <Compile Include="Resources\CustomerTest.cs" />
     <Compile Include="Resources\DataStructures\Payment\AdditionalInfoTest.cs" />
     <Compile Include="Resources\MerchantOrderTest.cs" />
     <Compile Include="Resources\PaymentTest.cs" />

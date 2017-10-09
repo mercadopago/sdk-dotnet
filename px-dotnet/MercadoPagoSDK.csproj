@@ -53,6 +53,8 @@
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
     <Compile Include="Core\Annotations\UserToken.cs" />
+    <Compile Include="Core\CustomDeserializationContractResolver.cs" />
+    <Compile Include="Core\CustomSerializationContractResolver.cs" />
     <Compile Include="Core\HttpMethod.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />

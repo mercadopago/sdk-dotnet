@@ -9,9 +9,9 @@ namespace MercadoPago.Resources.DataStructures.Payment
     {
         #region Properties
 
-        private string areaCode;
-        private string extension;
-        private string number;                
+        private string _area_code;
+        private string _extension;
+        private string _number;                
 
         #endregion
 
@@ -19,17 +19,20 @@ namespace MercadoPago.Resources.DataStructures.Payment
 
         public string AreaCode
         {
-            get { return areaCode; }            
+            get { return _area_code; }
+            private set { _area_code = value; }
         }
 
         public string Number
         {
-            get { return number; }            
+            get { return _number; }
+            private set { _number = value; }
         }
 
         public string Extension
         {
-            get { return extension; }            
+            get { return _extension; }
+            private set { _extension = value; }
         }
 
         #endregion
