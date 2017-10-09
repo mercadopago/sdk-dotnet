@@ -17,10 +17,10 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void FullCoverageIntegration()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             //Customer customer = new Customer();
 
@@ -79,7 +79,7 @@ namespace MercadoPagoSDK.Test
             //p.TransactionAmount = 123;
             //p.PaymentMethodId = "visa";
             //p.Description = "Payment test 123 pesos";
-            //p.Token = MPConf.AccessToken;
+            //p.Token = SDK.AccessToken;
             //p.Installment = 1;
             //p.Payer = payer;
             //p.Create();

@@ -16,9 +16,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Payment_CreateAndLoadShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";           
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";           
             
             Payment payment = new Payment();
             Payer payer = new Payer();
@@ -52,9 +52,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Payment_LoadShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
             Payment payment = Payment.Load("7100921", false);
             Assert.AreEqual("Pago de seguro", payment.description);
         }

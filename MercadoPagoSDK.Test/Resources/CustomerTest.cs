@@ -13,9 +13,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Customer_CreateCustomerGetsCreatedCustomerInResponse()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             Customer newCustomer = new Customer { first_name = "Rafa", last_name = "Williner" };
             Customer responseCustomer = newCustomer.Create();
@@ -28,9 +28,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Customer_CreateCustomerAndThenLoadGetsCreatedCustomer()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             Customer newCustomer = new Customer { first_name = "Juan", last_name = "Perez" };
             Customer responseCustomer = newCustomer.Create();
@@ -49,9 +49,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Customer_CreateCustomerAndThenUpdateUpdatesCustomer()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             Customer newCustomer = new Customer { first_name = "Jorge", last_name = "Calciati" };
             Customer responseCustomer = newCustomer.Create();
@@ -66,9 +66,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Customer_CreateCustomerAndThenDeleteDeletesCustomer()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             Customer newCustomer = new Customer { first_name = "Pedro", last_name = "Juarez" };
             Customer responseCustomer = newCustomer.Create();
@@ -85,9 +85,9 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Customer_SearchCustomersReturnListOfCustomers()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             List<Customer> customers = Customer.Search();
 

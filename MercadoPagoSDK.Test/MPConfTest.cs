@@ -14,23 +14,23 @@ namespace MercadoPagoSDK.Test
 		[Test()]
 		public void AttributesConfigurationTests()
 		{
-			MPConf.CleanConfiguration();
+			SDK.CleanConfiguration();
 
 			// Test attribute value assignation
-			MPConf.ClientSecret = "CLIENT_SECRET";
-			MPConf.ClientId = "CLIENT_ID";
-			MPConf.AccessToken = "ACCESS_TOKEN";
-			MPConf.AppId = "APP_ID";
+			SDK.ClientSecret = "CLIENT_SECRET";
+			SDK.ClientId = "CLIENT_ID";
+			SDK.AccessToken = "ACCESS_TOKEN";
+			SDK.AppId = "APP_ID";
 
-			Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret,
+			Assert.AreEqual("CLIENT_SECRET", SDK.ClientSecret,
 				"Client Secret must be \"CLIENT_SECRET\" at this point");
-			Assert.AreEqual("CLIENT_ID", MPConf.ClientId,
+			Assert.AreEqual("CLIENT_ID", SDK.ClientId,
 				"Client Id must be \"CLIENT_ID\" at this point");
-			Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken,
+			Assert.AreEqual("ACCESS_TOKEN", SDK.AccessToken,
 				"Access Token must be \"ACCESS_TOKEN\" at this point");
-			Assert.AreEqual("APP_ID", MPConf.AppId,
+			Assert.AreEqual("APP_ID", SDK.AppId,
 				"App Id must be \"APP_ID\" at this point");
-			Assert.AreEqual("https://api.mercadopago.com", MPConf.BaseUrl,
+			Assert.AreEqual("https://api.mercadopago.com", SDK.BaseUrl,
 				"MPBase url must be default \"https://api.mercadopago.com\" at this point");
 
 
@@ -38,7 +38,7 @@ namespace MercadoPagoSDK.Test
 			MPConfException auxException = null;
 			try
 			{
-				MPConf.ClientSecret = "CHANGED_CLIENT_SECRET";
+				SDK.ClientSecret = "CHANGED_CLIENT_SECRET";
 			}
 			catch (MPConfException mpConfException)
 			{
@@ -47,12 +47,12 @@ namespace MercadoPagoSDK.Test
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"MPConfException\"");
-			Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
+			Assert.AreEqual("CLIENT_SECRET", SDK.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
 
 			auxException = null;
 			try
 			{
-				MPConf.ClientId = "CHANGED_CLIENT_ID";
+				SDK.ClientId = "CHANGED_CLIENT_ID";
 			}
 			catch (MPConfException mpConfException)
 			{
@@ -61,12 +61,12 @@ namespace MercadoPagoSDK.Test
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"MPConfException\"");
-			Assert.AreEqual("CLIENT_ID", MPConf.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
+			Assert.AreEqual("CLIENT_ID", SDK.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
 
 			auxException = null;
 			try
 			{
-				MPConf.AccessToken = "CHANGED_ACCESS_TOKEN";
+				SDK.AccessToken = "CHANGED_ACCESS_TOKEN";
 			}
 			catch (MPConfException mpConfException)
 			{
@@ -75,12 +75,12 @@ namespace MercadoPagoSDK.Test
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"MPConfException\"");
-			Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
+			Assert.AreEqual("ACCESS_TOKEN", SDK.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
 
 			auxException = null;
 			try
 			{
-				MPConf.AppId = "CHANGED_APP_ID";
+				SDK.AppId = "CHANGED_APP_ID";
 			}
 			catch (MPConfException mpConfException)
 			{
@@ -89,20 +89,20 @@ namespace MercadoPagoSDK.Test
 				auxException = mpConfException;
 			}
 			Assert.IsInstanceOf<MPConfException>(auxException, "Exception type must be \"MPConfException\"");
-			Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
+			Assert.AreEqual("APP_ID", SDK.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
 
 		[Test()]
 		public void InvalidHashMapConfigurationTests()
 		{
-			MPConf.CleanConfiguration();
+			SDK.CleanConfiguration();
 
 			Dictionary<string, string> hashConfigurations = null;
 			Exception auxException = null;
 			try
 			{
-				MPConf.SetConfiguration(hashConfigurations);
+				SDK.SetConfiguration(hashConfigurations);
 			}
 			catch (ArgumentException exception)
 			{
@@ -117,7 +117,7 @@ namespace MercadoPagoSDK.Test
 			auxException = null;
 			try
 			{
-				MPConf.SetConfiguration(hashConfigurations);
+				SDK.SetConfiguration(hashConfigurations);
 			}
 			catch (Exception exception)
 			{
@@ -130,27 +130,27 @@ namespace MercadoPagoSDK.Test
 			auxException = null;
 			try
 			{
-				MPConf.SetConfiguration(hashConfigurations);
+				SDK.SetConfiguration(hashConfigurations);
 			}
 			catch (Exception exception)
 			{
 				auxException = exception;
 			}
 			Assert.IsNull(auxException, "Exception must be \"null\"");
-			Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
+			Assert.AreEqual("CLIENT_SECRET", SDK.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
 		}
 
 
 		[Test()]
 		public void AppConfigInvalidConfigurationTests()
 		{
-			MPConf.CleanConfiguration();
+			SDK.CleanConfiguration();
 
 			Exception auxException = null;
 			try
 			{
 				Configuration config = null;
-				MPConf.SetConfiguration(config);
+				SDK.SetConfiguration(config);
 			}
 			catch (ArgumentException exception)
 			{
@@ -162,29 +162,29 @@ namespace MercadoPagoSDK.Test
 			auxException = null;
 			try
 			{
-				MPConf.SetConfiguration(GetConfigurationByFileName("MPConf_invalid_App"));
+				SDK.SetConfiguration(GetConfigurationByFileName("MPConf_invalid_App"));
 			}
 			catch (Exception exception)
 			{
 				auxException = exception;
 			}
 			Assert.IsNull(auxException, "Exception must be \"null\"");
-			Assert.IsNull(MPConf.ClientSecret, "Client Secret must be \"null\" at this point");
-			Assert.IsNull(MPConf.ClientId, "Client Id must be \"null\" at this point");
-			Assert.IsNull(MPConf.AccessToken, "Access Token must be \"null\" at this point");
-			Assert.IsNull(MPConf.AppId, "App Id must be \"null\" at this point");
+			Assert.IsNull(SDK.ClientSecret, "Client Secret must be \"null\" at this point");
+			Assert.IsNull(SDK.ClientId, "Client Id must be \"null\" at this point");
+			Assert.IsNull(SDK.AccessToken, "Access Token must be \"null\" at this point");
+			Assert.IsNull(SDK.AppId, "App Id must be \"null\" at this point");
 		}
 
 		[Test()]
 		public void AppConfigValidConfigurationTests()
 		{
-			MPConf.CleanConfiguration();
+			SDK.CleanConfiguration();
 
-			MPConf.SetConfiguration(GetConfigurationByFileName("MPConf_valid_App.config"));
-			Assert.AreEqual("CLIENT_SECRET", MPConf.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
-			Assert.AreEqual("CLIENT_ID", MPConf.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
-			Assert.AreEqual("ACCESS_TOKEN", MPConf.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
-			Assert.AreEqual("APP_ID", MPConf.AppId, "App Id must be \"APP_ID\" at this point");
+			SDK.SetConfiguration(GetConfigurationByFileName("MPConf_valid_App.config"));
+			Assert.AreEqual("CLIENT_SECRET", SDK.ClientSecret, "Client Secret must be \"CLIENT_SECRET\" at this point");
+			Assert.AreEqual("CLIENT_ID", SDK.ClientId, "Client Id must be \"CLIENT_ID\" at this point");
+			Assert.AreEqual("ACCESS_TOKEN", SDK.AccessToken, "Access Token must be \"ACCESS_TOKEN\" at this point");
+			Assert.AreEqual("APP_ID", SDK.AppId, "App Id must be \"APP_ID\" at this point");
 		}
 
 

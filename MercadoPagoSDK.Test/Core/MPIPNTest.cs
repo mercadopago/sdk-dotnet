@@ -81,11 +81,11 @@ namespace MercadoPagoSDK.Test.Core
         [Test()]
         public void MPIPN_ShouldBeOk()
         {
-            MPConf.CleanConfiguration();
+            SDK.CleanConfiguration();
 
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-            MPConf.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             Payment payment = new Payment();
             Payer payer = new Payer();

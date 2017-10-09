@@ -570,22 +570,18 @@ namespace MercadoPago
             }
 
             // URL
-            result.Insert(0, MPConf.BaseUrl);
+            result.Insert(0, SDK.BaseUrl);
 
             // Access Token
             string accessToken = null;
-
-            //if (resource != null)
-            //{
             if (resource != null && !string.IsNullOrEmpty(GetUserToken(resource.GetType())))
             {
                 accessToken = GetUserToken(resource.GetType());
             }
             else
             {
-                accessToken = MPConf.GetAccessToken();
+                accessToken = SDK.GetAccessToken();
             }
-            //}
 
             if (!string.IsNullOrEmpty(accessToken))
             {

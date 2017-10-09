@@ -44,12 +44,12 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void MPBaseTest_WithAttributes_ShouldFindAttribute()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             try
             {
@@ -107,7 +107,7 @@ namespace MercadoPagoSDK.Test
         {
             string id = new Random().Next(0, int.MaxValue).ToString();
 
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.SetBaseUrl("https://httpbin.org");
 
             var firstResult = DummyClass.Load(id, true);
             Assert.IsFalse(firstResult.GetLastApiResponse().IsFromCache);
@@ -116,7 +116,7 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCache()
         {
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.SetBaseUrl("https://httpbin.org");
 
             string id = new Random().Next(0, int.MaxValue).ToString();
 
@@ -132,7 +132,7 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCacheButItsNotThere()
         {
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.SetBaseUrl("https://httpbin.org");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 78).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 3).ToString();
@@ -149,7 +149,7 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_SeveralRequestsMustBeCached()
         {
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.SetBaseUrl("https://httpbin.org");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 5).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 88).ToString();
@@ -173,7 +173,7 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_SeveralRequestAreNotRetrievedFromCacheInFirstAttempt()
         {
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.SetBaseUrl("https://httpbin.org");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 15).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 666).ToString();
@@ -240,13 +240,13 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             try
             {
@@ -270,7 +270,7 @@ namespace MercadoPagoSDK.Test
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
             try
             {
                 result = resource.Create();
@@ -288,8 +288,8 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Create_CheckUri()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://httpbin.org");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -313,8 +313,8 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_Update_CheckUri()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://httpbin.org");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -457,10 +457,10 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void CustomerTestClass_Create_ParsesCustomerTestClassObjectResponse()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://httpbin.org");
-            MPConf.ClientId = "12346";
-            MPConf.ClientSecret = "456789";
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://httpbin.org");
+            SDK.ClientId = "12346";
+            SDK.ClientSecret = "456789";
 
             CustomerTestClass resource = new CustomerTestClass();
             resource.Name = "Bruce";
@@ -489,8 +489,8 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void CustomerTestClass_Create_CheckFullJsonResponse()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://httpbin.org");
 
             CustomerTestClass resource = new CustomerTestClass();
             resource.name = "Bruce";
@@ -544,13 +544,13 @@ namespace MercadoPagoSDK.Test
 
         public void CustomerTestClass_Load_TimeoutFail()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
 
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
+            SDK.SetConfiguration(config);
 
             ResourceTestClass resource = new ResourceTestClass();
             ResourceTestClass result = new ResourceTestClass();
@@ -571,8 +571,8 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void ResourceTestClass_Create_ProperTimeoutSuccess()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://httpbin.org");
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://httpbin.org");
 
             ResourceTestClass resource = new ResourceTestClass();
             resource.CardNumber = "123456789";
