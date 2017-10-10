@@ -1,10 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0.1"?>
 <package >
   <metadata>
-    <id>MercadoPagoSDKBETA</id>
+    <id>mercadopago-sdk</id>
     <version>1</version>
-    <title>MercadopagoSDKBETA</title>
-    <authors>Williner Rafael, Zachary Gerardo</authors>
+    <title>MercadopagoSDK</title>
+    <authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</authors>
     <owners>Kinexo SA</owners>    
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Paquete .NET SDK para la implementación de funcionalidades ligadas a Mercado Pago</description>

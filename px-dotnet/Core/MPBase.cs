@@ -215,7 +215,8 @@ namespace MercadoPago
 
             WebHeaderCollection colHeaders = new WebHeaderCollection();
 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);            
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
+ 
             
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)

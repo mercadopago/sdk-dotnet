@@ -37,18 +37,18 @@ namespace MercadoPago
             this.ProxyPort = proxyPort;
         }
 
-        /// <summary>
-        /// Execute a request to an endpoint.
-        /// </summary>
-        /// <param name="httpMethod">Method to use in the request.</param>
-        /// <param name="uri">Endpoint we are pointing.</param>
-        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
-        /// <param name="payload">The data we are sending.</param>
-        /// <param name="colHeaders">Extra headers to send with the request.</param>
-        /// <returns>Api response with the result of the call.</returns>
-        public MPAPIResponse ExecuteRequest(
+		/// <summary>
+		/// Execute a request to an endpoint.
+		/// </summary>
+		/// <param name="httpMethod">Method to use in the request.</param>
+		/// <param name="path">Endpoint we are pointing.</param>
+		/// <param name="payloadType">Type of payload we are sending along with the request.</param>
+		/// <param name="payload">The data we are sending.</param>
+		/// <param name="colHeaders">Extra headers to send with the request.</param>
+		/// <returns>Api response with the result of the call.</returns>
+		public MPAPIResponse ExecuteRequest(
             HttpMethod httpMethod, 
-            String uri, 
+            string path, 
             PayloadType payloadType,
             JObject payload, 
             WebHeaderCollection colHeaders,
@@ -57,7 +57,7 @@ namespace MercadoPago
         {
             try
             {
-                return ExecuteRequestCore(httpMethod, uri, payloadType, payload, colHeaders, requestTimeout, retries);
+                return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, requestTimeout, retries);
             }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace MercadoPago
         /// <returns>Api response with the result of the call.</returns>
         public MPAPIResponse ExecuteRequestCore(
             HttpMethod httpMethod, 
-            string uri,
+            string path,
             PayloadType payloadType, 
             JObject payload, 
             WebHeaderCollection colHeaders,
@@ -80,7 +80,7 @@ namespace MercadoPago
         {
             try
             {
-                MPRequest mpRequest = CreateRequest(httpMethod, uri, payloadType, payload, colHeaders, connectionTimeout, retries);
+                MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 string result = string.Empty;
 
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
@@ -103,7 +103,7 @@ namespace MercadoPago
                         if (--retries == 0)
                             throw;
 
-                    return ExecuteRequestCore(httpMethod, uri, payloadType, payload, colHeaders, connectionTimeout, retries);
+                    return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 }
                 
             }
@@ -118,7 +118,7 @@ namespace MercadoPago
         /// </summary>
         /// <returns>Api response with the result of the call.</returns>
         public MPRequest CreateRequest(HttpMethod httpMethod,
-            string uri,
+            string path,
             PayloadType payloadType,
             JObject payload,
             WebHeaderCollection colHeaders,
@@ -126,7 +126,7 @@ namespace MercadoPago
             int retries)
         {
 
-            if (string.IsNullOrEmpty(uri))
+            if (string.IsNullOrEmpty(path))
                 throw new MPRESTException("Uri can not be an empty string.");
 
             if (httpMethod.Equals(HttpMethod.GET))
@@ -159,7 +159,7 @@ namespace MercadoPago
             }
 
             MPRequest mpRequest = new MPRequest();
-            mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(uri);
+            mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(path);
             mpRequest.Request.Method = httpMethod.ToString();
 
             if(connectionTimeout > 0)
