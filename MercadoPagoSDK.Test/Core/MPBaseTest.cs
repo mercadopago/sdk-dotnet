@@ -105,6 +105,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
+            SDK.CleanConfiguration();
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+
             string id = new Random().Next(0, int.MaxValue).ToString();
 
             SDK.SetBaseUrl("https://httpbin.org");
@@ -116,7 +119,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCache()
         {
+            SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             string id = new Random().Next(0, int.MaxValue).ToString();
 
@@ -132,7 +137,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_RequestMustBeRetrievedFromCacheButItsNotThere()
         {
+            SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             string id1 = (new Random().Next(0, int.MaxValue) - 78).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 3).ToString();
@@ -149,7 +156,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_SeveralRequestsMustBeCached()
         {
+            SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             string id1 = (new Random().Next(0, int.MaxValue) - 5).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 88).ToString();
@@ -173,7 +182,9 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void DummyClassMethod_SeveralRequestAreNotRetrievedFromCacheInFirstAttempt()
         {
+            SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             string id1 = (new Random().Next(0, int.MaxValue) - 15).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 666).ToString();
@@ -270,7 +281,9 @@ namespace MercadoPagoSDK.Test
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
+            config.Add("accessToken", "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529");
             SDK.SetConfiguration(config);
+
             try
             {
                 result = resource.Create();
@@ -290,6 +303,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -307,7 +321,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
+            Assert.AreEqual("https://httpbin.org/post?access_token=TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529", result.GetLastApiResponse().Url);
         }
 
         [Test()]
@@ -315,6 +329,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -333,7 +348,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("PUT", result.GetLastApiResponse().HttpMethod);
-            Assert.AreEqual("https://httpbin.org/put?access_token=as987ge9ev6s5df4g32z1xv54654", result.GetLastApiResponse().Url);
+            Assert.AreEqual("https://httpbin.org/put?access_token=TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529", result.GetLastApiResponse().Url);
         }
 
         [Test()]
@@ -384,6 +399,8 @@ namespace MercadoPagoSDK.Test
         [Test()]
         public void MPBase_ParsePath_ShouldReplaceParamInUrlWithValues()
         {
+            SDK.CleanConfiguration();
+            SDK.AccessToken = "as987ge9ev6s5df4g32z1xv54654";
             DummyClass dummy = new DummyClass();
             dummy.id = 111;
             dummy.email = "person@something.com";
@@ -431,7 +448,7 @@ namespace MercadoPagoSDK.Test
             return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Load", id, false);
         }
 
-        [POSTEndpoint("/post", requestTimeout: 2000, retries: 0)]
+        [POSTEndpoint("/post", requestTimeout: 6000, retries: 0)]
         public ResourceTestClass Create()
         {
             return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Create", false);
@@ -470,6 +487,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
             ResourceTestClass resource = new ResourceTestClass();
             resource.CardNumber = "123456789";
