@@ -106,7 +106,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
             SDK.CleanConfiguration();
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id = new Random().Next(0, int.MaxValue).ToString();
 
@@ -121,7 +121,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id = new Random().Next(0, int.MaxValue).ToString();
 
@@ -139,7 +139,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 78).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 3).ToString();
@@ -158,7 +158,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 5).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 88).ToString();
@@ -184,7 +184,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id1 = (new Random().Next(0, int.MaxValue) - 15).ToString();
             string id2 = (new Random().Next(0, int.MaxValue) - 666).ToString();
@@ -257,7 +257,7 @@ namespace MercadoPagoSDK.Test
             Dictionary<string, string> config = new Dictionary<string, string>();
             config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
             config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            config.Add("accessToken", "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529");
+            config.Add("accessToken", Environment.GetEnvironmentVariable("ACCESS_TOKEN"));
             SDK.SetConfiguration(config);
 
             try
@@ -279,7 +279,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -305,7 +305,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             DummyClass resource = new DummyClass();
             resource.address = "Evergreen 123";
@@ -463,7 +463,7 @@ namespace MercadoPagoSDK.Test
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://httpbin.org");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             ResourceTestClass resource = new ResourceTestClass();
             resource.CardNumber = "123456789";

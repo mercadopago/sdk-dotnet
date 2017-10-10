@@ -15,7 +15,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer
             {
@@ -43,7 +43,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Juan", last_name = "Perez" };
             Customer responseCustomer = newCustomer.Create();
@@ -64,7 +64,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Jorge", last_name = "Calciati" };
             Customer responseCustomer = newCustomer.Create();
@@ -81,7 +81,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Pedro", last_name = "Juarez" };
             Customer responseCustomer = newCustomer.Create();
@@ -99,7 +99,7 @@ namespace MercadoPagoSDK.Test.Resources
         public void Customer_SearchCustomersReturnListOfCustomers()
         {
             SDK.CleanConfiguration();
-            SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             List<Customer> customers = Customer.Search();
 
