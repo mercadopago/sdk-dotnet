@@ -9,23 +9,23 @@ namespace MercadoPago.Resources.DataStructures.Customer
     {
         #region Properties
 
-        private string area_code;
-        private string number;
+        private string _area_code;
+        private string _number;
 
         #endregion
 
         #region Accessors
 
-        public string AreaCode
+        public string area_code
         {
-            get { return area_code; }
-            set { area_code = value; }
+            get { return _area_code; }
+            set { _area_code = value; }
         }
 
-        public string Number
+        public string number
         {
-            get { return number; }
-            set { number = value; }
+            get { return _number; }
+            set { _number = value; }
         }
 
         #endregion

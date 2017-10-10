@@ -17,12 +17,25 @@ namespace MercadoPagoSDK.Test.Resources
             SDK.SetBaseUrl("https://api.mercadopago.com");
             SDK.AccessToken = "TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529";
 
-            Customer newCustomer = new Customer { first_name = "Rafa", last_name = "Williner" };
+            Customer newCustomer = new Customer
+            {
+                first_name = "Rafa",
+                last_name = "Williner",
+                address = new MercadoPago.Resources.DataStructures.Customer.DefaultAddress { street_name = "some street", zip_code = "2300" },
+                phone = new MercadoPago.Resources.DataStructures.Customer.Phone { area_code = "03492", number = "432334" },
+                description = "customer description",
+                identification = new MercadoPago.Resources.DataStructures.Customer.Identification { type = "DNI", number = "29804555" }
+            };
+
             Customer responseCustomer = newCustomer.Create();
 
             Assert.AreEqual(201, responseCustomer.GetLastApiResponse().StatusCode);
             Assert.AreEqual(newCustomer.first_name, responseCustomer.first_name);
             Assert.AreEqual(newCustomer.last_name, responseCustomer.last_name);
+            Assert.AreEqual(newCustomer.phone.number, responseCustomer.phone.number);
+            Assert.AreEqual(newCustomer.identification.number, responseCustomer.identification.number);
+            Assert.AreEqual(newCustomer.address.street_name, responseCustomer.address.street_name);
+            Assert.AreEqual(newCustomer.description, responseCustomer.description);
         }
 
         [Test()]

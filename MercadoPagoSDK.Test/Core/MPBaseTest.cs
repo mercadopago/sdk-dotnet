@@ -222,6 +222,7 @@ namespace MercadoPagoSDK.Test
         {
             try
             {
+                SDK.CleanConfiguration();
                 MPCredentials.GetAccessToken();
             }
             catch (MPException mpException)
@@ -246,32 +247,7 @@ namespace MercadoPagoSDK.Test
 
             // should never get here
             Assert.Fail();
-        }
-
-        [Test()]
-        public void DummyClassMethod_WitAttributes_ShouldFindAttribute()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            try
-            {
-                var result = DummyClass.Load("1234", false);
-            }
-            catch
-            {
-                // should never get here
-                Assert.Fail();
-                return;
-            }
-
-            Assert.Pass();
-        }
+        }    
 
         [Test()]
         public void DummyClassMethod_WitAttributes_CreateNonStaticMethodShouldFindAttribute()
