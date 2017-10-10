@@ -22,12 +22,12 @@ namespace MercadoPago.Resources
         public static Payment Load(string id, bool useCache) 
         {
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "Load", id, useCache);
-        }
+        } 
         
         [POSTEndpoint("/v1/payments")]
         public Payment Create()
         {
-            return (Payment)ProcessMethod<Payment>("Create", WITHOUT_CACHE); 
+            return (Payment)ProcessMethod<Payment>("Create", WITHOUT_CACHE);  
         }
         
         [PUTEndpoint("/v1/payments/:id")]
