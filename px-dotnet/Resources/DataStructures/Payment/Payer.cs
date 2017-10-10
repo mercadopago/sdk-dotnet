@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,55 +17,65 @@ namespace MercadoPago.Resources.DataStructures.Payment
             Guest
         }
 
-        private Type type;
-        private string id;
-        private string email;
-        private Identification identification;
-        private PayerPhone payerPhone;
-        private string firstName;
-        private string lastName;
+        private string _entity_type;
+        private string _type;
+        private string _id;
+        private string _email;
+        private Identification _identification;
+        private PayerPhone _phone;
+        private string _first_name;
+        private string _last_name;
 
         #endregion
 
         #region Accesors
 
-        public Type PayerType
+        public string entity_type
         {
-            get { return type; }
-            set { type = value; }
+            get { return _entity_type; }
+            set { _entity_type = value; }
         }
 
-        public string ID
+        public string type
         {
-            get { return id; }
-            set { id = value; }
+            get { return _type; }
+            set { _type = value; }
         }
 
-        public string Email
+        public string id
         {
-            get { return email; }
-            set { email = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
-        public Identification Identification
+        public string email
         {
-            get { return identification; }
-            set { identification = value; }
+            get { return _email; }
+            set { _email = value; }
         }
 
-        public PayerPhone PayerPhone
+        public Identification identification
         {
-            get { return payerPhone; }
+            get { return _identification; }
+            set { _identification = value; }
         }
 
-        public string FirstName
+        public PayerPhone phone
         {
-            get { return firstName; }
+            get { return _phone; }
+            private set { _phone = value; }
         }
 
-        public string LastName
+        public string first_name
         {
-            get { return lastName; }
+            get { return _first_name; }
+            private set { _first_name = value; }
+        }
+
+        public string last_name
+        {
+            get { return _last_name; }
+            private set { _last_name = value; }
         }
 
         #endregion

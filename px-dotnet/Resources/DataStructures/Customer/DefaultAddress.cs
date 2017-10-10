@@ -9,36 +9,36 @@ namespace MercadoPago.Resources.DataStructures.Customer
     {
         #region Properties
 
-        private string id;
-        private string zip_code;
-        private string street_name;
-        private string street_number;
+        private string _id;
+        private string _zip_code;
+        private string _street_name;
+        private string _street_number;
 
         #endregion
 
         #region Accessors
 
-        public string ID
+        public string id
         {
-            get { return id; }
+            get { return _id; }
         }
 
-        public string ZipCode
+        public string zip_code
         {
-            get { return zip_code; }
-            set { zip_code = value; }
+            get { return _zip_code; }
+            set { _zip_code = value; }
         }
 
-        public string StreetName
+        public string street_name
         {
-            get { return street_name; }
-            set { street_name = value; }
+            get { return _street_name; }
+            set { _street_name = value; }
         }
 
-        public string StreetNumber
+        public string street_number
         {
-            get { return street_number; }
-            set { street_number = value; }
+            get { return _street_number; }
+            set { _street_number = value; }
         }
 
         #endregion

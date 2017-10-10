@@ -62,6 +62,8 @@
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
     <Compile Include="Core\Annotations\UserToken.cs" />
+    <Compile Include="Core\CustomDeserializationContractResolver.cs" />
+    <Compile Include="Core\CustomSerializationContractResolver.cs" />
     <Compile Include="Core\HttpMethod.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />
@@ -81,9 +83,9 @@
     <Compile Include="Resources\Customer.cs" />
     <Compile Include="Resources\DataStructures\Customer\Card\CardHolder.cs" />
     <Compile Include="Resources\DataStructures\Customer\Card\Identification.cs" />
-    <Compile Include="Resources\DataStructures\Customer\Card\Issuer.cs" />
+	<Compile Include="Resources\DataStructures\Customer\Card\Issuer.cs" />
     <Compile Include="Resources\DataStructures\Customer\Card\PaymentMethod.cs" />
-    <Compile Include="Resources\DataStructures\Customer\Card\SecurityCode.cs" />
+    <Compile Include="Resources\DataStructures\Customer\Card\SecurityCode.cs" />   
     <Compile Include="Resources\DataStructures\Customer\Address.cs" />
     <Compile Include="Resources\DataStructures\Customer\City.cs" />
     <Compile Include="Resources\DataStructures\Customer\Country.cs" />
@@ -96,12 +98,6 @@
     <Compile Include="Resources\DataStructures\Customer\Shipment.cs" />
     <Compile Include="Resources\DataStructures\Customer\State.cs" />
     <Compile Include="Resources\DataStructures\Customer\Verification.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\Address.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\Collector.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\Item.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\MerchantOrderPayment.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\Payer.cs" />
-    <Compile Include="Resources\DataStructures\MerchantOrder\Shipment.cs" />
     <Compile Include="Resources\DataStructures\Payment\AdditionalInfo.cs" />
     <Compile Include="Resources\DataStructures\Payment\AdditionalInfoPayer.cs" />
     <Compile Include="Resources\DataStructures\Payment\Address.cs" />
@@ -116,24 +112,10 @@
     <Compile Include="Resources\DataStructures\Payment\Shipment.cs" />
     <Compile Include="Resources\DataStructures\Payment\Source.cs" />
     <Compile Include="Resources\DataStructures\Payment\TransactionDetail.cs" />
-    <Compile Include="Resources\MerchantOrder.cs" />
     <Compile Include="Resources\Payment.cs" />
     <Compile Include="Resources\DataStructures\Payment\Identification.cs" />
     <Compile Include="Resources\DataStructures\Payment\Payer.cs" />
     <Compile Include="Resources\DataStructures\Payment\PayerPhone.cs" />
-    <Compile Include="Resources\DataStructures\Preference\BackUrl.cs" />
-    <Compile Include="Resources\DataStructures\Preference\DifferentialPricing.cs" />
-    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentMethod.cs" />
-    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentType.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Item.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Address.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Identification.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Payer.cs" />
-    <Compile Include="Resources\DataStructures\Preference\PaymentMethod.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Phone.cs" />
-    <Compile Include="Resources\DataStructures\Preference\ReceiverAddress.cs" />
-    <Compile Include="Resources\DataStructures\Preference\Shipment.cs" />
-    <Compile Include="Resources\Preference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -55,7 +55,8 @@ namespace MercadoPago
         /// <returns>a JSON Object with the attributes members of the instance</returns>
         public static JObject GetJsonFromResource<T>(T resource) where T : MPBase
         {
-            return JObject.FromObject(resource);
+            JsonSerializer serializer = new JsonSerializer { ContractResolver = new CustomSerializationContractResolver() };            
+            return JObject.FromObject(resource, serializer);
         }
 
         /// <summary>
@@ -64,9 +65,9 @@ namespace MercadoPago
         /// <returns>an object obteined from obj</returns>
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
-            var resource = (T)jObj.ToObject<T>();
-            dynamic resourceDynamic = JsonConvert.DeserializeObject(jObj.ToString());
-            return (T)jObj.ToObject<T>();
+            JsonSerializer serializer = new JsonSerializer { ContractResolver = new CustomDeserializationContractResolver() };
+            T resource = (T)jObj.ToObject<T>(serializer);
+            return resource;
         }
 
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
@@ -74,7 +75,7 @@ namespace MercadoPago
             JArray jsonArray = null;
             if (jsonElement is JObject)
             {
-                jsonArray = (JArray)jsonElement.ToString();
+                jsonArray = JArray.Parse(jsonElement["results"].ToString());
             }
 
             return jsonArray;
