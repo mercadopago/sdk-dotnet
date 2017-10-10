@@ -104,7 +104,7 @@ namespace MercadoPagoSDK.Test.Resources
         }
 
         public string GenerateSingleUseToken()
-        {
+        { 
             JObject payload = JObject.Parse("{ \"card_number\": \"4544610257481730\", \"security_code\": \"122\", \"expiration_month\": \"7\", \"expiration_year\": \"2030\", \"cardholder\": { \"name\": \"Test test\", \"identification\": { \"type\": \"DNI\", \"number\": \"12345678\" } } }");
             MPRESTClient client = new MPRESTClient();
             MPAPIResponse responseCardToken = client.ExecuteRequestCore(
@@ -119,6 +119,7 @@ namespace MercadoPagoSDK.Test.Resources
             JObject jsonResponse = JObject.Parse(responseCardToken.StringResponse.ToString());
             List<JToken> tokens = MPCoreUtils.FindTokens(jsonResponse, "id");
             return tokens.First().ToString();
+
         }
     }
 }
