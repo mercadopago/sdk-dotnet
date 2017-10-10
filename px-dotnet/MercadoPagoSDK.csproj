@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -116,6 +116,26 @@
     <Compile Include="Resources\DataStructures\Payment\Identification.cs" />
     <Compile Include="Resources\DataStructures\Payment\Payer.cs" />
     <Compile Include="Resources\DataStructures\Payment\PayerPhone.cs" />
+    <Compile Include="Resources\MerchantOrder.cs" />
+    <Compile Include="Resources\Preference.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Address.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Collector.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Item.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\MerchantOrderPayment.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Payer.cs" />
+    <Compile Include="Resources\DataStructures\MerchantOrder\Shipment.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Address.cs" />
+    <Compile Include="Resources\DataStructures\Preference\BackUrl.cs" />
+    <Compile Include="Resources\DataStructures\Preference\DifferentialPricing.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentMethod.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ExcludedPaymentType.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Identification.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Item.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Payer.cs" />
+    <Compile Include="Resources\DataStructures\Preference\PaymentMethod.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Phone.cs" />
+    <Compile Include="Resources\DataStructures\Preference\ReceiverAddress.cs" />
+    <Compile Include="Resources\DataStructures\Preference\Shipment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
