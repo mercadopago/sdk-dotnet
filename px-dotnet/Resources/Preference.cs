@@ -38,7 +38,7 @@ namespace MercadoPago.Resources
 
         #region Properties
 
-        private List<Item> items;
+        private List<Item> items = new List<Item>();
         private Payer payer;
         private PaymentMethod paymentMethod;
         private Shipment shipment;
