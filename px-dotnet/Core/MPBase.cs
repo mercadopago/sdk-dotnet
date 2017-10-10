@@ -277,18 +277,7 @@ namespace MercadoPago
             {
                 JObject jsonObject = null;
 
-                //Added as a workaround to manage the Httpbin response and allow the framework to bind correctly to the resource.
-                //TODO Must be removed after testing approvement.
-                if (response.Url.Contains("https://httpbin.org") && response.HttpMethod == "POST")
-                {
-                    string responseDataJson = response.JsonObjectResponse["data"].ToString();
-                    jsonObject = JObject.Parse(responseDataJson);
-                }
-                else
-                {
-                    jsonObject = (JObject)response.JsonObjectResponse;
-                }
-
+                jsonObject = (JObject)response.JsonObjectResponse;
                 T resourceObject = (T)MPCoreUtils.GetResourceFromJson<T>(resource.GetType(), jsonObject);
                 resource = (T)FillResource(resourceObject, resource);
                 resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
