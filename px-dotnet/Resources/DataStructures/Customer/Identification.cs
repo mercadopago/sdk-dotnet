@@ -9,23 +9,23 @@ namespace MercadoPago.Resources.DataStructures.Customer
     {
         #region Properties
 
-        private string type;
-        private string number;
+        private string _type;
+        private string _number;
 
         #endregion
 
         #region Accessors
 
-        public string Type
+        public string type
         {
-            get { return type; }
-            set { type = value; }
+            get { return _type; }
+            set { _type = value; }
         }
 
-        public string Number
+        public string number
         {
-            get { return number; }
-            set { number = value; }
+            get { return _number; }
+            set { _number = value; }
         }
 
         #endregion      

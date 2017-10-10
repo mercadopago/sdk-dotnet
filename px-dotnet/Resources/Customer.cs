@@ -55,135 +55,135 @@ namespace MercadoPago
         [DELETEEndpoint("/v1/customers/:id")]
         public Customer Delete()
         {
-            return (Customer)ProcessMethod("Delete", WITHOUT_CACHE);
+            return (Customer)ProcessMethod<Customer>("Delete", WITHOUT_CACHE);
         }
 
         #endregion
 
         #region Properties
 
-        private string id;
-        private string email;
-        private string first_name;
-        private string last_name;
-        private Phone phone;
-        private Identification identification;
-        private string default_address;
-        private DefaultAddress address;
-        private DateTime? date_registered;
-        private string description;
-        private DateTime? date_created;
-        private DateTime? date_last_updated;
-        private JObject metadata;
-        private string default_card;
-        private List<Card> cards;
-        private List<Address> addresses;
-        private bool? live_mode;
+        private string _id;
+        private string _email;
+        private string _first_name;
+        private string _last_name;
+        private Phone _phone;
+        private Identification _identification;
+        private string _default_address;
+        private DefaultAddress _address;
+        private DateTime? _date_registered;
+        private string _description;
+        private DateTime? _date_created;
+        private DateTime? _date_last_updated;
+        private JObject _metadata;
+        private string _default_card;
+        private Card[] _cards;
+        private Address[] _addresses;
+        private bool? _live_mode;
 
         #endregion
 
         #region Accessors
 
-        public string ID
+        public string id
         {
-            get { return id; }
-            set { id = value; }
+            get { return _id; }
+            private set { _id = value; }
         }
 
-        public string Email
+        public string email
         {
-            get { return email; }
-            set { email = value; }
+            get { return _email; }
+            private     set { _email = value; }
         }
 
-        public string FirstName
+        public string first_name
         {
-            get { return first_name; }
-            set { last_name = value; }
+            get { return _first_name; }
+            set { _first_name = value; }
         }
 
-        public string LastName
+        public string last_name
         {
-            get { return last_name; }
-            set { last_name = value; }
+            get { return _last_name; }
+            set { _last_name = value; }
         }
 
-        public Phone Phone
+        public Phone phone
         {
-            get { return phone; }
-            set { phone = value; }
+            get { return _phone; }
+            set { _phone = value; }
         }
 
-        public Identification Identification
+        public Identification identification
         {
-            get { return identification; }
-            set { identification = value; }
+            get { return _identification; }
+            set { _identification = value; }
         }
 
-        public string DefaultAddress
+        public string default_address
         {
-            get { return default_address; }
-            set { default_address = value; }
+            get { return _default_address; }
+            set { _default_address = value; }
         }
 
-        public DefaultAddress Address
+        public DefaultAddress address
         {
-            get { return address; }
-            set { address = value; }
+            get { return _address; }
+            set { _address = value; }
         }
 
-        public DateTime? DateRegistered
+        public DateTime? date_registered
         {
-            get { return date_registered; }
-            set { date_registered = value; }
+            get { return _date_registered; }
+            set { _date_registered = value; }
         }
 
-        public string Description
+        public string description
         {
-            get { return description; }
-            set { description = value; }
+            get { return _description; }
+            set { _description = value; }
         }
 
-        public DateTime? DateCreated
+        public DateTime? date_created
         {
-            get { return date_created; }
-            set { date_created = value; }
+            get { return _date_created; }
+            private set { _date_created = value; }
         }
 
-        public DateTime? DateLastUpdated
+        public DateTime? date_last_updated
         {
-            get { return date_last_updated; }
-            set { date_last_updated = value; }
+            get { return _date_last_updated; }
+            private set { _date_last_updated = value; }
         }
 
-        public JObject Metadata
+        public JObject metadata
         {
-            get { return metadata; }
-            set { metadata = value; }
+            get { return _metadata; }
+            set { _metadata = value; }
         }
 
-        public string DefaultCard
+        public string default_card
         {
-            get { return default_card; }
-            set { default_card = value; }
+            get { return _default_card; }
+            set { _default_card = value; }
         }
 
-        public List<Card> Cards
+        public Card[] cards
         {
-            get { return cards; }
-            set { cards = value; }
+            get { return _cards; }
+            private set { _cards = value; }
         }
 
-        public List<Address> Addresses
+        public Address[] addresses
         {
-            get { return addresses; }
-            set { addresses = value; }
+            get { return _addresses; }
+            private set { _addresses = value; }
         }
 
-        public bool? LiveMode
+        public bool? live_mode
         {
-            get { return live_mode; }
-            set { live_mode = value; }
+            get { return _live_mode; }
+            private set { _live_mode = value; }
         }
 
         #endregion

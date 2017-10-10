@@ -7,6 +7,7 @@ using System.Net;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace MercadoPago
 {
@@ -18,8 +19,8 @@ namespace MercadoPago
 
         public static string IdempotencyKey { get; set; }
 
-        public MPAPIResponse LastApiResponse { get; private set; }
-        public JObject LastKnownJson { get; private set; }
+        protected MPAPIResponse _lastApiResponse;
+        protected JObject _lastKnownJson;
 
         #region Errors Definitions
         public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
@@ -36,8 +37,18 @@ namespace MercadoPago
         /// <returns>Last Api response.</returns>
         public MPAPIResponse GetLastApiResponse()
         {
-            return this.LastApiResponse;
+            return this._lastApiResponse;
         }
+
+        /// <summary>
+        /// Gets the last api response for the resource.
+        /// </summary>
+        /// <returns>Last Api response.</returns>
+        public JObject GetLastKnownJson()
+        {
+            return this._lastKnownJson;
+        }
+
 
         /// <summary>
         /// Checks if current resource needs idempotency key and set IdempotencyKey if positive.
@@ -92,14 +103,14 @@ namespace MercadoPago
         /// <param name="param">Parameters to use in the retrieve process.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase ProcessMethod(Type type, string methodName, string param, bool useCache)
+        public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache) where T : MPBase
         {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param0", param);
 
-            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
+            return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
         }
 
         public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache) where T : MPBase
@@ -230,7 +241,7 @@ namespace MercadoPago
                 }
             }
 
-            resource.LastApiResponse = response;
+            resource._lastApiResponse = response;
 
             return resource;
         }
@@ -266,21 +277,10 @@ namespace MercadoPago
             {
                 JObject jsonObject = null;
 
-                //Added as a workaround to manage the Httpbin response and allow the framework to bind correctly to the resource.
-                //Must be removed after testing approvement.
-                if (response.Url.Contains("https://httpbin.org") && response.HttpMethod == "POST")
-                {
-                    string responseDataJson = response.JsonObjectResponse["data"].ToString();
-                    jsonObject = JObject.Parse(responseDataJson);
-                }
-                else
-                {
-                    jsonObject = (JObject)response.JsonObjectResponse;
-                }
-
+                jsonObject = (JObject)response.JsonObjectResponse;
                 T resourceObject = (T)MPCoreUtils.GetResourceFromJson<T>(resource.GetType(), jsonObject);
                 resource = (T)FillResource(resourceObject, resource);
-                resource.LastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+                resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
             }
 
             return resource;
@@ -297,7 +297,7 @@ namespace MercadoPago
                     for (int i = 0; i < jsonArray.Count(); i++)
                     {
                         T resource = (T)MPCoreUtils.GetResourceFromJson<T>(clazz, (JObject)jsonArray[i]);
-                        resource.LastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+                        resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
                         resourceArray.Add(resource);
                     }
                 }
@@ -358,7 +358,7 @@ namespace MercadoPago
 
                 if (response != null)
                 {
-                    response.isFromCache = true;
+                    response.IsFromCache = true;
                 }
             }
 
@@ -512,7 +512,7 @@ namespace MercadoPago
                         if (resource != null)
                         {
                             var newResource = resource;
-                            newResource.LastApiResponse = null;
+                            newResource._lastApiResponse = null;
                             JObject json = JObject.FromObject(newResource);
 
                             //Add control to verify JSON's case properties. Must be removed after testing approved status.
@@ -558,16 +558,11 @@ namespace MercadoPago
                 result.Append(path);
             }
 
+            // URL
             result.Insert(0, SDK.BaseUrl);
 
-            string accessToken = null;
-
-            if (resource != null)
-            {
- 
-                accessToken = SDK.GetAccessToken();
- 
-            }
+            // Access Token
+            string accessToken = SDK.GetAccessToken();            
 
             if (!string.IsNullOrEmpty(accessToken))
             {
@@ -601,7 +596,7 @@ namespace MercadoPago
         /// <returns></returns>
         public JObject GetJsonSource()
         {
-            return LastApiResponse != null ? LastApiResponse.JsonObjectResponse : null;
+            return _lastApiResponse != null ? _lastApiResponse.JsonObjectResponse : null;
         }
 
         #endregion

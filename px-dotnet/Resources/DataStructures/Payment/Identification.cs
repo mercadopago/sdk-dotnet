@@ -11,24 +11,24 @@ namespace MercadoPago.Resources.DataStructures.Payment
         #region Properties
 
         [StringLength(256)]
-        private string type;
+        private string _type;
         [StringLength(256)]
-        private string number;
+        private string _number;
 
         #endregion
 
         #region Accessors
 
-        public string Type
+        public string type
         {
-            get { return type; }
-            set { type = value; }
+            get { return _type; }
+            set { _type = value; }
         }
-       
-        public string Number
+
+        public string number
         {
-            get { return number; }
-            set { number = value; }
+            get { return _number; }
+            set { _number = value; }
         }
 
         #endregion
