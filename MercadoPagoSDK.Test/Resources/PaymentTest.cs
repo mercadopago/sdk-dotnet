@@ -33,7 +33,7 @@ namespace MercadoPagoSDK.Test.Resources
           
             try
             {
-                Payment response = payment.Create();
+                Payment response = payment.Save();
                 Assert.IsTrue(response.id.HasValue);
                 Assert.IsTrue(response.id.Value > 0);
 

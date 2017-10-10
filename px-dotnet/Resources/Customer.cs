@@ -41,9 +41,9 @@ namespace MercadoPago
         }
 
         [POSTEndpoint("/v1/customers")]
-        public Customer Create()
+        public Customer Save()
         {
-            return (Customer)ProcessMethod<Customer>("Create", WITHOUT_CACHE);
+            return (Customer)ProcessMethod<Customer>("Save", WITHOUT_CACHE);
         }
 
         [PUTEndpoint("/v1/customers/:id")]

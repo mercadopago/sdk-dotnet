@@ -33,9 +33,9 @@ namespace MercadoPago.Resources
         }
 
         [POSTEndpoint("/v1/customers/:customer_id/cards/")]
-        public Card Create()
+        public Card Save()
         {
-            return (Card)ProcessMethod<Card>("Create", WITHOUT_CACHE);
+            return (Card)ProcessMethod<Card>("Save", WITHOUT_CACHE);
         }
 
         [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]

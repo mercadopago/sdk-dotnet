@@ -96,7 +96,7 @@ namespace MercadoPagoSDK.Test.Core
             payment.installments = 1;
             payment.payer = payer;
 
-            Payment response = payment.Create();
+            Payment response = payment.Save();
 
             var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, response.id.ToString());
             Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));

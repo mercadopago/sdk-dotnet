@@ -27,7 +27,7 @@ namespace MercadoPagoSDK.Test.Resources
                 identification = new MercadoPago.Resources.DataStructures.Customer.Identification { type = "DNI", number = "29804555" }
             };
 
-            Customer responseCustomer = newCustomer.Create();
+            Customer responseCustomer = newCustomer.Save();
 
             Assert.AreEqual(201, responseCustomer.GetLastApiResponse().StatusCode);
             Assert.AreEqual(newCustomer.first_name, responseCustomer.first_name);
@@ -46,7 +46,7 @@ namespace MercadoPagoSDK.Test.Resources
             SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Juan", last_name = "Perez" };
-            Customer responseCustomer = newCustomer.Create();
+            Customer responseCustomer = newCustomer.Save();
 
             Customer loadedCustomer1 = Customer.Load(responseCustomer.id);
             Customer loadedCustomer2 = Customer.Load(responseCustomer.id, false);
@@ -67,7 +67,7 @@ namespace MercadoPagoSDK.Test.Resources
             SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Jorge", last_name = "Calciati" };
-            Customer responseCustomer = newCustomer.Create();
+            Customer responseCustomer = newCustomer.Save();
 
             responseCustomer.last_name = "Calciati Rodriguez";
             responseCustomer.Update();
@@ -84,7 +84,7 @@ namespace MercadoPagoSDK.Test.Resources
             SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             Customer newCustomer = new Customer { first_name = "Pedro", last_name = "Juarez" };
-            Customer responseCustomer = newCustomer.Create();
+            Customer responseCustomer = newCustomer.Save();
 
             string id = responseCustomer.id;
 

@@ -25,9 +25,9 @@ namespace MercadoPago.Resources
         } 
         
         [POSTEndpoint("/v1/payments")]
-        public Payment Create()
+        public Payment Save()
         {
-            return (Payment)ProcessMethod<Payment>("Create", WITHOUT_CACHE);  
+            return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
         }
         
         [PUTEndpoint("/v1/payments/:id")]
