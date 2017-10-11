@@ -1,13 +1,14 @@
 ﻿using MercadoPago;
 using MercadoPago.Core;
 using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.Payment;
+using MercadoPago.DataStructures.Payment;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace MercadoPagoSDK.Test.Core
 {
@@ -67,7 +68,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage<Payment>("MercadoPago.Resources.DataStructures.Customer.City", "1234567");
+                MPIPN.Manage<Payment>("MercadoPago.DataStructures.Customer.City", "1234567");
             }
             catch (MPException ex)
             {
@@ -83,14 +84,19 @@ namespace MercadoPagoSDK.Test.Core
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN", EnvironmentVariableTarget.User);
+
+            Console.WriteLine("ACCESS_TOKEN: " + Environment.GetEnvironmentVariable("LSCOLORS"), EnvironmentVariableTarget.User);
+            Console.WriteLine("GetEnvironmentVariables: ");
+            foreach (DictionaryEntry de in Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process))
+                Console.WriteLine("  {0} = {1}", de.Key, de.Value);
 
             Payment payment = new Payment();
             Payer payer = new Payer();
             payer.email = "mlovera@kinexo.com";
 
             payment.transaction_amount = 100M;
-            payment.token = GenerateSingleUseToken(); // 1 use card token
+            payment.token = GenerateSingleUseCardToken(); // 1 use card token
             payment.description = "Pago de seguro";
             payment.payment_method_id = "visa";
             payment.installments = 1;
@@ -146,13 +152,13 @@ namespace MercadoPagoSDK.Test.Core
             }
         }
 
-        public string GenerateSingleUseToken()
+        public string GenerateSingleUseCardToken()
         {
             JObject payload = JObject.Parse("{ \"card_number\": \"4544610257481730\", \"security_code\": \"122\", \"expiration_month\": \"7\", \"expiration_year\": \"2030\", \"cardholder\": { \"name\": \"Test test\", \"identification\": { \"type\": \"DNI\", \"number\": \"12345678\" } } }");
             MPRESTClient client = new MPRESTClient();
             MPAPIResponse responseCardToken = client.ExecuteRequestCore(
                 HttpMethod.POST,
-                "https://api.mercadopago.com/v1/card_tokens?public_key=TEST-075f3392-6936-4201-8777-bd9dc45edef7",
+                "https://api.mercadopago.com/v1/card_tokens?public_key=" + Environment.GetEnvironmentVariable("PUBLIC_KEY"),
                 PayloadType.JSON,
                payload,
                 null,

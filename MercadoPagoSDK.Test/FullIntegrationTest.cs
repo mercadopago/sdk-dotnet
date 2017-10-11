@@ -1,7 +1,7 @@
 ﻿using MercadoPago;
 using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.Customer;
-using MercadoPago.Resources.DataStructures.Payment;
+using MercadoPago.DataStructures.Customer;
+using MercadoPago.DataStructures.Payment;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
@@ -27,8 +27,8 @@ namespace MercadoPagoSDK.Test
             //customer.Email = "test_user_112299654@testuser.com";
             //customer.FirstName = "Jack";
             //customer.LastName = "Bauer";
-            //customer.Phone = new MercadoPago.Resources.DataStructures.Customer.Phone() { AreaCode = "3492", Number = "112233" };
-            //customer.Identification = new MercadoPago.Resources.DataStructures.Customer.Identification() { Type = "DNI", Number = "12345678" };
+            //customer.Phone = new MercadoPago.DataStructures.Customer.Phone() { AreaCode = "3492", Number = "112233" };
+            //customer.Identification = new MercadoPago.DataStructures.Customer.Identification() { Type = "DNI", Number = "12345678" };
 
             //Customer customerResult = new Customer();
 
