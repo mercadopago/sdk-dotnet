@@ -297,7 +297,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post?access_token=TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529", result.GetLastApiResponse().Url);
+            Assert.AreEqual(Environment.GetEnvironmentVariable("ACCESS_TOKEN"), result.GetLastApiResponse().Url);
         }
 
         [Test()]
@@ -324,7 +324,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("PUT", result.GetLastApiResponse().HttpMethod);
-            Assert.AreEqual("https://httpbin.org/put?access_token=TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529", result.GetLastApiResponse().Url);
+            Assert.AreEqual("https://httpbin.org/put?access_token=" + Environment.GetEnvironmentVariable("ACCESS_TOKEN"), result.GetLastApiResponse().Url);
         }
 
         [Test()]
