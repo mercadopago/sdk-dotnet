@@ -84,12 +84,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN", EnvironmentVariableTarget.User);
-
-            Console.WriteLine("ACCESS_TOKEN: " + Environment.GetEnvironmentVariable("LSCOLORS"), EnvironmentVariableTarget.User);
-            Console.WriteLine("GetEnvironmentVariables: ");
-            foreach (DictionaryEntry de in Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process))
-                Console.WriteLine("  {0} = {1}", de.Key, de.Value);
+            SDK.SetAccessToken(Environment.GetEnvironmentVariable("ACCESS_TOKEN"));
 
             Payment payment = new Payment();
             Payer payer = new Payer();
