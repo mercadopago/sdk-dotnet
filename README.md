@@ -9,12 +9,12 @@
 
 **Package Manager**
 
-`PM> Install-Package mercadopago-sdk -Version 1.0.1`
+`PM> Install-Package mercadopago-sdk -Version 1.0.3`
 
 **.Net CLI**
 
-`> dotnet add package mercadopago-sdk --version 1.0.1`
+`> dotnet add package mercadopago-sdk --version 1.0.3`
 
 **Packet CLI**
 
-`> paket add mercadopago-sdk --version 1.0.1`
+`> paket add mercadopago-sdk --version 1.0.3`
