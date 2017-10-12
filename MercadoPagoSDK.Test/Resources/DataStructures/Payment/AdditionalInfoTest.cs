@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.Payment;
+﻿using MercadoPago.DataStructures.Payment;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

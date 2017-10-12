@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.Payment;
+using MercadoPago.DataStructures.Payment;
 using MercadoPago;
 using Newtonsoft.Json.Linq;
 

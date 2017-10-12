@@ -1,7 +1,7 @@
 ﻿using MercadoPago;
 using MercadoPago.Core;
 using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.Payment;
+using MercadoPago.DataStructures.Payment;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System;
@@ -67,7 +67,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             try
             {
-                MPIPN.Manage<Payment>("MercadoPago.Resources.DataStructures.Customer.City", "1234567");
+                MPIPN.Manage<Payment>("MercadoPago.DataStructures.Customer.City", "1234567");
             }
             catch (MPException ex)
             {
