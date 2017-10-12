@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.Customer.Card;
+﻿using MercadoPago.DataStructures.Customer.Card;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace MercadoPago.Resources
         }
         
         [GETEndpoint("/v1/customers/:customer_id/cards")]
-        public static List<Card> LoadAll(String customerId, Boolean useCache)
+        public static List<Card> LoadAll(String customerId, bool useCache)
         {
             return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "LoadAll", customerId, useCache);
         }

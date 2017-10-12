@@ -21,10 +21,10 @@ namespace MercadoPagoSDK.Test.Resources
             {
                 first_name = "Rafa",
                 last_name = "Williner",
-                address = new MercadoPago.Resources.DataStructures.Customer.DefaultAddress { street_name = "some street", zip_code = "2300" },
-                phone = new MercadoPago.Resources.DataStructures.Customer.Phone { area_code = "03492", number = "432334" },
+                address = new MercadoPago.DataStructures.Customer.DefaultAddress { street_name = "some street", zip_code = "2300" },
+                phone = new MercadoPago.DataStructures.Customer.Phone { area_code = "03492", number = "432334" },
                 description = "customer description",
-                identification = new MercadoPago.Resources.DataStructures.Customer.Identification { type = "DNI", number = "29804555" }
+                identification = new MercadoPago.DataStructures.Customer.Identification { type = "DNI", number = "29804555" }
             };
 
             Customer responseCustomer = newCustomer.Save();
