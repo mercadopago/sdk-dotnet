@@ -346,7 +346,7 @@ namespace MercadoPago
             PayloadType payloadType,
             JObject payload,
             WebHeaderCollection colHeaders,
-            Boolean useCache,
+            bool useCache,
             int requestTimeout,
             int retries)
         {
@@ -483,6 +483,8 @@ namespace MercadoPago
         public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
         {
             StringBuilder result = new StringBuilder();
+            bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
+
             if (path.Contains(':'))
             {
                 int paramIterator = 0;
@@ -568,6 +570,14 @@ namespace MercadoPago
             if (!string.IsNullOrEmpty(accessToken))
             {
                 result.Append(string.Format("{0}{1}", "?access_token=", accessToken));
+            }
+
+            if (search) //search url format, no :id type. Params after access_token
+            {
+                foreach (var elem in mapParams)
+                {
+                    result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
+                }
             }
 
             return result.ToString();
