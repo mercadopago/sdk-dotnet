@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.Preference;
+﻿using MercadoPago.DataStructures.Preference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

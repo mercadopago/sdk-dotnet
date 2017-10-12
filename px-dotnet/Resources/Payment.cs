@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.Payment;
+﻿using MercadoPago.DataStructures.Payment;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

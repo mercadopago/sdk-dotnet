@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.MerchantOrder;
+﻿using MercadoPago.DataStructures.MerchantOrder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

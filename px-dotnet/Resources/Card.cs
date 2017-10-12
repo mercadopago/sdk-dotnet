@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.DataStructures.Customer.Card;
+﻿using MercadoPago.DataStructures.Customer.Card;
 using System;
 using System.Collections.Generic;
 using System.Linq;

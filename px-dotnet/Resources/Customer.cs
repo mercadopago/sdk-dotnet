@@ -1,5 +1,5 @@
 ﻿using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.Customer;
+using MercadoPago.DataStructures.Customer;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
