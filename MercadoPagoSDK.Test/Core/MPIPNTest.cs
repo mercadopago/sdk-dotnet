@@ -83,7 +83,6 @@ namespace MercadoPagoSDK.Test.Core
         public void MPIPN_ShouldBeOk()
         {
             SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
             SDK.SetAccessToken(Environment.GetEnvironmentVariable("ACCESS_TOKEN"));
 
             Payment payment = new Payment();

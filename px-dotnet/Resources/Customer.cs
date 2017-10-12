@@ -18,7 +18,7 @@ namespace MercadoPago
         }
 
         [GETEndpoint("/v1/customers/search")]
-        public static List<Customer> Search(Boolean useCache)
+        public static List<Customer> Search(bool useCache)
         {
             return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", useCache);
         }
