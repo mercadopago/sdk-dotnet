@@ -297,7 +297,7 @@ namespace MercadoPagoSDK.Test
             }
 
             Assert.AreEqual("POST", result.GetLastApiResponse().HttpMethod);
-            Assert.AreEqual("https://httpbin.org/post?access_token=TEST-4205497482754834-092513-34a1c5f06438b3a488bad9420cfe84e5__LB_LD__-261220529", result.GetLastApiResponse().Url);
+            Assert.AreEqual(string.Format("https://httpbin.org/post?access_token={0}", Environment.GetEnvironmentVariable("ACCESS_TOKEN")), result.GetLastApiResponse().Url);
         }
 
         [Test()]
@@ -418,7 +418,7 @@ namespace MercadoPagoSDK.Test
         public string CardNumber { get; set; }
         public string Holder { get; set; }
 
-        [GETEndpoint("/getpath/load/:id", requestTimeout: 5, retries: 3)]
+        [GETEndpoint("/getpath/load/:id", requestTimeout: 5000, retries: 3)]
         public ResourceTestClass Load(string id)
         {
             return (ResourceTestClass)ProcessMethod<ResourceTestClass>("Load", id, false);

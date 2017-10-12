@@ -36,6 +36,28 @@ namespace MercadoPago.Resources
             return (Payment)ProcessMethod<Payment>("Update", WITHOUT_CACHE);
         }
 
+        public static List<Payment> Search()
+        {
+            return Search(WITHOUT_CACHE);
+        }
+
+        public static List<Payment> Search(Dictionary<string, string> filters)
+        {
+            return Search(filters, WITHOUT_CACHE);
+        }
+
+        [GETEndpoint("/v1/payments/search")]
+        public static List<Payment> Search(bool useCache)
+        {
+            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", useCache);
+        }
+       
+        [GETEndpoint("/v1/payments/search")]
+        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
+        {
+            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
+        } 
+
         #endregion
 
         #region Properties
