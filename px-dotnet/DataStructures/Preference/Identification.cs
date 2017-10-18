@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class Identification
+    public struct Identification
     {
         #region Properties
 

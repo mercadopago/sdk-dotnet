@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class Shipment
+    public struct Shipment
     {
         #region Properties
 

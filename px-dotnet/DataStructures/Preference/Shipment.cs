@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class Shipment
+    public struct Shipment
     {
         #region Properties
 
@@ -21,7 +21,7 @@ namespace MercadoPago.DataStructures.Preference
         private string dimensions;
         private int defaultShippingMethod;
         private List<int> freeMethods;
-        private decimal cost;
+        private float cost;
         private bool freeShipping;
         private ReceiverAddress receiverAddress;
 
@@ -59,7 +59,7 @@ namespace MercadoPago.DataStructures.Preference
             set { this.freeMethods = value; }
         }
 
-        public decimal Cost
+        public float Cost
         {
             get { return this.cost; }
             set { this.cost = value; }

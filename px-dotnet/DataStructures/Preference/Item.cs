@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {    
-    public class Item
+    public struct Item
     {
         #region Properties
 
@@ -25,7 +25,7 @@ namespace MercadoPago.DataStructures.Preference
         private string currencyId;
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
-        private decimal unitPrice;
+        private float unitPrice;
 
         #endregion
 
@@ -73,7 +73,7 @@ namespace MercadoPago.DataStructures.Preference
             set { this.currencyId = value; } 
         }        
 
-        public decimal UnitPrice 
+        public float UnitPrice 
         {
             get { return this.unitPrice; }
             set { this.unitPrice = value; }

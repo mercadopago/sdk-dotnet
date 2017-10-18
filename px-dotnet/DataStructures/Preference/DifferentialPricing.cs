@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class DifferentialPricing
+    public struct DifferentialPricing
     {
         #region Properties
 

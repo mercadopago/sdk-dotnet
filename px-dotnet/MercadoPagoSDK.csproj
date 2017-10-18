@@ -117,7 +117,6 @@
     <Compile Include="DataStructures\Payment\Item.cs" />
     <Compile Include="DataStructures\Payment\Order.cs" />
     <Compile Include="DataStructures\Payment\Payer.cs" />
-    <Compile Include="DataStructures\Payment\PayerPhone.cs" />
     <Compile Include="DataStructures\Payment\Phone.cs" />
     <Compile Include="DataStructures\Payment\ReceiverAddress.cs" />
     <Compile Include="DataStructures\Payment\Refund.cs" />
@@ -136,6 +135,17 @@
     <Compile Include="DataStructures\Preference\Phone.cs" />
     <Compile Include="DataStructures\Preference\ReceiverAddress.cs" />
     <Compile Include="DataStructures\Preference\Shipment.cs" />
+    <Compile Include="Resources\Plan.cs" />
+    <Compile Include="Resources\Subscription.cs" />
+    <Compile Include="Resources\Preapproval.cs" />
+    <Compile Include="DataStructures\Plan\AutoRecurring.cs" />
+    <Compile Include="DataStructures\Plan\FreeTrial.cs" />
+    <Compile Include="Common\CurrencyId.cs" />
+    <Compile Include="Common\PaymentStatus.cs" />
+    <Compile Include="Common\PaymentTypeId.cs" />
+    <Compile Include="Common\OperationType.cs" />
+    <Compile Include="Common\EntityType.cs" />
+    <Compile Include="Common\PayerType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -144,6 +154,8 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="DataStructures\" />
+    <Folder Include="DataStructures\Plan\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

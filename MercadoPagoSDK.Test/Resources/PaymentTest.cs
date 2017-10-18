@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text; 
 using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago;
@@ -10,137 +10,89 @@ using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture()]
+    [TestFixture]
     public class PaymentTest
-    {                                     
-        [Test()]
-        public void Payment_CreateAndLoadShouldBeOk()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");           
+    {
+        string AccessToken;
+        string PublicKey;
+        Payment LastPayment;
+
+        [SetUp]
+        public void Init(){
+ 
             
-            Payment payment = new Payment();
-            Payer payer = new Payer();
-            payer.email = "mlovera@kinexo.com";
+            AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963";
+            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9";
 
-            payment.transaction_amount = 100M;
-            payment.token = GenerateSingleUseCardToken(); // 1 use card token
-            payment.description = "Pago de seguro";
-            payment.payment_method_id = "visa";
-            payment.installments = 1;
-            payment.payer = payer;
-          
-            try
-            {
-                Payment response = payment.Save();
-                Assert.IsTrue(response.id.HasValue);
-                Assert.IsTrue(response.id.Value > 0);
-
-                string id = response.id.ToString();
-                Payment getPayment = Payment.Load(id, false);
-
-                Assert.AreEqual("Pago de seguro", getPayment.description);
-                Assert.AreEqual("mlovera@kinexo.com", getPayment.payer.email);
-            }
-            catch (MPException)
-            {
-                Assert.Fail();
-            }            
-        }
-
-        [Test()]
-        public void Payment_LoadShouldBeOk()
-        {
+            // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            Payment payment = Payment.Load("7100921", false);
-            Assert.AreEqual("Pago de seguro", payment.description);
+            SDK.AccessToken = AccessToken;
+
+        } 
+
+        [Test]
+        public void Payment_Create_ShouldBeOk()
+        { 
+            Payment payment = new Payment
+            {
+                TransactionAmount = (float)100.0,
+                Token = Helpers.Authentication.SingleUseCardToken(PublicKey), // 1 use card token
+                Description = "Pago de seguro",
+                PaymentMethodId = "visa",
+                Installments = 1,
+                Payer = new Payer {
+                    Email = "mlovera@kinexo.com" 
+                }
+            }; 
+
+            payment.Save();
+
+            Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
+            Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
+
+            LastPayment = payment; 
         }
 
-        //[Test()]
-        //public void Payment_UpdateShouldBeOk() --> rwilliner: PUT issue. Waiting for news to reactivate test
-        //{
-        //    SDK.CleanConfiguration();
-        //    SDK.SetBaseUrl("https://api.mercadopago.com");
-        //    SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-           
-        //    Payment payment = new Payment();
-        //    Payer payer = new Payer();
-        //    payer.email = "mlovera@kinexo.com";
+        [Test]
+        public void Payment_FindById_ShouldBeOk(){
+            string LastPaymentId = LastPayment.Id.ToString();
 
-        //    payment.transaction_amount = 100M;
-        //    payment.token = GenerateSingleUseCardToken(); // 1 use card token 
-        //    payment.payment_method_id = "visa";
-        //    payment.installments = 1;
-        //    payment.payer = payer;
+            Payment payment = Payment.FindById(LastPaymentId);
 
-        //    try
-        //    {
-        //        Payment response = payment.Save();                                
-        //        response.description = "New Description";
-        //        var updatedPayment = response.Update();
-        //        Assert.AreEqual("New Description", updatedPayment.description);
-        //    }
-        //    catch (MPException)
-        //    {
-        //        Assert.Fail();
-        //    }   
-        //}
+            Assert.AreEqual("Pago de seguro", payment.Description);
+            Assert.AreEqual("mlovera@kinexo.com", payment.Payer.Email);
+        }
 
-        [Test()]
+        [Test]
+        public void Payment_Update_ShouldBeOk() 
+        {  
+            LastPayment.ExternalReference = "New External Reference"; 
+            LastPayment.Update(); 
+            Assert.AreEqual("New External Reference", LastPayment.ExternalReference); 
+        }
+
+        [Test]
         public void Payment_SearchGetListOfPayments()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            List<Payment> payments = Payment.Search();
+        { 
+            List<Payment> payments = Payment.All();
+
             Assert.IsNotNull(payments);
             Assert.IsTrue(payments.Any());
-            Assert.IsTrue(payments.First().id.HasValue);
+            Assert.IsTrue(payments.First().Id.HasValue);
         }
 
-
-        [Test()]
+        [Test]
         public void Payment_SearchWithFilterGetListOfPayments()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-
+        { 
             Dictionary<string, string> filters = new Dictionary<string, string>();
-            filters.Add("collector.id", "261220529");
+            filters.Add("external_reference", "New External Reference");
+            List<Payment> list = Payment.Search(filters);
 
-            var list = Payment.Search(filters);
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Any());
-            Assert.IsTrue(list.First().id.HasValue);
+            Assert.IsTrue(list.First().Id.HasValue);
         }
 
-        [Test()]
-        public void GenerateSingleUseToken_ReturnsValidToken()
-        {
-            string token = GenerateSingleUseCardToken();
-            Assert.IsFalse(string.IsNullOrEmpty(token));
-        }
-
-        public string GenerateSingleUseCardToken() 
-        { 
-            JObject payload = JObject.Parse("{ \"card_number\": \"4544610257481730\", \"security_code\": \"122\", \"expiration_month\": \"7\", \"expiration_year\": \"2030\", \"cardholder\": { \"name\": \"Test test\", \"identification\": { \"type\": \"DNI\", \"number\": \"12345678\" } } }");
-            MPRESTClient client = new MPRESTClient();
-            MPAPIResponse responseCardToken = client.ExecuteRequestCore(
-                HttpMethod.POST,
-                "https://api.mercadopago.com/v1/card_tokens?public_key=" + Environment.GetEnvironmentVariable("PUBLIC_KEY"),
-                PayloadType.JSON,
-               payload,
-                null,
-                0,
-                1);
-
-            JObject jsonResponse = JObject.Parse(responseCardToken.StringResponse.ToString());
-            List<JToken> tokens = MPCoreUtils.FindTokens(jsonResponse, "id"); 
-            return tokens.First().ToString();  
-        }
     }
 }

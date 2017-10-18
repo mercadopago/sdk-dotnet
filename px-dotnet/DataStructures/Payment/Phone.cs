@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class Phone
+    public struct Phone
     {
         #region Properties
 
@@ -14,21 +14,37 @@ namespace MercadoPago.DataStructures.Payment
         private string areaCode;
         [StringLength(256)]
         private string number;
+        private string _extension;
 
         #endregion
 
         #region Accessors
 
+        /// <summary>
+        /// Phone area code
+        /// </summary>
         public string AreaCode
         {
             get { return areaCode; }
             set { areaCode = value; }
         }        
 
+        /// <summary>
+        /// Phone number
+        /// </summary>
         public string Number
         {
             get { return number; }
             set { number = value; }
+        }
+
+        /// <summary>
+        /// Phone number's extension
+        /// </summary>
+        public string Extension
+        {
+            get { return _extension; }
+            private set { _extension = value; }
         }
 
         #endregion

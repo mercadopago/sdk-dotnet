@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class ExcludedPaymentMethod
+    public struct ExcludedPaymentMethod
     {
         #region Properties
 

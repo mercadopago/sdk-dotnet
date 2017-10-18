@@ -25,7 +25,7 @@ namespace MercadoPago.Resources
         [POSTEndpoint("/checkout/preference")]
         public Preference Save()
         {
-            return (Preference)ProcessMethod("Create", WITHOUT_CACHE);
+            return (Preference)ProcessMethod("Save", WITHOUT_CACHE);
         }
 
         [PUTEndpoint("/checkout/preference/:id")]

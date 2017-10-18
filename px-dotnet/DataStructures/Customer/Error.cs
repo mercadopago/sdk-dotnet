@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer
 {
-    public class Error
+    public struct Error
     {
         #region Properties
 

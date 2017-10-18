@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer
 {
-    public class Verification
+    public struct Verification
     {
         #region Properties
 

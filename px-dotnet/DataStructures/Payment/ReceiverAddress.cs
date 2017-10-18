@@ -6,10 +6,14 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class ReceiverAddress : Address
+    public struct ReceiverAddress
     {
         #region Properties
 
+        [StringLength(256)]
+        private string streetName;
+        [StringLength(256)]
+        private string zipCode;
         [StringLength(256)]
         private string floor;
         [StringLength(256)]
@@ -18,6 +22,18 @@ namespace MercadoPago.DataStructures.Payment
         #endregion
 
         #region Accessors
+
+        public string ZipCode
+        {
+            get { return zipCode; }
+            set { zipCode = value; }
+        }
+
+        public string StreetName
+        {
+            get { return streetName; }
+            set { streetName = value; }
+        }
 
         public string Floor
         {
