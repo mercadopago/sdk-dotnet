@@ -55,6 +55,11 @@ namespace MercadoPago
             int requestTimeout,
             int retries)
         {
+
+            Console.WriteLine("HttpMethod: " + httpMethod);
+            Console.WriteLine("Path: " + httpMethod);
+            Console.WriteLine("Payload: " + payload); 
+
             try
             {
                 return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, requestTimeout, retries);

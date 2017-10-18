@@ -12,12 +12,12 @@ namespace MercadoPago.DataStructures.Payment
 
         #region Properties
 
-        private EntityType _entity_type;
-        private PayerType _type;
+        private EntityType? _entity_type;
+        private PayerType? _type;
         private string _id;
         private string _email;
-        private Identification _identification;
-        private Phone _phone;
+        private Identification? _identification;
+        private Phone? _phone;
         private string _first_name;
         private string _last_name;
 
@@ -28,16 +28,16 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
-        public EntityType EntityType
-        {
-            get { return _entity_type; }
-            set { _entity_type = value; }
+        public EntityType? Entity_type { 
+            get => _entity_type; 
+            set => _entity_type = value; 
         }
+
 
         /// <summary>
         /// Identification type of the associated payer (mandatory if the Payer is a Customer)
         /// </summary>
-        public PayerType Type
+        public PayerType? Type
         {
             get { return _type; }
             set { _type = value; }
@@ -64,7 +64,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Personal identification
         /// </summary>
-        public Identification Identification
+        public Identification? Identification
         {
             get { return _identification; }
             set { _identification = value; }
@@ -73,7 +73,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Phone of the associated payer
         /// </summary>
-        public Phone Phone
+        public Phone? Phone
         {
             get { return _phone; }
             private set { _phone = value; }

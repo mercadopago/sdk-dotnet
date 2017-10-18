@@ -55,7 +55,10 @@ namespace MercadoPago
         /// <returns>a JSON Object with the attributes members of the instance</returns>
         public static JObject GetJsonFromResource<T>(T resource) where T : MPBase
         {
-            JsonSerializer serializer = new JsonSerializer { ContractResolver = new CustomSerializationContractResolver() };            
+            JsonSerializer serializer = new JsonSerializer { 
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomSerializationContractResolver() 
+            };            
             return JObject.FromObject(resource, serializer);
         }
 

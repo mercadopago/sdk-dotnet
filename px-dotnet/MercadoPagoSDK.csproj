@@ -146,6 +146,7 @@
     <Compile Include="Common\OperationType.cs" />
     <Compile Include="Common\EntityType.cs" />
     <Compile Include="Common\PayerType.cs" />
+    <Compile Include="Common\OrderType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

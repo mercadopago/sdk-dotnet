@@ -7,6 +7,7 @@ using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace MercadoPagoSDK.Test.Resources
 {
@@ -18,22 +19,22 @@ namespace MercadoPagoSDK.Test.Resources
         Payment LastPayment;
 
         [SetUp]
-        public void Init(){
- 
-            
+        public void Init(){ 
+            // Avoid SSL Cert error
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            // HardCoding Credentials
             AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963";
-            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9";
-
+            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9"; 
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = AccessToken;
-
+            SDK.AccessToken = AccessToken; 
         } 
 
         [Test]
         public void Payment_Create_ShouldBeOk()
         { 
+            
             Payment payment = new Payment
             {
                 TransactionAmount = (float)100.0,
@@ -42,7 +43,7 @@ namespace MercadoPagoSDK.Test.Resources
                 PaymentMethodId = "visa",
                 Installments = 1,
                 Payer = new Payer {
-                    Email = "mlovera@kinexo.com" 
+                    Email = "mlovera@kinexo.com"
                 }
             }; 
 

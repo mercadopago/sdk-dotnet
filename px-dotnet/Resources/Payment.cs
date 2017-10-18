@@ -94,16 +94,16 @@ namespace MercadoPago.Resources
         private DateTime? _date_last_updated;
         private DateTime? _money_release_date;
         private int? _collector_id;
-        private OperationType _operation_type;        
+        private OperationType? _operation_type;        
         private Payer _payer;
         private bool? _binary_mode;
         private bool? _live_mode;
-        private Order _order ;
+        private Order? _order ;
         private string _external_reference;
         private string _description;
         private JObject _metadata;              
         [StringLength(3)]
-        private CurrencyId _currency_id;
+        private CurrencyId? _currency_id;
         private float? _transaction_amount;
         private float? _transaction_amount_refunded;
         private float? _coupon_amount;
@@ -113,14 +113,14 @@ namespace MercadoPago.Resources
         private FeeDetail[] _fee_details;
         private int? _differential_pricing_id;
         private float? _application_fee;      
-        private PaymentStatus _status ;        
+        private PaymentStatus? _status ;        
         private string _status_detail ;
         private bool? _capture ;
         private bool? _captured ;
         private string _call_for_authorize_id ;
         private string _payment_method_id ;
         private string _issuer_id ;       
-        private PaymentTypeId _payment_type_id ;        
+        private PaymentTypeId? _payment_type_id ;        
         private string _token ;
         private Card _card ;
         private string _statement_descriptor ;
@@ -128,7 +128,7 @@ namespace MercadoPago.Resources
         private string _notification_url;
         private string _callback_url;
         private Refund[] _refunds ;
-        private AdditionalInfo _additional_info ;
+        private AdditionalInfo? _additional_info ;
 
  
         #endregion
@@ -192,7 +192,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment type
         /// </summary>
-        public OperationType OperationType 
+        public OperationType? OperationType 
         {
             get { return this._operation_type; }
             private set { this._operation_type = value; }
@@ -229,7 +229,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Order identifier
         /// </summary>
-        public Order Order
+        public Order? Order
         {
             get { return this._order; }
             set { this._order = value; }
@@ -265,7 +265,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// ID of the currency used in the payment
         /// </summary>
-        public CurrencyId CurrencyId
+        public CurrencyId? CurrencyId
         {
             get { return this._currency_id; }
             private set { this._currency_id = value; }
@@ -355,7 +355,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment status
         /// </summary>
-        public PaymentStatus Status
+        public PaymentStatus? Status
         {
             get { return this._status; }
             private set { this._status = value; }
@@ -418,7 +418,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Type of payment method chosen
         /// </summary>
-        public PaymentTypeId PaymentTypeId
+        public PaymentTypeId? PaymentTypeId
         {
             get { return this._payment_type_id; }
             private set { this._payment_type_id = value; }
@@ -490,7 +490,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Data that could improve fraud analysis and conversion rates. Try to send as much information as possible.
         /// </summary>
-        public AdditionalInfo AdditionalInfo
+        public AdditionalInfo? AdditionalInfo
         {
             private get { return this._additional_info; }
             set { this._additional_info = value; }

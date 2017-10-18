@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Payment
 {
     public struct Order
     {
-        #region Properties
+        #region Properties 
 
-        public enum Type 
-        {
-            MercadoLibre,
-            MercadoPago
-        }
-
-        private Type type;
-        private long id;
+        private OrderType? type;
+        private long? id;
 
         #endregion
 
         #region Accessors
 
-        public Type OrderType
+        public OrderType? OrderType
         {
             get { return type; }
             set { type = value; }
@@ -30,7 +25,7 @@ namespace MercadoPago.DataStructures.Payment
 
         
 
-        public long ID
+        public long? Id
         {
             get { return id; }
             set { id = value; }
