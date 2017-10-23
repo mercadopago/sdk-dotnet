@@ -1,6 +1,7 @@
 ﻿using System;
 namespace MercadoPago.Common
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum OperationType
     {
         ///<summary>Typification by default of a purchase being paid using MercadoPago</summary>
