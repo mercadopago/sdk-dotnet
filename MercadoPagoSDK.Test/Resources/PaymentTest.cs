@@ -8,10 +8,11 @@ using MercadoPago.DataStructures.Payment;
 using MercadoPago;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using MercadoPago.Common;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture]
+    [TestFixture] 
     public class PaymentTest
     {
         string AccessToken;
@@ -23,31 +24,35 @@ namespace MercadoPagoSDK.Test.Resources
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
-            AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963";
-            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9"; 
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
             SDK.AccessToken = AccessToken; 
-        } 
+        }
 
         [Test]
         public void Payment_Create_ShouldBeOk()
-        { 
+        {
             
             Payment payment = new Payment
             {
                 TransactionAmount = (float)100.0,
-                Token = Helpers.Authentication.SingleUseCardToken(PublicKey), // 1 use card token
+                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
                 Description = "Pago de seguro",
                 PaymentMethodId = "visa",
+                ExternalReference = "INTEGRATION-TEST-PAYMENT",
                 Installments = 1,
                 Payer = new Payer {
                     Email = "mlovera@kinexo.com"
                 }
-            }; 
+            };
 
             payment.Save();
+
+
+            Console.WriteLine("Saved Payment ID: {0}", payment.Id);
 
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
@@ -68,9 +73,10 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Payment_Update_ShouldBeOk() 
         {  
-            LastPayment.ExternalReference = "New External Reference"; 
-            LastPayment.Update(); 
-            Assert.AreEqual("New External Reference", LastPayment.ExternalReference); 
+            LastPayment.Status = PaymentStatus.cancelled;
+            LastPayment.Update();
+
+            Assert.AreEqual(PaymentStatus.cancelled, LastPayment.Status); 
         }
 
         [Test]
@@ -82,17 +88,17 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.IsTrue(payments.Any());
             Assert.IsTrue(payments.First().Id.HasValue);
         }
-
-        [Test]
+        
+        [Test] 
         public void Payment_SearchWithFilterGetListOfPayments()
         { 
             Dictionary<string, string> filters = new Dictionary<string, string>();
-            filters.Add("external_reference", "New External Reference");
+            filters.Add("external_reference", "INTEGRATION-TEST-PAYMENT");
             List<Payment> list = Payment.Search(filters);
 
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Any());
-            Assert.IsTrue(list.First().Id.HasValue);
+            Assert.IsTrue(list.Last().Id.HasValue);
         }
 
     }

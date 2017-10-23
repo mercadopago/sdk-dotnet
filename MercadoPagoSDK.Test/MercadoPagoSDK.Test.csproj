@@ -51,6 +51,7 @@
     <Compile Include="Resources\DataStructures\Payment\AdditionalInfoTest.cs" />
     <Compile Include="Resources\PaymentTest.cs" />
     <Compile Include="Helpers\Authentication.cs" />
+    <Compile Include="Helpers\CardHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">

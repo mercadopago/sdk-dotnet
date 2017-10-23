@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.Resources
 {
@@ -112,8 +113,11 @@ namespace MercadoPago.Resources
         private TransactionDetail _transaction_details;
         private FeeDetail[] _fee_details;
         private int? _differential_pricing_id;
-        private float? _application_fee;      
-        private PaymentStatus? _status ;        
+        private float? _application_fee;
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        private PaymentStatus? _status;        
+
         private string _status_detail ;
         private bool? _capture ;
         private bool? _captured ;
@@ -122,7 +126,7 @@ namespace MercadoPago.Resources
         private string _issuer_id ;       
         private PaymentTypeId? _payment_type_id ;        
         private string _token ;
-        private Card _card ;
+        private DataStructures.Payment.Card? _card ;
         private string _statement_descriptor ;
         private int? _installments ;
         private string _notification_url;
@@ -358,7 +362,7 @@ namespace MercadoPago.Resources
         public PaymentStatus? Status
         {
             get { return this._status; }
-            private set { this._status = value; }
+            set { this._status = value; }
         }
 
         /// <summary>
@@ -436,7 +440,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Details of the card used
         /// </summary>
-        public Card Card
+        public DataStructures.Payment.Card? Card
         {
             get { return this._card; }
             private set { this._card = value; }
