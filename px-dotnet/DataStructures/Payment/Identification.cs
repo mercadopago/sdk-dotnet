@@ -8,17 +8,14 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Identification
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
         private string _type;
         [StringLength(256)]
-        private string _number;
-
+        private string _number; 
         #endregion
 
-        #region Accessors
-
+        #region Accessors 
         /// <summary>
         /// Identification type
         /// </summary>
@@ -26,8 +23,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _type; }
             set { _type = value; }
-        }
-
+        } 
         /// <summary>
         /// Identification number
         /// </summary>
@@ -35,8 +31,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _number; }
             set { _number = value; }
-        }
-
+        } 
         #endregion
     }
 }

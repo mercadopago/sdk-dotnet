@@ -8,29 +8,39 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Address
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string streetName;
+        private string _street_name;
+        private int _street_number;
         [StringLength(256)]
-        private string zipCode;
-
+        private string _zip_code;
         #endregion
 
-        #region Accessors
-
-        public string ZipCode
-        {
-            get { return zipCode; }
-            set { zipCode = value; }
-        }
-       
+        #region Accessors 
+        /// <summary>
+        /// Street name
+        /// </summary>
         public string StreetName
         {
-            get { return streetName; }
-            set { streetName = value; }
+            get => _street_name;
+            set => _street_name = value;
         }
-
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public int StreetNumber
+        {
+            get => _street_number;
+            set => _street_number = value;
+        }
+        /// <summary>
+        /// Zip code
+        /// </summary>
+        public string ZipCode
+        {
+            get => _zip_code;
+            set => _zip_code = value;
+        }
         #endregion
     }
 }

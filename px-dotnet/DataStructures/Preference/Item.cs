@@ -3,82 +3,96 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Preference
 {    
     public struct Item
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string id;
+        private string _id;
         [StringLength(256)]
-        private string title;
+        private string _title;
         [StringLength(256)]
-        private string description;
+        private string _description;
         [StringLength(600)]
-        private string pictureUrl;
+        private string _pictureU_url;
         [StringLength(256)]
-        private int categoryId;
-        private int quantity;
+        private int? _category_id;
+        private int? _quantity;
         [StringLength(3)]
-        private string currencyId;
+        private CurrencyId _currency_id;
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
-        private float unitPrice;
-
+        private float unit_price; 
         #endregion
 
-        #region Accessors
-       
-        public string ID 
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }        
-
-        public string Title
+        #region Accessors 
+        /// <summary>
+        /// Item ID
+        /// </summary>
+        public string Id
         { 
-            get { return this.title; } 
-            set{this.title = value;}
-        }        
-
-        public string Description 
-        {
-            get { return this.description; }
-            set { this.description = value; }
+            get => _id; 
+            set => _id = value;
         }
-
-        public string PictureUrl 
+        /// <summary>
+        /// Item title. It will be displayed in the payment process.
+        /// </summary>
+        public string Title
         {
-            get { return this.pictureUrl; }
-            set { this.pictureUrl = value; } 
-        }        
-
-        public int CategoryId 
-        {
-            get { return this.categoryId; }
-            set { this.categoryId = value; } 
-        }        
-
-        public int Quantity 
-        {
-            get { return this.quantity; }
-            set { this.quantity = value; }
-        }        
-
-        public string CurrencyId 
-        {
-            get { return this.currencyId; }
-            set { this.currencyId = value; } 
-        }        
-
-        public float UnitPrice 
-        {
-            get { return this.unitPrice; }
-            set { this.unitPrice = value; }
+            get => _title; 
+            set => _title = value;
         }
-
+        /// <summary>
+        /// Item description
+        /// </summary>
+        public string Description
+        {
+            get => _description; 
+            set => _description = value; 
+        }
+        /// <summary>
+        /// Item image URL
+        /// </summary>
+        public string PictureUrl
+        {
+            get => _pictureU_url;
+            set => _pictureU_url = value;
+        }
+        /// <summary>
+        /// Item category ID
+        /// </summary>
+        public int? CategoryId
+        {
+            get => _category_id;
+            set => _category_id = value;
+        }
+        /// <summary>
+        /// Item quantity
+        /// </summary>
+        public int? Quantity
+        {
+            get => _quantity;
+            set => _quantity = value;
+        }
+        /// <summary>
+        /// Currency ID. ISO_4217 code
+        /// </summary>
+        public CurrencyId CurrencyId
+        {
+            get => _currency_id; 
+            set => _currency_id = value;
+        }
+        /// <summary>
+        /// Unit price
+        /// </summary>
+        public float UnitPrice
+        {
+            get => unit_price; 
+            set => unit_price = value;
+        } 
         #endregion
     }
 }

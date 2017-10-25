@@ -8,45 +8,39 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Phone
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string areaCode;
+        private string _area_code;
         [StringLength(256)]
-        private string number;
-        private string _extension;
-
+        private string _number;
+        private string _extension; 
         #endregion
 
-        #region Accessors
-
+        #region Accessors 
         /// <summary>
         /// Phone area code
         /// </summary>
         public string AreaCode
         {
-            get { return areaCode; }
-            set { areaCode = value; }
-        }        
-
+            get { return this._area_code; }
+            set { this._area_code = value; }
+        } 
         /// <summary>
         /// Phone number
         /// </summary>
         public string Number
         {
-            get { return number; }
-            set { number = value; }
-        }
-
+            get { return this._number; }
+            set { this._number = value; }
+        } 
         /// <summary>
         /// Phone number's extension
         /// </summary>
         public string Extension
         {
-            get { return _extension; }
-            private set { _extension = value; }
-        }
-
+            get { return this._extension; }
+            private set { this._extension = value; }
+        } 
         #endregion
     }
 }

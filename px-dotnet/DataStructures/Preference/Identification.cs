@@ -8,30 +8,30 @@ namespace MercadoPago.DataStructures.Preference
 {
     public struct Identification
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string type;
-
+        private string _type;
         [StringLength(256)]
-        private string number;
+        private string _number;
+        #endregion
 
-        #endregion 
-
-        #region Accessors
-
+        #region Accessors 
+        /// <summary>
+        /// Identification type
+        /// </summary>
         public string Type
         {
-            get { return this.type; }
-            set { this.type = value; }
+            get { return _type; }
+            set { _type = value; }
         }
-
+        /// <summary>
+        /// Identification number
+        /// </summary>
         public string Number
         {
-            get { return this.number; }
-            set { this.number = value; }
+            get { return _number; }
+            set { _number = value; }
         }
-
         #endregion
     }
 }

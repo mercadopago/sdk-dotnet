@@ -8,58 +8,72 @@ namespace MercadoPago.DataStructures.Preference
 {
     public struct Payer
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string name;
+        private string _name;
         [StringLength(256)]
-        private string surname;
+        private string _surname;
         [StringLength(256)]
-        private string email;
-        private Phone phone;
-        private Identification identification;
-        private DateTime dateCreated;
-        
-        #endregion        
+        private string _email;
+        private Phone? _phone;
+        private Identification? _identification;
+        private Address? _address;
+        private DateTime? _date_created; 
+        #endregion
 
         #region Accessors
-
-        public string Name 
-        {
-            get { return this.name; }
-            set { this.name = value; } 
+        /// <summary>
+        /// Buyer name
+        /// </summary>
+        public string Name {
+            get => _name; 
+            set => _name = value;
         }
-        
-        public string Surname 
-        {
-            get { return this.surname; }
-            set { this.surname = value; }
+        /// <summary>
+        /// Buyer last name
+        /// </summary>
+        public string Surname {
+            get => _surname; 
+            set => _surname = value;
         }
-        
-        public string Email 
-        {
-            get { return this.email; }
-            set { this.email = value; } 
+        /// <summary>
+        /// Buyer e-mail address
+        /// </summary>
+        public string Email {
+            get => _email; 
+            set => _email = value;
         }
-        
-        public Phone Phone 
-        {
-            get { return this.phone; }
-            set { this.phone = value; } 
+        /// <summary>
+        /// Buyer phone
+        /// </summary>
+        public Phone? Phone { 
+            get => _phone; 
+            set => _phone = value; 
         }
-        
-        public Identification Identification 
-        {
-            get { return this.identification; }
-            set { this.identification = value; }
+        /// <summary>
+        /// Personal identification
+        /// </summary>
+        public Identification? Identification 
+        { 
+            get => _identification; 
+            set => _identification = value; 
         }
-        
-        public DateTime DateCreated 
+        /// <summary>
+        /// Buyer address
+        /// </summary>
+        public Address? Address
         {
-            get { return this.dateCreated; }
-            set { this.dateCreated = value; }
+            get => _address;
+            set => _address = value;
         }
-        
+        /// <summary>
+        /// Registration date
+        /// </summary>
+        public DateTime? Date_created 
+        { 
+            get => _date_created;
+            set => _date_created = value;
+        } 
         #endregion
     }
 }
