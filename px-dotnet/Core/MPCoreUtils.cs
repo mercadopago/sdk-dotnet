@@ -18,8 +18,7 @@ namespace MercadoPago
             List<JToken> matches = new List<JToken>();
             FindTokens(containerToken, name, matches);
             return matches;
-        }
-
+        } 
         /// <summary>
         /// Core implementation of FindTokens
         /// </summary>
@@ -36,7 +35,6 @@ namespace MercadoPago
                     {
                         matches.Add(child.Value);
                     }
-
                     FindTokens(child.Value, name, matches);
                 }
             }
@@ -58,7 +56,7 @@ namespace MercadoPago
             JsonSerializer serializer = new JsonSerializer { 
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CustomSerializationContractResolver() 
-            };            
+            };
             return JObject.FromObject(resource, serializer);
         }
 
@@ -68,19 +66,20 @@ namespace MercadoPago
         /// <returns>an object obteined from obj</returns>
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
-            JsonSerializer serializer = new JsonSerializer { ContractResolver = new CustomDeserializationContractResolver() };
+            JsonSerializer serializer = new JsonSerializer { 
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomDeserializationContractResolver()
+            };
             T resource = (T)jObj.ToObject<T>(serializer);
             return resource;
-        }
-
+        } 
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
         {
             JArray jsonArray = null;
             if (jsonElement is JObject)
             {
                 jsonArray = JArray.Parse(jsonElement["results"].ToString());
-            }
-
+            } 
             return jsonArray;
         }
 
