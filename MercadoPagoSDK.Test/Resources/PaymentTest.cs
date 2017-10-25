@@ -51,9 +51,6 @@ namespace MercadoPagoSDK.Test.Resources
 
             payment.Save();
 
-
-            Console.WriteLine("Saved Payment ID: {0}", payment.Id);
-
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
 
@@ -61,11 +58,9 @@ namespace MercadoPagoSDK.Test.Resources
         }
 
         [Test]
-        public void Payment_FindById_ShouldBeOk(){
-            string LastPaymentId = LastPayment.Id.ToString();
-
-            Payment payment = Payment.FindById(LastPaymentId);
-
+        public void Payment_FindById_ShouldBeOk()
+        {
+            Payment payment = Payment.FindById(LastPayment.Id); 
             Assert.AreEqual("Pago de seguro", payment.Description);
             Assert.AreEqual("mlovera@kinexo.com", payment.Payer.Email);
         }
