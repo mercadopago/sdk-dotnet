@@ -48,8 +48,10 @@
     <Compile Include="Net\MPRESTClientTest.cs" />
     <Compile Include="Resources\CardTest.cs" />
     <Compile Include="Resources\CustomerTest.cs" />
-    <Compile Include="Resources\DataStructures\Payment\AdditionalInfoTest.cs" />
     <Compile Include="Resources\PaymentTest.cs" />
+    <Compile Include="Helpers\Authentication.cs" />
+    <Compile Include="Helpers\CardHelper.cs" />
+    <Compile Include="Resources\PreferenceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">
@@ -70,6 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="MercadoPagoSDK\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

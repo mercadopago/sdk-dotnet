@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer.Card
 {
-    public class SecurityCode
+    public struct SecurityCode
     {
 
     }

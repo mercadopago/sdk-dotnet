@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.MerchantOrder
 {
-    public class Collector
+    public struct Collector
     {
         #region Properties
 

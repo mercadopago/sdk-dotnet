@@ -87,22 +87,22 @@ namespace MercadoPagoSDK.Test.Core
 
             Payment payment = new Payment();
             Payer payer = new Payer();
-            payer.email = "mlovera@kinexo.com";
+            payer.Email = "mlovera@kinexo.com";
 
-            payment.transaction_amount = 100M;
-            payment.token = GenerateSingleUseCardToken(); // 1 use card token
-            payment.description = "Pago de seguro";
-            payment.payment_method_id = "visa";
-            payment.installments = 1;
-            payment.payer = payer;
+            payment.TransactionAmount = (float)100;
+            payment.Token = GenerateSingleUseCardToken(); // 1 use card token
+            payment.Description = "Pago de seguro";
+            payment.PaymentMethodId = "visa";
+            payment.Installments = 1;
+            payment.Payer = payer;
 
-            Payment response = payment.Save();
+            payment.Save();
 
-            var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, response.id.ToString());
+            var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, payment.Id.ToString());
             Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));
-            Assert.AreEqual(response.id, ((Payment)resource).id);   
-            Assert.AreEqual(response.description, ((Payment)resource).description);
-            Assert.AreEqual(response.payment_method_id, ((Payment)resource).payment_method_id);
+            Assert.AreEqual(payment.Id, ((Payment)resource).Id);   
+            Assert.AreEqual(payment.Description, ((Payment)resource).Description);
+            Assert.AreEqual(payment.PaymentMethodId, ((Payment)resource).PaymentMethodId);
         }
 
         [Test()]

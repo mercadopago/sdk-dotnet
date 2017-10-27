@@ -40,6 +40,10 @@ namespace MercadoPago
 
             ParseRequest(httpMethod, request, payload);
             ParseResponse(response);
+
+
+
+
         }
 
         /// <summary>
@@ -74,8 +78,7 @@ namespace MercadoPago
                 {
                     Stream dataStream = response.GetResponseStream();
                     StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
-                    this.StringResponse = reader.ReadToEnd();
-
+                    this.StringResponse = reader.ReadToEnd(); 
                     reader.Close();
                     dataStream.Close();
                 }

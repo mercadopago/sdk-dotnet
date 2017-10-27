@@ -25,7 +25,7 @@ namespace MercadoPago.Resources
         [POSTEndpoint("/merchant_order")]
         public MerchantOrder Save() 
         {
-            return (MerchantOrder)ProcessMethod("Create", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE);
         }
         
         [PUTEndpoint("/merchant_order/:id")]
@@ -49,9 +49,9 @@ namespace MercadoPago.Resources
         private Collector collector;
         private int sponsorId;
         private List<MerchantOrderPayment> payments;
-        private decimal? paidAmount;
-        private decimal? refundedAmount;
-        private decimal? shippingCost;
+        private float? paidAmount;
+        private float? refundedAmount;
+        private float? shippingCost;
         private bool? cancelled;
         private List<Item> items;
         private List<Shipment> shipments;
@@ -63,7 +63,7 @@ namespace MercadoPago.Resources
         private string externalReference;
         [StringLength(256)]
         private string marketplace;
-        private decimal? totalAmount;
+        private float? totalAmount;
 
         #endregion
 
@@ -133,17 +133,17 @@ namespace MercadoPago.Resources
             get { return payments; }            
         }        
 
-        public decimal? PaidAmount
+        public float? PaidAmount
         {
             get { return paidAmount; }            
         }
        
-        public decimal? RefundedAmount
+        public float? RefundedAmount
         {
             get { return refundedAmount; }            
         }
 
-        public decimal? ShippingCost
+        public float? ShippingCost
         {
             get { return shippingCost; }            
         }
@@ -208,7 +208,7 @@ namespace MercadoPago.Resources
             set { marketplace = value; }
         }
        
-        public decimal? TotalAmount
+        public float? TotalAmount
         {
             get { return totalAmount; }
         }

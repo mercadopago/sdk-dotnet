@@ -6,53 +6,22 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class PaymentMethod
+    public struct PaymentMethod
     {
-        #region Properties
-
-        private ExcludedPaymentMethod excludedPaymentMethod;
-        private ExcludedPaymentType excludedPaymentType;
-
+        #region Properties 
         [StringLength(256)]
-        private string defaultPaymentMethodId;
-        private int installment;
-        private int defaultInstallment;
-
+        private string _id; 
         #endregion
 
         #region Accessors
-
-        public ExcludedPaymentMethod ExcludePaymentMethod
+        /// <summary>
+        /// Payment method ID
+        /// </summary>
+        public string Id
         {
-            get { return this.excludedPaymentMethod; }
-            set { this.excludedPaymentMethod = value; }
-        }
-
-        public ExcludedPaymentType ExcludePaymentType
-        {
-            get { return this.excludedPaymentType; }
-            set { this.excludedPaymentType = value; }
-        }
-
-        public string DefaultPaymentMethodId
-        {
-            get { return this.defaultPaymentMethodId; }
-            set { this.defaultPaymentMethodId = value; }
-        }
-
-        public int Installment
-        {
-            get { return this.installment; }
-            set { this.installment = value; }
-        }
-
-        public int DefaultInstallment
-        {
-            get { return this.defaultInstallment; }
-            set { this.defaultInstallment = value; }
-        }
-
+            get { return this._id; }
+            set { this._id = value; }
+        } 
         #endregion
-
     }
 }

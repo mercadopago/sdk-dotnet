@@ -8,6 +8,9 @@ using System.Diagnostics;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using System.Globalization;
+using System.IO;
 
 namespace MercadoPago
 {
@@ -217,35 +220,31 @@ namespace MercadoPago
             var clazzMethod = GetAnnotatedMethod(clazz, methodName);
             var restData = GetRestInformation(clazzMethod);
 
-            HttpMethod httpMethod = (HttpMethod)restData["method"];
-            string path = ParsePath(restData["path"].ToString(), parameters, resource);
+            HttpMethod httpMethod = (HttpMethod)restData["method"]; 
+            string path = ParsePath(restData["path"].ToString(), parameters, resource); 
             PayloadType payloadType = (PayloadType)restData["payloadType"];
-            JObject payload = GeneratePayload(httpMethod, resource);
+            JObject payload = GeneratePayload(httpMethod, resource);  
             int requestTimeout = (int)restData["requestTimeout"];
-            int retries = (int)restData["retries"];
+            int retries = (int)restData["retries"]; 
+            WebHeaderCollection colHeaders = new WebHeaderCollection(); 
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries); 
 
-            WebHeaderCollection colHeaders = new WebHeaderCollection();
-
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
- 
-            
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
             {
                 if (httpMethod != HttpMethod.DELETE)
-                {
-                    resource = (T)FillResourceWithResponseData(resource, response);
+                { 
+                    resource = (T)FillResourceWithResponseData(resource, response); 
                 }
                 else
                 {
-                    //resource = cleanResource(resource);
+                    //TODO: Call to delete endpoint
+                    resource = null;
                 }
-            }
-
-            resource._lastApiResponse = response;
-
+            } 
+            resource._lastApiResponse = response; 
             return resource;
-        }
+        }  
 
         /// <summary>
         /// Transforms all attributes members of the instance in a JSON String. Only for POST and PUT methods.
@@ -255,15 +254,80 @@ namespace MercadoPago
         /// <returns>a JSON Object with the attributes members of the instance. Null for GET and DELETE methods</returns>
         public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase
         {
-            JObject payload = null;
-            if (new string[] { "POST", "PUT" }.Contains(httpMethod.ToString()))
-            {
-                payload = MPCoreUtils.GetJsonFromResource(resource);
+            if (httpMethod.ToString() == "POST" || httpMethod.ToString() == "PUT")
+            {  
+                JObject actualJSON = MPCoreUtils.GetJsonFromResource(resource);
+                JObject oldJSON = resource.GetLastKnownJson();
+                return getDiffFromLastChange(actualJSON, oldJSON);
             }
-
-            return payload;
+            else
+            {
+                return null;
+            }
         }
 
+        public static JObject getDiffFromLastChange(JToken jactual, JToken jold)
+        {
+            JObject new_jobject = new JObject();
+ 
+            if (((JObject)jactual).Properties().Count() > 0)
+            {
+                foreach (JProperty x in ((JObject)jactual).Properties())
+                { 
+                    string key = ToSnakeCase(x.Name); 
+
+                    if (x.Value.GetType() == typeof(JObject))
+                    {
+                        if (jold != null)
+                        {
+                            var new_value = getDiffFromLastChange(x.Value, ((JObject)jold[x.Name]));
+                            if (new_value != null)
+                            {
+                                if (new_value.Properties().Count() > 0)
+                                {
+                                    new_jobject.Add(key, new_value);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            new_jobject.Add(key, x.Value);
+                        }
+                    }
+                    else if (x.Value.GetType() == typeof(JArray))
+                    {
+                        new_jobject.Add(key, x.Value);
+                    }
+                    else if (x.Value.GetType() == typeof(JValue))
+                    {
+                        if (jold != null)
+                        {
+                            if (jold[x.Name] != null)
+                            {
+                                if ((string)x.Value != (string)jold[x.Name])
+                                {
+                                    new_jobject.Add(key, x.Value);
+                                }
+                            }
+                            else
+                            {
+                                new_jobject.Add(key, x.Value);
+                            }
+                        }
+                        else
+                        {
+                            new_jobject.Add(key, x.Value);
+                        }
+                    }
+                }
+                return new_jobject;
+            }
+            else
+            {
+                return null;
+            }
+        }
+ 
         /// <summary>
         /// Fills all the attributes members of the Resource obj.
         /// </summary>
@@ -469,9 +533,7 @@ namespace MercadoPago
         }
         #endregion
 
-        #region Core Utilities
-
-
+        #region Core Utilities 
         /// <summary>
         /// Generates a final Path based on parameters in Dictionary and resource properties.
         /// </summary>
@@ -516,31 +578,23 @@ namespace MercadoPago
                         {
                             var newResource = resource;
                             newResource._lastApiResponse = null;
+
                             JObject json = JObject.FromObject(newResource);
 
-                            //Add control to verify JSON's case properties. Must be removed after testing approved status.
-                            var jValueUC = json.GetValue(param.ToUpper());
-                            var jValueLC = json.GetValue(param);
+                            var jValuePC = json.GetValue(ToPascalCase(param));
+ 
+                            if (jValuePC != null)
+                            {
+                                value = jValuePC.ToString();
+                            }  
 
-                            if (jValueUC != null)
-                            {
-                                value = jValueUC.ToString();
-                            }
-                            else
-                            {
-                                if (jValueLC != null)
-                                {
-                                    value = jValueLC.ToString();
-                                }
-                            }
                         }
                     }
+
                     if (string.IsNullOrEmpty(value))
                     {
-                        throw new MPException("No argument supplied/found for method path");
-                    }
-
-                    result.Append(value);
+                        throw new MPException("No argument supplied/found for path argument");
+                    }  
                     if (path.Contains('/'))
                     {
                         path = path.Substring(path.IndexOf('/'));
@@ -549,6 +603,8 @@ namespace MercadoPago
                     {
                         path = string.Empty;
                     }
+
+                    result.Append(value);
                 }
 
                 if (!string.IsNullOrEmpty(path))
@@ -565,7 +621,7 @@ namespace MercadoPago
             result.Insert(0, SDK.BaseUrl);
 
             // Access Token
-            string accessToken = SDK.GetAccessToken();            
+            string accessToken = SDK.GetAccessToken();
 
             if (!string.IsNullOrEmpty(accessToken))
             {
@@ -707,6 +763,15 @@ namespace MercadoPago
             public string Message { get; set; }
         }
 
+        public static string ToPascalCase(string text)
+        {
+            const string pattern = @"(-|_)\w{1}|^\w";
+            return Regex.Replace(text, pattern, match => match.Value.Replace("-", string.Empty).Replace("_", string.Empty).ToUpper());
+        }
+        public static string ToSnakeCase(string text){
+            const string pattern = @"(?<=[a-z0-9])[A-Z\s]";
+            return Regex.Replace(text, pattern, "_$0").ToLower();
+        }
         #endregion
     }
 }

@@ -3,27 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.MerchantOrder
 {
-    public class MerchantOrderPayment
+    public struct MerchantOrderPayment
     {
         #region Properties
 
         private string id;
-        private decimal transactionAmount;
-        private decimal totalPaidAmount;
-        private decimal shippingCost;
-        public enum CurrencyId
-        {
-            ARS,
-            BRL,
-            VEF,
-            CLP,
-            MXN,
-            COP,
-            UYU
-        }
+        private float transactionAmount;
+        private float totalPaidAmount;
+        private float shippingCost;
+       
         [StringLength(3)]
         private CurrencyId currencyId;
         private string status;
@@ -37,7 +29,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
         private DateTime dateApproved;
         private DateTime dateCreated;
         private DateTime lastModified;
-        private decimal amountRefunded;
+        private float amountRefunded;
         
         #endregion
 
@@ -48,17 +40,17 @@ namespace MercadoPago.DataStructures.MerchantOrder
             get { return id; }            
         }
        
-        public decimal TransactionAmount
+        public float TransactionAmount
         {
             get { return transactionAmount; }            
         }
        
-        public decimal TotalPaidAmount
+        public float TotalPaidAmount
         {
             get { return totalPaidAmount; }            
         }
        
-        public decimal ShippingCost
+        public float ShippingCost
         {
             get { return shippingCost; }            
         }
@@ -98,7 +90,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
             get { return lastModified; }            
         }
        
-        public decimal AmountRefunded
+        public float AmountRefunded
         {
             get { return amountRefunded; }            
         }

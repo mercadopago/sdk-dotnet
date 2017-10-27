@@ -6,58 +6,58 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class ReceiverAddress
+    public struct ReceiverAddress
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string zipCode;
-
+        private string _street_name; 
+        private int _street_number;
         [StringLength(256)]
-        private string streetName;
-
-        private int streetNumber;
-
+        private string _zip_code;
         [StringLength(256)]
-        private string floor;
-
+        private string _floor;
         [StringLength(256)]
-        private string apartment;
-
+        private string _apartment; 
         #endregion
 
-        #region Accessors
-
-        public string ZipCode
-        {
-            get { return this.zipCode; }
-            set { this.zipCode = value; }
+        #region Accessors 
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public string StreetName { 
+            get => _street_name;
+            set => _street_name = value;
         }
-
-        public string StreetName
-        { 
-            get { return this.streetName; }
-            set { this.streetName = value; }
-        }
-
+        /// <summary>
+        /// Street name
+        /// </summary>
         public int StreetNumber
-        { 
-            get { return this.streetNumber; }
-            set { this.streetNumber = value; }
-        }
-
-        public string Floor
         {
-            get { return this.floor; }
-            set { this.floor = value; }
+            get => _street_number;
+            set => _street_number = value;
         }
-
-        public string Apartment
-        { 
-            get { return this.apartment; }
-            set { this.apartment = value; }
+        /// <summary>
+        /// Zip code
+        /// </summary>
+        public string ZipCode {
+            get => _zip_code; 
+            set => _zip_code = value;
         }
-
+        /// <summary>
+        /// Floor
+        /// </summary>
+        public string Floor {
+            get => _floor; 
+            set => _floor = value;
+        }
+        /// <summary>
+        /// Apartment
+        /// </summary>
+        public string Apartment 
+        {
+            get => _apartment; 
+            set => _apartment = value;
+        } 
         #endregion
     }
 }

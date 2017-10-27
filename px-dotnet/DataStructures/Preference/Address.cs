@@ -6,40 +6,41 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class Address
+    public struct Address
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string zipCode;
-
+        private string _street_name;
+        private int _street_number;
         [StringLength(256)]
-        private string streetName;
-
-        private int streetNumber;
-
+        private string _zip_code; 
         #endregion
 
-        #region Accessors
-
-        public string ZipCode 
+        #region Accessors 
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public string StreetName
         {
-            get { return this.zipCode; }
-            set { this.zipCode = value; }
+            get => _street_name;
+            set => _street_name = value;
         }
-
-        public string StreetName 
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public int StreetNumber
         {
-            get { return this.streetName; }
-            set { this.streetName = value; }
+            get => _street_number;
+            set => _street_number = value;
         }
-
-        public int StreetNumber 
+        /// <summary>
+        /// Zip code
+        /// </summary>
+        public string ZipCode
         {
-            get { return this.streetNumber; }
-            set { this.streetNumber = value; }
+            get => _zip_code;
+            set => _zip_code = value;
         }
-
         #endregion
     }
 }

@@ -5,15 +5,15 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class TransactionDetail
+    public struct TransactionDetail
     {
         #region Properties
 
         private string financialInstitution;
-        private decimal netReceivedAmount;
-        private decimal totalPaidAmount;
-        private decimal installmentAmount;
-        private decimal overpaidAmount;
+        private float netReceivedAmount;
+        private float totalPaidAmount;
+        private float installmentAmount;
+        private float overpaidAmount;
         private string externalResourceUrl;
         private string paymentMethodReferenceId;
 
@@ -26,22 +26,22 @@ namespace MercadoPago.DataStructures.Payment
             get { return financialInstitution; }            
         }
         
-        public decimal NetReceivedAmount
+        public float NetReceivedAmount
         {
             get { return netReceivedAmount; }            
         }
        
-        public decimal TotalPaidAmount
+        public float TotalPaidAmount
         {
             get { return totalPaidAmount; }            
         }
        
-        public decimal InstallmentAmount
+        public float InstallmentAmount
         {
             get { return installmentAmount; }            
         }
        
-        public decimal OverpaidAmount
+        public float OverpaidAmount
         {
             get { return overpaidAmount; }            
         }

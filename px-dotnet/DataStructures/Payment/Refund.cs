@@ -6,13 +6,13 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class Refund
+    public struct Refund
     {
         #region Properties
 
         private int id;
         private int paymentId;
-        private decimal amount;
+        private float amount;
         private JObject metadata;
         private Source source;
         private DateTime createdDate;
@@ -32,7 +32,7 @@ namespace MercadoPago.DataStructures.Payment
             get { return paymentId; }            
         }
        
-        public decimal Amount
+        public float Amount
         {
             get { return amount; }            
         }

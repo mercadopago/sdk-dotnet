@@ -11,8 +11,11 @@ namespace MercadoPago
     public class CustomSerializationContractResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
-        {
+        { 
+
             var property = base.CreateProperty(member, memberSerialization);
+            NamingStrategy = new SnakeCaseNamingStrategy();
+
             property.ShouldSerialize = propInstance => property.Writable;
             
             if (!property.Readable)
@@ -24,6 +27,8 @@ namespace MercadoPago
                     property.Readable = hasPrivateGetter;
                 }
             }
+
+
 
             return property;
         }

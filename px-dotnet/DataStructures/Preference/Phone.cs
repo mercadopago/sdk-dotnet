@@ -6,31 +6,32 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Preference
 {
-    public class Phone
+    public struct Phone
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string areaCode;
+        private string _area_code;
         [StringLength(256)]
-        private string number;
-
+        private string _number; 
         #endregion
 
-        #region Accessors
-
-        public string AreaCode 
+        #region Accessors 
+        /// <summary>
+        /// Phone area code
+        /// </summary>
+        public string AreaCode
         {
-            get { return this.areaCode; }
-            set { this.areaCode = value; }
+            get { return this._area_code; }
+            set { this._area_code = value; }
         }
-        
-        public string Number 
+        /// <summary>
+        /// Phone number
+        /// </summary>
+        public string Number
         {
-            get { return this.number; }
-            set { this.number = value; }
-        }
-
+            get { return this._number; }
+            set { this._number = value; }
+        } 
         #endregion
     }
 }

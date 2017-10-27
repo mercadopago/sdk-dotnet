@@ -6,31 +6,61 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class ReceiverAddress : Address
+    public struct ReceiverAddress
     {
-        #region Properties
-
+        #region Properties 
         [StringLength(256)]
-        private string floor;
+        private string _street_name;
+        private int _street_number;
         [StringLength(256)]
-        private string apartment;
-
+        private string _zip_code;
+        [StringLength(256)]
+        private string _floor;
+        [StringLength(256)]
+        private string _apartment;
         #endregion
 
-        #region Accessors
-
+        #region Accessors 
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public string StreetName
+        {
+            get => _street_name;
+            set => _street_name = value;
+        }
+        /// <summary>
+        /// Street name
+        /// </summary>
+        public int StreetNumber
+        {
+            get => _street_number;
+            set => _street_number = value;
+        }
+        /// <summary>
+        /// Zip code
+        /// </summary>
+        public string Zip_code
+        {
+            get => _zip_code;
+            set => _zip_code = value;
+        }
+        /// <summary>
+        /// Floor
+        /// </summary>
         public string Floor
         {
-            get { return floor; }
-            set { floor = value; }
+            get => _floor;
+            set => _floor = value;
         }
-        
+        /// <summary>
+        /// Apartment
+        /// </summary>
         public string Apartment
         {
-            get { return apartment; }
-            set { apartment = value; }
+            get => _apartment;
+            set => _apartment = value;
         }
-
         #endregion
     }
 }

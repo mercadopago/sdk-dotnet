@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.MerchantOrder
 {
-    public class Item
+    public struct Item
     {
         #region Properties
 
@@ -17,7 +17,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
         private string description;
         private string pictureUrl;
         private int quantity;
-        private decimal unitPrice;
+        private float unitPrice;
         private string title;
 
         #endregion
@@ -60,7 +60,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
             set { quantity = value; }
         }
 
-        public decimal UnitPrice
+        public float UnitPrice
         {
             get { return unitPrice; }
             set { unitPrice = value; }

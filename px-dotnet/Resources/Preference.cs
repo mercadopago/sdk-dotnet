@@ -4,215 +4,249 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using MercadoPago.Common;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 
 namespace MercadoPago.Resources
 {
+    /// <summary>
+    /// This API allows you to set up, during the payment process, 
+    /// all the item information, any accepted means of payment and many other options.
+    /// </summary>
     public class Preference : MPBase
     {
-        #region Actions
-
-        public Preference Load(string id)
+        #region Actions 
+        /// <summary>
+        /// Find a preference trought an unique identifier
+        /// </summary>
+        public static Preference FindById(string id)
         {
-            return Load(id, WITHOUT_CACHE);
-        }
-
-        [GETEndpoint("/checkout/preference/:id")]
-        public static Preference Load(string id, bool useCache)
+            return FindById(id, WITHOUT_CACHE);
+        } 
+        /// <summary>
+        /// Find a preference trought an unique identifier with Local Cache Flag
+        /// </summary>
+        [GETEndpoint("/checkout/preferences/:id")]
+        public static Preference FindById(string id, bool useCache)
         {            
-            return (Preference)ProcessMethod<Preference>(typeof(Preference), "Load", id, useCache);
-        }
-
-        [POSTEndpoint("/checkout/preference")]
+            return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache);
+        } 
+        /// <summary>
+        /// Save a new preference
+        /// </summary>
+        [POSTEndpoint("/checkout/preferences")]
         public Preference Save()
         {
-            return (Preference)ProcessMethod("Create", WITHOUT_CACHE);
-        }
-
-        [PUTEndpoint("/checkout/preference/:id")]
+            return (Preference)ProcessMethod<Preference>("Save", WITHOUT_CACHE);
+        } 
+        /// <summary>
+        ///  Update editable properties
+        /// </summary>
+        [PUTEndpoint("/checkout/preferences/:id")]
         public Preference Update()
         {
             return (Preference)ProcessMethod<Preference>("Update", WITHOUT_CACHE);
-        }        
-                
+        }         
         #endregion
 
         #region Properties
-
-        private List<Item> items = new List<Item>();
-        private Payer payer;
-        private PaymentMethod paymentMethod;
-        private Shipment shipment;
-        private BackUrl backUrl;
-
+        private List<Item> _items = new List<Item>();
+        private Payer? _payer;
+        private PaymentMethods? _payment_methods;
+        private Shipment? _shipment;
+        private BackUrls? _back_urls;
         [StringLength(500)]
-        private string notificationUrl;
-        private string id;
-        private string initPoint;
-        private string sandboxInitPoint;
-        private DateTime? dateCreated;
-
-        public enum OperationTypes
-        {
-            RegularPayment,
-            MoneyTransfer
-        }
-
-        private OperationTypes operationType;
-
+        private string _notification_url;
+        private string _id;
+        private string _init_point;
+        private string _sandbox_init_point;
+        private DateTime? _date_created;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private OperationType? _operation_type; 
         [StringLength(600)]
-        private string additionalInfo;
-        private AutoReturnTypes autoReturn;
+        private string _additionalInfo;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private AutoReturnType? _auto_return;
         [StringLength(256)]
-        private string externalReference;
-        private bool? expires;
-        private DateTime? expirationDateFrom;
-        private DateTime? expirationDateTo;
-        private int? collectorId;
-        private int? clientId;
-
+        private string _external_reference;
+        private bool? _expires;
+        private DateTime? _expiration_date_from;
+        private DateTime? _expiration_dateTo;
+        private int? _collector_id;
+        private string _client_id; 
         [StringLength(256)]
-        private string marketplace;
-
-        private float marketplaceFee;
-        private DifferentialPricing differentialPricing;        
-        
+        private string _marketplace; 
+        private float? _marketplace_fee;
+        private DifferentialPricing? _differential_pricing; 
         #endregion
 
         #region Accesors
-
-        public List<Item> Items 
+        /// <summary>
+        /// Items information
+        /// </summary>
+        public List<Item> Items
+        {
+            get => _items;
+            set => _items = value;
+        }
+        /// <summary>
+        /// Buyer Information
+        /// </summary>
+        public Payer? Payer 
+        {
+            get => _payer; 
+            set => _payer = value;
+        }
+        /// <summary>
+        /// Set up payment methods to be excluded from the payment process
+        /// </summary>
+        public PaymentMethods? PaymentMethod
         { 
-            get { return this.items; } 
-            set { this.items = value; } 
+            get => _payment_methods; 
+            set => _payment_methods = value;
         }
-        
-        public Payer Payer 
-        { 
-            get { return this.payer; } 
-            set { this.payer = value; } 
+        /// <summary>
+        /// Shipments information
+        /// </summary>
+        public Shipment? Shipment 
+        {
+            get => _shipment;
+            set => _shipment = value;
         }
-        
-        public PaymentMethod PaymentMethod 
-        { 
-            get { return this.paymentMethod; } 
-            set{ this.paymentMethod = value; } 
+        /// <summary>
+        /// URLs to return to the sellers website
+        /// </summary>
+        public BackUrls? BackUrls
+        {
+            get => _back_urls; 
+            set => _back_urls = value; 
         }
-
-        public Shipment Shipment 
-        { 
-            get { return this.shipment; } 
-            set { this.shipment = value; } 
-        }
-        
-        public BackUrl BackUrl { 
-            get { return this.backUrl; } 
-            set { this.backUrl = value; } 
-        }
-        
+        /// <summary>
+        /// URL where you'd like to receive a payment notification
+        /// </summary>
         public string NotificationUrl 
         { 
-            get { return this.notificationUrl; } 
-            set { this.notificationUrl = value; } 
+            get => _notification_url; 
+            set => _notification_url = value; 
         }
-        
-        public string ID 
-        { 
-            get { return this.id; } 
-            set { this.id = value; } 
+        /// <summary>
+        /// Preference ID (UUID)
+        /// </summary>
+        public string Id { 
+            get => _id; 
+            private set => _id = value;
         }
-        
+        /// <summary>
+        /// Checkout access URL
+        /// </summary>
         public string InitPoint 
         { 
-            get { return this.initPoint; } 
-            set { this.initPoint = value; } 
+            get => _init_point; 
+            private set => _init_point = value; 
         }
-        
-        public string SandboxInitPoint 
+        /// <summary>
+        /// Sandbox checkout access URL
+        /// </summary>
+        public string SandboxInitPoint
         { 
-            get { return this.sandboxInitPoint; } 
-            set { this.sandboxInitPoint = value; } 
+            get => _sandbox_init_point; 
+            private set => _sandbox_init_point = value;
         }
-
-        public DateTime? DateCreated 
+        /// <summary>
+        /// Preference's creation date
+        /// </summary>
+        public DateTime? Datecreated
         { 
-            get { return this.dateCreated; } 
-            set { this.dateCreated = value; } 
-        }               
-        
-        public OperationTypes OperationType 
-        { 
-            get { return this.operationType; }
-            set { this.operationType = value; } 
-        }                
-        
-        public string AdditionalInfo 
-        { 
-            get { return this.additionalInfo; } 
-            set { this.additionalInfo = value; } 
+            get => _date_created; 
+            private set => _date_created = value; 
         }
-        
-        public enum AutoReturnTypes { Approved, All }
-        
-        public AutoReturnTypes AutoReturn 
+        /// <summary>
+        /// Operation data_type
+        /// </summary>
+        public OperationType? OperationType
         { 
-            get { return this.autoReturn; } 
-            set { this.autoReturn = value; } 
+            get => _operation_type; 
+            private set => _operation_type = value;
         }
-        
-        public string ExternalReference 
-        { 
-            get { return this.externalReference; } 
-            set { this.externalReference = value; } 
+        /// <summary>
+        /// Additional information
+        /// </summary>
+        public string AdditionalInfo
+        {
+            get => _additionalInfo; 
+            set => _additionalInfo = value; 
         }
-
-        public bool? Expires 
-        { 
-            get { return this.expires; } 
-            set { this.expires = value; } 
+        /// <summary>
+        /// If specified, your buyers will be redirected back to your site immediately after completing the purchase
+        /// </summary>
+        public AutoReturnType? AutoReturn {
+            get => _auto_return; 
+            set => _auto_return = value; 
         }
-
-        public DateTime? ExpirationDateFrom 
-        { 
-            get { return this.expirationDateFrom; } 
-            set { this.expirationDateFrom = value; } 
+        /// <summary>
+        /// Reference you can synchronize with your payment system
+        /// </summary>
+        public string ExternalReference {
+            get => _external_reference;
+            set => _external_reference = value;
         }
-        
-        public DateTime? ExpirationDateTo 
-        { 
-            get { return this.expirationDateTo; } 
-            set { this.expirationDateTo = value; } 
+        /// <summary>
+        /// Boolean value that determines if a preference expire
+        /// </summary>
+        public bool? Expires {
+            get => _expires; 
+            set => _expires = value;
         }
-
-        public int? CollectorId 
-        { 
-            get { return this.collectorId; } 
-            set { this.collectorId = value; } 
+        /// <summary>
+        /// Date since the preference will be active
+        /// </summary>
+        public DateTime? ExpirationDateFrom {
+            get => _expiration_date_from; 
+            set => _expiration_date_from = value;
         }
-        
-        public int? ClientId 
-        { 
-            get { return this.clientId; } 
-            set { this.clientId = value; } 
+        /// <summary>
+        /// Date when the preference will be expired
+        /// </summary>
+        public DateTime? ExpirationDateTo { 
+            get => _expiration_dateTo; 
+            set => _expiration_dateTo = value; 
         }
-        
-        public string Marketplace 
-        { 
-            get { return this.marketplace; } 
-            set { this.marketplace = value; } 
+        /// <summary>
+        /// Your MercadoPago seller ID
+        /// </summary>
+        public int? CollectorId { 
+            get => _collector_id; 
+            set => _collector_id = value; 
         }
-        
-        public float MarketplaceFee 
-        { 
-            get { return this.marketplaceFee; } 
-            set { this.marketplaceFee = value; } 
+        /// <summary>
+        /// Application owner ID that use MercadoLibre API
+        /// </summary>
+        public string ClientId { 
+            get => _client_id; 
+            private set => _client_id = value;
         }
-        
-        public DifferentialPricing DifferentialPricing 
-        { 
-            get { return this.differentialPricing; } 
-            set { this.differentialPricing = value; } 
+        /// <summary>
+        /// Origin of the payment. Default value: NONE
+        /// </summary>
+        public string Marketplace {
+            get => _marketplace; 
+            set => _marketplace = value; 
         }
-
+        /// <summary>
+        /// Marketplace's fee charged by application owner. Default value: 0%
+        /// </summary>
+        public float? Marketplace_fee { 
+            get => _marketplace_fee; 
+            set => _marketplace_fee = value;
+        }
+        /// <summary>
+        /// Differential pricing configuration for this preference
+        /// </summary>
+        public DifferentialPricing? Differential_pricing {
+            get => _differential_pricing;
+            set => _differential_pricing = value;
+        } 
         #endregion
     }
 }

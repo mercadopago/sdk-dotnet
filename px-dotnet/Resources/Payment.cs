@@ -1,4 +1,5 @@
 ﻿using MercadoPago.DataStructures.Payment;
+using MercadoPago.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -6,384 +7,450 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.Resources
 {
+
+    /// <summary>
+    /// This service allows you to create, modify or read payments
+    /// </summary>
     public class Payment : MPBase
     {
-        #region Actions
-
-        public Payment Load(string id)
-        {
-            return Load(id, WITHOUT_CACHE);
-        }
-        
+        #region Actions 
+        /// <summary>
+        /// Find a payment trought an unique identifier
+        /// </summary>
         [GETEndpoint("/v1/payments/:id")]
-        public static Payment Load(string id, bool useCache) 
+        public static Payment FindById(int? id)
         {
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "Load", id, useCache);
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), false);
         } 
-        
+        /// <summary>
+        /// Find a payment trought an unique identifier with Local Cache Flag
+        /// </summary>
+        [GETEndpoint("/v1/payments/:id")]
+        public static Payment FindById(int? id, bool useCache)
+        {
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
+        } 
+        /// <summary>
+        /// Save a new payment
+        /// </summary>
         [POSTEndpoint("/v1/payments")]
         public Payment Save()
         {
             return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
-        }
-        
+        } 
+        /// <summary>
+        /// Update editable properties
+        /// </summary>
         [PUTEndpoint("/v1/payments/:id")]
         public Payment Update()
         {
             return (Payment)ProcessMethod<Payment>("Update", WITHOUT_CACHE);
-        }
-
-        public static List<Payment> Search()
+        } 
+        /// <summary>
+        /// Get all payments
+        /// </summary>
+        public static List<Payment> All()
         {
-            return Search(WITHOUT_CACHE);
-        }
-
+            return All(WITHOUT_CACHE);
+        } 
+        /// <summary>
+        /// Get all payments acoording to specific filters
+        /// </summary>
         public static List<Payment> Search(Dictionary<string, string> filters)
         {
             return Search(filters, WITHOUT_CACHE);
-        }
-
+        } 
+        /// <summary>
+        /// Get all payments, with using cache option
+        /// </summary>
         [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> Search(bool useCache)
+        public static List<Payment> All(bool useCache)
         {
             return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", useCache);
-        }
-       
+        } 
+        /// <summary>
+        /// Get all payments acoording to specific filters, with using cache option
+        /// </summary>
         [GETEndpoint("/v1/payments/search")]
         public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
         {
             return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
-        } 
-
+        }  
         #endregion
 
-        #region Properties
-
+        #region Properties 
         private int? _id;
         private DateTime? _date_created;
         private DateTime? _date_approved;
         private DateTime? _date_last_updated;
         private DateTime? _money_release_date;
         private int? _collector_id;
-        private string _operation_type;        
+        [JsonConverter(typeof(StringEnumConverter))]
+        private OperationType? _operation_type;        
         private Payer _payer;
         private bool? _binary_mode;
         private bool? _live_mode;
-        private Order _order ;
+        private Order? _order ;
         private string _external_reference;
         private string _description;
         private JObject _metadata;              
         [StringLength(3)]
-        private CurrencyId _currency_id;
-        private decimal? _transaction_amount;
-        private decimal? _transaction_amount_refunded;
-        private decimal? _coupon_amount;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private CurrencyId? _currency_id;
+        private float? _transaction_amount;
+        private float? _transaction_amount_refunded;
+        private float? _coupon_amount;
         private int? _campaign_id;
         private string _coupon_code;
         private TransactionDetail _transaction_details;
         private FeeDetail[] _fee_details;
         private int? _differential_pricing_id;
-        private decimal? _application_fee;      
-        private Status _status ;        
-        private string _status_detail ;
+        private float? _application_fee; 
+        [JsonConverter(typeof(StringEnumConverter))]
+        private PaymentStatus? _status;         
+        private string _status_detail;
         private bool? _capture ;
-        private bool? _captured ;
-        private string _call_for_authorize_id ;
-        private string _payment_method_id ;
-        private string _issuer_id ;       
-        private string _payment_type_id ;        
+        private bool? _captured;
+        private string _call_for_authorize_id;
+        private string _payment_method_id;
+        private string _issuer_id;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private PaymentTypeId? _payment_type_id;        
         private string _token ;
-        private Card _card ;
-        private string _statement_descriptor ;
+        private DataStructures.Payment.Card? _card;
+        private string _statement_descriptor;
         private int? _installments ;
         private string _notification_url;
         private string _callback_url;
         private Refund[] _refunds ;
-        private AdditionalInfo _additional_info ;
-
-        public enum CurrencyId
-        {
-            ARS,
-            BRL,
-            VEF,
-            CLP,
-            MXN,
-            COP,
-            PEN,
-            UYU
-        }
-
-        public enum Status
-        {
-            pending,
-            approved,
-            authorized,
-            in_process,
-            in_mediation,
-            rejected,
-            cancelled,
-            refunded,
-            charged_back
-        }
-
-        public enum PaymentTypeId
-        {
-            account_money,
-            ticket,
-            bank_transfer,
-            atm,
-            credit_card,
-            debit_card,
-            prepaid_card
-        }
-
+        private AdditionalInfo? _additional_info ; 
         #endregion
 
-        #region Accessors
-
-        public int? id 
+        #region Accessors 
+        /// <summary>
+        /// Payment identifier
+        /// </summary>
+        public int? Id
         {
             get { return this._id; }
             private set { this._id = value; }
-        }
-
-        public DateTime? date_created 
+        } 
+        /// <summary>
+        /// Payment’s creation date
+        /// </summary>
+        public DateTime? DateCreated 
         {
             get { return this._date_created; }
             private set { this._date_created = value; }
-        }
-
-        public DateTime? date_approved
+        } 
+        /// <summary>
+        /// Payment’s approval date
+        /// </summary>
+        public DateTime? DateApproved
         {
             get { return this._date_approved; }
             private set { this._date_approved = value; }
-        }
-
-        public DateTime? date_last_updated
+        } 
+        /// <summary>
+        /// Last modified date
+        /// </summary>
+        public DateTime? DateLastUpdated
         {
             get { return this._date_last_updated; }
             private set { this._date_last_updated = value; }
-        }
-
-        public DateTime? money_release_date
+        } 
+        /// <summary>
+        /// Release date of payment
+        /// </summary>
+        public DateTime? MoneyReleaseDate
         {
             get { return this._money_release_date; }
             private set { this._money_release_date = value; }
-        }
-
-        public int? collector_id
+        } 
+        /// <summary>
+        /// Identifies the seller
+        /// </summary>
+        public int? CollectorId
         {
             get { return this._collector_id; }
             private set { this._collector_id = value; }
-        }
-
-        public string operation_type 
+        } 
+        /// <summary>
+        /// Payment type
+        /// </summary>
+        public OperationType? OperationType 
         {
             get { return this._operation_type; }
             private set { this._operation_type = value; }
-        }
-
-        public Payer payer 
+        } 
+        /// <summary>
+        /// Identifies the buyer  
+        /// </summary>
+        public Payer Payer 
         {
             get { return this._payer; }
             set { this._payer = value; }
-        }
-
-        public bool? binary_mode
+        } 
+        /// <summary>
+        /// When set to true, the payment can only be approved or rejected. Otherwise in_process status is added
+        /// </summary>
+        public bool? BinaryMode
         {
             get { return this._binary_mode; }
             set { this._binary_mode = value; }
-        }
-
-        public bool? live_mode
+        } 
+        /// <summary>
+        /// Whether the payment will be processed in sandbox or in production mode
+        /// </summary>
+        public bool? LiveMode
         {
             get { return this._live_mode; }
             private set { this._live_mode = value; }
-        }
-
-        public Order order
+        } 
+        /// <summary>
+        /// Order identifier
+        /// </summary>
+        public Order? Order
         {
             get { return this._order; }
             set { this._order = value; }
-        }
-
-        public string external_reference
+        } 
+        /// <summary>
+        /// ID given by the merchant in their system
+        /// </summary>
+        public string ExternalReference
         {
             get { return this._external_reference; }
             set { this._external_reference = value; }
-        }
-
-        public string description
+        } 
+        /// <summary>
+        /// Payment reason or item title
+        /// </summary>
+        public string Description
         {
             get { return this._description; }
             set { this._description = value; }
-        }
-
-        public JObject metadata
+        } 
+        /// <summary>
+        /// Valid JSON that can be attached to the payment to record additional attributes of the merchant
+        /// </summary>
+        public JObject Metadata
         {
             get { return this._metadata; }
             set { this._metadata = value; }
-        }
-
-        public CurrencyId currency_id
+        } 
+        /// <summary>
+        /// ID of the currency used in the payment
+        /// </summary>
+        public CurrencyId? CurrencyId
         {
             get { return this._currency_id; }
             private set { this._currency_id = value; }
-        }
-
-        public decimal? transaction_amount
+        } 
+        /// <summary>
+        /// Product cost
+        /// </summary>
+        public float? TransactionAmount
         {
             get { return this._transaction_amount; }
             set { this._transaction_amount = value; }
-        }
-
-        public decimal? transaction_amount_refunded
+        } 
+        /// <summary>
+        /// Total refunded amount in this payment
+        /// </summary>
+        public float? TransactionAmountRefunded
         {
             get { return this._transaction_amount_refunded; }
             private set { this._transaction_amount_refunded = value; }
-        }
-
-        public decimal? coupon_amount
+        } 
+        /// <summary>
+        /// Amount of the coupon discount
+        /// </summary>
+        public float? CouponAmount
         {
             get { return this._coupon_amount; }
             set { this._coupon_amount = value; }
-        }
-
-        public int? campaign_id
+        } 
+        /// <summary>
+        /// Discount campaign ID
+        /// </summary>
+        public int? CampaignId
         {
             private get { return this._campaign_id; }
             set { this._campaign_id = value; }
-        }
-
-        public string coupon_code
+        } 
+        /// <summary>
+        /// Discount campaign with a specific code
+        /// </summary>
+        public string CouponCode
         {
             private get { return this._coupon_code; }
             set { this._coupon_code = value; }
-        }
-
-        public TransactionDetail transaction_details
+        } 
+        /// <summary>
+        /// Groups the details of the transaction
+        /// </summary>
+        public TransactionDetail TransactionDetails
         {
             get { return this._transaction_details; }
             private set { this._transaction_details = value; }
-        }
-
-        public FeeDetail[] fee_details
+        } 
+        /// <summary>
+        /// List of fees
+        /// </summary>
+        public FeeDetail[] FeeDetails
         {
             get { return this._fee_details; }
             private set { this._fee_details = value; }
-        }
-
-        public int? differential_pricing_id
+        } 
+        /// <summary>
+        /// Id of the scheme for the absorption of financing fee
+        /// </summary>
+        public int? DifferentialPricingId
         {
             get { return this._differential_pricing_id; }
             set { this._differential_pricing_id = value; }
-        }
-
-        public decimal? application_fee
+        } 
+        /// <summary>
+        /// Fee collected by a marketplace or MercadoPago Application
+        /// </summary>
+        public float? ApplicationFee
         {
             private get { return this._application_fee; }
             set { this._application_fee = value; }
-        }
-
-        public Status status
+        } 
+        /// <summary>
+        /// Payment status
+        /// </summary>
+        public PaymentStatus? Status
         {
             get { return this._status; }
-            private set { this._status = value; }
-        }
-
-        public string status_detail
+            set { this._status = value; }
+        } 
+        /// <summary>
+        /// Gives more detailed information on the current state or rejection cause
+        /// </summary>
+        public string StatusDetail
         {
             get { return this._status_detail; }
             private set { this._status_detail = value; }
-        }
-
-        public bool? capture
+        } 
+        /// <summary>
+        /// Gives more detailed information on the current state or rejection cause
+        /// </summary>
+        public bool? Capture
         {
             private get { return this._capture; }
             set { this._capture = value; }
-        }
-
-        public bool? captured
+        } 
+        /// <summary>
+        /// Gives more detailed information on the current state or rejection cause
+        /// </summary>
+        public bool? Captured
         {
             get { return this._captured; }
             private set { this._captured = value; }
-        }
-
-        public string call_for_authorize_id
+        } 
+        /// <summary>
+        /// Gives more detailed information on the current state or rejection cause
+        /// </summary>
+        public string CallForAuthorizeId
         {
             get { return this._call_for_authorize_id; }
             private set { this._call_for_authorize_id = value; }
-        }
-
-        public string payment_method_id
+        } 
+        /// <summary>
+        /// Gives more detailed information on the current state or rejection cause
+        /// </summary>
+        public string PaymentMethodId
         {
             get { return this._payment_method_id; }
             set { this._payment_method_id = value; }
-        }
-
-        public string issuer_id
+        } 
+        /// <summary>
+        /// Payment method issuer
+        /// </summary>
+        public string IssuerId
         {
             get { return this._issuer_id; }
             set { this._issuer_id = value; }
-        }
-
-        public string payment_type_id
+        } 
+        /// <summary>
+        /// Type of payment method chosen
+        /// </summary>
+        public PaymentTypeId? PaymentTypeId
         {
             get { return this._payment_type_id; }
             private set { this._payment_type_id = value; }
-        }
-
-        public string token
+        } 
+        /// <summary>
+        /// Card token ID
+        /// </summary>
+        public string Token
         {
             private get { return this._token; }
             set { this._token = value; }
-        }
-
-        public Card card
+        } 
+        /// <summary>
+        /// Details of the card used
+        /// </summary>
+        public DataStructures.Payment.Card? Card
         {
             get { return this._card; }
             private set { this._card = value; }
-        }
-
-        public string statement_descriptor
+        } 
+        /// <summary>
+        /// How will look the payment in the card bill (e.g.: MERCADOPAGO)
+        /// </summary>
+        public string StatementDescriptor
         {
             get { return this._statement_descriptor; }
             set { this._statement_descriptor = value; }
-        }
-
-        public int? installments
+        } 
+        /// <summary>
+        /// Selected quantity of installments
+        /// </summary>
+        public int? Installments
         {
             get { return this._installments; }
             set { this._installments = value; }
-        }
-
-        public string notification_url
+        } 
+        /// <summary>
+        /// URL where mercadopago will send notifications associated to changes in this payment
+        /// </summary>
+        public string NotificationUrl
         {
             get { return this._notification_url; }
             set { this._notification_url = value; }
-        }
-
-        public string callback_url
+        } 
+        /// <summary>
+        /// URL where mercadopago does the final redirect (only for bank transfers)
+        /// </summary>
+        public string CallbackUrl
         {
             get { return this._callback_url; }
             set { this._callback_url = value; }
-        }
-
-        public Refund[] refunds
+        } 
+        /// <summary>
+        /// List of refunds that were made to this payment
+        /// </summary>
+        public Refund[] Refunds
         {
             get { return this._refunds; }
             private set { this._refunds = value; }
-        }
-
-        public AdditionalInfo additional_info
+        } 
+        /// <summary>
+        /// Data that could improve fraud analysis and conversion rates. Try to send as much information as possible.
+        /// </summary>
+        public AdditionalInfo? AdditionalInfo
         {
             private get { return this._additional_info; }
             set { this._additional_info = value; }
-        }
-        
+        } 
         #endregion
     }
 }

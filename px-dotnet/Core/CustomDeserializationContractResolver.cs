@@ -15,7 +15,7 @@ namespace MercadoPago
             try
             {
                 var property = base.CreateProperty(member, memberSerialization);
-
+                NamingStrategy = new SnakeCaseNamingStrategy();
                 if (!property.Writable)
                 {
                     var prop = member as PropertyInfo;

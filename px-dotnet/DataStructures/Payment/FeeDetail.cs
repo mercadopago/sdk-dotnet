@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
-    public class FeeDetail
+    public struct FeeDetail
     {
         #region Properties
 
@@ -28,7 +28,7 @@ namespace MercadoPago.DataStructures.Payment
         }
 
         private FeePayer feePayer;
-        private decimal amount;
+        private float amount;
 
         #endregion
 
@@ -44,7 +44,7 @@ namespace MercadoPago.DataStructures.Payment
             get { return feePayer; }            
         }    
 
-        public decimal Amount
+        public float Amount
         {
             get { return amount; }            
         }
