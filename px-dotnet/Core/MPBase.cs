@@ -50,9 +50,7 @@ namespace MercadoPago
         public JObject GetLastKnownJson()
         {
             return this._lastKnownJson;
-        }
-
-
+        } 
         /// <summary>
         /// Checks if current resource needs idempotency key and set IdempotencyKey if positive.
         /// </summary>
@@ -175,7 +173,7 @@ namespace MercadoPago
             string path = ParsePath(hashAnnotation["path"].ToString(), mapParams, resource);
             int retries = (int)hashAnnotation["retries"];
             int connectionTimeout = (int)hashAnnotation["requestTimeout"];
-
+            Console.WriteLine("Path: {0}", path); 
             PayloadType payloadType = (PayloadType)hashAnnotation["payloadType"];
             WebHeaderCollection colHeaders = GetStandardHeaders();
 
@@ -224,6 +222,7 @@ namespace MercadoPago
             string path = ParsePath(restData["path"].ToString(), parameters, resource); 
             PayloadType payloadType = (PayloadType)restData["payloadType"];
             JObject payload = GeneratePayload(httpMethod, resource);  
+
             int requestTimeout = (int)restData["requestTimeout"];
             int retries = (int)restData["retries"]; 
             WebHeaderCollection colHeaders = new WebHeaderCollection(); 
@@ -235,14 +234,14 @@ namespace MercadoPago
                 if (httpMethod != HttpMethod.DELETE)
                 { 
                     resource = (T)FillResourceWithResponseData(resource, response); 
+                    resource._lastApiResponse = response; 
                 }
                 else
                 {
                     //TODO: Call to delete endpoint
                     resource = null;
                 }
-            } 
-            resource._lastApiResponse = response; 
+            }  
             return resource;
         }  
 

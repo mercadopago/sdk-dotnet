@@ -24,8 +24,8 @@ namespace MercadoPagoSDK.Test.Resources
             // Environment.GetEnvironmentVariable("ACCESS_TOKEN");  
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            SDK.ClientId = "6295877106812064"; // Environment.GetEnvironmentVariable("CLIENT_ID");
+            SDK.ClientSecret = "N8h64ko1SbY2ucyZVmOMyBJN1B82ajZp"; //Environment.GetEnvironmentVariable("CLIENT_SECRET");
         }
 
         [Test]

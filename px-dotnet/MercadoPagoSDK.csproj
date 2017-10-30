@@ -84,7 +84,7 @@
     <Compile Include="Resources\Payment.cs" />
     <Compile Include="Resources\MerchantOrder.cs" />
     <Compile Include="Resources\Preference.cs" />
-    <Compile Include="DataStructures\Customer\Address.cs" />
+    <Compile Include="DataStructures\Customer\CustomerAddress.cs" />
     <Compile Include="DataStructures\Customer\Card\CardHolder.cs" />
     <Compile Include="DataStructures\Customer\Card\Identification.cs" />
     <Compile Include="DataStructures\Customer\Card\Issuer.cs" />
@@ -92,7 +92,7 @@
     <Compile Include="DataStructures\Customer\Card\SecurityCode.cs" />
     <Compile Include="DataStructures\Customer\City.cs" />
     <Compile Include="DataStructures\Customer\Country.cs" />
-    <Compile Include="DataStructures\Customer\DefaultAddress.cs" />
+    <Compile Include="DataStructures\Customer\Address.cs" />
     <Compile Include="DataStructures\Customer\Error.cs" />
     <Compile Include="DataStructures\Customer\Identification.cs" />
     <Compile Include="DataStructures\Customer\Municipality.cs" />
@@ -149,6 +149,11 @@
     <Compile Include="DataStructures\Preference\PaymentType.cs" />
     <Compile Include="Common\ShipmentMode.cs" />
     <Compile Include="DataStructures\Preference\BackUrls.cs" />
+    <Compile Include="Common\FeeType.cs" />
+    <Compile Include="Common\FeePayerType.cs" />
+    <Compile Include="Common\RefundUserType.cs" />
+    <Compile Include="DataStructures\Payment\Barcode.cs" />
+    <Compile Include="Common\EncodingType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

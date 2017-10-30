@@ -78,6 +78,7 @@ namespace MercadoPago
             int connectionTimeout,
             int retries)
         {
+ 
             try
             {
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);

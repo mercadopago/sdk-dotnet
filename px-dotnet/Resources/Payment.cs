@@ -89,6 +89,7 @@ namespace MercadoPago.Resources
         private DateTime? _date_last_updated;
         private DateTime? _money_release_date;
         private int? _collector_id; 
+        [JsonConverter(typeof(StringEnumConverter))]
         private OperationType? _operation_type;        
         private Payer _payer;
         private bool? _binary_mode;
@@ -98,6 +99,7 @@ namespace MercadoPago.Resources
         private string _description;
         private JObject _metadata;
         [StringLength(3)] 
+        [JsonConverter(typeof(StringEnumConverter))]
         private CurrencyId? _currency_id;
         private float? _transaction_amount;
         private float? _transaction_amount_refunded;
@@ -105,9 +107,10 @@ namespace MercadoPago.Resources
         private int? _campaign_id;
         private string _coupon_code;
         private TransactionDetail? _transaction_details;
-        private FeeDetail?[] _fee_details;
+        private List<FeeDetail> _fee_details;
         private int? _differential_pricing_id;
         private float? _application_fee;  
+        [JsonConverter(typeof(StringEnumConverter))]
         private PaymentStatus? _status;         
         private string _status_detail;
         private bool? _capture ;
@@ -115,6 +118,7 @@ namespace MercadoPago.Resources
         private string _call_for_authorize_id;
         private string _payment_method_id;
         private string _issuer_id; 
+        [JsonConverter(typeof(StringEnumConverter))]
         private PaymentTypeId? _payment_type_id;        
         private string _token ;
         private DataStructures.Payment.Card? _card;
@@ -122,7 +126,7 @@ namespace MercadoPago.Resources
         private int? _installments ;
         private string _notification_url;
         private string _callback_url;
-        private Refund[] _refunds ;
+        private List<Refund> _refunds ;
         private AdditionalInfo? _additional_info ; 
         #endregion
 
@@ -299,7 +303,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// List of fees
         /// </summary>
-        public FeeDetail?[] FeeDetails
+        public List<FeeDetail> FeeDetails
         {
             get { return this._fee_details; }
             private set { this._fee_details = value; }
@@ -435,7 +439,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// List of refunds that were made to this payment
         /// </summary>
-        public Refund[] Refunds
+        public List<Refund> Refunds
         {
             get { return this._refunds; }
             private set { this._refunds = value; }
