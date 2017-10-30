@@ -7,23 +7,27 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct CardHolder
     {
-        #region Properties
-
-        private string name;        
-        private Identification identification;
-       
+        #region Properties 
+        private string _name;        
+        private Identification? _identification;    
         #endregion
 
         #region Accessors
-
+        /// <summary>
+        /// Cardholder Name
+        /// </summary>
         public string Name
         {
-            get { return name; }            
+            get => _name; 
+            set => _name = value;
         }
-
-        public Identification Identification
+        /// <summary>
+        /// ID of the cardholder
+        /// </summary>
+        public Identification? Identification
         {
-            get { return identification; }            
+            get => _identification; 
+            set => _identification = value;
         }
 
         #endregion

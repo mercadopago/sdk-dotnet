@@ -8,41 +8,42 @@ namespace MercadoPago.DataStructures.Payment
     public struct AdditionalInfo
     {
         #region Properties
-
-        private List<Item> items;
-        private AdditionalInfoPayer additionalInfoPayer;
-        private Shipment shipment;
-
+        private string _ip_address;
+        private List<Item> _items;
+        private AdditionalInfoPayer _payer;
+        private Shipment _shipment; 
+        private Barcode _barcode;
         #endregion
 
         #region Accessors
-
-        public List<Item> Items
-        {            
-            get { return this.items; } // Must be removed after testing approval.
-            set { items = value; }
+        /// <summary>
+        /// List of items to be paid
+        /// </summary>
+        public List<Item> Items { 
+            private get => _items; 
+            set => _items = value; 
         }
-
-        public AdditionalInfo AppendItem(Item item)
-        {
-            if (items == null)
-            {
-                items = new List<Item>();
-            }
-            items.Add(item);
-            return this;
+        /// <summary>
+        /// Buyer's information
+        /// </summary>
+        public AdditionalInfoPayer Payer { 
+            private get => _payer; 
+            set => _payer = value; 
         }
-       
-        public AdditionalInfoPayer AdditionalInfoPayer
-        {            
-            set { additionalInfoPayer = value; }
+        /// <summary>
+        /// Shipping information
+        /// </summary>
+        public Shipment Shipment { 
+            private get => _shipment; 
+            set => _shipment = value; 
         }
-       
-        public Shipment Shipment
-        {            
-            set { shipment = value; }
-        }
-
+        /// <summary>
+        /// Barcode information
+        /// </summary>
+        public Barcode Barcode { 
+            get => _barcode; 
+            set => _barcode = value; 
+        } 
         #endregion
     }
 }

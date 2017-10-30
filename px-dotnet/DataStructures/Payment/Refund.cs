@@ -8,55 +8,67 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Refund
     {
-        #region Properties
-
-        private int id;
-        private int paymentId;
-        private float amount;
-        private JObject metadata;
-        private Source source;
-        private DateTime createdDate;
-        private string uniqueSequenceNumber;
-
+        #region Properties 
+        private int _id;
+        private int _payment_id;
+        private float _amount;
+        private JObject _metadata;
+        private Source? _source;
+        private DateTime? _created_date;
+        private string _unique_sequence_number;
         #endregion
 
         #region Accessors
-
-        public int ID
-        {
-            get { return id; }            
+        /// <summary>
+        /// Refund identifier
+        /// </summary>
+        public int Id { 
+            get => _id;  
+            private set => _id = value; 
         }
-        
-        public int PaymentId
-        {
-            get { return paymentId; }            
+        /// <summary>
+        /// Payment on which the return was made
+        /// </summary>
+        public int PaymentId { 
+            get => _payment_id;  
+            private set => _payment_id = value; 
         }
-       
-        public float Amount
-        {
-            get { return amount; }            
+        /// <summary>
+        /// Amount refunded
+        /// </summary>
+        public float Amount {
+            get => _amount;  
+            private set => _amount = value; 
         }
-       
-        public JObject Metadata
-        {
-            get { return metadata; }            
+        /// <summary>
+        /// Valid JSON that can be attached to the payment 
+        /// to record additional attributes of the merchant
+        /// </summary>
+        public JObject Metadata { 
+            get => _metadata;
+            private set => _metadata = value; 
         }
-       
-        public Source Source
-        {
-            get { return source; }            
+        /// <summary>
+        /// Who made the refund
+        /// </summary>
+        public Source? Source { 
+            get => _source; 
+            private set => _source = value; 
         }
-        
-        public DateTime CreatedDate
-        {
-            get { return createdDate; }            
+        /// <summary>
+        /// Date of refund
+        /// </summary>
+        public DateTime? CreatedDate { 
+            get => _created_date; 
+            private set => _created_date = value; 
         }
-       
-        public string UniqueSequenceNumber
-        {
-            get { return uniqueSequenceNumber; }            
+        /// <summary>
+        /// Refund identifier given by the card processor
+        /// </summary>
+        public string UniqueSequenceNumber { 
+            get => _unique_sequence_number; 
+            private set => _unique_sequence_number = value; 
         }
-
         #endregion
     }
 }

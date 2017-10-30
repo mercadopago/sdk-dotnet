@@ -7,14 +7,12 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct AdditionalInfoPayer
     {
-        #region Properties
-
+        #region Properties 
         private string firstName;
         private string lastName;
         private Phone phone;
         private Address address;
-        private DateTime registrationDate;
-
+        private DateTime registrationDate; 
         #endregion
 
         #region Accessors

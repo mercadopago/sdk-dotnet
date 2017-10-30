@@ -10,8 +10,7 @@ namespace MercadoPago.DataStructures.Payment
     public struct Payer
     {
 
-        #region Properties
-
+        #region Properties 
         private EntityType? _entity_type;
         private PayerType? _type;
         private string _id;
@@ -19,30 +18,26 @@ namespace MercadoPago.DataStructures.Payment
         private Identification? _identification;
         private Phone? _phone;
         private string _first_name;
-        private string _last_name;
-
+        private string _last_name; 
         #endregion
 
-        #region Accesors
-
+        #region Accesors 
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
         public EntityType? Entity_type { 
             get => _entity_type; 
             set => _entity_type = value; 
-        }
-
-
+        } 
         /// <summary>
-        /// Identification type of the associated payer (mandatory if the Payer is a Customer)
+        /// Identification type of the associated payer 
+        /// (mandatory if the Payer is a Customer)
         /// </summary>
         public PayerType? Type
         {
             get { return _type; }
             set { _type = value; }
-        }
-
+        } 
         /// <summary>
         /// Identification of the associated payer
         /// </summary>
@@ -50,8 +45,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _id; }
             set { _id = value; }
-        }
-
+        } 
         /// <summary>
         /// Email of the payer
         /// </summary>
@@ -59,8 +53,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _email; }
             set { _email = value; }
-        }
-
+        } 
         /// <summary>
         /// Personal identification
         /// </summary>
@@ -68,8 +61,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _identification; }
             set { _identification = value; }
-        }
-
+        } 
         /// <summary>
         /// Phone of the associated payer
         /// </summary>
@@ -77,8 +69,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _phone; }
             private set { _phone = value; }
-        }
-
+        } 
         /// <summary>
         /// First name of the associated payer
         /// </summary>
@@ -86,8 +77,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _first_name; }
             private set { _first_name = value; }
-        }
-
+        } 
         /// <summary>
         /// Last name of the associated payer
         /// </summary>
@@ -95,8 +85,7 @@ namespace MercadoPago.DataStructures.Payment
         {
             get { return _last_name; }
             private set { _last_name = value; }
-        }
-
+        } 
         #endregion
     }
 }

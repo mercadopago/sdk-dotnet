@@ -5,109 +5,40 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer
 {
-    public struct Address
+    public struct DefaultAddress
     {
         #region Properties
 
-        private string id;
-        private string phone;
-        private string name;
-        private string floor;
-        private string apartment;
-        private string street_name;
-        private string street_number;
-        private string zip_code;
-        private City city;
-        private State state;
-        private Country country;
-        private Neighborhood neighborhood;
-        private Municipality municipality;
-        private string comments;
-        private DateTime date_created;
-        private List<Verification> verifications;
+        private string _id;
+        private string _zip_code;
+        private string _street_name;
+        private string _street_number;
 
         #endregion
 
         #region Accessors
 
-        public string ID
+        public string id
         {
-            get { return id; }
+            get { return _id; }
         }
 
-        public string Phone
+        public string zip_code
         {
-            get { return phone; }
+            get { return _zip_code; }
+            set { _zip_code = value; }
         }
 
-        public string Name
+        public string street_name
         {
-            get { return name; }
+            get { return _street_name; }
+            set { _street_name = value; }
         }
 
-        public string Floor
+        public string street_number
         {
-            get { return floor; }
-        }
-
-        public string Apartment
-        {
-            get { return apartment; }
-        }
-
-        public string StreetName
-        {
-            get { return street_name; }
-        }
-
-        public string StreetNumber
-        {
-            get { return street_number; }
-        }
-
-        public string ZipCode
-        {
-            get { return zip_code; }
-        }
-
-        public City City
-        {
-            get { return city; }
-        }
-
-        public State State
-        {
-            get { return state; }
-        }
-
-        public Country Country
-        {
-            get { return country; }
-        }
-
-        public Neighborhood Neighborhood
-        {
-            get { return neighborhood; }
-        }
-
-        public Municipality Municipality
-        {
-            get { return municipality; }
-        }
-
-        public string Comments
-        {
-            get { return comments; }
-        }
-
-        public DateTime DateCreated
-        {
-            get { return date_created; }
-        }
-
-        public List<Verification> Verifications
-        {
-            get { return verifications; }
+            get { return _street_number; }
+            set { _street_number = value; }
         }
 
         #endregion

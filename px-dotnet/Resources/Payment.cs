@@ -88,8 +88,7 @@ namespace MercadoPago.Resources
         private DateTime? _date_approved;
         private DateTime? _date_last_updated;
         private DateTime? _money_release_date;
-        private int? _collector_id;
-        [JsonConverter(typeof(StringEnumConverter))]
+        private int? _collector_id; 
         private OperationType? _operation_type;        
         private Payer _payer;
         private bool? _binary_mode;
@@ -97,28 +96,25 @@ namespace MercadoPago.Resources
         private Order? _order ;
         private string _external_reference;
         private string _description;
-        private JObject _metadata;              
-        [StringLength(3)]
-        [JsonConverter(typeof(StringEnumConverter))]
+        private JObject _metadata;
+        [StringLength(3)] 
         private CurrencyId? _currency_id;
         private float? _transaction_amount;
         private float? _transaction_amount_refunded;
         private float? _coupon_amount;
         private int? _campaign_id;
         private string _coupon_code;
-        private TransactionDetail _transaction_details;
-        private FeeDetail[] _fee_details;
+        private TransactionDetail? _transaction_details;
+        private FeeDetail?[] _fee_details;
         private int? _differential_pricing_id;
-        private float? _application_fee; 
-        [JsonConverter(typeof(StringEnumConverter))]
+        private float? _application_fee;  
         private PaymentStatus? _status;         
         private string _status_detail;
         private bool? _capture ;
         private bool? _captured;
         private string _call_for_authorize_id;
         private string _payment_method_id;
-        private string _issuer_id;
-        [JsonConverter(typeof(StringEnumConverter))]
+        private string _issuer_id; 
         private PaymentTypeId? _payment_type_id;        
         private string _token ;
         private DataStructures.Payment.Card? _card;
@@ -196,7 +192,8 @@ namespace MercadoPago.Resources
             set { this._payer = value; }
         } 
         /// <summary>
-        /// When set to true, the payment can only be approved or rejected. Otherwise in_process status is added
+        /// When set to true, the payment can only be approved or rejected. 
+        /// Otherwise in_process status is added
         /// </summary>
         public bool? BinaryMode
         {
@@ -294,7 +291,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Groups the details of the transaction
         /// </summary>
-        public TransactionDetail TransactionDetails
+        public TransactionDetail? TransactionDetails
         {
             get { return this._transaction_details; }
             private set { this._transaction_details = value; }
@@ -302,7 +299,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// List of fees
         /// </summary>
-        public FeeDetail[] FeeDetails
+        public FeeDetail?[] FeeDetails
         {
             get { return this._fee_details; }
             private set { this._fee_details = value; }
@@ -444,7 +441,8 @@ namespace MercadoPago.Resources
             private set { this._refunds = value; }
         } 
         /// <summary>
-        /// Data that could improve fraud analysis and conversion rates. Try to send as much information as possible.
+        /// Data that could improve fraud analysis and conversion rates. 
+        /// Try to send as much information as possible.
         /// </summary>
         public AdditionalInfo? AdditionalInfo
         {

@@ -8,29 +8,27 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Order
     {
-        #region Properties 
-
-        private OrderType? type;
-        private long? id;
+        #region Properties  
+        private OrderType? _type;
+        private long? _id;
 
         #endregion
 
         #region Accessors
-
-        public OrderType? OrderType
-        {
-            get { return type; }
-            set { type = value; }
+        /// <summary>
+        /// Type of order
+        /// </summary>
+        public OrderType? Type { 
+            get => _type; 
+            set => _type = value; 
         }
-
-        
-
-        public long? Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
+        /// <summary>
+        /// Id of the associated purchase order
+        /// </summary>
+        public long? Id1 { 
+            get => _id; 
+            set => _id = value; 
+        } 
         #endregion
     }
 }
