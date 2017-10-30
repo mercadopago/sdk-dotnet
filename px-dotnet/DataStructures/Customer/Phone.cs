@@ -7,27 +7,28 @@ namespace MercadoPago.DataStructures.Customer
 {
     public struct Phone
     {
-        #region Properties
-
+        #region Properties 
         private string _area_code;
-        private string _number;
-
+        private string _number; 
         #endregion
 
         #region Accessors
-
-        public string area_code
+        /// <summary>
+        /// Phone's area code
+        /// </summary>
+        public string AreaCode
         {
             get { return _area_code; }
             set { _area_code = value; }
         }
-
-        public string number
+        /// <summary>
+        /// Phone's number
+        /// </summary>
+        public string Number
         {
             get { return _number; }
             set { _number = value; }
-        }
-
+        } 
         #endregion
     }
 }

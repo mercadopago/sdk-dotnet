@@ -7,35 +7,25 @@ namespace MercadoPago.DataStructures.Customer.Card
 {
     public struct Identification
     {
-        #region Properties
-
-        private int number;
-        private string subtype;
-        private string type;
-        
+        #region Properties 
+        private int? _number;
+        private string _subtype;
+        private string _type; 
         #endregion
 
         #region Accessors
-
-        public int Number
-        {
-            get { return number; }
-            set { number = value; }
-        }
-
-        public string Subtype
-        {
-            get { return subtype; }
-            set { subtype = value; }
-        }
-
-        public string Type
-        {
-            get { return type; }
-            set { type = value; }
-        }
-
-
+        /// <summary>
+        /// Identification number
+        /// </summary>
+        public int? Number { get => _number; set => _number = value; }
+        /// <summary>
+        /// Identification subtype
+        /// </summary>
+        public string Subtype { get => _subtype; set => _subtype = value; }
+        /// <summary>
+        /// Identification type
+        /// </summary>
+        public string Type { get => _type; set => _type = value; }
         #endregion
     }
 }

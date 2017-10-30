@@ -4,109 +4,106 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
+using MercadoPago.DataStructures.Customer;
 
 namespace MercadoPagoSDK.Test.Resources
 {
     
-    [TestFixture (Ignore = "Skipping")]
+    [TestFixture]
     public class CustomerTest
     {
-        [Test()]
-        public void Customer_CreateCustomerGetsCreatedCustomerInResponse()
+
+        string AccessToken;
+        
+        Customer LastCustomer;
+
+        [SetUp]
+        public void Init()
         {
+            // Avoid SSL Cert error
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            // HardCoding Credentials
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            SDK.AccessToken = AccessToken;
+        }
 
-            Customer newCustomer = new Customer
+        [Test()]
+        public void Customer_Create_ShouldBeOk()
+        {
+            Customer customer = new Customer()
             {
-                first_name = "Rafa",
-                last_name = "Williner",
-                address = new MercadoPago.DataStructures.Customer.DefaultAddress { street_name = "some street", zip_code = "2300" },
-                phone = new MercadoPago.DataStructures.Customer.Phone { area_code = "03492", number = "432334" },
-                description = "customer description",
-                identification = new MercadoPago.DataStructures.Customer.Identification { type = "DNI", number = "29804555" }
+                FirstName = "Rafa",
+                LastName = "Williner",
+                Email = "Rafa.Williner@gmail.com",
+                Address = new Address { 
+                    StreetName = "some street", 
+                    ZipCode = "2300" 
+                },
+                Phone = new Phone { 
+                    AreaCode = "03492", 
+                    Number = "432334" 
+                },
+                Description = "customer description",
+                Identification = new Identification {
+                    Type = "DNI", 
+                    Number = "29804555"
+                }
             };
 
-            Customer responseCustomer = newCustomer.Save();
+            customer.Save(); 
+            LastCustomer = customer;
 
-            Assert.AreEqual(201, responseCustomer.GetLastApiResponse().StatusCode);
-            Assert.AreEqual(newCustomer.first_name, responseCustomer.first_name);
-            Assert.AreEqual(newCustomer.last_name, responseCustomer.last_name);
-            Assert.AreEqual(newCustomer.phone.number, responseCustomer.phone.number);
-            Assert.AreEqual(newCustomer.identification.number, responseCustomer.identification.number);
-            Assert.AreEqual(newCustomer.address.street_name, responseCustomer.address.street_name);
-            Assert.AreEqual(newCustomer.description, responseCustomer.description);
+            Console.WriteLine("id: {0}", customer.Id.ToString());
+
+            Assert.IsTrue(customer.Id != null, "Failed: Customer could not be successfully created"); 
         }
 
         [Test()]
-        public void Customer_CreateCustomerAndThenLoadGetsCreatedCustomer()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-
-            Customer newCustomer = new Customer { first_name = "Juan", last_name = "Perez" };
-            Customer responseCustomer = newCustomer.Save();
-
-            Customer loadedCustomer1 = Customer.Load(responseCustomer.id);
-            Customer loadedCustomer2 = Customer.Load(responseCustomer.id, false);
-
-            Assert.AreEqual(200, loadedCustomer1.GetLastApiResponse().StatusCode);
-            Assert.AreEqual(200, loadedCustomer2.GetLastApiResponse().StatusCode);
-            Assert.AreEqual(loadedCustomer1.first_name, newCustomer.first_name);
-            Assert.AreEqual(loadedCustomer1.last_name, newCustomer.last_name);
-            Assert.AreEqual(loadedCustomer2.first_name, newCustomer.first_name);
-            Assert.AreEqual(loadedCustomer2.last_name, newCustomer.last_name);
+        public void Customer_FindById_ShouldBeOk()
+        { 
+            Customer customer = Customer.FindById(LastCustomer.Id);  
+            Assert.AreEqual(customer.FirstName, LastCustomer.FirstName);   
         }
 
         [Test()]
-        public void Customer_CreateCustomerAndThenUpdateUpdatesCustomer()
+        public void Customer_Update_ShouldBeOk()
         {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-
-            Customer newCustomer = new Customer { first_name = "Jorge", last_name = "Calciati" };
-            Customer responseCustomer = newCustomer.Save();
-
-            responseCustomer.last_name = "Calciati Rodriguez";
-            responseCustomer.Update();
-
-            Assert.AreEqual(200, responseCustomer.GetLastApiResponse().StatusCode);
-            Assert.AreEqual("Calciati Rodriguez", responseCustomer.last_name);
+            LastCustomer.LastName = "Calciati Rodriguez";
+            LastCustomer.Update();
+ 
+            Assert.AreEqual(LastCustomer.LastName, "Calciati Rodriguez");
         }
 
         [Test()]
-        public void Customer_CreateCustomerAndThenDeleteDeletesCustomer()
+        public void Remove_Customer()
         {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            string LastId = LastCustomer.Id;
 
-            Customer newCustomer = new Customer { first_name = "Pedro", last_name = "Juarez" };
-            Customer responseCustomer = newCustomer.Save();
-
-            string id = responseCustomer.id;
-
-            responseCustomer.Delete();
-
-            Customer nonExistingCustomer = Customer.Load(responseCustomer.id, false);
-
-            Assert.AreEqual(404, nonExistingCustomer.GetLastApiResponse().StatusCode);
+            try {
+                LastCustomer.Delete();
+                Assert.Pass();
+            } 
+            catch (ArgumentException _e)
+            { 
+                Assert.Fail();
+            };
+            
         }
 
         [Test()]
-        public void Customer_SearchCustomersReturnListOfCustomers()
+        public void Customer_SearchWithFilterGetListOfCustomers()
         {
-            SDK.CleanConfiguration();
-            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-
-            List<Customer> customers = Customer.Search();
+            Dictionary<string, string> filters = new Dictionary<string, string>();
+            filters.Add("email", "Rafa.Williner@gmail.com");
+            List<Customer> customers = Customer.Search(filters);
 
             Assert.IsTrue(customers.Any());
             Assert.IsNotNull(customers.First());
-            Assert.IsTrue(customers.First() is Customer);
+            Assert.AreEqual(customers.First().Email, "Rafa.Williner@gmail.com");
         }
     }
 }

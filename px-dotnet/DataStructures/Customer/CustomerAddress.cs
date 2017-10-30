@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer
 {
-    public struct Address
+    public struct CustomerAddress
     {
-        #region Properties 
+        #region Properties
         private string _id;
         private string _phone;
         private string _name;
@@ -16,98 +16,106 @@ namespace MercadoPago.DataStructures.Customer
         private string _street_name;
         private string _street_number;
         private string _zip_code;
-        private City _city;
-        private State _state;
-        private Country _country;
-        private Neighborhood _neighborhood;
-        private Municipality _municipality;
+        private City? _city;
+        private State? _state;
+        private Country? _country;
+        private Neighborhood? _neighborhood;
+        private Municipality? _municipality;
         private string _comments;
-        private DateTime _date_created;
-        private List<Verification> _verifications; 
+        private DateTime? _date_created;
+        private Verification _verifications;
+        private bool _live_mode;
         #endregion
 
         #region Accessors
-
-        public string ID
-        {
-            get { return id; }
+        /// <summary> Address ID </summary>
+        public string Id {
+            get => _id; 
+            private set => _id = value;
+        } 
+        /// <summary> Address phone </summary>
+        public string Phone {
+            get => _phone; 
+            private set => _phone = value; 
         }
-
-        public string Phone
-        {
-            get { return phone; }
+        /// <summary> Address name </summary>
+        public string Name { 
+            get => _name; 
+            private set => _name = value; 
         }
-
-        public string Name
-        {
-            get { return name; }
+        /// <summary> Floor </summary>
+        public string Floor { 
+            get => _floor; 
+            private set => _floor = value; 
         }
-
-        public string Floor
-        {
-            get { return floor; }
+        /// <summary> Apartment </summary>
+        public string Apartment { 
+            get => _apartment; 
+            private set => _apartment = value; 
         }
-
-        public string Apartment
-        {
-            get { return apartment; }
+        /// <summary> Street name </summary>
+        public string StreetName {
+            get => _street_name; 
+            private set => _street_name = value;
         }
-
-        public string StreetName
-        {
-            get { return street_name; }
+        /// <summary> Street number </summary>
+        public string StreetNumber {
+            get => _street_number; 
+            private set => _street_number = value;
         }
-
-        public string StreetNumber
-        {
-            get { return street_number; }
+        /// <summary> Postal code of an Address </summary>
+        public string ZipCode { 
+            get => _zip_code; 
+            private set => _zip_code = value;
         }
-
-        public string ZipCode
-        {
-            get { return zip_code; }
+        /// <summary> City information </summary>
+        public City? City {
+            get => _city;
+            set => _city = value;
         }
-
-        public City City
-        {
-            get { return city; }
+        /// <summary> State information </summary>
+        public State? State {
+            get => _state; 
+            private set => _state = value;
         }
-
-        public State State
-        {
-            get { return state; }
+        /// <summary> Country information </summary>
+        public Country? Country {
+            get => _country; 
+            private set => _country = value;
         }
-
-        public Country Country
-        {
-            get { return country; }
+        /// <summary> Neighborhood information </summary>
+        public Neighborhood? Neighborhood {
+            get => _neighborhood; 
+            private set => _neighborhood = value;
         }
-
-        public Neighborhood Neighborhood
-        {
-            get { return neighborhood; }
+        /// <summary> Municipality information </summary>
+        public Municipality? Municipality {
+            get => _municipality; 
+            private set => _municipality = value;
         }
-
-        public Municipality Municipality
-        {
-            get { return municipality; }
+        /// <summary> Additional information </summary>
+        public string Comments {
+            get => _comments; 
+            private set => _comments = value;
         }
-
-        public string Comments
-        {
-            get { return comments; }
+        /// <summary> Address date created </summary>
+        public DateTime? DateCreated {
+            get => _date_created; 
+            private set => _date_created = value;
         }
-
-        public DateTime DateCreated
-        {
-            get { return date_created; }
+        /// <summary> The result of addresses validations </summary>
+        public Verification Verifications {
+            get => _verifications; 
+            private set => _verifications = value;
         }
-
-        public List<Verification> Verifications
-        {
-            get { return verifications; }
-        }
-
+        /// <summary> 
+        /// Whether the customers 
+        /// will be in sandbox or in production mode 
+        /// </summary>
+        public bool LiveMode {
+            get => _live_mode; 
+            private set => _live_mode = value;
+        } 
         #endregion
     }
 }

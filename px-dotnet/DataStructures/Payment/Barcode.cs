@@ -1,4 +1,6 @@
 ﻿using System;
+using MercadoPago.Common;
+
 namespace MercadoPago.DataStructures.Payment
 {
     public struct Barcode

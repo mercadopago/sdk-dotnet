@@ -7,27 +7,28 @@ namespace MercadoPago.DataStructures.Customer
 {
     public struct Identification
     {
-        #region Properties
-
+        #region Properties 
         private string _type;
-        private string _number;
-
+        private string _number; 
         #endregion
 
         #region Accessors
-
-        public string type
+        /// <summary>
+        /// Identification's type
+        /// </summary>
+        public string Type
         {
             get { return _type; }
             set { _type = value; }
         }
-
-        public string number
+        /// <summary>
+        /// Identification's number
+        /// </summary>
+        public string Number
         {
             get { return _number; }
             set { _number = value; }
-        }
-
+        } 
         #endregion      
     }
 }
