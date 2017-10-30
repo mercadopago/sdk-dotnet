@@ -18,23 +18,26 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public string Id { 
-            get => _id; 
-            set => _id = value; 
+        public string Id 
+        { 
+            get { return  _id; } 
+            set {  _id = value; } 
         }
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public string Name { 
-            get => _name; 
-            set => _name = value; 
+        public string Name 
+        { 
+            get { return  _name; } 
+            set {  _name = value; } 
         }
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public RefundUserType Type {
-            get => _type; 
-            set => _type = value; 
+        public RefundUserType Type 
+        {
+            get { return  _type; } 
+            set {  _type = value; } 
         } 
         #endregion
     }

@@ -8,8 +8,7 @@ namespace MercadoPago.Resources
 {
     public class Card : MPBase
     {
-        #region Actions
-
+        #region Actions 
         public static List<Card> All(String customerId)
         {
             return All(customerId, WITHOUT_CACHE);
@@ -71,55 +70,196 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Card ID
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id
+        {
+            get
+            {
+                return _id;
+            } 
+            set
+            {
+                _id = value;
+            }
+        }
         /// <summary>
         /// Customer ID
         /// </summary>
-        public string CustomerId { get => _customer_id; set => _customer_id = value; }
+        public string CustomerId
+        {
+            get
+            {
+                return _customer_id;
+            } 
+            set
+            {
+                _customer_id = value;
+            }
+        }
         /// <summary>
         /// Card's expiration month
         /// </summary>
-        public int? ExpirationMonth { get => _expiration_month; set => _expiration_month = value; }
+        public int? ExpirationMonth
+        {
+            get
+            {
+                return _expiration_month;
+            }
+
+            set
+            {
+                _expiration_month = value;
+            }
+        }
         /// <summary>
         /// Card's expiration year
         /// </summary>
-        public int? ExpirationYear { get => _expiration_year; set => _expiration_year = value; }
+        public int? ExpirationYear
+        {
+            get
+            {
+                return _expiration_year;
+            }
+
+            set
+            {
+                _expiration_year = value;
+            }
+        }
         /// <summary>
         /// Card's first six digits
         /// </summary>
-        public string FirstSixDigits { get => _first_six_digits; set => _first_six_digits = value; }
+        public string FirstSixDigits
+        {
+            get
+            {
+                return _first_six_digits;
+            }
+
+            set
+            {
+                _first_six_digits = value;
+            }
+        }
         /// <summary>
         /// Card's last four digits
         /// </summary>
-        public string LastFourDigits { get => _last_four_digits; set => _last_four_digits = value; }
+        public string LastFourDigits
+        {
+            get
+            {
+                return _last_four_digits;
+            }
+
+            set
+            {
+                _last_four_digits = value;
+            }
+        }
         /// <summary>
         /// Payment method information
         /// </summary>
-        public PaymentMethod? PaymentMethod { get => _payment_method; set => _payment_method = value; }
+        public PaymentMethod? PaymentMethod
+        {
+            get
+            {
+                return _payment_method;
+            }
+
+            set
+            {
+                _payment_method = value;
+            }
+        }
         /// <summary>
         /// Security code information
         /// </summary>
-        public SecurityCode? SecurityCode { get => _security_code; set => _security_code = value; }
+        public SecurityCode? SecurityCode
+        {
+            get
+            {
+                return _security_code;
+            }
+
+            set
+            {
+                _security_code = value;
+            }
+        }
         /// <summary>
         /// Issuer information
         /// </summary>
-        public Issuer? Issuer { get => _issuer; set => _issuer = value; }
+        public Issuer? Issuer 
+        {
+            get
+            {
+                return _issuer;
+            }
+
+            set
+            {
+                _issuer = value;
+            }
+        }
         /// <summary>
         /// Card holder information
         /// </summary>
-        public CardHolder? CardHolder { get => _card_holder; set => _card_holder = value; }
+        public CardHolder? CardHolder
+        {
+            get
+            {
+                return _card_holder;
+            }
+
+            set
+            {
+                _card_holder = value;
+            }
+        }
         /// <summary>
         /// Card's date created
         /// </summary>
-        public DateTime? DateCreated { get => _date_created; set => _date_created = value; }
+        public DateTime? DateCreated 
+        {
+            get
+            {
+                return _date_created;
+            }
+
+            set
+            {
+                _date_created = value;
+            }
+        }
         /// <summary>
         /// Card's last modified date
         /// </summary>
-        public DateTime? DateLastUpdated { get => _date_last_updated; set => _date_last_updated = value; }
+        public DateTime? DateLastUpdated 
+        {
+            get
+            {
+                return _date_last_updated;
+            }
+
+            set
+            {
+                _date_last_updated = value;
+            }
+        }
         /// <summary>
         /// Card Token identifier
         /// </summary>
-        public string Token { get => _token; set => _token = value; }
+        public string Token {
+            get
+            {
+                return _token;
+            }
+
+            set
+            {
+                _token = value;
+            }
+        }
+          
         #endregion
     }
 }

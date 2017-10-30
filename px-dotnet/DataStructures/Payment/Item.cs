@@ -22,50 +22,50 @@ namespace MercadoPago.DataStructures.Payment
         /// Item code
         /// </summary>
         public string Id { 
-            get => _id; 
-            set => _id = value; 
+            get { return  _id; } 
+            set { _id = value; } 
         }  
         /// <summary>
         /// Item name
         /// </summary>
         public string Title { 
-            get => _title; 
-            set => _title = value;
+            get { return  _title; } 
+            set { _title = value; }
         }
         /// <summary>
         /// Long item description
         /// </summary>
         public string Description { 
-            get => _description; 
-            set => _description = value; 
+            get { return  _description; } 
+            set { _description = value; } 
         }
         /// <summary>
         /// Image URL
         /// </summary>
         public string PictureUrl { 
-            get => _picture_url; 
-            set => _picture_url = value; 
+            get { return  _picture_url; } 
+            set { _picture_url = value; } 
         }
         /// <summary>
         /// Category of the item
         /// </summary>
         public string CategoryId { 
-            get => _category_id; 
-            set => _category_id = value; 
+            get { return  _category_id; } 
+            set { _category_id = value; } 
         }
         /// <summary>
         /// Item's quantity
         /// </summary>
         public int Quantity {
-            get => _quantity; 
-            set => _quantity = value; 
+            get { return  _quantity; } 
+            set { _quantity = value; } 
         }
         /// <summary>
         /// Unit price
         /// </summary>
         public int UnitPrice { 
-            get => _unit_price; 
-            set => _unit_price = value; 
+            get { return  _unit_price; } 
+            set { _unit_price = value; } 
         }
         #endregion
     }

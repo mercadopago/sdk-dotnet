@@ -25,9 +25,10 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
-        public EntityType? Entity_type { 
-            get => _entity_type; 
-            set => _entity_type = value; 
+        public EntityType? Entity_type 
+        { 
+            get { return _entity_type; }
+            set { _entity_type = value; }
         } 
         /// <summary>
         /// Identification type of the associated payer 

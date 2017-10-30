@@ -18,16 +18,16 @@ namespace MercadoPago.DataStructures.Payment
         /// </summary>
         public string Name
         {
-            get => _name; 
-            set => _name = value;
+            get { return  _name; } 
+            set { _name = value; }
         }
         /// <summary>
         /// ID of the cardholder
         /// </summary>
         public Identification? Identification
         {
-            get => _identification; 
-            set => _identification = value;
+            get { return  _identification; } 
+            set { _identification = value; }
         }
 
         #endregion

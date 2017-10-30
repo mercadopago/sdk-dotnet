@@ -23,51 +23,51 @@ namespace MercadoPago.DataStructures.Payment
         /// Refund identifier
         /// </summary>
         public int Id { 
-            get => _id;  
-            private set => _id = value; 
+            get { return  _id; }  
+            private set { _id = value; } 
         }
         /// <summary>
         /// Payment on which the return was made
         /// </summary>
         public int PaymentId { 
-            get => _payment_id;  
-            private set => _payment_id = value; 
+            get { return  _payment_id; }  
+            private set { _payment_id = value; } 
         }
         /// <summary>
         /// Amount refunded
         /// </summary>
         public float Amount {
-            get => _amount;  
-            private set => _amount = value; 
+            get { return  _amount; }  
+            private set { _amount = value; } 
         }
         /// <summary>
         /// Valid JSON that can be attached to the payment 
         /// to record additional attributes of the merchant
         /// </summary>
         public JObject Metadata { 
-            get => _metadata;
-            private set => _metadata = value; 
+            get { return  _metadata; }
+            private set { _metadata = value; } 
         }
         /// <summary>
         /// Who made the refund
         /// </summary>
         public Source? Source { 
-            get => _source; 
-            private set => _source = value; 
+            get { return  _source; } 
+            private set { _source = value; } 
         }
         /// <summary>
         /// Date of refund
         /// </summary>
         public DateTime? CreatedDate { 
-            get => _created_date; 
-            private set => _created_date = value; 
+            get { return  _created_date; } 
+            private set { _created_date = value; } 
         }
         /// <summary>
         /// Refund identifier given by the card processor
         /// </summary>
         public string UniqueSequenceNumber { 
-            get => _unique_sequence_number; 
-            private set => _unique_sequence_number = value; 
+            get { return  _unique_sequence_number; } 
+            private set { _unique_sequence_number = value; } 
         }
         #endregion
     }

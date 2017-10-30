@@ -19,31 +19,80 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// List of items to be paid
         /// </summary>
-        public List<Item> Items { 
-            private get => _items; 
-            set => _items = value; 
+        public List<Item> Items 
+        {
+            get
+            {
+                return _items;
+            }
+
+            set
+            {
+                _items = value;
+            }
         }
         /// <summary>
         /// Buyer's information
         /// </summary>
-        public AdditionalInfoPayer Payer { 
-            private get => _payer; 
-            set => _payer = value; 
+        public AdditionalInfoPayer Payer
+        {
+            get
+            {
+                return _payer;
+            }
+
+            set
+            {
+                _payer = value;
+            }
         }
         /// <summary>
         /// Shipping information
         /// </summary>
-        public Shipment Shipment { 
-            private get => _shipment; 
-            set => _shipment = value; 
+        public Shipment Shipment 
+        {
+            get
+            {
+                return _shipment;
+            }
+
+            set
+            {
+                _shipment = value;
+            }
         }
         /// <summary>
         /// Barcode information
         /// </summary>
-        public Barcode Barcode { 
-            get => _barcode; 
-            set => _barcode = value; 
-        } 
+        public Barcode Barcode 
+        {
+            get
+            {
+                return _barcode;
+            }
+
+            set
+            {
+                _barcode = value;
+            }
+        }
+        /// <summary>
+        /// IP Address Information
+        /// </summary>
+        public string IpAddress
+        {
+            get
+            {
+                return _ip_address;
+            }
+
+            set
+            {
+                _ip_address = value;
+            }
+        }
+         
+
         #endregion
     }
 }

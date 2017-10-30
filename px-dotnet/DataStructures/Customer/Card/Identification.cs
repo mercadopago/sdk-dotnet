@@ -17,15 +17,26 @@ namespace MercadoPago.DataStructures.Customer.Card
         /// <summary>
         /// Identification number
         /// </summary>
-        public int? Number { get => _number; set => _number = value; }
+        public int? Number
+        {
+            get { return _number;  }
+            set { _number = value; }
+        }
         /// <summary>
         /// Identification subtype
         /// </summary>
-        public string Subtype { get => _subtype; set => _subtype = value; }
+        public string Subtype { 
+            get { return _subtype;  }
+            set { _subtype = value; } 
+        }
         /// <summary>
         /// Identification type
         /// </summary>
-        public string Type { get => _type; set => _type = value; }
+        public string Type 
+        { 
+            get { return _type; } 
+            set { _type = value; }
+        }
         #endregion
     }
 }

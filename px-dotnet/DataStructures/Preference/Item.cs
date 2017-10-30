@@ -34,64 +34,64 @@ namespace MercadoPago.DataStructures.Preference
         /// </summary>
         public string Id
         { 
-            get => _id; 
-            set => _id = value;
+            get { return  _id; } 
+            set {  _id = value; }
         }
         /// <summary>
         /// Item title. It will be displayed in the payment process.
         /// </summary>
         public string Title
         {
-            get => _title; 
-            set => _title = value;
+            get { return  _title; } 
+            set {  _title = value; }
         }
         /// <summary>
         /// Item description
         /// </summary>
         public string Description
         {
-            get => _description; 
-            set => _description = value; 
+            get { return  _description; } 
+            set {  _description = value; } 
         }
         /// <summary>
         /// Item image URL
         /// </summary>
         public string PictureUrl
         {
-            get => _pictureU_url;
-            set => _pictureU_url = value;
+            get { return  _pictureU_url; }
+            set {  _pictureU_url = value; }
         }
         /// <summary>
         /// Item category ID
         /// </summary>
         public int? CategoryId
         {
-            get => _category_id;
-            set => _category_id = value;
+            get { return  _category_id; }
+            set {  _category_id = value; }
         }
         /// <summary>
         /// Item quantity
         /// </summary>
         public int? Quantity
         {
-            get => _quantity;
-            set => _quantity = value;
+            get { return  _quantity; }
+            set {  _quantity = value; }
         }
         /// <summary>
         /// Currency ID. ISO_4217 code
         /// </summary>
         public CurrencyId CurrencyId
         {
-            get => _currency_id; 
-            set => _currency_id = value;
+            get { return  _currency_id; } 
+            set {  _currency_id = value; }
         }
         /// <summary>
         /// Unit price
         /// </summary>
         public float UnitPrice
         {
-            get => unit_price; 
-            set => unit_price = value;
+            get { return  unit_price; } 
+            set {  unit_price = value; }
         } 
         #endregion
     }

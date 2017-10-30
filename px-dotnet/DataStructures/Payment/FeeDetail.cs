@@ -17,18 +17,18 @@ namespace MercadoPago.DataStructures.Payment
         #region Accessors
         /// <summary> Fee detail </summary>
         public FeeType? Type { 
-            get => _type; 
-            private set => _type = value; 
+            get { return  _type; } 
+            private set { _type = value; } 
         }
         /// <summary> Who absorbs the cost </summary>
         public FeePayerType? FeePayer { 
-            get => _fee_payer; 
-            private set => _fee_payer = value; 
+            get { return  _fee_payer; } 
+            private set { _fee_payer = value; } 
         }
         /// <summary> Fee amount </summary>
         public float? Amount { 
-            get => _amount; 
-            private set => _amount = value; 
+            get { return  _amount; } 
+            private set { _amount = value; } 
         } 
         #endregion
     }

@@ -11,8 +11,16 @@ namespace MercadoPago.DataStructures.Plan
         #endregion
 
         #region Accessors
-        public int Frequency { get => frequency; set => frequency = value; }
-        public string FrequencyType { get => frequencyType; set => frequencyType = value; }
+        public int Frequency 
+        { 
+            get { return  frequency; } 
+            set {  frequency = value; } 
+        }
+        public string FrequencyType 
+        { 
+            get { return  frequencyType; } 
+            set {  frequencyType = value; } 
+        }
         #endregion
 
     }

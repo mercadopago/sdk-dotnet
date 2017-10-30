@@ -19,15 +19,15 @@ namespace MercadoPago.DataStructures.Payment
         /// Type of order
         /// </summary>
         public OrderType? Type { 
-            get => _type; 
-            set => _type = value; 
+            get { return  _type; } 
+            set { _type = value; } 
         }
         /// <summary>
         /// Id of the associated purchase order
         /// </summary>
         public long? Id1 { 
-            get => _id; 
-            set => _id = value; 
+            get { return  _id; } 
+            set { _id = value; } 
         } 
         #endregion
     }

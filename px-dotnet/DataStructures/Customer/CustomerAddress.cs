@@ -29,92 +29,228 @@ namespace MercadoPago.DataStructures.Customer
 
         #region Accessors
         /// <summary> Address ID </summary>
-        public string Id {
-            get => _id; 
-            private set => _id = value;
-        } 
+        public string Id
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
+        }
         /// <summary> Address phone </summary>
-        public string Phone {
-            get => _phone; 
-            private set => _phone = value; 
+        public string Phone
+        {
+            get
+            {
+                return _phone;
+            }
+
+            set
+            {
+                _phone = value;
+            }
         }
         /// <summary> Address name </summary>
-        public string Name { 
-            get => _name; 
-            private set => _name = value; 
+        public string Name 
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
         }
         /// <summary> Floor </summary>
-        public string Floor { 
-            get => _floor; 
-            private set => _floor = value; 
+        public string Floor
+        {
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
         }
         /// <summary> Apartment </summary>
-        public string Apartment { 
-            get => _apartment; 
-            private set => _apartment = value; 
+        public string Apartment
+        {
+            get
+            {
+                return _apartment;
+            }
+
+            set
+            {
+                _apartment = value;
+            }
         }
         /// <summary> Street name </summary>
-        public string StreetName {
-            get => _street_name; 
-            private set => _street_name = value;
+        public string StreetName
+        {
+            get
+            {
+                return _street_name;
+            }
+
+            set
+            {
+                _street_name = value;
+            }
         }
         /// <summary> Street number </summary>
-        public string StreetNumber {
-            get => _street_number; 
-            private set => _street_number = value;
+        public string StreetNumber
+        {
+            get
+            {
+                return _street_number;
+            }
+
+            set
+            {
+                _street_number = value;
+            }
         }
         /// <summary> Postal code of an Address </summary>
-        public string ZipCode { 
-            get => _zip_code; 
-            private set => _zip_code = value;
+        public string ZipCode
+        {
+            get
+            {
+                return _zip_code;
+            }
+
+            set
+            {
+                _zip_code = value;
+            }
         }
         /// <summary> City information </summary>
-        public City? City {
-            get => _city;
-            set => _city = value;
+        public City? City
+        {
+            get
+            {
+                return _city;
+            }
+
+            set
+            {
+                _city = value;
+            }
         }
         /// <summary> State information </summary>
-        public State? State {
-            get => _state; 
-            private set => _state = value;
+        public State? State
+        {
+            get
+            {
+                return _state;
+            }
+
+            set
+            {
+                _state = value;
+            }
         }
         /// <summary> Country information </summary>
-        public Country? Country {
-            get => _country; 
-            private set => _country = value;
+        public Country? Country
+        {
+            get
+            {
+                return _country;
+            }
+
+            set
+            {
+                _country = value;
+            }
         }
         /// <summary> Neighborhood information </summary>
-        public Neighborhood? Neighborhood {
-            get => _neighborhood; 
-            private set => _neighborhood = value;
+        public Neighborhood? Neighborhood
+        {
+            get
+            {
+                return _neighborhood;
+            }
+
+            set
+            {
+                _neighborhood = value;
+            }
         }
         /// <summary> Municipality information </summary>
-        public Municipality? Municipality {
-            get => _municipality; 
-            private set => _municipality = value;
+        public Municipality? Municipality
+        {
+            get
+            {
+                return _municipality;
+            }
+
+            set
+            {
+                _municipality = value;
+            }
         }
         /// <summary> Additional information </summary>
-        public string Comments {
-            get => _comments; 
-            private set => _comments = value;
+        public string Comments
+        {
+            get
+            {
+                return _comments;
+            }
+
+            set
+            {
+                _comments = value;
+            }
         }
         /// <summary> Address date created </summary>
-        public DateTime? DateCreated {
-            get => _date_created; 
-            private set => _date_created = value;
+        public DateTime? DateCreated
+        {
+            get
+            {
+                return _date_created;
+            }
+
+            set
+            {
+                _date_created = value;
+            }
         }
         /// <summary> The result of addresses validations </summary>
-        public Verification Verifications {
-            get => _verifications; 
-            private set => _verifications = value;
+        public Verification Verifications
+        {
+            get
+            {
+                return _verifications;
+            }
+
+            set
+            {
+                _verifications = value;
+            }
         }
         /// <summary> 
         /// Whether the customers 
         /// will be in sandbox or in production mode 
         /// </summary>
-        public bool LiveMode {
-            get => _live_mode; 
-            private set => _live_mode = value;
+        public bool LiveMode
+        {
+            get
+            {
+                return _live_mode;
+            }
+
+            set
+            {
+                _live_mode = value;
+            }
         } 
         #endregion
     }

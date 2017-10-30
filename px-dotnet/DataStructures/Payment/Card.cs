@@ -24,64 +24,64 @@ namespace MercadoPago.DataStructures.Payment
         /// </summary>
         public string Id
         {
-            get => _id;
-            set => _id = value;
+            get { return  _id; }
+            set {  _id = value; }
         }
         /// <summary>
         /// Last four digits of card number
         /// </summary>
         public string LastFourDigits
         {
-            get => _lastFourDigits;
-            private set => _lastFourDigits = value;
+            get { return  _lastFourDigits; }
+            private set {  _lastFourDigits = value; }
         }
         /// <summary>
         /// First six digit of card number
         /// </summary>
         public string FirstSixDigits
         {
-            get => _firstSixDigits;
-            private set => _firstSixDigits = value;
+            get { return  _firstSixDigits; }
+            private set {  _firstSixDigits = value; }
         }
         /// <summary>
         /// Card expiration year
         /// </summary>
         public int? ExpirationYear
         {
-            get => _expirationYear;
-            set => _expirationYear = value;
+            get { return  _expirationYear; }
+            set {  _expirationYear = value; }
         }
         /// <summary>
         /// Card expiration month
         /// </summary>
         public int? ExpirationMonth
         {
-            get => _expirationMonth;
-            set => _expirationMonth = value;
+            get { return  _expirationMonth; }
+            set {  _expirationMonth = value; }
         }
         /// <summary>
         /// Creation date of card
         /// </summary>
         public DateTime? DateCreated
         {
-            get => _dateCreated;
-            set => _dateCreated = value;
+            get { return  _dateCreated; }
+            set {  _dateCreated = value; }
         }
         /// <summary>
         /// Last update of data from the card
         /// </summary>
         public DateTime? DateLastUpdated
         {
-            get => _dateLastUpdated;
-            set => _dateLastUpdated = value;
+            get { return  _dateLastUpdated; }
+            set {  _dateLastUpdated = value; }
         }
         /// <summary>
         /// Card's owner data
         /// </summary>
         public CardHolder? CardHolder
         {
-            get => _cardHolder;
-            set => _cardHolder = value;
+            get { return  _cardHolder; }
+            set {  _cardHolder = value; }
         }
         #endregion
     }

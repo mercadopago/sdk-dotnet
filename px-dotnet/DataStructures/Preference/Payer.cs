@@ -26,53 +26,53 @@ namespace MercadoPago.DataStructures.Preference
         /// Buyer name
         /// </summary>
         public string Name {
-            get => _name; 
-            set => _name = value;
+            get { return  _name; } 
+            set { _name = value; }
         }
         /// <summary>
         /// Buyer last name
         /// </summary>
         public string Surname {
-            get => _surname; 
-            set => _surname = value;
+            get { return  _surname; } 
+            set { _surname = value; }
         }
         /// <summary>
         /// Buyer e-mail address
         /// </summary>
         public string Email {
-            get => _email; 
-            set => _email = value;
+            get { return  _email; } 
+            set { _email = value; }
         }
         /// <summary>
         /// Buyer phone
         /// </summary>
         public Phone? Phone { 
-            get => _phone; 
-            set => _phone = value; 
+            get { return  _phone; } 
+            set { _phone = value; } 
         }
         /// <summary>
         /// Personal identification
         /// </summary>
         public Identification? Identification 
         { 
-            get => _identification; 
-            set => _identification = value; 
+            get { return  _identification; } 
+            set { _identification = value; } 
         }
         /// <summary>
         /// Buyer address
         /// </summary>
         public Address? Address
         {
-            get => _address;
-            set => _address = value;
+            get { return  _address; }
+            set { _address = value; }
         }
         /// <summary>
         /// Registration date
         /// </summary>
         public DateTime? Date_created 
         { 
-            get => _date_created;
-            set => _date_created = value;
+            get { return  _date_created; }
+            set { _date_created = value; }
         } 
         #endregion
     }

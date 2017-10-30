@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.3</PackageVersion>
+    <PackageVersion>1.0.4</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -28,6 +28,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>false</NoStdLib>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType></DebugType>
@@ -37,6 +39,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoStdLib>false</NoStdLib>
+    <RunWithWarnings>true</RunWithWarnings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

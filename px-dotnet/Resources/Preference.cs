@@ -87,166 +87,332 @@ namespace MercadoPago.Resources
         /// </summary>
         public List<Item> Items
         {
-            get => _items;
-            set => _items = value;
+            get
+            {
+                return _items;
+            }
+
+            set
+            {
+                _items = value;
+            }
         }
         /// <summary>
         /// Buyer Information
         /// </summary>
         public Payer? Payer 
         {
-            get => _payer; 
-            set => _payer = value;
+            get
+            {
+                return _payer;
+            }
+
+            set
+            {
+                _payer = value;
+            }
         }
         /// <summary>
         /// Set up payment methods to be excluded from the payment process
         /// </summary>
         public PaymentMethods? PaymentMethod
         { 
-            get => _payment_methods; 
-            set => _payment_methods = value;
+            get
+            {
+                return _payment_methods;
+            }
+
+            set
+            {
+                _payment_methods = value;
+            }
         }
         /// <summary>
         /// Shipments information
         /// </summary>
         public Shipment? Shipment 
         {
-            get => _shipment;
-            set => _shipment = value;
+            get
+            {
+                return _shipment;
+            }
+
+            set
+            {
+                _shipment = value;
+            }
         }
         /// <summary>
         /// URLs to return to the sellers website
         /// </summary>
         public BackUrls? BackUrls
         {
-            get => _back_urls; 
-            set => _back_urls = value; 
+            get
+            {
+                return _back_urls;
+            }
+
+            set
+            {
+                _back_urls = value;
+            }
         }
         /// <summary>
         /// URL where you'd like to receive a payment notification
         /// </summary>
-        public string NotificationUrl 
-        { 
-            get => _notification_url; 
-            set => _notification_url = value; 
+        public string NotificationUrl
+        {
+            get
+            {
+                return _notification_url;
+            }
+
+            set
+            {
+                _notification_url = value;
+            }
         }
         /// <summary>
         /// Preference ID (UUID)
         /// </summary>
-        public string Id { 
-            get => _id; 
-            private set => _id = value;
+        public string Id 
+        {
+            get
+            {
+                return _id;
+            }
+
+            set
+            {
+                _id = value;
+            }
         }
         /// <summary>
         /// Checkout access URL
         /// </summary>
         public string InitPoint 
-        { 
-            get => _init_point; 
-            private set => _init_point = value; 
+        {
+            get
+            {
+                return _init_point;
+            }
+
+            private set
+            {
+                _init_point = value;
+            }
         }
         /// <summary>
         /// Sandbox checkout access URL
         /// </summary>
         public string SandboxInitPoint
-        { 
-            get => _sandbox_init_point; 
-            private set => _sandbox_init_point = value;
+        {
+            get
+            {
+                return _sandbox_init_point;
+            }
+
+            set
+            {
+                _sandbox_init_point = value;
+            }
         }
         /// <summary>
         /// Preference's creation date
         /// </summary>
         public DateTime? Datecreated
-        { 
-            get => _date_created; 
-            private set => _date_created = value; 
+        {
+            get
+            {
+                return _date_created;
+            }
+
+            set
+            {
+                _date_created = value;
+            }
         }
         /// <summary>
         /// Operation data_type
         /// </summary>
         public OperationType? OperationType
-        { 
-            get => _operation_type; 
-            private set => _operation_type = value;
+        {
+            get
+            {
+                return _operation_type;
+            }
+
+            set
+            {
+                _operation_type = value;
+            }
         }
         /// <summary>
         /// Additional information
         /// </summary>
         public string AdditionalInfo
         {
-            get => _additionalInfo; 
-            set => _additionalInfo = value; 
+            get
+            {
+                return _additionalInfo;
+            }
+
+            set
+            {
+                _additionalInfo = value;
+            }
         }
         /// <summary>
         /// If specified, your buyers will be redirected back to your site immediately after completing the purchase
         /// </summary>
-        public AutoReturnType? AutoReturn {
-            get => _auto_return; 
-            set => _auto_return = value; 
+        public AutoReturnType? AutoReturn 
+        {
+            get
+            {
+                return _auto_return;
+            }
+
+            set
+            {
+                _auto_return = value;
+            }
         }
         /// <summary>
         /// Reference you can synchronize with your payment system
         /// </summary>
-        public string ExternalReference {
-            get => _external_reference;
-            set => _external_reference = value;
+        public string ExternalReference 
+        {
+            get
+            {
+                return _external_reference;
+            }
+
+            set
+            {
+                _external_reference = value;
+            }
         }
         /// <summary>
         /// Boolean value that determines if a preference expire
         /// </summary>
-        public bool? Expires {
-            get => _expires; 
-            set => _expires = value;
+        public bool? Expires 
+        {
+            get
+            {
+                return _expires;
+            }
+
+            set
+            {
+                _expires = value;
+            }
         }
         /// <summary>
         /// Date since the preference will be active
         /// </summary>
-        public DateTime? ExpirationDateFrom {
-            get => _expiration_date_from; 
-            set => _expiration_date_from = value;
+        public DateTime? ExpirationDateFrom 
+        {
+            get
+            {
+                return _expiration_date_from;
+            }
+
+            set
+            {
+                _expiration_date_from = value;
+            }
         }
         /// <summary>
         /// Date when the preference will be expired
         /// </summary>
-        public DateTime? ExpirationDateTo { 
-            get => _expiration_dateTo; 
-            set => _expiration_dateTo = value; 
+        public DateTime? ExpirationDateTo 
+        {
+            get
+            {
+                return _expiration_dateTo;
+            }
+
+            set
+            {
+                _expiration_dateTo = value;
+            }
         }
         /// <summary>
         /// Your MercadoPago seller ID
         /// </summary>
-        public int? CollectorId { 
-            get => _collector_id; 
-            set => _collector_id = value; 
+        public int? CollectorId 
+        {
+            get
+            {
+                return _collector_id;
+            }
+
+            set
+            {
+                _collector_id = value;
+            }
         }
         /// <summary>
         /// Application owner ID that use MercadoLibre API
         /// </summary>
-        public string ClientId { 
-            get => _client_id; 
-            private set => _client_id = value;
+        public string ClientId 
+        {
+            get
+            {
+                return _client_id;
+            }
+
+            set
+            {
+                _client_id = value;
+            }
         }
         /// <summary>
         /// Origin of the payment. Default value: NONE
         /// </summary>
-        public string Marketplace {
-            get => _marketplace; 
-            set => _marketplace = value; 
+        public string Marketplace 
+        {
+            get
+            {
+                return _marketplace;
+            }
+
+            set
+            {
+                _marketplace = value;
+            }
         }
         /// <summary>
         /// Marketplace's fee charged by application owner. Default value: 0%
         /// </summary>
-        public float? Marketplace_fee { 
-            get => _marketplace_fee; 
-            set => _marketplace_fee = value;
+        public float? Marketplace_fee 
+        {
+            get
+            {
+                return _marketplace_fee;
+            }
+
+            set
+            {
+                _marketplace_fee = value;
+            }
         }
         /// <summary>
         /// Differential pricing configuration for this preference
         /// </summary>
-        public DifferentialPricing? Differential_pricing {
-            get => _differential_pricing;
-            set => _differential_pricing = value;
-        } 
+        public DifferentialPricing? Differential_pricing 
+        {
+            get
+            {
+                return _differential_pricing;
+            }
+
+            set
+            {
+                _differential_pricing = value;
+            }
+        }
+         
         #endregion
     }
 }

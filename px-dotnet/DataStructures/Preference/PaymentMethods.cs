@@ -22,41 +22,76 @@ namespace MercadoPago.DataStructures.Preference
         /// Payment methods not allowed in payment process (except account_money)
         /// </summary>
         public List<PaymentMethod> ExcludedPaymentMethods
-        { 
-            get => _excluded_payment_methods; 
-            set => _excluded_payment_methods = value; 
+        {
+            get
+            {
+                return _excluded_payment_methods;
+            }
+
+            set
+            {
+                _excluded_payment_methods = value;
+            }
         }
         /// <summary>
         /// Payment types not allowed in payment process
         /// </summary>
         public List<PaymentType> ExcludedPaymentTypes
-        { 
-            get => _excluded_payment_types; 
-            set => _excluded_payment_types = value;
+        {
+            get
+            {
+                return _excluded_payment_types;
+            }
+
+            set
+            {
+                _excluded_payment_types = value;
+            }
         }
         /// <summary>
         /// Payment method to be preferred on the payments methods list
         /// </summary>
         public string DefaultPaymentMethodId
         {
-            get => _default_payment_method_id; 
-            set => _default_payment_method_id = value; 
+            get
+            {
+                return _default_payment_method_id;
+            }
+
+            set
+            {
+                _default_payment_method_id = value;
+            }
         }
         /// <summary>
         /// Maximum number of credit card installments to be accepted
-        /// </summary>
-        public int Installments 
-        { 
-            get => _installments;
-            set => _installments = value; 
+        /// </summary> 
+        public int Installments1
+        {
+            get
+            {
+                return _installments;
+            }
+
+            set
+            {
+                _installments = value;
+            }
         }
         /// <summary>
         /// Prefered number of credit card installments
         /// </summary>
         public int DefaultInstallments
-        { 
-            get => _default_installments;
-            set => _default_installments = value;
+        {
+            get
+            {
+                return _default_installments;
+            }
+
+            set
+            {
+                _default_installments = value;
+            }
         } 
         #endregion
 
