@@ -10,26 +10,26 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public static List<Card> LoadAll(String customerId)
+        public static List<Card> All(String customerId)
         {
-            return LoadAll(customerId, WITHOUT_CACHE);
+            return All(customerId, WITHOUT_CACHE);
         }
         
         [GETEndpoint("/v1/customers/:customer_id/cards")]
-        public static List<Card> LoadAll(String customerId, bool useCache)
+        public static List<Card> All(String customerId, bool useCache)
         {
-            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "LoadAll", customerId, useCache);
+            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "All", customerId, useCache);
         }
 
-        public static Card Load(string customerId, string id)
+        public static Card FindById(string customerId, string id)
         {
-            return Load(customerId, id, WITHOUT_CACHE);
+            return FindById(customerId, id, WITHOUT_CACHE);
         }
 
         [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public static Card Load(string customerId, string id, bool useCache)
+        public static Card FindById(string customerId, string id, bool useCache)
         {            
-            return (Card)ProcessMethod<Card>(typeof(Card), "Load", customerId, id, useCache);
+            return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache);
         }
 
         [POSTEndpoint("/v1/customers/:customer_id/cards/")]
@@ -51,8 +51,7 @@ namespace MercadoPago.Resources
         } 
         #endregion
 
-        #region Properties 
-        private string _token;
+        #region Properties  
         private string _id;
         private string _customer_id;
         private int? _expiration_month;
@@ -64,7 +63,8 @@ namespace MercadoPago.Resources
         private Issuer? _issuer;
         private CardHolder? _card_holder;
         private DateTime? _date_created;
-        private DateTime? _date_last_updated;  
+        private DateTime? _date_last_updated;
+        private string _token;
         #endregion
 
         #region Accessors
@@ -115,7 +115,11 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Card's last modified date
         /// </summary>
-        public DateTime? DateLastUpdated { get => _date_last_updated; set => _date_last_updated = value; } 
+        public DateTime? DateLastUpdated { get => _date_last_updated; set => _date_last_updated = value; }
+        /// <summary>
+        /// Card Token identifier
+        /// </summary>
+        public string Token { get => _token; set => _token = value; }
         #endregion
     }
 }

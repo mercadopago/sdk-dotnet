@@ -5,102 +5,81 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture(Ignore = "Skipping")]
+    [TestFixture]
     public class CardTest
     {
-        //This test give a 401 error (unauthorized).
-        /*[Test()]
-        public void Card_LoadShouldbeOk()
+        string AccessToken;
+        string PublicKey;
+        Customer LastCustomer;
+        Card LastCard;
+
+        [SetUp]
+        public void Init()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            // Avoid SSL Cert error
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            // HardCoding Credentials
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
+            // Make a Clean Test
+            SDK.CleanConfiguration();
+            SDK.SetBaseUrl("https://api.mercadopago.com");
+            SDK.AccessToken = AccessToken;
+        }
 
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
-
-            Card CardInternal = new Card();
-            try
+        [Test()]
+        public void Card_CreateShouldBeOk()
+        { 
+            Customer customer = new Customer()
             {
-                var result = Card.Load("1234", "1234");
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
+                Email = "temp.customer@gmail.com"
+            };
+            customer.Save();
 
-            Assert.Pass();
+            Card card = new Card()
+            {
+                CustomerId = customer.Id,
+                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending")
+            };
+
+            card.Save();
+
+            LastCustomer = customer;
+            LastCard = card;
+
+            Assert.IsNotEmpty(card.Id); 
+
+        }
+
+
+        [Test()]
+        public void Card_FindById_ShouldBeOk()
+        {
+            Card card = Card.FindById(LastCustomer.Id, LastCard.Id); 
+            Console.WriteLine("CardId: {0}", card.Id);
+            Assert.IsNotEmpty(card.Id);  
         }
         
         [Test()]
         public void Card_UpdateShouldBeOk()
         {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
+            string LastToken = LastCard.Token;
+            LastCard.Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "not_founds"); 
+            LastCard.Update();
 
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
-
-            Card CardInternal = new Card() { ID = "1", customer_id = "2" };
-
-            try
-            {
-                var result = CardInternal.Update();
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
-
-            Assert.Pass();
+            Assert.AreNotEqual(LastToken, LastCard.Token);
         }
-         
-        [Test()]
-        public void Card_CreateShouldBeOk()
-        {
-            MPConf.CleanConfiguration();
-            MPConf.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            MPConf.SetConfiguration(config);
-
-            Card CardInternal = new Card() { ID = "23", customer_id = "24" };
-
-            try
-            {
-                var result = CardInternal.Create();
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
-
-            Assert.Pass();
-        }*/
+          
 
         [Test()]
-        public void Card_UpdateShouldRaiseException()
+        public void RemoveCard()
         {
-            Card CardInternal = new Card() { Id = "1", CustomerId = "1"};            
-
-            try
-            {
-                var result = CardInternal.Update();
-            }
-            catch (MPException mpException)
-            {
-                Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
-            }
-
-            Assert.Pass();
-        }        
+            LastCard.Delete();
+            LastCustomer.Delete();
+        }
     }
 }

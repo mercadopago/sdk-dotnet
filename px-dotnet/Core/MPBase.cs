@@ -67,7 +67,6 @@ namespace MercadoPago
                 }
             }
         }
-        
 
         public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache) where T : MPBase
         {

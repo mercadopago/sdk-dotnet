@@ -24,8 +24,8 @@ namespace MercadoPagoSDK.Test.Resources
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
-            AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963"; //Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9";//Environment.GetEnvironmentVariable("PUBLIC_KEY");
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
