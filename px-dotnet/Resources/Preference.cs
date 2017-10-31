@@ -76,7 +76,7 @@ namespace MercadoPago.Resources
         private int? _collector_id;
         private string _client_id; 
         [StringLength(256)]
-        private string _marketplace; 
+        private string _marketplace;  
         private float? _marketplace_fee;
         private DifferentialPricing? _differential_pricing; 
         #endregion

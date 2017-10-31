@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Converters;
 
 namespace MercadoPago
 {
@@ -54,10 +55,15 @@ namespace MercadoPago
         public static JObject GetJsonFromResource<T>(T resource) where T : MPBase
         {
             JsonSerializer serializer = new JsonSerializer { 
-                NullValueHandling = NullValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore, 
                 ContractResolver = new CustomSerializationContractResolver() 
             };
-            return JObject.FromObject(resource, serializer);
+            serializer.Converters.Add(new IsoDateTimeConverter()
+            {
+                DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
+            });
+            JObject jobject = JObject.FromObject(resource, serializer); 
+            return jobject;
         }
 
         /// <summary>
@@ -67,12 +73,16 @@ namespace MercadoPago
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
             JsonSerializer serializer = new JsonSerializer { 
-                NullValueHandling = NullValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore,  
                 ContractResolver = new CustomDeserializationContractResolver()
             };
+            serializer.Converters.Add(new IsoDateTimeConverter(){
+                DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
+            });
             T resource = (T)jObj.ToObject<T>(serializer);
             return resource;
         } 
+
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
         {
             JArray jsonArray = null;
