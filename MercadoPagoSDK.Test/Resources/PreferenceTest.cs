@@ -31,7 +31,19 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Preference_CreateShouldBeOk()
         {
-            Preference preference = new Preference(); 
+            Preference preference = new Preference(){
+                ExternalReference = "01-02-00000003",
+                Expires = true,
+                ExpirationDateFrom = DateTime.Now,
+                ExpirationDateTo = DateTime.Now.AddDays(1),
+                BackUrls = new BackUrls()
+                {
+                    Success = "",
+                    Pending = "",
+                    Failure = "",
+                },
+            }; 
+
             preference.Items.Add(
                 new Item()
                 {
@@ -41,6 +53,8 @@ namespace MercadoPagoSDK.Test.Resources
                     UnitPrice = (float)10.0
                 }
             );
+
+
             preference.Save();
 
             LastPreference = preference;
