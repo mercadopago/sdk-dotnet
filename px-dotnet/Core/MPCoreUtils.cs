@@ -81,7 +81,23 @@ namespace MercadoPago
             });
             T resource = (T)jObj.ToObject<T>(serializer);
             return resource;
-        } 
+        }
+
+        /// <summary>
+        /// Static method that transforms JObject in to a resource.
+        /// </summary>
+        /// <returns>an object obteined from obj</returns>
+        public static MPException GetExceptionFromJson<T>(JObject jObj) where T : MPException
+        {
+            JsonSerializer serializer = new JsonSerializer
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomDeserializationContractResolver()
+            };
+            
+            T resource = (T)jObj.ToObject<T>(serializer);
+            return resource;
+        }
 
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
         {

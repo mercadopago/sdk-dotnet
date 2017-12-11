@@ -49,15 +49,15 @@ namespace MercadoPagoSDK.Test.Resources
                 {
                     Title = "Dummy Item",
                     Description = "Multicolor Item",
-                    Quantity = 1,
+                    Quantity = -1,
                     UnitPrice = (float)10.0
                 }
             );
 
-
             preference.Save();
 
             LastPreference = preference;
+            //Console.WriteLine(preference.Errors);
 
             Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
             Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");  

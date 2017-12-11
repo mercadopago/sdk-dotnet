@@ -39,11 +39,7 @@ namespace MercadoPago
             this.Response = response;
 
             ParseRequest(httpMethod, request, payload);
-            ParseResponse(response);
-
-
-
-
+            ParseResponse(response); 
         }
 
         /// <summary>

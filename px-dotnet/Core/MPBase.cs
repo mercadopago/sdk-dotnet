@@ -18,17 +18,25 @@ namespace MercadoPago
     {
         public static bool WITHOUT_CACHE = false;
         public static bool WITH_CACHE = true;
-        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "LoadAll", "Search" };
+        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "All", "Search" };
 
         public static string IdempotencyKey { get; set; }
 
         protected MPAPIResponse _lastApiResponse;
         protected JObject _lastKnownJson;
 
+        private List<MPException> errors = new List<MPException>();
+
+        //public List<MPException> Errors
+        //{
+        //    get { return  errors; } 
+        //    set { errors = value; }
+        //}
+
         #region Errors Definitions
-        public static string DataTypeError = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
-        public static string RangeError = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
-        public static string RequiredError = "Error on property #PROPERTY. There is no value for this required property. ";
+        public static string DataTypeError  = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
+        public static string RangeError     = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
+        public static string RequiredError  = "Error on property #PROPERTY. There is no value for this required property. ";
         public static string RegularExpressionError = "Error on property #PROPERTY. The specified value is not valid. RegExp: #REGEXPR . ";
         #endregion
 
@@ -135,7 +143,6 @@ namespace MercadoPago
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param0", param);
-
             return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
         }
 
@@ -150,10 +157,8 @@ namespace MercadoPago
         {
             Dictionary<string, string> mapParams = null;
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
-
             return (T)this;
         }
-
 
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
         {
@@ -225,13 +230,13 @@ namespace MercadoPago
             int requestTimeout = (int)restData["requestTimeout"];
             int retries = (int)restData["retries"]; 
             WebHeaderCollection colHeaders = new WebHeaderCollection(); 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries); 
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);  
 
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
             {
                 if (httpMethod != HttpMethod.DELETE)
-                { 
+                {
                     resource = (T)FillResourceWithResponseData(resource, response); 
                     resource._lastApiResponse = response; 
                 }
@@ -240,7 +245,22 @@ namespace MercadoPago
                     //TODO: Call to delete endpoint
                     resource = null;
                 }
-            }  
+            } else {
+                
+                //resource.Errors.Clear();
+
+                MPException webserverError = new MPException()
+                {
+                    StatusCode = response.StatusCode,
+                    ErrorMessage = response.StringResponse
+                };
+
+                webserverError.Cause.Add(response.JsonObjectResponse.ToString()); 
+                //resource.Errors.Add(webserverError);
+
+            }
+
+
             return resource;
         }  
 

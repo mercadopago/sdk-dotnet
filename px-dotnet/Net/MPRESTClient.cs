@@ -87,11 +87,13 @@ namespace MercadoPago
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 string result = string.Empty;
 
+                Console.WriteLine(payload);
+
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
                 {
                     Stream requestStream = mpRequest.Request.GetRequestStream();
                     requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
-                    requestStream.Close();                  
+                    requestStream.Close();
                 }
 
                 try
@@ -103,22 +105,22 @@ namespace MercadoPago
                 }
                 catch (WebException ex)
                 {
-                    //if (ex.Status == WebExceptionStatus.Timeout || ex.Status == WebExceptionStatus.ConnectFailure)
-                    HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
-                    if (errorResponse != null && errorResponse.StatusCode == HttpStatusCode.NotFound)
-                    {
-                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse);
+                    Console.WriteLine(ex.Message);
+
+                    if (ex.Status == WebExceptionStatus.ProtocolError){
+                        HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
+                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse); 
+                    } else {
+                        if (--retries == 0)
+                            throw;
+                        return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                     }
-
-                    if (--retries == 0)
-                        throw;
-
-                    return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
+                     
                 }
                 
             }
             catch (Exception ex)
-            {
+            { 
                 throw new MPRESTException(ex.Message);
             }
         }

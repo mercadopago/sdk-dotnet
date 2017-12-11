@@ -16,14 +16,14 @@ namespace MercadoPago.Resources
     /// </summary>
     public class Preference : MPBase
     {
-        #region Actions 
+        #region Actions
         /// <summary>
         /// Find a preference trought an unique identifier
         /// </summary>
         public static Preference FindById(string id)
         {
             return FindById(id, WITHOUT_CACHE);
-        } 
+        }
         /// <summary>
         /// Find a preference trought an unique identifier with Local Cache Flag
         /// </summary>
