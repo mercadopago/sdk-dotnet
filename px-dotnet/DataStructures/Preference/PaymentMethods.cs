@@ -13,8 +13,8 @@ namespace MercadoPago.DataStructures.Preference
         private List<PaymentType> _excluded_payment_types; 
         [StringLength(256)]
         private string _default_payment_method_id;
-        private int _installments;
-        private int _default_installments; 
+        private int? _installments;
+        private int? _default_installments; 
         #endregion
 
         #region Accessors 
@@ -66,11 +66,11 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Maximum number of credit card installments to be accepted
         /// </summary> 
-        public int Installments1
+        public int? Installments
         {
             get
             {
-                return _installments;
+                return _installments ?? 1;
             }
 
             set
@@ -81,7 +81,7 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Prefered number of credit card installments
         /// </summary>
-        public int DefaultInstallments
+        public int? DefaultInstallments
         {
             get
             {

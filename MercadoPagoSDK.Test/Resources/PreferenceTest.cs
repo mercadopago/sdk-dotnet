@@ -29,38 +29,46 @@ namespace MercadoPagoSDK.Test.Resources
         }
 
         [Test]
-        public void Preference_CreateShouldBeOk()
+        public void Preference_CreateShouldBeOk() 
         {
-            Preference preference = new Preference(){
+
+            List<PaymentType> excludedPaymentTypes = new List<PaymentType>
+            {
+                new PaymentType()
+                {
+                    Id = "ticket"
+                }
+            };
+
+            Preference preference = new Preference()
+            {
                 ExternalReference = "01-02-00000003",
                 Expires = true,
                 ExpirationDateFrom = DateTime.Now,
-                ExpirationDateTo = DateTime.Now.AddDays(1),
-                BackUrls = new BackUrls()
-                {
-                    Success = "",
-                    Pending = "",
-                    Failure = "",
-                },
-            }; 
+                ExpirationDateTo = DateTime.Now.AddDays(1), 
+                PaymentMethods = new PaymentMethods()
+                { 
+                    ExcludedPaymentTypes = excludedPaymentTypes
+                }
+            };
 
             preference.Items.Add(
                 new Item()
                 {
                     Title = "Dummy Item",
                     Description = "Multicolor Item",
-                    Quantity = -1,
+                    Quantity = 1,
                     UnitPrice = (float)10.0
                 }
             );
 
             preference.Save();
-
             LastPreference = preference;
-            //Console.WriteLine(preference.Errors);
+
+            Console.WriteLine("INIT POINT: " + preference.SandboxInitPoint);
 
             Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
-            Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");  
+            Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");
         }
 
         [Test]

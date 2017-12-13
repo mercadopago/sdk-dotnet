@@ -27,11 +27,12 @@ namespace MercadoPago
 
         private List<MPException> errors = new List<MPException>();
 
-        //public List<MPException> Errors
-        //{
-        //    get { return  errors; } 
-        //    set { errors = value; }
-        //}
+
+        protected List<MPException> Errors
+        {
+            get { return  errors; } 
+            set { errors = value; }
+        }
 
         #region Errors Definitions
         public static string DataTypeError  = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";

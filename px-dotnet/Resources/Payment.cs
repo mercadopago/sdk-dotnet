@@ -22,7 +22,7 @@ namespace MercadoPago.Resources
         /// Find a payment trought an unique identifier
         /// </summary>
         [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(int? id)
+        public static Payment FindById(long? id)
         {
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), false);
         } 
@@ -83,7 +83,7 @@ namespace MercadoPago.Resources
         #endregion
 
         #region Properties 
-        private int? _id;
+        private long? _id;
         private DateTime? _date_created;
         private DateTime? _date_approved;
         private DateTime? _date_last_updated;
@@ -134,7 +134,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public int? Id
+        public long? Id
         {
             get { return this._id; }
             private set { this._id = value; }

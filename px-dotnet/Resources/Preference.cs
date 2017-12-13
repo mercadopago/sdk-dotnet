@@ -115,8 +115,8 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Set up payment methods to be excluded from the payment process
         /// </summary>
-        public PaymentMethods? PaymentMethod
-        { 
+        public PaymentMethods? PaymentMethods
+        {
             get
             {
                 return _payment_methods;

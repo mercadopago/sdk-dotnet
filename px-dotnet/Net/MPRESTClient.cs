@@ -85,9 +85,7 @@ namespace MercadoPago
             try
             {
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
-                string result = string.Empty;
-
-                Console.WriteLine(payload);
+                string result = string.Empty; 
 
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
                 {
@@ -99,14 +97,12 @@ namespace MercadoPago
                 try
                 {
                     using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
-                    {
+                    { 
                         return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
                     }
                 }
                 catch (WebException ex)
                 {
-                    Console.WriteLine(ex.Message);
-
                     if (ex.Status == WebExceptionStatus.ProtocolError){
                         HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
                         return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse); 
