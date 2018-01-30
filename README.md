@@ -3,7 +3,7 @@
 
 This library provides developers with a simple set of bindings to the Mercado Pago API.
 
-# .Net versions supported:
+### .Net versions supported:
 3.5 .Net Framework or Major
 
 ## Installation 
