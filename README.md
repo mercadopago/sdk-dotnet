@@ -55,12 +55,11 @@ You can interact with all the resources available in the public API, to this eac
  {
      TransactionAmount = (float)100.0,
      Token = "YOUR_CARD_TOKEN"
-     Description = "Pago de seguro",
-     PaymentMethodId = "visa",
-     ExternalReference = "INTEGRATION-TEST-PAYMENT",
+     Description = "Ergonomic Silk Shirt",
+     PaymentMethodId = "visa", 
      Installments = 1,
      Payer = new Payer {
-         Email = "mlovera@kinexo.com"
+         Email = "larue.nienow@hotmail.com"
      }
  };
  
