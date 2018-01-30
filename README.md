@@ -1,5 +1,20 @@
-# Advertencia
 
-Esta es una version en desarrollo, solo se recomienda su uso para fines experimentales
+[![Build Status](https://travis-ci.org/mercadopago/px-dotnet.svg?branch=develop)](https://travis-ci.org/mercadopago/px-dotnet)
+ 
+ 
+# Contenido:
+- Instalacion
 
-Para mas informacion, contactar a joelibaceta@mercadolibre.com
+## Instalación 
+
+**Package Manager**
+
+`PM> Install-Package mercadopago-sdk -Version 1.0.5`
+
+**.Net CLI**
+
+`> dotnet add package mercadopago-sdk --version 1.0.5`
+
+**Packet CLI**
+
+`> paket add mercadopago-sdk --version 1.0.5`
