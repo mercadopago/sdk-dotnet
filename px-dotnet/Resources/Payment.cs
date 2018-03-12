@@ -90,7 +90,7 @@ namespace MercadoPago.Resources
         private DateTime? _money_release_date;
         private int? _collector_id; 
         [JsonConverter(typeof(StringEnumConverter))]
-        private OperationType? _operation_type;        
+        private OperationType? _operation_type;
         private Payer _payer;
         private bool? _binary_mode;
         private bool? _live_mode;
@@ -126,8 +126,10 @@ namespace MercadoPago.Resources
         private int? _installments ;
         private string _notification_url;
         private string _callback_url;
-        private List<Refund> _refunds ;
-        private AdditionalInfo? _additional_info ; 
+        private List<Refund> _refunds;
+        private AdditionalInfo? _additional_info; 
+        private string _processing_mode;
+        private string _merchant_account_id;
         #endregion
 
         #region Accessors 
@@ -452,7 +454,23 @@ namespace MercadoPago.Resources
         {
             private get { return this._additional_info; }
             set { this._additional_info = value; }
-        } 
+        }
+        /// <summary>
+        /// Processing mode to define if an specific merchannt id should be used.
+        /// </summary>
+        public string ProcessingMode
+        {
+            get { return this._processing_mode; }
+            set { this._processing_mode = value; }
+        }
+        /// <summary>
+        /// Merchant Id for complex payment cases
+        /// </summary>
+        public string MerchantAccountId
+        {
+            get { return _merchant_account_id; }
+            set { _merchant_account_id = value; }
+        }
         #endregion
     }
 }
