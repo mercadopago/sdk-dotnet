@@ -159,6 +159,7 @@
     <Compile Include="Common\RefundUserType.cs" />
     <Compile Include="DataStructures\Payment\Barcode.cs" />
     <Compile Include="Common\EncodingType.cs" />
+    <Compile Include="DataStructures\Payment\AdditionalInfoAddress.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

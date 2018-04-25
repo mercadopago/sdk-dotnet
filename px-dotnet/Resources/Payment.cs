@@ -130,6 +130,7 @@ namespace MercadoPago.Resources
         private AdditionalInfo? _additional_info; 
         private string _processing_mode;
         private string _merchant_account_id;
+        private DateTime? _date_of_expiration;
         #endregion
 
         #region Accessors 
@@ -470,6 +471,12 @@ namespace MercadoPago.Resources
         {
             get { return _merchant_account_id; }
             set { _merchant_account_id = value; }
+        }
+
+        public DateTime? DateOfExpiration
+        {
+            get { return _date_of_expiration; } 
+            set { _date_of_expiration = value; }
         }
         #endregion
     }
