@@ -143,7 +143,7 @@
     <Compile Include="Resources\Plan.cs" />
     <Compile Include="Resources\Subscription.cs" />
     <Compile Include="Resources\Preapproval.cs" />
-    <Compile Include="DataStructures\Plan\AutoRecurring.cs" />
+    <Compile Include="DataStructures\Plan\Autorecurring.cs" />
     <Compile Include="DataStructures\Plan\FreeTrial.cs" />
     <Compile Include="Common\CurrencyId.cs" />
     <Compile Include="Common\PaymentStatus.cs" />
