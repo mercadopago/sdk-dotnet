@@ -32,7 +32,8 @@
     <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -64,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\FrequencyType.cs" />
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
     <Compile Include="Core\Annotations\UserToken.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Core\MPCredentials.cs" />
     <Compile Include="Core\MPIPN.cs" />
+    <Compile Include="DataStructures\Preapproval\AutoRecurring.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />
@@ -166,11 +169,7 @@
     <None Include="px-dotnet.nuspec" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="DataStructures\" />
-    <Folder Include="DataStructures\Plan\" />
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
