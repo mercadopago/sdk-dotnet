@@ -14,9 +14,7 @@ namespace MercadoPago.DataStructures.Plan
         private int repetitions;
         private int debitDate;
         private FreeTrial freeTrial;
-
-
-
+ 
         #endregion
 
         #region Accessors

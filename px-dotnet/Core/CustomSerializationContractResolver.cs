@@ -28,8 +28,6 @@ namespace MercadoPago
                 }
             }
 
-
-
             return property;
         }
     }
