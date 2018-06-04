@@ -75,14 +75,14 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 
 4. Handling Errors
 
-    ** Error response structure **
+    **Error response structure**
 
     ![errorstructure](https://user-images.githubusercontent.com/864790/40929584-9cc4c96e-67fb-11e8-80a4-8d797953233a.png)
 
     You can check the errors and causes returned by the API using the `errors` attribute.
 
     ```csharp
-        Console.Out.WriteLine(payment.Errors.Message) // Print the error Message 
+    Console.Out.WriteLine(payment.Errors.Message) // Print the error Message 
     ```
 
 ### Support 
