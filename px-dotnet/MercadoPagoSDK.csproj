@@ -170,6 +170,10 @@
     <Compile Include="Common\PaymentMethodAdditionalInfoNeeded.cs" />
     <Compile Include="Common\PaymentMethodStatus.cs" />
     <Compile Include="Common\PaymentMethodDeferredCapture.cs" />
+    <Compile Include="DataStructures\Generic\BadParamsError.cs" />
+    <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
+    <Compile Include="DataStructures\Generic\RecuperableError.cs" />
+    <Compile Include="DataStructures\Generic\RecuperableErrorCause.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -181,6 +185,7 @@
     <Folder Include="DataStructures\Plan\" />
     <Folder Include="Common\" />
     <Folder Include="DataStructures\PaymentMethod\" />
+    <Folder Include="DataStructures\Generic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

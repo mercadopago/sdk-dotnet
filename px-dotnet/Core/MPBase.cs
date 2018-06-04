@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.IO;
+using MercadoPago.DataStructures.Generic;
 
 namespace MercadoPago
 {
@@ -25,13 +26,12 @@ namespace MercadoPago
         protected MPAPIResponse _lastApiResponse;
         protected JObject _lastKnownJson;
 
-        private List<MPException> errors = new List<MPException>();
 
-
-        protected List<MPException> Errors
+        protected RecuperableError _errors;
+        public RecuperableError Errors
         {
-            get { return  errors; }
-            set { errors = value; }
+            get { return  _errors; }
+            private set { _errors = value; }
         }
 
         #region Errors Definitions
@@ -188,8 +188,6 @@ namespace MercadoPago
             
             List<T> resourceArray = new List<T>();
 
-
-
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
             { 
@@ -235,25 +233,24 @@ namespace MercadoPago
             int requestTimeout = (int)restData["requestTimeout"];
             int retries = (int)restData["retries"]; 
             WebHeaderCollection colHeaders = new WebHeaderCollection(); 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);  
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
 
-            if (response.StatusCode >= 200 &&
-                    response.StatusCode < 300)
+            if (response.StatusCode >= 200 && response.StatusCode < 300)
             {
                 if (httpMethod != HttpMethod.DELETE)
                 {
-                    resource = (T)FillResourceWithResponseData(resource, response); 
-                    resource._lastApiResponse = response; 
+                    resource = (T)FillResourceWithResponseData(resource, response);
+                    resource._lastApiResponse = response;
                 }
                 else
                 {
-                    //TODO: Call to delete endpoint
                     resource = null;
                 }
+            } else if (response.StatusCode >= 400 && response.StatusCode < 500) { 
+                BadParamsError badParamsError = MPCoreUtils.GetBadParamsError(response.StringResponse); 
+                resource.Errors = badParamsError;
             } else {
                 
-                //resource.Errors.Clear();
-
                 MPException webserverError = new MPException()
                 {
                     StatusCode = response.StatusCode,
@@ -261,7 +258,6 @@ namespace MercadoPago
                 };
 
                 webserverError.Cause.Add(response.JsonObjectResponse.ToString()); 
-                //resource.Errors.Add(webserverError);
 
             }
 

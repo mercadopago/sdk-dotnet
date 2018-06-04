@@ -49,8 +49,7 @@ namespace MercadoPagoSDK.Test.Resources
                 }
             };
 
-            payment.Save();
-
+            payment.Save(); 
 
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
