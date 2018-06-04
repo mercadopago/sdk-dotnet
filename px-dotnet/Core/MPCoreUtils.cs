@@ -109,5 +109,12 @@ namespace MercadoPago
             return jsonArray;
         }
 
+        public static JArray GetJArrayFromStringResponse<T>(string stringResponse) where T : MPBase
+        {
+            JArray jsonArray = null;
+            jsonArray = JArray.Parse(stringResponse);
+            return jsonArray;
+        }
+
     }
 }

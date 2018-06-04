@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer.Card
 {
-    public struct PaymentMethod
+    public struct CardPaymentMethod
     {
         #region Properties
         private string _id;

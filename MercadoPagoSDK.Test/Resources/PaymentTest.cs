@@ -38,18 +38,19 @@ namespace MercadoPagoSDK.Test.Resources
             
             Payment payment = new Payment
             {
-                TransactionAmount = (float)100.0,
+                TransactionAmount = (float)20.0,
                 Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
-                Description = "Pago de seguro",
+                Description = "Pago de Prueba",
                 PaymentMethodId = "visa",
                 ExternalReference = "INTEGRATION-TEST-PAYMENT",
                 Installments = 1,
                 Payer = new Payer {
-                    Email = "mlovera@kinexo.com"
+                    Email = "milton.brandes@mercadolibre.com"
                 }
             };
 
-            payment.Save(); 
+            payment.Save();
+
 
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");

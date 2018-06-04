@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\NuGet.Build.Packaging.0.1.276\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.276\build\NuGet.Build.Packaging.props')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
+  <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.10</PackageVersion>
+    <PackageVersion>1.0.25</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -44,14 +45,6 @@
     <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.6.1\lib\net35\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -62,6 +55,12 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.10.1\lib\net35\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Annotations\Idempotent.cs" />
@@ -93,7 +92,7 @@
     <Compile Include="DataStructures\Customer\Card\CardHolder.cs" />
     <Compile Include="DataStructures\Customer\Card\Identification.cs" />
     <Compile Include="DataStructures\Customer\Card\Issuer.cs" />
-    <Compile Include="DataStructures\Customer\Card\PaymentMethod.cs" />
+    <Compile Include="DataStructures\Customer\Card\CardPaymentMethod.cs" />
     <Compile Include="DataStructures\Customer\Card\SecurityCode.cs" />
     <Compile Include="DataStructures\Customer\City.cs" />
     <Compile Include="DataStructures\Customer\Country.cs" />
@@ -160,6 +159,17 @@
     <Compile Include="DataStructures\Payment\Barcode.cs" />
     <Compile Include="Common\EncodingType.cs" />
     <Compile Include="DataStructures\Payment\AdditionalInfoAddress.cs" />
+    <Compile Include="Resources\PaymentMethod.cs" />
+    <Compile Include="DataStructures\PaymentMethod\Settings.cs" />
+    <Compile Include="DataStructures\PaymentMethod\Bin.cs" />
+    <Compile Include="DataStructures\PaymentMethod\CardNumber.cs" />
+    <Compile Include="DataStructures\PaymentMethod\SecurityCode.cs" />
+    <Compile Include="Common\CardNumberValidation.cs" />
+    <Compile Include="Common\SecurityCodeMode.cs" />
+    <Compile Include="Common\SecurityCodeCardLocation.cs" />
+    <Compile Include="Common\PaymentMethodAdditionalInfoNeeded.cs" />
+    <Compile Include="Common\PaymentMethodStatus.cs" />
+    <Compile Include="Common\PaymentMethodDeferredCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -170,6 +180,7 @@
     <Folder Include="DataStructures\" />
     <Folder Include="DataStructures\Plan\" />
     <Folder Include="Common\" />
+    <Folder Include="DataStructures\PaymentMethod\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -179,5 +190,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="..\packages\NuGet.Build.Packaging.0.1.276\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.276\build\NuGet.Build.Packaging.targets')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
 </Project>

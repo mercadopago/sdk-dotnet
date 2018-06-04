@@ -17,7 +17,7 @@ namespace MercadoPago.Resources
     /// </summary>
     public class Payment : MPBase
     {
-        #region Actions 
+        #region Actions
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>

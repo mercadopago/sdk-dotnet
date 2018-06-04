@@ -30,7 +30,7 @@ namespace MercadoPago
 
         protected List<MPException> Errors
         {
-            get { return  errors; } 
+            get { return  errors; }
             set { errors = value; }
         }
 
@@ -163,6 +163,8 @@ namespace MercadoPago
 
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
         {
+ 
+
             //Validates the method executed
             if (!ALLOWED_BULK_METHODS.Contains(methodName))
             {
@@ -183,13 +185,15 @@ namespace MercadoPago
             WebHeaderCollection colHeaders = GetStandardHeaders();
 
             MPAPIResponse response = CallAPI(httpMethod, path, payloadType, null, colHeaders, useCache, connectionTimeout, retries);
-
+            
             List<T> resourceArray = new List<T>();
+
+
 
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
-            {
-                resourceArray = FillArrayWithResponseData<T>(clazz, response);
+            { 
+                resourceArray = FillArrayWithResponseData<T>(clazz, response); 
             }
 
             return resourceArray;
@@ -375,7 +379,19 @@ namespace MercadoPago
             List<T> resourceArray = new List<T>();
             if (response.JsonObjectResponse != null)
             {
-                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse);
+                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse); 
+
+                if (jsonArray != null)
+                {
+                    for (int i = 0; i < jsonArray.Count(); i++)
+                    {
+                        T resource = (T)MPCoreUtils.GetResourceFromJson<T>(clazz, (JObject)jsonArray[i]);
+                        resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+                        resourceArray.Add(resource);
+                    }
+                }
+            } else {
+                JArray jsonArray = MPCoreUtils.GetJArrayFromStringResponse<T>(response.StringResponse);
                 if (jsonArray != null)
                 {
                     for (int i = 0; i < jsonArray.Count(); i++)
