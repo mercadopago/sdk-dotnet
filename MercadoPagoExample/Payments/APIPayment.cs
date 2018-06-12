@@ -3,7 +3,7 @@ namespace MercadoPagoExample.Payments
 {
     public class APIPayment
     {
-        public DoPayment()
+        public string DoPayment()
         {
             MercadoPago.SDK.ClientSecret = "ACCESS_TOKEN_VALUE";
 
