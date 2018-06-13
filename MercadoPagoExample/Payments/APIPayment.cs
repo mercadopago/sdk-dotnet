@@ -1,11 +1,14 @@
 ﻿using System;
+using MercadoPago.DataStructures.Payment;
+using MercadoPago.Resources;
+
 namespace MercadoPagoExample.Payments
 {
     public class APIPayment
     {
         public string DoPayment()
         {
-            MercadoPago.SDK.ClientSecret = "ACCESS_TOKEN_VALUE";
+            MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
 
             Payment payment = new Payment
             {
@@ -17,14 +20,14 @@ namespace MercadoPagoExample.Payments
                 Installments = 1,
                 Payer = new Payer {
                     Email = "some@mail.com",
-                    FistName = "Diana",
+                    FirstName = "Diana",
                     LastName = "Prince"
                 }
             };
 
             payment.Save();
 
-            return payment.Status;
+            return payment.Status.ToString();
         }
     }
 }
