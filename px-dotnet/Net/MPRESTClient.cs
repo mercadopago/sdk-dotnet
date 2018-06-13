@@ -98,6 +98,7 @@ namespace MercadoPago
                 {
                     using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
                     { 
+                        
                         return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
                     }
                 }

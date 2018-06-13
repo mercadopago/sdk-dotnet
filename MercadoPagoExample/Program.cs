@@ -5,7 +5,10 @@ namespace MercadoPagoExample
     class MainClass
     {
         public static void Main(string[] args)
-        {
+        { 
+
+            // TODO: Request or guess credentials from ENV variables 
+
             Console.WriteLine("MercadoPago Examples");
             Console.WriteLine();
             Console.WriteLine("1. Pagos");
