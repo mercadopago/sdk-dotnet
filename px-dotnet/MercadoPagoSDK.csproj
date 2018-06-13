@@ -34,7 +34,8 @@
     <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -64,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\FrequencyType.cs" />
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
     <Compile Include="Core\Annotations\UserToken.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Core\MPCredentials.cs" />
     <Compile Include="Core\MPIPN.cs" />
+    <Compile Include="DataStructures\Preapproval\AutoRecurring.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />
@@ -140,7 +143,7 @@
     <Compile Include="Resources\Plan.cs" />
     <Compile Include="Resources\Subscription.cs" />
     <Compile Include="Resources\Preapproval.cs" />
-    <Compile Include="DataStructures\Plan\AutoRecurring.cs" />
+    <Compile Include="DataStructures\Plan\Autorecurring.cs" />
     <Compile Include="DataStructures\Plan\FreeTrial.cs" />
     <Compile Include="Common\CurrencyId.cs" />
     <Compile Include="Common\PaymentStatus.cs" />
@@ -180,14 +183,14 @@
     <None Include="packages.config" />
     <None Include="px-dotnet.nuspec" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup /> 
   <ItemGroup>
     <Folder Include="DataStructures\" />
     <Folder Include="DataStructures\Plan\" />
     <Folder Include="Common\" />
     <Folder Include="DataStructures\PaymentMethod\" />
     <Folder Include="DataStructures\Generic\" />
-  </ItemGroup>
+  </ItemGroup> 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
