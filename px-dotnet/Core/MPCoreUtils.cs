@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
+using MercadoPago.DataStructures.Generic;
 
 namespace MercadoPago
 {
@@ -87,17 +88,21 @@ namespace MercadoPago
         /// Static method that transforms JObject in to a resource.
         /// </summary>
         /// <returns>an object obteined from obj</returns>
-        public static MPException GetExceptionFromJson<T>(JObject jObj) where T : MPException
+        public static BadParamsError GetBadParamsError(string raw) 
         {
+            JObject jObj = JObject.Parse(raw);
+
             JsonSerializer serializer = new JsonSerializer
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CustomDeserializationContractResolver()
             };
-            
-            T resource = (T)jObj.ToObject<T>(serializer);
-            return resource;
+
+            BadParamsError badParams = (BadParamsError)jObj.ToObject<BadParamsError>(serializer);
+            return badParams;
         }
+
+
 
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
         {
@@ -105,7 +110,14 @@ namespace MercadoPago
             if (jsonElement is JObject)
             {
                 jsonArray = JArray.Parse(jsonElement["results"].ToString());
-            } 
+            }
+            return jsonArray;
+        }
+
+        public static JArray GetJArrayFromStringResponse<T>(string stringResponse) where T : MPBase
+        {
+            JArray jsonArray = null;
+            jsonArray = JArray.Parse(stringResponse);
             return jsonArray;
         }
 

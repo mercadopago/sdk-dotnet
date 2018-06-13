@@ -32,12 +32,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Payments\WebCheckoutPayment.cs" />
     <Compile Include="Payments\APIPayment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Payments\" />
-    <Folder Include="Subscriptions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">

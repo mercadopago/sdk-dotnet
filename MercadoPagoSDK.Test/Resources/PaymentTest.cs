@@ -24,8 +24,8 @@ namespace MercadoPagoSDK.Test.Resources
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
-            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
+            AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963";//Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9";//Environment.GetEnvironmentVariable("PUBLIC_KEY");
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
@@ -38,19 +38,19 @@ namespace MercadoPagoSDK.Test.Resources
             
             Payment payment = new Payment
             {
-                TransactionAmount = (float)100.0,
+                TransactionAmount = (float)20.0,
                 Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
-                Description = "Pago de seguro",
+                Description = "Pago de Prueba",
                 PaymentMethodId = "visa",
                 ExternalReference = "INTEGRATION-TEST-PAYMENT",
                 Installments = 1,
                 Payer = new Payer {
-                    Email = "mlovera@kinexo.com"
+                    Email = "milton.brandes@mercadolibre.com"
                 }
             };
 
             payment.Save(); 
-
+             
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
 

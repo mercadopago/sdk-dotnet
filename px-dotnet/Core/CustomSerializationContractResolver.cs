@@ -17,7 +17,7 @@ namespace MercadoPago
             NamingStrategy = new SnakeCaseNamingStrategy();
 
             property.ShouldSerialize = propInstance => property.Writable;
-            
+
             if (!property.Readable)
             {
                 var prop = member as PropertyInfo;
@@ -27,8 +27,6 @@ namespace MercadoPago
                     property.Readable = hasPrivateGetter;
                 }
             }
-
-
 
             return property;
         }

@@ -57,7 +57,7 @@ namespace MercadoPago.Resources
         private int? _expiration_year;
         private string _first_six_digits;
         private string _last_four_digits;
-        private PaymentMethod? _payment_method;
+        private CardPaymentMethod? _payment_method;
         private SecurityCode? _security_code;
         private Issuer? _issuer;
         private CardHolder? _card_holder;
@@ -158,7 +158,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment method information
         /// </summary>
-        public PaymentMethod? PaymentMethod
+        public CardPaymentMethod? PaymentMethod
         {
             get
             {
