@@ -8,6 +8,57 @@ namespace MercadoPago.Resources
 {
     public class Preapproval : MPBase
     {
+        #region Actions
+        /// <summary>
+        /// Find a preapproval trought an unique identifier
+        /// </summary>
+        public static Preapproval FindById(string id)
+        {
+            return FindById(id, WITHOUT_CACHE);
+        }
+        /// <summary>
+        /// Find a preapproval trought an unique identifier with Local Cache Flag
+        /// </summary>
+        [GETEndpoint("/preapproval/:id")]
+        public static Preapproval FindById(string id, bool useCache)
+        {
+            return (Preapproval)ProcessMethod<Preapproval>(typeof(Preapproval), "FindById", id, useCache);
+        }
+        /// <summary>
+        /// Save a new preapproval
+        /// </summary>
+        [POSTEndpoint("/preapproval")]
+        public Preapproval Save()
+        {
+            return (Preapproval)ProcessMethod<Preapproval>("Save", WITHOUT_CACHE);
+        }
+        /// <summary>
+        ///  Update editable properties
+        /// </summary>
+        [PUTEndpoint("/preapproval/:id")]
+        public Preapproval Update()
+        {
+            return (Preapproval)ProcessMethod<Preapproval>("Update", WITHOUT_CACHE);
+        }
+
+        /// <summary>
+        /// Get all preapprovals acoording to specific filters
+        /// </summary>
+        [GETEndpoint("/preapproval/search")]
+        public static List<Preapproval> Search(Dictionary<string, string> filters)
+        {
+            return Search(filters, WITHOUT_CACHE);
+        }
+        /// <summary>
+        /// Get all preapprovals acoording to specific filters
+        /// </summary>
+        [GETEndpoint("/preapproval/search")]
+        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache)
+        {
+            return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache);
+        }
+        #endregion
+
 
         #region Properties
 
@@ -61,7 +112,7 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Payer Email
         /// </summary>
-        public string Payer_email
+        public string PayerEmail
         {
             get
             {
@@ -77,7 +128,7 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Return  URL
         /// </summary>
-        public string Back_url
+        public string BackUrl
         {
             get
             {
@@ -152,56 +203,6 @@ namespace MercadoPago.Resources
 
         #endregion
 
-        #region Actions
-        /// <summary>
-        /// Find a preapproval trought an unique identifier
-        /// </summary>
-        public static Preapproval FindById(string id)
-        {
-            return FindById(id, WITHOUT_CACHE);
-        }
-        /// <summary>
-        /// Find a preapproval trought an unique identifier with Local Cache Flag
-        /// </summary>
-        [GETEndpoint("/preapproval/:id")]
-        public static Preapproval FindById(string id, bool useCache)
-        {
-            return (Preapproval)ProcessMethod<Preapproval>(typeof(Preapproval), "FindById", id, useCache);
-        }
-        /// <summary>
-        /// Save a new preapproval
-        /// </summary>
-        [POSTEndpoint("/preapproval")]
-        public Preapproval Save()
-        {
-            return (Preapproval)ProcessMethod<Preapproval>("Save", WITHOUT_CACHE);
-        }
-        /// <summary>
-        ///  Update editable properties
-        /// </summary>
-        [PUTEndpoint("/preapproval/:id")]
-        public Preapproval Update()
-        {
-            return (Preapproval)ProcessMethod<Preapproval>("Update", WITHOUT_CACHE);
-        }
-
-        /// <summary>
-        /// Get all preapprovals acoording to specific filters
-        /// </summary>
-        [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters)
-        {
-            return Search(filters, WITHOUT_CACHE);
-        }
-        /// <summary>
-        /// Get all preapprovals acoording to specific filters
-        /// </summary>
-        [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache)
-        {
-            return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache);
-        }
-        #endregion
 
 
     }

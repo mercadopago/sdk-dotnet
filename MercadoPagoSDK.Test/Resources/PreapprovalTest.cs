@@ -20,9 +20,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            // Environment.GetEnvironmentVariable("ACCESS_TOKEN");  
             SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
             SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
             SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
         }
@@ -30,12 +28,11 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Preapproval_CreateShouldBeOk()
         {
-
-
+            
             Preapproval preapproval = new Preapproval()
             {
-                Payer_email = "test@mail.com",
-                Back_url = "https://localhost",
+                PayerEmail = "test@mail.com",
+                BackUrl = "https://localhost.com",
                 ExternalReference = "1",
                 Reason = "TESTING 1",
                 AutoRecurring = new MercadoPago.DataStructures.Preapproval.AutoRecurring()
@@ -46,7 +43,6 @@ namespace MercadoPagoSDK.Test.Resources
                     TransactionAmount = 10,
                 }
             };
-
 
 
             preapproval.Save();
