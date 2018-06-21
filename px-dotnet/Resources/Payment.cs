@@ -483,7 +483,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Sponsor Identification
         /// </summary>
-        public string Sponsor_id
+        public string SponsorId
         {
             get { return _sponsor_id; } 
             set { _sponsor_id = value; }
