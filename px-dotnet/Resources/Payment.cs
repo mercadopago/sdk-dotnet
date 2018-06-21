@@ -131,6 +131,7 @@ namespace MercadoPago.Resources
         private string _processing_mode;
         private string _merchant_account_id;
         private DateTime? _date_of_expiration;
+        private string _sponsor_id;
         #endregion
 
         #region Accessors 
@@ -477,6 +478,15 @@ namespace MercadoPago.Resources
         {
             get { return _date_of_expiration; } 
             set { _date_of_expiration = value; }
+        }
+
+        /// <summary>
+        /// Sponsor Identification
+        /// </summary>
+        public string Sponsor_id
+        {
+            get { return _sponsor_id; } 
+            set { _sponsor_id = value; }
         }
         #endregion
     }
