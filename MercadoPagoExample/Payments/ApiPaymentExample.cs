@@ -4,15 +4,13 @@ using MercadoPago.Resources;
 
 namespace MercadoPagoExample.Payments
 {
-    public class APIPayment
+    public static class ApiPaymentExample
     {
-        public string DoPayment()
+        public static string Run()
         {
-            MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            Payment payment = new Payment
+            var payment = new Payment
             {
-                TransactionAmount = (float)1000,
+                TransactionAmount = 1000,
                 Token = "card_token_id",
                 Description = "Cats",
                 ExternalReference = "YOUR_REFERENCE",
@@ -22,7 +20,7 @@ namespace MercadoPagoExample.Payments
                     Email = "some@mail.com",
                     FirstName = "Diana",
                     LastName = "Prince"
-                }
+                },
             };
 
             payment.Save();
