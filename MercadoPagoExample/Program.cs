@@ -25,27 +25,9 @@ namespace MercadoPagoExample
                 : 0;
         }
 
-        private static void LoadConfig()
-        {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            SDK.SetConfiguration(config);
-
-            if (string.IsNullOrEmpty(SDK.AccessToken))
-                SDK.AccessToken = Utils.Prompt("Ingrese Access Token: ");
-
-            if (string.IsNullOrEmpty(SDK.ClientId))
-                SDK.ClientId = Utils.Prompt("Ingrese Client Id: ");
-
-            if (string.IsNullOrEmpty(SDK.ClientSecret))
-                SDK.ClientSecret = Utils.Prompt("Ingrese Client Secret: ");
-
-            if (string.IsNullOrEmpty(SDK.AppId))
-                SDK.AppId = Utils.Prompt("Ingrese App Id: ");
-        }
-
         public static void Main(string[] args)
         { 
-            LoadConfig();
+            Utils.LoadConfig();
 
             while (true)
             {
