@@ -12,22 +12,42 @@ namespace MercadoPagoExample
             return Console.ReadLine();
         }
 
-        public static void LoadConfig()
+        public static void LoadOrPromptAccessToken()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            SDK.SetConfiguration(config);
+            SDK.AccessToken  = LoadOrPrompt(SDK.AccessToken,  nameof(SDK.AccessToken),  "Ingrese Access Token: ");
+        }
 
-            if (string.IsNullOrEmpty(SDK.AccessToken))
-                SDK.AccessToken = Prompt("Ingrese Access Token: ");
+        public static void LoadOrPromptClientCredentials()
+        {
+            SDK.ClientId     = LoadOrPrompt(SDK.ClientId,     nameof(SDK.ClientId),     "Ingrese Client Id: ");
+            SDK.ClientSecret = LoadOrPrompt(SDK.ClientSecret, nameof(SDK.ClientSecret), "Ingrese Client Secret: ");
+            SDK.AppId        = LoadOrPrompt(SDK.AppId,        nameof(SDK.AppId),        "Ingrese App Id: ");
+        }
 
-            if (string.IsNullOrEmpty(SDK.ClientId))
-                SDK.ClientId = Prompt("Ingrese Client Id: ");
+        private static string LoadOrPrompt(string currentValue, string name, string prompt)
+        {
+            while (true)
+            {
+                var value = currentValue;
 
-            if (string.IsNullOrEmpty(SDK.ClientSecret))
-                SDK.ClientSecret = Prompt("Ingrese Client Secret: ");
+                if (!string.IsNullOrEmpty(value))
+                    return value;
 
-            if (string.IsNullOrEmpty(SDK.AppId))
-                SDK.AppId = Prompt("Ingrese App Id: ");
+                value = ConfigurationManager.AppSettings[name];
+
+                if (!string.IsNullOrEmpty(value))
+                    return value;
+
+                value = Environment.GetEnvironmentVariable(name);
+
+                if (!string.IsNullOrEmpty(value))
+                    return value;
+
+                value = Prompt(prompt);
+
+                if (!string.IsNullOrEmpty(value))
+                    return value;
+            }
         }
     }
 }

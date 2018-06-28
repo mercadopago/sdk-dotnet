@@ -10,6 +10,7 @@ namespace MercadoPagoExample
     {
         private static decimal ShowMenu()
         {
+            Console.Clear();
             Console.WriteLine("MercadoPago Examples");
             Console.WriteLine();
             Console.WriteLine("1. Pagos");
@@ -27,8 +28,6 @@ namespace MercadoPagoExample
 
         public static void Main(string[] args)
         { 
-            Utils.LoadConfig();
-
             while (true)
             {
                 switch (ShowMenu())
@@ -45,6 +44,7 @@ namespace MercadoPagoExample
                     case 5m:
                         return;
                 }
+                Utils.Prompt("Presione Enter para volver al Menu: ");
             }
         }
     }

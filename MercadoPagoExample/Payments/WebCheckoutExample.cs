@@ -14,6 +14,8 @@ namespace MercadoPagoExample.Payments
     {
         public static void Run()
         {
+            Utils.LoadOrPromptClientCredentials();
+
             // Create a preference object
             var preference = new Preference
             {

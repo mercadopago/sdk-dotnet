@@ -8,6 +8,8 @@ namespace MercadoPagoExample.Payments
     {
         public static string Run()
         {
+            Utils.LoadOrPromptAccessToken();
+
             var payment = new Payment
             {
                 TransactionAmount = 1000,
