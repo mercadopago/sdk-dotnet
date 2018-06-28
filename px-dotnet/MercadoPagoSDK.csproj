@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
   <Import Project="..\packages\NUnit.3.10.1\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -20,6 +21,8 @@
     <Owners>MercadoPago</Owners>
     <PackageProjectUrl>https://github.com/mercadopago/px-dotnet</PackageProjectUrl>
     <PackageReleaseNotes>Error attribute to handle recuperable bad params errors</PackageReleaseNotes>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
     <NoStdLib>false</NoStdLib>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>5</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>
@@ -79,6 +82,7 @@
     <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Core\MPCredentials.cs" />
     <Compile Include="Core\MPIPN.cs" />
+    <Compile Include="Core\Validation\Validator.cs" />
     <Compile Include="DataStructures\Preapproval\AutoRecurring.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
@@ -183,14 +187,8 @@
     <None Include="packages.config" />
     <None Include="px-dotnet.nuspec" />
   </ItemGroup>
-  <ItemGroup /> 
-  <ItemGroup>
-    <Folder Include="DataStructures\" />
-    <Folder Include="DataStructures\Plan\" />
-    <Folder Include="Common\" />
-    <Folder Include="DataStructures\PaymentMethod\" />
-    <Folder Include="DataStructures\Generic\" />
-  </ItemGroup> 
+  <ItemGroup />
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -200,4 +198,10 @@
   </Target>
   -->
   <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
 </Project>

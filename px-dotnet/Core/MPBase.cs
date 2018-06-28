@@ -707,62 +707,63 @@ namespace MercadoPago
         /// <returns>True, if validations are correct. False otherwise.</returns>
         public static bool Validate(object o)
         {
-            Type type = o.GetType();
-            PropertyInfo[] properties = type.GetProperties();
-            Type attrType = typeof(ValidationAttribute);
-            ValidationResult result = new ValidationResult();
-            string FinalMessageError = "There are errors in the object you're trying to create. Review them to continue: ";
+            return false;
+            //Type type = o.GetType();
+            //PropertyInfo[] properties = type.GetProperties();
+            //Type attrType = typeof(ValidationAttribute);
+            //ValidationResult result = new ValidationResult();
+            //string FinalMessageError = "There are errors in the object you're trying to create. Review them to continue: ";
 
-            foreach (var propertyInfo in properties)
-            {
-                object[] customAttributes = propertyInfo.GetCustomAttributes(attrType, inherit: true);
+            //foreach (var propertyInfo in properties)
+            //{
+            //    object[] customAttributes = propertyInfo.GetCustomAttributes(attrType, inherit: true);
 
-                foreach (var customAttribute in customAttributes)
-                {
-                    var validationAttribute = (ValidationAttribute)customAttribute;
+            //    foreach (var customAttribute in customAttributes)
+            //    {
+            //        var validationAttribute = (ValidationAttribute)customAttribute;
 
-                    bool isValid = validationAttribute.IsValid(propertyInfo.GetValue(o, BindingFlags.GetProperty, null, null, null));
+            //        bool isValid = validationAttribute.IsValid(propertyInfo.GetValue(o, BindingFlags.GetProperty, null, null, null));
 
-                    if (!isValid)
-                    {
-                        switch (validationAttribute.GetType().Name)
-                        {
-                            case "RangeAttribute":
-                                {
-                                    result.Errors.Add(new ValidationError() { Message = RangeError.Replace("#PROPERTY", propertyInfo.Name) });
-                                }
-                                break;
-                            case "RequiredAttribute":
-                                {
-                                    result.Errors.Add(new ValidationError() { Message = RequiredError.Replace("#PROPERTY", propertyInfo.Name) });
-                                }
-                                break;
-                            case "RegularExpressionAttribute":
-                                {
-                                    result.Errors.Add(new ValidationError() { Message = RegularExpressionError.Replace("#PROPERTY", propertyInfo.Name).Replace("#REGEXPR", ((RegularExpressionAttribute)customAttribute).Pattern) });
-                                }
-                                break;
-                            case "DataTypeAttribute":
-                                {
-                                    result.Errors.Add(new ValidationError() { Message = DataTypeError.Replace("#PROPERTY", propertyInfo.Name) });
-                                }
-                                break;
-                        }
-                    }
-                }
-            }
+            //        if (!isValid)
+            //        {
+            //            switch (validationAttribute.GetType().Name)
+            //            {
+            //                case "RangeAttribute":
+            //                    {
+            //                        result.Errors.Add(new ValidationError() { Message = RangeError.Replace("#PROPERTY", propertyInfo.Name) });
+            //                    }
+            //                    break;
+            //                case "RequiredAttribute":
+            //                    {
+            //                        result.Errors.Add(new ValidationError() { Message = RequiredError.Replace("#PROPERTY", propertyInfo.Name) });
+            //                    }
+            //                    break;
+            //                case "RegularExpressionAttribute":
+            //                    {
+            //                        result.Errors.Add(new ValidationError() { Message = RegularExpressionError.Replace("#PROPERTY", propertyInfo.Name).Replace("#REGEXPR", ((RegularExpressionAttribute)customAttribute).Pattern) });
+            //                    }
+            //                    break;
+            //                case "DataTypeAttribute":
+            //                    {
+            //                        result.Errors.Add(new ValidationError() { Message = DataTypeError.Replace("#PROPERTY", propertyInfo.Name) });
+            //                    }
+            //                    break;
+            //            }
+            //        }
+            //    }
+            //}
 
-            if (result.Errors.Count() != 0)
-            {
-                foreach (ValidationError error in result.Errors)
-                {
-                    FinalMessageError += error.Message;
-                }
+            //if (result.Errors.Count() != 0)
+            //{
+            //    foreach (ValidationError error in result.Errors)
+            //    {
+            //        FinalMessageError += error.Message;
+            //    }
 
-                throw new Exception(FinalMessageError);
-            }
+            //    throw new Exception(FinalMessageError);
+            //}
 
-            return true;
+            //return true;
         }
 
         private static WebHeaderCollection GetStandardHeaders()
@@ -777,22 +778,7 @@ namespace MercadoPago
 
         #region Testing helpers
 
-        /// <summary>
-        ///Class that represents the validation results. 
-        /// </summary>
-        public partial class ValidationResult
-        {
-            public List<ValidationError> Errors = new List<ValidationError>();
-        }
-
-        /// <summary>
-        /// Class that represents the Error contained in the ValidationResult class
-        /// </summary>
-        public partial class ValidationError
-        {
-            public int Code { get; set; }
-            public string Message { get; set; }
-        }
+        
 
         public static string ToPascalCase(string text)
         {
