@@ -17,7 +17,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
         private string description;
         private string pictureUrl;
         private int quantity;
-        private float unitPrice;
+        private decimal unitPrice;
         private string title;
 
         #endregion
@@ -60,7 +60,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
             set { quantity = value; }
         }
 
-        public float UnitPrice
+        public decimal UnitPrice
         {
             get { return unitPrice; }
             set { unitPrice = value; }

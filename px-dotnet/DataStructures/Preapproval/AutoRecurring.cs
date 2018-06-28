@@ -16,7 +16,7 @@ namespace MercadoPago.DataStructures.Preapproval
         private int frequency;
         [JsonConverter(typeof(StringEnumConverter))]
         private FrequencyType frequency_type;
-        private float transaction_amount;
+        private decimal transaction_amount;
         [StringLength(3)]
         private CurrencyId currency_id;
         private DateTime? start_date;
@@ -45,7 +45,7 @@ namespace MercadoPago.DataStructures.Preapproval
             set { frequency = value; }
         }
 
-        public float TransactionAmount
+        public decimal TransactionAmount
         {
             get { return transaction_amount; }
             set { transaction_amount = value; }

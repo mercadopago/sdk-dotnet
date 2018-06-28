@@ -25,7 +25,7 @@ namespace MercadoPago.DataStructures.Preference
         private CurrencyId _currency_id;
         [RegularExpression(@"^\d+\.\d{0,2}$")]
         [Range(0, 9999999999999999.99)]
-        private float unit_price; 
+        private decimal unit_price; 
         #endregion
 
         #region Accessors 
@@ -88,7 +88,7 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Unit price
         /// </summary>
-        public float UnitPrice
+        public decimal UnitPrice
         {
             get { return  unit_price; } 
             set {  unit_price = value; }

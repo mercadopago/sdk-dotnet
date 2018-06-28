@@ -30,7 +30,7 @@ namespace MercadoPago.Resources
 
         #region Properties 
         private string id;
-        private float application_fee;
+        private decimal application_fee;
         private string status;
         private string description;
         private string external_reference;
@@ -38,7 +38,7 @@ namespace MercadoPago.Resources
         private DateTime? last_modified;
         private AutoRecurring auto_recurring;
         private Boolean live_mode;
-        private float setup_fee;
+        private decimal setup_fee;
         private string metadata; 
         #endregion
 
@@ -57,7 +57,7 @@ namespace MercadoPago.Resources
             }
         }
 
-        public float Application_fee
+        public decimal Application_fee
         {
             get
             {
@@ -161,7 +161,7 @@ namespace MercadoPago.Resources
             }
         }
 
-        public float Setup_fee
+        public decimal Setup_fee
         {
             get
             {

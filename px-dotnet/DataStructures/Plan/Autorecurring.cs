@@ -9,7 +9,7 @@ namespace MercadoPago.DataStructures.Plan
 
         private int frequency;
         private string frequencyType;
-        private float transactionAmount;
+        private decimal transactionAmount;
         private CurrencyId currencyId;
         private int repetitions;
         private int debitDate;
@@ -44,7 +44,7 @@ namespace MercadoPago.DataStructures.Plan
             }
         }
 
-        public float TransactionAmount
+        public decimal TransactionAmount
         {
             get
             {

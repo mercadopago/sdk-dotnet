@@ -101,15 +101,15 @@ namespace MercadoPago.Resources
         [StringLength(3)] 
         [JsonConverter(typeof(StringEnumConverter))]
         private CurrencyId? _currency_id;
-        private float? _transaction_amount;
-        private float? _transaction_amount_refunded;
-        private float? _coupon_amount;
+        private decimal? _transaction_amount;
+        private decimal? _transaction_amount_refunded;
+        private decimal? _coupon_amount;
         private int? _campaign_id;
         private string _coupon_code;
         private TransactionDetail? _transaction_details;
         private List<FeeDetail> _fee_details;
         private int? _differential_pricing_id;
-        private float? _application_fee;  
+        private decimal? _application_fee;  
         [JsonConverter(typeof(StringEnumConverter))]
         private PaymentStatus? _status;         
         private string _status_detail;
@@ -259,7 +259,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Product cost
         /// </summary>
-        public float? TransactionAmount
+        public decimal? TransactionAmount
         {
             get { return this._transaction_amount; }
             set { this._transaction_amount = value; }
@@ -267,7 +267,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Total refunded amount in this payment
         /// </summary>
-        public float? TransactionAmountRefunded
+        public decimal? TransactionAmountRefunded
         {
             get { return this._transaction_amount_refunded; }
             private set { this._transaction_amount_refunded = value; }
@@ -275,7 +275,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Amount of the coupon discount
         /// </summary>
-        public float? CouponAmount
+        public decimal? CouponAmount
         {
             get { return this._coupon_amount; }
             set { this._coupon_amount = value; }
@@ -323,7 +323,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Fee collected by a marketplace or MercadoPago Application
         /// </summary>
-        public float? ApplicationFee
+        public decimal? ApplicationFee
         {
             private get { return this._application_fee; }
             set { this._application_fee = value; }

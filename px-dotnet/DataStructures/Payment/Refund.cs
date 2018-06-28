@@ -11,7 +11,7 @@ namespace MercadoPago.DataStructures.Payment
         #region Properties 
         private int _id;
         private int _payment_id;
-        private float _amount;
+        private decimal _amount;
         private JObject _metadata;
         private Source? _source;
         private DateTime? _created_date;
@@ -36,7 +36,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Amount refunded
         /// </summary>
-        public float Amount {
+        public decimal Amount {
             get { return  _amount; }  
             private set { _amount = value; } 
         }
