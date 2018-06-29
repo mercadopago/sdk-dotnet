@@ -9,10 +9,10 @@ namespace MercadoPago.DataStructures.Payment
     {
         #region Properties 
         private string _financial_institution;
-        private float _net_received_amount;
-        private float _total_paid_amount;
-        private float _installment_amount;
-        private float _overpaid_amount;
+        private decimal _net_received_amount;
+        private decimal _total_paid_amount;
+        private decimal _installment_amount;
+        private decimal _overpaid_amount;
         private string _external_resource_url;
         private string _payment_method_reference_id; 
         #endregion
@@ -28,28 +28,28 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Amount received by the seller
         /// </summary>
-        public float NetReceivedAmount { 
+        public decimal NetReceivedAmount { 
             get { return  _net_received_amount; } 
             set { _net_received_amount = value; } 
         }
         /// <summary>
         /// Total amount paid by the buyer (includes fees)
         /// </summary>
-        public float TotalPaidAmount { 
+        public decimal TotalPaidAmount { 
             get { return  _total_paid_amount; } 
             set { _total_paid_amount = value; } 
         }
         /// <summary>
         /// Total installments amount
         /// </summary>
-        public float InstallmentAmount { 
+        public decimal InstallmentAmount { 
             get { return  _installment_amount; } 
             set { _installment_amount = value; } 
         }
         /// <summary>
         /// Amount overpaid (only for tickets)
         /// </summary>
-        public float OverpaidAmount { 
+        public decimal OverpaidAmount { 
             get { return  _overpaid_amount; } 
             set { _overpaid_amount = value; } 
         }

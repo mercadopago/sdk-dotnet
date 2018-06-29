@@ -12,9 +12,9 @@ namespace MercadoPago.DataStructures.MerchantOrder
         #region Properties
 
         private string id;
-        private float transactionAmount;
-        private float totalPaidAmount;
-        private float shippingCost;
+        private decimal transactionAmount;
+        private decimal totalPaidAmount;
+        private decimal shippingCost;
        
         [StringLength(3)]
         private CurrencyId currencyId;
@@ -29,7 +29,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
         private DateTime dateApproved;
         private DateTime dateCreated;
         private DateTime lastModified;
-        private float amountRefunded;
+        private decimal amountRefunded;
         
         #endregion
 
@@ -40,17 +40,17 @@ namespace MercadoPago.DataStructures.MerchantOrder
             get { return id; }            
         }
        
-        public float TransactionAmount
+        public decimal TransactionAmount
         {
             get { return transactionAmount; }            
         }
        
-        public float TotalPaidAmount
+        public decimal TotalPaidAmount
         {
             get { return totalPaidAmount; }            
         }
        
-        public float ShippingCost
+        public decimal ShippingCost
         {
             get { return shippingCost; }            
         }
@@ -90,7 +90,7 @@ namespace MercadoPago.DataStructures.MerchantOrder
             get { return lastModified; }            
         }
        
-        public float AmountRefunded
+        public decimal AmountRefunded
         {
             get { return amountRefunded; }            
         }

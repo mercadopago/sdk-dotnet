@@ -11,7 +11,7 @@ namespace MercadoPago.DataStructures.Payment
         #region Properties 
         private FeeType? _type; 
         private FeePayerType? _fee_payer;
-        private float? _amount;
+        private decimal? _amount;
         #endregion
 
         #region Accessors
@@ -26,7 +26,7 @@ namespace MercadoPago.DataStructures.Payment
             private set { _fee_payer = value; } 
         }
         /// <summary> Fee amount </summary>
-        public float? Amount { 
+        public decimal? Amount { 
             get { return  _amount; } 
             private set { _amount = value; } 
         } 

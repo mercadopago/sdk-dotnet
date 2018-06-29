@@ -14,7 +14,7 @@ namespace MercadoPago.DataStructures.Preference
         private string _dimensions;
         private int _default_shipping_method;
         private List<int> _free_methods;
-        private float _cost;
+        private decimal _cost;
         private bool _free_shipping;
         private ReceiverAddress? _receiver_address;  
         #endregion
@@ -61,7 +61,7 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Shipment cost (mode:custom only)
         /// </summary>
-        public float Cost {
+        public decimal Cost {
             get { return  _cost; } 
             set {  _cost = value; } 
         }
