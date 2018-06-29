@@ -245,7 +245,7 @@ namespace MercadoPagoSDK.Test
                 PaymentDate = date;
                 TransactionAmount = transationAmount;
 
-                Validate(this);
+                //Validate(this);
             }                       
         }
     }
