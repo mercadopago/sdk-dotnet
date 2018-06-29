@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -58,16 +59,29 @@ namespace MercadoPago.Validation
             foreach (var e in instanceErrors)
                 yield return e;
 
-            var nestedErrors =
-                from property in properties
-                where property.PropertyType.IsSdkType()
-                let propertyValue = property.GetValue(instance, BindingFlags.GetProperty, null, null, null)
-                where propertyValue != null
-                from e in GetValidationErrors(propertyValue)
-                select e;
+            if (instance is IEnumerable list)
+            {
+                var itemErrors =
+                    from object item in list
+                    from e in GetValidationErrors(item)
+                    select e;
 
-            foreach (var e in nestedErrors)
-                yield return e;
+                foreach (var e in itemErrors)
+                    yield return e;
+            }
+            else
+            {
+                var nestedErrors =
+                    from property in properties
+                    where property.PropertyType.IsSdkType()
+                    let propertyValue = property.GetValue(instance, BindingFlags.GetProperty, null, null, null)
+                    where propertyValue != null
+                    from e in GetValidationErrors(propertyValue)
+                    select e;
+
+                foreach (var e in nestedErrors)
+                    yield return e;
+            }
         }
 
         public static ValidationResult GetValidationResult<T>(T instance) where T : MPBase
