@@ -8,37 +8,19 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Source
     {
-        #region Properties 
-        private string _id;
-        private string _name;
-        private RefundUserType _type;
-        #endregion
+        /// <summary>
+        /// Payment identifier
+        /// </summary>
+        public string Id { get; set; }
 
-        #region Accessors
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public string Id 
-        { 
-            get { return  _id; } 
-            set {  _id = value; } 
-        }
+        public string Name { get; set; }
+
         /// <summary>
         /// Payment identifier
         /// </summary>
-        public string Name 
-        { 
-            get { return  _name; } 
-            set {  _name = value; } 
-        }
-        /// <summary>
-        /// Payment identifier
-        /// </summary>
-        public RefundUserType Type 
-        {
-            get { return  _type; } 
-            set {  _type = value; } 
-        } 
-        #endregion
+        public RefundUserType Type { get; set; }
     }
 }

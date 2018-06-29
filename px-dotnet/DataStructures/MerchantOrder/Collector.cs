@@ -7,34 +7,10 @@ namespace MercadoPago.DataStructures.MerchantOrder
 {
     public struct Collector
     {
-        #region Properties
+        public string ID { get; set; }
 
-        private string id;
-        private string email;
-        private string nickName;
+        public string Email { get; set; }
 
-        #endregion
-
-        #region Accessors
-
-        public string ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-
-        public string NickName
-        {
-            get { return nickName; }
-            set { nickName = value; }
-        }
-
-        #endregion
+        public string NickName { get; set; }
     }
 }

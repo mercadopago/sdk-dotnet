@@ -7,25 +7,8 @@ namespace MercadoPago.DataStructures.Customer
 {
     public struct Neighborhood
     {
-        #region Properties
+        public string ID { get; private set; }
 
-        private string id;
-        private string name;
-
-        #endregion
-
-        #region Accessors
-
-        public string ID
-        {
-            get { return id; }
-        }
-
-        public string Name
-        {
-            get { return name; }
-        }
-
-        #endregion
+        public string Name { get; private set; }
     }
 }

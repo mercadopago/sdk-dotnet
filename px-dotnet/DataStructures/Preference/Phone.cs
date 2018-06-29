@@ -8,30 +8,16 @@ namespace MercadoPago.DataStructures.Preference
 {
     public struct Phone
     {
-        #region Properties 
-        [StringLength(256)]
-        private string _area_code;
-        [StringLength(256)]
-        private string _number; 
-        #endregion
-
-        #region Accessors 
         /// <summary>
         /// Phone area code
         /// </summary>
-        public string AreaCode
-        {
-            get { return this._area_code; }
-            set { this._area_code = value; }
-        }
+        [StringLength(256)]
+        public string AreaCode { get; set; }
+
         /// <summary>
         /// Phone number
         /// </summary>
-        public string Number
-        {
-            get { return this._number; }
-            set { this._number = value; }
-        } 
-        #endregion
+        [StringLength(256)]
+        public string Number { get; set; }
     }
 }

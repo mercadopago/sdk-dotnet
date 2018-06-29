@@ -11,79 +11,18 @@ namespace MercadoPago.DataStructures.Preapproval
 {
     public struct AutoRecurring
     {
-        #region Properties 
-
-        private int frequency;
         [JsonConverter(typeof(StringEnumConverter))]
-        private FrequencyType frequency_type;
-        private float transaction_amount;
+        public FrequencyType FrequencyType { get; set; }
+
+        public int Frequency { get; set; }
+
+        public decimal TransactionAmount { get; set; }
+
         [StringLength(3)]
-        private CurrencyId currency_id;
-        private DateTime? start_date;
-        private DateTime? end_date;
+        public CurrencyId CurrencyId { get; set; }
 
-        #endregion
+        public DateTime? Start_date { get; set; }
 
-        #region Accessors
-
-        public FrequencyType FrequencyType
-        {
-            get
-            {
-                return frequency_type;
-            }
-
-            set
-            {
-                frequency_type = value;
-            }
-        }
-
-        public int Frequency
-        {
-            get { return frequency; }
-            set { frequency = value; }
-        }
-
-        public float TransactionAmount
-        {
-            get { return transaction_amount; }
-            set { transaction_amount = value; }
-        }
-
-        public CurrencyId CurrencyId
-        {
-            get { return currency_id; }
-            set { currency_id = value; }
-        }
-
-        public DateTime? Start_date
-        {
-            get
-            {
-                return start_date;
-            }
-
-            set
-            {
-                start_date = value;
-            }
-        }
-
-
-        public DateTime? End_date
-        {
-            get
-            {
-                return end_date;
-            }
-
-            set
-            {
-                end_date = value;
-            }
-        }
-
-        #endregion
+        public DateTime? End_date { get; set; }
     }
 }

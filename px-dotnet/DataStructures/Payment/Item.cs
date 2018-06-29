@@ -7,66 +7,39 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Item
     {
-        #region Properties 
-        private string _id;
-        private string _title;
-        private string _description;
-        private string _picture_url;
-        private string _category_id;
-        private int _quantity;
-        private int _unit_price; 
-        #endregion
-
-        #region Accessors 
         /// <summary>
         /// Item code
         /// </summary>
-        public string Id { 
-            get { return  _id; } 
-            set { _id = value; } 
-        }  
+        public string Id { get; set; }
+
         /// <summary>
         /// Item name
         /// </summary>
-        public string Title { 
-            get { return  _title; } 
-            set { _title = value; }
-        }
+        public string Title { get; set; }
+
         /// <summary>
         /// Long item description
         /// </summary>
-        public string Description { 
-            get { return  _description; } 
-            set { _description = value; } 
-        }
+        public string Description { get; set; }
+
         /// <summary>
         /// Image URL
         /// </summary>
-        public string PictureUrl { 
-            get { return  _picture_url; } 
-            set { _picture_url = value; } 
-        }
+        public string PictureUrl { get; set; }
+
         /// <summary>
         /// Category of the item
         /// </summary>
-        public string CategoryId { 
-            get { return  _category_id; } 
-            set { _category_id = value; } 
-        }
+        public string CategoryId { get; set; }
+
         /// <summary>
         /// Item's quantity
         /// </summary>
-        public int Quantity {
-            get { return  _quantity; } 
-            set { _quantity = value; } 
-        }
+        public int Quantity { get; set; }
+
         /// <summary>
         /// Unit price
         /// </summary>
-        public int UnitPrice { 
-            get { return  _unit_price; } 
-            set { _unit_price = value; } 
-        }
-        #endregion
+        public int UnitPrice { get; set; }
     }
 }

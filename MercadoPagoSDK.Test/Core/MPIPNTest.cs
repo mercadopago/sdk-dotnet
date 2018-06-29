@@ -89,7 +89,7 @@ namespace MercadoPagoSDK.Test.Core
             Payer payer = new Payer();
             payer.Email = "mlovera@kinexo.com";
 
-            payment.TransactionAmount = (float)100;
+            payment.TransactionAmount = 100;
             payment.Token = GenerateSingleUseCardToken(); // 1 use card token
             payment.Description = "Pago de seguro";
             payment.PaymentMethodId = "visa";

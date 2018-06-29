@@ -8,72 +8,43 @@ namespace MercadoPago.DataStructures.Preference
 {
     public struct Payer
     {
-        #region Properties 
-        [StringLength(256)]
-        private string _name;
-        [StringLength(256)]
-        private string _surname;
-        [StringLength(256)]
-        private string _email;
-        private Phone? _phone;
-        private Identification? _identification;
-        private Address? _address;
-        private DateTime? _date_created; 
-        #endregion
-
-        #region Accessors
         /// <summary>
         /// Buyer name
         /// </summary>
-        public string Name {
-            get { return  _name; } 
-            set { _name = value; }
-        }
+        [StringLength(256)]
+        public string Name { get; set; }
+
         /// <summary>
         /// Buyer last name
         /// </summary>
-        public string Surname {
-            get { return  _surname; } 
-            set { _surname = value; }
-        }
+        [StringLength(256)]
+        public string Surname { get; set; }
+
         /// <summary>
         /// Buyer e-mail address
         /// </summary>
-        public string Email {
-            get { return  _email; } 
-            set { _email = value; }
-        }
+        [StringLength(256)]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
         /// <summary>
         /// Buyer phone
         /// </summary>
-        public Phone? Phone { 
-            get { return  _phone; } 
-            set { _phone = value; } 
-        }
+        public Phone? Phone { get; set; }
+
         /// <summary>
         /// Personal identification
         /// </summary>
-        public Identification? Identification 
-        { 
-            get { return  _identification; } 
-            set { _identification = value; } 
-        }
+        public Identification? Identification { get; set; }
+
         /// <summary>
         /// Buyer address
         /// </summary>
-        public Address? Address
-        {
-            get { return  _address; }
-            set { _address = value; }
-        }
+        public Address? Address { get; set; }
+
         /// <summary>
         /// Registration date
         /// </summary>
-        public DateTime? Date_created 
-        { 
-            get { return  _date_created; }
-            set { _date_created = value; }
-        } 
-        #endregion
+        public DateTime? Date_created { get; set; }
     }
 }
