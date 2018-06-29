@@ -18,7 +18,6 @@ namespace MercadoPago.DataStructures.Preapproval
 
         public decimal TransactionAmount { get; set; }
 
-        [StringLength(3)]
         public CurrencyId CurrencyId { get; set; }
 
         public DateTime? Start_date { get; set; }

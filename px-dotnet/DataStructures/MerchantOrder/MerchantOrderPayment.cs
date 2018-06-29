@@ -23,7 +23,6 @@ namespace MercadoPago.DataStructures.MerchantOrder
 
         public decimal ShippingCost { get; private set; }
 
-        [StringLength(3)]
         public CurrencyId PaymentCurrencyId { get; private set; }
 
         public string Status { get; private set; }

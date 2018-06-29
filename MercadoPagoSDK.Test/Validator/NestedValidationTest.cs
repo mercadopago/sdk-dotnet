@@ -13,8 +13,6 @@ namespace MercadoPagoSDK.Test.Validations
         [Required]
         public Payer? Payer { get; set; }
 
-        public NestedValidationTest() { }
-
         [Test]
         public void Validator_TestNestedRequiredObjectValidation()
         {

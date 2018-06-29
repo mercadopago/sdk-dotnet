@@ -48,7 +48,6 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Currency ID. ISO_4217 code
         /// </summary>
-        [StringLength(3)]
         public CurrencyId CurrencyId { get; set; }
 
         /// <summary>

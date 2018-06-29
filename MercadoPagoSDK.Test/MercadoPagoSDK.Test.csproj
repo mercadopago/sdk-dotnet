@@ -56,6 +56,7 @@
     <Compile Include="Resources\PreapprovalTest.cs" />
     <Compile Include="Resources\PreferenceTest.cs" />
     <Compile Include="Resources\PaymentMethodTest.cs" />
+    <Compile Include="Validator\EnumerableValidationTest.cs" />
     <Compile Include="Validator\NestedValidationTest.cs" />
     <Compile Include="Validator\ValidationTest.cs" />
   </ItemGroup>
