@@ -8,70 +8,21 @@ namespace MercadoPago.DataStructures.MerchantOrder
 {
     public struct Item
     {
-        #region Properties
+        public string ID { get; set; }
 
-        private string id;
-        private string categoryId;
-        [RegularExpression(@"^.{3,3}$")]        
-        private string currencyId;
-        private string description;
-        private string pictureUrl;
-        private int quantity;
-        private decimal unitPrice;
-        private string title;
+        public string CategoryId { get; set; }
 
-        #endregion
+        [RegularExpression(@"^.{3,3}$")]
+        public string CurrencyId { get; set; }
 
-        #region Accessors
+        public string Description { get; set; }
 
-        public string ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        public string PictureUrl { get; set; }
 
-        public string CategoryId
-        {
-            get { return categoryId; }
-            set { categoryId = value; }
-        }
+        public int Quantity { get; set; }
 
-        public string CurrencyId
-        {
-            get { return currencyId; }
-            set { currencyId = value; }
-        }
-       
-        public string Description
-        {
-            get { return description; }
-            set { description = value; }
-        }        
+        public decimal UnitPrice { get; set; }
 
-        public string PictureUrl
-        {
-            get { return pictureUrl; }
-            set { pictureUrl = value; }
-        }
-
-        public int Quantity
-        {
-            get { return quantity; }
-            set { quantity = value; }
-        }
-
-        public decimal UnitPrice
-        {
-            get { return unitPrice; }
-            set { unitPrice = value; }
-        }
-
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-
-        #endregion
+        public string Title { get; set; }
     }
 }

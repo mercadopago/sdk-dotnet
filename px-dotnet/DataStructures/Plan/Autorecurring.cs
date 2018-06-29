@@ -5,111 +5,18 @@ namespace MercadoPago.DataStructures.Plan
 {
     public struct AutoRecurring
     {
-        #region Properties
+        public int Frequency { get; set; }
 
-        private int frequency;
-        private string frequencyType;
-        private decimal transactionAmount;
-        private CurrencyId currencyId;
-        private int repetitions;
-        private int debitDate;
-        private FreeTrial freeTrial;
- 
-        #endregion
+        public string FrequencyType { get; set; }
 
-        #region Accessors
-        public int Frequency
-        {
-            get
-            {
-                return frequency;
-            }
+        public decimal TransactionAmount { get; set; }
 
-            set
-            {
-                frequency = value;
-            }
-        }
+        public CurrencyId CurrencyId { get; set; }
 
-        public string FrequencyType
-        {
-            get
-            {
-                return frequencyType;
-            }
+        public int Repetitions { get; set; }
 
-            set
-            {
-                frequencyType = value;
-            }
-        }
+        public int DebitDate { get; set; }
 
-        public decimal TransactionAmount
-        {
-            get
-            {
-                return transactionAmount;
-            }
-
-            set
-            {
-                transactionAmount = value;
-            }
-        }
-
-        public CurrencyId CurrencyId
-        {
-            get
-            {
-                return currencyId;
-            }
-
-            set
-            {
-                currencyId = value;
-            }
-        }
-
-        public int Repetitions
-        {
-            get
-            {
-                return repetitions;
-            }
-
-            set
-            {
-                repetitions = value;
-            }
-        }
-
-        public int DebitDate
-        {
-            get
-            {
-                return debitDate;
-            }
-
-            set
-            {
-                debitDate = value;
-            }
-        }
-
-        public FreeTrial FreeTrial
-        {
-            get
-            {
-                return freeTrial;
-            }
-
-            set
-            {
-                freeTrial = value;
-            }
-        }
-
-        #endregion
-
+        public FreeTrial FreeTrial { get; set; }
     }
 }

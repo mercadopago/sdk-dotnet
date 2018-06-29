@@ -8,35 +8,16 @@ namespace MercadoPago.DataStructures.Preference
 {
     public struct BackUrls
     {
-        #region Properties
-        [StringLength(600)]
-        private string _success; 
-        [StringLength(600)]
-        private string _pending; 
-        [StringLength(600)]
-        private string _failure; 
-        #endregion
-
-        #region Accessors 
         ///<summary>Approved payment URL</summary>
-        public string Success 
-        { 
-            get { return  _success; } 
-            set {  _success = value; } 
-        }
-        ///<summary>Pending payment URLL</summary>
-        public string Pending 
-        { 
-            get { return  _pending; } 
-            set {  _pending = value; } 
-        }
-        ///<summary>Canceled payment URL</summary>
-        public string Failure 
-        { 
-            get { return  _failure; } 
-            set {  _failure = value; } 
-        } 
-        #endregion
+        [StringLength(600)]
+        public string Success { get; set; }
 
+        ///<summary>Pending payment URLL</summary>
+        [StringLength(600)]
+        public string Pending { get; set; }
+
+        ///<summary>Canceled payment URL</summary>
+        [StringLength(600)]
+        public string Failure { get; set; }
     }
 }

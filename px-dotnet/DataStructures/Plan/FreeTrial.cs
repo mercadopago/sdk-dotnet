@@ -3,25 +3,8 @@ namespace MercadoPago.DataStructures.Plan
 {
     public struct FreeTrial
     {
-        #region Properties
+        public int Frequency { get; set; }
 
-        private int frequency;
-        private string frequencyType;
-
-        #endregion
-
-        #region Accessors
-        public int Frequency 
-        { 
-            get { return  frequency; } 
-            set {  frequency = value; } 
-        }
-        public string FrequencyType 
-        { 
-            get { return  frequencyType; } 
-            set {  frequencyType = value; } 
-        }
-        #endregion
-
+        public string FrequencyType { get; set; }
     }
 }

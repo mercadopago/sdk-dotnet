@@ -3,16 +3,8 @@ namespace MercadoPago.DataStructures.Generic
 {
     public interface RecuperableError
     {
-        string Message
-        {
-            get;
-            set;
-        }
+        string Message { get; set; }
 
-        string Error
-        {
-            get; 
-            set;
-        }
+        string Error { get; set; }
     }
 }

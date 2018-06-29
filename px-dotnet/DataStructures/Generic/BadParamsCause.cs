@@ -3,51 +3,10 @@ namespace MercadoPago.DataStructures.Generic
 {
     public struct BadParamsCause : RecuperableErrorCause
     {
-        #region Properties
-        private string _code;
-        private string _description;
-        private string _data; 
-        #endregion
+        public string Code { get; set; }
 
-        #region Accessors
-        public string Code
-        {
-            get
-            {
-                return _code;
-            }
+        public string Description { get; set; }
 
-            set
-            {
-                _code = value;
-            }
-        }
-
-        public string Description
-        {
-            get
-            {
-                return _description;
-            }
-
-            set
-            {
-                _description = value;
-            }
-        }
-
-        public string Data
-        {
-            get
-            {
-                return _data;
-            }
-
-            set
-            {
-                _data = value;
-            }
-        }
-        #endregion
+        public string Data { get; set; }
     }
 }

@@ -7,31 +7,10 @@ namespace MercadoPago.DataStructures.Customer
 {
     public struct Shipment
     {
-        #region Properties
+        public bool Success { get; private set; }
 
-        private bool success;
-        private List<Error> errors;
-        private string name;
+        public List<Error> Errors { get; private set; }
 
-        #endregion
-
-        #region Accessors
-
-        public bool Success
-        {
-            get { return success; }            
-        }
-
-        public List<Error> Errors
-        {
-            get { return errors; }            
-        }
-
-        public string Name
-        {
-            get { return name; }            
-        }
-
-        #endregion
+        public string Name { get; private set; }
     }
 }

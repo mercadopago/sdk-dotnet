@@ -7,31 +7,10 @@ namespace MercadoPago.DataStructures.Customer
 {
     public struct Error
     {
-        #region Properties
+        public string Code { get; private set; }
 
-        private string code;
-        private string description;
-        private string field;                
+        public string Description { get; private set; }
 
-        #endregion
-
-        #region Accessors
-
-        public string Code
-        {
-            get { return code; }            
-        }
-
-        public string Description
-        {
-            get { return description; }            
-        }
-
-        public string Field
-        {
-            get { return field; }            
-        }
-
-        #endregion
+        public string Field { get; private set; }
     }
 }
