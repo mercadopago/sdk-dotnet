@@ -34,7 +34,7 @@ namespace MercadoPagoSDK.Test.Validations
             {
                 Payer = new Payer
                 {
-                    Name = new string('x', 1000)
+                    Name = new string('x', 1000),
                 }
             };
 
@@ -44,6 +44,21 @@ namespace MercadoPagoSDK.Test.Validations
             instance.Payer = new Payer {Name = "Name"};
             error = GetValidationError(instance, ValidationError.StringLengthErrorCode);
             Assert.IsNull(error);
+
+            instance = new NestedValidationTest
+            {
+                Payer = new Payer
+                {
+                    Name = "Payer",
+                    Address = new Address
+                    {
+                        StreetName = new string('x', 1000),
+                    }
+                }
+            };
+
+            error = GetValidationError(instance, ValidationError.StringLengthErrorCode);
+            Assert.IsNotNull(error);
         }
 
         private ValidationError GetValidationError(object instance, int errorCode) =>
