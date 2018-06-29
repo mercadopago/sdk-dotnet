@@ -56,7 +56,8 @@
     <Compile Include="Resources\PreapprovalTest.cs" />
     <Compile Include="Resources\PreferenceTest.cs" />
     <Compile Include="Resources\PaymentMethodTest.cs" />
-    <Compile Include="Validator\ValidatorTest.cs" />
+    <Compile Include="Validator\NestedValidationTest.cs" />
+    <Compile Include="Validator\ValidationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">

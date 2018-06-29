@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using static MercadoPago.Validation.ValidationError;
 
 namespace MercadoPago.Validation
 {
@@ -24,10 +25,11 @@ namespace MercadoPago.Validation
     /// </summary>
     public class ValidationError
     {
-        public const int OutOfRangeErrorCode = 1001;
-        public const int RequiredErrorCode   = 1002;
-        public const int RegExpErrorCode     = 1003;
-        public const int DataTypeErrorCode   = 1004;
+        public const int OutOfRangeErrorCode   = 1001;
+        public const int RequiredErrorCode     = 1002;
+        public const int RegExpErrorCode       = 1003;
+        public const int DataTypeErrorCode     = 1004;
+        public const int StringLengthErrorCode = 1005;
 
         public int Code { get; }
         public string Message { get; }
@@ -37,18 +39,6 @@ namespace MercadoPago.Validation
             Code = code;
             Message = message;
         }
-
-        public static ValidationError OutOfRangeError(string propertyName) =>
-            new ValidationError(OutOfRangeErrorCode, $"Error on property {propertyName}. The value you are trying to assign is not in the specified range. ");
-
-        public static ValidationError RequiredError(string propertyName) =>
-            new ValidationError(RequiredErrorCode, $"Error on property {propertyName}. There is no value for this required property. ");
-
-        public static ValidationError RegExpError(string propertyName, string pattern) =>
-            new ValidationError(RegExpErrorCode, $"Error on property {propertyName}. The specified value is not valid. RegExp: {pattern}.");
-
-        public static ValidationError DataTypeError(string propertyName) =>
-            new ValidationError(DataTypeErrorCode, $"Error on property {propertyName}. The value you are trying to assign has not the correct type. ");
     }
 
     internal static class Validator
@@ -107,12 +97,20 @@ namespace MercadoPago.Validation
 
         private static ValidationError GetValidationError(ValidationAttribute attribute, string propertyName)
         {
+            var msg = $"Error on property {propertyName}";
+
             switch (attribute)
             {
-                case RangeAttribute _: return ValidationError.OutOfRangeError(propertyName);
-                case RequiredAttribute _: return ValidationError.RequiredError(propertyName);
-                case RegularExpressionAttribute a: return ValidationError.RegExpError(propertyName, a.Pattern);
-                case DataTypeAttribute _: return ValidationError.DataTypeError(propertyName);
+                case RangeAttribute _:
+                    return new ValidationError(OutOfRangeErrorCode, $"{msg}. The value you are trying to assign is not in the specified range. ");
+                case RequiredAttribute _:
+                    return new ValidationError(RequiredErrorCode, $"{msg}. There is no value for this required property. ");
+                case RegularExpressionAttribute a:
+                    return new ValidationError(RegExpErrorCode, $"{msg}. The specified value is not valid. RegExp: {a.Pattern}.");
+                case DataTypeAttribute _:
+                    return new ValidationError(DataTypeErrorCode, $"{msg}. The value you are trying to assign has not the correct type. ");
+                case StringLengthAttribute _:
+                    return new ValidationError(StringLengthErrorCode, $"{msg}. The length of the string exceeds the maximum allowed length.");
                 default:
                     throw new InvalidOperationException($"Unknown Validation Attribute Type: {attribute.GetType().Name}");
             }
