@@ -60,7 +60,7 @@ namespace MercadoPago.Validation
 
             var nestedErrors =
                 from property in properties
-                where property.PropertyType.Assembly.FullName == typeof(MPBase).Assembly.FullName
+                where property.PropertyType.IsSdkType()
                 let propertyValue = property.GetValue(instance, BindingFlags.GetProperty, null, null, null)
                 where propertyValue != null
                 from e in GetValidationErrors(propertyValue)
@@ -115,5 +115,9 @@ namespace MercadoPago.Validation
                     throw new InvalidOperationException($"Unknown Validation Attribute Type: {attribute.GetType().Name}");
             }
         }
+
+        private static bool IsSdkType(this Type type) =>
+            type.Assembly.FullName == typeof(MPBase).Assembly.FullName ||
+            type.IsGenericType && type.GetGenericArguments().Any(IsSdkType);
     }
 }
