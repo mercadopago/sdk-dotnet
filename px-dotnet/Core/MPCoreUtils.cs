@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
 using MercadoPago.DataStructures.Generic;
+using System.Linq;
 
 namespace MercadoPago
 {
@@ -102,9 +103,7 @@ namespace MercadoPago
             return badParams;
         }
 
-
-
-        public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
+        public static JArray GetArrayFromJsonElement(JObject jsonElement)
         {
             JArray jsonArray = null;
             if (jsonElement is JObject)
@@ -114,6 +113,10 @@ namespace MercadoPago
             return jsonArray;
         }
 
+        // TODO: Unneeded type parameter. Remove.
+        public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase =>
+            GetArrayFromJsonElement(jsonElement);
+
         public static JArray GetJArrayFromStringResponse<T>(string stringResponse) where T : MPBase
         {
             JArray jsonArray = null;
@@ -121,5 +124,27 @@ namespace MercadoPago
             return jsonArray;
         }
 
+        public static List<T> ToList<T>(this MPAPIResponse response) where T : ResourceBase
+        {
+            var result = new List<T>();
+
+            var jsonArray =
+                response.JsonObjectResponse != null
+                    ? GetArrayFromJsonElement(response.JsonObjectResponse)
+                    : JArray.Parse(response.StringResponse);
+
+            if (jsonArray != null)
+            {
+                foreach (var jObject in jsonArray.OfType<JObject>())
+                {
+                    //TODO: Por que esto deserializa y serializa de nuevo?
+                    T resource = jObject.Deserialize<T>();
+                    resource.LastKnownJson = resource.Serialize();
+                    result.Add(resource);
+                }
+            }
+
+            return result;
+        }
     }
 }

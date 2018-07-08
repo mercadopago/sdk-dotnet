@@ -82,11 +82,14 @@
     <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Core\MPCredentials.cs" />
     <Compile Include="Core\MPIPN.cs" />
+    <Compile Include="Core\Resource.cs" />
+    <Compile Include="Core\Serialization.cs" />
     <Compile Include="Core\Validation\Validator.cs" />
     <Compile Include="DataStructures\Preapproval\AutoRecurring.cs" />
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />
+    <Compile Include="Resources\New\Preference.cs" />
     <Compile Include="SDK.cs" />
     <Compile Include="Net\MPRESTClient.cs" />
     <Compile Include="Net\MPRequest.cs" />
