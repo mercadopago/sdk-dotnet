@@ -9,6 +9,12 @@ namespace MercadoPago.New
         #region Actions
 
         /// <summary>
+        /// Get all preapprovals acoording to specific filters
+        /// </summary>
+        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache = false) =>
+            GetList("/preapproval/search", useCache, filters);
+
+        /// <summary>
         /// Find a preapproval trought an unique identifier with Local Cache Flag
         /// </summary>
         public static Preapproval FindById(string id, bool useCache = false) => Get($"/preapproval/{id}", useCache);
@@ -22,15 +28,6 @@ namespace MercadoPago.New
         ///  Update editable properties
         /// </summary>
         public Preapproval Update() => Put($"/preapproval/{Id}");
-
-        /// <summary>
-        /// Get all preapprovals acoording to specific filters
-        /// </summary>
-        [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache = false)
-        {
-            return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache);
-        }
 
         #endregion
 
@@ -80,8 +77,5 @@ namespace MercadoPago.New
         public string ExternalReference { get; set; }
 
         #endregion
-
-
-
     }
 }

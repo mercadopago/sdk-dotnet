@@ -8,15 +8,12 @@ namespace MercadoPago.Resources.New
     public sealed class Customer : Resource<Customer>
     {
         #region Actions
-        
+
         /// <summary>
         /// Get all customers acoording to specific filters
         /// </summary>
-        [GETEndpoint("/v1/customers/search")]
-        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache = false)
-        {
-            return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", filters, useCache);
-        }
+        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache = false) => 
+            GetList("/v1/customers/search", useCache, filters);
 
         /// <summary>
         /// Find a customer by ID.
@@ -24,10 +21,7 @@ namespace MercadoPago.Resources.New
         /// <param name="id">Customer ID.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>Searched customer.</returns>
-        public static Customer FindById(string id, bool useCache = false)
-        {
-            return Get($"/v1/customers/{id}", useCache);
-        }
+        public static Customer FindById(string id, bool useCache = false) => Get($"/v1/customers/{id}", useCache);
 
         /// <summary>
         /// Save a new customer
@@ -43,6 +37,7 @@ namespace MercadoPago.Resources.New
         /// Remove a customer
         /// </summary>
         public Customer Delete() => Delete($"/v1/customers/{Id}");
+        
         #endregion
 
         #region Properties 

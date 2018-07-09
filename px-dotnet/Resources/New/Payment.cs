@@ -33,8 +33,7 @@ namespace MercadoPago.Resources.New
         /// </summary>
         public static List<Payment> Search(Dictionary<string, string> filters = null, bool useCache = false)
         {
-            return [[TODO]]
-            return GetList("/v1/payments/search", useCache);
+            return GetList("/v1/payments/search", useCache, filters);
         }
         #endregion
 

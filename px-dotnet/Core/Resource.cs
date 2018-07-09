@@ -28,9 +28,14 @@ namespace MercadoPago
 
     public abstract class Resource<T>: ResourceBase where T: ResourceBase, new()
     {
-        internal static MPAPIResponse Invoke(HttpMethod httpMethod, string path, PayloadType payloadType, JObject payload, string accessToken, bool useCache, int requestTimeout, int retries)
+        internal static MPAPIResponse Invoke(HttpMethod httpMethod, string path, PayloadType payloadType, JObject payload, string accessToken, Dictionary<string, string> queryParameters, bool useCache, int requestTimeout, int retries)
         {
-            path = $"{SDK.BaseUrl}{path}?access_token={accessToken ?? SDK.GetAccessToken()}";
+            var queryString =
+                queryParameters != null
+                    ? "&" + string.Join("&", queryParameters.Select(x => $"{x.Key}={x.Value}").ToArray())
+                    : "";
+
+            path = $"{SDK.BaseUrl}{path}?access_token={accessToken ?? SDK.GetAccessToken()}{queryString}";
 
             //TODO: Esto es un concern de la capa HTTP, deberia estar en el MPRestClient.
             //TODO: Se mantiene por el momento por compatibilidad con la clase MPBase.
@@ -82,15 +87,15 @@ namespace MercadoPago
         internal static T Get(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1)
         {
             var resource = new T();
-            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, useCache, requestTimeOut, retries);
+            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, null, useCache, requestTimeOut, retries);
 
             ProcessResponse(resource, response, HttpMethod.GET);
             return resource;
         }
 
-        internal static List<T> GetList(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1) 
+        internal static List<T> GetList(string path, bool useCache = false, Dictionary<string, string> queryParameters = null, int requestTimeOut = 0, int retries = 1) 
         {
-            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, useCache, requestTimeOut, retries);
+            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, queryParameters, useCache, requestTimeOut, retries);
 
             if (response.StatusCode >= 200 && response.StatusCode < 300)
             {
@@ -128,7 +133,7 @@ namespace MercadoPago
                     ? resource.ToJson()
                     : null;
 
-            var response = Invoke(httpMethod, path, PayloadType.JSON, payload, resource.UserAccessToken, useCache, requestTimeOut, retries);
+            var response = Invoke(httpMethod, path, PayloadType.JSON, payload, resource.UserAccessToken, null, useCache, requestTimeOut, retries);
 
             ProcessResponse(resource, response, httpMethod);
             return resource;
