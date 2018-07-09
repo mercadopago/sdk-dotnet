@@ -22,11 +22,25 @@ namespace MercadoPago
                 }
             };
 
+        private static readonly JsonSerializer Deserializer =
+            new JsonSerializer
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomDeserializationContractResolver(),
+                Converters =
+                {
+                    new IsoDateTimeConverter
+                    {
+                        DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
+                    }
+                }
+            };
+
         public static JObject Serialize<T>(this T resource) where T: ResourceBase => 
             JObject.FromObject(resource, Serializer);
         
         public static T Deserialize<T>(this JObject jObject) where T: ResourceBase =>
-            jObject.ToObject<T>(Serializer);
+            jObject.ToObject<T>(Deserializer);
 
         public static string ToSnakeCase(this string text) => 
             Regex.Replace(text, @"(?<=[a-z0-9])[A-Z\s]", "_$0").ToLower();

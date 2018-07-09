@@ -31,10 +31,9 @@ namespace MercadoPago.Resources.New
         /// <summary>
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>
-        public static List<Payment> Search(Dictionary<string, string> filters = null, bool useCache = false)
-        {
-            return GetList("/v1/payments/search", useCache, filters);
-        }
+        public static List<Payment> Search(Dictionary<string, string> filters = null, bool useCache = false) => 
+            GetList("/v1/payments/search", useCache, filters);
+
         #endregion
 
         #region Properties 
