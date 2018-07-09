@@ -50,15 +50,19 @@ namespace MercadoPagoSdk.CodeAnalysis
 
             var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
 
-            var type = invocation.GetTypeSymbol(semanticModel);
+            var type = semanticModel.GetTypeInfo(invocation).Type;
 
             if (!type.IsResourceBase())
                 return document;
 
-            if (!(invocation.Expression is MemberAccessExpressionSyntax maes))
-                return document;
+            var name =
+                invocation.Expression is MemberAccessExpressionSyntax maes
+                    ? maes.Name as IdentifierNameSyntax
+                    : invocation.Expression is IdentifierNameSyntax ins
+                        ? ins
+                        : null;
 
-            if (!(maes.Name is IdentifierNameSyntax name))
+            if (name == null)
                 return document;
 
             var validMethods =
@@ -107,7 +111,7 @@ namespace MercadoPagoSdk.CodeAnalysis
 
                 literalIndex = parameter.Index + parameter.Length;
             }
-
+            
             if (literalIndex < path.Length)
             {
                 var literalPart = path.Substring(literalIndex);

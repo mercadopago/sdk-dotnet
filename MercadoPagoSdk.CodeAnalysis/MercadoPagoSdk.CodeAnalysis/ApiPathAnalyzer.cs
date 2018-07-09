@@ -29,15 +29,22 @@ namespace MercadoPagoSdk.CodeAnalysis
 
             var invocation = context.Node.FindParent<InvocationExpressionSyntax>();
 
-            var type = invocation.GetTypeSymbol(context.SemanticModel);
+            if (invocation == null)
+                return;
+
+            var type = context.SemanticModel.GetTypeInfo(invocation).Type;
 
             if (!type.IsResourceBase())
                 return;
 
-            if (!(invocation.Expression is MemberAccessExpressionSyntax maes))
-                return;
+            var name =
+                invocation.Expression is MemberAccessExpressionSyntax maes
+                    ? maes.Name as IdentifierNameSyntax
+                    : invocation.Expression is IdentifierNameSyntax ins
+                        ? ins
+                        : null;
 
-            if (!(maes.Name is IdentifierNameSyntax name))
+            if (name == null)
                 return;
 
             var validMethods =
