@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using MercadoPago.Core.Linq;
 using MercadoPago.DataStructures.Generic;
 using Newtonsoft.Json.Linq;
 
@@ -113,6 +114,9 @@ namespace MercadoPago
 
             throw exception;
         }
+
+        internal static IQueryable<T> CreateQuery(string path, bool useCache = false) =>
+            new MpQueryable<T>(path, useCache);
 
         internal T Post(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1) 
             => Send(this as T, HttpMethod.POST, path, useCache, requestTimeOut, retries);

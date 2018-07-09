@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using Remotion.Linq;
-using Remotion.Linq.Clauses;
 
 namespace MercadoPago.Core.Linq
 {
@@ -22,47 +20,51 @@ namespace MercadoPago.Core.Linq
         {
             if (typeof(T) != typeof(TResource))
                 throw new InvalidOperationException();
-            
-            return Query(queryModel).Cast<T>();
+
+            var queryParameters = MpQueryModelVisitor.GetQueryParameters(queryModel);
+
+            return 
+                Resource<TResource>.GetList(_apiPath, _useCache, queryParameters)
+                                   .Cast<T>();
         }
 
-        private IEnumerable<TResource> Query(QueryModel queryModel)
-        {
-            var queryParameters = new Dictionary<string, string>();
+        //private IEnumerable<TResource> Query(QueryModel queryModel)
+        //{
+        //    var queryParameters = new Dictionary<string, string>();
 
-            void ParseExpression(BinaryExpression binary)
-            {
-                if (binary.NodeType != ExpressionType.Equal)
-                    throw new InvalidOperationException();
+        //    void ParseExpression(BinaryExpression binary)
+        //    {
+        //        if (binary.NodeType != ExpressionType.Equal)
+        //            throw new InvalidOperationException();
 
-                if (!(binary.Left is MemberExpression left))
-                    throw new InvalidOperationException();
+        //        if (!(binary.Left is MemberExpression left))
+        //            throw new InvalidOperationException();
 
-                if (!(binary.Right is ConstantExpression right))
-                    throw new InvalidOperationException();
+        //        if (!(binary.Right is ConstantExpression right))
+        //            throw new InvalidOperationException();
 
-                var key = left.Member.Name.ToSnakeCase();
-                var value = right.Value?.ToString();
+        //        var key = left.Member.Name.ToSnakeCase();
+        //        var value = right.Value?.ToString();
 
-                if (!string.IsNullOrEmpty(value))
-                    queryParameters.Add(key, value);
-            }
+        //        if (!string.IsNullOrEmpty(value))
+        //            queryParameters.Add(key, value);
+        //    }
 
-            var wheres = 
-                queryModel.BodyClauses
-                          .OfType<WhereClause>()
-                          .ToList();
+        //    var wheres = 
+        //        queryModel.BodyClauses
+        //                  .OfType<WhereClause>()
+        //                  .ToList();
 
-            foreach (var where in wheres)
-            {
-                if (!(where.Predicate is BinaryExpression binary))
-                    throw new InvalidOperationException();
+        //    foreach (var where in wheres)
+        //    {
+        //        if (!(where.Predicate is BinaryExpression binary))
+        //            throw new InvalidOperationException();
 
-                ParseExpression(binary);
-            }
+        //        ParseExpression(binary);
+        //    }
 
-            return Resource<TResource>.GetList(_apiPath, _useCache, queryParameters);
-        }
+        //    return Resource<TResource>.GetList(_apiPath, _useCache, queryParameters);
+        //}
 
         public T ExecuteSingle<T>(QueryModel queryModel, bool returnDefaultWhenEmpty)
         {

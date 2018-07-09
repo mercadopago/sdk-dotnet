@@ -77,8 +77,10 @@
     <Compile Include="Core\CustomDeserializationContractResolver.cs" />
     <Compile Include="Core\CustomSerializationContractResolver.cs" />
     <Compile Include="Core\HttpMethod.cs" />
+    <Compile Include="Core\Linq\MpQueryWhereExpressionVisitor.cs" />
     <Compile Include="Core\Linq\MpQueryable.cs" />
     <Compile Include="Core\Linq\MpQueryExecutor.cs" />
+    <Compile Include="Core\Linq\MpQueryModelVisitor.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />
     <Compile Include="Core\AttributeEndpoint.cs" />

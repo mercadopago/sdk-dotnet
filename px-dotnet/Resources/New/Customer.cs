@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MercadoPago.DataStructures.Customer;
 using Newtonsoft.Json.Linq;
 
@@ -14,6 +15,9 @@ namespace MercadoPago.Resources.New
         /// </summary>
         public static List<Customer> Search(Dictionary<string, string> filters, bool useCache = false) => 
             GetList("/v1/customers/search", useCache, filters);
+
+        public static IQueryable<Customer> Query(bool useCache = false) =>
+            CreateQuery("/v1/customers/search", useCache);
 
         /// <summary>
         /// Find a customer by ID.

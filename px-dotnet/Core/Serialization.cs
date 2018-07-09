@@ -36,6 +36,11 @@ namespace MercadoPago
                 }
             };
 
+        public static string SerializeValue(object value) =>
+            value != null
+                ? JToken.FromObject(value, Serializer).ToString()
+                : null;
+
         public static JObject Serialize<T>(this T resource) where T: ResourceBase => 
             JObject.FromObject(resource, Serializer);
         

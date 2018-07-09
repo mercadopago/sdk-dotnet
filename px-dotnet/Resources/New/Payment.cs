@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using MercadoPago.Common;
+using MercadoPago.Core.Linq;
 using MercadoPago.DataStructures.Payment;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -33,6 +35,9 @@ namespace MercadoPago.Resources.New
         /// </summary>
         public static List<Payment> Search(Dictionary<string, string> filters = null, bool useCache = false) => 
             GetList("/v1/payments/search", useCache, filters);
+
+        public static IQueryable<Payment> Query(bool useCache = false) =>
+            CreateQuery("/v1/payments/search", useCache);
 
         #endregion
 

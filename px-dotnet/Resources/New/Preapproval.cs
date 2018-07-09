@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using MercadoPago.DataStructures.Preapproval;
 
 namespace MercadoPago.New
@@ -13,6 +14,9 @@ namespace MercadoPago.New
         /// </summary>
         public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache = false) =>
             GetList("/preapproval/search", useCache, filters);
+
+        public static IQueryable<Preapproval> Query(bool useCache = false) =>
+            CreateQuery("/preapproval/search", useCache);
 
         /// <summary>
         /// Find a preapproval trought an unique identifier with Local Cache Flag

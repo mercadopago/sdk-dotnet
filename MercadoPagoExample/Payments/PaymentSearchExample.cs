@@ -1,4 +1,6 @@
 ﻿using MercadoPago.Resources.New;
+using System.Linq;
+using MercadoPago.Common;
 
 namespace MercadoPagoExample.Payments
 {
@@ -8,7 +10,17 @@ namespace MercadoPagoExample.Payments
         {
             Utils.LoadOrPromptAccessToken();
 
-            var payments = Payment.Search();
+            var allPayments = Payment.Search();
+
+            var approvedPayments = 
+                Payment.Query()
+                       .Where(x => x.Status == PaymentStatus.approved)
+                       .ToList();
+
+            var rejectedPayments = 
+                Payment.Query()
+                       .Where(x => x.Status == PaymentStatus.rejected)
+                       .ToList();
         }
     }
 }
