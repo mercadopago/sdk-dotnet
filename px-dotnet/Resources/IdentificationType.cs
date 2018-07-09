@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace MercadoPago.Resources.New
+namespace MercadoPago
 {
     public class IdentificationType : Resource<IdentificationType>
     {

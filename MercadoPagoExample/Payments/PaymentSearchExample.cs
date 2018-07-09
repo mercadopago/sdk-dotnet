@@ -1,4 +1,4 @@
-﻿using MercadoPago.Resources.New;
+﻿using MercadoPago.Resources;
 using System.Linq;
 using MercadoPago.Common;
 

@@ -1,265 +1,94 @@
-﻿using MercadoPago.DataStructures.Customer.Card;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MercadoPago.DataStructures.Customer.Card;
 
-namespace MercadoPago.Resources
+namespace MercadoPago
 {
-    public class Card : MPBase
+    public sealed class Card : Resource<Card>
     {
         #region Actions 
-        public static List<Card> All(String customerId)
-        {
-            return All(customerId, WITHOUT_CACHE);
-        }
-        
-        [GETEndpoint("/v1/customers/:customer_id/cards")]
-        public static List<Card> All(String customerId, bool useCache)
-        {
-            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "All", customerId, useCache);
-        }
+       
+        public static List<Card> All(string customerId, bool useCache = false) => 
+            GetList($"/v1/customers/{customerId}/cards", useCache);
 
-        public static Card FindById(string customerId, string id)
-        {
-            return FindById(customerId, id, WITHOUT_CACHE);
-        }
+        public static Card FindById(string customerId, string id, bool useCache = false) => 
+            Get($"/v1/customers/{customerId}/cards/{id}", useCache);
 
-        [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public static Card FindById(string customerId, string id, bool useCache)
-        {            
-            return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache);
-        }
+        public Card Save() => Post($"/v1/customers/{CustomerId}/cards/");
 
-        [POSTEndpoint("/v1/customers/:customer_id/cards/")]
-        public Card Save()
-        {
-            return (Card)ProcessMethod<Card>("Save", WITHOUT_CACHE);
-        }
+        public Card Update() => Put($"/v1/customers/{CustomerId}/cards/{Id}");
 
-        [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Update()
-        {
-            return (Card)ProcessMethod<Card>("Update", WITHOUT_CACHE);
-        }
+        public Card Delete() => Delete($"/v1/customers/{CustomerId}/cards/{Id}");
 
-        [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Delete()
-        {
-            return (Card)ProcessMethod("Delete", WITHOUT_CACHE);
-        } 
         #endregion
 
         #region Properties  
-        private string _id;
-        private string _customer_id;
-        private int? _expiration_month;
-        private int? _expiration_year;
-        private string _first_six_digits;
-        private string _last_four_digits;
-        private CardPaymentMethod? _payment_method;
-        private SecurityCode? _security_code;
-        private Issuer? _issuer;
-        private CardHolder? _card_holder;
-        private DateTime? _date_created;
-        private DateTime? _date_last_updated;
-        private string _token;
-        #endregion
 
-        #region Accessors
         /// <summary>
         /// Card ID
         /// </summary>
-        public string Id
-        {
-            get
-            {
-                return _id;
-            } 
-            set
-            {
-                _id = value;
-            }
-        }
+        public string Id { get; set; }
+
         /// <summary>
         /// Customer ID
         /// </summary>
-        public string CustomerId
-        {
-            get
-            {
-                return _customer_id;
-            } 
-            set
-            {
-                _customer_id = value;
-            }
-        }
+        public string CustomerId { get; set; }
+
         /// <summary>
         /// Card's expiration month
         /// </summary>
-        public int? ExpirationMonth
-        {
-            get
-            {
-                return _expiration_month;
-            }
+        public int? ExpirationMonth { get; set; }
 
-            set
-            {
-                _expiration_month = value;
-            }
-        }
         /// <summary>
         /// Card's expiration year
         /// </summary>
-        public int? ExpirationYear
-        {
-            get
-            {
-                return _expiration_year;
-            }
+        public int? ExpirationYear { get; set; }
 
-            set
-            {
-                _expiration_year = value;
-            }
-        }
         /// <summary>
         /// Card's first six digits
         /// </summary>
-        public string FirstSixDigits
-        {
-            get
-            {
-                return _first_six_digits;
-            }
+        public string FirstSixDigits { get; set; }
 
-            set
-            {
-                _first_six_digits = value;
-            }
-        }
         /// <summary>
         /// Card's last four digits
         /// </summary>
-        public string LastFourDigits
-        {
-            get
-            {
-                return _last_four_digits;
-            }
+        public string LastFourDigits { get; set; }
 
-            set
-            {
-                _last_four_digits = value;
-            }
-        }
         /// <summary>
         /// Payment method information
         /// </summary>
-        public CardPaymentMethod? PaymentMethod
-        {
-            get
-            {
-                return _payment_method;
-            }
+        public CardPaymentMethod? PaymentMethod { get; set; }
 
-            set
-            {
-                _payment_method = value;
-            }
-        }
         /// <summary>
         /// Security code information
         /// </summary>
-        public SecurityCode? SecurityCode
-        {
-            get
-            {
-                return _security_code;
-            }
+        public SecurityCode? SecurityCode { get; set; }
 
-            set
-            {
-                _security_code = value;
-            }
-        }
         /// <summary>
         /// Issuer information
         /// </summary>
-        public Issuer? Issuer 
-        {
-            get
-            {
-                return _issuer;
-            }
+        public Issuer? Issuer { get; set; }
 
-            set
-            {
-                _issuer = value;
-            }
-        }
         /// <summary>
         /// Card holder information
         /// </summary>
-        public CardHolder? CardHolder
-        {
-            get
-            {
-                return _card_holder;
-            }
+        public CardHolder? CardHolder { get; set; }
 
-            set
-            {
-                _card_holder = value;
-            }
-        }
         /// <summary>
         /// Card's date created
         /// </summary>
-        public DateTime? DateCreated 
-        {
-            get
-            {
-                return _date_created;
-            }
+        public DateTime? DateCreated { get; set; }
 
-            set
-            {
-                _date_created = value;
-            }
-        }
         /// <summary>
         /// Card's last modified date
         /// </summary>
-        public DateTime? DateLastUpdated 
-        {
-            get
-            {
-                return _date_last_updated;
-            }
+        public DateTime? DateLastUpdated { get; set; }
 
-            set
-            {
-                _date_last_updated = value;
-            }
-        }
         /// <summary>
         /// Card Token identifier
         /// </summary>
-        public string Token {
-            get
-            {
-                return _token;
-            }
+        public string Token { get; set; }
 
-            set
-            {
-                _token = value;
-            }
-        }
-          
         #endregion
     }
 }

@@ -1,191 +1,44 @@
 ﻿using System;
-using MercadoPago.Common;
 using MercadoPago.DataStructures.Plan;
 
-namespace MercadoPago.Resources
+namespace MercadoPago
 {
-    public class Plan : MPBase
+    public sealed class Plan : Resource<Plan>
     {
         #region Actions
 
-        [GETEndpoint("/v1/plans/:id")]
-        public static Plan Load(string id, bool useCache)
-        {
-            return (Plan)ProcessMethod<Plan>(typeof(Plan), "Load", id, useCache);
-        }
+        public static Plan Load(string id, bool useCache = false) => Get($"/v1/plans/{id}", useCache);
 
-        [POSTEndpoint("/v1/plans")]
-        public Plan Save()
-        {
-            return (Plan)ProcessMethod<Plan>("Save", WITHOUT_CACHE);
-        }
+        public Plan Save() => Post("/v1/plans");
 
-        [PUTEndpoint("/v1/plans/:id")]
-        public Plan Update()
-        {
-            return (Plan)ProcessMethod<Plan>("Update", WITHOUT_CACHE);
-        }
+        public Plan Update() => Put($"/v1/plans/{Id}");
 
         #endregion
 
         #region Properties 
-        private string id;
-        private decimal application_fee;
-        private string status;
-        private string description;
-        private string external_reference;
-        private DateTime? date_created;
-        private DateTime? last_modified;
-        private AutoRecurring auto_recurring;
-        private Boolean live_mode;
-        private decimal setup_fee;
-        private string metadata; 
-        #endregion
 
+        public string Id { get; set; }
 
-        #region Accessors 
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
+        public decimal Application_fee { get; set; }
 
-            set
-            {
-                id = value;
-            }
-        }
+        public string Status { get; set; }
 
-        public decimal Application_fee
-        {
-            get
-            {
-                return application_fee;
-            }
+        public string Description { get; set; }
 
-            set
-            {
-                application_fee = value;
-            }
-        }
+        public string External_reference { get; set; }
 
-        public string Status
-        {
-            get
-            {
-                return status;
-            }
+        public DateTime? Date_created { get; set; }
 
-            set
-            {
-                status = value;
-            }
-        }
+        public DateTime? Last_modified { get; set; }
 
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
+        public AutoRecurring Auto_recurring { get; set; }
 
-            set
-            {
-                description = value;
-            }
-        }
+        public bool Live_mode { get; set; }
 
-        public string External_reference
-        {
-            get
-            {
-                return external_reference;
-            }
+        public decimal Setup_fee { get; set; }
 
-            set
-            {
-                external_reference = value;
-            }
-        }
+        public string Metadata { get; set; }
 
-        public DateTime? Date_created
-        {
-            get
-            {
-                return date_created;
-            }
-
-            set
-            {
-                date_created = value;
-            }
-        }
-
-        public DateTime? Last_modified
-        {
-            get
-            {
-                return last_modified;
-            }
-
-            set
-            {
-                last_modified = value;
-            }
-        }
-
-        public AutoRecurring Auto_recurring
-        {
-            get
-            {
-                return auto_recurring;
-            }
-
-            set
-            {
-                auto_recurring = value;
-            }
-        }
-
-        public bool Live_mode
-        {
-            get
-            {
-                return live_mode;
-            }
-
-            set
-            {
-                live_mode = value;
-            }
-        }
-
-        public decimal Setup_fee
-        {
-            get
-            {
-                return setup_fee;
-            }
-
-            set
-            {
-                setup_fee = value;
-            }
-        }
-
-        public string Metadata
-        {
-            get
-            {
-                return metadata;
-            }
-
-            set
-            {
-                metadata = value;
-            }
-        }
         #endregion
     }
 }
