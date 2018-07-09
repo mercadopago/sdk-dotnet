@@ -17,6 +17,7 @@ namespace MercadoPagoExample
             Console.WriteLine("\t1.1. Pago con Checkout Web");
             Console.WriteLine("\t1.2. Pago via API");
             Console.WriteLine("\t1.3. Pago con Tarjetas Guardadas");
+            Console.WriteLine("\t1.4. Búsqueda de Pagos");
             Console.WriteLine("5. Exit");
 
             var selection = Console.ReadLine();
@@ -40,6 +41,9 @@ namespace MercadoPagoExample
                         break;
                     case 1.3m:
                         SavedCardsExample.Run();
+                        break;
+                    case 1.4m:
+                        PaymentSearchExample.Run();
                         break;
                     case 5m:
                         return;

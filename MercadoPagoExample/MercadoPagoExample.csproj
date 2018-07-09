@@ -34,6 +34,7 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Payments\PaymentSearchExample.cs" />
     <Compile Include="Payments\SavedCardsExample.cs" />
     <Compile Include="Payments\WebCheckoutExample.cs" />
     <Compile Include="Program.cs" />
