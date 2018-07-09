@@ -10,7 +10,7 @@ using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.Resources.New
 {
-    public class Preference: Resource<Preference>
+    public sealed class Preference: Resource<Preference>
     {
         #region Actions
         

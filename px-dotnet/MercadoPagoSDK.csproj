@@ -89,6 +89,13 @@
     <Compile Include="Exceptions\MPConfException.cs" />
     <Compile Include="Exceptions\MPException.cs" />
     <Compile Include="Exceptions\MPRESTException.cs" />
+    <Compile Include="Resources\New\Card.cs" />
+    <Compile Include="Resources\New\Customer.cs" />
+    <Compile Include="Resources\New\MerchantOrder.cs" />
+    <Compile Include="Resources\New\Payment.cs" />
+    <Compile Include="Resources\New\PaymentMethod.cs" />
+    <Compile Include="Resources\New\Plan.cs" />
+    <Compile Include="Resources\New\Preapproval.cs" />
     <Compile Include="Resources\New\Preference.cs" />
     <Compile Include="SDK.cs" />
     <Compile Include="Net\MPRESTClient.cs" />
