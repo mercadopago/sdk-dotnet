@@ -50,6 +50,9 @@
     <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net35\Remotion.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -57,7 +60,6 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="nunit.framework">
@@ -75,6 +77,8 @@
     <Compile Include="Core\CustomDeserializationContractResolver.cs" />
     <Compile Include="Core\CustomSerializationContractResolver.cs" />
     <Compile Include="Core\HttpMethod.cs" />
+    <Compile Include="Core\Linq\MpQueryable.cs" />
+    <Compile Include="Core\Linq\MpQueryExecutor.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
     <Compile Include="Core\MPBase.cs" />
     <Compile Include="Core\AttributeEndpoint.cs" />
