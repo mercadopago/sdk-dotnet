@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using MercadoPago.DataStructures.MerchantOrder;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class MerchantOrder : Resource<MerchantOrder>
     {

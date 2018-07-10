@@ -8,7 +8,7 @@ using MercadoPago.DataStructures.Preference;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class Preference: Resource<Preference>
     {

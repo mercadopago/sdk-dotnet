@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace MercadoPagoSDK.Test.Validations
 {
     [TestFixture]
-    public class ValidationTest : MPBase
+    public class ValidationTest : ResourceBase
     {
         [RegularExpression(@"^(?:.*[a-z]){7,}$")]
         public string Name { get; set; }

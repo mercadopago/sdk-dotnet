@@ -1,7 +1,7 @@
 ﻿using System;
 using MercadoPago.DataStructures.Plan;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class Plan : Resource<Plan>
     {

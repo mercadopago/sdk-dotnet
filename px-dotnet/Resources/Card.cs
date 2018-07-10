@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using MercadoPago.DataStructures.Customer.Card;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class Card : Resource<Card>
     {

@@ -84,7 +84,7 @@ namespace MercadoPago.Validation
             }
         }
 
-        public static ValidationResult GetValidationResult<T>(T instance) where T : MPBase
+        public static ValidationResult GetValidationResult<T>(T instance) where T : ResourceBase
         {
             if (instance == null)
                 throw new ArgumentNullException(nameof(instance));
@@ -94,7 +94,7 @@ namespace MercadoPago.Validation
             return new ValidationResult(validationErrors);
         }
 
-        public static void Validate<T>(T instance) where T : MPBase
+        public static void Validate<T>(T instance) where T : ResourceBase
         {
             var result = GetValidationResult(instance);
 
@@ -131,7 +131,7 @@ namespace MercadoPago.Validation
         }
 
         private static bool IsSdkType(this Type type) =>
-            type.Assembly.FullName == typeof(MPBase).Assembly.FullName ||
+            type.Assembly.FullName == typeof(ResourceBase).Assembly.FullName ||
             type.IsGenericType && type.GetGenericArguments().Any(IsSdkType);
     }
 }

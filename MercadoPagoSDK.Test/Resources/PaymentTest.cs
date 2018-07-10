@@ -60,7 +60,7 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Payment_FindById_ShouldBeOk()
         {
-            Payment payment = Payment.FindById(LastPayment.Id);
+            Payment payment = Payment.FindById((int)LastPayment.Id);
             Console.WriteLine("Payment founded");
             Assert.AreEqual("Pago de seguro", payment.Description);
             Assert.AreEqual("mlovera@kinexo.com", payment.Payer.Email);

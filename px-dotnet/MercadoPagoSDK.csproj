@@ -73,7 +73,6 @@
     <Compile Include="Common\FrequencyType.cs" />
     <Compile Include="Core\Annotations\Idempotent.cs" />
     <Compile Include="Core\Annotations\PayloadType.cs" />
-    <Compile Include="Core\Annotations\UserToken.cs" />
     <Compile Include="Core\CustomDeserializationContractResolver.cs" />
     <Compile Include="Core\CustomSerializationContractResolver.cs" />
     <Compile Include="Core\HttpMethod.cs" />
@@ -82,8 +81,6 @@
     <Compile Include="Core\Linq\MpQueryExecutor.cs" />
     <Compile Include="Core\Linq\MpQueryModelVisitor.cs" />
     <Compile Include="Core\MPAPIResponse.cs" />
-    <Compile Include="Core\MPBase.cs" />
-    <Compile Include="Core\AttributeEndpoint.cs" />
     <Compile Include="Core\MPCache.cs" />
     <Compile Include="Core\MPCoreUtils.cs" />
     <Compile Include="Core\MPCredentials.cs" />

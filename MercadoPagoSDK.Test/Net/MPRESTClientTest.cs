@@ -227,7 +227,7 @@ namespace MercadoPagoSDK.Test
 
         [Idempotent]
         [TestFixture()]
-        public class DummyClass : MPBase
+        public class DummyClass : ResourceBase
         {
             [Required]
             [RegularExpression(@"^(?:.*[a-z]){7,}$")]

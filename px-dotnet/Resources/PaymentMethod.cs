@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MercadoPago.Common;
 using MercadoPago.DataStructures.PaymentMethod;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class PaymentMethod : Resource<PaymentMethod>
     {

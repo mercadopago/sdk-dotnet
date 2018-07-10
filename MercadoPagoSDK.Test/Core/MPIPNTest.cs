@@ -100,7 +100,7 @@ namespace MercadoPagoSDK.Test.Core
 
             var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, payment.Id.ToString());
 
-            Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));
+            Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(ResourceBase)));
             Assert.AreEqual(payment.Id, ((Payment)resource).Id);   
             Assert.AreEqual(payment.Description, ((Payment)resource).Description);
             Assert.AreEqual(payment.PaymentMethodId, ((Payment)resource).PaymentMethodId);

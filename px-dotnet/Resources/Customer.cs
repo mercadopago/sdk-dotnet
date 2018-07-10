@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using MercadoPago.DataStructures.Customer;
+using MercadoPago.Resources;
 using Newtonsoft.Json.Linq;
 
 namespace MercadoPago

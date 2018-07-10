@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public class Subscription
     {

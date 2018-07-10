@@ -28,7 +28,7 @@ namespace MercadoPago.Core
             return null;
         }
 
-        public static MPBase Manage<T>(string topic, string id) where T : MPBase
+        public static T Manage<T>(string topic, string id) where T : ResourceBase
         {
             
             if (string.IsNullOrEmpty(topic) || string.IsNullOrEmpty(id))
@@ -36,12 +36,12 @@ namespace MercadoPago.Core
                 throw new MPException("Topic and Id can not be null in the IPN request.");
             }
 
-            MPBase resourceObject = null;
+            T resourceObject = null;
                         
             try 
             {
                 Type classType = GetType(topic);
-                if (!classType.IsSubclassOf(typeof(MPBase))) 
+                if (!classType.IsSubclassOf(typeof(ResourceBase))) 
                 {
                     throw new MPException(classType.Name + " does not extend from MPBase");
                 }

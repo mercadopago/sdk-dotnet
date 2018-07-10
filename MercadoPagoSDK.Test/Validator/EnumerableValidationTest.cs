@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace MercadoPagoSDK.Test.Validations
 {
     [TestFixture]
-    public class EnumerableValidationTest : MPBase
+    public class EnumerableValidationTest : ResourceBase
     {
         public List<Item> Items { get; set; }
 

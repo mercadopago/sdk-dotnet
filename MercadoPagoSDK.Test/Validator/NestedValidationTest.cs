@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace MercadoPagoSDK.Test.Validations
 {
     [TestFixture]
-    public class NestedValidationTest: MPBase
+    public class NestedValidationTest: ResourceBase
     {
         [Required]
         public Payer? Payer { get; set; }

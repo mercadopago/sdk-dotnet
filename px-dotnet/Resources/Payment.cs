@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class Payment : Resource<Payment>
     {
@@ -29,7 +29,9 @@ namespace MercadoPago
         /// Update editable properties
         /// </summary>
         public Payment Update() => Put($"/v1/payments/{Id}");
-        
+
+        public static List<Payment> All(bool useCache = false) => Search(null, useCache);
+
         /// <summary>
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>

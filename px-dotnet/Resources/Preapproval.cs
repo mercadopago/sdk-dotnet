@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using MercadoPago.DataStructures.Preapproval;
 
-namespace MercadoPago
+namespace MercadoPago.Resources
 {
     public sealed class Preapproval : Resource<Preapproval>
     {
