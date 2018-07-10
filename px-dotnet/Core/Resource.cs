@@ -5,6 +5,7 @@ using System.Net;
 using System.Reflection;
 using MercadoPago.Core.Linq;
 using MercadoPago.DataStructures.Generic;
+using MercadoPago.Validation;
 using Newtonsoft.Json.Linq;
 
 namespace MercadoPago
@@ -132,10 +133,15 @@ namespace MercadoPago
 
         internal static T Send(T resource, HttpMethod httpMethod, string path, bool useCache = false, int requestTimeOut = 0, int retries = 1)
         {
+            var postOrPut = httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT;
+
             var payload =
-                httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT
+                postOrPut
                     ? resource.ToJson()
                     : null;
+
+            if (postOrPut)
+                Validator.Validate(resource);
 
             var response = Invoke(httpMethod, path, PayloadType.JSON, payload, resource.UserAccessToken, null, useCache, requestTimeOut, retries);
 
