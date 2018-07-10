@@ -11,7 +11,7 @@ using System.Collections.Specialized;
 
 namespace MercadoPago
 {
-    public class MPRESTClient
+    internal class MPRESTClient
     {
 
         public string ProxyHostName = null;

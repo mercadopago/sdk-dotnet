@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MercadoPago
 {
-    public static class MPCoreUtils
+    internal static class MPCoreUtils
     {
         /// <summary>
         /// Find specified tokens.

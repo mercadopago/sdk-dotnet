@@ -9,7 +9,7 @@ namespace MercadoPago
     /// <summary>
     /// class to simulate HttpClient class, available from .NET 4.0 onward.
     /// </summary>
-    public class MPRequest
+    internal class MPRequest
     {
         #region Variables
         public HttpWebRequest Request { get; set; }

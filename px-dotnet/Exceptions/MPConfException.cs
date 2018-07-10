@@ -7,7 +7,7 @@ using System.Text;
 namespace MercadoPago
 {
     [Serializable]
-    public class MPConfException : MPException
+    internal class MPConfException : MPException
     {
         #region Constructors
         /// <summary>

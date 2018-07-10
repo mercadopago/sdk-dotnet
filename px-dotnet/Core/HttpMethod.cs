@@ -8,7 +8,7 @@ namespace MercadoPago
     /// <summary>
     /// Enum to detail the type of request we will use later.
     /// </summary>
-    public enum HttpMethod
+    internal enum HttpMethod
     {
         GET,
         POST,

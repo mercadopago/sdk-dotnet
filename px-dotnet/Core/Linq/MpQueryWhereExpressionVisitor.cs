@@ -8,7 +8,7 @@ using Remotion.Linq.Parsing;
 
 namespace MercadoPago.Core.Linq
 {
-    public class MpQueryWhereExpressionVisitor : ThrowingExpressionVisitor
+    internal class MpQueryWhereExpressionVisitor : ThrowingExpressionVisitor
     {
         private readonly Dictionary<string, string> _queryParameters;
 

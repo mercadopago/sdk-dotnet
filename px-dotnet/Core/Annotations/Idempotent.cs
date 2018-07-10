@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MercadoPago
 {
-    public class Idempotent : Attribute
+    internal class Idempotent : Attribute
     {
         #region Variables
         public string GUID { get; set; }

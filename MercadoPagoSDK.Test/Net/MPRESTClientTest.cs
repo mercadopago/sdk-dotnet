@@ -14,7 +14,7 @@ using ValidationRange = System.ComponentModel.DataAnnotations.RangeAttribute;
 namespace MercadoPagoSDK.Test
 {
     [TestFixture()]
-    public class MPRESTClientTest : MPRESTClient
+    internal class MPRESTClientTest : MPRESTClient
     {
 
         [Test()]

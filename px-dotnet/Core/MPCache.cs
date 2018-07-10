@@ -9,7 +9,7 @@ namespace MercadoPago
     /// <summary>
     /// Class for managing cached resources.
     /// </summary>
-    public class MPCache
+    internal class MPCache
     {
         /// <summary>
         /// Adds a response to the cache structure.

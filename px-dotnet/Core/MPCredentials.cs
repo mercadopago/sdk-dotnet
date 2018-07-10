@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MercadoPago
 {
-    public class MPCredentials
+    internal class MPCredentials
     {
         /// <summary>
         /// Gets access token for current ClientId and ClientSecret

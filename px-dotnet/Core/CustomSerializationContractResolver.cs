@@ -8,7 +8,7 @@ using System.Text;
 
 namespace MercadoPago
 {
-    public class CustomSerializationContractResolver : DefaultContractResolver
+    internal class CustomSerializationContractResolver : DefaultContractResolver
     {
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         { 
