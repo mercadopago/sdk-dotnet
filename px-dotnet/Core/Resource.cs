@@ -18,6 +18,10 @@ namespace MercadoPago
 
         internal JObject LastKnownJson { get; set; }
 
+        /// <summary>
+        /// Can be used to provider per-instance or per-request Access Tokens for the MercadoPago API. 
+        /// If left null/empty, then the SDK.AccessToken is used instead.
+        /// </summary>
         public string UserAccessToken { get; set; }
 
         internal JObject ToJson()
