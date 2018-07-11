@@ -37,25 +37,25 @@ namespace MercadoPago
             this.ProxyPort = proxyPort;
         }
 
-		/// <summary>
-		/// Execute a request to an endpoint.
-		/// </summary>
-		/// <param name="httpMethod">Method to use in the request.</param>
-		/// <param name="path">Endpoint we are pointing.</param>
-		/// <param name="payloadType">Type of payload we are sending along with the request.</param>
-		/// <param name="payload">The data we are sending.</param>
-		/// <param name="colHeaders">Extra headers to send with the request.</param>
-		/// <returns>Api response with the result of the call.</returns>
-		public MPAPIResponse ExecuteRequest(
-            HttpMethod httpMethod, 
-            string path, 
+        /// <summary>
+        /// Execute a request to an endpoint.
+        /// </summary>
+        /// <param name="httpMethod">Method to use in the request.</param>
+        /// <param name="path">Endpoint we are pointing.</param>
+        /// <param name="payloadType">Type of payload we are sending along with the request.</param>
+        /// <param name="payload">The data we are sending.</param>
+        /// <param name="colHeaders">Extra headers to send with the request.</param>
+        /// <returns>Api response with the result of the call.</returns>
+        public MPAPIResponse ExecuteRequest(
+            HttpMethod httpMethod,
+            string path,
             PayloadType payloadType,
-            JObject payload, 
+            JObject payload,
             WebHeaderCollection colHeaders,
             int requestTimeout,
             int retries)
         {
- 
+
             try
             {
                 return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, requestTimeout, retries);
@@ -71,50 +71,53 @@ namespace MercadoPago
         /// </summary>
         /// <returns>Api response with the result of the call.</returns>
         public MPAPIResponse ExecuteRequestCore(
-            HttpMethod httpMethod, 
+            HttpMethod httpMethod,
             string path,
-            PayloadType payloadType, 
-            JObject payload, 
+            PayloadType payloadType,
+            JObject payload,
             WebHeaderCollection colHeaders,
             int connectionTimeout,
             int retries)
         {
-             
- 
-             
-                MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
-                string result = string.Empty; 
 
-                if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
+
+
+            MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
+            string result = string.Empty;
+
+            if (new HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
+            {
+                Stream requestStream = mpRequest.Request.GetRequestStream();
+                requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
+                requestStream.Close();
+            }
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
                 {
-                    Stream requestStream = mpRequest.Request.GetRequestStream();
-                    requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
-                    requestStream.Close();
+
+                    return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Status == WebExceptionStatus.ProtocolError)
+                {
+                    HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
+                    return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse);
+                }
+                else
+                {
+                    if (--retries == 0)
+                        throw;
+                    return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 }
 
-                try
-                {
-                    using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
-                    { 
-                        
-                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
-                    }
-                }
-                catch (WebException ex)
-                {
-                    if (ex.Status == WebExceptionStatus.ProtocolError){
-                        HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
-                        return new MPAPIResponse(httpMethod, mpRequest.Request, payload, errorResponse); 
-                    } else {
-                        if (--retries == 0)
-                            throw;
-                        return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
-                    }
-                     
-                }
-                
-             
-             
+            }
+
+
+
         }
 
         /// <summary>
@@ -166,17 +169,17 @@ namespace MercadoPago
             mpRequest.Request = (HttpWebRequest)HttpWebRequest.Create(path);
             mpRequest.Request.Method = httpMethod.ToString();
 
-            if(connectionTimeout > 0)
+            if (connectionTimeout > 0)
             {
                 mpRequest.Request.Timeout = connectionTimeout;
-            }            
+            }
 
             if (colHeaders != null)
             {
                 foreach (var header in colHeaders)
                 {
                     mpRequest.Request.Headers.Add(header.ToString(), colHeaders[header.ToString()]);
-                }                
+                }
             }
 
             mpRequest.Request.ContentType = "application/json";
@@ -185,7 +188,7 @@ namespace MercadoPago
             if (payload != null) // POST & PUT
             {
                 byte[] data = null;
-                if(payloadType != PayloadType.JSON)
+                if (payloadType != PayloadType.JSON)
                 {
                     var parametersDict = payload.ToObject<Dictionary<string, string>>();
                     StringBuilder parametersString = new StringBuilder();
@@ -202,7 +205,7 @@ namespace MercadoPago
                 {
                     data = Encoding.ASCII.GetBytes(payload.ToString());
                 }
-                                
+
                 mpRequest.Request.ContentLength = data.Length;
                 mpRequest.Request.ContentType = payloadType == PayloadType.JSON ? "application/json" : "application/x-www-form-urlencoded";
                 mpRequest.RequestPayload = data;
@@ -210,8 +213,7 @@ namespace MercadoPago
 
             return mpRequest;
         }
-               
+
         #endregion
     }
 }
-

@@ -30,11 +30,12 @@ namespace MercadoPago
         protected RecuperableError _errors;
         public RecuperableError Errors
         {
-            get { return  _errors; }
+            get { return _errors; }
             private set { _errors = value; }
         }
 
-        public void DelegateErrors(RecuperableError DelegatedErrors){
+        public void DelegateErrors(RecuperableError DelegatedErrors)
+        {
             this._errors = DelegatedErrors;
         }
 
@@ -63,7 +64,7 @@ namespace MercadoPago
         public JObject GetLastKnownJson()
         {
             return this._lastKnownJson;
-        } 
+        }
         /// <summary>
         /// Checks if current resource needs idempotency key and set IdempotencyKey if positive.
         /// </summary>
@@ -86,7 +87,7 @@ namespace MercadoPago
             Dictionary<string, string> mapParams = null;
             return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache);
         }
-    
+
         public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
@@ -167,7 +168,7 @@ namespace MercadoPago
 
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
         {
- 
+
 
             //Validates the method executed
             if (!ALLOWED_BULK_METHODS.Contains(methodName))
@@ -189,13 +190,13 @@ namespace MercadoPago
             WebHeaderCollection colHeaders = GetStandardHeaders();
 
             MPAPIResponse response = CallAPI(httpMethod, path, payloadType, null, colHeaders, useCache, connectionTimeout, retries);
-            
+
             List<T> resourceArray = new List<T>();
 
             if (response.StatusCode >= 200 &&
                     response.StatusCode < 300)
-            { 
-                resourceArray = FillArrayWithResponseData<T>(clazz, response); 
+            {
+                resourceArray = FillArrayWithResponseData<T>(clazz, response);
             }
 
             return resourceArray;
@@ -214,7 +215,7 @@ namespace MercadoPago
         /// <returns>Generic type object, containing information about retrieval process.</returns>
         protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
         {
- 
+
             if (resource == null)
             {
                 try
@@ -230,15 +231,15 @@ namespace MercadoPago
             var clazzMethod = GetAnnotatedMethod(clazz, methodName);
             var restData = GetRestInformation(clazzMethod);
 
-            HttpMethod httpMethod = (HttpMethod)restData["method"]; 
-            string path = ParsePath(restData["path"].ToString(), parameters, resource); 
+            HttpMethod httpMethod = (HttpMethod)restData["method"];
+            string path = ParsePath(restData["path"].ToString(), parameters, resource);
 
             PayloadType payloadType = (PayloadType)restData["payloadType"];
-            JObject payload = GeneratePayload(httpMethod, resource); 
+            JObject payload = GeneratePayload(httpMethod, resource);
 
             int requestTimeout = (int)restData["requestTimeout"];
-            int retries = (int)restData["retries"]; 
-            WebHeaderCollection colHeaders = new WebHeaderCollection(); 
+            int retries = (int)restData["retries"];
+            WebHeaderCollection colHeaders = new WebHeaderCollection();
             MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);
 
             if (response.StatusCode >= 200 && response.StatusCode < 300)
@@ -252,24 +253,28 @@ namespace MercadoPago
                 {
                     resource = null;
                 }
-            } else if (response.StatusCode >= 400 && response.StatusCode < 500) { 
-                BadParamsError badParamsError = MPCoreUtils.GetBadParamsError(response.StringResponse); 
+            }
+            else if (response.StatusCode >= 400 && response.StatusCode < 500)
+            {
+                BadParamsError badParamsError = MPCoreUtils.GetBadParamsError(response.StringResponse);
                 resource.Errors = badParamsError;
-            } else {
-                
+            }
+            else
+            {
+
                 MPException webserverError = new MPException()
                 {
                     StatusCode = response.StatusCode,
                     ErrorMessage = response.StringResponse
                 };
 
-                webserverError.Cause.Add(response.JsonObjectResponse.ToString()); 
+                webserverError.Cause.Add(response.JsonObjectResponse.ToString());
 
             }
 
 
             return resource;
-        }  
+        }
 
         /// <summary>
         /// Transforms all attributes members of the instance in a JSON String. Only for POST and PUT methods.
@@ -284,7 +289,9 @@ namespace MercadoPago
                 JObject actualJSON = MPCoreUtils.GetJsonFromResource(resource);
                 JObject oldJSON = resource.GetLastKnownJson();
                 return getDiffFromLastChange(actualJSON, oldJSON);
-            } else if (httpMethod.ToString() == "POST") {
+            }
+            else if (httpMethod.ToString() == "POST")
+            {
                 return MPCoreUtils.GetJsonFromResource(resource);
             }
             else
@@ -296,12 +303,12 @@ namespace MercadoPago
         public static JObject getDiffFromLastChange(JToken jactual, JToken jold)
         {
             JObject new_jobject = new JObject();
- 
+
             if (((JObject)jactual).Properties().Count() > 0)
             {
                 foreach (JProperty x in ((JObject)jactual).Properties())
-                { 
-                    string key = ToSnakeCase(x.Name); 
+                {
+                    string key = ToSnakeCase(x.Name);
 
                     if (x.Value.GetType() == typeof(JObject))
                     {
@@ -354,7 +361,7 @@ namespace MercadoPago
                 return null;
             }
         }
- 
+
         /// <summary>
         /// Fills all the attributes members of the Resource obj.
         /// </summary>
@@ -383,7 +390,7 @@ namespace MercadoPago
             List<T> resourceArray = new List<T>();
             if (response.JsonObjectResponse != null)
             {
-                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse); 
+                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse);
 
                 if (jsonArray != null)
                 {
@@ -394,7 +401,9 @@ namespace MercadoPago
                         resourceArray.Add(resource);
                     }
                 }
-            } else {
+            }
+            else
+            {
                 JArray jsonArray = MPCoreUtils.GetJArrayFromStringResponse<T>(response.StringResponse);
                 if (jsonArray != null)
                 {
@@ -583,38 +592,39 @@ namespace MercadoPago
         /// <returns>Processed path to call the API.</returns>
         public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
         {
- 
+
             StringBuilder result = new StringBuilder();
 
             bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
- 
-            string param_pattern = @":([a-z0-9_]+)"; 
+
+            string param_pattern = @":([a-z0-9_]+)";
             MatchCollection matches = Regex.Matches(path, param_pattern);
- 
+
 
             foreach (Match param in matches)
-            { 
+            {
                 string param_string = param.Value.Replace(":", "");
 
-                if (mapParams != null) { 
+                if (mapParams != null)
+                {
                     foreach (KeyValuePair<string, string> entry in mapParams)
-                    { 
+                    {
                         if (param_string == entry.Key)
                         {
                             path = path.Replace(param.Value, entry.Value);
                         }
                     }
                 }
- 
+
                 JObject json = JObject.FromObject(resource);
- 
+
                 var resource_value = json.GetValue(ToPascalCase(param_string));
                 if (resource_value != null)
                 {
                     path = path.Replace(param.Value, resource_value.ToString());
                 }
             }
- 
+
 
             // URL
             result.Insert(0, SDK.BaseUrl);
@@ -633,7 +643,7 @@ namespace MercadoPago
             {
                 foreach (var elem in mapParams)
                 {
-                    
+
                     result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
                 }
             }
@@ -739,7 +749,7 @@ namespace MercadoPago
         private static WebHeaderCollection GetStandardHeaders()
         {
             WebHeaderCollection colHeaders = new WebHeaderCollection();
-            colHeaders.Add("x-product-id", "BC32BHVTRPP001U8NHL0"); 
+            colHeaders.Add("x-product-id", "BC32BHVTRPP001U8NHL0");
             return colHeaders;
         }
 
@@ -769,7 +779,8 @@ namespace MercadoPago
             const string pattern = @"(-|_)\w{1}|^\w";
             return Regex.Replace(text, pattern, match => match.Value.Replace("-", string.Empty).Replace("_", string.Empty).ToUpper());
         }
-        public static string ToSnakeCase(string text){
+        public static string ToSnakeCase(string text)
+        {
             const string pattern = @"(?<=[a-z0-9])[A-Z\s]";
             return Regex.Replace(text, pattern, "_$0").ToLower();
         }

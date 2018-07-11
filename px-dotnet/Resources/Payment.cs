@@ -1,60 +1,52 @@
-﻿using System;
+﻿using MercadoPago.DataStructures.Payment;
+using MercadoPago.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using MercadoPago.Common;
-using MercadoPago.Core.Linq;
-using MercadoPago.DataStructures.Payment;
-using Newtonsoft.Json;
+using System.Text;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 
 namespace MercadoPago.Resources
 {
-    public sealed class Payment : Resource<Payment>
+
+    /// <summary>
+    /// This service allows you to create, modify or read payments
+    /// </summary>
+    public class Payment : Resource<Payment>
     {
         #region Actions
-
-        /// <summary>
-        /// Find a payment through an unique identifier
-        /// </summary>
-        [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(long? id)
-        {
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), WITHOUT_CACHE);
-        } 
         /// <summary>
         /// Find a payment trought an unique identifier with Local Cache Flag
         /// </summary>
-        [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(int? id, bool useCache)
-        {
-            
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
-        } 
+        public static Payment FindById(int? id, bool useCache = false) => Get($"/v1/payments/{id}", useCache);
+
         /// <summary>
         /// Save a new payment
         /// </summary>
-        [POSTEndpoint("/v1/payments")]
-        public Payment Save()
-        {
-            return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
-        }
+        public Payment Save() => Post("/v1/payments");
+
         /// <summary>
         /// Update editable properties
         /// </summary>
         public Payment Update() => Put($"/v1/payments/{Id}");
 
-        public static List<Payment> All(bool useCache = false) => Search(null, useCache);
-
+        /// <summary>
+        /// Get all payments, with using cache option
+        /// </summary>
+        public static List<Payment> All(bool useCache = false) => GetList("/v1/payments/search", useCache);
+        
         /// <summary>
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>
-        [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
-        {
-            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
-        }
+        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache = false) => 
+            GetList("/v1/payments/search", useCache, filters);
+
+        public static IQueryable<Payment> Query(bool useCache = false) =>
+            CreateQuery("/v1/payments/search", useCache);
+
         #endregion
 
         #region Interactions
@@ -67,13 +59,17 @@ namespace MercadoPago.Resources
             refund.manualSetPaymentId((decimal)this.Id);
             refund.Save();
 
-            if (refund.Id.HasValue) {
+            if (refund.Id.HasValue)
+            {
                 this.Status = PaymentStatus.refunded;
-            } else {
+            }
+            else
+            {
                 //this.DelegateErrors(refund.Errors);
             }
             return this;
         }
+
         /// <summary>
         /// Partial payment refund
         /// </summary> 
@@ -94,20 +90,21 @@ namespace MercadoPago.Resources
             }
             return this;
         }
-        #endregion
 
+        #endregion
         #region Properties 
 
+        #endregion
+
+        #region Accessors 
         /// <summary>
         /// Payment identifier
         /// </summary>
         public long? Id { get; private set; }
-
         /// <summary>
         /// Payment’s creation date
         /// </summary>
         public DateTime? DateCreated { get; private set; }
-
         /// <summary>
         /// Payment’s approval date
         /// </summary>

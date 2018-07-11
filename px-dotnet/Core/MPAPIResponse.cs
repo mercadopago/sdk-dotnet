@@ -39,7 +39,7 @@ namespace MercadoPago
             this.Response = response;
 
             ParseRequest(httpMethod, request, payload);
-            ParseResponse(response); 
+            ParseResponse(response);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace MercadoPago
                 this.Payload = payload.ToString();
             }
         }
-    
+
         /// <summary>
         /// Parses the http response in a custom MPApiResponse object.
         /// </summary>
@@ -78,8 +78,8 @@ namespace MercadoPago
                 {
                     Stream dataStream = response.GetResponseStream();
                     StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
-                    this.StringResponse = reader.ReadToEnd(); 
-                      
+                    this.StringResponse = reader.ReadToEnd();
+
                     reader.Close();
                     dataStream.Close();
                 }
@@ -97,7 +97,7 @@ namespace MercadoPago
                 }
                 catch (Exception)
                 {
-                //    If not an object
+                    //    If not an object
                 }
             }
         }

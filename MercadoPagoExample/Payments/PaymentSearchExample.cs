@@ -10,7 +10,7 @@ namespace MercadoPagoExample.Payments
         {
             Utils.LoadOrPromptAccessToken();
 
-            var allPayments = Payment.Search();
+            var allPayments = Payment.All();
 
             var approvedPayments = 
                 Payment.Query()
