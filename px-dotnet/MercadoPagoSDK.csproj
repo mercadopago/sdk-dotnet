@@ -178,6 +178,7 @@
     <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
     <Compile Include="DataStructures\Generic\RecuperableError.cs" />
     <Compile Include="DataStructures\Generic\RecuperableErrorCause.cs" />
+    <Compile Include="Resources\Refund.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
