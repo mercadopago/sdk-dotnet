@@ -34,6 +34,10 @@ namespace MercadoPago
             private set { _errors = value; }
         }
 
+        public void DelegateErrors(RecuperableError DelegatedErrors){
+            this._errors = DelegatedErrors;
+        }
+
         #region Errors Definitions
         public static string DataTypeError  = "Error on property #PROPERTY. The value you are trying to assign has not the correct type. ";
         public static string RangeError     = "Error on property #PROPERTY. The value you are trying to assign is not in the specified range. ";
@@ -117,7 +121,7 @@ namespace MercadoPago
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param0", param);
+            mapParams.Add("id", param);
 
             return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
         }
@@ -143,7 +147,7 @@ namespace MercadoPago
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param0", param);
+            mapParams.Add("id", param);
             return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
         }
 
@@ -180,7 +184,7 @@ namespace MercadoPago
             string path = ParsePath(hashAnnotation["path"].ToString(), mapParams, resource);
             int retries = (int)hashAnnotation["retries"];
             int connectionTimeout = (int)hashAnnotation["requestTimeout"];
-            Console.WriteLine("Path: {0}", path); 
+            Console.WriteLine("Path: {0}", path);
             PayloadType payloadType = (PayloadType)hashAnnotation["payloadType"];
             WebHeaderCollection colHeaders = GetStandardHeaders();
 
@@ -210,6 +214,7 @@ namespace MercadoPago
         /// <returns>Generic type object, containing information about retrieval process.</returns>
         protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
         {
+ 
             if (resource == null)
             {
                 try
@@ -227,8 +232,9 @@ namespace MercadoPago
 
             HttpMethod httpMethod = (HttpMethod)restData["method"]; 
             string path = ParsePath(restData["path"].ToString(), parameters, resource); 
+
             PayloadType payloadType = (PayloadType)restData["payloadType"];
-            JObject payload = GeneratePayload(httpMethod, resource);  
+            JObject payload = GeneratePayload(httpMethod, resource); 
 
             int requestTimeout = (int)restData["requestTimeout"];
             int retries = (int)restData["retries"]; 
@@ -273,11 +279,13 @@ namespace MercadoPago
         /// <returns>a JSON Object with the attributes members of the instance. Null for GET and DELETE methods</returns>
         public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase
         {
-            if (httpMethod.ToString() == "POST" || httpMethod.ToString() == "PUT")
-            {  
+            if (httpMethod.ToString() == "PUT")
+            {
                 JObject actualJSON = MPCoreUtils.GetJsonFromResource(resource);
                 JObject oldJSON = resource.GetLastKnownJson();
                 return getDiffFromLastChange(actualJSON, oldJSON);
+            } else if (httpMethod.ToString() == "POST") {
+                return MPCoreUtils.GetJsonFromResource(resource);
             }
             else
             {
@@ -575,81 +583,43 @@ namespace MercadoPago
         /// <returns>Processed path to call the API.</returns>
         public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
         {
-            StringBuilder result = new StringBuilder();
-            bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
-
-            if (path.Contains(':'))
-            {
-                int paramIterator = 0;
-                while (path.Contains(':'))
-                {
-                    result.Append(path.Substring(0, path.IndexOf(':')));
-                    path = path.Substring(path.IndexOf(':') + 1);
-                    string param = path;
-                    if (path.Contains('/'))
-                    {
-                        param = path.Substring(0, path.IndexOf('/'));
-                    }
-
-                    string value = string.Empty;
-                    if (paramIterator <= 2 &&
-                            mapParams != null &&
-                            !string.IsNullOrEmpty(mapParams[string.Format("param{0}", paramIterator.ToString())]))
-                    {
-                        value = mapParams[string.Format("param{0}", paramIterator.ToString())];
-                    }
-                    else if (mapParams != null &&
-                         !string.IsNullOrEmpty(mapParams[param]))
-                    {
-                        value = mapParams[param];
-                    }
-                    else
-                    {
-                        if (resource != null)
-                        {
-                            var newResource = resource;
-                            newResource._lastApiResponse = null;
-
-                            JObject json = JObject.FromObject(newResource);
-
-                            var jValuePC = json.GetValue(ToPascalCase(param));
  
-                            if (jValuePC != null)
-                            {
-                                value = jValuePC.ToString();
-                            }  
+            StringBuilder result = new StringBuilder();
 
+            bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
+ 
+            string param_pattern = @":([a-z0-9_]+)"; 
+            MatchCollection matches = Regex.Matches(path, param_pattern);
+ 
+
+            foreach (Match param in matches)
+            { 
+                string param_string = param.Value.Replace(":", "");
+
+                if (mapParams != null) { 
+                    foreach (KeyValuePair<string, string> entry in mapParams)
+                    { 
+                        if (param_string == entry.Key)
+                        {
+                            path = path.Replace(param.Value, entry.Value);
                         }
                     }
-
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        throw new MPException("No argument supplied/found for path argument");
-                    }  
-                    if (path.Contains('/'))
-                    {
-                        path = path.Substring(path.IndexOf('/'));
-                    }
-                    else
-                    {
-                        path = string.Empty;
-                    }
-
-                    result.Append(value);
                 }
-
-                if (!string.IsNullOrEmpty(path))
+ 
+                JObject json = JObject.FromObject(resource);
+ 
+                var resource_value = json.GetValue(ToPascalCase(param_string));
+                if (resource_value != null)
                 {
-                    result.Append(path);
+                    path = path.Replace(param.Value, resource_value.ToString());
                 }
             }
-            else
-            {
-                result.Append(path);
-            }
+ 
 
             // URL
             result.Insert(0, SDK.BaseUrl);
+
+            result.Append(path);
 
             // Access Token
             string accessToken = SDK.GetAccessToken();
@@ -663,6 +633,7 @@ namespace MercadoPago
             {
                 foreach (var elem in mapParams)
                 {
+                    
                     result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
                 }
             }
@@ -768,8 +739,7 @@ namespace MercadoPago
         private static WebHeaderCollection GetStandardHeaders()
         {
             WebHeaderCollection colHeaders = new WebHeaderCollection();
-            colHeaders.Add("HTTP.CONTENT_TYPE: application/json");
-            colHeaders.Add("HTTP.USER_AGENT: MercadoPago Java SDK v1.0.1");
+            colHeaders.Add("x-product-id", "BC32BHVTRPP001U8NHL0"); 
             return colHeaders;
         }
 

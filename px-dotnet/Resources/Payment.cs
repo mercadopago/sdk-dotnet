@@ -18,13 +18,28 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a payment through an unique identifier
         /// </summary>
-        public static Payment FindById(int id, bool useCache = false) => Get($"/v1/payments/{id}", useCache);
-
+        [GETEndpoint("/v1/payments/:id")]
+        public static Payment FindById(long? id)
+        {
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), WITHOUT_CACHE);
+        } 
+        /// <summary>
+        /// Find a payment trought an unique identifier with Local Cache Flag
+        /// </summary>
+        [GETEndpoint("/v1/payments/:id")]
+        public static Payment FindById(int? id, bool useCache)
+        {
+            
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
+        } 
         /// <summary>
         /// Save a new payment
         /// </summary>
-        public Payment Save() => Post($"/v1/payments");
-
+        [POSTEndpoint("/v1/payments")]
+        public Payment Save()
+        {
+            return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
+        }
         /// <summary>
         /// Update editable properties
         /// </summary>
@@ -35,12 +50,50 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>
-        public static List<Payment> Search(Dictionary<string, string> filters = null, bool useCache = false) => 
-            GetList("/v1/payments/search", useCache, filters);
+        [GETEndpoint("/v1/payments/search")]
+        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
+        {
+            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
+        }
+        #endregion
 
-        public static IQueryable<Payment> Query(bool useCache = false) =>
-            CreateQuery("/v1/payments/search", useCache);
+        #region Interactions
+        /// <summary>
+        /// Payment refund
+        /// </summary> 
+        public Payment Refund()
+        {
+            Refund refund = new Refund();
+            refund.manualSetPaymentId((decimal)this.Id);
+            refund.Save();
 
+            if (refund.Id.HasValue) {
+                this.Status = PaymentStatus.refunded;
+            } else {
+                //this.DelegateErrors(refund.Errors);
+            }
+            return this;
+        }
+        /// <summary>
+        /// Partial payment refund
+        /// </summary> 
+        public Payment Refund(decimal amount)
+        {
+            Refund refund = new Refund();
+            refund.manualSetPaymentId((decimal)this.Id);
+            refund.Amount = amount;
+            refund.Save();
+
+            if (refund.Id.HasValue)
+            {
+                this.Status = PaymentStatus.refunded;
+            }
+            else
+            {
+                //this.DelegateErrors(refund.Errors);
+            }
+            return this;
+        }
         #endregion
 
         #region Properties 

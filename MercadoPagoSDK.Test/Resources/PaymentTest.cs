@@ -17,15 +17,15 @@ namespace MercadoPagoSDK.Test.Resources
     {
         string AccessToken;
         string PublicKey;
-        Payment LastPayment;
+        Payment LastPayment; 
 
         [SetUp]
         public void Init(){ 
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
-            AccessToken = "TEST-6295877106812064-042916-6cead5bc1e48af95ea61cc9254595865__LC_LA__-202809963";//Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            PublicKey = "TEST-90189146-5027-424e-a3fd-f55d376c98c9";//Environment.GetEnvironmentVariable("PUBLIC_KEY");
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
@@ -38,7 +38,7 @@ namespace MercadoPagoSDK.Test.Resources
             
             Payment payment = new Payment
             {
-                TransactionAmount = 20.0m,
+                TransactionAmount = (float)20.0,
                 Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
                 Description = "Pago de Prueba",
                 PaymentMethodId = "visa",
@@ -51,19 +51,17 @@ namespace MercadoPagoSDK.Test.Resources
 
             payment.Save(); 
              
-            Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
-            Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id");
-
             LastPayment = payment; 
+
+            Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
+            Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id"); 
         }
 
         [Test]
         public void Payment_FindById_ShouldBeOk()
-        {
-            Payment payment = Payment.FindById((int)LastPayment.Id);
-            Console.WriteLine("Payment founded");
-            Assert.AreEqual("Pago de seguro", payment.Description);
-            Assert.AreEqual("mlovera@kinexo.com", payment.Payer.Email);
+        { 
+            Payment payment = Payment.FindById(LastPayment.Id); 
+            Assert.AreEqual("Pago de Prueba", payment.Description); 
         }
 
         [Test]
@@ -95,6 +93,30 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Any());
             Assert.IsTrue(list.Last().Id.HasValue);
+        }
+
+        [Test] 
+        public void Payment_Refund()
+        {
+            
+            Payment OtherPayment = new Payment
+            {
+                TransactionAmount = (float)10.0,
+                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "approved"), // 1 use card token
+                Description = "Pago de Prueba",
+                PaymentMethodId = "visa",
+                ExternalReference = "REFUND-TEST-PAYMENT",
+                Installments = 1,
+                Payer = new Payer {
+                    Email = "milton.brandes@mercadolibre.com"
+                }
+            };
+
+            OtherPayment.Save(); 
+
+            OtherPayment.Refund(); 
+
+            Assert.AreEqual(PaymentStatus.refunded, OtherPayment.Status, "Failed: Payment could not be successfully refunded");
         }
 
     }
