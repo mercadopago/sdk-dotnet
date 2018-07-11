@@ -79,57 +79,6 @@ namespace MercadoPago.Core.Linq
             return expression;
         }
 
-        protected override Expression VisitMethodCall(MethodCallExpression expression)
-        {
-            // In production code, handle this via method lookup tables.
-
-            if (expression.Method.Name == "Contains")
-            {
-                Visit(expression.Object);
-                ////_expression.Append(".indexOf(");
-                Visit(expression.Arguments[0]);
-                ////_expression.Append(") != -1");
-                return expression;
-            }
-
-            if (expression.Method.Name == "StartsWith")
-            {
-                Visit(expression.Object);
-                ////_expression.Append(".indexOf(");
-                Visit(expression.Arguments[0]);
-                ////_expression.Append(") == 0");
-                return expression;
-            }
-
-            if (expression.Method.Name == "EndsWith")
-            {
-                Visit(expression.Object);
-                ////_expression.Append(".indexOf(");
-                Visit(expression.Arguments[0]);
-                ////_expression.Append(", ");
-                Visit(expression.Object);
-                ////_expression.Append(".length - '");
-                Visit(expression.Arguments[0]);
-                ////_expression.Append("'.length) != -1");
-                return expression;
-            }
-
-            if (expression.Method.Name == "ToLower")
-            {
-                Visit(expression.Object);
-                ////_expression.Append(".toLowerCase()");
-                return expression;
-            }
-            if (expression.Method.Name == "ToUpper")
-            {
-                Visit(expression.Object);
-                ////_expression.Append(".toUpperCase()");
-                return expression;
-            }
-
-            return base.VisitMethodCall(expression); // throws
-        }
-
         // Called when a LINQ expression type is not handled above.
         protected override Exception CreateUnhandledItemException<T>(T unhandledItem, string visitMethod)
         {

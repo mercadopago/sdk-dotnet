@@ -28,44 +28,6 @@ namespace MercadoPago.Core.Linq
                                    .Cast<T>();
         }
 
-        //private IEnumerable<TResource> Query(QueryModel queryModel)
-        //{
-        //    var queryParameters = new Dictionary<string, string>();
-
-        //    void ParseExpression(BinaryExpression binary)
-        //    {
-        //        if (binary.NodeType != ExpressionType.Equal)
-        //            throw new InvalidOperationException();
-
-        //        if (!(binary.Left is MemberExpression left))
-        //            throw new InvalidOperationException();
-
-        //        if (!(binary.Right is ConstantExpression right))
-        //            throw new InvalidOperationException();
-
-        //        var key = left.Member.Name.ToSnakeCase();
-        //        var value = right.Value?.ToString();
-
-        //        if (!string.IsNullOrEmpty(value))
-        //            queryParameters.Add(key, value);
-        //    }
-
-        //    var wheres = 
-        //        queryModel.BodyClauses
-        //                  .OfType<WhereClause>()
-        //                  .ToList();
-
-        //    foreach (var where in wheres)
-        //    {
-        //        if (!(where.Predicate is BinaryExpression binary))
-        //            throw new InvalidOperationException();
-
-        //        ParseExpression(binary);
-        //    }
-
-        //    return Resource<TResource>.GetList(_apiPath, _useCache, queryParameters);
-        //}
-
         public T ExecuteSingle<T>(QueryModel queryModel, bool returnDefaultWhenEmpty)
         {
             var sequence = ExecuteCollection<T>(queryModel);
