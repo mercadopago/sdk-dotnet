@@ -24,7 +24,7 @@ namespace MercadoPago.Resources
         [GETEndpoint("/v1/payments/:id")]
         public static Payment FindById(long? id)
         {
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), false);
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), WITHOUT_CACHE);
         } 
         /// <summary>
         /// Find a payment trought an unique identifier with Local Cache Flag
@@ -32,6 +32,7 @@ namespace MercadoPago.Resources
         [GETEndpoint("/v1/payments/:id")]
         public static Payment FindById(int? id, bool useCache)
         {
+            
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
         } 
         /// <summary>
@@ -41,7 +42,7 @@ namespace MercadoPago.Resources
         public Payment Save()
         {
             return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
-        } 
+        }
         /// <summary>
         /// Update editable properties
         /// </summary>
@@ -79,7 +80,46 @@ namespace MercadoPago.Resources
         public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
         {
             return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
-        }  
+        }
+        #endregion
+
+        #region Interactions
+        /// <summary>
+        /// Payment refund
+        /// </summary> 
+        public Payment Refund()
+        {
+            Refund refund = new Refund();
+            refund.manualSetPaymentId((decimal)this.Id);
+            refund.Save();
+
+            if (refund.Id.HasValue) {
+                this.Status = PaymentStatus.refunded;
+            } else {
+                //this.DelegateErrors(refund.Errors);
+            }
+            return this;
+        }
+        /// <summary>
+        /// Partial payment refund
+        /// </summary> 
+        public Payment Refund(decimal amount)
+        {
+            Refund refund = new Refund();
+            refund.manualSetPaymentId((decimal)this.Id);
+            refund.Amount = amount;
+            refund.Save();
+
+            if (refund.Id.HasValue)
+            {
+                this.Status = PaymentStatus.refunded;
+            }
+            else
+            {
+                //this.DelegateErrors(refund.Errors);
+            }
+            return this;
+        }
         #endregion
 
         #region Properties 
