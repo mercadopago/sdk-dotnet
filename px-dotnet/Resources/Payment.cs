@@ -169,7 +169,6 @@ namespace MercadoPago.Resources
         /// <summary>
         /// ID of the currency used in the payment
         /// </summary>
-        [StringLength(3)]
         [JsonConverter(typeof(StringEnumConverter))]
         public CurrencyId? CurrencyId { get; private set; }
 
@@ -316,7 +315,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Sponsor Identification
         /// </summary>
-        public decimal SponsorId { get; set; }
+        public decimal? SponsorId { get; set; }
         #endregion
     }
 }
