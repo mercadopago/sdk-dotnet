@@ -8,7 +8,7 @@
 This library provides developers with a simple set of bindings to the Mercado Pago API.
 
 ### .Net versions supported:
-3.5 .Net Framework or Major
+.Net Framework 3.5 and above
 
 ## Installation 
 
@@ -22,7 +22,7 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 
 `> dotnet add package mercadopago-sdk --version 1.0.29`
 
-**Using Packet CLI**
+**Using Paket CLI**
 
 `> paket add mercadopago-sdk --version 1.0.29`
 
@@ -57,11 +57,11 @@ using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Common;
 
-MercadoPago.SDK.ClientSecret = "YOUR_ACCESS_TOKEN";
+MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
 
 Payment payment = new Payment
 {
-    TransactionAmount = (float)100.0,
+    TransactionAmount = 100.0m,
     Token = "YOUR_CARD_TOKEN"
     Description = "Ergonomic Silk Shirt",
     PaymentMethodId = "visa", 
@@ -73,8 +73,10 @@ Payment payment = new Payment
 
 payment.Save();
 
-Console.Out.WriteLine(payment.Status);
+Console.WriteLine(payment.Status);
 ```
+
+> You can find more examples in the `MercadoPagoExample` folder.
 
 ### 4. Handling Errors
 
@@ -85,7 +87,7 @@ Console.Out.WriteLine(payment.Status);
 You can check the errors and causes returned by the API using the `errors` attribute.
 
 ```csharp
-Console.Out.WriteLine(payment.Errors.Message) // Print the error Message 
+Console.WriteLine(payment.Errors.Message) // Print the error Message 
 ```
 
 ### Support 
