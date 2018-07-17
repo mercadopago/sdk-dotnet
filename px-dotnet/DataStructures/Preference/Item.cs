@@ -53,8 +53,6 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Unit price
         /// </summary>
-        [RegularExpression(@"^\d+\.\d{0,2}$")]
-        // TODO: Regexp in a decimal Property???
         [Range(0, 9999999999999999.99)]
         public decimal UnitPrice { get; set; }
     }
