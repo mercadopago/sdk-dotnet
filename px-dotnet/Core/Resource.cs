@@ -23,13 +23,6 @@ namespace MercadoPago
         /// If left null/empty, then the SDK.AccessToken is used instead.
         /// </summary>
         public string UserAccessToken { get; set; }
-
-        internal JObject ToJson()
-        {
-            JObject jactual = this.Serialize();
-            JObject jold = LastKnownJson;
-            return Serialization.GetDiffFromLastChange(jactual, jold);
-        }
     }
 
     public abstract class Resource<T>: ResourceBase where T: ResourceBase, new()
@@ -139,10 +132,7 @@ namespace MercadoPago
         {
             var postOrPut = httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT;
 
-            var payload =
-                postOrPut
-                    ? resource.ToJson()
-                    : null;
+            var payload = GetPayload(resource, httpMethod);
 
             if (postOrPut)
                 Validator.Validate(resource);
@@ -151,6 +141,21 @@ namespace MercadoPago
 
             ProcessResponse(resource, response, httpMethod);
             return resource;
+        }
+
+        internal static JObject GetPayload(T resource, HttpMethod httpMethod)
+        {
+            switch (httpMethod)
+            {
+                case HttpMethod.POST:
+                    return resource.Serialize();
+                case HttpMethod.PUT:
+                    JObject jactual = resource.Serialize();
+                    JObject jold = resource.LastKnownJson;
+                    return Serialization.GetDiffFromLastChange(jactual, jold);
+                default:
+                    return null;
+            }
         }
 
         internal static void ProcessResponse(T resource, MPAPIResponse response, HttpMethod httpMethod)
