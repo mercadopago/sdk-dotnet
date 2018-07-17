@@ -6,7 +6,7 @@ using System.Net;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture(Ignore = "Skipping")]
+    [TestFixture]
     public class CardTest
     {
         string AccessToken;
