@@ -42,7 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\MPBaseTest.cs" />
+    <Compile Include="Core\ResourceTest.cs" />
     <Compile Include="Core\MPIPNTest.cs" />
     <Compile Include="FullIntegrationTest.cs" />
     <Compile Include="MPConfTest.cs" />

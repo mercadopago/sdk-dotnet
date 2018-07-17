@@ -23,18 +23,15 @@ namespace MercadoPago
         /// If left null/empty, then the SDK.AccessToken is used instead.
         /// </summary>
         public string UserAccessToken { get; set; }
+
+        internal JObject GetJsonSource() => LastApiResponse?.JsonObjectResponse;
     }
 
     public abstract class Resource<T>: ResourceBase where T: ResourceBase, new()
     {
         internal static MPAPIResponse Invoke(HttpMethod httpMethod, string path, PayloadType payloadType, JObject payload, string accessToken, Dictionary<string, string> queryParameters, bool useCache, int requestTimeout, int retries)
         {
-            var queryString =
-                queryParameters != null
-                    ? "&" + string.Join("&", queryParameters.Select(x => $"{x.Key}={x.Value}").ToArray())
-                    : "";
-
-            path = $"{SDK.BaseUrl}{path}?access_token={accessToken ?? SDK.GetAccessToken()}{queryString}";
+            path = CreatePath(path, accessToken, queryParameters);
 
             //TODO: Esto es un concern de la capa HTTP, deberia estar en el MPRestClient.
             //TODO: Se mantiene por el momento por compatibilidad con la clase MPBase.
@@ -81,12 +78,25 @@ namespace MercadoPago
             return response;
         }
 
+        internal static string CreatePath(string path, string accessToken, Dictionary<string, string> queryParameters)
+        {
+            if (string.IsNullOrEmpty(path))
+                throw new MPException("Must specify a valid path.");
+
+            var queryString =
+                queryParameters != null
+                    ? "&" + string.Join("&", queryParameters.Select(x => $"{x.Key}={x.Value}").ToArray())
+                    : "";
+
+            return $"{SDK.BaseUrl}{path}?access_token={accessToken ?? SDK.GetAccessToken()}{queryString}";
+        }
+
         #region New approach
 
-        internal static T Get(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1)
+        internal static T Get(string path, bool useCache = false, int requestTimeout = 0, int retries = 1)
         {
             var resource = new T();
-            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, null, useCache, requestTimeOut, retries);
+            var response = Invoke(HttpMethod.GET, path, PayloadType.NONE, null, null, null, useCache, requestTimeout, retries);
 
             ProcessResponse(resource, response, HttpMethod.GET);
             return resource;
@@ -116,8 +126,8 @@ namespace MercadoPago
         internal static IQueryable<T> CreateQuery(string path, bool useCache = false) =>
             new MpQueryable<T>(path, useCache);
 
-        internal T Post(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1) 
-            => Send(this as T, HttpMethod.POST, path, useCache, requestTimeOut, retries);
+        internal T Post(string path, bool useCache = false, int requestTimeout = 0, int retries = 1) 
+            => Send(this as T, HttpMethod.POST, path, useCache, requestTimeout, retries);
 
         internal T Put(string path, bool useCache = false, int requestTimeOut = 0, int retries = 1) 
             => Send(this as T, HttpMethod.PUT, path, useCache, requestTimeOut, retries);
@@ -128,7 +138,7 @@ namespace MercadoPago
             return null;
         }
 
-        internal static T Send(T resource, HttpMethod httpMethod, string path, bool useCache = false, int requestTimeOut = 0, int retries = 1)
+        internal static T Send(T resource, HttpMethod httpMethod, string path, bool useCache = false, int requestTimeout = 0, int retries = 1)
         {
             var postOrPut = httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT;
 
@@ -137,7 +147,7 @@ namespace MercadoPago
             if (postOrPut)
                 Validator.Validate(resource);
 
-            var response = Invoke(httpMethod, path, PayloadType.JSON, payload, resource.UserAccessToken, null, useCache, requestTimeOut, retries);
+            var response = Invoke(httpMethod, path, PayloadType.JSON, payload, resource.UserAccessToken, null, useCache, requestTimeout, retries);
 
             ProcessResponse(resource, response, httpMethod);
             return resource;
