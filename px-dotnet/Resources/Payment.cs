@@ -92,11 +92,10 @@ namespace MercadoPago.Resources
         }
 
         #endregion
+
         #region Properties 
-
-        #endregion
-
-        #region Accessors 
+    
+      
         /// <summary>
         /// Payment identifier
         /// </summary>
@@ -317,8 +316,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Sponsor Identification
         /// </summary>
-        public string SponsorId { get; set; }
-
+        public decimal SponsorId { get; set; }
         #endregion
     }
 }
