@@ -11,7 +11,7 @@ using System.Net;
 
 namespace MercadoPagoSDK.Test
 {
-    [TestFixture(Ignore = "Skipping")]
+    [TestFixture]
     public class ResourceTest : Resource<ResourceTest>
     {
 
@@ -22,8 +22,8 @@ namespace MercadoPagoSDK.Test
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
 
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            //SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
+            //SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
         }
 
         public static ResourceTest FindById(string id, bool useCache) => Get(null, useCache);
@@ -52,9 +52,9 @@ namespace MercadoPagoSDK.Test
                 var result = All();
                 Assert.Pass();
             }
-            catch
+            catch(Exception ex)
             {
-                Assert.Fail();
+                Assert.Fail(ex.Message);
             }
         }
     }
@@ -77,7 +77,7 @@ namespace MercadoPagoSDK.Test
 
         public static DummyClass All() => Get(null);
 
-        public static DummyClass FindById(string id, bool useCache) => Get($"/get/{id}", useCache);
+        public static DummyClass FindById(string id, bool useCache) => Get($"/anything/{id}", useCache);
 
         public DummyClass Save() => Post("/post");
 
@@ -89,7 +89,7 @@ namespace MercadoPagoSDK.Test
         public void DummyClassMethod_RequestMustBeCachedButNotRetrievedFromCache()
         {
             SDK.CleanConfiguration();
-            SDK.AccessToken = "as987ge9ev6s5df4g32z1xv54654"; //Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             string id = new Random().Next(0, int.MaxValue).ToString();
 
@@ -456,7 +456,7 @@ namespace MercadoPagoSDK.Test
             }
 
             JObject jsonResponse = result.GetJsonSource();
-            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "CardNumber");
+            List<JToken> lastName = MPCoreUtils.FindTokens(jsonResponse, "card_number");
             Assert.AreEqual("123456789", lastName.First().ToString());
 
             List<JToken> year = MPCoreUtils.FindTokens(jsonResponse, "holder");
