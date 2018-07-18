@@ -21,14 +21,14 @@ namespace MercadoPagoSDK.Test
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
-
-            //SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            //SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            SDK.CleanConfiguration();
+            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
+            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
         }
 
         public static ResourceTest FindById(string id, bool useCache) => Get(null, useCache);
 
-        public static List<ResourceTest> All() => GetList("/v1/getpath/slug");
+        public static List<ResourceTest> All() => GetList("/v1/identification_types");
         
         [Test]
         public void ResourceTest_WithNoPath_ShouldraiseException()
@@ -50,11 +50,10 @@ namespace MercadoPagoSDK.Test
             try
             {
                 var result = All();
-                Assert.Pass();
             }
             catch(Exception ex)
             {
-                Assert.Fail(ex.Message);
+                Assert.Fail(ex.ToString());
             }
         }
     }
@@ -401,7 +400,7 @@ namespace MercadoPagoSDK.Test
         public string CardNumber { get; set; }
         public string Holder { get; set; }
 
-        public ResourceTestClass Load(string id) => Get($"/getpath/load/{id}", requestTimeout: 5000, retries: 3);
+        public ResourceTestClass Load(string id) => Get($"/delay/{id}", requestTimeout: 5000, retries: 3);
 
         public ResourceTestClass Save() => Post("/post", requestTimeout: 6000, retries: 0);
 
@@ -409,12 +408,8 @@ namespace MercadoPagoSDK.Test
         public void CustomerTestClass_Load_TimeoutFail()
         {
             SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
+            SDK.SetBaseUrl("https://httpbin.org");
+            SDK.AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
 
             ResourceTestClass resource = new ResourceTestClass();
             ResourceTestClass result = new ResourceTestClass();
