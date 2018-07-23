@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DDF43089-BD23-4C5C-898D-A779118B563E}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MercadoPago</RootNamespace>
     <AssemblyName>MercadoPago</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFramework>net35</TargetFramework>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
     <PackageVersion>1.0.31</PackageVersion>
@@ -18,34 +12,10 @@
     <Owners>MercadoPago</Owners>
     <PackageProjectUrl>https://github.com/mercadopago/px-dotnet</PackageProjectUrl>
     <PackageReleaseNotes>Error attribute to handle recuperable bad params errors</PackageReleaseNotes>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoStdLib>false</NoStdLib>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>default</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>
-    </DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoStdLib>false</NoStdLib>
-    <RunWithWarnings>true</RunWithWarnings>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>5</LangVersion>
-  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Core\MPBase.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -55,150 +25,12 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\FrequencyType.cs" />
-    <Compile Include="Core\Annotations\Idempotent.cs" />
-    <Compile Include="Core\Annotations\PayloadType.cs" />
-    <Compile Include="Core\CustomDeserializationContractResolver.cs" />
-    <Compile Include="Core\CustomSerializationContractResolver.cs" />
-    <Compile Include="Core\HttpMethod.cs" />
-    <Compile Include="Core\Linq\MpQueryWhereExpressionVisitor.cs" />
-    <Compile Include="Core\Linq\MpQueryable.cs" />
-    <Compile Include="Core\Linq\MpQueryExecutor.cs" />
-    <Compile Include="Core\Linq\MpQueryModelVisitor.cs" />
-    <Compile Include="Core\MPAPIResponse.cs" />
-    <Compile Include="Core\MPCache.cs" />
-    <Compile Include="Core\MPCoreUtils.cs" />
-    <Compile Include="Core\MPCredentials.cs" />
-    <Compile Include="Core\MPIPN.cs" />
-    <Compile Include="Core\Resource.cs" />
-    <Compile Include="Core\Serialization.cs" />
-    <Compile Include="Core\Validation\Validator.cs" />
-    <Compile Include="DataStructures\Preapproval\AutoRecurring.cs" />
-    <Compile Include="Exceptions\MPConfException.cs" />
-    <Compile Include="Exceptions\MPException.cs" />
-    <Compile Include="Exceptions\MPRESTException.cs" />
-    <Compile Include="Resources\IdentificationType.cs" />
-    <Compile Include="Resources\Card.cs" />
-    <Compile Include="Resources\Customer.cs" />
-    <Compile Include="Resources\MerchantOrder.cs" />
-    <Compile Include="Resources\Payment.cs" />
-    <Compile Include="Resources\PaymentMethod.cs" />
-    <Compile Include="Resources\Plan.cs" />
-    <Compile Include="Resources\Preapproval.cs" />
-    <Compile Include="Resources\Preference.cs" />
-    <Compile Include="SDK.cs" />
-    <Compile Include="Net\MPRESTClient.cs" />
-    <Compile Include="Net\MPRequest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataStructures\Customer\CustomerAddress.cs" />
-    <Compile Include="DataStructures\Customer\Card\CardHolder.cs" />
-    <Compile Include="DataStructures\Customer\Card\Identification.cs" />
-    <Compile Include="DataStructures\Customer\Card\Issuer.cs" />
-    <Compile Include="DataStructures\Customer\Card\CardPaymentMethod.cs" />
-    <Compile Include="DataStructures\Customer\Card\SecurityCode.cs" />
-    <Compile Include="DataStructures\Customer\City.cs" />
-    <Compile Include="DataStructures\Customer\Country.cs" />
-    <Compile Include="DataStructures\Customer\Address.cs" />
-    <Compile Include="DataStructures\Customer\Error.cs" />
-    <Compile Include="DataStructures\Customer\Identification.cs" />
-    <Compile Include="DataStructures\Customer\Municipality.cs" />
-    <Compile Include="DataStructures\Customer\Neighborhood.cs" />
-    <Compile Include="DataStructures\Customer\Phone.cs" />
-    <Compile Include="DataStructures\Customer\Shipment.cs" />
-    <Compile Include="DataStructures\Customer\State.cs" />
-    <Compile Include="DataStructures\Customer\Verification.cs" />
-    <Compile Include="DataStructures\MerchantOrder\Address.cs" />
-    <Compile Include="DataStructures\MerchantOrder\Collector.cs" />
-    <Compile Include="DataStructures\MerchantOrder\Item.cs" />
-    <Compile Include="DataStructures\MerchantOrder\MerchantOrderPayment.cs" />
-    <Compile Include="DataStructures\MerchantOrder\Payer.cs" />
-    <Compile Include="DataStructures\MerchantOrder\Shipment.cs" />
-    <Compile Include="DataStructures\Payment\AdditionalInfo.cs" />
-    <Compile Include="DataStructures\Payment\AdditionalInfoPayer.cs" />
-    <Compile Include="DataStructures\Payment\Address.cs" />
-    <Compile Include="DataStructures\Payment\Card.cs" />
-    <Compile Include="DataStructures\Payment\CardHolder.cs" />
-    <Compile Include="DataStructures\Payment\FeeDetail.cs" />
-    <Compile Include="DataStructures\Payment\Identification.cs" />
-    <Compile Include="DataStructures\Payment\Item.cs" />
-    <Compile Include="DataStructures\Payment\Order.cs" />
-    <Compile Include="DataStructures\Payment\Payer.cs" />
-    <Compile Include="DataStructures\Payment\Phone.cs" />
-    <Compile Include="DataStructures\Payment\ReceiverAddress.cs" />
-    <Compile Include="DataStructures\Payment\Refund.cs" />
-    <Compile Include="DataStructures\Payment\Shipment.cs" />
-    <Compile Include="DataStructures\Payment\Source.cs" />
-    <Compile Include="DataStructures\Payment\TransactionDetail.cs" />
-    <Compile Include="DataStructures\Preference\Address.cs" />
-    <Compile Include="DataStructures\Preference\DifferentialPricing.cs" />
-    <Compile Include="DataStructures\Preference\Identification.cs" />
-    <Compile Include="DataStructures\Preference\Item.cs" />
-    <Compile Include="DataStructures\Preference\Payer.cs" />
-    <Compile Include="DataStructures\Preference\PaymentMethods.cs" />
-    <Compile Include="DataStructures\Preference\Phone.cs" />
-    <Compile Include="DataStructures\Preference\ReceiverAddress.cs" />
-    <Compile Include="DataStructures\Preference\Shipment.cs" />
-    <Compile Include="Resources\Subscription.cs" />
-    <Compile Include="DataStructures\Plan\Autorecurring.cs" />
-    <Compile Include="DataStructures\Plan\FreeTrial.cs" />
-    <Compile Include="Common\CurrencyId.cs" />
-    <Compile Include="Common\PaymentStatus.cs" />
-    <Compile Include="Common\PaymentTypeId.cs" />
-    <Compile Include="Common\OperationType.cs" />
-    <Compile Include="Common\EntityType.cs" />
-    <Compile Include="Common\PayerType.cs" />
-    <Compile Include="Common\OrderType.cs" />
-    <Compile Include="Common\AutoReturnType.cs" />
-    <Compile Include="DataStructures\Preference\PaymentMethod.cs" />
-    <Compile Include="DataStructures\Preference\PaymentType.cs" />
-    <Compile Include="Common\ShipmentMode.cs" />
-    <Compile Include="DataStructures\Preference\BackUrls.cs" />
-    <Compile Include="Common\FeeType.cs" />
-    <Compile Include="Common\FeePayerType.cs" />
-    <Compile Include="Common\RefundUserType.cs" />
-    <Compile Include="DataStructures\Payment\Barcode.cs" />
-    <Compile Include="Common\EncodingType.cs" />
-    <Compile Include="DataStructures\Payment\AdditionalInfoAddress.cs" />
-    <Compile Include="DataStructures\PaymentMethod\Settings.cs" />
-    <Compile Include="DataStructures\PaymentMethod\Bin.cs" />
-    <Compile Include="DataStructures\PaymentMethod\CardNumber.cs" />
-    <Compile Include="DataStructures\PaymentMethod\SecurityCode.cs" />
-    <Compile Include="Common\CardNumberValidation.cs" />
-    <Compile Include="Common\SecurityCodeMode.cs" />
-    <Compile Include="Common\SecurityCodeCardLocation.cs" />
-    <Compile Include="Common\PaymentMethodAdditionalInfoNeeded.cs" />
-    <Compile Include="Common\PaymentMethodStatus.cs" />
-    <Compile Include="Common\PaymentMethodDeferredCapture.cs" />
-    <Compile Include="DataStructures\Generic\BadParamsError.cs" />
-    <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
-    <Compile Include="DataStructures\Generic\RecuperableError.cs" />
-    <Compile Include="DataStructures\Generic\RecuperableErrorCause.cs" />
-    <Compile Include="Resources\Refund.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="px-dotnet.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Net.Compilers">
-      <Version>2.8.2</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>9.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="NuGet.Build.Packaging">
-      <Version>0.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="Remotion.Linq">
-      <Version>2.2.0</Version>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Net.Compilers" Version="2.8.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Remotion.Linq" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
