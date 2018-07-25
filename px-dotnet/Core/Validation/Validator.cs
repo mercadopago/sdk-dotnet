@@ -100,10 +100,10 @@ namespace MercadoPago.Validation
 
             if (!result.IsOk)
             {
-                var errorMessage = new StringBuilder("There are errors in the object you're trying to create. Review them to continue: ");
+                var errorMessage = new StringBuilder($"There are errors in the object you're trying to create. Review them to continue: {Environment.NewLine}");
 
                 foreach (var e in result.Errors)
-                    errorMessage.AppendLine(e.Message);
+                    errorMessage.AppendLine($" - {e.Message}{Environment.NewLine}");
 
                 throw new Exception(errorMessage.ToString());
             }
@@ -115,14 +115,14 @@ namespace MercadoPago.Validation
 
             switch (attribute)
             {
-                case RangeAttribute _:
-                    return new ValidationError(OutOfRangeErrorCode, $"{msg}. The value you are trying to assign is not in the specified range. ");
+                case RangeAttribute r:
+                    return new ValidationError(OutOfRangeErrorCode, $"{msg}. The value you are trying to assign is not in the specified range: {r.Minimum}-{r.Maximum}.");
                 case RequiredAttribute _:
-                    return new ValidationError(RequiredErrorCode, $"{msg}. There is no value for this required property. ");
+                    return new ValidationError(RequiredErrorCode, $"{msg}. There is no value for this required property.");
                 case RegularExpressionAttribute a:
                     return new ValidationError(RegExpErrorCode, $"{msg}. The specified value is not valid. RegExp: {a.Pattern}.");
                 case DataTypeAttribute _:
-                    return new ValidationError(DataTypeErrorCode, $"{msg}. The value you are trying to assign has not the correct type. ");
+                    return new ValidationError(DataTypeErrorCode, $"{msg}. The value you are trying to assign has not the correct type.");
                 case StringLengthAttribute _:
                     return new ValidationError(StringLengthErrorCode, $"{msg}. The length of the string exceeds the maximum allowed length.");
                 default:
