@@ -36,7 +36,7 @@ namespace MercadoPago
         /// <summary>
         /// Update editable properties
         /// </summary>
-        public Customer Update() => Get($"/v1/customers/{Id}");
+        public Customer Update() => Put($"/v1/customers/{Id}");
 
         /// <summary>
         /// Remove a customer
