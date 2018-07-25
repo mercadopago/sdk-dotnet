@@ -9,11 +9,13 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
+        public static MerchantOrder FindById(string id, bool useCache = false) => Get($"/merchant_order/{id}", useCache);
+
         public MerchantOrder Load(string id, bool useCache = false) => Get($"/merchant_order/{id}", useCache);
 
-        public MerchantOrder Save() => Post("/merchant_order");
+        public MerchantOrder Save() => Post("/merchant_orders");
 
-        public MerchantOrder Update() => Put($"/merchant_order/{Id}");
+        public MerchantOrder Update() => Put($"/merchant_orders/{Id}");
 
         #endregion
 
@@ -35,9 +37,9 @@ namespace MercadoPago.Resources
 
         public Payer Payer { get; set; }
 
-        public Collector Collector { get; set; }
+        public Collector? Collector { get; set; }
 
-        public int SponsorId { get; set; }
+        public int? SponsorId { get; set; }
 
         public List<MerchantOrderPayment> Payments { get; }
 
