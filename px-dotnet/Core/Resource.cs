@@ -6,6 +6,7 @@ using System.Reflection;
 using MercadoPago.Core.Linq;
 using MercadoPago.DataStructures.Generic;
 using MercadoPago.Validation;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace MercadoPago
@@ -22,6 +23,7 @@ namespace MercadoPago
         /// Can be used to provider per-instance or per-request Access Tokens for the MercadoPago API. 
         /// If left null/empty, then the SDK.AccessToken is used instead.
         /// </summary>
+        [JsonIgnore]
         public string UserAccessToken { get; set; }
 
         internal JObject GetJsonSource() => LastApiResponse?.JsonObjectResponse;
