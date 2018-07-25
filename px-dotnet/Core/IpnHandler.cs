@@ -5,8 +5,8 @@ namespace MercadoPago
 {
     public static class Ipn
     {
-        public const string Payment = "payment";
-        public const string MerchantOrder = "merchant_order";
+        internal const string Payment = "payment";
+        internal const string MerchantOrder = "merchant_order";
 
         public static void HandleNotification(string topic, string id, Action<Payment> onPaymentReceived = null, Action<MerchantOrder> onMerchantOrderReceived = null)
         {

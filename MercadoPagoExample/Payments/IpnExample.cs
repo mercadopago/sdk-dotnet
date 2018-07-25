@@ -10,7 +10,8 @@ namespace MercadoPagoExample.Payments
         {
             Utils.LoadOrPromptAccessToken();
 
-            IpnNotification(Ipn.Payment, "1234");
+            // You will receive this invocation via an HTTP POST from MercadoPago to your web application
+            IpnNotification("payment", "1234");
         }
 
         // Put this in an ASP.NET controller supporting HTTP POST
