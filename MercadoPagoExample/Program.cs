@@ -19,6 +19,7 @@ namespace MercadoPagoExample
             Console.WriteLine("\t1.3. Pago con Tarjetas Guardadas");
             Console.WriteLine("\t1.4. Búsqueda de Pagos");
             Console.WriteLine("\t1.5. Token de Acceso por instancia.");
+            Console.WriteLine("\t1.6. Notificaciones IPN.");
             Console.WriteLine("5. Exit");
 
             var selection = Console.ReadLine();
@@ -48,6 +49,9 @@ namespace MercadoPagoExample
                         break;
                     case 1.5m:
                         UserAccessTokenExample.Run();
+                        break;
+                    case 1.6m:
+                        IpnExample.Run();
                         break;
                     case 5m:
                         return;

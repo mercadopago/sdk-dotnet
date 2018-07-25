@@ -1,0 +1,32 @@
+﻿using System;
+using MercadoPago;
+using MercadoPago.Resources;
+
+namespace MercadoPagoExample.Payments
+{
+    public static class IpnExample
+    {
+        public static void Run()
+        {
+            Utils.LoadOrPromptAccessToken();
+
+            IpnNotification(Ipn.Payment, "1234");
+        }
+
+        // Put this in an ASP.NET controller supporting HTTP POST
+        public static void IpnNotification(string topic, string id)
+        {
+            Ipn.HandleNotification(topic, id, onPaymentReceived: OnPaymentReceived, onMerchantOrderReceived: OnMerchantOrderReceived);
+        }
+
+        private static void OnPaymentReceived(Payment payment)
+        {
+            Console.WriteLine($"Payment Received: {payment.Id}");
+        }
+
+        private static void OnMerchantOrderReceived(MerchantOrder merchantOrder)
+        {
+            Console.WriteLine($"Merchant Order Received: {merchantOrder.Id}");
+        }
+    }
+}

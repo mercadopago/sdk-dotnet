@@ -42,6 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IpnTest.cs" />
     <Compile Include="Core\ResourceTest.cs" />
     <Compile Include="Core\MPIPNTest.cs" />
     <Compile Include="FullIntegrationTest.cs" />

@@ -7,6 +7,7 @@ using System.Text;
 
 namespace MercadoPago.Core
 {
+    [Obsolete("Use " + nameof(Ipn) + " instead.")]
     public class MPIPN
     {        
         public partial class Topic
