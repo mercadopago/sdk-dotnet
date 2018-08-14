@@ -35,6 +35,64 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Payment_Create_ShouldBeOk()
         {
+
+            var addInfPayerAdd = new Address
+            {
+                StreetName = "aaa",
+                StreetNumber = 5,
+                ZipCode = "54321"
+            };
+
+            var addInfPayerPhone = new Phone
+            {
+                AreaCode = "00",
+                Number = "5512345678"
+            };
+
+            DateTime fechaReg = new DateTime(2000, 01, 31);
+
+            var addInfoPayer = new AdditionalInfoPayer
+            {
+                FirstName = "Rubén",
+                LastName = "González",
+                RegistrationDate = fechaReg,
+                Address = addInfPayerAdd,
+                Phone = addInfPayerPhone
+            };
+
+            var item = new Item
+            {
+                Id = "producto123",
+                Title = "Celular blanco",
+                Description = "4G, 32 GB",
+                Quantity = 1,
+                PictureUrl = "http://www.imagenes.com/celular.jpg",
+                UnitPrice = 1000
+            };
+
+
+            List<Item> items = new List<Item>();
+            items.Add(item);
+
+            ReceiverAddress receiverAddress = new ReceiverAddress
+            {
+                StreetName = "insurgentes sur",
+                StreetNumber = 1,
+                Zip_code = "12345"
+            };
+
+            Shipment shipment = new Shipment
+            {
+                ReceiverAddress = receiverAddress
+            };
+
+            var addInf = new AdditionalInfo
+            {
+                Payer = addInfoPayer,
+                Shipments = shipment,
+                Items = items
+
+            };
             
             Payment payment = new Payment
             {
@@ -46,13 +104,14 @@ namespace MercadoPagoSDK.Test.Resources
                 Installments = 1,
                 Payer = new Payer {
                     Email = "milton.brandes@mercadolibre.com"
-                }
+                },
+                AdditionalInfo = addInf
             };
 
             payment.Save(); 
              
-            LastPayment = payment; 
-
+            LastPayment = payment;
+ 
             Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
             Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id"); 
         }

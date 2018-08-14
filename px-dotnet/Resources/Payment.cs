@@ -32,7 +32,6 @@ namespace MercadoPago.Resources
         [GETEndpoint("/v1/payments/:id")]
         public static Payment FindById(int? id, bool useCache)
         {
-            
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
         } 
         /// <summary>
@@ -171,7 +170,7 @@ namespace MercadoPago.Resources
         private string _processing_mode;
         private string _merchant_account_id;
         private DateTime? _date_of_expiration;
-        private decimal _sponsor_id;
+        private Decimal? _sponsor_id;
         #endregion
 
         #region Accessors 
@@ -523,7 +522,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Sponsor Identification
         /// </summary>
-        public Decimal SponsorId
+        public Decimal? SponsorId
         {
             get { return _sponsor_id; } 
             set { _sponsor_id = value; }
