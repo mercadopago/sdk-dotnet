@@ -9,9 +9,9 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
-        public static MerchantOrder FindById(string id, bool useCache = false) => Get($"/merchant_order/{id}", useCache);
+        public static MerchantOrder FindById(string id, bool useCache = false) => Get($"/merchant_orders/{id}", useCache);
 
-        public MerchantOrder Load(string id, bool useCache = false) => Get($"/merchant_order/{id}", useCache);
+        public MerchantOrder Load(string id, bool useCache = false) => Get($"/merchant_orders/{id}", useCache);
 
         public MerchantOrder Save() => Post("/merchant_orders");
 
