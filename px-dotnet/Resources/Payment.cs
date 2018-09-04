@@ -30,7 +30,7 @@ namespace MercadoPago.Resources
         /// Find a payment trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(int? id, bool useCache)
+        public static Payment FindById(long? id, bool useCache)
         {
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
         } 

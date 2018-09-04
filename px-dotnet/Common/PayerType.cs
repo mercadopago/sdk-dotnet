@@ -12,6 +12,7 @@ namespace MercadoPago.Common
         ///<summary>The account corresponds to a MercadoPago registered user</summary>
         registered,
         ///<summary>The payer doesn't have an account</summary>
-        guest
+        guest,
+        anonymous
     }
 }
