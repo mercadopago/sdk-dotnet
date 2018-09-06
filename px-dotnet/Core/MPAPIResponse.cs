@@ -70,15 +70,16 @@ namespace MercadoPago
             var stream = response.GetResponseStream();
 
 
+
+
             if (stream != null)
             {
                 try
                 {
                     Stream dataStream = response.GetResponseStream();
                     StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
-                    this.StringResponse = reader.ReadToEnd(); 
-
-
+                    this.StringResponse = reader.ReadToEnd();
+ 
                     reader.Close();
                     dataStream.Close();
                 }

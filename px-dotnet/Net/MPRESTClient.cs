@@ -55,9 +55,7 @@ namespace MercadoPago
             int requestTimeout,
             int retries)
         {
-
-            Console.WriteLine(payload);
-
+ 
             try
             {
                 return ExecuteRequestCore(httpMethod, path, payloadType, payload, colHeaders, requestTimeout, retries);
@@ -82,8 +80,7 @@ namespace MercadoPago
             int retries)
         {
  
-            try
-            {
+             
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 string result = string.Empty; 
 
@@ -97,8 +94,7 @@ namespace MercadoPago
                 try
                 {
                     using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
-                    { 
-                        
+                    {  
                         return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
                     }
                 }
@@ -114,12 +110,7 @@ namespace MercadoPago
                     }
                      
                 }
-                
-            }
-            catch (Exception ex)
-            { 
-                throw new MPRESTException(ex.Message);
-            }
+             
         }
 
         /// <summary>
@@ -147,10 +138,10 @@ namespace MercadoPago
             }
             else if (httpMethod.Equals(HttpMethod.POST))
             {
-                if (payload == null)
-                {
-                    throw new MPRESTException("Must include payload for this method.");
-                }
+                //if (payload == null)
+                //{
+                //    throw new MPRESTException("Must include payload for this method.");
+                //}
             }
             else if (httpMethod.Equals(HttpMethod.PUT))
             {
@@ -184,6 +175,9 @@ namespace MercadoPago
                 }                
             }
 
+            mpRequest.Request.ContentType = "application/json";
+            mpRequest.Request.UserAgent = "MercadoPago DotNet SDK/1.0.30";
+
             if (payload != null) // POST & PUT
             {
                 byte[] data = null;
@@ -195,7 +189,7 @@ namespace MercadoPago
                     parametersDict.Remove(parametersDict.First().Key);
                     foreach (var value in parametersDict)
                     {
-                        parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value));
+                        parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value.ToString()));
                     }
 
                     data = Encoding.ASCII.GetBytes(parametersString.ToString());

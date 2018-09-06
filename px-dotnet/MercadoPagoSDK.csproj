@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.29</PackageVersion>
+    <PackageVersion>1.0.34</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -178,6 +178,7 @@
     <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
     <Compile Include="DataStructures\Generic\RecuperableError.cs" />
     <Compile Include="DataStructures\Generic\RecuperableErrorCause.cs" />
+    <Compile Include="Resources\Refund.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
