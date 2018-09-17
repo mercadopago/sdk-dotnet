@@ -123,3 +123,4 @@ FakesAssemblies/
 
 .nuget
 .DS_Store
+.env
