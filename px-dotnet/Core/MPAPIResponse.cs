@@ -40,6 +40,8 @@ namespace MercadoPago
 
             ParseRequest(httpMethod, request, payload);
             ParseResponse(response); 
+
+            System.Diagnostics.Trace.WriteLine("Server response: " + this.StringResponse); 
         }
 
         /// <summary>

@@ -55,6 +55,8 @@ namespace MercadoPago
             int requestTimeout,
             int retries)
         {
+
+            System.Diagnostics.Trace.WriteLine("Payload " + httpMethod + " request to " + path + " : " + payload); 
  
             try
             {
