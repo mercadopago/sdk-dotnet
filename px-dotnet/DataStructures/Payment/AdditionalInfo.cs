@@ -10,9 +10,9 @@ namespace MercadoPago.DataStructures.Payment
         #region Properties
         private string _ip_address;
         private List<Item> _items;
-        private AdditionalInfoPayer _payer;
-        private Shipment _shipment; 
-        private Barcode _barcode;
+        private AdditionalInfoPayer? _payer;
+        private Shipment? _shipments; 
+        private Barcode? _barcode;
         #endregion
 
         #region Accessors
@@ -34,7 +34,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Buyer's information
         /// </summary>
-        public AdditionalInfoPayer Payer
+        public AdditionalInfoPayer? Payer
         {
             get
             {
@@ -49,22 +49,22 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Shipping information
         /// </summary>
-        public Shipment Shipment 
+        public Shipment? Shipments 
         {
             get
             {
-                return _shipment;
+                return _shipments;
             }
 
             set
             {
-                _shipment = value;
+                _shipments = value;
             }
         }
         /// <summary>
         /// Barcode information
         /// </summary>
-        public Barcode Barcode 
+        public Barcode? Barcode 
         {
             get
             {
