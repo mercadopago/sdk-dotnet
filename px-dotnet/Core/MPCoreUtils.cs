@@ -59,11 +59,14 @@ namespace MercadoPago
                 NullValueHandling = NullValueHandling.Ignore, 
                 ContractResolver = new CustomSerializationContractResolver() 
             };
+
             serializer.Converters.Add(new IsoDateTimeConverter()
             {
                 DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
             });
+
             JObject jobject = JObject.FromObject(resource, serializer); 
+
             return jobject;
         }
 

@@ -8,7 +8,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>MercadoPagoSDK.Test</RootNamespace>
     <AssemblyName>MercadoPagoSDK.Test</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

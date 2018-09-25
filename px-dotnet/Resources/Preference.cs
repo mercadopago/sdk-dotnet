@@ -51,7 +51,8 @@ namespace MercadoPago.Resources
         #endregion
 
         #region Properties
-        private List<Item> _items = new List<Item>();
+
+        private List<Item> _items;
         private Payer? _payer;
         private PaymentMethods? _payment_methods;
         private Shipment? _shipment;
@@ -77,26 +78,12 @@ namespace MercadoPago.Resources
         private string _client_id; 
         [StringLength(256)]
         private string _marketplace;  
-        private float? _marketplace_fee;
+        private float? _marketplace_fee; 
         private DifferentialPricing? _differential_pricing; 
         #endregion
 
         #region Accesors
-        /// <summary>
-        /// Items information
-        /// </summary>
-        public List<Item> Items
-        {
-            get
-            {
-                return _items;
-            }
 
-            set
-            {
-                _items = value;
-            }
-        }
         /// <summary>
         /// Buyer Information
         /// </summary>
@@ -412,7 +399,24 @@ namespace MercadoPago.Resources
                 _differential_pricing = value;
             }
         }
-         
+
+        public List<Item> Items
+        {
+            get
+            {
+                if (_items == null)
+                {
+                    _items = new List<Item>();
+                }
+                return _items;
+            }
+
+            set
+            {
+                _items = value;
+            }
+        }
+
         #endregion
     }
 }
