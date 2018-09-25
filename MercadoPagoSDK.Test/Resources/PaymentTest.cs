@@ -171,8 +171,7 @@ namespace MercadoPagoSDK.Test.Resources
                 }
             };
 
-            OtherPayment.Save(); 
-
+            OtherPayment.Save();
             OtherPayment.Refund(); 
 
             Assert.AreEqual(PaymentStatus.refunded, OtherPayment.Status, "Failed: Payment could not be successfully refunded");
