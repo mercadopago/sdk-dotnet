@@ -8,13 +8,17 @@ using MercadoPago.Common;
 using MercadoPago.DataStructures.Preference;
 using MercadoPago.Resources;
 
-namespace MercadoPagoExample.Payments
+namespace MercadoPagoExample.WebCheckout
 {
-    public static class WebCheckoutExample
+    public class WebCheckout : IExample
     {
-        public static void Run()
+        public string Name => "WebCheckout Example";
+
+        public void Run()
         {
-            Utils.LoadOrPromptClientCredentials();
+
+            MercadoPago.SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
+            MercadoPago.SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_SECRET");
 
             // Create a preference object
             var preference = new Preference
@@ -39,7 +43,9 @@ namespace MercadoPagoExample.Payments
             // Save and posting preference
             preference.Save();
 
-            Process.Start(preference.InitPoint);
+
+
         }
+
     }
 }

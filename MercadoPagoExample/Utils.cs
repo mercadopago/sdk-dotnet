@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Configuration;
+using System.Linq;
+using System.Reflection; 
 using MercadoPago;
 
 namespace MercadoPagoExample
@@ -12,42 +15,75 @@ namespace MercadoPagoExample
             return Console.ReadLine();
         }
 
-        public static void LoadOrPromptAccessToken()
+        public static void SetEnvVarsFromAppConfig()
         {
-            SDK.AccessToken  = LoadOrPrompt(SDK.AccessToken,  nameof(SDK.AccessToken),  "Ingrese Access Token: ");
-        }
+            SetIfNotExist("ACCESS_TOKEN", ConfigurationManager.AppSettings["ACCESS_TOKEN"]);
+            SetIfNotExist("CLIENT_ID", ConfigurationManager.AppSettings["CLIENT_ID"]);
+            SetIfNotExist("CLIENT_SECRET", ConfigurationManager.AppSettings["CLIENT_SECRET"]);
 
-        public static void LoadOrPromptClientCredentials()
+        };
+
+        private static void SetIfNotExist(string key, string value)
         {
-            SDK.ClientId     = LoadOrPrompt(SDK.ClientId,     nameof(SDK.ClientId),     "Ingrese Client Id: ");
-            SDK.ClientSecret = LoadOrPrompt(SDK.ClientSecret, nameof(SDK.ClientSecret), "Ingrese Client Secret: ");
-            SDK.AppId        = LoadOrPrompt(SDK.AppId,        nameof(SDK.AppId),        "Ingrese App Id: ");
-        }
+            if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(key))) {
+                Environment.SetEnvironmentVariable(key, value);
+            };
 
-        private static string LoadOrPrompt(string currentValue, string name, string prompt)
+        };
+
+        public static int ShowMenu(NameValueCollection collection)
         {
-            while (true)
-            {
-                var value = currentValue;
+            Console.Clear();
+            Console.WriteLine("\nChoose an Option: \n");
+            int i = 0;
 
-                if (!string.IsNullOrEmpty(value))
-                    return value;
-
-                value = ConfigurationManager.AppSettings[name];
-
-                if (!string.IsNullOrEmpty(value))
-                    return value;
-
-                value = Environment.GetEnvironmentVariable(name);
-
-                if (!string.IsNullOrEmpty(value))
-                    return value;
-
-                value = Prompt(prompt);
-
-                if (!string.IsNullOrEmpty(value))
-                    return value;
+            foreach (string item in collection.Keys) {
+                Console.WriteLine( "\t" + i + ' ' + collection[item]);
+                i++;
             }
+
+            Console.WriteLine("\n");
+
+            var selection = Console.ReadLine();
+            int n = int.Parse(selection);
+
+            return n;
         }
+      
+        public static NameValueCollection LoadExamples()
+        {
+            var activeExamples = ConfigurationManager.GetSection("activeExamples") as NameValueCollection;
+            return activeExamples;
+        }
+
+        private static Type[] GetTypesInNamespace(Assembly assembly, string nameSpace)
+        {
+            return
+              assembly.GetTypes()
+                      .Where(t => t.Namespace.Contains(nameSpace))
+                      .ToArray();
+        }
+
+        public static NameValueCollection LoadExamplesFromNamespace(string namespaceName) {
+            
+            NameValueCollection typesCollection = new NameValueCollection();
+
+            Type[] typelist = GetTypesInNamespace(Assembly.GetExecutingAssembly(), namespaceName);
+
+
+            for (int i = 0; i < typelist.Length; i++)
+            {
+                IExample instance = (IExample)Activator.CreateInstance(typelist[i]); 
+                typesCollection.Add(typelist[i].FullName, instance.Name);
+            }
+
+            return typesCollection;
+        }
+
+
+
+
     }
+
+
 }
