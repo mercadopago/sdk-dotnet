@@ -10,8 +10,8 @@ namespace MercadoPago.DataStructures.Payment
         #region Properties
         private String _ip_address;
         private List<Item> _items;
-        private AdditionalInfoPayer? _payer;
-        private Shipment? _shipments;
+        private AdditionalInfoPayer? _payer; 
+        private Shipment? _shipments;  
         private Barcode? _barcode;
         #endregion
 
@@ -48,8 +48,8 @@ namespace MercadoPago.DataStructures.Payment
         }
         /// <summary>
         /// Shipping information
-        /// </summary>
-        public Shipment? Shipments
+        /// </summary> 
+        public Shipment? Shipments  
         {
             get
             {
