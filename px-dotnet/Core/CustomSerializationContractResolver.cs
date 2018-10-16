@@ -13,8 +13,7 @@ namespace MercadoPago
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         { 
 
-            var property = base.CreateProperty(member, memberSerialization);
-            NamingStrategy = new SnakeCaseNamingStrategy();
+            var property = base.CreateProperty(member, memberSerialization); 
 
             property.ShouldSerialize = propInstance => property.Writable;
 

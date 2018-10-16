@@ -10,12 +10,15 @@ namespace MercadoPago
 {
     public class CustomDeserializationContractResolver : DefaultContractResolver
     {
+
+
+
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             try
             {
-                var property = base.CreateProperty(member, memberSerialization);
-                NamingStrategy = new SnakeCaseNamingStrategy();
+                var property = base.CreateProperty(member, memberSerialization); 
+
                 if (!property.Writable)
                 {
                     var prop = member as PropertyInfo;

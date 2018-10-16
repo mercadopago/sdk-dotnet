@@ -21,7 +21,7 @@ namespace MercadoPagoExample
             SetIfNotExist("CLIENT_ID", ConfigurationManager.AppSettings["CLIENT_ID"]);
             SetIfNotExist("CLIENT_SECRET", ConfigurationManager.AppSettings["CLIENT_SECRET"]);
 
-        };
+        }
 
         private static void SetIfNotExist(string key, string value)
         {
@@ -29,7 +29,7 @@ namespace MercadoPagoExample
                 Environment.SetEnvironmentVariable(key, value);
             };
 
-        };
+        }
 
         public static int ShowMenu(NameValueCollection collection)
         {

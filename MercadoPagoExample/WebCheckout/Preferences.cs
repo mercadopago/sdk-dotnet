@@ -18,7 +18,7 @@ namespace MercadoPagoExample.WebCheckout
         {
 
             MercadoPago.SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            MercadoPago.SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            MercadoPago.SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
 
             // Create a preference object
             var preference = new Preference
@@ -42,6 +42,11 @@ namespace MercadoPagoExample.WebCheckout
             
             // Save and posting preference
             preference.Save();
+
+            Console.WriteLine(preference.Id);
+            Console.WriteLine(preference.InitPoint);
+
+            Console.ReadLine();
 
 
 

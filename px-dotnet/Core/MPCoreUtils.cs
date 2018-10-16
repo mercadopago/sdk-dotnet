@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
 using MercadoPago.DataStructures.Generic;
+using Newtonsoft.Json.Serialization;
 
 namespace MercadoPago
 {
@@ -57,7 +58,9 @@ namespace MercadoPago
         {
             JsonSerializer serializer = new JsonSerializer { 
                 NullValueHandling = NullValueHandling.Ignore, 
-                ContractResolver = new CustomSerializationContractResolver() 
+                ContractResolver = new CustomSerializationContractResolver{
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
             };
 
             serializer.Converters.Add(new IsoDateTimeConverter()
