@@ -213,8 +213,7 @@ namespace MercadoPago
         /// <param name="useCache">Cache configuration.</param>
         /// <returns>Generic type object, containing information about retrieval process.</returns>
         protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
-        {
- 
+        {            
             if (resource == null)
             {
                 try
@@ -639,6 +638,19 @@ namespace MercadoPago
             }
 
             return result.ToString();
+        }
+
+        public void DumpLog()
+        {
+            
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+
+            using (var writer = new System.IO.StringWriter())
+            {
+                ObjectDumper.Dumper.Dump(this, "Object Dumper", writer);
+                System.Diagnostics.Trace.WriteLine("Resource " + writer); 
+            }
         }
 
         /// <summary>

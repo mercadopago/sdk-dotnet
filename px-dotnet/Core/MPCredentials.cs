@@ -45,8 +45,7 @@ namespace MercadoPago
                     access_token = accessTokenElem.First().ToString();
                 else
                     throw new MPException("Can not retrieve the \"access_token\"");
-
-
+                
                 // Making refresh token an optional param
                 if (refreshTokenElem != null && refreshTokenElem.Count == 1){
                     refresh_token = refreshTokenElem.First().ToString(); 

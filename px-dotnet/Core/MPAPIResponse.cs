@@ -70,10 +70,7 @@ namespace MercadoPago
             this.StatusDescription = response.StatusDescription;
 
             var stream = response.GetResponseStream();
-
-
-
-
+ 
             if (stream != null)
             {
                 try
@@ -89,8 +86,7 @@ namespace MercadoPago
                 {
                     throw new MPException(ex.Message);
                 }
-
-
+ 
                 // Try to parse the response to a json, and a extract the entity of the response.
                 // When the response is not a json parseable string then the string response must be used.
                 try
@@ -99,6 +95,7 @@ namespace MercadoPago
                 }
                 catch (Exception)
                 {
+                    Console.WriteLine("Error parsing jsonObect");
                 //    If not an object
                 }
             }

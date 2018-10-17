@@ -79,14 +79,42 @@ namespace MercadoPago
         /// <returns>an object obteined from obj</returns>
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
-            JsonSerializer serializer = new JsonSerializer { 
-                NullValueHandling = NullValueHandling.Ignore,  
-                ContractResolver = new CustomDeserializationContractResolver()
+            JsonSerializer serializer = new JsonSerializer
+            { 
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomDeserializationContractResolver {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
             };
+
             serializer.Converters.Add(new IsoDateTimeConverter(){
                 DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
             });
+
             T resource = (T)jObj.ToObject<T>(serializer);
+
+            resource.DumpLog();
+
+            return resource;
+        }
+
+        public static MPBase GetResourceFromJson<T>(String json) where T : MPBase
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            //{ 
+            //    NullValueHandling = NullValueHandling.Ignore,
+            //    ContractResolver = new CustomDeserializationContractResolver()
+            //};
+
+            //serializer.Converters.Add(new IsoDateTimeConverter()
+            //{
+            //    DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
+            //});
+
+            T resource = JsonConvert.DeserializeObject<T>(json);//(T)jObj.ToObject<T>(serializer);
+
+            resource.DumpLog();
+
             return resource;
         }
 

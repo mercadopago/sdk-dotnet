@@ -12,7 +12,7 @@ namespace MercadoPago
     {
 
 
-
+        
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             try

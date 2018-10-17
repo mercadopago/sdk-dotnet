@@ -81,9 +81,6 @@ namespace MercadoPago
             int connectionTimeout,
             int retries)
         {
-
-            Console.WriteLine(payload);
- 
              
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
                 string result = string.Empty; 

@@ -64,7 +64,7 @@ namespace MercadoPagoSDK.Test.Resources
             preference.Save();
             LastPreference = preference;
 
-            Console.WriteLine("INIT POINT: " + preference.SandboxInitPoint);
+            Console.WriteLine("INIT POINT: " + preference.InitPoint);
 
             Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
             Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");
