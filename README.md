@@ -2,7 +2,7 @@
 # Mercado Pago SDK for .Net
 
 
-[![Build Status](https://travis-ci.org/mercadopago/px-dotnet.svg?branch=develop)](https://travis-ci.org/mercadopago/px-dotnet)
+[![Build Status](https://travis-ci.org/mercadopago/dx-dotnet.svg?branch=develop)](https://travis-ci.org/mercadopago/dx-dotnet)
 
 
 This library provides developers with a simple set of bindings to the Mercado Pago API.
