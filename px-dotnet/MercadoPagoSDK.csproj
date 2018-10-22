@@ -14,12 +14,15 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.40</PackageVersion>
+    <PackageVersion>1.0.41</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
     <PackageProjectUrl>https://github.com/mercadopago/px-dotnet</PackageProjectUrl>
-    <PackageReleaseNotes>Error attribute to handle recuperable bad params errors</PackageReleaseNotes>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/900583</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/dx-dotnet/master/LICENSE</PackageLicenseUrl>
+    <Summary>SDK Oficial de MercadoPago para .Net</Summary>
+    <Title>Mercado Pago SDK</Title>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
