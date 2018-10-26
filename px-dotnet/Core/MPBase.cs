@@ -30,9 +30,22 @@ namespace MercadoPago
         protected RecuperableError _errors;
         public RecuperableError Errors
         {
-            get { return  _errors; }
+            get { return _errors; }
             private set { _errors = value; }
         }
+
+        protected string _marketplaceAccessToken;
+        public string MarketplaceAccessToken
+        {
+            get { return _marketplaceAccessToken; }
+            set { _marketplaceAccessToken = value; }
+        }
+
+        public bool ShouldSerializeMarketplaceAccessToken()
+        {
+            return false;
+        }
+
 
         public void DelegateErrors(RecuperableError DelegatedErrors){
             this._errors = DelegatedErrors;
@@ -620,8 +633,15 @@ namespace MercadoPago
 
             result.Append(path);
 
+            string accessToken;
+
             // Access Token
-            string accessToken = SDK.GetAccessToken();
+            if (string.IsNullOrEmpty(resource.MarketplaceAccessToken)) {
+                accessToken = SDK.GetAccessToken();
+            } else {
+                accessToken = resource.MarketplaceAccessToken;
+            }
+           
 
             if (!string.IsNullOrEmpty(accessToken))
             {
