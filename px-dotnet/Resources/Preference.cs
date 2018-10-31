@@ -64,7 +64,7 @@ namespace MercadoPago.Resources
         private string _sandbox_init_point;
         private DateTime? _date_created;
         [JsonConverter(typeof(StringEnumConverter))]
-        private OperationType? _operation_type; 
+        private OperationType? _operation_type;
         [StringLength(600)]
         private string _additionalInfo;
         [JsonConverter(typeof(StringEnumConverter))]
@@ -75,11 +75,12 @@ namespace MercadoPago.Resources
         private DateTime? _expiration_date_from;
         private DateTime? _expiration_dateTo;
         private int? _collector_id;
-        private string _client_id; 
+        private string _client_id;
         [StringLength(256)]
-        private string _marketplace;  
-        private float? _marketplace_fee; 
-        private DifferentialPricing? _differential_pricing; 
+        private string _marketplace;
+        private float? _marketplace_fee;
+        private DifferentialPricing? _differential_pricing;
+        private string _sponsor_id;
         #endregion
 
         #region Accesors
@@ -414,6 +415,19 @@ namespace MercadoPago.Resources
             set
             {
                 _items = value;
+            }
+        }
+
+        public string SponsorId
+        {
+            get
+            {
+                return _sponsor_id;
+            }
+
+            set
+            {
+                _sponsor_id = value;
             }
         }
 

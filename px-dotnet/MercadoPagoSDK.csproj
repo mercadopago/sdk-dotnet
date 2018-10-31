@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.42</PackageVersion>
+    <PackageVersion>1.0.44</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -24,7 +24,7 @@
     <Summary>SDK Oficial de MercadoPago para .Net</Summary>
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
-    <PackageReleaseNotes>Se incluye el atributo MarketplaceAccessToken para poder setear un AccessToken en cada request en escenarios de Marketplace</PackageReleaseNotes>
+    <PackageReleaseNotes>Se incluye el atributo SponsorId para la creacion de preferencias.</PackageReleaseNotes>
     <PackageTags>mercadopago</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
