@@ -55,7 +55,7 @@ namespace MercadoPago.Resources
         private List<Item> _items;
         private Payer? _payer;
         private PaymentMethods? _payment_methods;
-        private Shipment? _shipment;
+        private Shipment? _shipments;
         private BackUrls? _back_urls;
         [StringLength(500)]
         private string _notification_url;
@@ -118,16 +118,16 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Shipments information
         /// </summary>
-        public Shipment? Shipment 
+        public Shipment? Shipments
         {
             get
             {
-                return _shipment;
+                return _shipments;
             }
 
             set
             {
-                _shipment = value;
+                _shipments = value;
             }
         }
         /// <summary>

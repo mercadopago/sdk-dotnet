@@ -31,6 +31,12 @@ namespace MercadoPagoSDK.Test.Resources
         public void Preference_CreateShouldBeOk() 
         {
 
+            Shipment shipments = new Shipment()
+            {
+                ReceiverAddress = new ReceiverAddress()
+                { ZipCode = "28834", StreetName = "Torrente Antonia", StreetNumber = int.Parse("1219"), Floor = "8", Apartment = "C" }
+            };
+
             List<PaymentType> excludedPaymentTypes = new List<PaymentType>
             {
                 new PaymentType()
@@ -60,6 +66,8 @@ namespace MercadoPagoSDK.Test.Resources
                     UnitPrice = (float)10.0
                 }
             );
+
+            preference.Shipments = shipments;
 
             preference.Save();
             LastPreference = preference;
