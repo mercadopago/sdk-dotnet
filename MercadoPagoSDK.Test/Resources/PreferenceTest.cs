@@ -1,13 +1,11 @@
 ﻿using MercadoPago;
+using MercadoPago.DataStructures.Preference;
 using MercadoPago.Resources;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MercadoPago.DataStructures.Preference;
+using System.Configuration;
 using System.Net;
-using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {
@@ -21,14 +19,16 @@ namespace MercadoPagoSDK.Test.Resources
         {
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            // Make a Clean Test
             SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            SDK.ClientId = ConfigurationManager.AppSettings.Get("CLIENT_ID");
+            SDK.ClientSecret = ConfigurationManager.AppSettings.Get("CLIENT_SECRET");
         }
 
-        [Test]
-        public void Preference_CreateShouldBeOk() 
+        [Test()]
+        public void Preference_CreateShouldBeOk()
         {
 
             Shipment shipments = new Shipment()
@@ -50,9 +50,9 @@ namespace MercadoPagoSDK.Test.Resources
                 ExternalReference = "01-02-00000003",
                 Expires = true,
                 ExpirationDateFrom = DateTime.Now,
-                ExpirationDateTo = DateTime.Now.AddDays(1), 
+                ExpirationDateTo = DateTime.Now.AddDays(1),
                 PaymentMethods = new PaymentMethods()
-                { 
+                {
                     ExcludedPaymentTypes = excludedPaymentTypes
                 }
             };
@@ -74,15 +74,15 @@ namespace MercadoPagoSDK.Test.Resources
 
             Console.WriteLine("INIT POINT: " + preference.InitPoint);
 
-            Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
+            Assert.IsTrue(preference.Id.Length > 0, "Failed: Payment could not be successfully created");
             Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");
         }
 
         [Test]
         public void Preference_FindByIDShouldbeOk()
         {
-            Preference foundedPreference = Preference.FindById(LastPreference.Id); 
-            Assert.AreEqual(foundedPreference.Id, LastPreference.Id); 
+            Preference foundedPreference = Preference.FindById(LastPreference.Id);
+            Assert.AreEqual(foundedPreference.Id, LastPreference.Id);
         }
 
         [Test]
@@ -90,7 +90,7 @@ namespace MercadoPagoSDK.Test.Resources
         {
             LastPreference.ExternalReference = "DummyPreference for Integration Test";
             LastPreference.Update();
-            Assert.AreEqual(LastPreference.ExternalReference, "DummyPreference for Integration Test"); 
-        }  
+            Assert.AreEqual(LastPreference.ExternalReference, "DummyPreference for Integration Test");
+        }
     }
 }

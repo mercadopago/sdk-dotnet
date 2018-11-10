@@ -9,6 +9,7 @@ using MercadoPago;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using MercadoPago.Common;
+using System.Configuration;
 
 namespace MercadoPagoSDK.Test.Resources
 {
@@ -21,15 +22,18 @@ namespace MercadoPagoSDK.Test.Resources
 
         [SetUp]
         public void Init(){ 
-            // Avoid SSL Cert error
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // HardCoding Credentials
             AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
             PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
+
+            // Avoid SSL Cert error
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             // Make a Clean Test
             SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = AccessToken; 
+            SDK.ClientId = ConfigurationManager.AppSettings.Get("CLIENT_ID");
+            SDK.ClientSecret = ConfigurationManager.AppSettings.Get("CLIENT_SECRET");
         }
 
         [Test]
@@ -97,7 +101,7 @@ namespace MercadoPagoSDK.Test.Resources
             Payment payment = new Payment
             {
                 TransactionAmount = (float)20.0,
-                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
+                //Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
                 Description = "Pago de Prueba",
                 PaymentMethodId = "visa",
                 ExternalReference = "INTEGRATION-TEST-PAYMENT",

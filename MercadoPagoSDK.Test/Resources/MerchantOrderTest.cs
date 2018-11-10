@@ -1,18 +1,31 @@
 ﻿using MercadoPago;
+using MercadoPago.DataStructures.MerchantOrder;
 using MercadoPago.Resources;
-using MercadoPago.Resources.DataStructures.MerchantOrder;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using System.Text;
+using System.Net;
 
 namespace MercadoPagoSDK.Test.Resources
 {
     [TestFixture()]
     public class MerchantOrderTest
     {
-        [Test()]
+        [SetUp]
+        public void Init()
+        {
+            // Avoid SSL Cert error
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            // Make a Clean Test
+            SDK.CleanConfiguration();
+            SDK.ClientId = ConfigurationManager.AppSettings.Get("CLIENT_ID");
+            SDK.ClientSecret = ConfigurationManager.AppSettings.Get("CLIENT_SECRET");
+        }
+
+        [Test]
         public void MerchantOrder_AppendItemShouldBeOk()
         {
             MerchantOrder merchantOrderInternal = new MerchantOrder();
@@ -56,20 +69,11 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void MerchantOrder_LoadShouldbeOk()
         {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
             try
             {
-                var result = merchantOrderInternal.Load("1234");
+                var result = MerchantOrder.Load("894139561");
             }
-            catch (MPException mpException)
+            catch (MPException)
             {
                 Assert.Fail();
             }
@@ -98,21 +102,16 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void MerchantOrder_UpdateShouldBeOk()
         {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
+            const string EXT_REF = "EXTREF123";
 
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder() { ID = "1" };
+            MerchantOrder merchantOrderInternal = new MerchantOrder() { ID = "894139561" };
+            merchantOrderInternal.ExternalReference = EXT_REF;
 
             try
             {
                 var result = merchantOrderInternal.Update();
             }
-            catch (MPException mpException)
+            catch (MPException)
             {
                 Assert.Fail();
             }
@@ -142,21 +141,18 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void MerchantOrder_CreateShouldBeOk()
         {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
+            MerchantOrder merchantOrderInternal = new MerchantOrder()
+            {
+                PreferenceId = "202809963-281ec50b-4e69-4952-963b-ee1931ba4df0"
+            };
 
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
+            merchantOrderInternal.AppendItem(new Item() { Title = "Un producto sensacional", CurrencyId = "USD", Quantity = 1, UnitPrice = 0.99F });
 
             try
             {
                 var result = merchantOrderInternal.Save();
             }
-            catch (MPException mpException)
+            catch (MPException)
             {
                 Assert.Fail();
             }

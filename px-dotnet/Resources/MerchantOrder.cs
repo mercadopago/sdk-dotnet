@@ -2,34 +2,32 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 
 namespace MercadoPago.Resources
 {
     public class MerchantOrder : MPBase
     {
         #region Actions
-        
-        public MerchantOrder Load(string id) 
+
+        public static MerchantOrder Load(string id)
         {
             return Load(id, WITHOUT_CACHE);
         }
 
-        [GETEndpoint("/merchant_order/:id")]
-        public MerchantOrder Load(string id, bool useCache)
+        [GETEndpoint("/merchant_orders/:id")]
+        public static MerchantOrder Load(string id, bool useCache)
         {
             return (MerchantOrder)ProcessMethod<MerchantOrder>(typeof(MerchantOrder), "Load", id, useCache);
         }
-        
-        [POSTEndpoint("/merchant_order")]
-        public MerchantOrder Save() 
+
+        [POSTEndpoint("/merchant_orders")]
+        public MerchantOrder Save()
         {
             return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE);
         }
-        
-        [PUTEndpoint("/merchant_order/:id")]
-        public MerchantOrder Update() 
+
+        [PUTEndpoint("/merchant_orders/:id")]
+        public MerchantOrder Update()
         {
             return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE);
         }
@@ -47,7 +45,7 @@ namespace MercadoPago.Resources
         private string siteId;
         private Payer payer;
         private Collector collector;
-        private int sponsorId;
+        private int? sponsorId;
         private List<MerchantOrderPayment> payments;
         private float? paidAmount;
         private float? refundedAmount;
@@ -68,29 +66,29 @@ namespace MercadoPago.Resources
         #endregion
 
         #region Accessors
-       
+
         public string ID
         {
             get { return id; }
-            set { this.id = value; } //This Accessor must be removed after testing approvement.
+            set { id = value; } //This Accessor must be removed after testing approvement.
         }
-       
+
         public string PreferenceId
         {
             get { return preferenceId; }
             set { preferenceId = value; }
-        }        
+        }
 
         public DateTime? DateCreated
         {
-            get { return dateCreated; }            
+            get { return dateCreated; }
+            private set { dateCreated = value; }
         }
 
-        
-
-        public DateTime? LastUpdate
+        public DateTime? LastUpdated
         {
-            get { return lastUpdate; }            
+            get { return lastUpdate; }
+            private set { lastUpdate = value; }
         }
 
         public string ApplicationId
@@ -101,7 +99,8 @@ namespace MercadoPago.Resources
 
         public string Status
         {
-            get { return status; }            
+            get { return status; }
+            private set { status = value; }
         }
 
         public string SiteId
@@ -122,7 +121,7 @@ namespace MercadoPago.Resources
             set { collector = value; }
         }
 
-        public int SponsorId
+        public int? SponsorId
         {
             get { return sponsorId; }
             set { sponsorId = value; }
@@ -130,22 +129,26 @@ namespace MercadoPago.Resources
 
         public List<MerchantOrderPayment> Payments
         {
-            get { return payments; }            
-        }        
+            get { return payments; }
+            set { payments = value; }
+        }
 
         public float? PaidAmount
         {
-            get { return paidAmount; }            
+            get { return paidAmount; }
+            set { paidAmount = value; }
         }
-       
+
         public float? RefundedAmount
         {
-            get { return refundedAmount; }            
+            get { return refundedAmount; }
+            set { refundedAmount = value; }
         }
 
         public float? ShippingCost
         {
-            get { return shippingCost; }            
+            get { return shippingCost; }
+            private set { shippingCost = value; }
         }
 
         public bool? Cancelled
@@ -166,8 +169,8 @@ namespace MercadoPago.Resources
             {
                 items = new List<Item>();
             }
-            items.Add(item);            
-        }        
+            items.Add(item);
+        }
 
         public List<Shipment> Shipments
         {
@@ -181,7 +184,7 @@ namespace MercadoPago.Resources
             {
                 shipments = new List<Shipment>();
             }
-            shipments.Add(shipment);            
+            shipments.Add(shipment);
         }
 
         public string NotificationUrl
@@ -207,10 +210,11 @@ namespace MercadoPago.Resources
             get { return marketplace; }
             set { marketplace = value; }
         }
-       
+
         public float? TotalAmount
         {
             get { return totalAmount; }
+            private set { totalAmount = value; }
         }
 
         #endregion
