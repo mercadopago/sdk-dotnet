@@ -1,11 +1,11 @@
-﻿using MercadoPago;
-using MercadoPago.Resources;
-using NUnit.Framework;
-using System; 
-using System.Net;
-
-namespace MercadoPagoSDK.Test.Resources
+﻿namespace MercadoPagoSDK.Test.Resources
 {
+    using MercadoPago;
+    using MercadoPago.Resources;
+    using NUnit.Framework;
+    using System;
+    using System.Net;
+
     [TestFixture(Ignore = "Skipping")]
     public class CardTest
     {
@@ -30,7 +30,7 @@ namespace MercadoPagoSDK.Test.Resources
 
         [Test()]
         public void Card_CreateShouldBeOk()
-        { 
+        {
             Customer customer = new Customer()
             {
                 Email = "temp.customer@gmail.com"
@@ -48,7 +48,7 @@ namespace MercadoPagoSDK.Test.Resources
             LastCustomer = customer;
             LastCard = card;
 
-            Assert.IsNotEmpty(card.Id); 
+            Assert.IsNotEmpty(card.Id);
 
         }
 
@@ -56,21 +56,21 @@ namespace MercadoPagoSDK.Test.Resources
         [Test()]
         public void Card_FindById_ShouldBeOk()
         {
-            Card card = Card.FindById(LastCustomer.Id, LastCard.Id); 
+            Card card = Card.FindById(LastCustomer.Id, LastCard.Id);
             Console.WriteLine("CardId: {0}", card.Id);
-            Assert.IsNotEmpty(card.Id);  
+            Assert.IsNotEmpty(card.Id);
         }
-        
+
         [Test()]
         public void Card_UpdateShouldBeOk()
         {
             string LastToken = LastCard.Token;
-            LastCard.Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "not_founds"); 
+            LastCard.Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "not_founds");
             LastCard.Update();
 
             Assert.AreNotEqual(LastToken, LastCard.Token);
         }
-          
+
 
         [Test()]
         public void RemoveCard()

@@ -1,18 +1,16 @@
-﻿using MercadoPago;
-using Newtonsoft.Json.Linq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Text;
-using ValidationRange = System.ComponentModel.DataAnnotations.RangeAttribute;
-
+﻿
 namespace MercadoPagoSDK.Test
 {
+    using MercadoPago;
+    using Newtonsoft.Json.Linq;
+    using NUnit.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Net;
+    using ValidationRange = System.ComponentModel.DataAnnotations.RangeAttribute;
+
     [TestFixture()]
     public class MPRESTClientTest : MPRESTClient
     {
@@ -23,7 +21,7 @@ namespace MercadoPagoSDK.Test
             MPRESTClient client = new MPRESTClient();
             try
             {
-                MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null, 0 , 0);
+                MPAPIResponse response = client.ExecuteRequest(HttpMethod.GET, "https://httpbin.org/get", PayloadType.X_WWW_FORM_URLENCODED, new JObject(), null, 0, 0);
             }
             catch (MPRESTException ex)
             {
@@ -246,7 +244,7 @@ namespace MercadoPagoSDK.Test
                 TransactionAmount = transationAmount;
 
                 Validate(this);
-            }                       
+            }
         }
     }
 }
