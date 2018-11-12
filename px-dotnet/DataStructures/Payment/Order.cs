@@ -25,7 +25,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Id of the associated purchase order
         /// </summary>
-        public long? Id1 { 
+        public long? Id { 
             get { return  _id; } 
             set { _id = value; } 
         } 
