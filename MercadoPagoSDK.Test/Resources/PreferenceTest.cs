@@ -69,6 +69,8 @@ namespace MercadoPagoSDK.Test.Resources
 
             preference.Shipments = shipments;
 
+            preference.ProcessingModes.Add(MercadoPago.Common.ProcessingMode.aggregator);
+
             preference.Save();
             LastPreference = preference;
 
