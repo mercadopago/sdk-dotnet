@@ -67,7 +67,7 @@ namespace MercadoPagoSDK.Test.Resources
                 Description = "4G, 32 GB",
                 Quantity = 1,
                 PictureUrl = "http://www.imagenes.com/celular.jpg",
-                UnitPrice = 1000
+                UnitPrice = 100.4m
             };
 
 

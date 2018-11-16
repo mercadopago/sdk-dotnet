@@ -63,7 +63,7 @@ namespace MercadoPagoSDK.Test.Resources
                     Title = "Dummy Item",
                     Description = "Multicolor Item",
                     Quantity = 1,
-                    UnitPrice = (float)10.0
+                    UnitPrice = (Decimal)10.0
                 }
             );
 

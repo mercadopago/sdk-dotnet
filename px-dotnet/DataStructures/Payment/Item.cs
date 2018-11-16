@@ -13,8 +13,8 @@ namespace MercadoPago.DataStructures.Payment
         private string _description;
         private string _picture_url;
         private string _category_id;
-        private int _quantity;
-        private int _unit_price; 
+        private int? _quantity;
+        private decimal? _unit_price;
         #endregion
 
         #region Accessors 
@@ -56,14 +56,14 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Item's quantity
         /// </summary>
-        public int Quantity {
+        public int? Quantity {
             get { return  _quantity; } 
             set { _quantity = value; } 
         }
         /// <summary>
         /// Unit price
         /// </summary>
-        public int UnitPrice { 
+        public decimal? UnitPrice { 
             get { return  _unit_price; } 
             set { _unit_price = value; } 
         }
