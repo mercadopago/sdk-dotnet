@@ -402,6 +402,9 @@ namespace MercadoPago
                     for (int i = 0; i < jsonArray.Count(); i++)
                     {
                         T resource = (T)MPCoreUtils.GetResourceFromJson<T>(clazz, (JObject)jsonArray[i]);
+
+                        resource.DumpLog();
+
                         resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
                         resourceArray.Add(resource);
                     }
@@ -602,7 +605,8 @@ namespace MercadoPago
  
             string param_pattern = @":([a-z0-9_]+)"; 
             MatchCollection matches = Regex.Matches(path, param_pattern);
- 
+
+
 
             foreach (Match param in matches)
             { 
@@ -626,7 +630,9 @@ namespace MercadoPago
                     path = path.Replace(param.Value, resource_value.ToString());
                 }
             }
- 
+
+
+
 
             // URL
             result.Insert(0, SDK.BaseUrl);
@@ -636,11 +642,18 @@ namespace MercadoPago
             string accessToken;
 
             // Access Token
-            if (string.IsNullOrEmpty(resource.MarketplaceAccessToken)) {
+            if (resource == null){
                 accessToken = SDK.GetAccessToken();
             } else {
-                accessToken = resource.MarketplaceAccessToken;
+                if (string.IsNullOrEmpty(resource.MarketplaceAccessToken))
+                {
+                    accessToken = SDK.GetAccessToken();
+                } else {
+                    accessToken = resource.MarketplaceAccessToken;
+                }
             }
+
+            Console.Out.WriteLine("STOP"); 
            
 
             if (!string.IsNullOrEmpty(accessToken))
