@@ -81,6 +81,8 @@ namespace MercadoPago.Resources
         private float? _marketplace_fee;
         private DifferentialPricing? _differential_pricing;
         private string _sponsor_id;
+        private List<ProcessingMode> _processing_modes;
+        private bool? _binary_mode;
         #endregion
 
         #region Accesors
@@ -428,6 +430,36 @@ namespace MercadoPago.Resources
             set
             {
                 _sponsor_id = value;
+            }
+        }
+
+        public List<ProcessingMode> ProcessingModes
+        {
+            get
+            {
+                if (_processing_modes == null)
+                {
+                    _processing_modes = new List<ProcessingMode>();
+                }
+                return _processing_modes;
+            }
+
+            set
+            {
+                _processing_modes = value;
+            }
+        }
+
+        public bool? BinaryMode
+        {
+            get
+            {
+                return _binary_mode;
+            }
+
+            set
+            {
+                _binary_mode = value;
             }
         }
 
