@@ -31,7 +31,7 @@ namespace MercadoPagoExample.WebCheckout
                         Title = "Small Silk Plate",
                         Quantity = 5,
                         CurrencyId = CurrencyId.ARS,
-                        UnitPrice = 44.23f
+                        UnitPrice = 44.23m
                     }
                 },
                 Payer = new Payer

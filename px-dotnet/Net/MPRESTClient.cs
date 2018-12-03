@@ -37,6 +37,50 @@ namespace MercadoPago
             this.ProxyPort = proxyPort;
         }
 
+        public JToken ExecuteGenericRequest(
+            HttpMethod httpMethod,
+            string path,
+            PayloadType payloadType,
+            JObject payload) 
+        {
+ 
+
+            if (SDK.GetAccessToken() != null) { 
+                path = SDK.BaseUrl + path + "?access_token=" + SDK.GetAccessToken(); 
+
+            }
+
+            MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, null, 0, 0);
+
+            if (new HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
+            {
+                Stream requestStream = mpRequest.Request.GetRequestStream();
+                requestStream.Write(mpRequest.RequestPayload, 0, mpRequest.RequestPayload.Length);
+                requestStream.Close();
+            }
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)mpRequest.Request.GetResponse())
+                {
+                    Stream dataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
+                    String StringResponse = reader.ReadToEnd();
+                    return JToken.Parse(StringResponse);
+                }
+
+            }
+            catch (WebException ex)
+            {
+                HttpWebResponse errorResponse = ex.Response as HttpWebResponse;
+                Stream dataStream = errorResponse.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
+                String StringResponse = reader.ReadToEnd();
+                return JToken.Parse(StringResponse);
+            }
+
+        }
+
 		/// <summary>
 		/// Execute a request to an endpoint.
 		/// </summary>
@@ -83,6 +127,7 @@ namespace MercadoPago
         {
              
                 MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, colHeaders, connectionTimeout, retries);
+
                 string result = string.Empty; 
 
                 if (new  HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
