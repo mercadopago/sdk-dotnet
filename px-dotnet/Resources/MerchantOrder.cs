@@ -38,179 +38,187 @@ namespace MercadoPago.Resources
 
         #region Properties
 
-        private string id;
-        private string preferenceId;
-        private DateTime? dateCreated;
-        private DateTime? lastUpdate;
-        private string applicationId;
-        private string status;
-        private string siteId;
-        private Payer payer;
-        private Collector collector;
-        private long? sponsorId;
-        private List<MerchantOrderPayment> payments;
-        private float? paidAmount;
-        private float? refundedAmount;
-        private float? shippingCost;
-        private bool? cancelled;
-        private List<Item> items;
-        private List<Shipment> shipments;
+        private long? _id;
+        private string _preference_id;
+        private DateTime? _date_created;
+        private DateTime? _last_update;
+        private string _application_id;
+        private string _status;
+        private string _site_id;
+        private Payer _payer;
+        private Collector _collector;
+        private long? _sponsor_id;
+        private List<MerchantOrderPayment> _payments;
+        private float? _paid_amount;
+        private float? _refunded_amount;
+        private float? _shipping_cost;
+        private bool? _cancelled;
+        private List<Item> _items;
+        private List<Shipment> _shipments;
         [StringLength(500)]
-        private string notificationUrl;
+        private string _notification_url;
         [StringLength(600)]
-        private string additionalInfo;
+        private string _additionalInfo;
         [StringLength(256)]
-        private string externalReference;
+        private string _external_reference;
         [StringLength(256)]
-        private string marketplace;
-        private float? totalAmount;
+        private string _marketplace;
+        private float? _total_amount;
 
         #endregion
 
         #region Accessors
        
-        public string ID
+        public long? ID
         {
-            get { return id; }
-            set { this.id = value; } //This Accessor must be removed after testing approvement.
+            get { return _id; }
+            private set { this._id = value; } //This Accessor must be removed after testing approvement.
         }
        
         public string PreferenceId
         {
-            get { return preferenceId; }
-            set { preferenceId = value; }
+            get { return _preference_id; }
+            set { _preference_id = value; }
         }        
 
         public DateTime? DateCreated
         {
-            get { return dateCreated; }            
+            get { return _date_created; }
+            set { _date_created = value; }
         }
 
         
 
         public DateTime? LastUpdate
         {
-            get { return lastUpdate; }            
+            get { return _last_update; }            
+            set { _last_update = value; }
         }
 
         public string ApplicationId
         {
-            get { return applicationId; }
-            set { applicationId = value; }
+            get { return _application_id; }
+            set { _application_id = value; }
         }
 
         public string Status
         {
-            get { return status; }            
+            get { return _status; }            
+            set { _status = value;  }
         }
 
         public string SiteId
         {
-            get { return siteId; }
-            set { siteId = value; }
+            get { return _site_id; }
+            set { _site_id = value; }
         }
 
         public Payer Payer
         {
-            get { return payer; }
-            set { payer = value; }
+            get { return _payer; }
+            set { _payer = value; }
         }
 
         public Collector Collector
         {
-            get { return collector; }
-            set { collector = value; }
+            get { return _collector; }
+            set { _collector = value; }
         }
 
         public long? SponsorId
         {
-            get { return sponsorId; }
-            set { sponsorId = value; }
+            get { return _sponsor_id; }
+            set { _sponsor_id = value; }
         }
 
         public List<MerchantOrderPayment> Payments
         {
-            get { return payments; }            
+            get { return _payments; }
+            set { _payments = value;  }
         }        
 
         public float? PaidAmount
         {
-            get { return paidAmount; }            
+            get { return _paid_amount; }
+            set { _paid_amount = value; }
         }
        
         public float? RefundedAmount
         {
-            get { return refundedAmount; }            
+            get { return _refunded_amount; }            
+            set { _refunded_amount = value; }
         }
 
         public float? ShippingCost
         {
-            get { return shippingCost; }            
+            get { return _shipping_cost; }            
+            set { _shipping_cost = value; }
         }
 
         public bool? Cancelled
         {
-            get { return cancelled; }
-            set { cancelled = value; }
+            get { return _cancelled; }
+            set { _cancelled = value; }
         }
 
         public List<Item> Items
         {
-            get { return items; }
-            set { items = value; }
+            get { return _items; }
+            set { _items = value; }
         }
 
         public void AppendItem(Item item)
         {
-            if (items == null)
+            if (_items == null)
             {
-                items = new List<Item>();
+                _items = new List<Item>();
             }
-            items.Add(item);            
+            _items.Add(item);            
         }        
 
         public List<Shipment> Shipments
         {
-            get { return shipments; }
-            set { shipments = value; }
+            get { return _shipments; }
+            set { _shipments = value; }
         }
 
         public void AppendShipment(Shipment shipment)
         {
-            if (shipments == null)
+            if (_shipments == null)
             {
-                shipments = new List<Shipment>();
+                _shipments = new List<Shipment>();
             }
-            shipments.Add(shipment);            
+            _shipments.Add(shipment);            
         }
 
         public string NotificationUrl
         {
-            get { return notificationUrl; }
-            set { notificationUrl = value; }
+            get { return _notification_url; }
+            set { _notification_url = value; }
         }
 
         public string AdditionalInfo
         {
-            get { return additionalInfo; }
-            set { additionalInfo = value; }
+            get { return _additionalInfo; }
+            set { _additionalInfo = value; }
         }
 
         public string ExternalReference
         {
-            get { return externalReference; }
-            set { externalReference = value; }
+            get { return _external_reference; }
+            set { _external_reference = value; }
         }
 
         public string Marketplace
         {
-            get { return marketplace; }
-            set { marketplace = value; }
+            get { return _marketplace; }
+            set { _marketplace = value; }
         }
        
         public float? TotalAmount
         {
-            get { return totalAmount; }
+            get { return _total_amount; }
+            set { _total_amount = value; }
         }
 
         #endregion
