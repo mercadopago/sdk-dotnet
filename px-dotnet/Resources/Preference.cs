@@ -80,7 +80,7 @@ namespace MercadoPago.Resources
         private string _marketplace;
         private float? _marketplace_fee;
         private DifferentialPricing? _differential_pricing;
-        private string _sponsor_id;
+        private long? _sponsor_id;
         private List<ProcessingMode> _processing_modes;
         private bool? _binary_mode;
         #endregion
@@ -420,7 +420,7 @@ namespace MercadoPago.Resources
             }
         }
 
-        public string SponsorId
+        public long? SponsorId
         {
             get
             {

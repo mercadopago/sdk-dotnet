@@ -8,7 +8,6 @@ namespace MercadoPago.Resources
     public class MerchantOrder : MPBase
     {
         #region Actions
-
         public static MerchantOrder Load(string id)
         {
             return Load(id, WITHOUT_CACHE);
@@ -45,7 +44,7 @@ namespace MercadoPago.Resources
         private string siteId;
         private Payer payer;
         private Collector collector;
-        private int? sponsorId;
+        private long? sponsorId;
         private List<MerchantOrderPayment> payments;
         private float? paidAmount;
         private float? refundedAmount;
@@ -121,7 +120,7 @@ namespace MercadoPago.Resources
             set { collector = value; }
         }
 
-        public int? SponsorId
+        public long? SponsorId
         {
             get { return sponsorId; }
             set { sponsorId = value; }
