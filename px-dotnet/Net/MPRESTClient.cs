@@ -223,6 +223,8 @@ namespace MercadoPago
 
             mpRequest.Request.ContentType = "application/json";
             mpRequest.Request.UserAgent = "MercadoPago DotNet SDK/1.0.30";
+            mpRequest.Request.Headers.Add("x-product-id", "BC32BHVTRPP001U8NHL0");
+
 
             if (payload != null) // POST & PUT
             {
