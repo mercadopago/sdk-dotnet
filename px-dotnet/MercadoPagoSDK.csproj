@@ -186,8 +186,6 @@ Se corrige el tipo de datos para campos moneda en Payments y Preference de float
     <Compile Include="Common\PaymentMethodDeferredCapture.cs" />
     <Compile Include="DataStructures\Generic\BadParamsError.cs" />
     <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
-    <Compile Include="DataStructures\Generic\RecuperableError.cs" />
-    <Compile Include="DataStructures\Generic\RecuperableErrorCause.cs" />
     <Compile Include="Resources\Refund.cs" />
     <Compile Include="Common\ProcessingMode.cs" />
   </ItemGroup>

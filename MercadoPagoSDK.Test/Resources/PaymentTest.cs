@@ -33,6 +33,17 @@ namespace MercadoPagoSDK.Test.Resources
         }
 
         [Test]
+        public void Payment_Create_EmptyShouldFail()
+        {
+            Payment payment = new Payment();
+            payment.Save();
+
+            Assert.IsNotNull(payment.Errors);
+            Assert.IsTrue(payment.Errors.Cause.Length > 0);
+
+        }
+
+        [Test]
         public void Payment_Create_ShouldBeOk()
         {
 

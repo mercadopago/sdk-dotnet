@@ -27,8 +27,8 @@ namespace MercadoPago
         protected JObject _lastKnownJson;
 
 
-        protected RecuperableError _errors;
-        public RecuperableError Errors
+        protected BadParamsError _errors;
+        public BadParamsError Errors
         {
             get { return _errors; }
             private set { _errors = value; }
@@ -47,7 +47,7 @@ namespace MercadoPago
         }
 
 
-        public void DelegateErrors(RecuperableError DelegatedErrors){
+        public void DelegateErrors(BadParamsError DelegatedErrors){
             this._errors = DelegatedErrors;
         }
 
@@ -266,6 +266,7 @@ namespace MercadoPago
                 }
             } else if (response.StatusCode >= 400 && response.StatusCode < 500) { 
                 BadParamsError badParamsError = MPCoreUtils.GetBadParamsError(response.StringResponse); 
+
                 resource.Errors = badParamsError;
             } else {
                 

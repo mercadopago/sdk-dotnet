@@ -1,14 +1,14 @@
 ﻿using System;
 namespace MercadoPago.DataStructures.Generic
 {
-    public struct BadParamsError : RecuperableError
+    public struct BadParamsError
     {
 
         #region Properties
         private string _message;
         private string _error;
         private int _status;
-        private BadParamsCause[] cause; 
+        private BadParamsCause[] _cause; 
         #endregion
 
         #region Accessors 
@@ -55,12 +55,12 @@ namespace MercadoPago.DataStructures.Generic
         {
             get
             {
-                return cause;
+                return _cause;
             }
 
             set
             {
-                cause = value;
+                _cause = value;
             }
         }
         #endregion
