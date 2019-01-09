@@ -28,17 +28,17 @@ namespace MercadoPago.Resources
         /// Save a new preapproval
         /// </summary>
         [POSTEndpoint("/preapproval")]
-        public Preapproval Save()
+        public Boolean Save()
         {
-            return (Preapproval)ProcessMethod<Preapproval>("Save", WITHOUT_CACHE);
+            return ProcessMethodBool<Preapproval>("Save", WITHOUT_CACHE);
         }
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/preapproval/:id")]
-        public Preapproval Update()
+        public Boolean Update()
         {
-            return (Preapproval)ProcessMethod<Preapproval>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Preapproval>("Update", WITHOUT_CACHE);
         }
 
         /// <summary>

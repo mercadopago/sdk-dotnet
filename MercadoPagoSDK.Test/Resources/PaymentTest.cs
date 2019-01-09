@@ -39,7 +39,7 @@ namespace MercadoPagoSDK.Test.Resources
             payment.Save();
 
             Assert.IsNotNull(payment.Errors);
-            Assert.IsTrue(payment.Errors.Cause.Length > 0);
+            Assert.IsTrue(payment.Errors?.Cause.Length > 0);
 
         }
 

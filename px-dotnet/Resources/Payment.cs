@@ -38,18 +38,18 @@ namespace MercadoPago.Resources
         /// Save a new payment
         /// </summary>
         [POSTEndpoint("/v1/payments")]
-        public Payment Save()
+        public Boolean Save()
         {
-            return (Payment)ProcessMethod<Payment>("Save", WITHOUT_CACHE);  
+            return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE);
         }
         /// <summary>
         /// Update editable properties
         /// </summary>
         [PUTEndpoint("/v1/payments/:id")]
-        public Payment Update()
+        public Boolean Update()
         {
-            return (Payment)ProcessMethod<Payment>("Update", WITHOUT_CACHE);
-        } 
+            return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE);
+        }
         /// <summary>
         /// Get all payments
         /// </summary>

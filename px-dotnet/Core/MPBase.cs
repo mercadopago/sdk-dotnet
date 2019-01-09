@@ -27,8 +27,8 @@ namespace MercadoPago
         protected JObject _lastKnownJson;
 
 
-        protected BadParamsError _errors;
-        public BadParamsError Errors
+        protected BadParamsError? _errors;
+        public BadParamsError? Errors
         {
             get { return _errors; }
             private set { _errors = value; }
@@ -176,6 +176,13 @@ namespace MercadoPago
             Dictionary<string, string> mapParams = null;
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
             return (T)this;
+        }
+
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache) where T : MPBase
+        {
+            Dictionary<string, string> mapParams = null;
+            T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
+            return this.Errors != null;
         }
 
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase

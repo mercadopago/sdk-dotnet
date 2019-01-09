@@ -36,17 +36,17 @@ namespace MercadoPago.Resources
         /// Save a new preference
         /// </summary>
         [POSTEndpoint("/checkout/preferences")]
-        public Preference Save()
+        public Boolean Save()
         {
-            return (Preference)ProcessMethod<Preference>("Save", WITHOUT_CACHE);
+            return ProcessMethodBool<Preference>("Save", WITHOUT_CACHE);
         } 
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/checkout/preferences/:id")]
-        public Preference Update()
+        public Boolean Update()
         {
-            return (Preference)ProcessMethod<Preference>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE);
         }         
         #endregion
 
