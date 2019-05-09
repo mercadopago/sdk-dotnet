@@ -171,6 +171,7 @@ namespace MercadoPago.Resources
         private string _merchant_account_id;
         private DateTime? _date_of_expiration;
         private long? _sponsor_id;
+        private Taxes? _taxes;
         #endregion
 
         #region Accessors 
@@ -526,6 +527,16 @@ namespace MercadoPago.Resources
         {
             get { return _sponsor_id; } 
             set { _sponsor_id = value; }
+        }
+        #endregion
+
+        /// <summary>
+        /// Taxes for payments
+        /// </summary>
+        public DataStructures.Payment.Taxes? Taxes
+        {
+            get { return this._taxes; }
+            set { _taxes = value; }
         }
         #endregion
     }
