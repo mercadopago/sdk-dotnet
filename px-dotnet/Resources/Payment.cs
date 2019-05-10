@@ -141,6 +141,7 @@ namespace MercadoPago.Resources
         [JsonConverter(typeof(StringEnumConverter))]
         private CurrencyId? _currency_id;
         private float? _transaction_amount;
+        private float? _net_amount;
         private float? _transaction_amount_refunded;
         private float? _coupon_amount;
         private int? _campaign_id;
@@ -171,6 +172,7 @@ namespace MercadoPago.Resources
         private string _merchant_account_id;
         private DateTime? _date_of_expiration;
         private long? _sponsor_id;
+        private List<Taxes> _taxes;
         #endregion
 
         #region Accessors 
@@ -302,6 +304,15 @@ namespace MercadoPago.Resources
         {
             get { return this._transaction_amount; }
             set { this._transaction_amount = value; }
+        }
+
+        /// <summary>
+        /// Product net
+        /// </summary>
+        public float? NetAmount
+        {
+            get { return this._net_amount; }
+            set { this._net_amount = value; }
         } 
         /// <summary>
         /// Total refunded amount in this payment
@@ -527,6 +538,16 @@ namespace MercadoPago.Resources
             get { return _sponsor_id; } 
             set { _sponsor_id = value; }
         }
+
+        /// <summary>
+        /// Taxes for payments
+        /// </summary>
+        public List<Taxes> Taxes
+        {
+            get { return this._taxes; }
+            set { this._taxes = value; }
+        }
         #endregion
+
     }
 }

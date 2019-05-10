@@ -139,6 +139,7 @@
     <Compile Include="DataStructures\Payment\Refund.cs" />
     <Compile Include="DataStructures\Payment\Shipment.cs" />
     <Compile Include="DataStructures\Payment\Source.cs" />
+    <Compile Include="DataStructures\Payment\Taxes.cs" />
     <Compile Include="DataStructures\Payment\TransactionDetail.cs" />
     <Compile Include="DataStructures\Preference\Address.cs" />
     <Compile Include="DataStructures\Preference\DifferentialPricing.cs" />
