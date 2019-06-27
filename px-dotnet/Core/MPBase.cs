@@ -182,7 +182,7 @@ namespace MercadoPago
         {
             Dictionary<string, string> mapParams = null;
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
-            return this.Errors == null;
+            return resource.Errors == null;
         }
 
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
