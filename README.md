@@ -16,6 +16,7 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 
 **Using Package Manager**
 
+
 `PM> Install-Package mercadopago-sdk -Version 1.0.57`
 
 **Using .Net CLI**
@@ -25,6 +26,7 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 **Using Packet CLI**
 
 `> paket add mercadopago-sdk --version 1.0.57`
+
 
 ## Quick Start
 

@@ -24,7 +24,7 @@
     <Summary>SDK Oficial de MercadoPago para .Net</Summary>
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
-    <PackageReleaseNotes>- Ahora los metodos **save** y **update** son booleanos para identificar un proceso exitoso.</PackageReleaseNotes>
+    <PackageReleaseNotes>- Se agrega soporte a customización de IVA en Colombia.</PackageReleaseNotes>
     <PackageTags>mercadopago</PackageTags>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -139,6 +139,7 @@
     <Compile Include="DataStructures\Payment\Refund.cs" />
     <Compile Include="DataStructures\Payment\Shipment.cs" />
     <Compile Include="DataStructures\Payment\Source.cs" />
+    <Compile Include="DataStructures\Payment\Taxes.cs" />
     <Compile Include="DataStructures\Payment\TransactionDetail.cs" />
     <Compile Include="DataStructures\Preference\Address.cs" />
     <Compile Include="DataStructures\Preference\DifferentialPricing.cs" />
