@@ -150,6 +150,7 @@
     <Compile Include="DataStructures\Preference\Phone.cs" />
     <Compile Include="DataStructures\Preference\ReceiverAddress.cs" />
     <Compile Include="DataStructures\Preference\Shipment.cs" />
+    <Compile Include="DataStructures\Preference\Tax.cs" />
     <Compile Include="Resources\Plan.cs" />
     <Compile Include="Resources\Subscription.cs" />
     <Compile Include="Resources\Preapproval.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="DataStructures\Generic\BadParamsCause.cs" />
     <Compile Include="Resources\Refund.cs" />
     <Compile Include="Common\ProcessingMode.cs" />
+    <Compile Include="Common\TaxType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
