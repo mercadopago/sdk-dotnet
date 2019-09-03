@@ -83,6 +83,7 @@ namespace MercadoPago.Resources
         private long? _sponsor_id;
         private List<ProcessingMode> _processing_modes;
         private bool? _binary_mode;
+        private List<Tax> _taxes;
         #endregion
 
         #region Accesors
@@ -460,6 +461,23 @@ namespace MercadoPago.Resources
             set
             {
                 _binary_mode = value;
+            }
+        }
+
+        public List<Tax> Taxes
+        {
+            get
+            {
+                if (_taxes == null)
+                {
+                    _taxes = new List<Tax>();
+                }
+                return _taxes;
+            }
+
+            set
+            {
+                _taxes = value;
             }
         }
 
