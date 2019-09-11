@@ -21,64 +21,70 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
-        [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(long? id)
+        public static Payment FindById(long? id, MPRequestOptions requestOptions = null)
         {
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), WITHOUT_CACHE);
-        } 
+            return FindById(id, WITHOUT_CACHE, requestOptions);
+        }
+
         /// <summary>
         /// Find a payment trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(long? id, bool useCache)
+        public static Payment FindById(long? id, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache);
-        } 
+            return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache, requestOptions);
+        }
+
         /// <summary>
         /// Save a new payment
         /// </summary>
         [POSTEndpoint("/v1/payments")]
-        public Boolean Save()
+        public Boolean Save(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE);
+            return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE, requestOptions);
         }
+
         /// <summary>
         /// Update editable properties
         /// </summary>
         [PUTEndpoint("/v1/payments/:id")]
-        public Boolean Update()
+        public Boolean Update(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE, requestOptions);
         }
+
         /// <summary>
         /// Get all payments
         /// </summary>
-        public static List<Payment> All()
+        public static List<Payment> All(MPRequestOptions requestOptions = null)
         {
-            return All(WITHOUT_CACHE);
-        } 
+            return All(WITHOUT_CACHE, requestOptions);
+        }
+
         /// <summary>
         /// Get all payments acoording to specific filters
         /// </summary>
-        public static List<Payment> Search(Dictionary<string, string> filters)
+        public static List<Payment> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions = null)
         {
-            return Search(filters, WITHOUT_CACHE);
-        } 
+            return Search(filters, WITHOUT_CACHE, requestOptions);
+        }
+
         /// <summary>
         /// Get all payments, with using cache option
         /// </summary>
         [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> All(bool useCache)
+        public static List<Payment> All(bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", useCache);
-        } 
+            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", useCache, requestOptions);
+        }
+
         /// <summary>
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>
         [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache)
+        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache);
+            return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache, requestOptions);
         }
         #endregion
 
