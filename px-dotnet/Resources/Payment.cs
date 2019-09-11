@@ -92,37 +92,35 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment refund
         /// </summary> 
-        public Payment Refund()
+        public Payment Refund(MPRequestOptions requestOptions = null)
         {
             Refund refund = new Refund();
             refund.manualSetPaymentId((decimal)this.Id);
-            refund.Save();
-
-            if (refund.Id.HasValue) {
-                this.Status = PaymentStatus.refunded;
-            } else {
-                //this.DelegateErrors(refund.Errors);
-            }
-            return this;
-        }
-        /// <summary>
-        /// Partial payment refund
-        /// </summary> 
-        public Payment Refund(decimal amount)
-        {
-            Refund refund = new Refund();
-            refund.manualSetPaymentId((decimal)this.Id);
-            refund.Amount = amount;
-            refund.Save();
+            refund.Save(requestOptions);
 
             if (refund.Id.HasValue)
             {
                 this.Status = PaymentStatus.refunded;
             }
-            else
+
+            return this;
+        }
+
+        /// <summary>
+        /// Partial payment refund
+        /// </summary> 
+        public Payment Refund(decimal amount, MPRequestOptions requestOptions = null)
+        {
+            Refund refund = new Refund();
+            refund.manualSetPaymentId((decimal)this.Id);
+            refund.Amount = amount;
+            refund.Save(requestOptions);
+
+            if (refund.Id.HasValue)
             {
-                //this.DelegateErrors(refund.Errors);
+                this.Status = PaymentStatus.refunded;
             }
+
             return this;
         }
         #endregion

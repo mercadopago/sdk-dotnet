@@ -12,50 +12,49 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a preapproval trought an unique identifier
         /// </summary>
-        public static Preapproval FindById(string id)
+        public static Preapproval FindById(string id, MPRequestOptions requestOptions = null)
         {
-            return FindById(id, WITHOUT_CACHE);
+            return FindById(id, WITHOUT_CACHE, requestOptions);
         }
         /// <summary>
         /// Find a preapproval trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/preapproval/:id")]
-        public static Preapproval FindById(string id, bool useCache)
+        public static Preapproval FindById(string id, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (Preapproval)ProcessMethod<Preapproval>(typeof(Preapproval), "FindById", id, useCache);
+            return (Preapproval)ProcessMethod<Preapproval>(typeof(Preapproval), "FindById", id, useCache, requestOptions);
         }
         /// <summary>
         /// Save a new preapproval
         /// </summary>
         [POSTEndpoint("/preapproval")]
-        public Boolean Save()
+        public Boolean Save(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Preapproval>("Save", WITHOUT_CACHE);
+            return ProcessMethodBool<Preapproval>("Save", WITHOUT_CACHE, requestOptions);
         }
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/preapproval/:id")]
-        public Boolean Update()
+        public Boolean Update(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Preapproval>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Preapproval>("Update", WITHOUT_CACHE, requestOptions);
         }
 
         /// <summary>
         /// Get all preapprovals acoording to specific filters
         /// </summary>
-        [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters)
+        public static List<Preapproval> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions = null)
         {
-            return Search(filters, WITHOUT_CACHE);
+            return Search(filters, WITHOUT_CACHE, requestOptions);
         }
         /// <summary>
         /// Get all preapprovals acoording to specific filters
         /// </summary>
         [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache)
+        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache);
+            return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache, requestOptions);
         }
         #endregion
 

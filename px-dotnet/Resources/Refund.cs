@@ -8,9 +8,9 @@ namespace MercadoPago.Resources
         /// Find a payment trought an unique identifier
         /// </summary>
         [POSTEndpoint("/v1/payments/:payment_id/refunds")]
-        public Refund Save()
+        public Refund Save(MPRequestOptions requestOptions = null)
         {
-            return (Refund)ProcessMethod<Refund>("Save", WITHOUT_CACHE);
+            return (Refund)ProcessMethod<Refund>("Save", WITHOUT_CACHE, requestOptions);
         }
         #endregion
 

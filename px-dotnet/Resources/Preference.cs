@@ -20,33 +20,33 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a preference trought an unique identifier
         /// </summary>
-        public static Preference FindById(string id)
+        public static Preference FindById(string id, MPRequestOptions requestOptions = null)
         {
-            return FindById(id, WITHOUT_CACHE);
+            return FindById(id, WITHOUT_CACHE, requestOptions);
         }
         /// <summary>
         /// Find a preference trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/checkout/preferences/:id")]
-        public static Preference FindById(string id, bool useCache)
+        public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions = null)
         {            
-            return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache);
+            return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache, requestOptions);
         } 
         /// <summary>
         /// Save a new preference
         /// </summary>
         [POSTEndpoint("/checkout/preferences")]
-        public Boolean Save()
+        public Boolean Save(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Preference>("Save", WITHOUT_CACHE);
+            return ProcessMethodBool<Preference>("Save", WITHOUT_CACHE, requestOptions);
         } 
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/checkout/preferences/:id")]
-        public Boolean Update()
+        public Boolean Update(MPRequestOptions requestOptions = null)
         {
-            return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE, requestOptions);
         }         
         #endregion
 

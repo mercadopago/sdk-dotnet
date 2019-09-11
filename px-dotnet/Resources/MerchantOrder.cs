@@ -11,27 +11,27 @@ namespace MercadoPago.Resources
     {
         #region Actions
         
-        public MerchantOrder Load(string id) 
+        public MerchantOrder Load(string id, MPRequestOptions requestOptions = null) 
         {
-            return Load(id, WITHOUT_CACHE);
+            return Load(id, WITHOUT_CACHE, requestOptions);
         }
 
         [GETEndpoint("/merchant_orders/:id")]
-        public MerchantOrder Load(string id, bool useCache)
+        public MerchantOrder Load(string id, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>(typeof(MerchantOrder), "Load", id, useCache);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>(typeof(MerchantOrder), "Load", id, useCache, requestOptions);
         }
         
         [POSTEndpoint("/merchant_orders")]
-        public MerchantOrder Save() 
+        public MerchantOrder Save(MPRequestOptions requestOptions = null) 
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE, requestOptions);
         }
         
         [PUTEndpoint("/merchant_orders/:id")]
-        public MerchantOrder Update() 
+        public MerchantOrder Update(MPRequestOptions requestOptions = null) 
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE, requestOptions);
         }
 
         #endregion

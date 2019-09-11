@@ -9,21 +9,21 @@ namespace MercadoPago.Resources
         #region Actions
 
         [GETEndpoint("/v1/plans/:id")]
-        public static Plan Load(string id, bool useCache)
+        public static Plan Load(string id, bool useCache, MPRequestOptions requestOptions = null)
         {
-            return (Plan)ProcessMethod<Plan>(typeof(Plan), "Load", id, useCache);
+            return (Plan)ProcessMethod<Plan>(typeof(Plan), "Load", id, useCache, requestOptions);
         }
 
         [POSTEndpoint("/v1/plans")]
-        public Plan Save()
+        public Plan Save(MPRequestOptions requestOptions = null)
         {
-            return (Plan)ProcessMethod<Plan>("Save", WITHOUT_CACHE);
+            return (Plan)ProcessMethod<Plan>("Save", WITHOUT_CACHE, requestOptions);
         }
 
         [PUTEndpoint("/v1/plans/:id")]
-        public Plan Update()
+        public Plan Update(MPRequestOptions requestOptions = null)
         {
-            return (Plan)ProcessMethod<Plan>("Update", WITHOUT_CACHE);
+            return (Plan)ProcessMethod<Plan>("Update", WITHOUT_CACHE, requestOptions);
         }
 
         #endregion
