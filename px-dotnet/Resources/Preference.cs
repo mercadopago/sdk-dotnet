@@ -20,31 +20,50 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a preference trought an unique identifier
         /// </summary>
-        public static Preference FindById(string id, MPRequestOptions requestOptions = null)
+        public static Preference FindById(string id)
         {
-            return FindById(id, WITHOUT_CACHE, requestOptions);
+            return FindById(id, WITHOUT_CACHE, null);
         }
+
         /// <summary>
         /// Find a preference trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/checkout/preferences/:id")]
-        public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions = null)
+        public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {            
             return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache, requestOptions);
-        } 
+        }
+
+        /// <summary>
+        /// Save a new preference
+        /// </summary>
+        public Boolean Save()
+        {
+            return Save(null);
+        }
+
         /// <summary>
         /// Save a new preference
         /// </summary>
         [POSTEndpoint("/checkout/preferences")]
-        public Boolean Save(MPRequestOptions requestOptions = null)
+        public Boolean Save(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Preference>("Save", WITHOUT_CACHE, requestOptions);
-        } 
+        }
+
+        /// <summary>
+        ///  Update editable properties
+        /// </summary>
+        public Boolean Update()
+        {
+            return Update(null);
+        }
+
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/checkout/preferences/:id")]
-        public Boolean Update(MPRequestOptions requestOptions = null)
+        public Boolean Update(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE, requestOptions);
         }         

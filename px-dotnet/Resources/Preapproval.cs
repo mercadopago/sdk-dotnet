@@ -12,31 +12,50 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Find a preapproval trought an unique identifier
         /// </summary>
-        public static Preapproval FindById(string id, MPRequestOptions requestOptions = null)
+        public static Preapproval FindById(string id)
         {
-            return FindById(id, WITHOUT_CACHE, requestOptions);
+            return FindById(id, WITHOUT_CACHE, null);
         }
+
         /// <summary>
         /// Find a preapproval trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/preapproval/:id")]
-        public static Preapproval FindById(string id, bool useCache, MPRequestOptions requestOptions = null)
+        public static Preapproval FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {
             return (Preapproval)ProcessMethod<Preapproval>(typeof(Preapproval), "FindById", id, useCache, requestOptions);
         }
+
+        /// <summary>
+        /// Save a new preapproval
+        /// </summary>
+        public Boolean Save()
+        {
+            return Save(null);
+        }
+
         /// <summary>
         /// Save a new preapproval
         /// </summary>
         [POSTEndpoint("/preapproval")]
-        public Boolean Save(MPRequestOptions requestOptions = null)
+        public Boolean Save(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Preapproval>("Save", WITHOUT_CACHE, requestOptions);
         }
+
+        /// <summary>
+        ///  Update editable properties
+        /// </summary>
+        public Boolean Update()
+        {
+            return Update(null);
+        }
+
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/preapproval/:id")]
-        public Boolean Update(MPRequestOptions requestOptions = null)
+        public Boolean Update(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Preapproval>("Update", WITHOUT_CACHE, requestOptions);
         }
@@ -44,15 +63,16 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Get all preapprovals acoording to specific filters
         /// </summary>
-        public static List<Preapproval> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions = null)
+        public static List<Preapproval> Search(Dictionary<string, string> filters)
         {
-            return Search(filters, WITHOUT_CACHE, requestOptions);
+            return Search(filters, WITHOUT_CACHE, null);
         }
+
         /// <summary>
         /// Get all preapprovals acoording to specific filters
         /// </summary>
         [GETEndpoint("/preapproval/search")]
-        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions = null)
+        public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
             return (List<Preapproval>)ProcessMethodBulk<Preapproval>(typeof(Preapproval), "Search", filters, useCache, requestOptions);
         }

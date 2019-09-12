@@ -5,10 +5,18 @@ namespace MercadoPago.Resources
     {
         #region Actions
         /// <summary>
-        /// Find a payment trought an unique identifier
+        /// Save a refund
+        /// </summary>
+        public Refund Save()
+        {
+            return Save(null);
+        }
+
+        /// <summary>
+        /// Save a refund
         /// </summary>
         [POSTEndpoint("/v1/payments/:payment_id/refunds")]
-        public Refund Save(MPRequestOptions requestOptions = null)
+        public Refund Save(MPRequestOptions requestOptions)
         {
             return (Refund)ProcessMethod<Refund>("Save", WITHOUT_CACHE, requestOptions);
         }
@@ -19,7 +27,6 @@ namespace MercadoPago.Resources
         private decimal? _amount;
         private decimal? _payment_id;
         private DateTime? _date_created;
-        private String _errors;
 
         #endregion
 
@@ -81,18 +88,6 @@ namespace MercadoPago.Resources
             }
         }
 
-        public String Errors
-        {
-            get
-            {
-                return _errors;
-            }
-
-            set
-            {
-                _errors = value;
-            }
-        }
         #endregion
 
 

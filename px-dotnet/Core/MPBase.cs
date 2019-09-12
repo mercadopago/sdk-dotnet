@@ -93,13 +93,22 @@ namespace MercadoPago
             }
         }
 
-        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache) where T : MPBase
         {
-            Dictionary<string, string> mapParams = null;
-            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache, requestOptions);
+            return ProcessMethodBulk<T>(clazz, methodName, useCache, null);
+        }
+
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, (Dictionary<string, string>) null, useCache, requestOptions);
+        }
+
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, param1, useCache, null);
         }
     
-        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param1", param1);
@@ -111,16 +120,26 @@ namespace MercadoPago
         /// </summary>
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="useCache">Cache configuration.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod(string methodName, bool useCache)
+        {
+            return ProcessMethod(methodName, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="useCache">Cache configuration.</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase ProcessMethod(string methodName, bool useCache, MPRequestOptions requestOptions = null)
+        public static MPBase ProcessMethod(string methodName, bool useCache, MPRequestOptions requestOptions)
         {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache, requestOptions);
         }
-
 
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
@@ -130,7 +149,20 @@ namespace MercadoPago
         /// <param name="useCache">Cache configuration.</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(type, methodName, param, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
@@ -140,7 +172,12 @@ namespace MercadoPago
             return ProcessMethod<T>(classType, null, methodName, mapParams, useCache, requestOptions);
         }
 
-        public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(clazz, methodName, param1, param2, useCache, null);
+        }
+
+        public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param0", param1);
@@ -155,9 +192,21 @@ namespace MercadoPago
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="param">Parameters to use in the retrieve process.</param>
         /// <param name="useCache">Cache configuration.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod<T>(string methodName, string param, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(methodName, param, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>MPBase resource.</returns>
-        public static MPBase ProcessMethod<T>(string methodName, string param, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public static MPBase ProcessMethod<T>(string methodName, string param, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
@@ -172,23 +221,45 @@ namespace MercadoPago
         /// <typeparam name="T">Object derived from MPBase abstract class.</typeparam>
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="useCache">Cache configuration</param>
+        /// <returns>MPBase resource.</returns>
+        public MPBase ProcessMethod<T>(string methodName, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(methodName, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specific method and configuration.       
+        /// </summary>
+        /// <typeparam name="T">Object derived from MPBase abstract class.</typeparam>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="useCache">Cache configuration</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>MPBase resource.</returns>
-        public MPBase ProcessMethod<T>(string methodName, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public MPBase ProcessMethod<T>(string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = null;
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache, requestOptions);
             return (T)this;
         }
 
-        public Boolean ProcessMethodBool<T>(string methodName, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBool<T>(methodName, useCache, null);
+        }
+
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = null;
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache, requestOptions);
             return resource.Errors == null;
         }
 
-        protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache, null);
+        }
+
+        protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             //Validates the method executed
             if (!ALLOWED_BULK_METHODS.Contains(methodName))
@@ -235,9 +306,24 @@ namespace MercadoPago
         /// <param name="methodName">The name of the method  we are trying to call.</param>
         /// <param name="parameters">Parameters to use in the process.</param>
         /// <param name="useCache">Cache configuration.</param>
+        /// <returns>Generic type object, containing information about retrieval process.</returns>
+        protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(clazz, resource, methodName, parameters, useCache, null);
+        }
+
+        /// <summary>
+        /// Core implementation of processMethod. Retrieves a generic type. 
+        /// </summary>
+        /// <typeparam name="T">Generic type that will return.</typeparam>
+        /// <param name="clazz">Type of Class we are using.</param>
+        /// <param name="resource">Resource we will use and return in the implementation.</param>
+        /// <param name="methodName">The name of the method  we are trying to call.</param>
+        /// <param name="parameters">Parameters to use in the process.</param>
+        /// <param name="useCache">Cache configuration.</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>Generic type object, containing information about retrieval process.</returns>
-        protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache, MPRequestOptions requestOptions = null) where T : MPBase
+        protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {            
             if (resource == null)
             {
@@ -295,7 +381,8 @@ namespace MercadoPago
                     StatusCode = response.StatusCode,
                     ErrorMessage = response.StringResponse
                 };
-                webserverError.Cause.Add(response.JsonObjectResponse.ToString()); 
+                webserverError.Cause.Add(response.JsonObjectResponse.ToString());
+                throw webserverError;
             }
 
             return resource;
@@ -512,7 +599,7 @@ namespace MercadoPago
             PayloadType payloadType,
             JObject payload,
             bool useCache,
-            MPRequestOptions requestOptions = null)
+            MPRequestOptions requestOptions)
         {
             string cacheKey = httpMethod.ToString() + "_" + path;
             MPAPIResponse response = null;
@@ -559,7 +646,7 @@ namespace MercadoPago
         /// <param name="clazz">Type of class we are using.</param>
         /// <param name="methodName">Method we are trying to call.</param>
         /// <returns>Info about the method we are searching.</returns>
-        private static MethodInfo GetAnnotatedMethod(Type clazz, String methodName)
+        private static MethodInfo GetAnnotatedMethod(Type clazz, string methodName)
         {
             foreach (MethodInfo method in clazz.GetMethods())
             {
@@ -635,7 +722,20 @@ namespace MercadoPago
         }
         #endregion
 
-        #region Core Utilities 
+        #region Core Utilities
+        /// <summary>
+        /// Generates a final Path based on parameters in Dictionary and resource properties.
+        /// </summary>
+        /// <typeparam name="T">MPBase resource.</typeparam>
+        /// <param name="path">Path we are processing.</param>
+        /// <param name="mapParams">Collection of parameters that we will use to process the final path.</param>
+        /// <param name="resource">Resource containing parameters values to include in the final path.</param>
+        /// <returns>Processed path to call the API.</returns>
+        public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
+        {
+            return ParsePath<T>(path, mapParams, resource, null);
+        }
+
         /// <summary>
         /// Generates a final Path based on parameters in Dictionary and resource properties.
         /// </summary>
@@ -645,7 +745,7 @@ namespace MercadoPago
         /// <param name="resource">Resource containing parameters values to include in the final path.</param>
         /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>Processed path to call the API.</returns>
-        public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource, MPRequestOptions requestOptions = null) where T : MPBase
+        public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource, MPRequestOptions requestOptions) where T : MPBase
         {
             string param_pattern = @":([a-z0-9_]+)"; 
             MatchCollection matches = Regex.Matches(path, param_pattern);
@@ -704,7 +804,10 @@ namespace MercadoPago
             {
                 foreach (var elem in mapParams)
                 {
-                    result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
+                    if (!string.IsNullOrEmpty(elem.Value))
+                    {
+                        result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
+                    }
                 }
             }
 

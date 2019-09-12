@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -102,6 +102,7 @@
     <Compile Include="Resources\Payment.cs" />
     <Compile Include="Resources\MerchantOrder.cs" />
     <Compile Include="Resources\Preference.cs" />
+    <Compile Include="Resources\DiscountCampaign.cs" />
     <Compile Include="DataStructures\Customer\CustomerAddress.cs" />
     <Compile Include="DataStructures\Customer\Card\CardHolder.cs" />
     <Compile Include="DataStructures\Customer\Card\Identification.cs" />

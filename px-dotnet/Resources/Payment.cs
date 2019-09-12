@@ -18,37 +18,48 @@ namespace MercadoPago.Resources
     public class Payment : MPBase
     {
         #region Actions
+
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
-        public static Payment FindById(long? id, MPRequestOptions requestOptions = null)
+        public static Payment FindById(long? id)
         {
-            return FindById(id, WITHOUT_CACHE, requestOptions);
+            return FindById(id, WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Find a payment trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/v1/payments/:id")]
-        public static Payment FindById(long? id, bool useCache, MPRequestOptions requestOptions = null)
+        public static Payment FindById(long? id, bool useCache, MPRequestOptions requestOptions)
         {
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache, requestOptions);
+        }
+
+        public Boolean Save()
+        {
+            return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Save a new payment
         /// </summary>
         [POSTEndpoint("/v1/payments")]
-        public Boolean Save(MPRequestOptions requestOptions = null)
+        public Boolean Save(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE, requestOptions);
+        }
+
+        public Boolean Update()
+        {
+            return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Update editable properties
         /// </summary>
         [PUTEndpoint("/v1/payments/:id")]
-        public Boolean Update(MPRequestOptions requestOptions = null)
+        public Boolean Update(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE, requestOptions);
         }
@@ -56,24 +67,24 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Get all payments
         /// </summary>
-        public static List<Payment> All(MPRequestOptions requestOptions = null)
+        public static List<Payment> All()
         {
-            return All(WITHOUT_CACHE, requestOptions);
+            return All(WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Get all payments acoording to specific filters
         /// </summary>
-        public static List<Payment> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions = null)
+        public static List<Payment> Search(Dictionary<string, string> filters)
         {
-            return Search(filters, WITHOUT_CACHE, requestOptions);
+            return Search(filters, WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Get all payments, with using cache option
         /// </summary>
         [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> All(bool useCache, MPRequestOptions requestOptions = null)
+        public static List<Payment> All(bool useCache, MPRequestOptions requestOptions)
         {
             return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", useCache, requestOptions);
         }
@@ -82,7 +93,7 @@ namespace MercadoPago.Resources
         /// Get all payments acoording to specific filters, with using cache option
         /// </summary>
         [GETEndpoint("/v1/payments/search")]
-        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions = null)
+        public static List<Payment> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
             return (List<Payment>)ProcessMethodBulk<Payment>(typeof(Payment), "Search", filters, useCache, requestOptions);
         }
@@ -92,33 +103,48 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment refund
         /// </summary> 
-        public Payment Refund(MPRequestOptions requestOptions = null)
+        public Payment Refund()
         {
-            Refund refund = new Refund();
-            refund.manualSetPaymentId((decimal)this.Id);
-            refund.Save(requestOptions);
+            return Refund(null, null);
+        }
 
-            if (refund.Id.HasValue)
-            {
-                this.Status = PaymentStatus.refunded;
-            }
-
-            return this;
+        /// <summary>
+        /// Payment refund
+        /// </summary> 
+        public Payment Refund(MPRequestOptions requestOptions)
+        {
+            return Refund(null, requestOptions);
         }
 
         /// <summary>
         /// Partial payment refund
         /// </summary> 
-        public Payment Refund(decimal amount, MPRequestOptions requestOptions = null)
+        public Payment Refund(decimal amount)
+        {
+            return Refund(amount, null);
+        }
+
+        /// <summary>
+        /// Partial payment refund
+        /// </summary> 
+        public Payment Refund(decimal? amount, MPRequestOptions requestOptions)
         {
             Refund refund = new Refund();
-            refund.manualSetPaymentId((decimal)this.Id);
+            refund.manualSetPaymentId((decimal)_id);
             refund.Amount = amount;
             refund.Save(requestOptions);
 
             if (refund.Id.HasValue)
             {
-                this.Status = PaymentStatus.refunded;
+                var payment = Payment.FindById(_id, WITHOUT_CACHE, requestOptions);
+                _status = payment.Status;
+                _status_detail = payment.StatusDetail;
+                _transaction_amount_refunded = payment.TransactionAmountRefunded;
+                _refunds = payment.Refunds;
+            }
+            else
+            {
+                _errors = refund.Errors;
             }
 
             return this;

@@ -14,16 +14,16 @@ namespace MercadoPago
         /// <summary>
         /// Get all customers acoording to specific filters
         /// </summary>
-        public static List<Customer> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions = null)
+        public static List<Customer> Search(Dictionary<string, string> filters)
         {
-            return Search(filters, WITHOUT_CACHE, requestOptions);
+            return Search(filters, WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Get all customers acoording to specific filters
         /// </summary>
         [GETEndpoint("/v1/customers/search")]
-        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions = null)
+        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
             return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", filters, useCache, requestOptions);
         } 
@@ -36,7 +36,7 @@ namespace MercadoPago
         /// <param name="requestOptions">Request options.</param>
         /// <returns>Searched customer.</returns>
         [GETEndpoint("/v1/customers/:id")]
-        public static Customer FindById(string id, bool useCache, MPRequestOptions requestOptions = null)
+        public static Customer FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("FindById", id, useCache, requestOptions);
         }
@@ -44,34 +44,49 @@ namespace MercadoPago
         /// <summary>
         /// Find a customer by ID.
         /// </summary>
-        public static Customer FindById(String id, MPRequestOptions requestOptions = null)
+        public static Customer FindById(string id)
         {
-            return FindById(id, WITHOUT_CACHE, requestOptions);
+            return FindById(id, WITHOUT_CACHE, null);
+        }
+
+        public Customer Save()
+        {
+            return Save(null);
         }
 
         /// <summary>
         /// Save a new customer
         /// </summary>
         [POSTEndpoint("/v1/customers")]
-        public Customer Save(MPRequestOptions requestOptions = null)
+        public Customer Save(MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("Save", WITHOUT_CACHE, requestOptions);
+        }
+
+        public Customer Update()
+        {
+            return Update(null);
         }
 
         /// <summary>
         /// Update editable properties
         /// </summary>
         [PUTEndpoint("/v1/customers/:id")]
-        public Customer Update(MPRequestOptions requestOptions = null)
+        public Customer Update(MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("Update", WITHOUT_CACHE, requestOptions);
+        }
+
+        public Customer Delete()
+        {
+            return Delete(null);
         }
 
         /// <summary>
         /// Remove a customer
         /// </summary>
         [DELETEEndpoint("/v1/customers/:id")]
-        public Customer Delete(MPRequestOptions requestOptions = null)
+        public Customer Delete(MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("Delete", WITHOUT_CACHE, requestOptions);
         } 

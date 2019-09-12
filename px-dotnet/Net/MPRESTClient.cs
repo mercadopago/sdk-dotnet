@@ -140,8 +140,21 @@ namespace MercadoPago
             HttpMethod httpMethod,
             string path,
             PayloadType payloadType,
+            JObject payload)
+        {
+            return ExecuteRequest(httpMethod, path, payloadType, payload, null);
+        }
+
+        /// <summary>
+        /// Execute a request to an api endpoint.
+        /// </summary>
+        /// <returns>Api response with the result of the call.</returns>
+        public MPAPIResponse ExecuteRequest(
+            HttpMethod httpMethod,
+            string path,
+            PayloadType payloadType,
             JObject payload,
-            MPRequestOptions requestOptions = null)
+            MPRequestOptions requestOptions)
         {
             if (requestOptions == null) {
                 requestOptions = new MPRequestOptions();

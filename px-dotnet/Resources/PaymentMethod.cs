@@ -13,16 +13,16 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Get All Payment Methods available
         /// </summary>
-        public static List<PaymentMethod> All(MPRequestOptions requestOptions = null)
+        public static List<PaymentMethod> All()
         {
-            return All(WITHOUT_CACHE, requestOptions);
+            return All(WITHOUT_CACHE, null);
         }
 
         /// <summary>
         /// Get All Payment Methods available
         /// </summary>
         [GETEndpoint("/v1/payment_methods")]
-        public static List<PaymentMethod> All(bool useCache, MPRequestOptions requestOptions = null)
+        public static List<PaymentMethod> All(bool useCache, MPRequestOptions requestOptions)
         {
             return (List<PaymentMethod>)ProcessMethodBulk<PaymentMethod>(typeof(PaymentMethod), "All", useCache, requestOptions);
         }

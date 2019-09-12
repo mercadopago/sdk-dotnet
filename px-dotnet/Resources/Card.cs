@@ -9,42 +9,57 @@ namespace MercadoPago.Resources
     public class Card : MPBase
     {
         #region Actions 
-        public static List<Card> All(String customerId, MPRequestOptions requestOptions = null)
+        public static List<Card> All(String customerId)
         {
-            return All(customerId, WITHOUT_CACHE, requestOptions);
+            return All(customerId, WITHOUT_CACHE, null);
         }
         
         [GETEndpoint("/v1/customers/:customer_id/cards")]
-        public static List<Card> All(String customerId, bool useCache, MPRequestOptions requestOptions = null)
+        public static List<Card> All(String customerId, bool useCache, MPRequestOptions requestOptions)
         {
             return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "All", customerId, useCache, requestOptions);
         }
 
-        public static Card FindById(string customerId, string id, MPRequestOptions requestOptions = null)
+        public static Card FindById(string customerId, string id)
         {
-            return FindById(customerId, id, WITHOUT_CACHE, requestOptions);
+            return FindById(customerId, id, WITHOUT_CACHE, null);
         }
 
         [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public static Card FindById(string customerId, string id, bool useCache, MPRequestOptions requestOptions = null)
+        public static Card FindById(string customerId, string id, bool useCache, MPRequestOptions requestOptions)
         {            
             return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache, requestOptions);
         }
 
+        public Card Save()
+        {
+            return Save(null);
+        }
+
         [POSTEndpoint("/v1/customers/:customer_id/cards/")]
-        public Card Save(MPRequestOptions requestOptions = null)
+        public Card Save(MPRequestOptions requestOptions)
         {
             return (Card)ProcessMethod<Card>("Save", WITHOUT_CACHE, requestOptions);
         }
 
+        public Card Update()
+        {
+            return Update(null);
+        }
+
         [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Update(MPRequestOptions requestOptions = null)
+        public Card Update(MPRequestOptions requestOptions)
         {
             return (Card)ProcessMethod<Card>("Update", WITHOUT_CACHE, requestOptions);
         }
 
+        public Card Delete()
+        {
+            return Delete(null);
+        }
+
         [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Delete(MPRequestOptions requestOptions = null)
+        public Card Delete(MPRequestOptions requestOptions)
         {
             return (Card)ProcessMethod("Delete", WITHOUT_CACHE, requestOptions);
         } 
