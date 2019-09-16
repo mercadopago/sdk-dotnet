@@ -41,6 +41,7 @@ namespace MercadoPago.Resources
         private bool? luhnValidation;
         private bool? lineMode;
         private bool? requireEsc;
+        private string securityCode;
 
         public string Id
         {
@@ -106,6 +107,12 @@ namespace MercadoPago.Resources
         {
             get { return requireEsc; }
             set { requireEsc = value; }
+        }
+
+        public string SecurityCode
+        {
+            get { return securityCode; }
+            set { securityCode = value; }
         }
     }
 }
