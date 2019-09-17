@@ -61,8 +61,8 @@ namespace MercadoPago.Resources
         [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
         public Card Delete(MPRequestOptions requestOptions)
         {
-            return (Card)ProcessMethod("Delete", WITHOUT_CACHE, requestOptions);
-        } 
+            return (Card)ProcessMethod<Card>("Delete", WITHOUT_CACHE, requestOptions);
+        }
         #endregion
 
         #region Properties  
