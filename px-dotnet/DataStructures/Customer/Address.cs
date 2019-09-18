@@ -11,7 +11,7 @@ namespace MercadoPago.DataStructures.Customer
         private string _id;
         private string _zip_code;
         private string _street_name;
-        private string _street_number;
+        private int? _street_number;
         #endregion
 
         #region Accessors
@@ -39,7 +39,7 @@ namespace MercadoPago.DataStructures.Customer
         /// <summary>
         /// Street number
         /// </summary>
-        public string StreetNumber { 
+        public int? StreetNumber { 
             get { return  _street_number; } 
             set { _street_number = value; } 
         }

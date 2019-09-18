@@ -98,7 +98,7 @@ namespace MercadoPago
             return resource;
         }
 
-        public static MPBase GetResourceFromJson<T>(String json) where T : MPBase
+        public static MPBase GetResourceFromJson<T>(string json) where T : MPBase
         {
             JsonSerializer serializer = new JsonSerializer();
             //{ 

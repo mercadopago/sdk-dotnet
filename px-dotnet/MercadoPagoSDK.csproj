@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.0.57</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -95,12 +95,15 @@
     <Compile Include="SDK.cs" />
     <Compile Include="Net\MPRESTClient.cs" />
     <Compile Include="Net\MPRequest.cs" />
+    <Compile Include="Net\MPRequestOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Card.cs" />
+    <Compile Include="Resources\CardToken.cs" />
     <Compile Include="Resources\Customer.cs" />
     <Compile Include="Resources\Payment.cs" />
     <Compile Include="Resources\MerchantOrder.cs" />
     <Compile Include="Resources\Preference.cs" />
+    <Compile Include="Resources\DiscountCampaign.cs" />
     <Compile Include="DataStructures\Customer\CustomerAddress.cs" />
     <Compile Include="DataStructures\Customer\Card\CardHolder.cs" />
     <Compile Include="DataStructures\Customer\Card\Identification.cs" />

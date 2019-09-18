@@ -14,7 +14,7 @@ namespace MercadoPagoSDK.Test.Helpers
 
             MPRESTClient client = new MPRESTClient();
             String path = "https://api.mercadopago.com/v1/card_tokens?public_key=" + PublicKey;
-            MPAPIResponse responseCardToken = client.ExecuteRequestCore(HttpMethod.POST, path, PayloadType.JSON, payload, null, 0, 1);
+            MPAPIResponse responseCardToken = client.ExecuteRequest(HttpMethod.POST, path, PayloadType.JSON, payload, null, 0, 1);
  
             JObject jsonResponse = JObject.Parse(responseCardToken.StringResponse.ToString());
             List<JToken> tokens = MPCoreUtils.FindTokens(jsonResponse, "id");
