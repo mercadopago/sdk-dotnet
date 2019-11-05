@@ -19,6 +19,11 @@ namespace MercadoPago.Resources
     {
         #region Actions
 
+        public Payment Load(string id)
+        {
+            return FindById(long.Parse(id), WITHOUT_CACHE, null);
+        }
+
         /// <summary>
         /// Find a payment trought an unique identifier
         /// </summary>
