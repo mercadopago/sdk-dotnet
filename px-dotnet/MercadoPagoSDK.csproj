@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.2.0</PackageVersion>
+    <PackageVersion>1.2.1</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
