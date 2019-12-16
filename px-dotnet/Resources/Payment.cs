@@ -387,7 +387,7 @@ namespace MercadoPago.Resources
         public TransactionDetail? TransactionDetails
         {
             get { return this._transaction_details; }
-            private set { this._transaction_details = value; }
+            set { this._transaction_details = value; }
         } 
         /// <summary>
         /// List of fees
