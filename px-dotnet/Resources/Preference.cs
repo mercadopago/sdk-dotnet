@@ -7,6 +7,7 @@ using System.Text;
 using MercadoPago.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MercadoPago.Resources
 {
@@ -103,6 +104,7 @@ namespace MercadoPago.Resources
         private List<ProcessingMode> _processing_modes;
         private bool? _binary_mode;
         private List<Tax> _taxes;
+        private JObject _metadata;
         #endregion
 
         #region Accesors
@@ -500,6 +502,14 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Valid JSON that can be attached to the payment to record additional attributes of the merchant
+        /// </summary>
+        public JObject Metadata
+        {
+            get { return this._metadata; }
+            set { this._metadata = value; }
+        }
         #endregion
     }
 }
