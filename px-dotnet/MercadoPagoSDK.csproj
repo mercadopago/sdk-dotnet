@@ -193,6 +193,7 @@
     <Compile Include="Resources\Refund.cs" />
     <Compile Include="Common\ProcessingMode.cs" />
     <Compile Include="Common\TaxType.cs" />
+    <Compile Include="DataStructures\Preference\Track.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
