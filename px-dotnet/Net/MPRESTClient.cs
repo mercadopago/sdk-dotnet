@@ -1,4 +1,4 @@
-﻿using MercadoPago;
+using MercadoPago;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -264,6 +264,17 @@ namespace MercadoPago
                     if (mpRequest.Request.Headers[header.Key] == null)
                     {
                         mpRequest.Request.Headers.Add(header.Key, header.Value);
+                    }
+                }
+            }
+
+            if (requestOptions.TrackHeaders != null)
+            {
+                foreach (var trackHeader in requestOptions.TrackHeaders)
+                {
+                    if (mpRequest.Request.Headers[trackHeader.Key] == null && trackHeader.Value != null)
+                    {
+                        mpRequest.Request.Headers[trackHeader.Key] = trackHeader.Value;
                     }
                 }
             }
