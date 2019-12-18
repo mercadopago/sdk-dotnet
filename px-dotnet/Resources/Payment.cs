@@ -208,6 +208,9 @@ namespace MercadoPago.Resources
         private DateTime? _date_of_expiration;
         private long? _sponsor_id;
         private List<Taxes> _taxes;
+        private string _integrator_id;
+        private string _platform_id;
+        private string _corporation_id;
         #endregion
 
         #region Accessors 
@@ -581,6 +584,24 @@ namespace MercadoPago.Resources
         {
             get { return this._taxes; }
             set { this._taxes = value; }
+        }
+
+        public string IntegratorId
+        {
+            get { return _integrator_id;  }
+            private set { _integrator_id = value; }
+        }
+
+        public string PlatformId
+        {
+            get { return _platform_id; }
+            private set { _platform_id = value; }
+        }
+
+        public string CorporationId
+        {
+            get { return _corporation_id; }
+            private set { _corporation_id = value; }
         }
         #endregion
 
