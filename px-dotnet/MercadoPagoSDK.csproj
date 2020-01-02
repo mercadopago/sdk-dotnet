@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.3.0</PackageVersion>
+    <PackageVersion>1.4.0</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -193,6 +193,7 @@
     <Compile Include="Resources\Refund.cs" />
     <Compile Include="Common\ProcessingMode.cs" />
     <Compile Include="Common\TaxType.cs" />
+    <Compile Include="DataStructures\Preference\Track.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

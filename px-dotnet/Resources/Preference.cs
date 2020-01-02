@@ -105,6 +105,7 @@ namespace MercadoPago.Resources
         private bool? _binary_mode;
         private List<Tax> _taxes;
         private JObject _metadata;
+        private List<Track> _tracks;
         #endregion
 
         #region Accesors
@@ -509,6 +510,23 @@ namespace MercadoPago.Resources
         {
             get { return this._metadata; }
             set { this._metadata = value; }
+        }
+
+        /// <summary>
+        /// Preference ad tracks
+        /// </summary>
+        public List<Track> Tracks
+        {
+            get
+            {
+                if (_tracks == null)
+                {
+                    _tracks = new List<Track>();
+                }
+                return _tracks;
+            }
+
+            set { _tracks = value; }
         }
         #endregion
     }

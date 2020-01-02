@@ -25,6 +25,9 @@ namespace MercadoPago
         private static string _userToken;
         private static string _refreshToken;
         private static readonly string _version;
+        private static string _corporationId;
+        private static string _integratorId;
+        private static string _platformId;
 
         static SDK()
         {
@@ -311,5 +314,82 @@ namespace MercadoPago
             return client.ExecuteGenericRequest(HttpMethod.PUT, uri, PayloadType.JSON, payload);
         }
 
+        /// <summary>  
+        ///  Property that represent the corporation id.
+        /// </summary>
+        public static string CorporationId
+        {
+            get { return _corporationId; }
+            set
+            {
+                if (!string.IsNullOrEmpty(_corporationId))
+                {
+                    throw new MPConfException("corporationId setting can not be changed");
+                }
+                _corporationId = value;
+            }
+        }
+
+        /// <summary>  
+        ///  Property that represent the integrator id.
+        /// </summary>
+        public static string IntegratorId
+        {
+            get { return _integratorId;  }
+            set
+            {
+                if(!string.IsNullOrEmpty(_integratorId))
+                {
+                    throw new MPConfException("integratorId setting can not be changed");
+                }
+                _integratorId = value;
+            }
+        }
+
+        /// <summary>  
+        ///  Property that represent the plataform id.
+        /// </summary>
+        public static string PlatformId
+        {
+            get { return _platformId; }
+            set
+            {
+                if (!string.IsNullOrEmpty(_platformId))
+                {
+                    throw new MPConfException("platformId setting can not be changed");
+                }
+                _platformId = value;
+            }
+        }
+
+        public static void SetCorporationId(string corporationId)
+        {
+            CorporationId = corporationId;
+        }
+
+        public static string GetCorporationId()
+        {
+            return CorporationId;
+        }
+
+        public static void SetIntegratorId(string integratorId)
+        {
+            IntegratorId = integratorId;
+        }
+
+        public static string GetIntegratorId()
+        {
+            return IntegratorId;
+        }
+
+        public static void SetPlatformId(string platformId)
+        {
+            PlatformId = platformId;
+        }
+
+        public static string GetPlatformId()
+        {
+            return PlatformId;
+        }
     }
 }
