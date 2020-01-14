@@ -13,6 +13,7 @@ namespace MercadoPago
         private const int DEFAULT_REQUESTS_TIMEOUT = 30000;
         private const int DEFAULT_REQUESTS_RETRIES = 3;
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
+        private const string PRODUCT_ID = "BC32BHVTRPP001U8NHL0";
 
         private static string _clientSecret;
         private static string _clientId;
@@ -28,10 +29,12 @@ namespace MercadoPago
         private static string _corporationId;
         private static string _integratorId;
         private static string _platformId;
+        private static string _trackingId;
 
         static SDK()
         {
             _version = new AssemblyName(typeof(SDK).Assembly.FullName).Version.ToString(3);
+            _trackingId = String.Format("platform:{0}|{1},type:SDK{2},so;", Environment.Version.Major, Environment.Version, _version);
         }
 
         /// <summary>  
@@ -139,6 +142,18 @@ namespace MercadoPago
         public static string Version
         {
             get { return _version; }
+        }
+
+        /// <summary>Gets the product ID.</summary>
+        public static string ProductId
+        {
+            get { return PRODUCT_ID; }
+        }
+
+        /// <summary>Gets the tracking ID.</summary>
+        public static string TrackingId
+        {
+            get { return _trackingId; }
         }
 
         /// <summary>
