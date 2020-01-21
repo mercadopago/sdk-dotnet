@@ -256,7 +256,9 @@ namespace MercadoPago
                 mpRequest.Request.Timeout = requestOptions.Timeout;
             }
 
-            mpRequest.Request.Headers.Add("x-product-id", "BC32BHVTRPP001U8NHL0");
+            mpRequest.Request.Headers.Add("x-product-id", SDK.ProductId);
+            mpRequest.Request.Headers.Add("x-tracking-id", SDK.TrackingId);
+
             if (requestOptions.CustomHeaders != null)
             {
                 foreach (var header in requestOptions.CustomHeaders)
