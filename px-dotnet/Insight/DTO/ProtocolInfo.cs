@@ -12,6 +12,6 @@ namespace MercadoPago.Insight.DTO
         public ProtocolHttp ProtocolHttp { get; set; }
 
         [JsonProperty("retry-count")]
-        public Int32? RetryCount { get; set; }
+        public Int32 RetryCount { get; set; }
     }
 }

@@ -196,7 +196,6 @@
     <Compile Include="DataStructures\Preference\Track.cs" />
     <Compile Include="Insight\InsightDataManager.cs" />
     <Compile Include="Insight\MetricsSender.cs" />
-    <Compile Include="Insight\Converters\TrafficLightResponseConverter.cs" />
     <Compile Include="Insight\DTO\BusinessFlowInfo.cs" />
     <Compile Include="Insight\DTO\CertificateInfo.cs" />
     <Compile Include="Insight\DTO\ClientInfo.cs" />

@@ -156,7 +156,10 @@ namespace MercadoPago
         /// <summary>
         /// Gets the client name.
         /// </summary>
-        public static string ClientName { get; set; }
+        public static string ClientName
+        {
+            get { return CLIENT_NAME; }
+        }
 
         /// <summary>Gets the tracking ID.</summary>
         public static string TrackingId

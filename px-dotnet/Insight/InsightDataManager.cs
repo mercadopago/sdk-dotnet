@@ -1,7 +1,11 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Security;
 using System.Net.Sockets;
+using System.Reflection;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using MercadoPago.Insight.DTO;
 using Newtonsoft.Json;
@@ -69,11 +73,11 @@ namespace MercadoPago.Insight
                     };
                 }
 
-                EventInfo eventInfo = null;
+                DTO.EventInfo eventInfo = null;
                 var eventName = GetHeaderValue(request, HEADER_X_INSIGHTS_EVENT_NAME);
                 if (!String.IsNullOrEmpty(eventName))
                 {
-                    eventInfo = new EventInfo
+                    eventInfo = new DTO.EventInfo
                     {
                         Name = eventName,
                     };
@@ -116,13 +120,15 @@ namespace MercadoPago.Insight
                 var tcpInfo = new TcpInfo
                 {
                     SourceAddress = GetHostAddress(),
+                    TargetAddress = GetRemoteAddress(request.Address),
                 };
 
                 var connectionInfo = new ConnectionInfo
                 {
                     ProtocolInfo = protocolInfo,
                     TcpInfo = tcpInfo,
-                    IsDataComplete = true,
+                    CertificateInfo = GetCertificateInfo(request),
+                    IsDataComplete = endRequest.Subtract(startRequest).Milliseconds > 0,
                 };
 
                 if (!String.IsNullOrEmpty(request.UserAgent))
@@ -160,7 +166,7 @@ namespace MercadoPago.Insight
                 LoadTrafficLight();
             }
 
-            return TrafficLight.IsSendDataEnabled.GetValueOrDefault() && TrafficLight.IsEndpointInWhiteList(url);
+            return TrafficLight.IsSendDataEnabled && TrafficLight.IsEndpointInWhiteList(url);
         }
 
         private void LoadTrafficLight()
@@ -189,7 +195,7 @@ namespace MercadoPago.Insight
                     this.TrafficLight = DefaultTrafficLightResponse();
                 }
 
-                _sendDataDeadline = DateTime.Now.Ticks + Math.Abs(this.TrafficLight.SendTtl.GetValueOrDefault(0) * 10000000);
+                _sendDataDeadline = DateTime.Now.Ticks + Math.Abs(this.TrafficLight.SendTtl * 10000000);
             }
             catch (Exception)
             {
@@ -213,11 +219,6 @@ namespace MercadoPago.Insight
             var payload = Encoding.UTF8.GetBytes(json);
 
             var url = INSIGHT_DEFAULT_BASE_URL + path;
-
-            if (path.Equals(INSIGHTS_API_ENDPOINT_TRAFFIC_LIGHT))
-            {
-                url = "http://www.mocky.io/v2/5e3c5ef13000001f3c214d4c";
-            }
 
             var httpRequest = (HttpWebRequest)HttpWebRequest.Create(url);
             httpRequest.Headers.Add(HEADER_X_INSIGHTS_METRIC_LAB_SCOPE, SDK.MetricsScope);
@@ -243,20 +244,76 @@ namespace MercadoPago.Insight
 
         private String GetHostAddress()
         {
+            return GetAddress(() => Dns.GetHostName());
+        }
+
+        private String GetRemoteAddress(Uri uri)
+        {
+
+            return GetAddress(() => uri.Host);
+        }
+
+        private String GetAddress(Func<String> getHostname)
+        {
             try
             {
-                var host = Dns.GetHostEntry(Dns.GetHostName());
+                var host = Dns.GetHostEntry(getHostname());
                 foreach (var ip in host.AddressList)
                 {
                     if (ip.AddressFamily == AddressFamily.InterNetwork)
                     {
                         return ip.ToString();
                     }
-                }                
+                }
             }
             catch (Exception)
             {
                 // Do nothing
+            }
+
+            return null;
+        }
+
+        private CertificateInfo GetCertificateInfo(HttpWebRequest request)
+        {
+            if (request.ServicePoint.Certificate == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                var certificate = new X509Certificate2(request.ServicePoint.Certificate);
+                return new CertificateInfo
+                {
+                    CertificateType = "TLS",
+                    CertificateVersion = GetTlsVersion(),
+                    CertificateExpiration = certificate.NotAfter.ToString("yyyy-MM-dd'T'HH:mm"),
+                };
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private String GetTlsVersion()
+        {
+            var flags = ServicePointManager.SecurityProtocol;
+
+            if ((flags & (SecurityProtocolType)3072) != 0)
+            {
+                return "1.2";
+            }
+
+            if ((flags & (SecurityProtocolType)768) != 0)
+            {
+                return "1.1";
+            }
+
+            if ((flags & SecurityProtocolType.Tls) != 0)
+            {
+                return "1";
             }
 
             return null;

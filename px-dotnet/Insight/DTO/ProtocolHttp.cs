@@ -19,19 +19,19 @@ namespace MercadoPago.Insight.DTO
         public IDictionary<String, String> RequestHeaders { get; private set; }
 
         [JsonProperty("response-status-code")]
-        public Int32? ResponseCode { get; set; }
+        public Int32 ResponseCode { get; set; }
 
         [JsonProperty("response-headers")]
         public IDictionary<String, String> ResponseHeaders { get; private set; }
 
         [JsonProperty("first-byte-time-millis")]
-        public Int64? FirstByteTime { get; set; }
+        public Int64 FirstByteTime { get; set; }
 
         [JsonProperty("last-byte-time-millis")]
-        public Int64? LastByteTime { get; set; }
+        public Int64 LastByteTime { get; set; }
 
         [JsonProperty("was-cached")]
-        public Boolean? WasCached { get; set; }
+        public Boolean WasCached { get; set; }
 
         public ProtocolHttp()
         {

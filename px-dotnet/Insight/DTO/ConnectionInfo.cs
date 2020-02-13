@@ -15,7 +15,7 @@ namespace MercadoPago.Insight.DTO
         public String UserAgent { get; set; }
 
         [JsonProperty("was-reused")]
-        public Boolean? WasReused { get; set; }
+        public Boolean WasReused { get; set; }
 
         [JsonProperty("dns-info")]
         public DnsInfo DnsInfo { get; set; }
@@ -30,6 +30,6 @@ namespace MercadoPago.Insight.DTO
         public ProtocolInfo ProtocolInfo { get; set; }
 
         [JsonProperty("is-complete")]
-        public Boolean? IsDataComplete { get; set; }
+        public Boolean IsDataComplete { get; set; }
     }   
 }

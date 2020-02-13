@@ -15,6 +15,6 @@ namespace MercadoPago.Insight.DTO
         public String CertificateExpiration { get; set; }
 
         [JsonProperty("handshake-time-millis")]
-        public Int64? HandshakeTime { get; set; }
+        public Int64 HandshakeTime { get; set; }
     }
 }

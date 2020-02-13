@@ -9,6 +9,6 @@ namespace MercadoPago.Insight.DTO
         public String NameServerAddress { get; set; }
 
         [JsonProperty("total-lookup-time-millis")]
-        public Int64? LookupTime { get; set; }
+        public Int64 LookupTime { get; set; }
     }
 }

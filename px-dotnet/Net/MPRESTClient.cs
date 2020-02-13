@@ -31,7 +31,11 @@ namespace MercadoPago
         /// <summary>
         /// Class constructor.
         /// </summary>
-        public MPRESTClient() {}
+        public MPRESTClient()
+        {
+            System.Net.ServicePointManager.SecurityProtocol |= 
+                (SecurityProtocolType)768 | (SecurityProtocolType)3072;
+        }
 
         /// <summary>
         /// Set class variables.
@@ -39,6 +43,7 @@ namespace MercadoPago
         /// <param name="proxyHostName">Proxy host to use.</param>
         /// <param name="proxyPort">Proxy port to use in the proxy host.</param>
         public MPRESTClient(string proxyHostName, int proxyPort)
+            : this()
         {
             _proxy = new WebProxy(proxyHostName, proxyPort);
             _proxyHostName = proxyHostName;
@@ -314,10 +319,7 @@ namespace MercadoPago
             }
 
             IWebProxy proxy = requestOptions.Proxy != null ? requestOptions.Proxy : (_proxy != null ? _proxy : SDK.Proxy);
-            if (proxy != null)
-            {
-                mpRequest.Request.Proxy = proxy;
-            }
+            mpRequest.Request.Proxy = proxy;
 
             return mpRequest;
         }
