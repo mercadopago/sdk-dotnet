@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Security;
+using System.Reflection;
+using System.Security.Authentication;
 using System.Text;
 
 namespace MercadoPago
@@ -33,7 +36,7 @@ namespace MercadoPago
         /// </summary>
         public MPRESTClient()
         {
-            System.Net.ServicePointManager.SecurityProtocol |= 
+            ServicePointManager.SecurityProtocol |= 
                 (SecurityProtocolType)768 | (SecurityProtocolType)3072;
         }
 
@@ -178,11 +181,12 @@ namespace MercadoPago
             {               
                 Int32 retries;
                 DateTime startRequest = DateTime.Now;
+                var sslProtocol = GetSslProtocol(mpRequest.Request.GetRequestStream());
                 var response = ExecuteRequest(mpRequest.Request, requestOptions.Retries, out retries);
                 DateTime endRequest = DateTime.Now;
 
                 // Send metrics
-                var metricsSender = new MetricsSender(mpRequest.Request, response, retries, start, startRequest, endRequest);
+                var metricsSender = new MetricsSender(mpRequest.Request, response, sslProtocol, retries, start, startRequest, endRequest);
                 metricsSender.Send();
 
                 return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
@@ -366,6 +370,55 @@ namespace MercadoPago
         }
 
         #endregion
+
+        private SslProtocols? GetSslProtocol(Stream stream)
+        {
+            if (stream == null)
+                return null;
+
+            try
+            {
+                if (typeof(SslStream).IsAssignableFrom(stream.GetType()))
+                {
+                    var ssl = stream as SslStream;
+                    return ssl.SslProtocol;
+                }
+
+                var flags = BindingFlags.NonPublic | BindingFlags.Instance;
+
+                if (stream.GetType().FullName == "System.Net.ConnectStream")
+                {
+                    var connection = stream.GetType().GetProperty("Connection", flags).GetValue(stream, null);
+                    var netStream = connection.GetType().GetProperty("NetworkStream", flags).GetValue(connection, null) as Stream;
+                    return GetSslProtocol(netStream);
+                }
+
+                if (stream.GetType().FullName == "System.Net.WebRequestStream")
+                {
+                    var connection = stream.GetType().GetProperty("Connection", flags).GetValue(stream, null);
+                    var netStream = connection.GetType().GetField("networkStream", flags).GetValue(connection) as Stream;
+                    return GetSslProtocol(netStream);
+                }
+
+                if (stream.GetType().FullName == "System.Net.TlsStream")
+                {
+                    var ssl = stream.GetType().GetField("m_Worker", flags).GetValue(stream);
+                    if (ssl.GetType().GetProperty("IsAuthenticated", flags).GetValue(ssl, null) as bool? != true)
+                    {
+                        var processAuthMethod = stream.GetType().GetMethod("ProcessAuthentication", flags);
+                        processAuthMethod.Invoke(stream, new object[] { null });
+                    }
+
+                    return ssl.GetType().GetProperty("SslProtocol", flags).GetValue(ssl, null) as SslProtocols?;
+                }
+
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
 

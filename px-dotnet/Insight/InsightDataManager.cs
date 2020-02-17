@@ -1,9 +1,7 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Net.Security;
 using System.Net.Sockets;
-using System.Reflection;
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -51,7 +49,14 @@ namespace MercadoPago.Insight
             }
         }
 
-        public void SendInsightMetrics(HttpWebRequest request, HttpWebResponse response, Int32 retries, DateTime start, DateTime startRequest, DateTime endRequest)
+        public void SendInsightMetrics(
+            HttpWebRequest request, 
+            HttpWebResponse response, 
+            SslProtocols? sslProtocol, 
+            Int32 retries, 
+            DateTime start, 
+            DateTime startRequest, 
+            DateTime endRequest)
         {
             try
             {
@@ -120,14 +125,14 @@ namespace MercadoPago.Insight
                 var tcpInfo = new TcpInfo
                 {
                     SourceAddress = GetHostAddress(),
-                    TargetAddress = GetRemoteAddress(request.Address),
+                    TargetAddress = GetRemoteAddress(request.ServicePoint.Address),
                 };
 
                 var connectionInfo = new ConnectionInfo
                 {
                     ProtocolInfo = protocolInfo,
                     TcpInfo = tcpInfo,
-                    CertificateInfo = GetCertificateInfo(request),
+                    CertificateInfo = GetCertificateInfo(request, sslProtocol),
                     IsDataComplete = endRequest.Subtract(startRequest).Milliseconds > 0,
                 };
 
@@ -214,8 +219,7 @@ namespace MercadoPago.Insight
 
         private HttpWebResponse PostData(String path, Object data)
         {
-            string json = JsonConvert.SerializeObject(data);
-            Console.WriteLine(json); // TODO: Remover
+            var json = JsonConvert.SerializeObject(data);
             var payload = Encoding.UTF8.GetBytes(json);
 
             var url = INSIGHT_DEFAULT_BASE_URL + path;
@@ -274,7 +278,7 @@ namespace MercadoPago.Insight
             return null;
         }
 
-        private CertificateInfo GetCertificateInfo(HttpWebRequest request)
+        private CertificateInfo GetCertificateInfo(HttpWebRequest request, SslProtocols? sslProtocol)
         {
             if (request.ServicePoint.Certificate == null)
             {
@@ -286,8 +290,8 @@ namespace MercadoPago.Insight
                 var certificate = new X509Certificate2(request.ServicePoint.Certificate);
                 return new CertificateInfo
                 {
-                    CertificateType = "TLS",
-                    CertificateVersion = GetTlsVersion(),
+                    CertificateType = GetSslProtocolType(sslProtocol),
+                    CertificateVersion = GetSslProtocolVersion(sslProtocol),
                     CertificateExpiration = certificate.NotAfter.ToString("yyyy-MM-dd'T'HH:mm"),
                 };
             }
@@ -297,26 +301,42 @@ namespace MercadoPago.Insight
             }
         }
 
-        private String GetTlsVersion()
+        private String GetSslProtocolType(SslProtocols? sslProtocol)
         {
-            var flags = ServicePointManager.SecurityProtocol;
-
-            if ((flags & (SecurityProtocolType)3072) != 0)
+            switch (sslProtocol)
             {
-                return "1.2";
+                case SslProtocols.Tls:
+                case (SslProtocols)768:
+                case (SslProtocols)3072:
+                case (SslProtocols)12288:
+                    return "TLS";
+                case SslProtocols.Ssl2:
+                case SslProtocols.Ssl3:
+                    return "SSL";
+                default:
+                    return null;
             }
+        }
 
-            if ((flags & (SecurityProtocolType)768) != 0)
+        private String GetSslProtocolVersion(SslProtocols? sslProtocol)
+        {
+            switch (sslProtocol)
             {
-                return "1.1";
+                case SslProtocols.Tls:
+                    return "1";
+                case (SslProtocols)768:
+                    return "1.1";
+                case (SslProtocols)3072:
+                    return "1.2";
+                case (SslProtocols)12288:
+                    return "1.3";
+                case SslProtocols.Ssl2:
+                    return "2";
+                case SslProtocols.Ssl3:
+                    return "3";
+                default:
+                    return null;
             }
-
-            if ((flags & SecurityProtocolType.Tls) != 0)
-            {
-                return "1";
-            }
-
-            return null;
         }
     }
 }
