@@ -1,13 +1,14 @@
-using MercadoPago;
-using Newtonsoft.Json;
+using MercadoPago.Insight;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Security;
+using System.Reflection;
+using System.Security.Authentication;
 using System.Text;
-using System.Collections.Specialized;
 
 namespace MercadoPago
 {
@@ -33,7 +34,11 @@ namespace MercadoPago
         /// <summary>
         /// Class constructor.
         /// </summary>
-        public MPRESTClient() {}
+        public MPRESTClient()
+        {
+            ServicePointManager.SecurityProtocol |= 
+                (SecurityProtocolType)768 | (SecurityProtocolType)3072;
+        }
 
         /// <summary>
         /// Set class variables.
@@ -41,6 +46,7 @@ namespace MercadoPago
         /// <param name="proxyHostName">Proxy host to use.</param>
         /// <param name="proxyPort">Proxy port to use in the proxy host.</param>
         public MPRESTClient(string proxyHostName, int proxyPort)
+            : this()
         {
             _proxy = new WebProxy(proxyHostName, proxyPort);
             _proxyHostName = proxyHostName;
@@ -156,13 +162,13 @@ namespace MercadoPago
             JObject payload,
             MPRequestOptions requestOptions)
         {
+            DateTime start = DateTime.Now;
+
             if (requestOptions == null) {
                 requestOptions = new MPRequestOptions();
             }
 
             MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, requestOptions);
-            string result = string.Empty;
-            int retriesLeft = requestOptions.Retries;
 
             if (new HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
             {
@@ -172,10 +178,18 @@ namespace MercadoPago
             }
 
             try
-            {
-                return ExecuteRequest(mpRequest.Request, 
-                    response => new MPAPIResponse(httpMethod, mpRequest.Request, payload, response),
-                    requestOptions.Retries);
+            {               
+                Int32 retries;
+                DateTime startRequest = DateTime.Now;
+                var sslProtocol = GetSslProtocol(mpRequest.Request.GetRequestStream());
+                var response = ExecuteRequest(mpRequest.Request, requestOptions.Retries, out retries);
+                DateTime endRequest = DateTime.Now;
+
+                // Send metrics
+                var metricsSender = new MetricsSender(mpRequest.Request, response, sslProtocol, retries, start, startRequest, endRequest);
+                metricsSender.Send();
+
+                return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
             }
             catch (Exception ex)
             {
@@ -309,10 +323,7 @@ namespace MercadoPago
             }
 
             IWebProxy proxy = requestOptions.Proxy != null ? requestOptions.Proxy : (_proxy != null ? _proxy : SDK.Proxy);
-            if (proxy != null)
-            {
-                mpRequest.Request.Proxy = proxy;
-            }
+            mpRequest.Request.Proxy = proxy;
 
             return mpRequest;
         }
@@ -336,35 +347,78 @@ namespace MercadoPago
             };
         }
 
-        private MPAPIResponse ExecuteRequest(HttpWebRequest request, Func<HttpWebResponse, MPAPIResponse> convertToApiResponse, int retries)
+        private HttpWebResponse ExecuteRequest(HttpWebRequest request, Int32 maxRetries, out Int32 retries)
         {
-            do
+            retries = 0;
+            while (true)
             {
                 try
                 {
-                    using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                    {
-                        return convertToApiResponse(response);
-                    }
+                    return (HttpWebResponse)request.GetResponse();
                 }
                 catch (WebException ex)
                 {
                     if (ex.Status == WebExceptionStatus.ProtocolError)
                     {
-                        using (HttpWebResponse errorResponse = ex.Response as HttpWebResponse)
-                        {
-                            return convertToApiResponse(errorResponse);
-                        }
+                        return ex.Response as HttpWebResponse;
                     }
                     
-                    if (--retries == 0)
+                    if (++retries > maxRetries)
                         throw;
                 }
-
-            } while (true);
+            }
         }
 
         #endregion
+
+        private SslProtocols? GetSslProtocol(Stream stream)
+        {
+            if (stream == null)
+                return null;
+
+            try
+            {
+                if (typeof(SslStream).IsAssignableFrom(stream.GetType()))
+                {
+                    var ssl = stream as SslStream;
+                    return ssl.SslProtocol;
+                }
+
+                var flags = BindingFlags.NonPublic | BindingFlags.Instance;
+
+                if (stream.GetType().FullName == "System.Net.ConnectStream")
+                {
+                    var connection = stream.GetType().GetProperty("Connection", flags).GetValue(stream, null);
+                    var netStream = connection.GetType().GetProperty("NetworkStream", flags).GetValue(connection, null) as Stream;
+                    return GetSslProtocol(netStream);
+                }
+
+                if (stream.GetType().FullName == "System.Net.WebRequestStream")
+                {
+                    var connection = stream.GetType().GetProperty("Connection", flags).GetValue(stream, null);
+                    var netStream = connection.GetType().GetField("networkStream", flags).GetValue(connection) as Stream;
+                    return GetSslProtocol(netStream);
+                }
+
+                if (stream.GetType().FullName == "System.Net.TlsStream")
+                {
+                    var ssl = stream.GetType().GetField("m_Worker", flags).GetValue(stream);
+                    if (ssl.GetType().GetProperty("IsAuthenticated", flags).GetValue(ssl, null) as bool? != true)
+                    {
+                        var processAuthMethod = stream.GetType().GetMethod("ProcessAuthentication", flags);
+                        processAuthMethod.Invoke(stream, new object[] { null });
+                    }
+
+                    return ssl.GetType().GetProperty("SslProtocol", flags).GetValue(ssl, null) as SslProtocols?;
+                }
+
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
 

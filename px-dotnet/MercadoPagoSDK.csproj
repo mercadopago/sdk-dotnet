@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.5.0</PackageVersion>
+    <PackageVersion>1.6.0</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -194,6 +194,21 @@
     <Compile Include="Common\ProcessingMode.cs" />
     <Compile Include="Common\TaxType.cs" />
     <Compile Include="DataStructures\Preference\Track.cs" />
+    <Compile Include="Insight\InsightDataManager.cs" />
+    <Compile Include="Insight\MetricsSender.cs" />
+    <Compile Include="Insight\DTO\BusinessFlowInfo.cs" />
+    <Compile Include="Insight\DTO\CertificateInfo.cs" />
+    <Compile Include="Insight\DTO\ClientInfo.cs" />
+    <Compile Include="Insight\DTO\ConnectionInfo.cs" />
+    <Compile Include="Insight\DTO\DeviceInfo.cs" />
+    <Compile Include="Insight\DTO\DnsInfo.cs" />
+    <Compile Include="Insight\DTO\EventInfo.cs" />
+    <Compile Include="Insight\DTO\ProtocolHttp.cs" />
+    <Compile Include="Insight\DTO\ProtocolInfo.cs" />
+    <Compile Include="Insight\DTO\StructuredMetricRequest.cs" />
+    <Compile Include="Insight\DTO\TcpInfo.cs" />
+    <Compile Include="Insight\DTO\TrafficLightRequest.cs" />
+    <Compile Include="Insight\DTO\TrafficLightResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

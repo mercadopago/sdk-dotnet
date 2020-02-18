@@ -14,6 +14,8 @@ namespace MercadoPago
         private const int DEFAULT_REQUESTS_RETRIES = 3;
         private const string DEFAULT_BASE_URL = "https://api.mercadopago.com";
         private const string PRODUCT_ID = "BC32BHVTRPP001U8NHL0";
+        private const string CLIENT_NAME = "MercadoPago-SDK-DotNet";
+        private const string DEFAULT_METRICS_SCOPE = "prod";
 
         private static string _clientSecret;
         private static string _clientId;
@@ -30,6 +32,7 @@ namespace MercadoPago
         private static string _integratorId;
         private static string _platformId;
         private static string _trackingId;
+        private static string _metricsScope = DEFAULT_METRICS_SCOPE;
 
         static SDK()
         {
@@ -150,10 +153,27 @@ namespace MercadoPago
             get { return PRODUCT_ID; }
         }
 
+        /// <summary>
+        /// Gets the client name.
+        /// </summary>
+        public static string ClientName
+        {
+            get { return CLIENT_NAME; }
+        }
+
         /// <summary>Gets the tracking ID.</summary>
         public static string TrackingId
         {
             get { return _trackingId; }
+        }
+
+        /// <summary>
+        /// Insight metrics scope
+        /// </summary>
+        public static string MetricsScope
+        {
+            get { return _metricsScope; }
+            set { _metricsScope = value; }
         }
 
         /// <summary>
