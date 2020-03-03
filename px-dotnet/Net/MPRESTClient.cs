@@ -181,11 +181,11 @@ namespace MercadoPago
             {               
                 Int32 retries;
                 DateTime startRequest = DateTime.Now;
-                var sslProtocol = GetSslProtocol(mpRequest.Request.GetRequestStream());
                 var response = ExecuteRequest(mpRequest.Request, requestOptions.Retries, out retries);
                 DateTime endRequest = DateTime.Now;
 
                 // Send metrics
+                var sslProtocol = GetSslProtocol(mpRequest.Request.GetResponse().GetResponseStream());
                 var metricsSender = new MetricsSender(mpRequest.Request, response, sslProtocol, retries, start, startRequest, endRequest);
                 metricsSender.Send();
 
@@ -393,7 +393,7 @@ namespace MercadoPago
                     return GetSslProtocol(netStream);
                 }
 
-                if (stream.GetType().FullName == "System.Net.WebRequestStream")
+                if (stream.GetType().FullName == "System.Net.WebRequestStream" || stream.GetType().FullName == "System.Net.WebResponseStream")
                 {
                     var connection = stream.GetType().GetProperty("Connection", flags).GetValue(stream, null);
                     var netStream = connection.GetType().GetField("networkStream", flags).GetValue(connection) as Stream;
@@ -403,10 +403,10 @@ namespace MercadoPago
                 if (stream.GetType().FullName == "System.Net.TlsStream")
                 {
                     var ssl = stream.GetType().GetField("m_Worker", flags).GetValue(stream);
-                    if (ssl.GetType().GetProperty("IsAuthenticated", flags).GetValue(ssl, null) as bool? != true)
+                    if (ssl.GetType().GetProperty("IsAuthenticated", flags).GetValue(ssl, null) as Boolean? != true)
                     {
                         var processAuthMethod = stream.GetType().GetMethod("ProcessAuthentication", flags);
-                        processAuthMethod.Invoke(stream, new object[] { null });
+                        processAuthMethod.Invoke(stream, new Object[] { null });
                     }
 
                     return ssl.GetType().GetProperty("SslProtocol", flags).GetValue(ssl, null) as SslProtocols?;
