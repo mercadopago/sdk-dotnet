@@ -794,7 +794,7 @@ namespace MercadoPago
                 accessToken = SDK.GetAccessToken();
             }           
 
-            if (!String.IsNullOrEmpty(accessToken))
+            if (!String.IsNullOrEmpty(accessToken) && !path.Equals("/oauth/token", StringComparison.InvariantCultureIgnoreCase))
             {
                 result.Append(string.Format("{0}{1}", "?access_token=", accessToken));
             }
