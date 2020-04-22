@@ -209,6 +209,20 @@
     <Compile Include="Insight\DTO\TcpInfo.cs" />
     <Compile Include="Insight\DTO\TrafficLightRequest.cs" />
     <Compile Include="Insight\DTO\TrafficLightResponse.cs" />
+    <Compile Include="Resources\AdvancedPayment.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Identification.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Phone.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Address.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Payer.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\AdditionalInfoPayer.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Item.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Shipments.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\ReceiverAddress.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\AdditionalInfo.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\Payment.cs" />
+    <Compile Include="DataStructures\AdvancedPayment\TransactionDetails.cs" />
+    <Compile Include="Resources\Disbursement.cs" />
+    <Compile Include="Resources\DisbursementRefund.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -221,6 +235,7 @@
     <Folder Include="Common\" />
     <Folder Include="DataStructures\PaymentMethod\" />
     <Folder Include="DataStructures\Generic\" />
+    <Folder Include="DataStructures\AdvancedPayment\" />
   </ItemGroup> 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
