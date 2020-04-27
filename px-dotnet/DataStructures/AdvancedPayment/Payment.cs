@@ -33,6 +33,11 @@ namespace MercadoPago.DataStructures.AdvancedPayment
         public string PaymentMethodId { get; set; }
 
         /// <summary>
+        /// Payment method option ID
+        /// </summary>
+        public string PaymentMethodOptionId { get; set; }
+
+        /// <summary>
         /// Card token
         /// </summary>
         public string Token { get; set; }

@@ -127,12 +127,14 @@ namespace MercadoPago.Resources
         [PUTEndpoint("/v1/advanced_payments/:id")]
         public static bool Cancel(long id, MPRequestOptions requestOptions)
         {
+            var pathParams = new Dictionary<string, string>();
+            pathParams.Add("id", id.ToString());
+
             var advancedPayment = new AdvancedPayment
             {
-                Id = id,
                 Status = "cancelled"
             };
-            return advancedPayment.ProcessMethodBool<AdvancedPayment>("Cancel", WITHOUT_CACHE, requestOptions);
+            return advancedPayment.ProcessMethodBool<AdvancedPayment>("Cancel", WITHOUT_CACHE, pathParams, requestOptions);
         }
 
         /// <summary>
@@ -155,12 +157,14 @@ namespace MercadoPago.Resources
         [PUTEndpoint("/v1/advanced_payments/:id")]
         public static bool DoCapture(long id, MPRequestOptions requestOptions)
         {
+            var pathParams = new Dictionary<string, string>();
+            pathParams.Add("id", id.ToString());
+
             var advancedPayment = new AdvancedPayment
             {
-                Id = id,
                 Capture = true
             };
-            return advancedPayment.ProcessMethodBool<AdvancedPayment>("DoCapture", WITHOUT_CACHE, requestOptions);
+            return advancedPayment.ProcessMethodBool<AdvancedPayment>("DoCapture", WITHOUT_CACHE, pathParams, requestOptions);
         }
 
         /// <summary>
