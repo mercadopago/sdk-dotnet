@@ -82,6 +82,7 @@ namespace MercadoPago.Resources
         private string _id;
         private string _init_point;
         private string _sandbox_init_point;
+        private string _purpose;
         private DateTime? _date_created;
         [JsonConverter(typeof(StringEnumConverter))]
         private OperationType? _operation_type;
@@ -228,6 +229,21 @@ namespace MercadoPago.Resources
             set
             {
                 _sandbox_init_point = value;
+            }
+        }
+        /// <summary>
+        /// Purpose string
+        /// </summary>
+        public string Purpose
+        {
+            get
+            {
+                return _purpose;
+            }
+
+            set
+            {
+                _purpose = value;
             }
         }
         /// <summary>
