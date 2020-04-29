@@ -209,6 +209,7 @@
     <Compile Include="Insight\DTO\TcpInfo.cs" />
     <Compile Include="Insight\DTO\TrafficLightRequest.cs" />
     <Compile Include="Insight\DTO\TrafficLightResponse.cs" />
+    <Compile Include="DataStructures\Payment\MerchantServices.cs" />
     <Compile Include="Resources\User.cs" />
     <Compile Include="Resources\OAuth.cs" />
     <Compile Include="Resources\AdvancedPayment.cs" />
