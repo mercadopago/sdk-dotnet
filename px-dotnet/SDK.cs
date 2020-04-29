@@ -41,7 +41,7 @@ namespace MercadoPago
         }
 
         /// <summary>  
-        ///  Property that represent the client secret token.
+        /// Property that represent the client secret token.
         /// </summary>
         public static string ClientSecret
         {

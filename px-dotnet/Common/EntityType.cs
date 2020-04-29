@@ -7,9 +7,9 @@ namespace MercadoPago.Common
     [JsonConverter(typeof(StringEnumConverter))]
     public enum EntityType
     {
-        ///<summary>Payer is individual</summary>
+        /// <summary>Payer is individual</summary>
         individual,
-        ///<summary>Payer is an association</summary>
+        /// <summary>Payer is an association</summary>
         association
 
     }

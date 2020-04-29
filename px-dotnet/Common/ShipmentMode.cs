@@ -7,11 +7,11 @@ namespace MercadoPago.Common
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ShipmentMode
     {
-        ///<summary>Custom shipping</summary>
+        /// <summary>Custom shipping</summary>
         Custom,
-        ///<summary>MercadoEnvíos</summary>
+        /// <summary>MercadoEnvíos</summary>
         Me2, 
-        ///<summary>Shipping mode not specified</summary>
+        /// <summary>Shipping mode not specified</summary>
         NotSpecified
     }
 }

@@ -442,6 +442,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Purchased items
+        /// </summary>
         public List<Item> Items
         {
             get
@@ -459,6 +462,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Sponsor ID
+        /// </summary>
         public long? SponsorId
         {
             get
@@ -472,6 +478,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Processing modes
+        /// </summary>
         public List<ProcessingMode> ProcessingModes
         {
             get
@@ -489,6 +498,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Binary mode?
+        /// </summary>
         public bool? BinaryMode
         {
             get
@@ -502,6 +514,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Taxes
+        /// </summary>
         public List<Tax> Taxes
         {
             get

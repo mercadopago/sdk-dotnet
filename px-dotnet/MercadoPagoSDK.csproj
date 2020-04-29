@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.6.1</PackageVersion>
+    <PackageVersion>1.7.0</PackageVersion>
     <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -26,6 +26,8 @@
     <NeutralLanguage>es</NeutralLanguage>
     <PackageReleaseNotes>- Se agrega soporte a customización de IVA en Colombia.</PackageReleaseNotes>
     <PackageTags>mercadopago</PackageTags>
+    <ReleaseVersion>1.7.0</ReleaseVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -229,7 +231,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="px-dotnet.nuspec" />
   </ItemGroup>
   <ItemGroup /> 
   <ItemGroup>

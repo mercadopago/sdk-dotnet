@@ -7,9 +7,9 @@ namespace MercadoPago.Common
     [JsonConverter(typeof(StringEnumConverter))]
     public enum TaxType
     {
-        ///<summary>IVA tax</summary>
+        /// <summary>IVA tax</summary>
         IVA,
-        ///<summary>INC tax</summary>
+        /// <summary>INC tax</summary>
         INC
     }
 }

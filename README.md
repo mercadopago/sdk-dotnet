@@ -8,7 +8,7 @@
 This library provides developers with a simple set of bindings to the Mercado Pago API.
 
 ### .Net versions supported:
-3.5 .Net Framework or Major
+4.5 .Net Framework or Major
 
 ## Installation 
 
@@ -17,15 +17,15 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 **Using Package Manager**
 
 
-`PM> Install-Package mercadopago-sdk -Version 1.6.1`
+`PM> Install-Package mercadopago-sdk -Version 1.7.0`
 
 **Using .Net CLI**
 
-`> dotnet add package mercadopago-sdk --version 1.6.1`
+`> dotnet add package mercadopago-sdk --version 1.7.0`
 
 **Using Packet CLI**
 
-`> paket add mercadopago-sdk --version 1.6.1`
+`> paket add mercadopago-sdk --version 1.7.0`
 
 
 ## Quick Start
@@ -36,12 +36,6 @@ using MercadoPago;
 ```
 ### 2. Setup your credentials
 
-**For Web-checkout:**
-```csharp
-MercadoPago.SDK.ClientId = "YOUR_CLIENT_ID";
-MercadoPago.SDK.ClientSecret = "YOUR_CLIENT_SECRET";
-```
-**For API or custom checkout:**
 ```csharp
 MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
 ```
@@ -59,17 +53,17 @@ using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Common;
 
-MercadoPago.SDK.ClientSecret = "YOUR_ACCESS_TOKEN";
+MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
 
 Payment payment = new Payment
 {
-    TransactionAmount = (float)100.0,
+    TransactionAmount = 100,
     Token = "YOUR_CARD_TOKEN"
     Description = "Ergonomic Silk Shirt",
     PaymentMethodId = "visa", 
     Installments = 1,
     Payer = new Payer {
-        Email = "larue.nienow@hotmail.com"
+        Email = "test.payer@email.com"
     }
 };
 
@@ -84,7 +78,7 @@ Console.Out.WriteLine(payment.Status);
 
 ![errorstructure](https://user-images.githubusercontent.com/864790/40929584-9cc4c96e-67fb-11e8-80a4-8d797953233a.png)
 
-You can check the errors and causes returned by the API using the `errors` attribute.
+You can check the errors and causes returned by the API using the `Errors` attribute.
 
 ```csharp
 Console.Out.WriteLine(payment.Errors.Message) // Print the error Message 
