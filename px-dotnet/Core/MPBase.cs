@@ -19,7 +19,7 @@ namespace MercadoPago
     {
         public static bool WITHOUT_CACHE = false;
         public static bool WITH_CACHE = true;
-        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "All", "Search" };
+        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "All", "Search", "CreateAll" };
 
         public static string IdempotencyKey { get; set; }
 
@@ -244,12 +244,16 @@ namespace MercadoPago
 
         public Boolean ProcessMethodBool<T>(string methodName, bool useCache) where T : MPBase
         {
-            return ProcessMethodBool<T>(methodName, useCache, null);
+            return ProcessMethodBool<T>(methodName, useCache, null, null);
         }
 
         public Boolean ProcessMethodBool<T>(string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
-            Dictionary<string, string> mapParams = null;
+            return ProcessMethodBool<T>(methodName, useCache, null, requestOptions);
+        }
+
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache, Dictionary<string, string> mapParams, MPRequestOptions requestOptions) where T : MPBase
+        {
             T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache, requestOptions);
             return resource.Errors == null;
         }
@@ -285,8 +289,9 @@ namespace MercadoPago
             HttpMethod httpMethod = (HttpMethod)hashAnnotation["method"];
             PayloadType payloadType = (PayloadType)hashAnnotation["payloadType"];
             string path = ParsePath(hashAnnotation["path"].ToString(), mapParams, resource, requestOptions);
+            JObject payload = (httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT) ? new JObject() : null;
 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, null, useCache, requestOptions);
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, useCache, requestOptions);
             
             List<T> resourceArray = new List<T>();
             if (response.StatusCode >= 200 && response.StatusCode < 300)
@@ -648,7 +653,7 @@ namespace MercadoPago
         /// <returns>Info about the method we are searching.</returns>
         private static MethodInfo GetAnnotatedMethod(Type clazz, string methodName)
         {
-            foreach (MethodInfo method in clazz.GetMethods())
+            foreach (MethodInfo method in clazz.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
             {
                 if (method.Name == methodName && method.GetCustomAttributes(false).Length > 0)
                 {
@@ -763,12 +768,15 @@ namespace MercadoPago
                         }
                     }
                 }
- 
-                JObject json = JObject.FromObject(resource);
-                var resource_value = json.GetValue(ToPascalCase(param_string));
-                if (resource_value != null)
+
+                if (resource != null)
                 {
-                    path = path.Replace(param.Value, resource_value.ToString());
+                    JObject json = JObject.FromObject(resource);
+                    var resource_value = json.GetValue(ToPascalCase(param_string));
+                    if (resource_value != null)
+                    {
+                        path = path.Replace(param.Value, resource_value.ToString());
+                    }
                 }
             }
 
@@ -794,7 +802,7 @@ namespace MercadoPago
                 accessToken = SDK.GetAccessToken();
             }           
 
-            if (!String.IsNullOrEmpty(accessToken))
+            if (!String.IsNullOrEmpty(accessToken) && !path.Equals("/oauth/token", StringComparison.InvariantCultureIgnoreCase))
             {
                 result.Append(string.Format("{0}{1}", "?access_token=", accessToken));
             }

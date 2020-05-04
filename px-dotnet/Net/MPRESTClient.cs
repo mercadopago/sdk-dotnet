@@ -185,9 +185,7 @@ namespace MercadoPago
                 DateTime endRequest = DateTime.Now;
 
                 // Send metrics
-                var sslProtocol = GetSslProtocol(mpRequest.Request.GetResponse().GetResponseStream());
-                var metricsSender = new MetricsSender(mpRequest.Request, response, sslProtocol, retries, start, startRequest, endRequest);
-                metricsSender.Send();
+                SendMetrics(mpRequest.Request, response, retries, start, startRequest, endRequest);
 
                 return new MPAPIResponse(httpMethod, mpRequest.Request, payload, response);
             }
@@ -371,6 +369,20 @@ namespace MercadoPago
 
         #endregion
 
+        private void SendMetrics(HttpWebRequest request, HttpWebResponse response, int retries, DateTime start, DateTime startRequest, DateTime endRequest)
+        {
+            try
+            {
+                var sslProtocol = GetSslProtocol(response.GetResponseStream());
+                var metricsSender = new MetricsSender(request, response, sslProtocol, retries, start, startRequest, endRequest);
+                metricsSender.Send();
+            }
+            catch
+            {
+                // Do nothing
+            }
+        }
+
         private SslProtocols? GetSslProtocol(Stream stream)
         {
             if (stream == null)
@@ -414,7 +426,7 @@ namespace MercadoPago
 
                 return null;
             }
-            catch (Exception)
+            catch
             {
                 return null;
             }
