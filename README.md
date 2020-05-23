@@ -1,21 +1,20 @@
-
 # Mercado Pago SDK for .Net
 
+[![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
 
-[![Build Status](https://travis-ci.org/mercadopago/dx-dotnet.svg?branch=develop)](https://travis-ci.org/mercadopago/dx-dotnet)
+This library provides developers with a simple set of bindings to help you integrate Mercado Pago API to a website and start receiving payments.
 
+## 💡 Requirements
 
-This library provides developers with a simple set of bindings to the Mercado Pago API.
-
-### .Net versions supported:
 4.5 .Net Framework or Major
 
-## Installation 
+## 📲 Installation 
 
 ### Using our nuget package
 
-**Using Package Manager**
+First time using Mercado Pago? Create your [Mercado Pago account](https://www.mercadopago.com), if you don’t have one already.
 
+**Using Package Manager**
 
 `PM> Install-Package mercadopago-sdk -Version 1.7.0`
 
@@ -27,25 +26,13 @@ This library provides developers with a simple set of bindings to the Mercado Pa
 
 `> paket add mercadopago-sdk --version 1.7.0`
 
+Copy the access_token in the [credentials](https://www.mercadopago.com/mlb/account/credentials) section of the page and replace YOUR_ACCESS_TOKEN with it.
 
-## Quick Start
+Thats all, you have Mercado Pago SDK installed.
 
-### 1. You have to import the Mercado Pago SDK.
-```csharp
-using MercadoPago;
-```
-### 2. Setup your credentials
+## 🌟 Getting Started
 
-```csharp
-MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
-```
-### 3. Using resource objects
-
-You can interact with all the resources available in the public API, to this each resource is represented by classes according to the following diagram:
-
-![sdk resource structure](https://user-images.githubusercontent.com/864790/34393059-9acad058-eb2e-11e7-9987-494eaf19d109.png)
-
-**Sample (Creating a Payment)**
+  Simple usage looks like:
     
 ```csharp
 using MercadoPago;
@@ -72,18 +59,19 @@ payment.Save();
 Console.Out.WriteLine(payment.Status);
 ```
 
-### 4. Handling Errors
+## 📚 Documentation 
 
-**Error response structure**
+See our Documentation with all APIs you can integrate in our DevSite: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/api/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/api/introduction/)
 
-![errorstructure](https://user-images.githubusercontent.com/864790/40929584-9cc4c96e-67fb-11e8-80a4-8d797953233a.png)
+Check our official code reference to explore all available functionalities.
 
-You can check the errors and causes returned by the API using the `Errors` attribute.
+## ❤️ Support 
 
-```csharp
-Console.Out.WriteLine(payment.Errors.Message) // Print the error Message 
+If you require technical support, please contact our support team at [developers.mercadopago.com](https://developers.mercadopago.com)
+
+## 🏻 License 
+
 ```
-
-### Support 
-
-Write us at [developers.mercadopago.com](https://developers.mercadopago.com)
+MIT license. Copyright (c) 2018 - Mercado Pago / Mercado Libre 
+For more information, see the LICENSE file.
+```
