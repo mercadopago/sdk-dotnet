@@ -1,7 +1,7 @@
 # Mercado Pago SDK for .Net
 
 [![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
-![APM](https://img.shields.io/apm/l/vim-mode)
+[![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mercadopago/dx-dotnet)
 
 This library provides developers with a simple set of bindings to help you integrate Mercado Pago API to a website and start receiving payments.
 
