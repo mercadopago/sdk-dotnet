@@ -21,7 +21,6 @@ namespace MercadoPagoSDK.Test.Resources
         {
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            // Environment.GetEnvironmentVariable("ACCESS_TOKEN");  
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
             SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
@@ -31,6 +30,12 @@ namespace MercadoPagoSDK.Test.Resources
         [Test]
         public void Preference_CreateShouldBeOk() 
         {
+
+            Shipment shipments = new Shipment()
+            {
+                ReceiverAddress = new ReceiverAddress()
+                { ZipCode = "28834", StreetName = "Torrente Antonia", StreetNumber = int.Parse("1219"), Floor = "8", Apartment = "C" }
+            };
 
             List<PaymentType> excludedPaymentTypes = new List<PaymentType>
             {
@@ -58,14 +63,18 @@ namespace MercadoPagoSDK.Test.Resources
                     Title = "Dummy Item",
                     Description = "Multicolor Item",
                     Quantity = 1,
-                    UnitPrice = (float)10.0
+                    UnitPrice = (Decimal)10.0
                 }
             );
+
+            preference.Shipments = shipments;
+
+            preference.ProcessingModes.Add(MercadoPago.Common.ProcessingMode.aggregator);
 
             preference.Save();
             LastPreference = preference;
 
-            Console.WriteLine("INIT POINT: " + preference.SandboxInitPoint);
+            Console.WriteLine("INIT POINT: " + preference.InitPoint);
 
             Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
             Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");

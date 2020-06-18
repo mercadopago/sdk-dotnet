@@ -39,7 +39,9 @@ namespace MercadoPago
             this.Response = response;
 
             ParseRequest(httpMethod, request, payload);
-            ParseResponse(response); 
+            ParseResponse(response);
+
+            System.Diagnostics.Trace.WriteLine("Server response: " + this.StringResponse); 
         }
 
         /// <summary>
@@ -67,31 +69,33 @@ namespace MercadoPago
             this.StatusCode = (int)response.StatusCode;
             this.StatusDescription = response.StatusDescription;
 
-            var stream = response.GetResponseStream();
-            if (stream != null)
+            using (var stream = response.GetResponseStream())
             {
-                try
+                if (stream != null)
                 {
-                    Stream dataStream = response.GetResponseStream();
-                    StreamReader reader = new StreamReader(dataStream, Encoding.UTF8);
-                    this.StringResponse = reader.ReadToEnd(); 
-                    reader.Close();
-                    dataStream.Close();
-                }
-                catch (Exception ex)
-                {
-                    throw new MPException(ex.Message);
-                }
-
-                // Try to parse the response to a json, and a extract the entity of the response.
-                // When the response is not a json parseable string then the string response must be used.
-                try
-                {
-                    this.JsonObjectResponse = JObject.Parse(this.StringResponse);
-                }
-                catch (Exception)
-                {
-                    // Do nothing
+                    try
+                    {
+                        using (var reader = new StreamReader(stream, Encoding.UTF8))
+                        {
+                            this.StringResponse = reader.ReadToEnd();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new MPException(ex.Message);
+                    }
+    
+                    // Try to parse the response to a json, and a extract the entity of the response.
+                    // When the response is not a json parseable string then the string response must be used.
+                    try
+                    {
+                        this.JsonObjectResponse = JObject.Parse(this.StringResponse);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Error parsing jsonObect");
+                    //    If not an object
+                    }
                 }
             }
         }

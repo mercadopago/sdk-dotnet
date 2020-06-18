@@ -99,6 +99,7 @@ namespace MercadoPagoSDK.Test.Core
             payment.Save();
 
             var resource = MPIPN.Manage<Payment>(MPIPN.Topic.payment, payment.Id.ToString());
+
             Assert.IsTrue(resource.GetType().IsSubclassOf(typeof(MPBase)));
             Assert.AreEqual(payment.Id, ((Payment)resource).Id);   
             Assert.AreEqual(payment.Description, ((Payment)resource).Description);
@@ -150,7 +151,7 @@ namespace MercadoPagoSDK.Test.Core
         {
             JObject payload = JObject.Parse("{ \"card_number\": \"4544610257481730\", \"security_code\": \"122\", \"expiration_month\": \"7\", \"expiration_year\": \"2030\", \"cardholder\": { \"name\": \"Test test\", \"identification\": { \"type\": \"DNI\", \"number\": \"12345678\" } } }");
             MPRESTClient client = new MPRESTClient();
-            MPAPIResponse responseCardToken = client.ExecuteRequestCore(
+            MPAPIResponse responseCardToken = client.ExecuteRequest(
                 HttpMethod.POST,
                 "https://api.mercadopago.com/v1/card_tokens?public_key=" + Environment.GetEnvironmentVariable("PUBLIC_KEY"),
                 PayloadType.JSON,

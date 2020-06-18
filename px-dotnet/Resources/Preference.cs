@@ -7,6 +7,7 @@ using System.Text;
 using MercadoPago.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace MercadoPago.Resources
 {
@@ -22,48 +23,69 @@ namespace MercadoPago.Resources
         /// </summary>
         public static Preference FindById(string id)
         {
-            return FindById(id, WITHOUT_CACHE);
+            return FindById(id, WITHOUT_CACHE, null);
         }
+
         /// <summary>
         /// Find a preference trought an unique identifier with Local Cache Flag
         /// </summary>
         [GETEndpoint("/checkout/preferences/:id")]
-        public static Preference FindById(string id, bool useCache)
+        public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {            
-            return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache);
-        } 
+            return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache, requestOptions);
+        }
+
+        /// <summary>
+        /// Save a new preference
+        /// </summary>
+        public Boolean Save()
+        {
+            return Save(null);
+        }
+
         /// <summary>
         /// Save a new preference
         /// </summary>
         [POSTEndpoint("/checkout/preferences")]
-        public Preference Save()
+        public Boolean Save(MPRequestOptions requestOptions)
         {
-            return (Preference)ProcessMethod<Preference>("Save", WITHOUT_CACHE);
-        } 
+            return ProcessMethodBool<Preference>("Save", WITHOUT_CACHE, requestOptions);
+        }
+
+        /// <summary>
+        ///  Update editable properties
+        /// </summary>
+        public Boolean Update()
+        {
+            return Update(null);
+        }
+
         /// <summary>
         ///  Update editable properties
         /// </summary>
         [PUTEndpoint("/checkout/preferences/:id")]
-        public Preference Update()
+        public Boolean Update(MPRequestOptions requestOptions)
         {
-            return (Preference)ProcessMethod<Preference>("Update", WITHOUT_CACHE);
+            return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE, requestOptions);
         }         
         #endregion
 
         #region Properties
-        private List<Item> _items = new List<Item>();
+
+        private List<Item> _items;
         private Payer? _payer;
         private PaymentMethods? _payment_methods;
-        private Shipment? _shipment;
+        private Shipment? _shipments;
         private BackUrls? _back_urls;
         [StringLength(500)]
         private string _notification_url;
         private string _id;
         private string _init_point;
         private string _sandbox_init_point;
+        private string _purpose;
         private DateTime? _date_created;
         [JsonConverter(typeof(StringEnumConverter))]
-        private OperationType? _operation_type; 
+        private OperationType? _operation_type;
         [StringLength(600)]
         private string _additionalInfo;
         [JsonConverter(typeof(StringEnumConverter))]
@@ -74,29 +96,21 @@ namespace MercadoPago.Resources
         private DateTime? _expiration_date_from;
         private DateTime? _expiration_dateTo;
         private int? _collector_id;
-        private string _client_id; 
+        private string _client_id;
         [StringLength(256)]
-        private string _marketplace;  
+        private string _marketplace;
         private float? _marketplace_fee;
-        private DifferentialPricing? _differential_pricing; 
+        private DifferentialPricing? _differential_pricing;
+        private long? _sponsor_id;
+        private List<ProcessingMode> _processing_modes;
+        private bool? _binary_mode;
+        private List<Tax> _taxes;
+        private JObject _metadata;
+        private List<Track> _tracks;
         #endregion
 
         #region Accesors
-        /// <summary>
-        /// Items information
-        /// </summary>
-        public List<Item> Items
-        {
-            get
-            {
-                return _items;
-            }
 
-            set
-            {
-                _items = value;
-            }
-        }
         /// <summary>
         /// Buyer Information
         /// </summary>
@@ -130,16 +144,16 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Shipments information
         /// </summary>
-        public Shipment? Shipment 
+        public Shipment? Shipments
         {
             get
             {
-                return _shipment;
+                return _shipments;
             }
 
             set
             {
-                _shipment = value;
+                _shipments = value;
             }
         }
         /// <summary>
@@ -215,6 +229,21 @@ namespace MercadoPago.Resources
             set
             {
                 _sandbox_init_point = value;
+            }
+        }
+        /// <summary>
+        /// Purpose string
+        /// </summary>
+        public string Purpose
+        {
+            get
+            {
+                return _purpose;
+            }
+
+            set
+            {
+                _purpose = value;
             }
         }
         /// <summary>
@@ -412,7 +441,124 @@ namespace MercadoPago.Resources
                 _differential_pricing = value;
             }
         }
-         
+
+        /// <summary>
+        /// Purchased items
+        /// </summary>
+        public List<Item> Items
+        {
+            get
+            {
+                if (_items == null)
+                {
+                    _items = new List<Item>();
+                }
+                return _items;
+            }
+
+            set
+            {
+                _items = value;
+            }
+        }
+
+        /// <summary>
+        /// Sponsor ID
+        /// </summary>
+        public long? SponsorId
+        {
+            get
+            {
+                return _sponsor_id;
+            }
+
+            set
+            {
+                _sponsor_id = value;
+            }
+        }
+
+        /// <summary>
+        /// Processing modes
+        /// </summary>
+        public List<ProcessingMode> ProcessingModes
+        {
+            get
+            {
+                if (_processing_modes == null)
+                {
+                    _processing_modes = new List<ProcessingMode>();
+                }
+                return _processing_modes;
+            }
+
+            set
+            {
+                _processing_modes = value;
+            }
+        }
+
+        /// <summary>
+        /// Binary mode?
+        /// </summary>
+        public bool? BinaryMode
+        {
+            get
+            {
+                return _binary_mode;
+            }
+
+            set
+            {
+                _binary_mode = value;
+            }
+        }
+
+        /// <summary>
+        /// Taxes
+        /// </summary>
+        public List<Tax> Taxes
+        {
+            get
+            {
+                if (_taxes == null)
+                {
+                    _taxes = new List<Tax>();
+                }
+                return _taxes;
+            }
+
+            set
+            {
+                _taxes = value;
+            }
+        }
+
+        /// <summary>
+        /// Valid JSON that can be attached to the payment to record additional attributes of the merchant
+        /// </summary>
+        public JObject Metadata
+        {
+            get { return this._metadata; }
+            set { this._metadata = value; }
+        }
+
+        /// <summary>
+        /// Preference ad tracks
+        /// </summary>
+        public List<Track> Tracks
+        {
+            get
+            {
+                if (_tracks == null)
+                {
+                    _tracks = new List<Track>();
+                }
+                return _tracks;
+            }
+
+            set { _tracks = value; }
+        }
         #endregion
     }
 }

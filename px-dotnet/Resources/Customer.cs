@@ -14,61 +14,81 @@ namespace MercadoPago
         /// <summary>
         /// Get all customers acoording to specific filters
         /// </summary>
-        [GETEndpoint("/v1/customers/search")]
         public static List<Customer> Search(Dictionary<string, string> filters)
         {
-            return Search(filters, WITHOUT_CACHE);
+            return Search(filters, WITHOUT_CACHE, null);
         }
+
         /// <summary>
         /// Get all customers acoording to specific filters
         /// </summary>
         [GETEndpoint("/v1/customers/search")]
-        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache)
+        public static List<Customer> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
-            return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", filters, useCache);
+            return (List<Customer>)ProcessMethodBulk<Customer>(typeof(Customer), "Search", filters, useCache, requestOptions);
         } 
+
         /// <summary>
         /// Find a customer by ID.
         /// </summary>
         /// <param name="id">Customer ID.</param>
         /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Request options.</param>
         /// <returns>Searched customer.</returns>
         [GETEndpoint("/v1/customers/:id")]
-        public static Customer FindById(string id, bool useCache)
+        public static Customer FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {
-            return (Customer)ProcessMethod<Customer>("FindById", id, useCache);
+            return (Customer)ProcessMethod<Customer>("FindById", id, useCache, requestOptions);
         }
+
         /// <summary>
         /// Find a customer by ID.
         /// </summary>
-        [GETEndpoint("/v1/customers/:id")]
-        public static Customer FindById(String id)
+        public static Customer FindById(string id)
         {
-            return FindById(id, WITHOUT_CACHE);
+            return FindById(id, WITHOUT_CACHE, null);
         }
+
+        public Customer Save()
+        {
+            return Save(null);
+        }
+
         /// <summary>
         /// Save a new customer
         /// </summary>
         [POSTEndpoint("/v1/customers")]
-        public Customer Save()
+        public Customer Save(MPRequestOptions requestOptions)
         {
-            return (Customer)ProcessMethod<Customer>("Save", WITHOUT_CACHE);
+            return (Customer)ProcessMethod<Customer>("Save", WITHOUT_CACHE, requestOptions);
         }
+
+        public Customer Update()
+        {
+            return Update(null);
+        }
+
         /// <summary>
         /// Update editable properties
         /// </summary>
         [PUTEndpoint("/v1/customers/:id")]
-        public Customer Update()
+        public Customer Update(MPRequestOptions requestOptions)
         {
-            return (Customer)ProcessMethod<Customer>("Update", WITHOUT_CACHE);
+            return (Customer)ProcessMethod<Customer>("Update", WITHOUT_CACHE, requestOptions);
         }
+
+        public Customer Delete()
+        {
+            return Delete(null);
+        }
+
         /// <summary>
         /// Remove a customer
         /// </summary>
         [DELETEEndpoint("/v1/customers/:id")]
-        public Customer Delete()
+        public Customer Delete(MPRequestOptions requestOptions)
         {
-            return (Customer)ProcessMethod<Customer>("Delete", WITHOUT_CACHE);
+            return (Customer)ProcessMethod<Customer>("Delete", WITHOUT_CACHE, requestOptions);
         } 
         #endregion
 

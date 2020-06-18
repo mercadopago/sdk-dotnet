@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.IO;
+using MercadoPago.DataStructures.Generic;
 
 namespace MercadoPago
 {
@@ -18,20 +19,35 @@ namespace MercadoPago
     {
         public static bool WITHOUT_CACHE = false;
         public static bool WITH_CACHE = true;
-        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "All", "Search" };
+        public static List<string> ALLOWED_BULK_METHODS = new List<string>() { "All", "Search", "CreateAll" };
 
         public static string IdempotencyKey { get; set; }
 
         protected MPAPIResponse _lastApiResponse;
         protected JObject _lastKnownJson;
 
-        private List<MPException> errors = new List<MPException>();
 
-
-        protected List<MPException> Errors
+        protected BadParamsError? _errors;
+        public BadParamsError? Errors
         {
-            get { return  errors; } 
-            set { errors = value; }
+            get { return _errors; }
+            private set { _errors = value; }
+        }
+
+        protected string _marketplaceAccessToken;
+        public string MarketplaceAccessToken
+        {
+            get { return _marketplaceAccessToken; }
+            set { _marketplaceAccessToken = value; }
+        }
+
+        public bool ShouldSerializeMarketplaceAccessToken()
+        {
+            return false;
+        }
+
+        public void DelegateErrors(BadParamsError DelegatedErrors){
+            this._errors = DelegatedErrors;
         }
 
         #region Errors Definitions
@@ -79,15 +95,24 @@ namespace MercadoPago
 
         public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache) where T : MPBase
         {
-            Dictionary<string, string> mapParams = null;
-            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache);
+            return ProcessMethodBulk<T>(clazz, methodName, useCache, null);
+        }
+
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, (Dictionary<string, string>) null, useCache, requestOptions);
+        }
+
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, param1, useCache, null);
         }
     
-        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache) where T : MPBase
+        public static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, string param1, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param1", param1);
-            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache);
+            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache, requestOptions);
         }
 
         /// <summary>
@@ -98,12 +123,23 @@ namespace MercadoPago
         /// <returns>MPBase resource.</returns>
         public static MPBase ProcessMethod(string methodName, bool useCache)
         {
+            return ProcessMethod(methodName, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod(string methodName, bool useCache, MPRequestOptions requestOptions)
+        {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache);
+            return ProcessMethod<MPBase>(classType, null, methodName, mapParams, useCache, requestOptions);
         }
-
 
         /// <summary>
         /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
@@ -111,24 +147,43 @@ namespace MercadoPago
         /// <param name="methodName">Name of the method we are trying to call.</param>
         /// <param name="param">Parameters to use in the retrieve process.</param>
         /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
         /// <returns>MPBase resource.</returns>
         public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(type, methodName, param, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod<T>(Type type, string methodName, string param, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param0", param);
+            mapParams.Add("id", param);
 
-            return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
+            return ProcessMethod<T>(classType, null, methodName, mapParams, useCache, requestOptions);
         }
 
         public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache) where T : MPBase
+        {
+            return ProcessMethod<T>(clazz, methodName, param1, param2, useCache, null);
+        }
+
+        public static MPBase ProcessMethod<T>(Type clazz, string methodName, string param1, string param2, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
             mapParams.Add("param0", param1);
             mapParams.Add("param1", param2);
 
-            return ProcessMethod<T>(clazz, null, methodName, mapParams, useCache);
+            return ProcessMethod<T>(clazz, null, methodName, mapParams, useCache, requestOptions);
         }
 
         /// <summary>
@@ -140,11 +195,24 @@ namespace MercadoPago
         /// <returns>MPBase resource.</returns>
         public static MPBase ProcessMethod<T>(string methodName, string param, bool useCache) where T : MPBase
         {
+            return ProcessMethod<T>(methodName, param, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specfic method, parameters and configuration.
+        /// </summary>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="param">Parameters to use in the retrieve process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>MPBase resource.</returns>
+        public static MPBase ProcessMethod<T>(string methodName, string param, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {
             Type classType = GetTypeFromStack();
             AdmitIdempotencyKey(classType);
             Dictionary<string, string> mapParams = new Dictionary<string, string>();
-            mapParams.Add("param0", param);
-            return ProcessMethod<T>(classType, null, methodName, mapParams, useCache);
+            mapParams.Add("id", param);
+            return ProcessMethod<T>(classType, null, methodName, mapParams, useCache, requestOptions);
         }
 
         /// <summary>
@@ -156,12 +224,46 @@ namespace MercadoPago
         /// <returns>MPBase resource.</returns>
         public MPBase ProcessMethod<T>(string methodName, bool useCache) where T : MPBase
         {
+            return ProcessMethod<T>(methodName, useCache, null);
+        }
+
+        /// <summary>
+        /// Retrieve a MPBase resource based on a specific method and configuration.       
+        /// </summary>
+        /// <typeparam name="T">Object derived from MPBase abstract class.</typeparam>
+        /// <param name="methodName">Name of the method we are trying to call.</param>
+        /// <param name="useCache">Cache configuration</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>MPBase resource.</returns>
+        public MPBase ProcessMethod<T>(string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {
             Dictionary<string, string> mapParams = null;
-            T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache);
+            T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache, requestOptions);
             return (T)this;
         }
 
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBool<T>(methodName, useCache, null, null);
+        }
+
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {
+            return ProcessMethodBool<T>(methodName, useCache, null, requestOptions);
+        }
+
+        public Boolean ProcessMethodBool<T>(string methodName, bool useCache, Dictionary<string, string> mapParams, MPRequestOptions requestOptions) where T : MPBase
+        {
+            T resource = ProcessMethod<T>(this.GetType(), (T)this, methodName, mapParams, useCache, requestOptions);
+            return resource.Errors == null;
+        }
+
         protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache) where T : MPBase
+        {
+            return ProcessMethodBulk<T>(clazz, methodName, mapParams, useCache, null);
+        }
+
+        protected static List<T> ProcessMethodBulk<T>(Type clazz, string methodName, Dictionary<string, string> mapParams, bool useCache, MPRequestOptions requestOptions) where T : MPBase
         {
             //Validates the method executed
             if (!ALLOWED_BULK_METHODS.Contains(methodName))
@@ -169,32 +271,36 @@ namespace MercadoPago
                 throw new MPException("Method \"" + methodName + "\" not allowed");
             }
 
-            List<T> resourcesList = new List<T>();
-
             var annotatedMethod = GetAnnotatedMethod(clazz, methodName);
             var hashAnnotation = GetRestInformation(annotatedMethod);
-            HttpMethod httpMethod = (HttpMethod)hashAnnotation["method"];
-            T resource = null;
-            string path = ParsePath(hashAnnotation["path"].ToString(), mapParams, resource);
-            int retries = (int)hashAnnotation["retries"];
-            int connectionTimeout = (int)hashAnnotation["requestTimeout"];
-            Console.WriteLine("Path: {0}", path); 
-            PayloadType payloadType = (PayloadType)hashAnnotation["payloadType"];
-            WebHeaderCollection colHeaders = GetStandardHeaders();
 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, null, colHeaders, useCache, connectionTimeout, retries);
-
-            List<T> resourceArray = new List<T>();
-
-            if (response.StatusCode >= 200 &&
-                    response.StatusCode < 300)
+            if (requestOptions == null)
             {
-                resourceArray = FillArrayWithResponseData<T>(clazz, response);
+                int retries = (int)hashAnnotation["retries"];
+                int requestTimeout = (int)hashAnnotation["requestTimeout"];
+                requestOptions = new MPRequestOptions
+                {
+                    Retries = retries,
+                    Timeout = requestTimeout
+                };
+            }
+
+            T resource = null;
+            HttpMethod httpMethod = (HttpMethod)hashAnnotation["method"];
+            PayloadType payloadType = (PayloadType)hashAnnotation["payloadType"];
+            string path = ParsePath(hashAnnotation["path"].ToString(), mapParams, resource, requestOptions);
+            JObject payload = (httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT) ? new JObject() : null;
+
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, useCache, requestOptions);
+            
+            List<T> resourceArray = new List<T>();
+            if (response.StatusCode >= 200 && response.StatusCode < 300)
+            { 
+                resourceArray = FillArrayWithResponseData<T>(clazz, response); 
             }
 
             return resourceArray;
         }
-
 
         /// <summary>
         /// Core implementation of processMethod. Retrieves a generic type. 
@@ -208,6 +314,22 @@ namespace MercadoPago
         /// <returns>Generic type object, containing information about retrieval process.</returns>
         protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache) where T : MPBase
         {
+            return ProcessMethod<T>(clazz, resource, methodName, parameters, useCache, null);
+        }
+
+        /// <summary>
+        /// Core implementation of processMethod. Retrieves a generic type. 
+        /// </summary>
+        /// <typeparam name="T">Generic type that will return.</typeparam>
+        /// <param name="clazz">Type of Class we are using.</param>
+        /// <param name="resource">Resource we will use and return in the implementation.</param>
+        /// <param name="methodName">The name of the method  we are trying to call.</param>
+        /// <param name="parameters">Parameters to use in the process.</param>
+        /// <param name="useCache">Cache configuration.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>Generic type object, containing information about retrieval process.</returns>
+        protected static T ProcessMethod<T>(Type clazz, T resource, string methodName, Dictionary<string, string> parameters, bool useCache, MPRequestOptions requestOptions) where T : MPBase
+        {            
             if (resource == null)
             {
                 try
@@ -222,45 +344,51 @@ namespace MercadoPago
 
             var clazzMethod = GetAnnotatedMethod(clazz, methodName);
             var restData = GetRestInformation(clazzMethod);
-
             HttpMethod httpMethod = (HttpMethod)restData["method"]; 
-            string path = ParsePath(restData["path"].ToString(), parameters, resource); 
             PayloadType payloadType = (PayloadType)restData["payloadType"];
-            JObject payload = GeneratePayload(httpMethod, resource);  
+            JObject payload = GeneratePayload(httpMethod, resource); 
+            
+            if (requestOptions == null)
+            {
+                int requestTimeout = (int)restData["requestTimeout"];
+                int retries = (int)restData["retries"];
+                requestOptions = new MPRequestOptions
+                {
+                    Retries = retries,
+                    Timeout = requestTimeout
+                };
+            }
 
-            int requestTimeout = (int)restData["requestTimeout"];
-            int retries = (int)restData["retries"]; 
-            WebHeaderCollection colHeaders = new WebHeaderCollection(); 
-            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, colHeaders, useCache, requestTimeout, retries);  
+            string path = ParsePath(restData["path"].ToString(), parameters, resource, requestOptions);
+            MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, useCache, requestOptions);
 
-            if (response.StatusCode >= 200 &&
-                    response.StatusCode < 300)
+            if (response.StatusCode >= 200 && response.StatusCode < 300)
             {
                 if (httpMethod != HttpMethod.DELETE)
                 {
-                    resource = (T)FillResourceWithResponseData(resource, response); 
-                    resource._lastApiResponse = response; 
+                    resource = (T)FillResourceWithResponseData(resource, response);
+                    resource._lastApiResponse = response;
                 }
                 else
                 {
-                    //TODO: Call to delete endpoint
                     resource = null;
                 }
-            } else {
-                
-                //resource.Errors.Clear();
-
+            }
+            else if (response.StatusCode >= 400 && response.StatusCode < 500)
+            { 
+                BadParamsError badParamsError = MPCoreUtils.GetBadParamsError(response.StringResponse); 
+                resource.Errors = badParamsError;
+            }
+            else
+            {    
                 MPException webserverError = new MPException()
                 {
                     StatusCode = response.StatusCode,
                     ErrorMessage = response.StringResponse
                 };
-
-                webserverError.Cause.Add(response.JsonObjectResponse.ToString()); 
-                //resource.Errors.Add(webserverError);
-
+                webserverError.Cause.Add(response.JsonObjectResponse.ToString());
+                throw webserverError;
             }
-
 
             return resource;
         }  
@@ -273,11 +401,13 @@ namespace MercadoPago
         /// <returns>a JSON Object with the attributes members of the instance. Null for GET and DELETE methods</returns>
         public static JObject GeneratePayload<T>(HttpMethod httpMethod, T resource) where T : MPBase
         {
-            if (httpMethod.ToString() == "POST" || httpMethod.ToString() == "PUT")
-            {  
+            if (httpMethod.ToString() == "PUT")
+            {
                 JObject actualJSON = MPCoreUtils.GetJsonFromResource(resource);
                 JObject oldJSON = resource.GetLastKnownJson();
                 return getDiffFromLastChange(actualJSON, oldJSON);
+            } else if (httpMethod.ToString() == "POST") {
+                return MPCoreUtils.GetJsonFromResource(resource);
             }
             else
             {
@@ -375,7 +505,22 @@ namespace MercadoPago
             List<T> resourceArray = new List<T>();
             if (response.JsonObjectResponse != null)
             {
-                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse);
+                JArray jsonArray = MPCoreUtils.GetArrayFromJsonElement<T>(response.JsonObjectResponse); 
+
+                if (jsonArray != null)
+                {
+                    for (int i = 0; i < jsonArray.Count(); i++)
+                    {
+                        T resource = (T)MPCoreUtils.GetResourceFromJson<T>(clazz, (JObject)jsonArray[i]);
+
+                        resource.DumpLog();
+
+                        resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
+                        resourceArray.Add(resource);
+                    }
+                }
+            } else {
+                JArray jsonArray = MPCoreUtils.GetJArrayFromStringResponse<T>(response.StringResponse);
                 if (jsonArray != null)
                 {
                     for (int i = 0; i < jsonArray.Count(); i++)
@@ -433,8 +578,40 @@ namespace MercadoPago
             int requestTimeout,
             int retries)
         {
+            var customHeaders = new Dictionary<String, String>();
+            foreach (var header in colHeaders)
+            {
+                customHeaders.Add(header.ToString(), colHeaders[header.ToString()]);
+            }
+
+            var requestOptions = new MPRequestOptions
+            {
+                Timeout = requestTimeout,
+                Retries = retries,
+                CustomHeaders = customHeaders
+            };
+
+            return CallAPI(httpMethod, path, payloadType, payload, useCache, requestOptions);
+        }
+
+        /// <summary>
+        /// Calls the api and returns an MPApiResponse.
+        /// </summary>
+        /// <returns>A MPAPIResponse object with the results.</returns>
+        public static MPAPIResponse CallAPI(
+            HttpMethod httpMethod,
+            string path,
+            PayloadType payloadType,
+            JObject payload,
+            bool useCache,
+            MPRequestOptions requestOptions)
+        {
             string cacheKey = httpMethod.ToString() + "_" + path;
             MPAPIResponse response = null;
+
+            if (requestOptions == null) {
+                requestOptions = new MPRequestOptions();
+            }
 
             if (useCache)
             {
@@ -453,9 +630,7 @@ namespace MercadoPago
                     path,
                     payloadType,
                     payload,
-                    colHeaders,
-                    requestTimeout,
-                    retries);
+                    requestOptions);
 
                 if (useCache)
                 {
@@ -476,9 +651,9 @@ namespace MercadoPago
         /// <param name="clazz">Type of class we are using.</param>
         /// <param name="methodName">Method we are trying to call.</param>
         /// <returns>Info about the method we are searching.</returns>
-        private static MethodInfo GetAnnotatedMethod(Type clazz, String methodName)
+        private static MethodInfo GetAnnotatedMethod(Type clazz, string methodName)
         {
-            foreach (MethodInfo method in clazz.GetMethods())
+            foreach (MethodInfo method in clazz.GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
             {
                 if (method.Name == methodName && method.GetCustomAttributes(false).Length > 0)
                 {
@@ -552,7 +727,7 @@ namespace MercadoPago
         }
         #endregion
 
-        #region Core Utilities 
+        #region Core Utilities
         /// <summary>
         /// Generates a final Path based on parameters in Dictionary and resource properties.
         /// </summary>
@@ -563,99 +738,101 @@ namespace MercadoPago
         /// <returns>Processed path to call the API.</returns>
         public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource) where T : MPBase
         {
-            StringBuilder result = new StringBuilder();
-            bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
+            return ParsePath<T>(path, mapParams, resource, null);
+        }
 
-            if (path.Contains(':'))
-            {
-                int paramIterator = 0;
-                while (path.Contains(':'))
-                {
-                    result.Append(path.Substring(0, path.IndexOf(':')));
-                    path = path.Substring(path.IndexOf(':') + 1);
-                    string param = path;
-                    if (path.Contains('/'))
-                    {
-                        param = path.Substring(0, path.IndexOf('/'));
-                    }
+        /// <summary>
+        /// Generates a final Path based on parameters in Dictionary and resource properties.
+        /// </summary>
+        /// <typeparam name="T">MPBase resource.</typeparam>
+        /// <param name="path">Path we are processing.</param>
+        /// <param name="mapParams">Collection of parameters that we will use to process the final path.</param>
+        /// <param name="resource">Resource containing parameters values to include in the final path.</param>
+        /// <param name="requestOptions">Object containing the request options.</param>
+        /// <returns>Processed path to call the API.</returns>
+        public static string ParsePath<T>(string path, Dictionary<string, string> mapParams, T resource, MPRequestOptions requestOptions) where T : MPBase
+        {
+            string param_pattern = @":([a-z0-9_]+)"; 
+            MatchCollection matches = Regex.Matches(path, param_pattern);
+            foreach (Match param in matches)
+            { 
+                string param_string = param.Value.Replace(":", "");
 
-                    string value = string.Empty;
-                    if (paramIterator <= 2 &&
-                            mapParams != null &&
-                            !string.IsNullOrEmpty(mapParams[string.Format("param{0}", paramIterator.ToString())]))
-                    {
-                        value = mapParams[string.Format("param{0}", paramIterator.ToString())];
-                    }
-                    else if (mapParams != null &&
-                         !string.IsNullOrEmpty(mapParams[param]))
-                    {
-                        value = mapParams[param];
-                    }
-                    else
-                    {
-                        if (resource != null)
+                if (mapParams != null)
+                { 
+                    foreach (KeyValuePair<String, String> entry in mapParams)
+                    { 
+                        if (param_string == entry.Key)
                         {
-                            var newResource = resource;
-                            newResource._lastApiResponse = null;
-
-                            JObject json = JObject.FromObject(newResource);
-
-                            var jValuePC = json.GetValue(ToPascalCase(param));
- 
-                            if (jValuePC != null)
-                            {
-                                value = jValuePC.ToString();
-                            }  
-
+                            path = path.Replace(param.Value, entry.Value);
                         }
                     }
-
-                    if (string.IsNullOrEmpty(value))
-                    {
-                        throw new MPException("No argument supplied/found for path argument");
-                    }  
-                    if (path.Contains('/'))
-                    {
-                        path = path.Substring(path.IndexOf('/'));
-                    }
-                    else
-                    {
-                        path = string.Empty;
-                    }
-
-                    result.Append(value);
                 }
 
-                if (!string.IsNullOrEmpty(path))
+                if (resource != null)
                 {
-                    result.Append(path);
+                    JObject json = JObject.FromObject(resource);
+                    var resource_value = json.GetValue(ToPascalCase(param_string));
+                    if (resource_value != null)
+                    {
+                        path = path.Replace(param.Value, resource_value.ToString());
+                    }
                 }
             }
+
+            StringBuilder result = new StringBuilder();
+            result.Insert(0, SDK.BaseUrl);
+            result.Append(path);
+
+            if (requestOptions == null)
+            {
+                requestOptions = new MPRequestOptions();
+            }
+
+            string accessToken;
+            if (!String.IsNullOrEmpty(requestOptions.AccessToken)) {
+                accessToken = requestOptions.AccessToken;
+            }
+            else if (resource != null && !String.IsNullOrEmpty(resource.MarketplaceAccessToken))
+            {
+                accessToken = resource.MarketplaceAccessToken;
+            } 
             else
             {
-                result.Append(path);
-            }
+                accessToken = SDK.GetAccessToken();
+            }           
 
-            // URL
-            result.Insert(0, SDK.BaseUrl);
-
-            // Access Token
-            string accessToken = SDK.GetAccessToken();
-
-            if (!string.IsNullOrEmpty(accessToken))
+            if (!String.IsNullOrEmpty(accessToken) && !path.Equals("/oauth/token", StringComparison.InvariantCultureIgnoreCase))
             {
                 result.Append(string.Format("{0}{1}", "?access_token=", accessToken));
             }
 
+            bool search = !path.Contains(':') && mapParams != null && mapParams.Any();
             if (search) //search url format, no :id type. Params after access_token
             {
                 foreach (var elem in mapParams)
                 {
-                    result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
+                    if (!string.IsNullOrEmpty(elem.Value))
+                    {
+                        result.Append(string.Format("{0}{1}={2}", "&", elem.Key, elem.Value));
+                    }
                 }
             }
 
             return result.ToString();
+        }
+
+        public void DumpLog()
+        {
+            
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+
+
+            using (var writer = new System.IO.StringWriter())
+            {
+                ObjectDumper.Dumper.Dump(this, "Object Dumper", writer);
+                System.Diagnostics.Trace.WriteLine("Resource " + writer); 
+            }
         }
 
         /// <summary>
@@ -751,14 +928,6 @@ namespace MercadoPago
             }
 
             return true;
-        }
-
-        private static WebHeaderCollection GetStandardHeaders()
-        {
-            WebHeaderCollection colHeaders = new WebHeaderCollection();
-            colHeaders.Add("HTTP.CONTENT_TYPE: application/json");
-            colHeaders.Add("HTTP.USER_AGENT: MercadoPago Java SDK v1.0.1");
-            return colHeaders;
         }
 
         #endregion

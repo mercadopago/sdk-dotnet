@@ -8,38 +8,43 @@ namespace MercadoPago.DataStructures.Payment
     public struct AdditionalInfoPayer
     {
         #region Properties 
-        private string firstName;
-        private string lastName;
-        private Phone phone;
-        private Address address;
-        private DateTime registrationDate; 
+        private String _first_name;
+        private String _last_name;
+        private Phone? _phone;
+        private Address? _address;
+        private DateTime? _registration_date; 
         #endregion
 
         #region Accessors
 
-        public string FirstName
+        public String FirstName
         {            
-            set { firstName = value; }
+            set { _first_name = value; }
+            get { return _first_name; }
         }
        
-        public string LastName
+        public String LastName
         {            
-            set { lastName = value; }
+            set { _last_name = value; }
+            get { return _last_name; }
         }
        
-        public Phone Phone
+        public Phone? Phone
         {            
-            set { phone = value; }
+            set { _phone = value; }
+            get { return _phone; }
         }
        
-        public Address Address
+        public Address? Address
         {            
-            set { address = value; }
+            set { _address = value; }
+            get { return _address; }
         }
        
-        public DateTime RegistrationDate
+        public DateTime? RegistrationDate
         {            
-            set { registrationDate = value; }
+            set { _registration_date = value; }
+            get { return _registration_date; }
         }
 
         #endregion

@@ -3,6 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Converters;
+using MercadoPago.DataStructures.Generic;
+using Newtonsoft.Json.Serialization;
 
 namespace MercadoPago
 {
@@ -56,13 +58,18 @@ namespace MercadoPago
         {
             JsonSerializer serializer = new JsonSerializer { 
                 NullValueHandling = NullValueHandling.Ignore, 
-                ContractResolver = new CustomSerializationContractResolver() 
+                ContractResolver = new CustomSerializationContractResolver{
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
             };
+
             serializer.Converters.Add(new IsoDateTimeConverter()
             {
                 DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
             });
+
             JObject jobject = JObject.FromObject(resource, serializer); 
+
             return jobject;
         }
 
@@ -72,14 +79,42 @@ namespace MercadoPago
         /// <returns>an object obteined from obj</returns>
         public static MPBase GetResourceFromJson<T>(Type type, JObject jObj) where T : MPBase
         {
-            JsonSerializer serializer = new JsonSerializer { 
-                NullValueHandling = NullValueHandling.Ignore,  
-                ContractResolver = new CustomDeserializationContractResolver()
+            JsonSerializer serializer = new JsonSerializer
+            { 
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = new CustomDeserializationContractResolver {
+                    NamingStrategy = new SnakeCaseNamingStrategy()
+                }
             };
+
             serializer.Converters.Add(new IsoDateTimeConverter(){
                 DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
             });
+
             T resource = (T)jObj.ToObject<T>(serializer);
+
+            resource.DumpLog();
+
+            return resource;
+        }
+
+        public static MPBase GetResourceFromJson<T>(string json) where T : MPBase
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            //{ 
+            //    NullValueHandling = NullValueHandling.Ignore,
+            //    ContractResolver = new CustomDeserializationContractResolver()
+            //};
+
+            //serializer.Converters.Add(new IsoDateTimeConverter()
+            //{
+            //    DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss.fffK"
+            //});
+
+            T resource = JsonConvert.DeserializeObject<T>(json);//(T)jObj.ToObject<T>(serializer);
+
+            resource.DumpLog();
+
             return resource;
         }
 
@@ -87,17 +122,21 @@ namespace MercadoPago
         /// Static method that transforms JObject in to a resource.
         /// </summary>
         /// <returns>an object obteined from obj</returns>
-        public static MPException GetExceptionFromJson<T>(JObject jObj) where T : MPException
+        public static BadParamsError GetBadParamsError(string raw) 
         {
+            JObject jObj = JObject.Parse(raw);
+
             JsonSerializer serializer = new JsonSerializer
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CustomDeserializationContractResolver()
             };
-            
-            T resource = (T)jObj.ToObject<T>(serializer);
-            return resource;
+
+            BadParamsError badParams = (BadParamsError)jObj.ToObject<BadParamsError>(serializer);
+            return badParams;
         }
+
+
 
         public static JArray GetArrayFromJsonElement<T>(JObject jsonElement) where T : MPBase
         {
@@ -105,7 +144,14 @@ namespace MercadoPago
             if (jsonElement is JObject)
             {
                 jsonArray = JArray.Parse(jsonElement["results"].ToString());
-            } 
+            }
+            return jsonArray;
+        }
+
+        public static JArray GetJArrayFromStringResponse<T>(string stringResponse) where T : MPBase
+        {
+            JArray jsonArray = null;
+            jsonArray = JArray.Parse(stringResponse);
             return jsonArray;
         }
 

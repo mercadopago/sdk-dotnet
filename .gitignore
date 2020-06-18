@@ -120,3 +120,7 @@ orleans.codegen.cs
 
 # Microsoft Fakes
 FakesAssemblies/
+
+.nuget
+.DS_Store
+.env

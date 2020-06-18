@@ -18,6 +18,8 @@ namespace MercadoPago.Common
         /// <summary> Marketplace comision for the service </summary>
         application_fee,
         /// <summary> Discount given by the seller through cost absorption </summary>
-        discount_fee
+        discount_fee,
+        ml_fee,
+        mp_fee
     }
 }

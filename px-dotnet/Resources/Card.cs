@@ -11,43 +11,58 @@ namespace MercadoPago.Resources
         #region Actions 
         public static List<Card> All(String customerId)
         {
-            return All(customerId, WITHOUT_CACHE);
+            return All(customerId, WITHOUT_CACHE, null);
         }
         
         [GETEndpoint("/v1/customers/:customer_id/cards")]
-        public static List<Card> All(String customerId, bool useCache)
+        public static List<Card> All(String customerId, bool useCache, MPRequestOptions requestOptions)
         {
-            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "All", customerId, useCache);
+            return (List<Card>)ProcessMethodBulk<Card>(typeof(Card), "All", customerId, useCache, requestOptions);
         }
 
         public static Card FindById(string customerId, string id)
         {
-            return FindById(customerId, id, WITHOUT_CACHE);
+            return FindById(customerId, id, WITHOUT_CACHE, null);
         }
 
         [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public static Card FindById(string customerId, string id, bool useCache)
+        public static Card FindById(string customerId, string id, bool useCache, MPRequestOptions requestOptions)
         {            
-            return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache);
+            return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache, requestOptions);
+        }
+
+        public Card Save()
+        {
+            return Save(null);
         }
 
         [POSTEndpoint("/v1/customers/:customer_id/cards/")]
-        public Card Save()
+        public Card Save(MPRequestOptions requestOptions)
         {
-            return (Card)ProcessMethod<Card>("Save", WITHOUT_CACHE);
+            return (Card)ProcessMethod<Card>("Save", WITHOUT_CACHE, requestOptions);
+        }
+
+        public Card Update()
+        {
+            return Update(null);
         }
 
         [PUTEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Update()
+        public Card Update(MPRequestOptions requestOptions)
         {
-            return (Card)ProcessMethod<Card>("Update", WITHOUT_CACHE);
+            return (Card)ProcessMethod<Card>("Update", WITHOUT_CACHE, requestOptions);
+        }
+
+        public Card Delete()
+        {
+            return Delete(null);
         }
 
         [DELETEEndpoint("/v1/customers/:customer_id/cards/:id")]
-        public Card Delete()
+        public Card Delete(MPRequestOptions requestOptions)
         {
-            return (Card)ProcessMethod("Delete", WITHOUT_CACHE);
-        } 
+            return (Card)ProcessMethod<Card>("Delete", WITHOUT_CACHE, requestOptions);
+        }
         #endregion
 
         #region Properties  
@@ -57,7 +72,7 @@ namespace MercadoPago.Resources
         private int? _expiration_year;
         private string _first_six_digits;
         private string _last_four_digits;
-        private PaymentMethod? _payment_method;
+        private CardPaymentMethod? _payment_method;
         private SecurityCode? _security_code;
         private Issuer? _issuer;
         private CardHolder? _card_holder;
@@ -158,7 +173,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Payment method information
         /// </summary>
-        public PaymentMethod? PaymentMethod
+        public CardPaymentMethod? PaymentMethod
         {
             get
             {

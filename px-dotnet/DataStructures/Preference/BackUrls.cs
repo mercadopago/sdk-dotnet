@@ -18,19 +18,19 @@ namespace MercadoPago.DataStructures.Preference
         #endregion
 
         #region Accessors 
-        ///<summary>Approved payment URL</summary>
+        /// <summary>Approved payment URL</summary>
         public string Success 
         { 
             get { return  _success; } 
             set {  _success = value; } 
         }
-        ///<summary>Pending payment URLL</summary>
+        /// <summary>Pending payment URLL</summary>
         public string Pending 
         { 
             get { return  _pending; } 
             set {  _pending = value; } 
         }
-        ///<summary>Canceled payment URL</summary>
+        /// <summary>Canceled payment URL</summary>
         public string Failure 
         { 
             get { return  _failure; } 

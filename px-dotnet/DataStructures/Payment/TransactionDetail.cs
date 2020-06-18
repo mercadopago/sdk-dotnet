@@ -30,43 +30,43 @@ namespace MercadoPago.DataStructures.Payment
         /// </summary>
         public float NetReceivedAmount { 
             get { return  _net_received_amount; } 
-            set { _net_received_amount = value; } 
+            private set { _net_received_amount = value; } 
         }
         /// <summary>
         /// Total amount paid by the buyer (includes fees)
         /// </summary>
         public float TotalPaidAmount { 
             get { return  _total_paid_amount; } 
-            set { _total_paid_amount = value; } 
+            private set { _total_paid_amount = value; } 
         }
         /// <summary>
         /// Total installments amount
         /// </summary>
         public float InstallmentAmount { 
             get { return  _installment_amount; } 
-            set { _installment_amount = value; } 
+            private set { _installment_amount = value; } 
         }
         /// <summary>
         /// Amount overpaid (only for tickets)
         /// </summary>
         public float OverpaidAmount { 
             get { return  _overpaid_amount; } 
-            set { _overpaid_amount = value; } 
+            private set { _overpaid_amount = value; } 
         }
         /// <summary>
         /// Identifies the resource in the payment processor
         /// </summary>
         public string ExternalResourceUrl { 
-            get { return  _external_resource_url; } 
-            set { _external_resource_url = value; } 
+            get { return  _external_resource_url; }
+            private set { _external_resource_url = value; } 
         }
         /// <summary>
         /// For credit card payments is the USN. For offline payment methods, 
         /// is the reference to give to the cashier or to input into the ATM.
         /// </summary>
         public string PaymentMethodReferenceId { 
-            get { return  _payment_method_reference_id; } 
-            set { _payment_method_reference_id = value; } 
+            get { return  _payment_method_reference_id; }
+            private set { _payment_method_reference_id = value; } 
         } 
         #endregion
     }

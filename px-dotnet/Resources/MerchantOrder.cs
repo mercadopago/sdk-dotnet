@@ -13,25 +13,35 @@ namespace MercadoPago.Resources
         
         public MerchantOrder Load(string id) 
         {
-            return Load(id, WITHOUT_CACHE);
+            return Load(id, WITHOUT_CACHE, null);
         }
 
-        [GETEndpoint("/merchant_order/:id")]
-        public MerchantOrder Load(string id, bool useCache)
+        [GETEndpoint("/merchant_orders/:id")]
+        public MerchantOrder Load(string id, bool useCache, MPRequestOptions requestOptions)
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>(typeof(MerchantOrder), "Load", id, useCache);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>(typeof(MerchantOrder), "Load", id, useCache, requestOptions);
+        }
+
+        public MerchantOrder Save()
+        {
+            return Save(null);
         }
         
-        [POSTEndpoint("/merchant_order")]
-        public MerchantOrder Save() 
+        [POSTEndpoint("/merchant_orders")]
+        public MerchantOrder Save(MPRequestOptions requestOptions) 
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Save", WITHOUT_CACHE, requestOptions);
+        }
+
+        public MerchantOrder Update()
+        {
+            return Update(null);
         }
         
-        [PUTEndpoint("/merchant_order/:id")]
-        public MerchantOrder Update() 
+        [PUTEndpoint("/merchant_orders/:id")]
+        public MerchantOrder Update(MPRequestOptions requestOptions)
         {
-            return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE);
+            return (MerchantOrder)ProcessMethod<MerchantOrder>("Update", WITHOUT_CACHE, requestOptions);
         }
 
         #endregion
@@ -47,7 +57,7 @@ namespace MercadoPago.Resources
         private string siteId;
         private Payer payer;
         private Collector collector;
-        private int sponsorId;
+        private long? sponsorId;
         private List<MerchantOrderPayment> payments;
         private float? paidAmount;
         private float? refundedAmount;
@@ -122,7 +132,7 @@ namespace MercadoPago.Resources
             set { collector = value; }
         }
 
-        public int SponsorId
+        public long? SponsorId
         {
             get { return sponsorId; }
             set { sponsorId = value; }
