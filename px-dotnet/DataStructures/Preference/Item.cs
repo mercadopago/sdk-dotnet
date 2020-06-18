@@ -1,4 +1,5 @@
-﻿using MercadoPago.Common;
+﻿using System;
+using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Preference
 {
@@ -60,12 +61,12 @@ namespace MercadoPago.DataStructures.Preference
         /// <sumary>
         /// Warranty
         /// </sumary>
-        public bool Warranty { get; set; }
+        public Boolean? Warranty { get; set; }
 
         /// <sumary>
         /// Event date
         /// </sumary>
-        public System.DateTime? Event_date { get; set; }
+        public DateTime? Event_date { get; set; }
 
     }
 }

@@ -10,18 +10,15 @@ namespace MercadoPago.DataStructures.Payment
         #region Properties
         private bool _local_pickup;
         private ReceiverAddress? _receiver_address;
-        private bool _express_shipment;
+        private Boolean? _express_shipment;
         #endregion
 
         #region Accessors
         /// <summary>
         /// Local pickup
         /// </summary>
-        public bool Local_pickup
-        {
-            get { return _local_pickup; }
-            set { _local_pickup = value; }
-        }
+        public bool LocalPickup { get; set; }
+
         /// <summary>
         /// Buyer's address
         /// </summary>
@@ -33,11 +30,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Express Shipment
         /// </summary>
-        public bool Express_shipment
-        {
-            get { return _express_shipment; }
-            set { _express_shipment = value; }
-        }
+        public Boolean? ExpressShipment { get; set; }
         #endregion
     }
 }

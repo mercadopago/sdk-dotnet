@@ -15,9 +15,7 @@ namespace MercadoPago.DataStructures.Payment
         private string _category_id;
         private int? _quantity;
         private decimal? _unit_price;
-        private Passenger? _passenger;
-        private Route? _route;
-        private bool _warranty;
+        private Boolean? _warranty;
         private DateTime? _event_date;
         #endregion
 
@@ -71,27 +69,21 @@ namespace MercadoPago.DataStructures.Payment
             get { return  _unit_price; } 
             set { _unit_price = value; } 
         }
-        /// <summary>
-        /// Passenger
-        /// </summary>
-        public Passenger? Passenger { 
-            get { return _passenger; }
-            set { _passenger = value; }
-        }
-        /// <summary>
-        /// Route
-        /// </summary>
-        public Route? Route { 
-            get { return _route; }
-            set { _route = value; }
-        }
+        /// <sumary>
+        /// Passenger. Info adicional en caso de category_id travels
+        /// </sumary>
+        public Passenger Passenger { get; set; }
+
+        /// <sumary>
+        /// Route. Info adicional en caso de category_id travels
+        /// </sumary>
+        public Route Route { get; set; }
+
         /// <summary>
         /// Warranty
         /// </summary>
-        public bool Warranty { 
-            get { return _warranty; }
-            set { _warranty = value; }
-        }
+        public Boolean? Warranty { get; set; }
+
         /// <summary>
         /// Event Date
         /// </summary>

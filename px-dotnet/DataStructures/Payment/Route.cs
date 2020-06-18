@@ -8,35 +8,25 @@ namespace MercadoPago.DataStructures.Payment
 {
     public struct Route
     {
-        #region Properties
-        [StringLength(256)]
-        private string _departure;
-        [StringLength(256)]
-        private string _destination;
-        private DateTime _departureDateTime;
-        private DateTime _arrivalDateTime;
-        [StringLength(256)]
-        private string _company;
-        #endregion
-
-        #region Accessors
         /// <summary>
-        /// Route departure
+        /// Departure
         /// </summary>
-        public string Departure
-        {
-            get { return _departure; }
-            set { _departure = value; }
-        }
-        #region Accessors
+        public string Departure { get; set; }
         /// <summary>
-        /// Route destination
+        /// Destination
         /// </summary>
-        public string Destination
-        {
-            get { return _destination; }
-            set { _destination = value; }
-        }
-        #endregion
+        public string Destination { get; set; }
+        /// <summary>
+        /// Departure Date Time
+        /// </summary>
+        public string DepartureDateTime { get; set; }
+        /// <summary>
+        /// Arrival Date Time
+        /// </summary>
+        public string ArrivalDateTime { get; set; }
+        /// <summary>
+        /// Company
+        /// </summary>
+        public string Company { get; set; }
     }
 }
