@@ -15,6 +15,10 @@ namespace MercadoPago.DataStructures.Payment
         private string _category_id;
         private int? _quantity;
         private decimal? _unit_price;
+        private Passenger? _passenger;
+        private Route? _route;
+        private bool _warranty;
+        private DateTime? _event_date;
         #endregion
 
         #region Accessors 
@@ -66,6 +70,35 @@ namespace MercadoPago.DataStructures.Payment
         public decimal? UnitPrice { 
             get { return  _unit_price; } 
             set { _unit_price = value; } 
+        }
+        /// <summary>
+        /// Passenger
+        /// </summary>
+        public Passenger? Passenger { 
+            get { return _passenger; }
+            set { _passenger = value; }
+        }
+        /// <summary>
+        /// Route
+        /// </summary>
+        public Route? Route { 
+            get { return _route; }
+            set { _route = value; }
+        }
+        /// <summary>
+        /// Warranty
+        /// </summary>
+        public bool Warranty { 
+            get { return _warranty; }
+            set { _warranty = value; }
+        }
+        /// <summary>
+        /// Event Date
+        /// </summary>
+        public DateTime? EventDate
+        {
+            get { return _event_date; }
+            set { _event_date = value; }
         }
         #endregion
     }

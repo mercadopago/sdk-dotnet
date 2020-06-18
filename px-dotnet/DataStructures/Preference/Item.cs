@@ -46,5 +46,26 @@ namespace MercadoPago.DataStructures.Preference
         /// Unit price
         /// </summary>
         public decimal UnitPrice { get; set; }
+
+        /// <sumary>
+        /// Passenger. Info adicional en caso de category_id travels
+        /// </sumary>
+        public Passenger Passenger { get; set; }
+
+        /// <sumary>
+        /// Route. Info adicional en caso de category_id travels
+        /// </sumary>
+        public Route Route { get; set; }
+
+        /// <sumary>
+        /// Warranty
+        /// </sumary>
+        public bool Warranty { get; set; }
+
+        /// <sumary>
+        /// Event date
+        /// </sumary>
+        public System.DateTime? Event_date { get; set; }
+
     }
 }

@@ -16,7 +16,8 @@ namespace MercadoPago.DataStructures.Preference
         private List<int> _free_methods;
         private float _cost;
         private bool _free_shipping;
-        private ReceiverAddress? _receiver_address;  
+        private ReceiverAddress? _receiver_address;
+        private bool _express_shipment;
         #endregion
 
         #region Accessors
@@ -79,7 +80,15 @@ namespace MercadoPago.DataStructures.Preference
         {
             get { return  _receiver_address; } 
             set {  _receiver_address = value; } 
-        } 
+        }
+        /// <summary>
+        /// Express shipment
+        /// </summary>
+        public bool ExpressShipment
+        {
+            get { return _express_shipment; }
+            set { _express_shipment = value; }
+        }
         #endregion
 
     }

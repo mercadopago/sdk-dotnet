@@ -20,6 +20,11 @@ namespace MercadoPago.DataStructures.Payment
         private string _first_name;
         private string _last_name; 
         private Address? _address;
+        private string _authentication_type;
+        private bool _is_prime_user;
+        private bool _is_first_puchase_online;
+        private DateTime? _last_puchase;
+
         #endregion
 
         #region Accesors 
@@ -88,11 +93,45 @@ namespace MercadoPago.DataStructures.Payment
             get { return _last_name; }
             set { _last_name = value; }
         }
-
+        /// <summary>
+        /// Address
+        /// </summary>
         public Address? Address
         {
             get { return _address; } 
             set { _address = value; }
+        }
+        /// <summary>
+        /// Authentication type
+        /// </summary>
+        public string AuthenticationType
+        {
+            get { return _authentication_type; }
+            set { _authentication_type = value; }
+        }
+        /// <summary>
+        /// Prime user
+        /// </summary>
+        public bool IsPrimeUser
+        {
+            get { return _is_prime_user; }
+            set { _is_prime_user = value; }
+        }
+        /// <summary>
+        /// First purchase online
+        /// </summary>
+        public bool IsFirstPurchaseOnline
+        {
+            get { return _is_first_puchase_online; }
+            set { _is_first_puchase_online = value; }
+        }
+        /// <summary>
+        /// Last purchase
+        /// </summary>
+        public DateTime? LastPurchase
+        {
+            get { return _last_puchase; }
+            set { _last_puchase = value; }
         }
         #endregion
     }
