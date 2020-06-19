@@ -18,11 +18,6 @@ namespace MercadoPago.DataStructures.Preference
         private Phone? _phone;
         private Identification? _identification;
         private Address? _address;
-        private DateTime? _date_created;
-        private string _authentication_type;
-        private Boolean? _is_prime_user;
-        private Boolean? _is_first_puchase_online;
-        private DateTime? _last_purchase;
         #endregion
 
         #region Accessors
@@ -73,11 +68,8 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Registration date
         /// </summary>
-        public DateTime? DateCreated 
-        { 
-            get { return  _date_created; }
-            set { _date_created = value; }
-        }
+        public DateTime? DateCreated { get; set; }
+
         /// <summary>
         /// Authentication type
         /// </summary>
@@ -86,12 +78,12 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Is prime user
         /// </summary>
-        public Boolean? IsPrimeUser { get; set; }
+        public bool? IsPrimeUser { get; set; }
 
         /// <summary>
         /// Is prime user
         /// </summary>
-        public Boolean? IsFirstPurchaseOnline { get; set; }
+        public bool? IsFirstPurchaseOnline { get; set; }
 
         /// <summary>
         /// Is prime user

@@ -61,12 +61,12 @@ namespace MercadoPago.DataStructures.Preference
         /// <sumary>
         /// Warranty
         /// </sumary>
-        public Boolean? Warranty { get; set; }
+        public bool? Warranty { get; set; }
 
         /// <sumary>
         /// Event date
         /// </sumary>
-        public DateTime? Event_date { get; set; }
+        public DateTime? EventDate { get; set; }
 
     }
 }

@@ -20,10 +20,6 @@ namespace MercadoPago.DataStructures.Payment
         private string _first_name;
         private string _last_name; 
         private Address? _address;
-        private string _authentication_type;
-        private Boolean? _is_prime_user;
-        private Boolean? _is_first_puchase_online;
-        private DateTime? _last_puchase;
 
         #endregion
 
@@ -109,12 +105,12 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Is prime user
         /// </summary>
-        public Boolean? IsPrimeUser { get; set; }
+        public bool? IsPrimeUser { get; set; }
 
         /// <summary>
         /// Is prime user
         /// </summary>
-        public Boolean? IsFirstPurchaseOnline { get; set; }
+        public bool? IsFirstPurchaseOnline { get; set; }
 
         /// <summary>
         /// Is prime user

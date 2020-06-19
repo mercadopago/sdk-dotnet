@@ -15,8 +15,6 @@ namespace MercadoPago.DataStructures.Payment
         private string _category_id;
         private int? _quantity;
         private decimal? _unit_price;
-        private Boolean? _warranty;
-        private DateTime? _event_date;
         #endregion
 
         #region Accessors 
@@ -82,16 +80,12 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Warranty
         /// </summary>
-        public Boolean? Warranty { get; set; }
+        public bool? Warranty { get; set; }
 
         /// <summary>
         /// Event Date
         /// </summary>
-        public DateTime? EventDate
-        {
-            get { return _event_date; }
-            set { _event_date = value; }
-        }
+        public DateTime? EventDate { get; set; }
         #endregion
     }
 }
