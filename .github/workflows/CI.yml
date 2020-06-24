@@ -6,9 +6,9 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ develop, master ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop, master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -44,4 +44,4 @@ jobs:
     
     # Run Tests
     - name: Run Tests
-      run: vstest.console.exe myTestProject.dll
+      run: vstest.console.exe MercadoPagoSDK.Test/bin/Release/MercadoPagoSDK.Test.dll
