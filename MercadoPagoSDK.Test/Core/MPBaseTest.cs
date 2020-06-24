@@ -69,7 +69,7 @@ namespace MercadoPagoSDK.Test
     }
 
     [Idempotent]
-    [TestFixture()]
+    [TestFixture(Ignore = "Skipping")]
     [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     public class DummyClass : MPBase
     {
@@ -348,7 +348,7 @@ namespace MercadoPagoSDK.Test
         }
     }
 
-    [TestFixture()]
+    [TestFixture(Ignore = "Skipping")]
     [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     public class AnotherDummyClass : MPBase
     {
@@ -414,8 +414,8 @@ namespace MercadoPagoSDK.Test
 
         }
     }
-   
-    [TestFixture()]
+
+    [TestFixture(Ignore = "Skipping")]
     [UserToken("as987ge9ev6s5df4g32z1xv54654")]
     public class ResourceTestClass : MPBase
     {
