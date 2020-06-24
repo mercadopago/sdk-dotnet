@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: [windows-latest]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+    
+    # Setup MSBuild
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+    
+    # Setup NuGet
+    - name: Setup NuGet.exe
+      uses: NuGet/setup-nuget@v1.0.2
+    
+    # Restore NuGet packages
+    - name: Restore NuGet packages
+      run: nuget restore px-dotnet.sln
+    
+    # Build Solution
+    - name: Build Solution
+      run: msbuild px-dotnet.sln /p:Configuration=Release
+    
+    # Setup VSTest.console.exe
+    - name: Setup VSTest.console.exe
+      uses: darenm/Setup-VSTest@v1
+    
+    # Run Tests
+    - name: Run Tests
+      run: vstest.console.exe myTestProject.dll
