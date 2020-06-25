@@ -14,6 +14,7 @@ namespace MercadoPagoSDK.Test.Resources
     [TestFixture()]
     public class PreferenceTest
     {
+        string AccessToken;
         Preference LastPreference;
 
         [SetUp]
@@ -23,8 +24,8 @@ namespace MercadoPagoSDK.Test.Resources
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            SDK.AccessToken = AccessToken;
         }
 
         [Test]
