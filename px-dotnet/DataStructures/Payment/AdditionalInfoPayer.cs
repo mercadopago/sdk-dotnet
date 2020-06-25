@@ -46,6 +46,14 @@ namespace MercadoPago.DataStructures.Payment
             set { _registration_date = value; }
             get { return _registration_date; }
         }
+        
+        public string AuthenticationType { get; set; }
+
+        public bool? IsPrimeUser { get; set; }
+        
+        public bool? IsFirstPurchaseOnline { get; set; }
+
+        public DateTime? LastPurchase { get; set; }
 
         #endregion
     }

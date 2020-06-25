@@ -97,25 +97,6 @@ namespace MercadoPago.DataStructures.Payment
             get { return _address; } 
             set { _address = value; }
         }
-        /// <summary>
-        /// Authentication type
-        /// </summary>
-        public string AuthenticationType { get; set; }
-
-        /// <summary>
-        /// Is prime user
-        /// </summary>
-        public bool? IsPrimeUser { get; set; }
-
-        /// <summary>
-        /// Is prime user
-        /// </summary>
-        public bool? IsFirstPurchaseOnline { get; set; }
-
-        /// <summary>
-        /// Is prime user
-        /// </summary>
-        public DateTime? LastPurchase { get; set; }
         #endregion
     }
 }

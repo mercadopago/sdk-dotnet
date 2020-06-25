@@ -63,19 +63,16 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Unit price
         /// </summary>
-        public decimal? UnitPrice { 
-            get { return  _unit_price; } 
-            set { _unit_price = value; } 
+        public decimal? UnitPrice
+        {
+            get { return _unit_price; }
+            set { _unit_price = value; }
         }
-        /// <sumary>
-        /// Passenger. Info adicional en caso de category_id travels
-        /// </sumary>
-        public Passenger Passenger { get; set; }
 
         /// <sumary>
-        /// Route. Info adicional en caso de category_id travels
+        /// Category Descriptor
         /// </sumary>
-        public Route Route { get; set; }
+        public CategoryDescriptor CategoryDescriptor { get; set; }
 
         /// <summary>
         /// Warranty
