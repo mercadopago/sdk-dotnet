@@ -20,6 +20,7 @@ namespace MercadoPago.Common
         /// <summary> Discount given by the seller through cost absorption </summary>
         discount_fee,
         ml_fee,
-        mp_fee
+        mp_fee,
+        mplayer,
     }
 }
