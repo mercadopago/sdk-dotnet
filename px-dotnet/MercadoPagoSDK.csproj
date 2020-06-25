@@ -24,7 +24,6 @@
     <Summary>SDK Oficial de MercadoPago para .Net</Summary>
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
-    <PackageReleaseNotes>- Se agrega soporte a customización de IVA en Colombia.</PackageReleaseNotes>
     <PackageTags>mercadopago</PackageTags>
     <ReleaseVersion>1.8.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
