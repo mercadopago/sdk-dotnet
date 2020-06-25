@@ -1,6 +1,7 @@
 ﻿using System;
 namespace MercadoPago.Common
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CardNumberValidation
     {
         /// <summary> The card number should validate Luhn's algorithm </summary>

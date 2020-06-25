@@ -1,6 +1,7 @@
 using System;
 namespace MercadoPago.Common
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentMethodStatus
     {
         /// <summary> Available for use </summary>
