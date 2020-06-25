@@ -48,4 +48,4 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
-        USER_EMAIL: ${{ secrets.USER_EMAIL }}
+        EMAIL: ${{ secrets.USER_EMAIL }}

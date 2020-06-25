@@ -26,7 +26,6 @@ namespace MercadoPagoSDK.Test.Resources
             // HardCoding Credentials
             AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
             PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
-            Console.WriteLine("AccessToken: " + AccessToken);
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
