@@ -18,15 +18,15 @@ First time using Mercado Pago? Create your [Mercado Pago account](https://www.me
 
 **Using Package Manager**
 
-`PM> Install-Package mercadopago-sdk -Version 1.7.0`
+`PM> Install-Package mercadopago-sdk -Version 1.8.0`
 
 **Using .Net CLI**
 
-`> dotnet add package mercadopago-sdk --version 1.7.0`
+`> dotnet add package mercadopago-sdk --version 1.8.0`
 
 **Using Packet CLI**
 
-`> paket add mercadopago-sdk --version 1.7.0`
+`> paket add mercadopago-sdk --version 1.8.0`
 
 Copy the access_token in the [credentials](https://www.mercadopago.com/mlb/account/credentials) section of the page and replace YOUR_ACCESS_TOKEN with it.
 
