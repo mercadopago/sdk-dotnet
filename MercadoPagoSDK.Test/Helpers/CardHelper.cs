@@ -36,7 +36,7 @@ namespace MercadoPagoSDK.Test.Helpers
             };
 
             string StringPayload = "{ " +
-                "\"card_number\": \"4509953566233704\", " +
+                "\"card_number\": \"4508336715544174\", " +
                 "\"security_code\": \"122\", " +
                 "\"expiration_month\": \"7\", " +
                 "\"expiration_year\": \"2030\", " +

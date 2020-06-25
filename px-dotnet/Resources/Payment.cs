@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.Resources
@@ -141,6 +142,7 @@ namespace MercadoPago.Resources
 
             if (refund.Id.HasValue)
             {
+                Thread.Sleep(100);
                 var payment = Payment.FindById(Id, WITHOUT_CACHE, requestOptions);
                 Status = payment.Status;
                 StatusDetail = payment.StatusDetail;

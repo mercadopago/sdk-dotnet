@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture] 
+    [TestFixture(Ignore = "Skipping")]
     public class PaymentMethodTest
     {
         string AccessToken;
