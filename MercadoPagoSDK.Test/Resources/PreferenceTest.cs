@@ -1,13 +1,10 @@
-﻿using MercadoPago;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using MercadoPago;
+using MercadoPago.DataStructures.Preference;
 using MercadoPago.Resources;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MercadoPago.DataStructures.Preference;
-using System.Net;
-using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {

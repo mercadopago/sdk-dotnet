@@ -1,14 +1,13 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text; 
-using MercadoPago.Resources;
-using MercadoPago.DataStructures.Payment;
-using MercadoPago;
-using Newtonsoft.Json.Linq;
 using System.Net;
+using System.Threading;
+using MercadoPago;
 using MercadoPago.Common;
+using MercadoPago.DataStructures.Payment;
+using MercadoPago.Resources;
+using NUnit.Framework;
 
 namespace MercadoPagoSDK.Test.Resources
 {
@@ -184,6 +183,7 @@ namespace MercadoPagoSDK.Test.Resources
             };
 
             OtherPayment.Save();
+            Thread.Sleep(500);
             OtherPayment.Refund(); 
 
             Assert.AreEqual(PaymentStatus.refunded, OtherPayment.Status, "Failed: Payment could not be successfully refunded");

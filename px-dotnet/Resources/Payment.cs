@@ -141,6 +141,7 @@ namespace MercadoPago.Resources
 
             if (refund.Id.HasValue)
             {
+
                 var payment = Payment.FindById(Id, WITHOUT_CACHE, requestOptions);
                 Status = payment.Status;
                 StatusDetail = payment.StatusDetail;
