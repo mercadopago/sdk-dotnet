@@ -1,5 +1,6 @@
 # Mercado Pago SDK for .Net
 
+![CI](https://github.com/mercadopago/dx-dotnet/workflows/CI/badge.svg)
 [![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
 [![Download count](https://img.shields.io/nuget/dt/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk/)
 [![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mercadopago/dx-dotnet)
