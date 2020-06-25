@@ -228,6 +228,12 @@
     <Compile Include="DataStructures\AdvancedPayment\TransactionDetails.cs" />
     <Compile Include="Resources\Disbursement.cs" />
     <Compile Include="Resources\DisbursementRefund.cs" />
+    <Compile Include="DataStructures\Preference\Passenger.cs" />
+    <Compile Include="DataStructures\Preference\Route.cs" />
+    <Compile Include="DataStructures\Payment\Route.cs" />
+    <Compile Include="DataStructures\Payment\Passenger.cs" />
+    <Compile Include="DataStructures\Payment\CategoryDescriptor.cs" />
+    <Compile Include="DataStructures\Preference\CategoryDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

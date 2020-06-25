@@ -16,7 +16,6 @@ namespace MercadoPago.DataStructures.Preference
         private List<int> _free_methods;
         private float _cost;
         private bool _free_shipping;
-        private ReceiverAddress? _receiver_address;  
         #endregion
 
         #region Accessors
@@ -31,11 +30,8 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// The payer have the option to pick up the shipment in your store (mode:me2 only)
         /// </summary>
-        public bool LocalPickUp 
-        {
-            get { return  _local_pick_up; } 
-            set {  _local_pick_up = value; }
-        }
+        public bool LocalPickUp { get; set; }
+
         /// <summary>
         /// Dimensions of the shipment in cm x cm x cm, gr (mode:me2 only)
         /// </summary>
@@ -75,12 +71,12 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Shipping address
         /// </summary>
-        public ReceiverAddress? ReceiverAddress
-        {
-            get { return  _receiver_address; } 
-            set {  _receiver_address = value; } 
-        } 
-        #endregion
+        public ReceiverAddress? ReceiverAddress { get; set; }
 
+        /// <summary>
+        /// Express shipment
+        /// </summary>
+        public bool? ExpressShipment { get; set; }
+        #endregion
     }
 }
