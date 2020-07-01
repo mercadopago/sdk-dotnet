@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture()]
+    [TestFixture(Ignore = "Skipping")]
     public class PreapprovalTest
     {
         Preapproval LastPreapproval;

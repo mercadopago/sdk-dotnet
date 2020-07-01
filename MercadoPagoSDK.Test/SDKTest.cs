@@ -5,8 +5,8 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test
-{ 
-    [TestFixture]
+{
+    [TestFixture(Ignore = "Skipping")]
     public class SDKTest
     { 
         string AccessToken;

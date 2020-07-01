@@ -1,6 +1,9 @@
-using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 namespace MercadoPago.Common
 {
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PaymentMethodStatus
     {
         /// <summary> Available for use </summary>

@@ -63,10 +63,26 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Unit price
         /// </summary>
-        public decimal? UnitPrice { 
-            get { return  _unit_price; } 
-            set { _unit_price = value; } 
+        public decimal? UnitPrice
+        {
+            get { return _unit_price; }
+            set { _unit_price = value; }
         }
+
+        /// <sumary>
+        /// Category Descriptor
+        /// </sumary>
+        public CategoryDescriptor CategoryDescriptor { get; set; }
+
+        /// <summary>
+        /// Warranty
+        /// </summary>
+        public bool? Warranty { get; set; }
+
+        /// <summary>
+        /// Event Date
+        /// </summary>
+        public DateTime? EventDate { get; set; }
         #endregion
     }
 }

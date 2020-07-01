@@ -20,6 +20,7 @@ namespace MercadoPago.DataStructures.Payment
         private string _first_name;
         private string _last_name; 
         private Address? _address;
+
         #endregion
 
         #region Accesors 
@@ -88,7 +89,9 @@ namespace MercadoPago.DataStructures.Payment
             get { return _last_name; }
             set { _last_name = value; }
         }
-
+        /// <summary>
+        /// Address
+        /// </summary>
         public Address? Address
         {
             get { return _address; } 

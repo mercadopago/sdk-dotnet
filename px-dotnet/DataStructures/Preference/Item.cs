@@ -1,4 +1,5 @@
-﻿using MercadoPago.Common;
+﻿using System;
+using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Preference
 {
@@ -46,5 +47,21 @@ namespace MercadoPago.DataStructures.Preference
         /// Unit price
         /// </summary>
         public decimal UnitPrice { get; set; }
+
+        /// <sumary>
+        /// Category Descriptor 
+        /// </sumary>
+        public CategoryDescriptor CategoryDescriptor { get; set; }
+
+        /// <sumary>
+        /// Warranty
+        /// </sumary>
+        public bool? Warranty { get; set; }
+
+        /// <sumary>
+        /// Event date
+        /// </sumary>
+        public DateTime? EventDate { get; set; }
+
     }
 }

@@ -9,8 +9,7 @@ using MercadoPago.DataStructures.Customer;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    
-    [TestFixture]
+    [TestFixture(Ignore = "Skipping")]
     public class CustomerTest
     {
 

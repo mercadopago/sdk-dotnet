@@ -1,19 +1,17 @@
-﻿using MercadoPago;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using MercadoPago;
+using MercadoPago.DataStructures.Preference;
 using MercadoPago.Resources;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MercadoPago.DataStructures.Preference;
-using System.Net;
-using Newtonsoft.Json.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {
     [TestFixture()]
     public class PreferenceTest
     {
+        string AccessToken;
         Preference LastPreference;
 
         [SetUp]
@@ -23,8 +21,8 @@ namespace MercadoPagoSDK.Test.Resources
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             SDK.CleanConfiguration();
             SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            SDK.AccessToken = AccessToken;
         }
 
         [Test]

@@ -12,7 +12,7 @@ using System.Collections;
 
 namespace MercadoPagoSDK.Test.Core
 {
-    [TestFixture()]
+    [TestFixture(Ignore = "Skipping")]
     public class MPIPNTest
     {
         [Test()]

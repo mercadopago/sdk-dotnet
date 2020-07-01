@@ -13,7 +13,7 @@ using ValidationRange = System.ComponentModel.DataAnnotations.RangeAttribute;
 
 namespace MercadoPagoSDK.Test
 {
-    [TestFixture()]
+    [TestFixture(Ignore = "Skipping")]
     public class MPRESTClientTest : MPRESTClient
     {
 
