@@ -268,6 +268,7 @@ namespace MercadoPago
                 mpRequest.Request.Timeout = requestOptions.Timeout;
             }
 
+            mpRequest.Request.Headers.Add("access_token", !string.IsNullOrEmpty(requestOptions.AccessToken) ? requestOptions.AccessToken : SDK.GetAccessToken());
             mpRequest.Request.Headers.Add("x-product-id", SDK.ProductId);
             mpRequest.Request.Headers.Add("x-tracking-id", SDK.TrackingId);
 
