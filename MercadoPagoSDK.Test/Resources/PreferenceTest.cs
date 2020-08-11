@@ -91,6 +91,28 @@ namespace MercadoPagoSDK.Test.Resources
             LastPreference.ExternalReference = "DummyPreference for Integration Test";
             LastPreference.Update();
             Assert.AreEqual(LastPreference.ExternalReference, "DummyPreference for Integration Test"); 
-        }  
+        }
+
+        [Test]
+        public void Preference_CreateWithCurrencyIdShouldBeOk()
+        {
+            Item item = new Item()
+            {
+                Title = "Dummy Item",
+                Description = "Multicolor Item",
+                Quantity = 1,
+                UnitPrice = (Decimal)10.0,
+                CurrencyId = MercadoPago.Common.CurrencyId.ARS
+            };
+
+            Preference preference = new Preference();
+            preference.Items.Add(item);
+
+            preference.Save();
+            LastPreference = preference;
+
+            Assert.IsTrue(preference.Id.Length > 0, "Failed: Preference could not be successfully created");
+            Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");
+        }
     }
 }

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using MercadoPago.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.DataStructures.Preference
 {
@@ -41,6 +44,7 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Currency ID. ISO_4217 code
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public CurrencyId CurrencyId { get; set; }
 
         /// <summary>
@@ -63,5 +67,9 @@ namespace MercadoPago.DataStructures.Preference
         /// </sumary>
         public DateTime? EventDate { get; set; }
 
+        public static implicit operator List<object>(Item v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
