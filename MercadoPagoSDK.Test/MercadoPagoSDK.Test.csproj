@@ -63,6 +63,7 @@
     <Compile Include="Resources\PreferenceTest.cs" />
     <Compile Include="Resources\PaymentMethodTest.cs" />
     <Compile Include="SDKTest.cs" />
+    <Compile Include="Helpers\PaymentHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">
