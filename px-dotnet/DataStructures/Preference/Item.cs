@@ -1,5 +1,7 @@
 ﻿using System;
 using MercadoPago.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.DataStructures.Preference
 {
@@ -41,6 +43,7 @@ namespace MercadoPago.DataStructures.Preference
         /// <summary>
         /// Currency ID. ISO_4217 code
         /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
         public CurrencyId CurrencyId { get; set; }
 
         /// <summary>
