@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using MercadoPago.Common;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -67,9 +66,5 @@ namespace MercadoPago.DataStructures.Preference
         /// </sumary>
         public DateTime? EventDate { get; set; }
 
-        public static implicit operator List<object>(Item v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
