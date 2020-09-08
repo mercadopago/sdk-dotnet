@@ -43,12 +43,12 @@ using MercadoPago.Resources;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Common;
 
-MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
+MercadoPago.SDK.SetAccessToken("ENV_ACCESS_TOKEN");
 
 Payment payment = new Payment
 {
     TransactionAmount = 100,
-    Token = "YOUR_CARD_TOKEN"
+    Token = "YOUR_CARD_TOKEN",
     Description = "Ergonomic Silk Shirt",
     PaymentMethodId = "visa", 
     Installments = 1,
