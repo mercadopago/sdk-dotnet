@@ -51,7 +51,7 @@ jobs:
         -filter:"+[*]* -[*.Tests*]*" `
         -mergebyhash `
         -skipautoprops `
-        -register:user `
+        -register `
         -output:"coverage.xml"
         type coverage.xml
       env:
