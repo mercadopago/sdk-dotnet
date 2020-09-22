@@ -1,98 +1,203 @@
-﻿using MercadoPago;
+﻿using System;
+using System.Collections.Generic;
+using MercadoPago.DataStructures.Preference;
 using MercadoPago.Resources;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MercadoPago.DataStructures.Preference;
-using System.Net;
-using Newtonsoft.Json.Linq;
+using PaymentMethod = MercadoPago.DataStructures.Preference.PaymentMethod;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture()]
-    public class PreferenceTest
+    [TestFixture]
+    public class PreferenceTest : BaseResourceTest
     {
-        Preference LastPreference;
-
-        [SetUp]
-        public void Init()
+        [Test]
+        public void CreatePreferenceTest()
         {
-            // Avoid SSL Cert error
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.ClientId = Environment.GetEnvironmentVariable("CLIENT_ID");
-            SDK.ClientSecret = Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            var preference = NewPreference();
+            preference.Save();
+            Assert.IsNotNull(preference.Id);
         }
 
         [Test]
-        public void Preference_CreateShouldBeOk() 
+        public void CreatePreferenceRequestOptionsTest()
         {
+            var requestOptions = NewRequestOptions();
+            var preference = NewPreference();
+            preference.Save(requestOptions);
+            Assert.IsNotNull(preference.Id);
+        }
 
-            Shipment shipments = new Shipment()
-            {
-                ReceiverAddress = new ReceiverAddress()
-                { ZipCode = "28834", StreetName = "Torrente Antonia", StreetNumber = int.Parse("1219"), Floor = "8", Apartment = "C" }
-            };
+        [Test]
+        public void UpdatePreferenceTest()
+        {
+            var preference = NewPreference();
+            preference.Save();
+            Assert.IsNotNull(preference.Id);
 
-            List<PaymentType> excludedPaymentTypes = new List<PaymentType>
+            preference.AdditionalInfo = "New info";
+            preference.Update();
+            Assert.IsNull(preference.Errors);
+        }
+
+        [Test]
+        public void UpdatePreferenceRequestOptionsTest()
+        {
+            var preference = NewPreference();
+            preference.Save();
+            Assert.IsNotNull(preference.Id);
+
+            var requestOptions = NewRequestOptions();
+            preference.AdditionalInfo = "New info";
+            preference.Update(requestOptions);
+            Assert.IsNull(preference.Errors);
+        }
+
+        [Test]
+        public void FindPreferenceTest()
+        {
+            var preference = NewPreference();
+            preference.Save();
+            Assert.IsNotNull(preference.Id);
+
+            var findPreference = Preference.FindById(preference.Id);
+            Assert.IsNotNull(findPreference);
+            Assert.AreEqual(preference.Id, findPreference.Id);
+        }
+
+        [Test]
+        public void FindPreferenceRequestOptionsTest()
+        {
+            var preference = NewPreference();
+            preference.Save();
+            Assert.IsNotNull(preference.Id);
+
+            var requestOptions = NewRequestOptions();
+            var findPreference = Preference.FindById(preference.Id, false, requestOptions);
+            Assert.IsNotNull(findPreference);
+            Assert.AreEqual(preference.Id, findPreference.Id);
+        }
+
+        private static Preference NewPreference()
+        {
+            return new Preference
             {
-                new PaymentType()
+                Items = new List<Item>
                 {
-                    Id = "ticket"
-                }
-            };
-
-            Preference preference = new Preference()
-            {
-                ExternalReference = "01-02-00000003",
+                    new Item
+                    {
+                        CurrencyId = MercadoPago.Common.CurrencyId.BRL,
+                        Description = "Description",
+                        Id = "123",
+                        PictureUrl = "http://product.image.png",
+                        Quantity = 1,
+                        Title = "Title",
+                        UnitPrice = 100,
+                    },
+                },
+                Payer = new Payer
+                {
+                    Email = "test_user_15230029@testuser.com",
+                    Name = "Test",
+                    Surname = "User",
+                    Phone = new Phone
+                    {
+                        AreaCode = "11",
+                        Number = "999999999",
+                    },
+                    Identification = new Identification
+                    {
+                        Type = "CPF",
+                        Number = "19119119100",
+                    },
+                    Address = new Address
+                    {
+                        ZipCode = "06000000",
+                        StreetName = "Street",
+                        StreetNumber = 123,
+                    },
+                },
+                PaymentMethods = new PaymentMethods
+                {
+                    ExcludedPaymentMethods = new List<PaymentMethod>
+                    {
+                        new PaymentMethod
+                        {
+                            Id = "visa",
+                        },
+                    },
+                    ExcludedPaymentTypes = new List<PaymentType>
+                    {
+                        new PaymentType
+                        {
+                            Id = "debit_card",
+                        },
+                    },
+                    DefaultPaymentMethodId = "master",
+                    Installments = 6,
+                    DefaultInstallments = 1,
+                },
+                Shipments = new Shipment
+                {
+                    Mode = MercadoPago.Common.ShipmentMode.NotSpecified,
+                    LocalPickUp = false,
+                    Dimensions = "10x10x20,500",
+                    ReceiverAddress = new ReceiverAddress
+                    {
+                        ZipCode = "06000000",
+                        StreetNumber = 123,
+                        StreetName = "Street",
+                        Floor = "12",
+                        Apartment = "120A",
+                    },
+                    Cost = 10,
+                },
+                BackUrls = new BackUrls
+                {
+                    Success = "https://seller/success",
+                    Pending = "https://seller/pending",
+                    Failure = "https://seller/failure",
+                },
+                NotificationUrl = "https://seller/notification",
+                AdditionalInfo = "Additional info",
+                AutoReturn = MercadoPago.Common.AutoReturnType.all,
+                ExternalReference = Guid.NewGuid().ToString(),
                 Expires = true,
                 ExpirationDateFrom = DateTime.Now,
-                ExpirationDateTo = DateTime.Now.AddDays(1), 
-                PaymentMethods = new PaymentMethods()
-                { 
-                    ExcludedPaymentTypes = excludedPaymentTypes
-                }
-            };
-
-            preference.Items.Add(
-                new Item()
+                ExpirationDateTo = DateTime.Now.AddMonths(1),
+                Tracks = new List<Track>
                 {
-                    Title = "Dummy Item",
-                    Description = "Multicolor Item",
-                    Quantity = 1,
-                    UnitPrice = (Decimal)10.0
-                }
-            );
-
-            preference.Shipments = shipments;
-
-            preference.ProcessingModes.Add(MercadoPago.Common.ProcessingMode.aggregator);
-
-            preference.Save();
-            LastPreference = preference;
-
-            Console.WriteLine("INIT POINT: " + preference.InitPoint);
-
-            Assert.IsTrue(preference.Id.Length > 0 , "Failed: Payment could not be successfully created");
-            Assert.IsTrue(preference.InitPoint.Length > 0, "Failed: Preference has not a valid init point");
+                    new Track
+                    {
+                        Type = "google_ad",
+                        Values = new Newtonsoft.Json.Linq.JObject
+                        {
+                            { "conversion_id", "1123" },
+                            { "conversion_label", "label" },
+                        },
+                    },
+                    new Track
+                    {
+                        Type = "facebook_ad",
+                        Values = new Newtonsoft.Json.Linq.JObject
+                        {
+                            { "pixel_id", "111111" },
+                        },
+                    },
+                },
+                BinaryMode = true,
+                Taxes = new List<Tax>
+                {
+                    new Tax
+                    {
+                        Type = MercadoPago.Common.TaxType.IVA,
+                        Value = 2,
+                    },
+                },
+                ProcessingModes = new List<MercadoPago.Common.ProcessingMode>{
+                    MercadoPago.Common.ProcessingMode.aggregator,
+                    MercadoPago.Common.ProcessingMode.gateway,
+                },
+            };
         }
-
-        [Test]
-        public void Preference_FindByIDShouldbeOk()
-        {
-            Preference foundedPreference = Preference.FindById(LastPreference.Id); 
-            Assert.AreEqual(foundedPreference.Id, LastPreference.Id); 
-        }
-
-        [Test]
-        public void Preference_UpdateShouldBeOk()
-        {
-            LastPreference.ExternalReference = "DummyPreference for Integration Test";
-            LastPreference.Update();
-            Assert.AreEqual(LastPreference.ExternalReference, "DummyPreference for Integration Test"); 
-        }  
     }
 }

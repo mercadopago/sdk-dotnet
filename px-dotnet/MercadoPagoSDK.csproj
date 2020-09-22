@@ -14,8 +14,8 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.7.0</PackageVersion>
-    <Authors>Williner Rafael, Zachary Gerardo, Joel Ibaceta</Authors>
+    <PackageVersion>1.8.1</PackageVersion>
+    <Authors>MercadoPago</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
     <PackageProjectUrl>https://github.com/mercadopago/px-dotnet</PackageProjectUrl>
@@ -24,9 +24,8 @@
     <Summary>SDK Oficial de MercadoPago para .Net</Summary>
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
-    <PackageReleaseNotes>- Se agrega soporte a customización de IVA en Colombia.</PackageReleaseNotes>
     <PackageTags>mercadopago</PackageTags>
-    <ReleaseVersion>1.7.0</ReleaseVersion>
+    <ReleaseVersion>1.8.1</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -228,6 +227,12 @@
     <Compile Include="DataStructures\AdvancedPayment\TransactionDetails.cs" />
     <Compile Include="Resources\Disbursement.cs" />
     <Compile Include="Resources\DisbursementRefund.cs" />
+    <Compile Include="DataStructures\Preference\Passenger.cs" />
+    <Compile Include="DataStructures\Preference\Route.cs" />
+    <Compile Include="DataStructures\Payment\Route.cs" />
+    <Compile Include="DataStructures\Payment\Passenger.cs" />
+    <Compile Include="DataStructures\Payment\CategoryDescriptor.cs" />
+    <Compile Include="DataStructures\Preference\CategoryDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

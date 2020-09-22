@@ -6,20 +6,23 @@ using System.Text;
 namespace MercadoPago.DataStructures.Payment
 {
     public struct Shipment
-    {
-        #region Properties 
-        private ReceiverAddress? _receiver_address; 
-        #endregion
+    { 
 
         #region Accessors
         /// <summary>
+        /// Local pickup
+        /// </summary>
+        public bool? LocalPickup { get; set; }
+
+        /// <summary>
         /// Buyer's address
         /// </summary>
-        public ReceiverAddress? ReceiverAddress
-        {
-            get { return _receiver_address; }
-            set { _receiver_address = value; }
-        } 
+        public ReceiverAddress? ReceiverAddress { get; set; }
+
+        /// <summary>
+        /// Express Shipment
+        /// </summary>
+        public bool? ExpressShipment { get; set; }
         #endregion
     }
 }

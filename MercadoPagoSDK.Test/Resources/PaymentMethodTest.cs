@@ -1,39 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using MercadoPago;
+﻿using System.Linq;
 using MercadoPago.Resources;
 using NUnit.Framework;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture] 
-    public class PaymentMethodTest
+    [TestFixture]
+    public class PaymentMethodTest : BaseResourceTest
     {
-        string AccessToken;
-
-        [SetUp]
-        public void Init()
+        [Test]
+        public void PaymentMethodAll()
         {
-            // Avoid SSL Cert error
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            // HardCoding Credentials
-            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            
-            // Make a Clean Test
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = AccessToken;
+            var paymentMethods = PaymentMethod.All();
+            Assert.IsNotNull(paymentMethods);
+            Assert.IsTrue(paymentMethods.Any());
         }
 
         [Test]
-        public void PaymentMethod_All_ShouldReturnValues()
+        public void PaymentMethodRequestOptionsAll()
         {
-            List<PaymentMethod> paymentMethods = PaymentMethod.All(); 
-
-            Assert.IsTrue(paymentMethods.Count > 1,  "Failed: Can't get payment methods");
-
+            var requestOptions = NewRequestOptions();
+            var paymentMethods = PaymentMethod.All(false, requestOptions);
+            Assert.IsNotNull(paymentMethods);
+            Assert.IsTrue(paymentMethods.Any());
         }
-
     }
 }

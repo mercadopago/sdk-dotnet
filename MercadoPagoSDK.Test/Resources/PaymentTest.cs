@@ -1,193 +1,318 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text; 
-using MercadoPago.Resources;
-using MercadoPago.DataStructures.Payment;
-using MercadoPago;
-using Newtonsoft.Json.Linq;
-using System.Net;
+using System.Threading;
 using MercadoPago.Common;
+using MercadoPago.DataStructures.Payment;
+using MercadoPago.Resources;
+using Newtonsoft.Json.Linq;
+using NUnit.Framework;
 
 namespace MercadoPagoSDK.Test.Resources
 {
     [TestFixture] 
-    public class PaymentTest
+    public class PaymentTest : BaseResourceTest
     {
-        string AccessToken;
-        string PublicKey;
-        Payment LastPayment; 
-
-        [SetUp]
-        public void Init(){ 
-            // Avoid SSL Cert error
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            // HardCoding Credentials
-            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
-            // Make a Clean Test
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = AccessToken; 
+        [Test]
+        public void PaymentSaveTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNull(payment.Errors);
+            Assert.IsNotNull(payment.Id);
         }
 
         [Test]
-        public void Payment_Create_EmptyShouldFail()
+        public void PaymentSaveRequestOptionsTest()
+        {
+            var requestOptions = NewRequestOptions();
+            var payment = NewPayment(false);
+            payment.Save(requestOptions);
+            Assert.IsNull(payment.Errors);
+            Assert.IsNotNull(payment.Id);
+        }
+
+        [Test]
+        public void CapturePaymentTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            payment.Capture = true;
+            payment.Update();
+            Assert.IsNull(payment.Errors);
+        }
+
+        [Test]
+        public void CapturePaymentRequestOptionsTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var requestOptions = NewRequestOptions();
+            payment.Capture = true;
+            payment.Update(requestOptions);
+            Assert.IsNull(payment.Errors);
+        }
+
+        [Test]
+        public void CancelPaymentTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            payment.Status = PaymentStatus.cancelled;
+            payment.Update();
+            Assert.IsNull(payment.Errors);
+        }
+
+        [Test]
+        public void FindPaymentTest()
+        {
+            Payment payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var findPayment = Payment.FindById(payment.Id);
+            Assert.IsNotNull(findPayment);
+            Assert.AreEqual(payment.Id, findPayment.Id);
+        }
+
+        [Test]
+        public void FindPaymentRequestOptionsTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var requestOptions = NewRequestOptions();
+            var findPayment = Payment.FindById(payment.Id, false, requestOptions);
+            Assert.IsNotNull(findPayment);
+            Assert.AreEqual(payment.Id, findPayment.Id);
+        }
+
+        [Test]
+        public void SearchAllTest()
+        {
+            var payments = Payment.All();
+            Assert.IsNotNull(payments);
+            Assert.IsTrue(payments.Any());
+        }
+
+        [Test]
+        public void SearchAllRequestOptionsTest()
+        {
+            var requestOptions = NewRequestOptions();
+            var payments = Payment.All(false, requestOptions);
+            Assert.IsNotNull(payments);
+            Assert.IsTrue(payments.Any());
+        }
+
+        [Test]
+        public void SearchByReferenceTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var filter = new Dictionary<String, String>
+            {
+                { "external_reference", payment.ExternalReference },
+            };
+            var payments = Payment.Search(filter);
+            Assert.IsNotNull(payments);
+            Assert.IsTrue(payments.Any());
+        }
+
+        [Test]
+        public void SearchByReferenceRequestOptionsTest()
+        {
+            var payment = NewPayment(false);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var requestOptions = NewRequestOptions();
+            var filter = new Dictionary<String, String>
+            {
+                { "external_reference", payment.ExternalReference },
+            };
+            var payments = Payment.Search(filter, false, requestOptions);
+            Assert.IsNotNull(payments);
+            Assert.IsTrue(payments.Any());
+        }
+
+        [Test]
+        public void PaymentRefundTotalTest()
+        {
+            var payment = NewPayment(true);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            payment.Refund();
+            Assert.IsNull(payment.Errors);
+            Assert.AreEqual(PaymentStatus.refunded, payment.Status);
+        }
+
+        [Test]
+        public void PaymentRefundTotalRequestOptionsTest()
+        {
+            var payment = NewPayment(true);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var requestOptions = NewRequestOptions();
+            payment.Refund(requestOptions);
+            Assert.IsNull(payment.Errors);
+            Assert.AreEqual(PaymentStatus.refunded, payment.Status);
+        }
+
+        [Test]
+        public void PaymentRefundPartialTest()
+        {
+            var payment = NewPayment(true);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            payment.Refund(1);
+            Assert.IsNull(payment.Errors);
+            Assert.AreEqual(PaymentStatus.approved, payment.Status);
+        }
+
+        [Test]
+        public void PaymentRefundPartialRequestOptionsTest()
+        {
+            var payment = NewPayment(true);
+            payment.Save();
+            Assert.IsNotNull(payment.Id);
+
+            Thread.Sleep(3000);
+
+            var requestOptions = NewRequestOptions();
+            payment.Refund(1, requestOptions);
+            Assert.IsNull(payment.Errors);
+            Assert.AreEqual(PaymentStatus.approved, payment.Status);
+        }
+
+        [Test]
+        public void PaymentCreateErrorTest()
         {
             Payment payment = new Payment();
             payment.Save();
 
             Assert.IsNotNull(payment.Errors);
-            Assert.IsTrue(payment.Errors?.Cause.Length > 0);
-
         }
 
-        [Test]
-        public void Payment_Create_ShouldBeOk()
+        private static Payment NewPayment(bool capture)
         {
-
-            var addInfPayerAdd = new Address
+            var cardToken = new CardToken
             {
-                StreetName = "aaa",
-                StreetNumber = 5,
-                ZipCode = "54321"
+                CardId = "8940397939",
+                CustomerId = "649457098-FybpOkG6zH8QRm",
+                SecurityCode = "123",
             };
+            cardToken.Save();
 
-            var addInfPayerPhone = new Phone
+            return new Payment
             {
-                AreaCode = "00",
-                Number = "5512345678"
-            };
-
-            DateTime fechaReg = new DateTime(2000, 01, 31);
-
-            var addInfoPayer = new AdditionalInfoPayer
-            {
-                FirstName = "Rubén",
-                LastName = "González",
-                RegistrationDate = fechaReg,
-                Address = addInfPayerAdd,
-                Phone = addInfPayerPhone
-            };
-
-            var item = new Item
-            {
-                Id = "producto123",
-                Title = "Celular blanco",
-                Description = "4G, 32 GB",
-                Quantity = 1,
-                PictureUrl = "http://www.imagenes.com/celular.jpg",
-                UnitPrice = 100.4m
-            };
-
-
-            List<Item> items = new List<Item>();
-            items.Add(item);
-
-            ReceiverAddress receiverAddress = new ReceiverAddress
-            {
-                StreetName = "insurgentes sur",
-                StreetNumber = 1,
-                Zip_code = "12345"
-            };
-
-            Shipment shipment = new Shipment
-            {
-                ReceiverAddress = receiverAddress
-            };
-
-            var addInf = new AdditionalInfo
-            {
-                Payer = addInfoPayer,
-                Shipments = shipment,
-                Items = items
-
-            };
-            
-            Payment payment = new Payment
-            {
-                TransactionAmount = (float)20.0,
-                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending"), // 1 use card token
-                Description = "Pago de Prueba",
-                PaymentMethodId = "visa",
-                ExternalReference = "INTEGRATION-TEST-PAYMENT",
-                Installments = 1,
-                Payer = new Payer {
-                    Email = "milton.brandes@mercadolibre.com"
+                Payer = new Payer
+                {
+                    Email = "test_payer_9999988@testuser.com",
+                    Entity_type = EntityType.individual,
+                    Type = PayerType.customer,
+                    Id = "649457098-FybpOkG6zH8QRm",
+                    Identification = new Identification
+                    {
+                        Type = "CPF",
+                        Number = "19119119100",
+                    },
+                    FirstName = "Test",
+                    LastName = "User",
                 },
-                AdditionalInfo = addInf
-            };
-
-            payment.Save(); 
-             
-            LastPayment = payment;
- 
- 
-            Assert.IsTrue(payment.Id.HasValue, "Failed: Payment could not be successfully created");
-            Assert.IsTrue(payment.Id.Value > 0, "Failed: Payment has not a valid id"); 
-        }
-
-        [Test]
-        public void Payment_FindById_ShouldBeOk()
-        { 
-            Payment payment = Payment.FindById(LastPayment.Id); 
-            Assert.AreEqual("Pago de Prueba", payment.Description); 
-        }
-
-        [Test]
-        public void Payment_Update_ShouldBeOk() 
-        {  
-            LastPayment.Status = PaymentStatus.cancelled;
-            LastPayment.Update();
-
-            Assert.AreEqual(PaymentStatus.cancelled, LastPayment.Status); 
-        }
-
-        [Test]
-        public void Payment_SearchGetListOfPayments()
-        { 
-            List<Payment> payments = Payment.All();
-
-            Assert.IsNotNull(payments);
-            Assert.IsTrue(payments.Any());
-            Assert.IsTrue(payments.First().Id.HasValue);
-        }
-        
-        [Test] 
-        public void Payment_SearchWithFilterGetListOfPayments()
-        { 
-            Dictionary<string, string> filters = new Dictionary<string, string>();
-            filters.Add("external_reference", "INTEGRATION-TEST-PAYMENT");
-            List<Payment> list = Payment.Search(filters);
-
-            Assert.IsNotNull(list);
-            Assert.IsTrue(list.Any());
-            Assert.IsTrue(list.Last().Id.HasValue);
-        }
-
-        [Test] 
-        public void Payment_Refund()
-        {
-            
-            Payment OtherPayment = new Payment
-            {
-                TransactionAmount = (float)10.0,
-                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "approved"), // 1 use card token
-                Description = "Pago de Prueba",
-                PaymentMethodId = "visa",
-                ExternalReference = "REFUND-TEST-PAYMENT",
+                BinaryMode = false,
+                Capture = capture,
+                ExternalReference = Guid.NewGuid().ToString(),
+                Description = "Payment description",
+                Metadata = new JObject
+                {
+                    { "key1", JToken.FromObject("value1") },
+                    { "key2", JToken.FromObject("value2") },
+                },
+                TransactionAmount = 10,
+                //PaymentMethodId = "master",
+                Token = cardToken.Id,
                 Installments = 1,
-                Payer = new Payer {
-                    Email = "milton.brandes@mercadolibre.com"
-                }
+                StatementDescriptor = "STAT-DESC",
+                NotificationUrl = "https://seu-site.com.br/webhooks",
+                CallbackUrl = "https://seu-site.com.br/callbackurl",
+                AdditionalInfo = new AdditionalInfo
+                {
+                    IpAddress = "127.0.0.1",
+                    Items = new List<Item>
+                    {
+                        new Item
+                        {
+                            Id = "SKU-1",
+                            Title = "Product",
+                            PictureUrl = "https://www.mercadopago.com/org-img/MLB/design/2015/m_pago/logos/mp_processado_02.png",
+                            Description = "Product description",
+                            CategoryId = "cat",
+                            Quantity = 1,
+                            UnitPrice = 10,
+                        },
+                    },
+                    Payer = new AdditionalInfoPayer
+                    {
+                        FirstName = "Test",
+                        LastName = "User",
+                        RegistrationDate = DateTime.Now.AddDays(-30),
+                        Phone = new Phone
+                        {
+                            AreaCode = "11",
+                            Number = "999999999",
+                        },
+                        Address = new Address
+                        {
+                            ZipCode = "0600000",
+                            StreetName = "Street",
+                            StreetNumber = 123,
+                        },
+                    },
+                    Shipments = new Shipment
+                    {
+                        ReceiverAddress = new ReceiverAddress
+                        {
+                            Zip_code = "0600000",
+                            StreetName = "Street",
+                            StreetNumber = 123,
+                            Apartment = "23",
+                            Floor = "First",
+                        },
+                    },
+                },
             };
-
-            OtherPayment.Save();
-            OtherPayment.Refund(); 
-
-            Assert.AreEqual(PaymentStatus.refunded, OtherPayment.Status, "Failed: Payment could not be successfully refunded");
         }
-
     }
 }
