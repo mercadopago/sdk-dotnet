@@ -53,8 +53,13 @@ jobs:
         -skipautoprops `
         -register `
         -output:"coverage.xml"
-        type coverage.xml
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         EMAIL: ${{ secrets.USER_EMAIL }}
+
+    # Upload coverage result
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
