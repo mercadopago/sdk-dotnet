@@ -48,7 +48,7 @@ jobs:
         ./packages/OpenCover.4.7.922/tools/OpenCover.Console.exe `
         -target:"vstest.console.exe" `
         -targetargs:"MercadoPagoSDK.Test/bin/Debug/MercadoPagoSDK.Test.dll /TestAdapterPath:packages/NUnit3TestAdapter.3.16.1" `
-        -filter:"+[*]* -[*.Tests*]*" `
+        -filter:"+[*]* -[MercadoPagoSDK]*" `
         -mergebyhash `
         -skipautoprops `
         -register `
