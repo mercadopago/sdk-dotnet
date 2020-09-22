@@ -36,7 +36,7 @@ jobs:
     
     # Build Solution
     - name: Build Solution
-      run: msbuild px-dotnet.sln /p:Configuration=Release
+      run: msbuild px-dotnet.sln /p:Configuration=Debug
     
     # Setup VSTest.console.exe
     - name: Setup VSTest.console.exe
@@ -47,12 +47,13 @@ jobs:
       run: |
         ./packages/OpenCover.4.7.922/tools/OpenCover.Console.exe `
         -target:"vstest.console.exe" `
-        -targetargs:"MercadoPagoSDK.Test/bin/Release/MercadoPagoSDK.Test.dll /TestAdapterPath:packages/NUnit3TestAdapter.3.16.1" `
+        -targetargs:"MercadoPagoSDK.Test/bin/Debug/MercadoPagoSDK.Test.dll /TestAdapterPath:packages/NUnit3TestAdapter.3.16.1" `
         -filter:"+[*]* -[*.Tests*]*" `
         -mergebyhash `
         -skipautoprops `
         -register:user `
-        -output:"CoverageReport.xml"
+        -output:"coverage.xml"
+        type coverage.xml
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
