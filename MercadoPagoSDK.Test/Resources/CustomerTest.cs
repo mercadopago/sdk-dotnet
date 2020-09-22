@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MercadoPago.DataStructures.Customer;
+using System.Threading;
 
 namespace MercadoPagoSDK.Test.Resources
 {
@@ -17,6 +18,8 @@ namespace MercadoPagoSDK.Test.Resources
             customer.Save();
             Assert.IsNotNull(customer.Id);
 
+            Thread.Sleep(1000);
+
             customer.Delete();
             Assert.IsNull(customer.Errors);
         }
@@ -27,6 +30,8 @@ namespace MercadoPagoSDK.Test.Resources
             Customer customer = NewCustomer();
             customer.Save();
             Assert.IsNotNull(customer.Id);
+
+            Thread.Sleep(1000);
 
             customer.FirstName = "New";
             customer.Update();
@@ -43,6 +48,8 @@ namespace MercadoPagoSDK.Test.Resources
             customer.Save();
             Assert.IsNotNull(customer.Id);
 
+            Thread.Sleep(1000);
+
             var findCustomer = Customer.FindById(customer.Id);
             Assert.IsNotNull(findCustomer);
             Assert.AreEqual(customer.Id, findCustomer.Id);
@@ -57,6 +64,8 @@ namespace MercadoPagoSDK.Test.Resources
             Customer customer = NewCustomer();
             customer.Save();
             Assert.IsNotNull(customer.Id);
+
+            Thread.Sleep(1000);
 
             var filter = new Dictionary<String, String>
             {
@@ -76,7 +85,7 @@ namespace MercadoPagoSDK.Test.Resources
             {
                 FirstName = "Test",
                 LastName = "Payer",
-                Email = "test_payer_999977@testuser.com",
+                Email = "test_payer_999966@testuser.com",
                 LiveMode = false,
                 Phone = new Phone
                 {
