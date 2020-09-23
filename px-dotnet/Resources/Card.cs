@@ -27,8 +27,11 @@ namespace MercadoPago.Resources
 
         [GETEndpoint("/v1/customers/:customer_id/cards/:id")]
         public static Card FindById(string customerId, string id, bool useCache, MPRequestOptions requestOptions)
-        {            
-            return (Card)ProcessMethod<Card>(typeof(Card), "FindById", customerId, id, useCache, requestOptions);
+        {
+            var pathParams = new Dictionary<string, string>();
+            pathParams.Add("customer_id", customerId);
+            pathParams.Add("id", id);
+            return ProcessMethod<Card>(typeof(Card), null, "FindById", pathParams, useCache, requestOptions);
         }
 
         public Card Save()

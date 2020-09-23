@@ -9,13 +9,16 @@ namespace MercadoPagoSDK.Test.Resources
     {
         protected String AccessToken { get; set; }
 
+        protected String PublicKey { get; set; }
+
         [SetUp]
-        public void Init()
+        public void SetUp()
         {
             // Avoid SSL Cert error
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             // Credentials
             AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
             // Make a Clean Test
             SDK.CleanConfiguration();
             SDK.AccessToken = AccessToken;
