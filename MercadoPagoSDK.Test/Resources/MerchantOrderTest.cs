@@ -8,177 +8,79 @@ using System.Linq;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture(Ignore = "Skipping")]
-    public class MerchantOrderTest
+    [TestFixture]
+    public class MerchantOrderTest : BaseResourceTest
     {
         [Test]
-        public void MerchantOrder_AppendItemShouldBeOk()
+        public void MerchantOrderCreateTest()
         {
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
-
-            merchantOrderInternal.Items = new List<Item>();
-            merchantOrderInternal.AppendItem(new Item() { });
-
-            Assert.Pass();
+            var merchantOrder = NewMerchantOrder();
+            merchantOrder.Save();
+            Assert.IsNull(merchantOrder.Errors);
+            Assert.IsNotNull(merchantOrder.ID);
         }
 
         [Test]
-        public void MerchantOrder_ItemsShouldHaveAtLeastOneItem()
+        public void MerchantOrderUpdateTest()
         {
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
+            var merchantOrder = NewMerchantOrder();
+            merchantOrder.Save();
+            Assert.IsNotNull(merchantOrder.ID);
 
-            merchantOrderInternal.AppendItem(new Item() { Description = "Item de compra" });
-
-            Assert.AreEqual("Item de compra", merchantOrderInternal.Items.FirstOrDefault().Description);
+            merchantOrder.AdditionalInfo = "New info";
+            merchantOrder.Update();
+            Assert.IsNull(merchantOrder.Errors);
         }
 
         [Test]
-        public void MerchantOrder_AppendShipmentShouldBeOk()
+        public void MerchantOrderLoadTest()
         {
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
+            var merchantOrder = NewMerchantOrder();
+            merchantOrder.Save();
+            Assert.IsNotNull(merchantOrder.ID);
 
-            merchantOrderInternal.AppendShipment(new Shipment() { });
-
-            Assert.Pass();
+            var loadMerchantOrder = new MerchantOrder
+            {
+                ID = merchantOrder.ID,
+            };
+            loadMerchantOrder.Load(merchantOrder.ID);
+            Assert.IsNull(loadMerchantOrder.Errors);
+            Assert.AreEqual(merchantOrder.ID, loadMerchantOrder.ID);
         }
 
-        [Test]
-        public void MerchantOrder_ShipmentsShouldHaveAtLeastOneItem()
+        private static MerchantOrder NewMerchantOrder()
         {
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
+            var preference = PreferenceTest.NewPreference();
+            preference.Save();
 
-            merchantOrderInternal.AppendShipment(new Shipment() { ShipmentType = "Aereo" });
+            var merchantOrder = new MerchantOrder
+            {
+                PreferenceId = preference.Id,
+                Items = new List<Item>(),
+                ApplicationId = "59441713004005",
+                AdditionalInfo = "Aditional info",
+                ExternalReference = Guid.NewGuid().ToString(),
+                Marketplace = "NONE",
+                NotificationUrl = "https://seller/notification",
+                SiteId = "MLB",
+            };
 
-            Assert.AreEqual("Aereo", merchantOrderInternal.Shipments.FirstOrDefault().ShipmentType);
+            preference.Items.ForEach(item =>
+            {
+                merchantOrder.Items.Add(new Item
+                {
+                    ID = item.Id,
+                    CategoryId = item.CategoryId,
+                    CurrencyId = item.CurrencyId.ToString(),
+                    Description = item.Description,
+                    PictureUrl = item.PictureUrl,
+                    Quantity = item.Quantity.GetValueOrDefault(),
+                    Title = item.Title,
+                    UnitPrice = (float)item.UnitPrice,
+                });
+            });
+
+            return merchantOrder;
         }
-
-        [Test]
-        public void MerchantOrder_LoadShouldbeOk()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
-            try
-            {
-                var result = merchantOrderInternal.Load("1234");
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
-
-            Assert.Pass();
-        }
-
-        //[Test()]
-        //public void MerchantOrder_NoConfigurationShouldRaiseException()
-        //{
-        //    MerchantOrder merchantOrderInternal = new MerchantOrder();
-
-        //    try
-        //    {
-        //        var result = merchantOrderInternal.Load("1234");
-        //    }
-        //    catch (MPException mpException)
-        //    {
-        //        Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
-        //        return;
-        //    }
-
-        //    Assert.Fail();
-        //}
-
-        [Test]
-        public void MerchantOrder_UpdateShouldBeOk()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder() { ID = "1" };
-
-            try
-            {
-                var result = merchantOrderInternal.Update();
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
-
-            Assert.Pass();
-        }
-
-        [Test]
-        public void MerchantOrder_UpdateShouldRaiseException()
-        {
-            MerchantOrder merchantOrderInternal = new MerchantOrder() { ID = "1" };
-
-            merchantOrderInternal.ID = "2";
-
-            try
-            {
-                var result = merchantOrderInternal.Update();
-            }
-            catch (MPException mpException)
-            {
-                Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
-            }
-
-            Assert.Pass();
-        }
-
-        [Test]
-        public void MerchantOrder_CreateShouldBeOk()
-        {
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-
-            Dictionary<string, string> config = new Dictionary<string, string>();
-            config.Add("clientSecret", Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-            config.Add("clientId", Environment.GetEnvironmentVariable("CLIENT_ID"));
-            SDK.SetConfiguration(config);
-
-            MerchantOrder merchantOrderInternal = new MerchantOrder();
-
-            try
-            {
-                var result = merchantOrderInternal.Save();
-            }
-            catch (MPException mpException)
-            {
-                Assert.Fail();
-            }
-
-            Assert.Pass();
-        }
-
-        //[Test()]
-        //public void MerchantOrder_CreateShouldRaiseException()
-        //{
-        //    MerchantOrder merchantOrderInternal = new MerchantOrder();
-
-        //    try
-        //    {
-        //        var result = merchantOrderInternal.Create();
-        //    }
-        //    catch (MPException mpException)
-        //    {
-        //        Assert.AreEqual("\"client_id\" and \"client_secret\" can not be \"null\" when getting the \"access_token\"", mpException.Message);
-        //        return;
-        //    }
-
-        //    Assert.Fail();
-        //}
     }
 }

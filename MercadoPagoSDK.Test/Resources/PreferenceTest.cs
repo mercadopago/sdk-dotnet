@@ -77,7 +77,7 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.AreEqual(preference.Id, findPreference.Id);
         }
 
-        private static Preference NewPreference()
+        public static Preference NewPreference()
         {
             return new Preference
             {
