@@ -40,6 +40,9 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.IsNotNull(findCard);
             Assert.IsNull(findCard.Errors);
             Assert.AreEqual(card.Id, findCard.Id);
+
+            card.Delete();
+            Assert.IsNull(card.Errors);
         }
 
         private Card NewCard()

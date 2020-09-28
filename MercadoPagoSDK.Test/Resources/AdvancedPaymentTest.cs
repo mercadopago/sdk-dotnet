@@ -39,7 +39,7 @@ namespace MercadoPagoSDK.Test.Resources
             advPayment.Save();
             Assert.IsNotNull(advPayment.Id);
 
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             var result = AdvancedPayment.DoCapture(advPayment.Id.GetValueOrDefault());
             Assert.IsTrue(result);
@@ -58,23 +58,6 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.IsTrue(result);
         }
 
-        //[Test]
-        //public void AdvancedPaymentUpdateReleaseDateDisbursementTest()
-        //{
-        //    var advPayment = NewAdvancedPayment(false);
-        //    advPayment.Save();
-        //    Assert.IsNotNull(advPayment.Id);
-
-        //    Thread.Sleep(2000);
-
-        //    advPayment = AdvancedPayment.FindById(advPayment.Id);
-        //    var disbursement = advPayment.Disbursements.FirstOrDefault();
-        //    Assert.IsNotNull(disbursement);
-
-        //    var result = AdvancedPayment.UpdateReleaseDate(advPayment.Id.GetValueOrDefault(), disbursement.Id.GetValueOrDefault(), DateTime.Now.AddDays(1));
-        //    Assert.IsTrue(result);
-        //}
-
         [Test]
         public void AdvancedPaymentRefundAllTest()
         {
@@ -88,42 +71,6 @@ namespace MercadoPagoSDK.Test.Resources
             Assert.IsNotNull(disbursementsRefunded);
             Assert.IsTrue(disbursementsRefunded.Any());
         }
-
-        [Test]
-        public void AdvancedPaymentRefundDisbursementTest()
-        {
-            var advPayment = NewAdvancedPayment(true);
-            advPayment.Save();
-            Assert.IsNotNull(advPayment.Id);
-
-            Thread.Sleep(1000);
-
-            var disbursement = advPayment.Disbursements.FirstOrDefault();
-            Assert.IsNotNull(disbursement);
-
-            var disbursementRefunded = AdvancedPayment.Refund(advPayment.Id.GetValueOrDefault(), disbursement.Id.GetValueOrDefault());
-            Assert.IsNotNull(disbursementRefunded);
-            Assert.IsNull(disbursementRefunded.Errors);
-            Assert.IsNotNull(disbursementRefunded.Id);
-        }
-
-        //[Test]
-        //public void AdvancedPaymentRefundPartialDisbursementTest()
-        //{
-        //    var advPayment = NewAdvancedPayment(true);
-        //    advPayment.Save();
-        //    Assert.IsNotNull(advPayment.Id);
-
-        //    Thread.Sleep(1000);
-
-        //    var disbursement = advPayment.Disbursements.FirstOrDefault();
-        //    Assert.IsNotNull(disbursement);
-
-        //    var disbursementRefunded = AdvancedPayment.Refund(advPayment.Id.GetValueOrDefault(), disbursement.Id.GetValueOrDefault(), 100);
-        //    Assert.IsNotNull(disbursementRefunded);
-        //    Assert.IsNull(disbursementRefunded.Errors);
-        //    Assert.IsNotNull(disbursementRefunded.Id);
-        //}
 
         [Test]
         public void AdvancedPaymentFindTest()
