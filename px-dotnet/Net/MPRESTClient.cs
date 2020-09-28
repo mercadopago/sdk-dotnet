@@ -63,7 +63,9 @@ namespace MercadoPago
             WebHeaderCollection header = new WebHeaderCollection();
             if (SDK.GetAccessToken() != null)
             {
-                header.Add("Authorization", "Bearer " + SDK.GetAccessToken());
+                if (!path.Contains("/oauth/token"))
+                    header.Add("Authorization", String.Format("Bearer %s", SDK.GetAccessToken()));
+
                 path = SDK.BaseUrl + path;
             }
 

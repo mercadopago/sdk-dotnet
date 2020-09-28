@@ -359,6 +359,9 @@ namespace MercadoPago
                 };
             }
 
+            if (String.IsNullOrEmpty(requestOptions.AccessToken) && !String.IsNullOrEmpty(resource.MarketplaceAccessToken))
+                requestOptions.AccessToken = resource.MarketplaceAccessToken;
+
             string path = ParsePath(restData["path"].ToString(), parameters, resource, requestOptions);
             MPAPIResponse response = CallAPI(httpMethod, path, payloadType, payload, useCache, requestOptions);
 
