@@ -307,11 +307,11 @@ namespace MercadoPago
                         parametersString.Append(string.Format("&{0}={1}", value.Key, value.Value.ToString()));
                     }
 
-                    data = Encoding.ASCII.GetBytes(parametersString.ToString());
+                    data = Encoding.UTF8.GetBytes(parametersString.ToString());
                 }
                 else
                 {
-                    data = Encoding.ASCII.GetBytes(payload.ToString());
+                    data = Encoding.UTF8.GetBytes(payload.ToString());
                 }
 
                 mpRequest.Request.UserAgent = "MercadoPago DotNet SDK/" + SDK.Version;
