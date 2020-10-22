@@ -274,7 +274,7 @@ namespace MercadoPago
             }
 
             if (!path.Contains("/oauth/token"))
-                mpRequest.Request.Headers.Add("Authorization", String.Format("Bearer %s", !string.IsNullOrEmpty(requestOptions.AccessToken) ? requestOptions.AccessToken : SDK.GetAccessToken()));
+                mpRequest.Request.Headers.Add("Authorization", String.Format("Bearer {0}", !string.IsNullOrEmpty(requestOptions.AccessToken) ? requestOptions.AccessToken : SDK.GetAccessToken()));
 
             mpRequest.Request.Headers.Add("x-product-id", SDK.ProductId);
             mpRequest.Request.Headers.Add("x-tracking-id", SDK.TrackingId);
