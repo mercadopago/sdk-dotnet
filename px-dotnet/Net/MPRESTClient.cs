@@ -64,7 +64,7 @@ namespace MercadoPago
             if (SDK.GetAccessToken() != null)
             {
                 if (!path.Contains("/oauth/token"))
-                    header.Add("Authorization", String.Format("Bearer %s", SDK.GetAccessToken()));
+                    header.Add("Authorization", String.Format("Bearer {0}", SDK.GetAccessToken()));
 
                 path = SDK.BaseUrl + path;
             }
