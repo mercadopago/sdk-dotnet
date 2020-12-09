@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\netfx.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net461</TargetFrameworks>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="Moq" Version="4.14.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Http\" />
+    <Folder Include="Serialization\" />
+    <Folder Include="Client\" />
+    <Folder Include="Resource\" />
+    <Folder Include="Client\Mock\" />
+    <Folder Include="Client\Payment\" />
+    <Folder Include="Client\Helper\" />
+    <Folder Include="Client\CardToken\" />
+    <Folder Include="Client\Preference\" />
+    <Folder Include="Client\PaymentMethod\" />
+    <Folder Include="Client\IdentificationType\" />
+    <Folder Include="Client\AdvancedPayment\" />
+    <Folder Include="Client\Customer\" />
+    <Folder Include="Client\MerchantOrder\" />
+    <Folder Include="Client\Preapproval\" />
+    <Folder Include="Config\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MercadoPago\MercadoPago.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Serialization\DummySerializableObject.json" />
+    <None Remove="Client\Mock\SearchResponse.json" />
+    <None Remove="Client\Mock\DummyListResponse.json" />
+    <None Remove="Config\SDK.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Serialization\DummySerializableObject.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\Mock\DummySearchResponse.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Client\Mock\DummyListResponse.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

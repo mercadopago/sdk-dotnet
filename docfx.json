@@ -1,0 +1,36 @@
+{
+    "metadata": [
+        {
+            "src": [
+                {
+                    "files": [ "MercadoPago/MercadoPago.csproj" ],
+                    "exclude": [ "**/bin/**", "**/obj/**" ],
+                    "src": "src"
+                }
+            ],
+            "dest": "obj/sdk",
+            "properties": {
+                "TargetFramework": "netstandard2.0"
+            }
+        }
+    ],
+    "build": {
+        "content": [
+            {
+                "files": [ "**/*.yml" ],
+                "src": "obj/sdk",
+                "dest": "sdk"
+            },
+            {
+                "files": [ "index.md", "toc.yml" ]
+            }
+        ],
+        "globalMetadata": {
+            "_appTitle": "MercadoPago official .NET SDK",
+            "_enableSearch": true
+        },
+        "markdownEngineName": "markdig",
+        "dest": "docs",
+        "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ]
+    }
+}
