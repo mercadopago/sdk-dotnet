@@ -642,10 +642,6 @@ namespace MercadoPago
                 {
                     MPCache.AddToCache(cacheKey, response);
                 }
-                else
-                {
-                    MPCache.RemoveFromCache(cacheKey);
-                }
             }
 
             return response;
