@@ -6,6 +6,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.MerchantOrder
 {
+    /// <summary>
+    /// Address information.
+    /// </summary>
     public struct Address
     {
         #region Properties
@@ -24,30 +27,45 @@ namespace MercadoPago.DataStructures.MerchantOrder
 
         #region Accessors
 
+        /// <summary>
+        /// Zip code.
+        /// </summary>
         public string ZipCode
         {
             get { return zipCode; }
             set { zipCode = value; }
         }
 
+        /// <summary>
+        /// Street name.
+        /// </summary>
         public string StreetName
         {
             get { return streetName; }
             set { streetName = value; }
         }
 
+        /// <summary>
+        /// Street number.
+        /// </summary>
         public int StreetNumber
         {
             get { return streetNumber; }
             set { streetNumber = value; }
         }
 
+        /// <summary>
+        /// Floor.
+        /// </summary>
         public string Floor
         {
             get { return floor; }
             set { floor = value; }
         }
 
+        /// <summary>
+        /// Apartment.
+        /// </summary>
         public string Apartment
         {
             get { return apartment; }

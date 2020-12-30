@@ -92,6 +92,10 @@ namespace MercadoPago.Resources
         /// Save advanced payment data
         /// </summary>
         /// <returns><see langword="true"/> if saved with success, otherwise <see langword="false"/></returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments/post/">here</a>.
+        /// </remarks>
         public bool Save()
         {
             return Save(null);
@@ -102,6 +106,10 @@ namespace MercadoPago.Resources
         /// </summary>
         /// <param name="requestOptions">Request options</param>
         /// <returns><see langword="true"/> if saved with success, otherwise <see langword="false"/></returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments/post/">here</a>.
+        /// </remarks>
         [POSTEndpoint("/v1/advanced_payments")]
         public bool Save(MPRequestOptions requestOptions)
         {
@@ -299,6 +307,10 @@ namespace MercadoPago.Resources
         /// </summary>
         /// <param name="id">Advanced payment ID</param>
         /// <returns>Advanced payment with ID equals to <paramref name="id"/></returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/advanced_payments/:id")]
         public static AdvancedPayment FindById(long? id)
         {
@@ -311,6 +323,10 @@ namespace MercadoPago.Resources
         /// <param name="id">Advanced payment ID</param>
         /// <param name="requestOptions">Request options</param>
         /// <returns>Advanced payment with ID equals to <paramref name="id"/></returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/advanced_payments/:id")]
         public static AdvancedPayment FindById(long? id, MPRequestOptions requestOptions)
         {
@@ -324,6 +340,10 @@ namespace MercadoPago.Resources
         /// <param name="useCache">Use cache or not</param>
         /// <param name="requestOptions">Request options</param>
         /// <returns>Advanced payment with ID equals to <paramref name="id"/></returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/advanced_payments/:id")]
         public static AdvancedPayment FindById(long? id, bool useCache, MPRequestOptions requestOptions)
         {
@@ -366,6 +386,10 @@ namespace MercadoPago.Resources
         /// </summary>
         /// <param name="filters">Search filters</param>
         /// <returns>List of advanced payments</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id_search/get/">here</a>.
+        /// </remarks>
         public static List<AdvancedPayment> Search(Dictionary<string, string> filters)
         {
             return Search(filters, WITHOUT_CACHE, null);
@@ -377,6 +401,10 @@ namespace MercadoPago.Resources
         /// <param name="filters">Search filters</param>
         /// <param name="requestOptions">Request options</param>
         /// <returns>List of advanced payments</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id_search/get/">here</a>.
+        /// </remarks>
         public static List<AdvancedPayment> Search(Dictionary<string, string> filters, MPRequestOptions requestOptions)
         {
             return Search(filters, WITHOUT_CACHE, requestOptions);
@@ -389,6 +417,10 @@ namespace MercadoPago.Resources
         /// <param name="useCache">Use cache or not</param>
         /// <param name="requestOptions">Request options</param>
         /// <returns>List of advanced payments</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id_search/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/advanced_payments/search")]
         public static List<AdvancedPayment> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {

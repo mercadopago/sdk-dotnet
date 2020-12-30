@@ -6,6 +6,9 @@ using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Fee information.
+    /// </summary>
     public struct FeeDetail
     {
         #region Properties 

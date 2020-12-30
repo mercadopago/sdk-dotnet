@@ -3,6 +3,9 @@ using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Barcode information.
+    /// </summary>
     public struct Barcode
     {
         #region Properties 
@@ -12,7 +15,11 @@ namespace MercadoPago.DataStructures.Payment
         private int? height;
         #endregion
 
-        #region Accessors 
+        #region Accessors
+
+        /// <summary>
+        /// Encoding type.
+        /// </summary>
         public EncodingType? Encoding_type
         {
             get
@@ -25,6 +32,10 @@ namespace MercadoPago.DataStructures.Payment
                 _encoding_type = value;
             }
         }
+
+        /// <summary>
+        /// Content.
+        /// </summary>
         public string Content
         {
             get
@@ -37,6 +48,10 @@ namespace MercadoPago.DataStructures.Payment
                 _content = value;
             }
         }
+
+        /// <summary>
+        /// Width.
+        /// </summary>
         public int? Width {
             get
             {
@@ -48,6 +63,10 @@ namespace MercadoPago.DataStructures.Payment
                 width = value;
             }
         }
+
+        /// <summary>
+        /// Height.
+        /// </summary>
         public int? Height 
         {
             get

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.MerchantOrder
 {
+    /// <summary>
+    /// Payer information.
+    /// </summary>
     public struct Payer
     {
         #region Properties
@@ -17,18 +20,28 @@ namespace MercadoPago.DataStructures.MerchantOrder
 
         #region Accessors
 
+        /// <summary>
+        /// Payer ID.
+        /// </summary>
         public string ID
         {
             get { return id; }
             set { id = value; }
         }
 
+        /// <summary>
+        /// Email.
+        /// </summary>
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
 
+        /// <summary>
+        /// Nickname.
+        /// </summary>
+        /// <value></value>
         public string NickName
         {
             get { return nickName; }

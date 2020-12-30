@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer.Card
 {
+    /// <summary>
+    /// Security code information.
+    /// </summary>
     public struct SecurityCode
     {
         #region Properties 

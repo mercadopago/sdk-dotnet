@@ -6,6 +6,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Route information.
+    /// </summary>
     public struct Route
     {
         /// <summary>

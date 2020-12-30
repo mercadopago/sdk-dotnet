@@ -8,20 +8,30 @@ using System.Text;
 
 namespace MercadoPago
 {    
+    /// <summary>
+    /// This class allows you to store customers data safely to improve the shopping experience.
+    /// This will allow your customer to complete their purchases much faster and easily when used in conjunction with the Cards class.
+    /// </summary>
     public class Customer : MPBase
     {
         #region Actions
         /// <summary>
-        /// Get all customers acoording to specific filters
+        /// Search the customers acoording to specific filters.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <returns>A list of customers.</returns>
         public static List<Customer> Search(Dictionary<string, string> filters)
         {
             return Search(filters, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Get all customers acoording to specific filters
+        /// Search the customers acoording to specific filters.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>A list of customers.</returns>
         [GETEndpoint("/v1/customers/search")]
         public static List<Customer> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
@@ -29,12 +39,16 @@ namespace MercadoPago
         } 
 
         /// <summary>
-        /// Find a customer by ID.
+        /// Find a customer by your ID.
         /// </summary>
         /// <param name="id">Customer ID.</param>
         /// <param name="useCache">Cache configuration.</param>
         /// <param name="requestOptions">Request options.</param>
-        /// <returns>Searched customer.</returns>
+        /// <returns>The searched customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/customers/:id")]
         public static Customer FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {
@@ -42,49 +56,89 @@ namespace MercadoPago
         }
 
         /// <summary>
-        /// Find a customer by ID.
+        /// Find a customer by your ID.
         /// </summary>
+        /// <param name="id">Customer ID.</param>
+        /// <returns>The searched customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
+        /// </remarks>
         public static Customer FindById(string id)
         {
             return FindById(id, WITHOUT_CACHE, null);
         }
 
+        /// <summary>
+        /// Saves the new customer.
+        /// </summary>
+        /// <returns>The saved customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
+        /// </remarks>
         public Customer Save()
         {
             return Save(null);
         }
 
         /// <summary>
-        /// Save a new customer
+        /// Saves the new customer.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The saved customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
+        /// </remarks>
         [POSTEndpoint("/v1/customers")]
         public Customer Save(MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("Save", WITHOUT_CACHE, requestOptions);
         }
 
+        /// <summary>
+        /// Updates the customer editable properties.
+        /// </summary>
+        /// <returns>The updated customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/put/">here</a>.
+        /// </remarks>
         public Customer Update()
         {
             return Update(null);
         }
 
         /// <summary>
-        /// Update editable properties
+        /// Updates the customer editable properties.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The updated customer data.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/put/">here</a>.
+        /// </remarks>
         [PUTEndpoint("/v1/customers/:id")]
         public Customer Update(MPRequestOptions requestOptions)
         {
             return (Customer)ProcessMethod<Customer>("Update", WITHOUT_CACHE, requestOptions);
         }
 
+        /// <summary>
+        /// Deletes the customer.
+        /// </summary>
+        /// <returns>The deleted customer data.</returns>
         public Customer Delete()
         {
             return Delete(null);
         }
 
         /// <summary>
-        /// Remove a customer
+        /// Deletes the customer.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The deleted customer data.</returns>
         [DELETEEndpoint("/v1/customers/:id")]
         public Customer Delete(MPRequestOptions requestOptions)
         {
