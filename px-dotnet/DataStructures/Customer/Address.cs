@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer
 {
+    /// <summary>
+    /// Address information.
+    /// </summary>
     public struct Address
     {
         #region Properties 

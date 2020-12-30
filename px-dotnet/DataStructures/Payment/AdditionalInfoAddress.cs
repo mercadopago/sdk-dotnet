@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MercadoPago.DataStructures.Payment
 { 
+    /// <summary>
+    /// Additional info address.
+    /// </summary>
     public struct AdditionalInfoAddress
     {
         #region Properties 

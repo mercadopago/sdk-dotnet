@@ -1,20 +1,28 @@
 ﻿using System;
 namespace MercadoPago.Resources
 {
+    /// <summary>
+    /// This class will allow you to refund payments created through the Payments class.
+    /// You can refund a payment within 180 days after it was approved.
+    /// You must have sufficient funds in your account in order to successfully refund the payment amount. Otherwise, you will get a 400 Bad Request error.
+    /// </summary>
     public class Refund : MPBase
     {
         #region Actions
         /// <summary>
-        /// Save a refund
+        /// Saves a new refund.
         /// </summary>
+        /// <returns>The saved refund.</returns>
         public Refund Save()
         {
             return Save(null);
         }
 
         /// <summary>
-        /// Save a refund
+        /// Saves a new refund.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The saved refund.</returns>
         [POSTEndpoint("/v1/payments/:payment_id/refunds")]
         public Refund Save(MPRequestOptions requestOptions)
         {
@@ -36,6 +44,9 @@ namespace MercadoPago.Resources
             this.PaymentId = id;
         }
 
+        /// <summary>
+        /// Refund ID.
+        /// </summary>
         public decimal? Id
         {
             get
@@ -49,6 +60,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Amount.
+        /// </summary>
         public decimal? Amount
         {
             get
@@ -62,6 +76,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Payment ID.
+        /// </summary>
         public decimal? PaymentId
         {
             get
@@ -75,6 +92,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Date of creation.
+        /// </summary>
         public DateTime? DateCreated
         {
             get
