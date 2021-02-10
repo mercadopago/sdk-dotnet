@@ -48,13 +48,13 @@ MercadoPago.SDK.AccessToken = "YOUR_ACCESS_TOKEN";
 Payment payment = new Payment
 {
     TransactionAmount = 100,
-    Token = "YOUR_CARD_TOKEN"
+    Token = "YOUR_CARD_TOKEN",
     Description = "Ergonomic Silk Shirt",
     PaymentMethodId = "visa", 
     Installments = 1,
     Payer = new Payer {
-        Email = "test.payer@email.com"
-    }
+        Email = "test.payer@email.com",
+    },
 };
 
 payment.Save();

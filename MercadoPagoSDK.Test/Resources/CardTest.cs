@@ -1,82 +1,80 @@
 ﻿using MercadoPago;
 using MercadoPago.Resources;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using System; 
-using System.Net;
+using System;
 
 namespace MercadoPagoSDK.Test.Resources
 {
-    [TestFixture(Ignore = "Skipping")]
-    public class CardTest
+    [TestFixture]
+    public class CardTest : BaseResourceTest
     {
-        string AccessToken;
-        string PublicKey;
-        Customer LastCustomer;
-        Card LastCard;
+        MPRESTClient _client;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Init()
         {
-            // Avoid SSL Cert error
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            // HardCoding Credentials
-            AccessToken = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
-            PublicKey = Environment.GetEnvironmentVariable("PUBLIC_KEY");
-            // Make a Clean Test
-            SDK.CleanConfiguration();
-            SDK.SetBaseUrl("https://api.mercadopago.com");
-            SDK.AccessToken = AccessToken;
+            _client = new MPRESTClient();
         }
 
-        [Test()]
-        public void Card_CreateShouldBeOk()
-        { 
-            Customer customer = new Customer()
-            {
-                Email = "temp.customer@gmail.com"
-            };
-            customer.Save();
-
-            Card card = new Card()
-            {
-                CustomerId = customer.Id,
-                Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "pending")
-            };
-
+        [Test]
+        public void CardCreateTest()
+        {
+            var card = NewCard();
             card.Save();
+            Assert.IsNull(card.Errors);
+            Assert.IsNotNull(card.Id);
 
-            LastCustomer = customer;
-            LastCard = card;
-
-            Assert.IsNotEmpty(card.Id); 
-
+            card.Delete();
+            Assert.IsNull(card.Errors);
         }
 
-
-        [Test()]
-        public void Card_FindById_ShouldBeOk()
+        [Test]
+        public void CardFindTest()
         {
-            Card card = Card.FindById(LastCustomer.Id, LastCard.Id); 
-            Console.WriteLine("CardId: {0}", card.Id);
-            Assert.IsNotEmpty(card.Id);  
+            var card = NewCard();
+            card.Save();
+            Assert.IsNotNull(card.Id);
+
+            var findCard = Card.FindById(card.CustomerId, card.Id);
+            Assert.IsNotNull(findCard);
+            Assert.IsNull(findCard.Errors);
+            Assert.AreEqual(card.Id, findCard.Id);
+
+            card.Delete();
+            Assert.IsNull(card.Errors);
         }
-        
-        [Test()]
-        public void Card_UpdateShouldBeOk()
-        {
-            string LastToken = LastCard.Token;
-            LastCard.Token = Helpers.CardHelper.SingleUseCardToken(PublicKey, "not_founds"); 
-            LastCard.Update();
 
-            Assert.AreNotEqual(LastToken, LastCard.Token);
-        }
-          
-
-        [Test()]
-        public void RemoveCard()
+        private Card NewCard()
         {
-            LastCard.Delete();
-            LastCustomer.Delete();
+            var payload = new JObject
+            {
+                { "card_number", "4074090000000004" },
+                { "security_code", "123" },
+                { "expiration_month", "11" },
+                { "expiration_year", DateTime.Now.AddYears(5).Year.ToString() },
+                { "cardholder", new JObject
+                    {
+                        { "name", "APRO" },
+                        { "identification", new JObject
+                            {
+                                { "type", "CPF" },
+                                { "Number", "19119119100" },
+                            }
+                        },
+                    }
+                },
+            };
+            var url = String.Format("https://api.mercadopago.com/v1/card_tokens?public_key={0}", PublicKey);
+            var response = _client.ExecuteRequest(HttpMethod.POST, url, PayloadType.JSON, payload);
+            var jsonResponse = JObject.Parse(response.StringResponse.ToString());
+            var token = jsonResponse.GetValue("id").ToString();
+
+            return new Card
+            {
+                CustomerId = "649457098-FybpOkG6zH8QRm",
+                Token = token,
+            };
         }
     }
 }

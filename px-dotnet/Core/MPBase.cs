@@ -779,6 +779,10 @@ namespace MercadoPago
                 {
                     JObject json = JObject.FromObject(resource);
                     var resource_value = json.GetValue(ToPascalCase(param_string));
+                    if (resource_value == null && param_string.Equals("id"))
+                    {
+                        resource_value = json.GetValue("ID");
+                    }
                     if (resource_value != null)
                     {
                         path = path.Replace(param.Value, resource_value.ToString());

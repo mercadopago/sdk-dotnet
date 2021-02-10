@@ -220,7 +220,7 @@ namespace MercadoPago.Resources
 
             if (refund.Id.HasValue)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(500);
                 var payment = Payment.FindById(Id, WITHOUT_CACHE, requestOptions);
                 Status = payment.Status;
                 StatusDetail = payment.StatusDetail;

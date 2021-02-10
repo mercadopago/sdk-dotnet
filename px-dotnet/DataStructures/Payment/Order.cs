@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MercadoPago.Common;
+using Newtonsoft.Json;
 
 namespace MercadoPago.DataStructures.Payment
 {
@@ -25,13 +26,25 @@ namespace MercadoPago.DataStructures.Payment
             get { return  _type; } 
             set { _type = value; } 
         }
+
         /// <summary>
         /// Id of the associated purchase order
         /// </summary>
+        [JsonIgnore]
+        [Obsolete]
         public long? Id1 { 
             get { return  _id; } 
             set { _id = value; } 
-        } 
+        }
+
+        /// <summary>
+        /// Id of the associated purchase order
+        /// </summary>
+        public long? Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
         #endregion
     }
 }

@@ -51,19 +51,19 @@
   <ItemGroup>
     <Compile Include="Core\MPBaseTest.cs" />
     <Compile Include="Core\MPIPNTest.cs" />
-    <Compile Include="MPConfTest.cs" />
-    <Compile Include="Exceptions\MPExceptionTest.cs" />
     <Compile Include="Net\MPRESTClientTest.cs" />
     <Compile Include="Resources\CardTest.cs" />
     <Compile Include="Resources\CustomerTest.cs" />
     <Compile Include="Resources\PaymentTest.cs" />
-    <Compile Include="Helpers\Authentication.cs" />
     <Compile Include="Helpers\CardHelper.cs" />
     <Compile Include="Resources\PreapprovalTest.cs" />
     <Compile Include="Resources\PreferenceTest.cs" />
     <Compile Include="Resources\PaymentMethodTest.cs" />
     <Compile Include="SDKTest.cs" />
-    <Compile Include="Helpers\PaymentHelper.cs" />
+    <Compile Include="Resources\BaseResourceTest.cs" />
+    <Compile Include="Resources\UserTest.cs" />
+    <Compile Include="Resources\MerchantOrderTest.cs" />
+    <Compile Include="Resources\AdvancedPaymentTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\px-dotnet\MercadoPagoSDK.csproj">
@@ -72,10 +72,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\MPConf_invalid_App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Data\MPConf_valid_App.config">
+    <None Include="Data\SDK.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

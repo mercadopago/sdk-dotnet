@@ -28,7 +28,7 @@ jobs:
     
     # Setup NuGet
     - name: Setup NuGet.exe
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v1.0.5
     
     # Restore NuGet packages
     - name: Restore NuGet packages
@@ -36,7 +36,7 @@ jobs:
     
     # Build Solution
     - name: Build Solution
-      run: msbuild px-dotnet.sln /p:Configuration=Release
+      run: msbuild px-dotnet.sln /p:Configuration=Debug
     
     # Setup VSTest.console.exe
     - name: Setup VSTest.console.exe
@@ -44,8 +44,22 @@ jobs:
     
     # Run Tests
     - name: Run Tests
-      run: vstest.console.exe MercadoPagoSDK.Test/bin/Release/MercadoPagoSDK.Test.dll /TestAdapterPath:packages/NUnit3TestAdapter.3.16.1
+      run: |
+        ./packages/OpenCover.4.7.922/tools/OpenCover.Console.exe `
+        -target:"vstest.console.exe" `
+        -targetargs:"MercadoPagoSDK.Test/bin/Debug/MercadoPagoSDK.Test.dll /TestAdapterPath:packages/NUnit3TestAdapter.3.16.1" `
+        -filter:"+[*]*MercadoPago.Resources.* -[*]*Disbursement -[*]*DiscountCampaign -[*]*OAuth -[*]*Plan -[*]*Preapproval -[*]*Subscription" `
+        -mergebyhash `
+        -skipautoprops `
+        -register `
+        -output:"coverage.xml"
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         EMAIL: ${{ secrets.USER_EMAIL }}
+
+    # Upload coverage result
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml

@@ -270,6 +270,9 @@ namespace MercadoPago
             _requestsTimeout = DEFAULT_REQUESTS_TIMEOUT;
             _requestsRetries = DEFAULT_REQUESTS_RETRIES;
             _proxy = null;
+            _corporationId = null;
+            _integratorId = null;
+            _platformId = null;
         }
 
         /// <summary>
