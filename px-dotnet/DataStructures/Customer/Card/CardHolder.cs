@@ -5,6 +5,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Customer.Card
 {
+    /// <summary>
+    /// Cardholder information.
+    /// </summary>
     public struct CardHolder
     {
         #region Properties 

@@ -1,6 +1,9 @@
 ﻿using System;
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Category descriptor.
+    /// </summary>
     public struct CategoryDescriptor
     {
         /// <summary>

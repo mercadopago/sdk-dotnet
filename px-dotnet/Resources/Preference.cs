@@ -19,16 +19,30 @@ namespace MercadoPago.Resources
     {
         #region Actions
         /// <summary>
-        /// Find a preference trought an unique identifier
+        /// Find a preference trought an unique identifier.
         /// </summary>
+        /// <param name="id">Preference ID.</param>
+        /// <returns>The preference.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
+        /// </remarks>
         public static Preference FindById(string id)
         {
             return FindById(id, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Find a preference trought an unique identifier with Local Cache Flag
+        /// Find a preference trought an unique identifier.
         /// </summary>
+        /// <param name="id">Preference ID.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The preference.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/checkout/preferences/:id")]
         public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {            
@@ -36,16 +50,27 @@ namespace MercadoPago.Resources
         }
 
         /// <summary>
-        /// Save a new preference
+        /// Save a new preference.
         /// </summary>
+        /// <returns><c>true</c> if the preference was saved, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
+        /// </remarks>
         public Boolean Save()
         {
             return Save(null);
         }
 
         /// <summary>
-        /// Save a new preference
+        /// Save a new preference.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the preference was saved, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
+        /// </remarks>
         [POSTEndpoint("/checkout/preferences")]
         public Boolean Save(MPRequestOptions requestOptions)
         {
@@ -55,6 +80,11 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Update editable properties
         /// </summary>
+        /// <returns><c>true</c> if the preference was updated, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
+        /// </remarks>
         public Boolean Update()
         {
             return Update(null);
@@ -63,6 +93,12 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Update editable properties
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the preference was updated, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
+        /// </remarks>
         [PUTEndpoint("/checkout/preferences/:id")]
         public Boolean Update(MPRequestOptions requestOptions)
         {

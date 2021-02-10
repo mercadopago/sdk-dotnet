@@ -5,22 +5,29 @@ using MercadoPago.DataStructures.PaymentMethod;
 
 namespace MercadoPago.Resources
 {
+    /// <summary>
+    /// Access to Payment Methods.
+    /// </summary>
     public class PaymentMethod : MPBase
     {
 
         #region Actions
 
         /// <summary>
-        /// Get All Payment Methods available
+        /// Get All Payment Methods available.
         /// </summary>
+        /// <returns>List of payment methods.</returns>
         public static List<PaymentMethod> All()
         {
             return All(WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Get All Payment Methods available
+        /// Get All Payment Methods available.
         /// </summary>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>List of payment methods.</returns>
         [GETEndpoint("/v1/payment_methods")]
         public static List<PaymentMethod> All(bool useCache, MPRequestOptions requestOptions)
         {
@@ -249,6 +256,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Processing modes.
+        /// </summary>
         public List<string> ProcessingMode
         {
             get

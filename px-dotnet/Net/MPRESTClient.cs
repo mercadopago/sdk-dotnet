@@ -59,12 +59,17 @@ namespace MercadoPago
             PayloadType payloadType,
             JObject payload)
         {
+
+            WebHeaderCollection header = new WebHeaderCollection();
             if (SDK.GetAccessToken() != null)
             {
-                path = SDK.BaseUrl + path + "?access_token=" + SDK.GetAccessToken();
+                if (!path.Contains("/oauth/token"))
+                    header.Add("Authorization", String.Format("Bearer {0}", SDK.GetAccessToken()));
+
+                path = SDK.BaseUrl + path;
             }
 
-            MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, null, 0, 0);
+            MPRequest mpRequest = CreateRequest(httpMethod, path, payloadType, payload, header, 0, 0);
 
             if (new HttpMethod[] { HttpMethod.POST, HttpMethod.PUT }.Contains(httpMethod))
             {
@@ -267,6 +272,9 @@ namespace MercadoPago
             {
                 mpRequest.Request.Timeout = requestOptions.Timeout;
             }
+
+            if (!path.Contains("/oauth/token"))
+                mpRequest.Request.Headers.Add("Authorization", String.Format("Bearer {0}", !string.IsNullOrEmpty(requestOptions.AccessToken) ? requestOptions.AccessToken : SDK.GetAccessToken()));
 
             mpRequest.Request.Headers.Add("x-product-id", SDK.ProductId);
             mpRequest.Request.Headers.Add("x-tracking-id", SDK.TrackingId);

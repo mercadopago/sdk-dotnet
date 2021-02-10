@@ -7,6 +7,9 @@ using MercadoPago.Common;
 
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Taxes information.
+    /// </summary>
     public struct Taxes
     {
 

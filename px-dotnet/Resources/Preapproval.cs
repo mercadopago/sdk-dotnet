@@ -6,20 +6,29 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MercadoPago.Resources
 {
+    /// <summary>
+    /// Preapproval methods.
+    /// </summary>
     public class Preapproval : MPBase
     {
         #region Actions
         /// <summary>
         /// Find a preapproval trought an unique identifier
         /// </summary>
+        /// <param name="id">Preapproval ID.</param>
+        /// <returns>The preapproval.</returns>
         public static Preapproval FindById(string id)
         {
             return FindById(id, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Find a preapproval trought an unique identifier with Local Cache Flag
+        /// Find a preapproval trought an unique identifier with Local Cache Flag.
         /// </summary>
+        /// <param name="id">Preapproval ID.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The preapproval.</returns>
         [GETEndpoint("/preapproval/:id")]
         public static Preapproval FindById(string id, bool useCache, MPRequestOptions requestOptions)
         {
@@ -27,16 +36,19 @@ namespace MercadoPago.Resources
         }
 
         /// <summary>
-        /// Save a new preapproval
+        /// Save a new preapproval.
         /// </summary>
+        /// <returns><c>true</c> if the preapproval was saved, otherwise <c>false</c>.</returns>
         public Boolean Save()
         {
             return Save(null);
         }
 
         /// <summary>
-        /// Save a new preapproval
+        /// Save a new preapproval.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the preapproval was saved, otherwise <c>false</c>.</returns>
         [POSTEndpoint("/preapproval")]
         public Boolean Save(MPRequestOptions requestOptions)
         {
@@ -46,6 +58,7 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Update editable properties
         /// </summary>
+        /// <returns><c>true</c> if the preapproval was updated, otherwise <c>false</c>.</returns>
         public Boolean Update()
         {
             return Update(null);
@@ -54,6 +67,8 @@ namespace MercadoPago.Resources
         /// <summary>
         ///  Update editable properties
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the preapproval was updated, otherwise <c>false</c>.</returns>
         [PUTEndpoint("/preapproval/:id")]
         public Boolean Update(MPRequestOptions requestOptions)
         {
@@ -61,16 +76,22 @@ namespace MercadoPago.Resources
         }
 
         /// <summary>
-        /// Get all preapprovals acoording to specific filters
+        /// Searches the preapprovals acoording to specific filters.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <returns>A list of preapprovals.</returns>
         public static List<Preapproval> Search(Dictionary<string, string> filters)
         {
             return Search(filters, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Get all preapprovals acoording to specific filters
+        /// Searches the preapprovals acoording to specific filters.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>A list of preapprovals.</returns>
         [GETEndpoint("/preapproval/search")]
         public static List<Preapproval> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {

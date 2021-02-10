@@ -6,6 +6,9 @@ using System.Text;
 
 namespace MercadoPago.DataStructures.Payment
 {
+    /// <summary>
+    /// Refund information.
+    /// </summary>
     public struct Refund
     {
         #region Properties 

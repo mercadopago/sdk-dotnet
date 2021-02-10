@@ -14,56 +14,100 @@ namespace MercadoPago.Resources
 {
 
     /// <summary>
-    /// This service allows you to create, modify or read payments
+    /// This class provides the methods to access the API that will allow you to create your own payment experience on your website.
+    /// From basic to advanced configurations, you control the whole experience.
     /// </summary>
     public class Payment : MPBase
     {
         #region Actions
 
+        /// <summary>
+        /// Load payment by your ID.
+        /// </summary>
+        /// <param name="id">Payment ID.</param>
+        /// <returns>The payment.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
+        /// </remarks>
         public Payment Load(string id)
         {
             return FindById(long.Parse(id), WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Find a payment trought an unique identifier
+        /// Finds the payment by your ID.
         /// </summary>
+        /// <param name="id">Payment ID.</param>
+        /// <returns>The payment.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
+        /// </remarks>
         public static Payment FindById(long? id)
         {
             return FindById(id, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Find a payment trought an unique identifier with Local Cache Flag
+        /// Finds the payment by your ID.
         /// </summary>
+        /// <param name="id">Payment ID.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The payment.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/payments/:id")]
         public static Payment FindById(long? id, bool useCache, MPRequestOptions requestOptions)
         {
             return (Payment)ProcessMethod<Payment>(typeof(Payment), "FindById", id.ToString(), useCache, requestOptions);
         }
 
+        /// <summary>
+        /// Saves a new payment.
+        /// </summary>
+        /// <returns><c>true</c> if the payment was saved, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
+        /// </remarks>
         public Boolean Save()
         {
             return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Save a new payment
+        /// Saves a new payment.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the payment was saved, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
+        /// </remarks>
         [POSTEndpoint("/v1/payments")]
         public Boolean Save(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Payment>("Save", WITHOUT_CACHE, requestOptions);
         }
 
+        /// <summary>
+        /// Updates the payment editable properties.
+        /// </summary>
+        /// <returns><c>true</c> if the payment was updated, otherwise <c>false</c>.</returns>
         public Boolean Update()
         {
             return ProcessMethodBool<Payment>("Update", WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Update editable properties
+        /// Updates the payment editable properties.
         /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns><c>true</c> if the payment was updated, otherwise <c>false</c>.</returns>
         [PUTEndpoint("/v1/payments/:id")]
         public Boolean Update(MPRequestOptions requestOptions)
         {
@@ -71,24 +115,42 @@ namespace MercadoPago.Resources
         }
 
         /// <summary>
-        /// Get all payments
+        /// Get all payments.
         /// </summary>
+        /// <returns>A list of payments.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// </remarks>
         public static List<Payment> All()
         {
             return All(WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Get all payments acoording to specific filters
+        /// Search the payments.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <returns>A list of payments.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// </remarks>
         public static List<Payment> Search(Dictionary<string, string> filters)
         {
             return Search(filters, WITHOUT_CACHE, null);
         }
 
         /// <summary>
-        /// Get all payments, with using cache option
+        /// Get all payments
         /// </summary>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>A list of payments.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/payments/search")]
         public static List<Payment> All(bool useCache, MPRequestOptions requestOptions)
         {
@@ -96,8 +158,16 @@ namespace MercadoPago.Resources
         }
 
         /// <summary>
-        /// Get all payments acoording to specific filters, with using cache option
+        /// Search the payments.
         /// </summary>
+        /// <param name="filters">Search filters.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>A list of payments.</returns>
+        /// <remarks>
+        /// Check the API documentation
+        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// </remarks>
         [GETEndpoint("/v1/payments/search")]
         public static List<Payment> Search(Dictionary<string, string> filters, bool useCache, MPRequestOptions requestOptions)
         {
@@ -107,32 +177,40 @@ namespace MercadoPago.Resources
 
         #region Interactions
         /// <summary>
-        /// Payment refund
-        /// </summary> 
+        /// Refunds a payment.
+        /// </summary>
+        /// <returns>The refunded payment.</returns>
         public Payment Refund()
         {
             return Refund(null, null);
         }
 
         /// <summary>
-        /// Payment refund
-        /// </summary> 
+        /// Refunds a payment.
+        /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The refunded payment.</returns>
         public Payment Refund(MPRequestOptions requestOptions)
         {
             return Refund(null, requestOptions);
         }
 
         /// <summary>
-        /// Partial payment refund
-        /// </summary> 
+        /// Refunds a payment.
+        /// </summary>
+        /// <param name="amount">Amount to be refunded.</param>
+        /// <returns>The refunded payment.</returns>
         public Payment Refund(decimal amount)
         {
             return Refund(amount, null);
         }
 
         /// <summary>
-        /// Partial payment refund
-        /// </summary> 
+        /// Refunds a payment.
+        /// </summary>
+        /// <param name="amount">Amount to be refunded.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The refunded payment.</returns>
         public Payment Refund(decimal? amount, MPRequestOptions requestOptions)
         {
             Refund refund = new Refund();
@@ -396,7 +474,7 @@ namespace MercadoPago.Resources
         public List<Taxes> Taxes { get; set; }
 
         /// <summary>
-        /// 
+        /// Payment method option.
         /// </summary>
         public string PaymentMethodOptionId { get; set; }
 

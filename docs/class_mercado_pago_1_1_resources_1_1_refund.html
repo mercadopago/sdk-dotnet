@@ -22,9 +22,9 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Mercado Pago SDK .Net
-   &#160;<span id="projectnumber">1.8.0</span>
+   &#160;<span id="projectnumber">1.8.1</span>
    </div>
-   <div id="projectbrief">Mercado Pago SDK .Net</div>
+   <div id="projectbrief">Mercado Pago SDK .Net Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -76,15 +76,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>This class will allow you to refund payments created through the Payments class. You can refund a payment within 180 days after it was approved. You must have sufficient funds in your account in order to successfully refund the payment amount. Otherwise, you will get a 400 Bad Request error.  
+ <a href="class_mercado_pago_1_1_resources_1_1_refund.html#details">More...</a></p>
+
 <p>Inherits <a class="el" href="class_mercado_pago_1_1_m_p_base.html">MercadoPago.MPBase</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2a7e327aa3939fb1821e90175371248f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html">Refund</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#a2a7e327aa3939fb1821e90175371248f">Save</a> ()</td></tr>
-<tr class="memdesc:a2a7e327aa3939fb1821e90175371248f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a refund  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#a2a7e327aa3939fb1821e90175371248f">More...</a><br /></td></tr>
+<tr class="memdesc:a2a7e327aa3939fb1821e90175371248f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves a new refund.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#a2a7e327aa3939fb1821e90175371248f">More...</a><br /></td></tr>
 <tr class="separator:a2a7e327aa3939fb1821e90175371248f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace45f5d0d05bbdab67efb706f3cbf053"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html">Refund</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#ace45f5d0d05bbdab67efb706f3cbf053">Save</a> (<a class="el" href="class_mercado_pago_1_1_m_p_request_options.html">MPRequestOptions</a> requestOptions)</td></tr>
-<tr class="memdesc:ace45f5d0d05bbdab67efb706f3cbf053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a refund  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#ace45f5d0d05bbdab67efb706f3cbf053">More...</a><br /></td></tr>
+<tr class="memdesc:ace45f5d0d05bbdab67efb706f3cbf053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves a new refund.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#ace45f5d0d05bbdab67efb706f3cbf053">More...</a><br /></td></tr>
 <tr class="separator:ace45f5d0d05bbdab67efb706f3cbf053"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac31e60be42a627201543172db887b167"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#ac31e60be42a627201543172db887b167">manualSetPaymentId</a> (decimal id)</td></tr>
 <tr class="separator:ac31e60be42a627201543172db887b167"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,12 +124,16 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:ac5ae94929f8c94f4b0382a8740bc033b"><td class="memItemLeft" align="right" valign="top">decimal?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#ac5ae94929f8c94f4b0382a8740bc033b">Id</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac5ae94929f8c94f4b0382a8740bc033b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html" title="This class will allow you to refund payments created through the Payments class. You can refund a pay...">Refund</a> ID.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#ac5ae94929f8c94f4b0382a8740bc033b">More...</a><br /></td></tr>
 <tr class="separator:ac5ae94929f8c94f4b0382a8740bc033b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fbf30d25bcc280a460e9391c87d7ce4"><td class="memItemLeft" align="right" valign="top">decimal?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#a2fbf30d25bcc280a460e9391c87d7ce4">Amount</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2fbf30d25bcc280a460e9391c87d7ce4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Amount.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#a2fbf30d25bcc280a460e9391c87d7ce4">More...</a><br /></td></tr>
 <tr class="separator:a2fbf30d25bcc280a460e9391c87d7ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d676e54cf731a18722a33fb52b67098"><td class="memItemLeft" align="right" valign="top">decimal?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#a4d676e54cf731a18722a33fb52b67098">PaymentId</a><code> [get]</code></td></tr>
+<tr class="memdesc:a4d676e54cf731a18722a33fb52b67098"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_mercado_pago_1_1_resources_1_1_payment.html" title="This class provides the methods to access the API that will allow you to create your own payment expe...">Payment</a> ID.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#a4d676e54cf731a18722a33fb52b67098">More...</a><br /></td></tr>
 <tr class="separator:a4d676e54cf731a18722a33fb52b67098"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19ec1d9392e42ca728f511bc0e353b4a"><td class="memItemLeft" align="right" valign="top">DateTime?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html#a19ec1d9392e42ca728f511bc0e353b4a">DateCreated</a><code> [get]</code></td></tr>
+<tr class="memdesc:a19ec1d9392e42ca728f511bc0e353b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Date of creation.  <a href="class_mercado_pago_1_1_resources_1_1_refund.html#a19ec1d9392e42ca728f511bc0e353b4a">More...</a><br /></td></tr>
 <tr class="separator:a19ec1d9392e42ca728f511bc0e353b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_mercado_pago_1_1_m_p_base"><td colspan="2" onclick="javascript:toggleInherit('properties_class_mercado_pago_1_1_m_p_base')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_mercado_pago_1_1_m_p_base.html">MercadoPago.MPBase</a></td></tr>
 <tr class="memitem:a1d471549be4a9ff86c79503ac8d9db91 inherit properties_class_mercado_pago_1_1_m_p_base"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_m_p_base.html#a1d471549be4a9ff86c79503ac8d9db91">IdempotencyKey</a><code> [get, set]</code></td></tr>
@@ -243,7 +250,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a4d68f5222fa71652f2894367600029ed inherit pro_attribs_class_mercado_pago_1_1_m_p_base"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_m_p_base.html#a4d68f5222fa71652f2894367600029ed">_marketplaceAccessToken</a></td></tr>
 <tr class="separator:a4d68f5222fa71652f2894367600029ed inherit pro_attribs_class_mercado_pago_1_1_m_p_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class will allow you to refund payments created through the Payments class. You can refund a payment within 180 days after it was approved. You must have sufficient funds in your account in order to successfully refund the payment amount. Otherwise, you will get a 400 Bad Request error. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac31e60be42a627201543172db887b167"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac31e60be42a627201543172db887b167">&#9670;&nbsp;</a></span>manualSetPaymentId()</h2>
 
@@ -277,7 +286,8 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Save a refund </p>
+<p>Saves a new refund. </p>
+<dl class="section return"><dt>Returns</dt><dd>The saved refund.</dd></dl>
 
 </div>
 </div>
@@ -297,7 +307,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Save a refund </p>
+<p>Saves a new refund. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requestOptions</td><td>Request options.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The saved refund.</dd></dl>
 
 </div>
 </div>
@@ -322,6 +339,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Amount. </p>
+
 </div>
 </div>
 <a id="a19ec1d9392e42ca728f511bc0e353b4a"></a>
@@ -343,6 +362,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Date of creation. </p>
 
 </div>
 </div>
@@ -366,6 +387,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="class_mercado_pago_1_1_resources_1_1_refund.html" title="This class will allow you to refund payments created through the Payments class. You can refund a pay...">Refund</a> ID. </p>
+
 </div>
 </div>
 <a id="a4d676e54cf731a18722a33fb52b67098"></a>
@@ -387,6 +410,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="class_mercado_pago_1_1_resources_1_1_payment.html" title="This class provides the methods to access the API that will allow you to create your own payment expe...">Payment</a> ID. </p>
 
 </div>
 </div>

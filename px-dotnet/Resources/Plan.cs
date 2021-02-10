@@ -4,37 +4,70 @@ using MercadoPago.DataStructures.Plan;
 
 namespace MercadoPago.Resources
 {
+    /// <summary>
+    /// Access to Plan methods.
+    /// </summary>
     public class Plan : MPBase
     {
         #region Actions
 
+        /// <summary>
+        /// Load a plan by your ID.
+        /// </summary>
+        /// <param name="id">Plan ID.</param>
+        /// <returns>The plan.</returns>
         public static Plan Load(string id)
         {
             return Load(id, WITHOUT_CACHE, null);
         }
 
+        /// <summary>
+        /// Load a plan by your ID.
+        /// </summary>
+        /// <param name="id">Plan ID.</param>
+        /// <param name="useCache">Use cache or not.</param>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The plan.</returns>
         [GETEndpoint("/v1/plans/:id")]
         public static Plan Load(string id, bool useCache, MPRequestOptions requestOptions)
         {
             return (Plan)ProcessMethod<Plan>(typeof(Plan), "Load", id, useCache, requestOptions);
         }
 
+        /// <summary>
+        /// Saves a new plan.
+        /// </summary>
+        /// <returns>The saved plan.</returns>
         public Plan Save()
         {
             return Save(null);
         }
 
+        /// <summary>
+        /// Saves a new plan.
+        /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The saved plan.</returns>
         [POSTEndpoint("/v1/plans")]
         public Plan Save(MPRequestOptions requestOptions)
         {
             return (Plan)ProcessMethod<Plan>("Save", WITHOUT_CACHE, requestOptions);
         }
 
+        /// <summary>
+        /// Updates plan editable properties.
+        /// </summary>
+        /// <returns>The updated plan.</returns>
         public Plan Update()
         {
             return Update(null);
         }
 
+        /// <summary>
+        /// Updates plan editable properties.
+        /// </summary>
+        /// <param name="requestOptions">Request options.</param>
+        /// <returns>The updated plan.</returns>
         [PUTEndpoint("/v1/plans/:id")]
         public Plan Update(MPRequestOptions requestOptions)
         {
@@ -59,6 +92,9 @@ namespace MercadoPago.Resources
 
 
         #region Accessors 
+        /// <summary>
+        /// Plan ID.
+        /// </summary>
         public string Id
         {
             get
@@ -72,6 +108,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Application fee.
+        /// </summary>
         public float Application_fee
         {
             get
@@ -85,6 +124,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Status.
+        /// </summary>
         public string Status
         {
             get
@@ -98,6 +140,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Description.
+        /// </summary>
         public string Description
         {
             get
@@ -111,6 +156,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// External reference.
+        /// </summary>
         public string External_reference
         {
             get
@@ -124,6 +172,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Date of creation.
+        /// </summary>
         public DateTime? Date_created
         {
             get
@@ -137,6 +188,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Last modified date.
+        /// </summary>
         public DateTime? Last_modified
         {
             get
@@ -150,6 +204,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Auto recurring.
+        /// </summary>
         public AutoRecurring Auto_recurring
         {
             get
@@ -163,6 +220,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Live mode.
+        /// </summary>
         public bool Live_mode
         {
             get
@@ -176,6 +236,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Setup fee.
+        /// </summary>
         public float Setup_fee
         {
             get
@@ -189,6 +252,9 @@ namespace MercadoPago.Resources
             }
         }
 
+        /// <summary>
+        /// Metadata.
+        /// </summary>
         public string Metadata
         {
             get
