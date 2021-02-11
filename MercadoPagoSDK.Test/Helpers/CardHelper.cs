@@ -8,12 +8,12 @@ namespace MercadoPagoSDK.Test.Helpers
 {
     public static class CardHelper
     {
-        public static string SingleUseCardToken(string PublicKey, string Status)
+        public static string SingleUseCardToken(string Status)
         {
             JObject payload = JObject.Parse(CardDummyWithSpecificStatus(Status));
 
             MPRESTClient client = new MPRESTClient();
-            String path = "https://api.mercadopago.com/v1/card_tokens?public_key=" + PublicKey;
+            String path = "https://api.mercadopago.com/v1/card_tokens";
             MPAPIResponse responseCardToken = client.ExecuteRequest(HttpMethod.POST, path, PayloadType.JSON, payload, null, 0, 1);
  
             JObject jsonResponse = JObject.Parse(responseCardToken.StringResponse.ToString());
@@ -36,8 +36,8 @@ namespace MercadoPagoSDK.Test.Helpers
             };
 
             string StringPayload = "{ " +
-                "\"card_number\": \"4508336715544174\", " +
-                "\"security_code\": \"122\", " +
+                "\"card_number\": \"5031433215406351\", " +
+                "\"security_code\": \"123\", " +
                 "\"expiration_month\": \"7\", " +
                 "\"expiration_year\": \"2030\", " +
                 "\"cardholder\": " +
@@ -45,8 +45,8 @@ namespace MercadoPagoSDK.Test.Helpers
                         "\"name\": \"" + CardsNameForStatus[status] + "\", " +
                         "\"identification\": " +
                         "{ " +
-                            "\"type\": \"DNI\", " +
-                            "\"number\": \"12345678\" " +
+                            "\"type\": \"CPF\", " +
+                            "\"number\": \"37462770865\" " +
                         "} " +
                     "} " +
                 "}";

@@ -5,6 +5,7 @@ using System.Threading;
 using MercadoPago.Common;
 using MercadoPago.DataStructures.Payment;
 using MercadoPago.Resources;
+using MercadoPagoSDK.Test.Helpers;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
@@ -227,13 +228,7 @@ namespace MercadoPagoSDK.Test.Resources
 
         private static Payment NewPayment(bool capture)
         {
-            var cardToken = new CardToken
-            {
-                CardId = "8940397939",
-                CustomerId = "649457098-FybpOkG6zH8QRm",
-                SecurityCode = "123",
-            };
-            cardToken.Save();
+            string token = CardHelper.SingleUseCardToken("approved");
 
             return new Payment
             {
@@ -262,7 +257,7 @@ namespace MercadoPagoSDK.Test.Resources
                 },
                 TransactionAmount = 10,
                 //PaymentMethodId = "master",
-                Token = cardToken.Id,
+                Token = token,
                 Installments = 1,
                 StatementDescriptor = "STAT-DESC",
                 NotificationUrl = "https://seu-site.com.br/webhooks",
