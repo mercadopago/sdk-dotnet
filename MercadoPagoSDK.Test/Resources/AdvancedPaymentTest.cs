@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using MercadoPago.Resources;
+using MercadoPagoSDK.Test.Helpers;
 using NUnit.Framework;
 using AdvPayDS = MercadoPago.DataStructures.AdvancedPayment;
 
 namespace MercadoPagoSDK.Test.Resources
 {
+    [TestFixture(Ignore = "Skipping")]
     public class AdvancedPaymentTest : BaseResourceTest
     {
         [Test]
@@ -115,13 +117,7 @@ namespace MercadoPagoSDK.Test.Resources
 
         private static AdvancedPayment NewAdvancedPayment(bool capture)
         {
-            var cardToken = new CardToken
-            {
-                CardId = "8940397939",
-                CustomerId = "649457098-FybpOkG6zH8QRm",
-                SecurityCode = "123",
-            };
-            cardToken.Save();
+            string token = CardHelper.SingleUseCardToken("approved");
 
             return new AdvancedPayment
             {
@@ -132,7 +128,7 @@ namespace MercadoPagoSDK.Test.Resources
                     {
                         PaymentMethodId = "master",
                         PaymentTypeId = "credit_card",
-                        Token = cardToken.Id,
+                        Token = token,
                         DateOfExpiration = DateTime.UtcNow.Add(TimeSpan.FromDays(120)),
                         TransactionAmount = 1000,
                         Installments = 1,

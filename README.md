@@ -19,15 +19,15 @@ First time using Mercado Pago? Create your [Mercado Pago account](https://www.me
 
 **Using Package Manager**
 
-`PM> Install-Package mercadopago-sdk -Version 1.8.1`
+`PM> Install-Package mercadopago-sdk -Version 1.9.1`
 
 **Using .Net CLI**
 
-`> dotnet add package mercadopago-sdk --version 1.8.1`
+`> dotnet add package mercadopago-sdk --version 1.9.1`
 
 **Using Packet CLI**
 
-`> paket add mercadopago-sdk --version 1.8.1`
+`> paket add mercadopago-sdk --version 1.9.1`
 
 Copy the access_token in the [credentials](https://www.mercadopago.com/mlb/account/credentials) section of the page and replace YOUR_ACCESS_TOKEN with it.
 
@@ -78,6 +78,6 @@ If you require technical support, please contact our support team at [developers
 ## 🏻 License 
 
 ```
-MIT license. Copyright (c) 2018 - Mercado Pago / Mercado Libre 
+MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre 
 For more information, see the LICENSE file.
 ```

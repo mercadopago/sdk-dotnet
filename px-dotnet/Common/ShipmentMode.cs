@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace MercadoPago.Common
 {
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonConverter(typeof(ShippingModeConverter))]
     public enum ShipmentMode
     {
         /// <summary>Custom shipping</summary>

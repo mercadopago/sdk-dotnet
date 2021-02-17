@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.9.0</PackageVersion>
+    <PackageVersion>1.9.1</PackageVersion>
     <Authors>MercadoPago</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -25,7 +25,7 @@
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
     <PackageTags>mercadopago</PackageTags>
-    <ReleaseVersion>1.8.1</ReleaseVersion>
+    <ReleaseVersion>1.9.1</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -233,6 +233,7 @@
     <Compile Include="DataStructures\Payment\Passenger.cs" />
     <Compile Include="DataStructures\Payment\CategoryDescriptor.cs" />
     <Compile Include="DataStructures\Preference\CategoryDescriptor.cs" />
+    <Compile Include="Common\ShippingModeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
