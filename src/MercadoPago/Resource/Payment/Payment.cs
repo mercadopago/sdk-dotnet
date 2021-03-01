@@ -258,6 +258,11 @@
         public IList<PaymentRefund> Refunds { get; set; }
 
         /// <summary>
+        /// Point of interaction.
+        /// </summary>
+        public PaymentPointOfInteraction PointOfInteraction { get; set; }
+
+        /// <summary>
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }

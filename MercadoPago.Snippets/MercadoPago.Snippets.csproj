@@ -1,0 +1,20 @@
+<!--<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\netfx.props" />
+    
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.1;net461</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <Folder Include="CheckoutTransparente\" />
+    <Folder Include="Search\" />
+    <Folder Include="CheckoutPro\" />
+    <Folder Include="Get\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MercadoPago\MercadoPago.csproj" />
+  </ItemGroup>
+</Project>
