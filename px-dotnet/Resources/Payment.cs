@@ -481,6 +481,11 @@ namespace MercadoPago.Resources
         public MerchantServices MerchantServices { get; set; }
 
         /// <summary>
+        /// Point of interaction
+        /// </summary>
+        public PointOfInteraction PointOfInteraction { get; set; }
+
+        /// <summary>
         /// Integrator ID
         /// </summary>
         public string IntegratorId { get; set; }

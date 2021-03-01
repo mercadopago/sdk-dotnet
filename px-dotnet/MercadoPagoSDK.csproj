@@ -236,6 +236,10 @@
     <Compile Include="Common\ShippingModeConverter.cs" />
     <Compile Include="DataStructures\Payment\PointOfInteraction.cs" />
     <Compile Include="DataStructures\Payment\ApplicationData.cs" />
+    <Compile Include="DataStructures\Payment\TransactionData.cs" />
+    <Compile Include="DataStructures\Payment\BankInfo.cs" />
+    <Compile Include="DataStructures\Payment\BankInfoCollector.cs" />
+    <Compile Include="DataStructures\Payment\BankInfoPayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

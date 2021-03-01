@@ -16,8 +16,8 @@
         public BankInfoCollector Collector { get; set; }
 
         /// <summary>
-        /// Is same bank account owner
+        /// <c>true</c> if is same bank account owner, otherwise <c>false</c>
         /// </summary>
-        public string IsSameBankAccountOwner { get; set; }
+        public bool? IsSameBankAccountOwner { get; set; }
     }
 }

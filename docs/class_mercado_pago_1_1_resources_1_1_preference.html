@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Mercado Pago SDK .Net
-   &#160;<span id="projectnumber">1.8.1</span>
+   &#160;<span id="projectnumber">1.10.0</span>
    </div>
    <div id="projectbrief">Mercado Pago SDK .Net Documentation</div>
   </td>
@@ -219,7 +219,7 @@ Properties</h2></td></tr>
 <tr class="memitem:a66fddac2925d2adfcb69ca4f6f636faf"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#a66fddac2925d2adfcb69ca4f6f636faf">Id</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a66fddac2925d2adfcb69ca4f6f636faf"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html" title="This API allows you to set up, during the payment process, all the item information,...">Preference</a> ID (UUID)  <a href="class_mercado_pago_1_1_resources_1_1_preference.html#a66fddac2925d2adfcb69ca4f6f636faf">More...</a><br /></td></tr>
 <tr class="separator:a66fddac2925d2adfcb69ca4f6f636faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a623e42f1f768ddd7796cf74b52e81a71"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#a623e42f1f768ddd7796cf74b52e81a71">InitPoint</a><code> [get]</code></td></tr>
+<tr class="memitem:a623e42f1f768ddd7796cf74b52e81a71"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#a623e42f1f768ddd7796cf74b52e81a71">InitPoint</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a623e42f1f768ddd7796cf74b52e81a71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checkout access URL  <a href="class_mercado_pago_1_1_resources_1_1_preference.html#a623e42f1f768ddd7796cf74b52e81a71">More...</a><br /></td></tr>
 <tr class="separator:a623e42f1f768ddd7796cf74b52e81a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac093da111acb7f2bd7af00790268b43b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#ac093da111acb7f2bd7af00790268b43b">SandboxInitPoint</a><code> [get, set]</code></td></tr>
@@ -252,6 +252,9 @@ Properties</h2></td></tr>
 <tr class="memitem:a7cff47ac9a246439e5e80bc9e3bc5a55"><td class="memItemLeft" align="right" valign="top">DateTime?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#a7cff47ac9a246439e5e80bc9e3bc5a55">ExpirationDateTo</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a7cff47ac9a246439e5e80bc9e3bc5a55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Date when the preference will be expired  <a href="class_mercado_pago_1_1_resources_1_1_preference.html#a7cff47ac9a246439e5e80bc9e3bc5a55">More...</a><br /></td></tr>
 <tr class="separator:a7cff47ac9a246439e5e80bc9e3bc5a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4b72407712b83b78be4742e9b74f07d"><td class="memItemLeft" align="right" valign="top">DateTime?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#af4b72407712b83b78be4742e9b74f07d">DateOfExpiration</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af4b72407712b83b78be4742e9b74f07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the payment will expires  <a href="class_mercado_pago_1_1_resources_1_1_preference.html#af4b72407712b83b78be4742e9b74f07d">More...</a><br /></td></tr>
+<tr class="separator:af4b72407712b83b78be4742e9b74f07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afca96893c7e0d06126b61fe296ffe228"><td class="memItemLeft" align="right" valign="top">int?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mercado_pago_1_1_resources_1_1_preference.html#afca96893c7e0d06126b61fe296ffe228">CollectorId</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:afca96893c7e0d06126b61fe296ffe228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Your <a class="el" href="namespace_mercado_pago.html">MercadoPago</a> seller ID  <a href="class_mercado_pago_1_1_resources_1_1_preference.html#afca96893c7e0d06126b61fe296ffe228">More...</a><br /></td></tr>
 <tr class="separator:afca96893c7e0d06126b61fe296ffe228"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -699,6 +702,30 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="af4b72407712b83b78be4742e9b74f07d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4b72407712b83b78be4742e9b74f07d">&#9670;&nbsp;</a></span>DateOfExpiration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DateTime? MercadoPago.Resources.Preference.DateOfExpiration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>When the payment will expires </p>
+
+</div>
+</div>
 <a id="a70f88b80f569bafd411414d41272ac1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a70f88b80f569bafd411414d41272ac1e">&#9670;&nbsp;</a></span>Differential_pricing</h2>
 
@@ -858,7 +885,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
