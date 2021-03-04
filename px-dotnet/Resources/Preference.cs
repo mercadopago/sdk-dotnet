@@ -1,9 +1,6 @@
 ﻿using MercadoPago.DataStructures.Preference;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using MercadoPago.Common;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
@@ -109,39 +106,8 @@ namespace MercadoPago.Resources
         #region Properties
 
         private List<Item> _items;
-        private Payer? _payer;
-        private PaymentMethods? _payment_methods;
-        private Shipment? _shipments;
-        private BackUrls? _back_urls;
-        [StringLength(500)]
-        private string _notification_url;
-        private string _id;
-        private string _init_point;
-        private string _sandbox_init_point;
-        private string _purpose;
-        private DateTime? _date_created;
-        [JsonConverter(typeof(StringEnumConverter))]
-        private OperationType? _operation_type;
-        [StringLength(600)]
-        private string _additionalInfo;
-        [JsonConverter(typeof(StringEnumConverter))]
-        private AutoReturnType? _auto_return;
-        [StringLength(256)]
-        private string _external_reference;
-        private bool? _expires;
-        private DateTime? _expiration_date_from;
-        private DateTime? _expiration_dateTo;
-        private int? _collector_id;
-        private string _client_id;
-        [StringLength(256)]
-        private string _marketplace;
-        private float? _marketplace_fee;
-        private DifferentialPricing? _differential_pricing;
-        private long? _sponsor_id;
         private List<ProcessingMode> _processing_modes;
-        private bool? _binary_mode;
         private List<Tax> _taxes;
-        private JObject _metadata;
         private List<Track> _tracks;
         #endregion
 
@@ -150,333 +116,120 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Buyer Information
         /// </summary>
-        public Payer? Payer 
-        {
-            get
-            {
-                return _payer;
-            }
+        public Payer? Payer { get; set; }
 
-            set
-            {
-                _payer = value;
-            }
-        }
         /// <summary>
         /// Set up payment methods to be excluded from the payment process
         /// </summary>
-        public PaymentMethods? PaymentMethods
-        {
-            get
-            {
-                return _payment_methods;
-            }
+        public PaymentMethods? PaymentMethods { get; set; }
 
-            set
-            {
-                _payment_methods = value;
-            }
-        }
         /// <summary>
         /// Shipments information
         /// </summary>
-        public Shipment? Shipments
-        {
-            get
-            {
-                return _shipments;
-            }
+        public Shipment? Shipments { get; set; }
 
-            set
-            {
-                _shipments = value;
-            }
-        }
         /// <summary>
         /// URLs to return to the sellers website
         /// </summary>
-        public BackUrls? BackUrls
-        {
-            get
-            {
-                return _back_urls;
-            }
+        public BackUrls? BackUrls { get; set; }
 
-            set
-            {
-                _back_urls = value;
-            }
-        }
         /// <summary>
         /// URL where you'd like to receive a payment notification
         /// </summary>
-        public string NotificationUrl
-        {
-            get
-            {
-                return _notification_url;
-            }
+        public string NotificationUrl { get; set; }
 
-            set
-            {
-                _notification_url = value;
-            }
-        }
         /// <summary>
         /// Preference ID (UUID)
         /// </summary>
-        public string Id 
-        {
-            get
-            {
-                return _id;
-            }
+        public string Id { get; set; }
 
-            set
-            {
-                _id = value;
-            }
-        }
         /// <summary>
         /// Checkout access URL
         /// </summary>
-        public string InitPoint 
-        {
-            get
-            {
-                return _init_point;
-            }
+        public string InitPoint { get; set; }
 
-            private set
-            {
-                _init_point = value;
-            }
-        }
         /// <summary>
         /// Sandbox checkout access URL
         /// </summary>
-        public string SandboxInitPoint
-        {
-            get
-            {
-                return _sandbox_init_point;
-            }
+        public string SandboxInitPoint { get; set; }
 
-            set
-            {
-                _sandbox_init_point = value;
-            }
-        }
         /// <summary>
         /// Purpose string
         /// </summary>
-        public string Purpose
-        {
-            get
-            {
-                return _purpose;
-            }
+        public string Purpose { get; set; }
 
-            set
-            {
-                _purpose = value;
-            }
-        }
         /// <summary>
         /// Preference's creation date
         /// </summary>
-        public DateTime? Datecreated
-        {
-            get
-            {
-                return _date_created;
-            }
+        public DateTime? Datecreated { get; set; }
 
-            set
-            {
-                _date_created = value;
-            }
-        }
         /// <summary>
         /// Operation data_type
         /// </summary>
-        public OperationType? OperationType
-        {
-            get
-            {
-                return _operation_type;
-            }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public OperationType? OperationType { get; set; }
 
-            set
-            {
-                _operation_type = value;
-            }
-        }
         /// <summary>
         /// Additional information
         /// </summary>
-        public string AdditionalInfo
-        {
-            get
-            {
-                return _additionalInfo;
-            }
+        public string AdditionalInfo { get; set; }
 
-            set
-            {
-                _additionalInfo = value;
-            }
-        }
         /// <summary>
         /// If specified, your buyers will be redirected back to your site immediately after completing the purchase
         /// </summary>
-        public AutoReturnType? AutoReturn 
-        {
-            get
-            {
-                return _auto_return;
-            }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public AutoReturnType? AutoReturn { get; set; }
 
-            set
-            {
-                _auto_return = value;
-            }
-        }
         /// <summary>
         /// Reference you can synchronize with your payment system
         /// </summary>
-        public string ExternalReference 
-        {
-            get
-            {
-                return _external_reference;
-            }
+        public string ExternalReference { get; set; }
 
-            set
-            {
-                _external_reference = value;
-            }
-        }
         /// <summary>
         /// Boolean value that determines if a preference expire
         /// </summary>
-        public bool? Expires 
-        {
-            get
-            {
-                return _expires;
-            }
+        public bool? Expires { get; set; }
 
-            set
-            {
-                _expires = value;
-            }
-        }
         /// <summary>
         /// Date since the preference will be active
         /// </summary>
-        public DateTime? ExpirationDateFrom 
-        {
-            get
-            {
-                return _expiration_date_from;
-            }
+        public DateTime? ExpirationDateFrom { get; set; }
 
-            set
-            {
-                _expiration_date_from = value;
-            }
-        }
         /// <summary>
         /// Date when the preference will be expired
         /// </summary>
-        public DateTime? ExpirationDateTo 
-        {
-            get
-            {
-                return _expiration_dateTo;
-            }
+        public DateTime? ExpirationDateTo { get; set; }
 
-            set
-            {
-                _expiration_dateTo = value;
-            }
-        }
+        /// <summary>
+        /// When the payment will expires
+        /// </summary>
+        public DateTime? DateOfExpiration { get; set; }
+
         /// <summary>
         /// Your MercadoPago seller ID
         /// </summary>
-        public int? CollectorId 
-        {
-            get
-            {
-                return _collector_id;
-            }
+        public int? CollectorId { get; set; }
 
-            set
-            {
-                _collector_id = value;
-            }
-        }
         /// <summary>
         /// Application owner ID that use MercadoLibre API
         /// </summary>
-        public string ClientId 
-        {
-            get
-            {
-                return _client_id;
-            }
+        public string ClientId { get; set; }
 
-            set
-            {
-                _client_id = value;
-            }
-        }
         /// <summary>
         /// Origin of the payment. Default value: NONE
         /// </summary>
-        public string Marketplace 
-        {
-            get
-            {
-                return _marketplace;
-            }
+        public string Marketplace { get; set; }
 
-            set
-            {
-                _marketplace = value;
-            }
-        }
         /// <summary>
         /// Marketplace's fee charged by application owner. Default value: 0%
         /// </summary>
-        public float? Marketplace_fee 
-        {
-            get
-            {
-                return _marketplace_fee;
-            }
+        public float? Marketplace_fee { get; set; }
 
-            set
-            {
-                _marketplace_fee = value;
-            }
-        }
         /// <summary>
         /// Differential pricing configuration for this preference
         /// </summary>
-        public DifferentialPricing? Differential_pricing 
-        {
-            get
-            {
-                return _differential_pricing;
-            }
+        public DifferentialPricing? Differential_pricing { get; set; }
 
-            set
-            {
-                _differential_pricing = value;
-            }
-        }
 
         /// <summary>
         /// Purchased items
@@ -501,18 +254,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Sponsor ID
         /// </summary>
-        public long? SponsorId
-        {
-            get
-            {
-                return _sponsor_id;
-            }
-
-            set
-            {
-                _sponsor_id = value;
-            }
-        }
+        public long? SponsorId { get; set; }
 
         /// <summary>
         /// Processing modes
@@ -537,18 +279,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Binary mode?
         /// </summary>
-        public bool? BinaryMode
-        {
-            get
-            {
-                return _binary_mode;
-            }
-
-            set
-            {
-                _binary_mode = value;
-            }
-        }
+        public bool? BinaryMode { get; set; }
 
         /// <summary>
         /// Taxes
@@ -573,11 +304,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Valid JSON that can be attached to the payment to record additional attributes of the merchant
         /// </summary>
-        public JObject Metadata
-        {
-            get { return this._metadata; }
-            set { this._metadata = value; }
-        }
+        public JObject Metadata { get; set; }
 
         /// <summary>
         /// Preference ad tracks
