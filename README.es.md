@@ -13,6 +13,8 @@ El SDK oficial de Mercado Pago.
 
 **.NET Standard 2.0+**, **.NET Core 2.0+**, y **.NET Framework 4.6.1+**.
 
+Si estás utilizando versiones anteriores del .NET Framework en tu proyecto, consulta las [versiones anteriores](https://github.com/mercadopago/sdk-dotnet/tree/master-dotnet-framework) del SDK.
+
 ## 📲 Instalación
 
 ### Usando el [.NET Core command-line interface (CLI) tools](https://docs.microsoft.com/es-es/dotnet/core/tools/)
