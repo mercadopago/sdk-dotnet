@@ -41,6 +41,7 @@
     <None Remove="Client\Mock\SearchResponse.json" />
     <None Remove="Client\Mock\DummyListResponse.json" />
     <None Remove="Config\SDK.config" />
+    <None Remove="mono_crash.11a6748113.0.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Serialization\DummySerializableObject.json">
