@@ -47,7 +47,7 @@ Install-Package mercadopago-sdk
 
 ¿Primera vez usando Mercado Pago? Crea tu [cuenta de Mercado Pago](https://www.mercadopago.com).
 
-Copie tu `Access Token` del [painel de credenciales](https://www.mercadopago.com/developers/panel/credentials) y reemplace YOUR_ACCESS_TOKEN con él.
+Copie su `Access Token` del [panel de credenciales](https://www.mercadopago.com/developers/panel/credentials) y reemplace el texto `YOUR_ACCESS_TOKEN` con él.
 
 ### Uso simple
 
@@ -83,8 +83,7 @@ Console.WriteLine($"Payment ID: {payment.Id}");
 
 ### Configuración por solicitud
 
-Todos los métodos de los clients aceptan un objeto `RequestOptions` opcional.
-Todos os métodos dos clients aceitam um objeto opcional `RequestOptions`. Esto se usa para configurar algunas opciones por solicitud, como el Access Token o headers personalizados.
+Todos los métodos de los que realizan consultas a APIs aceptan un objeto `RequestOptions` opcional. Esto puede ser utilizado para configurar algunas opciones especiales de la solicitud, como el propio cambio de credenciales o headers presonalizados.
 
 ```csharp
 using MercadoPago.Client;
