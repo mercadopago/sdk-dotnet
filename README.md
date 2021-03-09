@@ -1,6 +1,6 @@
 # Mercado Pago .Net
 
-[Portuguese](https://github.com/mercadopago/sdk-dotnet/blob/master/README.pt.md) / [Spanish](https://github.com/mercadopago/sdk-dotnet/blob/master/README.es.md)
+[Portuguese](/README.pt.md) / [Spanish](/README.es.md)
 
 ![CI](https://github.com/mercadopago/sdk-dotnet/workflows/CI/badge.svg)
 [![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
@@ -15,7 +15,7 @@ The official Mercado Pago .NET SDK.
 
 If you are using previous versions of .NET Framework in your project, please refer to the [older versions](https://github.com/mercadopago/sdk-dotnet/tree/master-dotnet-framework) of the SDK.
 
-## 📲 Installation 
+## 📲 Installation
 
 ### Using the [.NET Core command-line interface (CLI) tools](https://docs.microsoft.com/en-us/dotnet/core/tools/)
 
@@ -47,12 +47,12 @@ Install-Package mercadopago-sdk
 
 First time using Mercado Pago? Create your [Mercado Pago account](https://www.mercadopago.com).
 
-Copy your access_token in the [credentials panel](https://www.mercadopago.com/developers/panel/credentials) and replace YOUR_ACCESS_TOKEN with it.
+Copy your `Access Token` in the [credentials panel](https://www.mercadopago.com/developers/panel/credentials) and replace the text `YOUR_ACCESS_TOKEN` with it.
 
 ### Simple usage
 
 To generate a `card token` read the [Checkout API](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-api/introduction) documentation.
-    
+
 ```csharp
 using System;
 using System.Threading.Tasks;
@@ -83,7 +83,7 @@ Console.WriteLine($"Payment ID: {payment.Id}");
 
 ### Per-request configuration
 
-All of the clients methods accept an optional `RequestOptions` object. This is used to configure some options per-request, like the Access Token or custom headers.
+All methods that make API calls accept an optional `RequestOptions` object. This can be used to configure some special options of the request, such as changing credentials or custom headers.
 
 ```csharp
 using MercadoPago.Client;
@@ -130,7 +130,7 @@ MercadoPagoConfig.RetryStrategy = retryStrategy;
 
 ```
 
-## 📚 Documentation 
+## 📚 Documentation
 
 Visit our Developer Site for further information regarding:
  - [APIs](https://www.mercadopago.com/developers/en/reference)
@@ -140,15 +140,19 @@ Visit our Developer Site for further information regarding:
 
 Check our [SDK docs](https://mercadopago.github.io/sdk-dotnet/) to explore all available functionalities.
 
-## ❤️ Support 
+## 🤝 Contributing
+
+All contributions are welcome, ranging from people wanting to triage issues, others wanting to write documentation, to people wanting to contribute code.
+
+Please read and follow our [contribution guidelines](/CONTRIBUTING.md). Contributions not following this guidelines will be disregarded. The guidelines are in place to make all of our lives easier and make contribution a consistent process for everyone.
+
+## ❤️ Support
 
 If you require technical support, please contact our support team at [developers.mercadopago.com](https://developers.mercadopago.com).
 
-For any requests, bug or comments, please [open an issue](https://github.com/mercadopago/sdk-dotnet/issues/new) or [submit a pull request](https://github.com/mercadopago/sdk-dotnet/pulls).
-
-## 🏻 License 
+## 🏻 License
 
 ```
-MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre 
+MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre
 For more information, see the LICENSE file.
 ```

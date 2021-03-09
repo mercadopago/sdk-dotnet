@@ -1,6 +1,6 @@
 # Mercado Pago .Net
 
-[Inglês](https://github.com/mercadopago/sdk-dotnet/blob/master/README.md) / [Portugues](https://github.com/mercadopago/sdk-dotnet/blob/master/README.pt.md)
+[Inglês](/README.md) / [Portugues](/README.pt.md)
 
 ![CI](https://github.com/mercadopago/sdk-dotnet/workflows/CI/badge.svg)
 [![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
@@ -83,7 +83,7 @@ Console.WriteLine($"Payment ID: {payment.Id}");
 
 ### Configuración por solicitud
 
-Todos los métodos de los que realizan consultas a APIs aceptan un objeto `RequestOptions` opcional. Esto puede ser utilizado para configurar algunas opciones especiales de la solicitud, como el propio cambio de credenciales o headers presonalizados.
+Todos los métodos de los que realizan llamadas a APIs aceptan un objeto `RequestOptions` opcional. Esto puede ser utilizado para configurar algunas opciones especiales de la solicitud, como el propio cambio de credenciales o headers presonalizados.
 
 ```csharp
 using MercadoPago.Client;
@@ -140,15 +140,19 @@ Visite nuestro Developer Site para obtener más información sobre:
 
 Consulte nuestro [SDK docs](https://mercadopago.github.io/sdk-dotnet/) para explorar todas las funciones disponibles.
 
-## ❤️ Support 
+## 🤝 Contribuyendo
+
+Todas las contribuciones son bienvenidas, desde personas que deseen filtrar las issues, otras que quieran escribir documentación, hasta personas que quieran contribuir con código.
+
+Lea y siga nuestras [pautas de contribución](/CONTRIBUTING.md). Las contribuciones que no sigan estas pautas no se tendrán en cuenta. Las pautas están establecidas para hacernos la vida más fácil y hacer que la contribución sea un proceso consistente para todos.
+
+## ❤️ Support
 
 Si necesitas asistencia técnica, póngase en contacto con nuestro equipo de asistencia en [developers.mercadopago.com](https://developers.mercadopago.com).
 
-Para cualquier solicitud, error o comentario [abres una issue](https://github.com/mercadopago/sdk-dotnet/issues/new) o [envías un pull request](https://github.com/mercadopago/sdk-dotnet/pulls).
-
-## 🏻 Licencia 
+## 🏻 Licencia
 
 ```
-MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre 
+MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre
 Para obtener más información, consulte el archivo LICENSE.
 ```

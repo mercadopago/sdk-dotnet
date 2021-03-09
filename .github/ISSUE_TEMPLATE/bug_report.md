@@ -1,6 +1,8 @@
 ---
 name: Bug report
 about: Create a report to help us improve
+title: ''
+labels: bug
 
 ---
 
@@ -9,20 +11,18 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
- - A snippet of code
- - Input values
- - Methods
+
+- Test case to reproduce the bug.  Try to reproduce in the latest version.
+- Code sample that fails
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
 **Environment (please complete the following information):**
- - OS: [e.g. Windows, Linux]
- - Framework [e.g. .NET Framework 4.6.1]
- - SDK Version [e.g. 2.0.0]
+
+- OS: [e.g. Linux/Mac/Windows]
+- .NET version: [e.g. .NET Core 2.0/.NET Framework 4.7]
+- SDK version: [e.g. 2.0.0]
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the problem here. [e.g. Links to previous bugs].
