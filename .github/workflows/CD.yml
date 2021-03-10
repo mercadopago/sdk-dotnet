@@ -38,4 +38,4 @@ jobs:
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
 
           # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: true
+          INCLUDE_SYMBOLS: false
