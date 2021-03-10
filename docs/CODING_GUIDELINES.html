@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Coding Guidelines | MercadoPago official .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Coding Guidelines | MercadoPago official .NET SDK ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="index.html" title="Home">Home</a>
+                      </li>
+                      <li>
+                          <a href="sdk/MercadoPago.Client.html" title="SDK Documentation">SDK Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="coding-guidelines">Coding Guidelines</h1>
+
+<p>The Mercado Pago .NET is a collaborative effort from the start. The SDK team thinks that contributions from different developer will enrich it's feature set and make it more relevant to the community.</p>
+<p>However; absorbing all contributions as-is, while expedient, might lead to difficulties in maintenance of the codebase is left unchecked. Collaborative codebases often establish guidelines for contributors to ensure code remains maintainable over time. The effort to maintain the SDK is no different in this regard so a bit of guidance is in order.</p>
+<p>The purpose of this guide is to set a baseline for contributions. These guidelines are not intended to limit the tools at your disposal nor to rewire the way you think but rather to encourage good neighbor behavior.</p>
+<h2 id="language-guidelines">Language Guidelines</h2>
+<p>We use <strong>english</strong> language. This is to be consistent everywhere, and to be considerate with developers that do not speak our native language.</p>
+<p>Therefore: source code, comments, documentation, commit messages, review comments, and any other kind of contribution <em>MUST</em> use english language.</p>
+<p>Typos are unavoidable, but try to reduce them by using a spellchecker. Most IDEs can be configured to run one automatically.</p>
+<h2 id="code-guidelines">Code Guidelines</h2>
+<ul>
+<li>Set your IDE to follow the <a href="https://editorconfig.org/"><code>.editorconfig</code></a> in each repository.</li>
+<li>Follow the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">C# Coding Convention</a>.</li>
+</ul>
+<p>Generally speaking, be conscious when contributing and try following the same style that the code in the SDK already has. If you have any doubts, just ask us!</p>
+<p>This rules will be enforced automatically when making a pull requests, and checks will fail if you do not follow them, resulting in your contribution being automatically rejected until fixed.</p>
+<h2 id="comment-guidelines">Comment Guidelines</h2>
+<p>Comments in code are a hard thing to write, not because the words are difficult to produce but because it is hard to make relevant comments. Too much of it and people do not read comments (and it obfuscates code reading) and too little of it gives you no recourse but to read large portions of codebase to get insight as to what a feature/codeblock is doing. Both situations are undesirable and efforts should be made at all time to have a please comment reading experience</p>
+<p>As a general rule you would have to comment on decisions you made while coding that are not part of any specification.</p>
+<p>In particular you should always comment any decision that:</p>
+<ul>
+<li>Departs from common wisdom or convention (The <strong>why's</strong> are necessary).</li>
+<li>Takes a significant amount of time to produce. A good rule of thumb here is that if you spent more than 1 hour thinking on how to produce a fragment of code that took 2 minutes of wrist time to write you should document your thinking to aid reader and allow for validation.</li>
+<li>Need to preserve properties of the implementation. This is the case of performance sensitive portions of the codebase, goroutines synchronization, implementations of security primitives, congestion control algorithms, etc.</li>
+</ul>
+<p>As a general rule of what not to comment you should avoid:</p>
+<ul>
+<li>Commenting on structure of programs that is already part of a convention, specified or otherwise.</li>
+<li>Having pedantic explanations of behavior that can be found by immediate examination of the surrounding code artifacts.</li>
+<li>Commenting on behavior you cannot attest.</li>
+</ul>
+<h3 id="branching-guidelines">Branching Guidelines</h3>
+<p>Currently <code>master</code> is our only long term branch, below a few suggestions of short term branches naming:</p>
+<ul>
+<li><code>hotfix/something-needs-fix</code>: Small routine patches in code to features already there.</li>
+<li><code>feature/something-new</code>: A new feature or a change in a existent feature. Beware of breaking changes that would require a major version bump.</li>
+<li><code>doc/improves-documentation-for-this-feature</code>: If you add or change documentation with no impact to the source code.</li>
+</ul>
+<h3 id="git-guidelines">Git Guidelines</h3>
+<p>All commits <strong>SHOULD</strong> follow the <a href="https://chris.beams.io/posts/git-commit">seven rules of a great Git commit message</a>:</p>
+<ol>
+<li>Separate subject from body with a blank line.</li>
+<li>Limit the subject line to 72 characters.</li>
+<li>Capitalize the subject line.</li>
+<li>Do not end the subject line with a period.</li>
+<li>Use the imperative mood in the subject line.</li>
+<li>Wrap the body at 72 characters.</li>
+<li>Use the body to explain what and why vs. how.</li>
+</ol>
+<p>Commits such as &quot;fix tests&quot;, &quot;now it's working&quot; and many other common messages we find usually in code <strong>WON'T</strong> be accepted.</p>
+<p>Ideally we would like to enforce these rules, but we are realistic and understand that it might be a big change for some people. So unless deviating heavily from what was stated we might accept your commits even if not following these rules perfectly.</p>
+<p>Please avoid taking to much time to deliver code, and always <a href="https://git-scm.com/docs/git-rebase">rebase</a> your code to avoid reverse merge commits.</p>
+<p>When reviewing, check if the PR adheres to <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">C# Coding Convention</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/mercadopago/dx-dotnet/blob/release/2.0.0/CODING_GUIDELINES.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

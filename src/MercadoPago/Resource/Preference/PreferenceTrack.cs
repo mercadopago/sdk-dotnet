@@ -1,7 +1,7 @@
 ﻿namespace MercadoPago.Resource.Preference
 {
     /// <summary>
-    /// Track to be executed during the users's interaction in the Checkout flow. 
+    /// Track to be executed during the users's interaction in the Checkout flow.
     /// </summary>
     public class PreferenceTrack
     {

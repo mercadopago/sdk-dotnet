@@ -57,8 +57,8 @@
         /// <summary>
         /// Get async the User information using the Access Token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the User.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -77,7 +77,7 @@
         /// <summary>
         /// Get the User information using the Access Token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The User.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>

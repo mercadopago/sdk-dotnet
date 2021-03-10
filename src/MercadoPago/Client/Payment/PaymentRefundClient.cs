@@ -61,7 +61,7 @@
         /// <param name="paymentId">The payment ID.</param>
         /// <param name="amount">The amount to refund.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the refund.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -113,7 +113,7 @@
         /// </summary>
         /// <param name="paymentId">The payment ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the refund.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -146,7 +146,7 @@
         /// <param name="paymentId">The payment ID.</param>
         /// <param name="id">The refund ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the refund.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -190,7 +190,7 @@
         /// </summary>
         /// <param name="paymentId">The payment ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the list of refund.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>

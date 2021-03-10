@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mercado Pago .Net | MercadoPago official .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Mercado Pago .Net | MercadoPago official .NET SDK ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="index.html" title="Home">Home</a>
+                      </li>
+                      <li>
+                          <a href="sdk/MercadoPago.Client.html" title="SDK Documentation">SDK Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mercado-pago-net">Mercado Pago .Net</h1>
+
+<p><a href="README.html">Inglês</a> / <a href="README.pt.html">Portugues</a></p>
+<p><img src="https://github.com/mercadopago/sdk-dotnet/workflows/CI/badge.svg" alt="CI">
+<a href="https://www.nuget.org/packages/mercadopago-sdk"><img src="http://img.shields.io/nuget/v/mercadopago-sdk.svg" alt="NuGet"></a>
+<a href="https://www.nuget.org/packages/mercadopago-sdk/"><img src="https://img.shields.io/nuget/dt/mercadopago-sdk.svg" alt="Download count"></a>
+<a href="https://github.com/mercadopago/sdk-dotnet"><img src="https://img.shields.io/apm/l/vim-mode" alt="APM"></a></p>
+<p>El SDK oficial de Mercado Pago.</p>
+<h2 id="-requisitos">💡 Requisitos</h2>
+<p><strong>.NET Standard 2.0+</strong>, <strong>.NET Core 2.0+</strong>, y <strong>.NET Framework 4.6.1+</strong>.</p>
+<p>Si estás utilizando versiones anteriores del .NET Framework en tu proyecto, consulta las <a href="https://github.com/mercadopago/sdk-dotnet/tree/master-dotnet-framework">versiones anteriores</a> del SDK.</p>
+<h2 id="-instalación">📲 Instalación</h2>
+<h3 id="usando-el-net-core-command-line-interface-cli-tools">Usando el <a href="https://docs.microsoft.com/es-es/dotnet/core/tools/">.NET Core command-line interface (CLI) tools</a></h3>
+<pre><code class="lang-bash">dotnet add package mercadopago-sdk
+</code></pre>
+<h3 id="usando-el-nuget-command-line-interface-cli">Usando el <a href="https://docs.microsoft.com/es-es/nuget/tools/nuget-exe-cli-reference">NuGet Command Line Interface (CLI)</a></h3>
+<pre><code class="lang-bash">nuget install mercadopago-sdk
+</code></pre>
+<h3 id="usando-el-package-manager">Usando el <a href="https://docs.microsoft.com/es-es/nuget/tools/package-manager-console">Package Manager</a></h3>
+<pre><code class="lang-bash">Install-Package mercadopago-sdk
+</code></pre>
+<h3 id="en-el-visual-studio">En el Visual Studio</h3>
+<ol>
+<li>Abra el <code>Solution Explorer</code>.</li>
+<li>Haga clic con el botón derecho en un proyecto de su solución.</li>
+<li>Haga clic en <code>Manage NuGet Packages...</code>.</li>
+<li>Haga clic en la tab <code>Browse</code> y busque &quot;mercadopago-sdk&quot;.</li>
+<li>Haga clic en el package <code>mercadopago-sdk</code>, seleccione la versión apropiada y haga clic en <code>Install</code>.</li>
+</ol>
+<h2 id="-empezando">🌟 Empezando</h2>
+<p>¿Primera vez usando Mercado Pago? Crea tu <a href="https://www.mercadopago.com">cuenta de Mercado Pago</a>.</p>
+<p>Copie su <code>Access Token</code> del <a href="https://www.mercadopago.com/developers/panel/credentials">panel de credenciales</a> y reemplace el texto <code>YOUR_ACCESS_TOKEN</code> con él.</p>
+<h3 id="uso-simple">Uso simple</h3>
+<p>Para generar un <code>card token</code> lea la documentación del <a href="https://www.mercadopago.com/developers/es/guides/online-payments/checkout-api/introduction">Checkout Transparente</a>.</p>
+<pre><code class="lang-csharp">using System;
+using System.Threading.Tasks;
+using MercadoPago.Client.Payment;
+using MercadoPago.Config;
+using MercadoPago.Resource.Payment;
+
+MercadoPagoConfig.AccessToken = &quot;YOUR_ACCESS_TOKEN&quot;;
+
+var request = new PaymentCreateRequest
+{
+    TransactionAmount = 10,
+    Token = &quot;CARD_TOKEN&quot;,
+    Description = &quot;Payment description&quot;,
+    Installments = 1,
+    PaymentMethodId = &quot;visa&quot;,
+    Payer = new PaymentPayerRequest
+    {
+        Email = &quot;test.payer@email.com&quot;,
+    }
+};
+
+var client = new PaymentClient();
+Payment payment = await client.CreateAsync(request);
+
+Console.WriteLine($&quot;Payment ID: {payment.Id}&quot;);
+</code></pre>
+<h3 id="configuración-por-solicitud">Configuración por solicitud</h3>
+<p>Todos los métodos de los que realizan llamadas a APIs aceptan un objeto <code>RequestOptions</code> opcional. Esto puede ser utilizado para configurar algunas opciones especiales de la solicitud, como el propio cambio de credenciales o headers presonalizados.</p>
+<pre><code class="lang-csharp">using MercadoPago.Client;
+
+var requestOptions = new RequestOptions();
+requestOptions.AccessToken = &quot;YOUR_ACCESS_TOKEN&quot;;
+// ...
+
+var client = new PaymentClient();
+Payment payment = await client.CreateAsync(request, requestOptions);
+
+</code></pre>
+<h2 id="uso-avanzado">Uso avanzado</h2>
+<h3 id="usar-un-servidor-proxy">Usar un servidor proxy</h3>
+<pre><code class="lang-csharp">using System.Net;
+using System.Net.Http;
+using MercadoPago.Config;
+using MercadoPago.Http;
+
+var handler = new HttpClientHandler
+{
+    Proxy = new WebProxy(proxyUrl),
+    UseProxy = true,
+};
+var httpClient = new HttpClient(handler);
+MercadoPagoConfig.HttpClient = new DefaultHttpClient(httpClient);
+
+</code></pre>
+<h3 id="configurar-reintentos-automáticos">Configurar reintentos automáticos</h3>
+<p>El SDK reintenta automáticamente las solicitudes en caso de fallas intermitentes. El número máximo de intentos default es <strong>2</strong>.</p>
+<pre><code class="lang-csharp">using MercadoPago.Config;
+using MercadoPago.Http;
+
+var retryStrategy = new DefaultRetryStrategy(5);
+MercadoPagoConfig.RetryStrategy = retryStrategy;
+
+</code></pre>
+<h2 id="-documentación">📚 Documentación</h2>
+<p>Visite nuestro Developer Site para obtener más información sobre:</p>
+<ul>
+<li><a href="https://www.mercadopago.com/developers/es/reference">APIs</a></li>
+<li><a href="https://www.mercadopago.com/developers/es/guides/online-payments/checkout-pro/introduction">Checkout Pro</a></li>
+<li><a href="https://www.mercadopago.com/developers/es/guides/online-payments/checkout-api/introduction">Checkout Transparente</a></li>
+<li><a href="https://www.mercadopago.com/developers/es/guides/online-payments/web-tokenize-checkout/introduction">Web Tokenize Checkout</a></li>
+</ul>
+<p>Consulte nuestro <a href="https://mercadopago.github.io/sdk-dotnet/">SDK docs</a> para explorar todas las funciones disponibles.</p>
+<h2 id="-contribuyendo">🤝 Contribuyendo</h2>
+<p>Todas las contribuciones son bienvenidas, desde personas que deseen filtrar las issues, otras que quieran escribir documentación, hasta personas que quieran contribuir con código.</p>
+<p>Lea y siga nuestras <a href="CONTRIBUTING.html">pautas de contribución</a>. Las contribuciones que no sigan estas pautas no se tendrán en cuenta. Las pautas están establecidas para hacernos la vida más fácil y hacer que la contribución sea un proceso consistente para todos.</p>
+<h2 id="-support">❤️ Support</h2>
+<p>Si necesitas asistencia técnica, póngase en contacto con nuestro equipo de asistencia en <a href="https://developers.mercadopago.com">developers.mercadopago.com</a>.</p>
+<h2 id="-licencia">🏻 Licencia</h2>
+<pre><code>MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre
+Para obtener más información, consulte el archivo LICENSE.
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/mercadopago/dx-dotnet/blob/release/2.0.0/README.es.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

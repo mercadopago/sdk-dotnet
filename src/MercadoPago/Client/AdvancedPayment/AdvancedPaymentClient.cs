@@ -224,7 +224,7 @@
         }
 
         /// <summary>
-        /// Captures a pending advanced payment.
+        /// Captures a authorized advanced payment.
         /// </summary>
         /// <param name="id">Advanced payment id.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>

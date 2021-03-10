@@ -3,7 +3,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Data to create a Advanced Payment. 
+    /// Data to create a Advanced Payment.
     /// </summary>
     public class AdvancedPaymentCreateRequest : IdempotentRequest
     {
@@ -38,7 +38,7 @@
         public string ApplicationId { get; set; }
 
         /// <summary>
-        /// When set to true, the payment can only be approved or rejected. 
+        /// When set to true, the payment can only be approved or rejected.
         /// Otherwise, the payment may be pending.
         /// </summary>
         public bool? BinaryMode { get; set; }
@@ -50,7 +50,7 @@
         public bool? Capture { get; set; }
 
         /// <summary>
-        /// Data that could improve fraud analysis and conversion rates. 
+        /// Data that could improve fraud analysis and conversion rates.
         /// Try to send as much information as possible.
         /// </summary>
         public AdvancedPaymentAdditionalInfoRequest AdditionalInfo { get; set; }

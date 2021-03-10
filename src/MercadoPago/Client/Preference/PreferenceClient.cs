@@ -58,8 +58,8 @@
         /// Get async a preference by your ID.
         /// </summary>
         /// <param name="id">The preference id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the preference.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -79,7 +79,7 @@
         /// Get async a preference by your ID.
         /// </summary>
         /// <param name="id">The preference id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>A task whose the result is the preference.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -98,8 +98,8 @@
         /// Creates a preference as an asynchronous operation.
         /// </summary>
         /// <param name="request">The data to create a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the created preference.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -140,8 +140,8 @@
         /// </summary>
         /// <param name="id">The preference ID.</param>
         /// <param name="request">The data to update a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the updated preference.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
@@ -164,7 +164,7 @@
         /// </summary>
         /// <param name="id">The preference ID.</param>
         /// <param name="request">The data to update a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The updated preference.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>

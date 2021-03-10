@@ -1,6 +1,6 @@
 # Mercado Pago .Net
 
-[Inglês](/README.md) / [Portugues](/README.pt.md)
+[Inglês](README.md) / [Portugues](README.pt.md)
 
 ![CI](https://github.com/mercadopago/sdk-dotnet/workflows/CI/badge.svg)
 [![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
@@ -144,7 +144,7 @@ Consulte nuestro [SDK docs](https://mercadopago.github.io/sdk-dotnet/) para expl
 
 Todas las contribuciones son bienvenidas, desde personas que deseen filtrar las issues, otras que quieran escribir documentación, hasta personas que quieran contribuir con código.
 
-Lea y siga nuestras [pautas de contribución](/CONTRIBUTING.md). Las contribuciones que no sigan estas pautas no se tendrán en cuenta. Las pautas están establecidas para hacernos la vida más fácil y hacer que la contribución sea un proceso consistente para todos.
+Lea y siga nuestras [pautas de contribución](CONTRIBUTING.md). Las contribuciones que no sigan estas pautas no se tendrán en cuenta. Las pautas están establecidas para hacernos la vida más fácil y hacer que la contribución sea un proceso consistente para todos.
 
 ## ❤️ Support
 

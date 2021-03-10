@@ -383,7 +383,6 @@
             {
                 apiError = null;
             }
-            
 
             return new MercadoPagoApiException("Error response from API.", response)
             {

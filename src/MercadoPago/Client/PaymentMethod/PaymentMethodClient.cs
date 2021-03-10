@@ -59,7 +59,7 @@
         /// Lists async the Payment Methods.
         /// </summary>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns>A task whose the result is the list of Payment Method.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>

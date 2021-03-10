@@ -15,7 +15,7 @@ In the case of PRs it is often best to consult with the SDK team before embarkin
 
 ## Coding Guidance
 
-All contributions *MUST* follow the [Coding Guidelines](/CODING_GUIDELINES.md). Contributions that fail to follow this guidelines will be disregarded and told to make the required modifications to do so.
+All contributions *MUST* follow the [Coding Guidelines](CODING_GUIDELINES.md). Contributions that fail to follow this guidelines will be disregarded and told to make the required modifications to do so.
 
 ## Request For Change / Feature Request
 
@@ -23,7 +23,7 @@ Generally speaking an RFC is needed when you want to add a new feature or change
 
 Though it seems a little bureaucratic, the process is in place in order to avoid frustration of a potential contributor by making the discussions take place before any code is written. Once the design and direction is fully agreed then the contributor can work peacefully knowing that their change will be committed.
 
-As of this moment all you need to do is create an issue and use the [Feature Request Template](/.github/ISSUE_TEMPLATE/feature_request.md).
+As of this moment all you need to do is create an issue and use the [Feature Request Template](.github/ISSUE_TEMPLATE/feature_request.md).
 
 Please prepend your issue title with `[RFC]` so that's easier to filter.
 

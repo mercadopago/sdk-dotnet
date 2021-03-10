@@ -28,7 +28,7 @@
         public DateTime? ArrivalDateTime { get; set; }
 
         /// <summary>
-        /// Company. 
+        /// Company.
         /// </summary>
         public string Company { get; set; }
     }

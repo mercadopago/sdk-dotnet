@@ -14,11 +14,107 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "output": {
+        ".html": {
+          "relative_path": "bug_report.html",
+          "hash": "9BMzY/W4vBHka3okv4yABQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "output": {
+        ".html": {
+          "relative_path": "feature_request.html",
+          "hash": "U5TEQu3r1sZ0b8dU7sndmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CODE_OF_CONDUCT.md",
+      "output": {
+        ".html": {
+          "relative_path": "CODE_OF_CONDUCT.html",
+          "hash": "+L2r+v1M6JnJO0iSHpU8Qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CODING_GUIDELINES.md",
+      "output": {
+        ".html": {
+          "relative_path": "CODING_GUIDELINES.html",
+          "hash": "c/SnTEgDdy+yDq1c7Vvzxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CONTRIBUTING.md",
+      "output": {
+        ".html": {
+          "relative_path": "CONTRIBUTING.html",
+          "hash": "luigPB6e9tVL0vb+TCRKog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.es.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.es.html",
+          "hash": "skzxv7RQDfkHkvlNAYVoJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "ORprgDA+m+HVcQioPvlCtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.pt.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.pt.html",
+          "hash": "0eUb6OVwcQsSPgncaP+j9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "k8XveE5OCmMay0q0+kZmcQ=="
+          "hash": "h9Sus+WZ9gPE4Q+5Zla1XQ=="
         }
       },
       "is_incremental": false,
@@ -30,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoPayerRequest.html",
-          "hash": "PhdPXJQ8TEqL9kDwucXf+Q=="
+          "hash": "4z0cSjJb2sw4WOOQPuHJeA=="
         }
       },
       "is_incremental": false,
@@ -42,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoRequest.html",
-          "hash": "rGPYZ49ZKG8eP+JDBREv5Q=="
+          "hash": "6N7SpQFHZ0fWVGw4OP073w=="
         }
       },
       "is_incremental": false,
@@ -54,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCancelRequest.html",
-          "hash": "ZAuGHuJWtMHprB1VsqCfiQ=="
+          "hash": "ZbLL7Vqfdjn4OocanvHbng=="
         }
       },
       "is_incremental": false,
@@ -66,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCaptureRequest.html",
-          "hash": "C/m+tFi/0YTg1FQhikVRpw=="
+          "hash": "enRWri9mex41myYUuzxV4A=="
         }
       },
       "is_incremental": false,
@@ -78,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentClient.html",
-          "hash": "01dBJ3ruzEU1rhrfo5DhMQ=="
+          "hash": "NLNCiRoxDIgcBfg0VstTTA=="
         }
       },
       "is_incremental": false,
@@ -90,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCreateRequest.html",
-          "hash": "ZcQ4kiPdH+tEwi/s2JuRsQ=="
+          "hash": "VCVv8SrsnBdZ2X7Pcrvacg=="
         }
       },
       "is_incremental": false,
@@ -102,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentDisbursementRequest.html",
-          "hash": "HfxiXK4/cSvcStdWNMpT2A=="
+          "hash": "uB/WTdh9zMu/Ylmcbr9gWA=="
         }
       },
       "is_incremental": false,
@@ -114,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentItemRequest.html",
-          "hash": "pXmmrcwT9tB6ZFULZARfNA=="
+          "hash": "ulj49LF0uKRXaf8sYzHQfQ=="
         }
       },
       "is_incremental": false,
@@ -126,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentPayerRequest.html",
-          "hash": "1RZFhIu49B3yQw6BhGTaKw=="
+          "hash": "vWXhSRsMFh4QH4UOy5P2+Q=="
         }
       },
       "is_incremental": false,
@@ -138,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentReceiverAddressRequest.html",
-          "hash": "1eGXX6K7q0yTTYfRiN+//w=="
+          "hash": "M3pUamVreEzNmhQ3wrwTlA=="
         }
       },
       "is_incremental": false,
@@ -150,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundClient.html",
-          "hash": "bmcKQFJw2WvDgWTWVHq8EA=="
+          "hash": "CdXD9Lv40PSABVTYKIx23w=="
         }
       },
       "is_incremental": false,
@@ -162,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundCreateRequest.html",
-          "hash": "VLe+2qu9sO/TmpwrHnaTBQ=="
+          "hash": "Os/b6b1HM7if3jW36PQuhw=="
         }
       },
       "is_incremental": false,
@@ -174,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentShipmentsRequest.html",
-          "hash": "4IEnuiuX3XHkOyoX2LEVJw=="
+          "hash": "mG67I0RwWBxYGIUmg+18vQ=="
         }
       },
       "is_incremental": false,
@@ -186,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentSplitPaymentRequest.html",
-          "hash": "4Dxgvxuugp6DYip5Q8zVVA=="
+          "hash": "FRts6VFLVSAvSZH/zJg1+g=="
         }
       },
       "is_incremental": false,
@@ -198,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTaxRequest.html",
-          "hash": "uUHwm7XUUfSHeFKXcNDrNg=="
+          "hash": "mcSV10Dmw8Qqn8IyC6RdmQ=="
         }
       },
       "is_incremental": false,
@@ -210,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTransactionDetailsRequest.html",
-          "hash": "hMSCmxmncfUWnam0kWEELQ=="
+          "hash": "0ce6oHTSPUghcfVYJHaJjw=="
         }
       },
       "is_incremental": false,
@@ -222,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentUpdateReleaseDateRequest.html",
-          "hash": "VNKV2lfE5VOewdfqX9WCaA=="
+          "hash": "obzxDcRF/ARMZvDB4pQ0jw=="
         }
       },
       "is_incremental": false,
@@ -234,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.html",
-          "hash": "HQkRosGMbTTB427HF6CHwQ=="
+          "hash": "DE3i72W4P+jZ5fQnQ1j0Zg=="
         }
       },
       "is_incremental": false,
@@ -246,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.AdvancedSearchRequest.html",
-          "hash": "ZwJrxpmam6rhWitK7fNdxw=="
+          "hash": "usuaeAVQvdYiWOCSfPWyUA=="
         }
       },
       "is_incremental": false,
@@ -258,7 +354,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.CardToken.CardTokenClient.html",
-          "hash": "UHUIXAQ5JmH6e7uxlmxNDQ=="
+          "hash": "L47PvEwVp9dfIqk9N0qOuA=="
         }
       },
       "is_incremental": false,
@@ -270,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.CardToken.CardTokenRequest.html",
-          "hash": "YLWRmqWBoiTP5WwREyxnbw=="
+          "hash": "cMH6eZd5Cz46me3feoKVVA=="
         }
       },
       "is_incremental": false,
@@ -282,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.CardToken.html",
-          "hash": "tsiF6mOtAjP/MBz/X8D94w=="
+          "hash": "oVLfUm7F76Y7TBg31HUXHA=="
         }
       },
       "is_incremental": false,
@@ -294,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Common.AddressRequest.html",
-          "hash": "SfAmSMfNxQrrGaQy4zXOvw=="
+          "hash": "Lk+o/xC69SrVn5aquWavAg=="
         }
       },
       "is_incremental": false,
@@ -306,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Common.IdentificationRequest.html",
-          "hash": "EU8sRuSjgnTNlC1BCWtuaw=="
+          "hash": "QHZUGWCPyHw5qERyo8f1Jg=="
         }
       },
       "is_incremental": false,
@@ -318,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Common.PhoneRequest.html",
-          "hash": "zD3RP+bJYsV6hbtHykQwZQ=="
+          "hash": "5KBCQruUQgKt5gfT8b2MOw=="
         }
       },
       "is_incremental": false,
@@ -330,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Common.html",
-          "hash": "RExudi4EACnmd94ZRNvxqQ=="
+          "hash": "37Olt9KYmWPT3EE5UF7w5w=="
         }
       },
       "is_incremental": false,
@@ -342,7 +438,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.CustomerCardClient.html",
-          "hash": "Z6gYUBPwfSVUw6KXw+pUSQ=="
+          "hash": "NSYSCulRyqb7ti1zG34zkg=="
         }
       },
       "is_incremental": false,
@@ -354,7 +450,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.CustomerCardCreateRequest.html",
-          "hash": "o/S8ywcV4h52Rdk3GO98+g=="
+          "hash": "0g6nCsxG000d0AW0+PpU3g=="
         }
       },
       "is_incremental": false,
@@ -366,7 +462,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.CustomerClient.html",
-          "hash": "kSvDOuiMlT0PhDY8K/2hmw=="
+          "hash": "4kX3d4/LMLO7/gWM6FxEww=="
         }
       },
       "is_incremental": false,
@@ -378,7 +474,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.CustomerDefaultAddressRequest.html",
-          "hash": "soVFl4cSHROf8UwCQXA7+A=="
+          "hash": "3fIoRgXUV5TQsnX+cUcGWw=="
         }
       },
       "is_incremental": false,
@@ -390,7 +486,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.CustomerRequest.html",
-          "hash": "WJG5YhLoFkWdiwzgrWCoTw=="
+          "hash": "Q+oH7yODdnkVIrQmbW4GPQ=="
         }
       },
       "is_incremental": false,
@@ -402,7 +498,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Customer.html",
-          "hash": "EWBZ12C/zSUiGzjSlA5D6Q=="
+          "hash": "+73rgEA4u+IfMJTUNeQrcg=="
         }
       },
       "is_incremental": false,
@@ -414,7 +510,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.IdempotentRequest.html",
-          "hash": "kzdl/uO/GbnaDBWh04z+cw=="
+          "hash": "ezN6p/v3G/TgfWyxk0H6xw=="
         }
       },
       "is_incremental": false,
@@ -426,7 +522,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.IdentificationType.IdentificationTypeClient.html",
-          "hash": "bW5Wl+PMzm2cjy5fP7Sr9g=="
+          "hash": "1mDtN02A0sL1eCqqq7yVcA=="
         }
       },
       "is_incremental": false,
@@ -438,7 +534,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.IdentificationType.html",
-          "hash": "xNg3VPHC3Fhl2H5IgR2tnQ=="
+          "hash": "evndPCelCzJVHGDyGXChPg=="
         }
       },
       "is_incremental": false,
@@ -450,7 +546,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MercadoPagoClient-1.html",
-          "hash": "3oXhdNnZ28NsBTn1qGzMgg=="
+          "hash": "Z7/VfxeaLXJ46ufGozhZDg=="
         }
       },
       "is_incremental": false,
@@ -462,7 +558,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderClient.html",
-          "hash": "ulBz8m4o5L+j59uHl9qdTg=="
+          "hash": "6J6a7kPRvvimWaavbhwN4w=="
         }
       },
       "is_incremental": false,
@@ -474,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderCreateRequest.html",
-          "hash": "8rzLdcfrffXJjlOWSSBtkw=="
+          "hash": "Jx7ssJxxsFy0BazPRaWX9Q=="
         }
       },
       "is_incremental": false,
@@ -486,7 +582,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderItemRequest.html",
-          "hash": "YiIqG9VjOVFhE/dtpNkopw=="
+          "hash": "ETq5Kf2+GYmq2W0L5D3UyA=="
         }
       },
       "is_incremental": false,
@@ -498,7 +594,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderPayerRequest.html",
-          "hash": "vzD6tnrJ3OE3FCQ85k4Q5g=="
+          "hash": "8E3QxGABuA9dMNlLSwEDYQ=="
         }
       },
       "is_incremental": false,
@@ -510,7 +606,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCityRequest.html",
-          "hash": "vvftUM2nkuYHLVEmL0cEBA=="
+          "hash": "gyFI5UW9QdDMhmecruZk8Q=="
         }
       },
       "is_incremental": false,
@@ -522,7 +618,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCountryRequest.html",
-          "hash": "WpA3nYyIzZ0yn9+hq3DnTg=="
+          "hash": "BjaToQXH0wrHJ4kcI6wSVg=="
         }
       },
       "is_incremental": false,
@@ -534,7 +630,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressRequest.html",
-          "hash": "IgjodAyAw0Ve46E+JSPzMw=="
+          "hash": "fBW5Xo9Ky0RnzuGKdvkS+w=="
         }
       },
       "is_incremental": false,
@@ -546,7 +642,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressStateRequest.html",
-          "hash": "ZK6A72TAAHNu2HBXFh4GDQ=="
+          "hash": "7xAxI7WuyJfXQWlG5++jHw=="
         }
       },
       "is_incremental": false,
@@ -558,7 +654,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShipmentRequest.html",
-          "hash": "sxqABoyvYM481/OyIoHPSQ=="
+          "hash": "qT9kj5oTfqPP3zMq2QolkQ=="
         }
       },
       "is_incremental": false,
@@ -570,7 +666,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingEstimatedDeliveryRequest.html",
-          "hash": "v63/qIK+4Yx0I66sgy3xvw=="
+          "hash": "QpOaKYNXtcbdacC0R3siLA=="
         }
       },
       "is_incremental": false,
@@ -582,7 +678,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingOptionRequest.html",
-          "hash": "xLU3bNcMQJOPnX16xUfPrA=="
+          "hash": "jXi/04gH37Fr7dwuL9XKrQ=="
         }
       },
       "is_incremental": false,
@@ -594,7 +690,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingSpeedRequest.html",
-          "hash": "5ORSOv9e1tk7AA/kLL1vyA=="
+          "hash": "BbDrOmtn0n0iah6BiULlMQ=="
         }
       },
       "is_incremental": false,
@@ -606,7 +702,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderUpdateRequest.html",
-          "hash": "Jo9W9Tt/8U+b5MglvULDPA=="
+          "hash": "kjor+3o5tadhOt3i99wx1A=="
         }
       },
       "is_incremental": false,
@@ -618,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.MerchantOrder.html",
-          "hash": "dZFbagDQ5yjstEjhECfLvw=="
+          "hash": "66yB38iO8Do4pk1ckpdlbQ=="
         }
       },
       "is_incremental": false,
@@ -630,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.OAuth.CreateOAuthCredentialRequest.html",
-          "hash": "W7OgfihLMIYoZcQXE2lgiA=="
+          "hash": "Jqc/vRhmWq5Quy6wmasG8A=="
         }
       },
       "is_incremental": false,
@@ -642,7 +738,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.OAuth.OAuthClient.html",
-          "hash": "auU4Z+g55RVu5/Onawb8GQ=="
+          "hash": "mz34wHnIHx8xPooMt0UTow=="
         }
       },
       "is_incremental": false,
@@ -654,7 +750,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.OAuth.RefreshOAuthCredentialRequest.html",
-          "hash": "fZXhULV0d8rYy/XCWa9tIw=="
+          "hash": "3mMz43ww70LDGIcJ+YXL+w=="
         }
       },
       "is_incremental": false,
@@ -666,7 +762,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.OAuth.html",
-          "hash": "+qDS8TkupuzdNP8Nd2mBHw=="
+          "hash": "bMYPPDcQJSe3jfSOVOJbeA=="
         }
       },
       "is_incremental": false,
@@ -678,7 +774,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoPayerRequest.html",
-          "hash": "VTzhm2ew5LCBcC9gj2gttQ=="
+          "hash": "7HSLgLtW3UkoANgUeU87NA=="
         }
       },
       "is_incremental": false,
@@ -690,7 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoRequest.html",
-          "hash": "peShb0hZDwkBk067YYJbrw=="
+          "hash": "KmxlNX2M7YO2eRpQ7zpH3A=="
         }
       },
       "is_incremental": false,
@@ -702,7 +798,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCancelRequest.html",
-          "hash": "MJMdeztVNqd3rqBzTnmgBw=="
+          "hash": "hGAE0LwoZbgciewqPhxCfA=="
         }
       },
       "is_incremental": false,
@@ -714,7 +810,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCaptureRequest.html",
-          "hash": "ztcBCeyFk/v4CJriWrf9Sw=="
+          "hash": "4338cOQ5+HjRd7B9vktzsA=="
         }
       },
       "is_incremental": false,
@@ -726,7 +822,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCategoryDescriptorRequest.html",
-          "hash": "C4ikZSqxbgMilV63ZrU42g=="
+          "hash": "blJf4GwZ07VYFMF0HopYIA=="
         }
       },
       "is_incremental": false,
@@ -738,7 +834,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentClient.html",
-          "hash": "+iiyypKetS6modTCF29Z+A=="
+          "hash": "vjfMfqMWJvbNabWS2pvsrQ=="
         }
       },
       "is_incremental": false,
@@ -750,7 +846,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCreateRequest.html",
-          "hash": "rKk5+JWTFyWwpMhQnTQ1lw=="
+          "hash": "A5pXdVSy8vKASPIs7O2/0A=="
         }
       },
       "is_incremental": false,
@@ -762,7 +858,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentItemRequest.html",
-          "hash": "UyhlHF8xRtClxgxCRQQJ5w=="
+          "hash": "JETsnq22kUKG6kuIWOiiUg=="
         }
       },
       "is_incremental": false,
@@ -774,7 +870,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentMerchantServicesRequest.html",
-          "hash": "MmVE5ABSE8LC3jFle+CFoQ=="
+          "hash": "4rSoQwGhQfUvtzFycria0w=="
         }
       },
       "is_incremental": false,
@@ -786,7 +882,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentOrderRequest.html",
-          "hash": "tzRKHp8SdoWazQyi4pDCSw=="
+          "hash": "0U9RjtqwPmLdCG//x8tRwQ=="
         }
       },
       "is_incremental": false,
@@ -798,7 +894,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentPassengerRequest.html",
-          "hash": "u6937xszCXIsKLt1Byy3og=="
+          "hash": "2pXjz1HlhDFdBJKcQCwlJg=="
         }
       },
       "is_incremental": false,
@@ -810,7 +906,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentPayerRequest.html",
-          "hash": "O/26FUxmNC+e1sozr6Ew2Q=="
+          "hash": "8OQLUG30unmGON0EXo3oew=="
         }
       },
       "is_incremental": false,
@@ -822,7 +918,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentReceiverAddressRequest.html",
-          "hash": "IkeSywncOP5IoHsTnbmkKA=="
+          "hash": "bxKV2DQ/S4y90vx5GuaQTA=="
         }
       },
       "is_incremental": false,
@@ -834,7 +930,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRefundClient.html",
-          "hash": "N231C787y7zURKXZ9gSLuA=="
+          "hash": "Kzzln82oudJqnag+XuDzvQ=="
         }
       },
       "is_incremental": false,
@@ -846,7 +942,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRefundCreateRequest.html",
-          "hash": "pmDBR14VcfPdZWpC3TFEDQ=="
+          "hash": "1kGUMEJ5sVhhBJoLJkh0cg=="
         }
       },
       "is_incremental": false,
@@ -858,7 +954,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRouteRequest.html",
-          "hash": "0O0H2a8NS01oMwShDi+09Q=="
+          "hash": "5pdXq7ZJ4RKFVMNczzpyig=="
         }
       },
       "is_incremental": false,
@@ -870,7 +966,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentShipmentsRequest.html",
-          "hash": "3/sNL657QyQdRw3FzJGKZA=="
+          "hash": "WPLj26O44JfYF3vOQUjhYQ=="
         }
       },
       "is_incremental": false,
@@ -882,7 +978,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentTaxRequest.html",
-          "hash": "Lr+Ubi0fTR1gIaQzGgRc4A=="
+          "hash": "lcuBb0w5WlNKy97WTTiZmA=="
         }
       },
       "is_incremental": false,
@@ -894,7 +990,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.PaymentTransactionDetailsRequest.html",
-          "hash": "RzpW+RgAOGGJ0LpBofa8/A=="
+          "hash": "+BdYW1CKXUzvm+4P3z9ilQ=="
         }
       },
       "is_incremental": false,
@@ -906,7 +1002,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Payment.html",
-          "hash": "cs5xOeROiiK3zQ5y9rHu1g=="
+          "hash": "BVKIUJXJlZdpUy2aiwTWCw=="
         }
       },
       "is_incremental": false,
@@ -918,7 +1014,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.PaymentMethod.PaymentMethodClient.html",
-          "hash": "w0pXcjg6PuejlRhxzZViBg=="
+          "hash": "XdmDC4y3SXWtQyTrL+wuYA=="
         }
       },
       "is_incremental": false,
@@ -930,7 +1026,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.PaymentMethod.html",
-          "hash": "eLTXi233D+ul/yhuzk5Mhg=="
+          "hash": "eR2dhYCi4bMRAMeoWxHVzQ=="
         }
       },
       "is_incremental": false,
@@ -942,7 +1038,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringCreateRequest.html",
-          "hash": "mmVG2K03t50L9r4S4kKDSg=="
+          "hash": "V+Dyb9u4sqeLzRXoKqWZsw=="
         }
       },
       "is_incremental": false,
@@ -954,7 +1050,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringUpdateRequest.html",
-          "hash": "x/7Gm49ca7BHNu6osnU+TQ=="
+          "hash": "5IXUMwet/QS7r9P17g5mgg=="
         }
       },
       "is_incremental": false,
@@ -966,7 +1062,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalClient.html",
-          "hash": "VzZRN48INx2ezVmB+BEgEA=="
+          "hash": "RyFqw+1kk5lk3uXeLLiqLA=="
         }
       },
       "is_incremental": false,
@@ -978,7 +1074,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalCreateRequest.html",
-          "hash": "KjaeM3kx+iwk39BjrZg1Og=="
+          "hash": "xKXxJf3mXu+dW5zaoLwnHA=="
         }
       },
       "is_incremental": false,
@@ -990,7 +1086,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalUpdateRequest.html",
-          "hash": "YHOBIvOpVJPsXmcjS/Vkvw=="
+          "hash": "OaNMNkXZtENBlrt2C8AacQ=="
         }
       },
       "is_incremental": false,
@@ -1002,7 +1098,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preapproval.html",
-          "hash": "OiM80HTjf1b/StD2Eus3GA=="
+          "hash": "eJE/V2ECVB7PXNsHsvYMGg=="
         }
       },
       "is_incremental": false,
@@ -1014,7 +1110,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceBackUrlsRequest.html",
-          "hash": "sSbzQiy9MtEmgLHCnrrW/g=="
+          "hash": "Z6WkUqfbma+LYnhQ+fGKAA=="
         }
       },
       "is_incremental": false,
@@ -1026,7 +1122,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceCategoryDescriptorRequest.html",
-          "hash": "lm73AvA0lIdTAMfXmLhgsQ=="
+          "hash": "P1S1xtKD37z319RUylf88A=="
         }
       },
       "is_incremental": false,
@@ -1038,7 +1134,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceClient.html",
-          "hash": "jqfc8LjREQhZ/QbdFPSc2w=="
+          "hash": "Vd9wfJxHRshEVPoUWOLyPA=="
         }
       },
       "is_incremental": false,
@@ -1050,7 +1146,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceDifferentialPricingRequest.html",
-          "hash": "KZSddobcAdv0yOAhdATCyg=="
+          "hash": "X+uGcDBVrQeeatDkjY3B6w=="
         }
       },
       "is_incremental": false,
@@ -1062,7 +1158,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceFreeMethodRequest.html",
-          "hash": "iQpMHblKUF7Z0DsqKqoTgQ=="
+          "hash": "9CZPolmD4HyvPqYPM5oMfA=="
         }
       },
       "is_incremental": false,
@@ -1074,7 +1170,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceItemRequest.html",
-          "hash": "QabZyAjjXE2wfkSiktD3xg=="
+          "hash": "tElajsWNBQStsE6N8pXOcA=="
         }
       },
       "is_incremental": false,
@@ -1086,7 +1182,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePassengerRequest.html",
-          "hash": "hD1znYJGfWAqyAkCb2Joow=="
+          "hash": "sVxL3+0Km0qH9H2eaBSFrg=="
         }
       },
       "is_incremental": false,
@@ -1098,7 +1194,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePayerRequest.html",
-          "hash": "vY9kdhtYtYF94JJT+nzdfw=="
+          "hash": "Wam8P8ViFuZH1Lz8z67tpg=="
         }
       },
       "is_incremental": false,
@@ -1110,7 +1206,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentMethodRequest.html",
-          "hash": "WZYV6OqNwMdYhKlYrq1NuA=="
+          "hash": "szA56WzOogrzlbohu2RIuw=="
         }
       },
       "is_incremental": false,
@@ -1122,7 +1218,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentMethodsRequest.html",
-          "hash": "vdFSDOUbdA7oPAVRerVZDQ=="
+          "hash": "eqnfKUAdjL1LUuAXTWTmUA=="
         }
       },
       "is_incremental": false,
@@ -1134,7 +1230,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentTypeRequest.html",
-          "hash": "73lJejxuzC/MNfwzTHuKWQ=="
+          "hash": "YyfKRbfx4tpYdvxcAI1F9w=="
         }
       },
       "is_incremental": false,
@@ -1146,7 +1242,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceReceiverAddressRequest.html",
-          "hash": "s21Ys3UxZeehVmYsLR2YQQ=="
+          "hash": "i0SYogEFy6jWIcXwc4VnKA=="
         }
       },
       "is_incremental": false,
@@ -1158,7 +1254,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceRequest.html",
-          "hash": "WcZr2wi4WsMBrICqTMaTTw=="
+          "hash": "H4VXdfcXM6xcOhnDYPzYAQ=="
         }
       },
       "is_incremental": false,
@@ -1170,7 +1266,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceRouteRequest.html",
-          "hash": "N3JfB+zU7zv6W1n5THjlYg=="
+          "hash": "H9YvHhbvpBAa8tbkaGxwgQ=="
         }
       },
       "is_incremental": false,
@@ -1182,7 +1278,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceShipmentsRequest.html",
-          "hash": "KS6yxPVFMhppIY0V8eHjgQ=="
+          "hash": "zsFL7113CeTd4zCi70DLiQ=="
         }
       },
       "is_incremental": false,
@@ -1194,7 +1290,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTaxRequest.html",
-          "hash": "AteaxYiNNx0V60eWmC1uTw=="
+          "hash": "BLsD6q5rmNKvKHwp2tjQAw=="
         }
       },
       "is_incremental": false,
@@ -1206,7 +1302,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTrackRequest.html",
-          "hash": "T28SIzt3pEVZwAANfRsuuw=="
+          "hash": "BkHVNZV3cydVTdhG+6AVQw=="
         }
       },
       "is_incremental": false,
@@ -1218,7 +1314,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTrackValuesRequest.html",
-          "hash": "nP29XGAvTXUv438mtAWfwA=="
+          "hash": "wVmOZjG/8vDJX28DJR0qWA=="
         }
       },
       "is_incremental": false,
@@ -1230,7 +1326,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.Preference.html",
-          "hash": "q25EeFPxpRVClnNqTwY4oA=="
+          "hash": "i6mENO8L2XMbpUdLYwmYZQ=="
         }
       },
       "is_incremental": false,
@@ -1242,7 +1338,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.RequestOptions.html",
-          "hash": "0eYFFjHgxrhA3rCLIdCovg=="
+          "hash": "oXLaBYyatiCoNdpSnedkpg=="
         }
       },
       "is_incremental": false,
@@ -1254,7 +1350,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.SearchRequest.html",
-          "hash": "vJvvGEzJN7YwQJvRV9Tprg=="
+          "hash": "cV1+u3MJagu/D8Hd+zR9ZQ=="
         }
       },
       "is_incremental": false,
@@ -1266,7 +1362,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.User.UserClient.html",
-          "hash": "mPF20mdS51+1oP49aqEGBw=="
+          "hash": "6fFVp6EScgNiPPVJyj3Ikg=="
         }
       },
       "is_incremental": false,
@@ -1278,7 +1374,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.User.html",
-          "hash": "jzJ6xxfnNjWyfgVvoUz4jg=="
+          "hash": "+k/KkOIKnkgg/vu7SiTNTA=="
         }
       },
       "is_incremental": false,
@@ -1290,7 +1386,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Client.html",
-          "hash": "tpcReVUVLXQJTnZOp+em4Q=="
+          "hash": "WIHnMF7PplzlSbYfJs5dcQ=="
         }
       },
       "is_incremental": false,
@@ -1302,7 +1398,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Config.MercadoPagoConfig.html",
-          "hash": "upiJH7pXS/ejOtTLNC7cNw=="
+          "hash": "KasEmUm+Qck8BGtavo1KGw=="
         }
       },
       "is_incremental": false,
@@ -1314,7 +1410,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Config.html",
-          "hash": "NP0aAl+TJE3Zqyp/g5YZVw=="
+          "hash": "qTsdmngOa6hXOJGO0ylArA=="
         }
       },
       "is_incremental": false,
@@ -1326,7 +1422,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Error.ApiError.html",
-          "hash": "G1houAL4L4bgxr/qZXrSFQ=="
+          "hash": "D7Qq45acjBaOHSlu2W/qGw=="
         }
       },
       "is_incremental": false,
@@ -1338,7 +1434,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Error.ApiErrorCause.html",
-          "hash": "D/oHu083jx+sN254R5wnQA=="
+          "hash": "g4MQuPHK9bn1i3uCj399/g=="
         }
       },
       "is_incremental": false,
@@ -1350,7 +1446,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Error.MercadoPagoApiException.html",
-          "hash": "I9dyCGJFrubZErrcXgz6hQ=="
+          "hash": "S/ILYYX3lf9Z8wVjnH9r8Q=="
         }
       },
       "is_incremental": false,
@@ -1362,7 +1458,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Error.MercadoPagoException.html",
-          "hash": "0myarKuYpAxie0oNCQYWDQ=="
+          "hash": "M9k5cnI1v/2ogCxsbJhN8w=="
         }
       },
       "is_incremental": false,
@@ -1374,7 +1470,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Error.html",
-          "hash": "Eajn7eo9zaeZyVGLoBDDLQ=="
+          "hash": "Ey7SQoPB7n6iq/n0iD7Vwg=="
         }
       },
       "is_incremental": false,
@@ -1386,7 +1482,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.DefaultHttpClient.html",
-          "hash": "EaVnaJVtezrDaGvdumjH1g=="
+          "hash": "LfRgQQYLjrSz8E4rAERspQ=="
         }
       },
       "is_incremental": false,
@@ -1398,7 +1494,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.DefaultRetryStrategy.html",
-          "hash": "zuW9fd10l8KCIDZGMGL4DQ=="
+          "hash": "OnItpBWlXy9G1Kf65a83Jg=="
         }
       },
       "is_incremental": false,
@@ -1410,7 +1506,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.Headers.html",
-          "hash": "c2OmEUa+89hQmHYBWBf23g=="
+          "hash": "+NWNS53GbVhQ8ftTPJQkGA=="
         }
       },
       "is_incremental": false,
@@ -1422,7 +1518,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.HttpMethod.html",
-          "hash": "ObDkOHAk0ds3iwDv7V+t3w=="
+          "hash": "QmUb/0GFyXmjESaGf0hqmg=="
         }
       },
       "is_incremental": false,
@@ -1434,7 +1530,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.IHttpClient.html",
-          "hash": "YPd2SmbaEvLymDAH9w5TDg=="
+          "hash": "5uF21IiVNshn2fRhv0pDow=="
         }
       },
       "is_incremental": false,
@@ -1446,7 +1542,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.IRetryStrategy.html",
-          "hash": "ZD9wvLkKpKNciPIwQva8pw=="
+          "hash": "GXhmys5FGby/2vcq5i6c3A=="
         }
       },
       "is_incremental": false,
@@ -1458,7 +1554,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.MercadoPagoRequest.html",
-          "hash": "OEeAHDX0JsVFfjJD5HFbpw=="
+          "hash": "5LBs7u/fkeJCWVX3zs7tKA=="
         }
       },
       "is_incremental": false,
@@ -1470,7 +1566,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.MercadoPagoResponse.html",
-          "hash": "qkj2QcV7vWIdW05n1w1j4Q=="
+          "hash": "zHqlikJEgsh583LMY9QtAQ=="
         }
       },
       "is_incremental": false,
@@ -1482,7 +1578,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.RetryResponse.html",
-          "hash": "XJrR+tMMVRbCeWYKqSYUDA=="
+          "hash": "nwqu89SQIiY3IpY857i93w=="
         }
       },
       "is_incremental": false,
@@ -1494,7 +1590,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Http.html",
-          "hash": "kfkGMck4q3ww6+lwYfX8uA=="
+          "hash": "gdiIVcfYE58KUGACjGE4zw=="
         }
       },
       "is_incremental": false,
@@ -1506,7 +1602,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPayment.html",
-          "hash": "VoJu7tQtn9G4yM3TxHZv6Q=="
+          "hash": "ISnjuarkyr01ldeSn8l9YQ=="
         }
       },
       "is_incremental": false,
@@ -1518,7 +1614,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfo.html",
-          "hash": "AdJzBp8t/lJSAhaNeEXFvg=="
+          "hash": "DacYpVMRnWj49NrEbpvS5A=="
         }
       },
       "is_incremental": false,
@@ -1530,7 +1626,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfoPayer.html",
-          "hash": "yh/7p94OPIWSIOxGsfKWuQ=="
+          "hash": "8h4lY+Sh/J9ZycsKePW2TA=="
         }
       },
       "is_incremental": false,
@@ -1542,7 +1638,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursement.html",
-          "hash": "dy+q72Wz2/XLAyE4u1UGhw=="
+          "hash": "Uu+rtPozQwbZdq6KAWsBkA=="
         }
       },
       "is_incremental": false,
@@ -1554,7 +1650,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursementRefund.html",
-          "hash": "4bnrvyJtATY6wyDzTyrSLg=="
+          "hash": "zOS3H+OgTOkGxQZXod1x/g=="
         }
       },
       "is_incremental": false,
@@ -1566,7 +1662,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentItem.html",
-          "hash": "9pq4I23O6PUmdG7NA2yC6w=="
+          "hash": "SIIgoQAZDZKX4rFOJksXIg=="
         }
       },
       "is_incremental": false,
@@ -1578,7 +1674,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentPayer.html",
-          "hash": "SU8VE0YXRRhs7OpxaWRwPg=="
+          "hash": "fH+KNQMzzt76FG0FWGJhTw=="
         }
       },
       "is_incremental": false,
@@ -1590,7 +1686,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentReceiverAddress.html",
-          "hash": "5P9deJ3gazwxq7lCivWVng=="
+          "hash": "4MBiQ9n0O9TsGzN0ko2xeg=="
         }
       },
       "is_incremental": false,
@@ -1602,7 +1698,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentShipments.html",
-          "hash": "da706xLVqERGQHae1bvOyQ=="
+          "hash": "/dMOFxOXntDDTrvphXDGcA=="
         }
       },
       "is_incremental": false,
@@ -1614,7 +1710,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentSplitPayment.html",
-          "hash": "sTAQMQqJZDqGr/xJ0z8X+Q=="
+          "hash": "Au/a7o6ko+YhD9417MkkaQ=="
         }
       },
       "is_incremental": false,
@@ -1626,7 +1722,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentStatus.html",
-          "hash": "qyClVfZNBkBpkhie+HkmnQ=="
+          "hash": "dgKiLhVeiLOmYseihyzwGA=="
         }
       },
       "is_incremental": false,
@@ -1638,7 +1734,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTax.html",
-          "hash": "0eEhM4vrf/pV+W3iUplp9Q=="
+          "hash": "qJQOujLUv7ciPU8Zj0m0OQ=="
         }
       },
       "is_incremental": false,
@@ -1650,7 +1746,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTransactionDetails.html",
-          "hash": "M3NDlPfQNS//e4QYoXrbaw=="
+          "hash": "Cr+cASi5dJ6h7+gFbjEYlQ=="
         }
       },
       "is_incremental": false,
@@ -1662,7 +1758,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.html",
-          "hash": "TCXqDv8Zb801S/9HC5uijA=="
+          "hash": "/iW0toB7chhauyXNoGn9Ew=="
         }
       },
       "is_incremental": false,
@@ -1674,7 +1770,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.CardToken.CardToken.html",
-          "hash": "taAVrHk/Ezisz6DHKIIbxg=="
+          "hash": "W8mY/COkS8pcR85rera6zQ=="
         }
       },
       "is_incremental": false,
@@ -1686,7 +1782,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.CardToken.html",
-          "hash": "r2ur1K37uz180KFLRkHkcw=="
+          "hash": "vIqEEvq1yRvlGUUT+zYU9Q=="
         }
       },
       "is_incremental": false,
@@ -1698,7 +1794,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Common.Address.html",
-          "hash": "SKrPAMzzKN/reXlyxta0nA=="
+          "hash": "0U1bXsSklcak+OwoJmU/Fw=="
         }
       },
       "is_incremental": false,
@@ -1710,7 +1806,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Common.Identification.html",
-          "hash": "c/VbhYHOj2edBlzvKV1QEw=="
+          "hash": "DSAm0rYw879WsHziIkh5xw=="
         }
       },
       "is_incremental": false,
@@ -1722,7 +1818,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Common.Phone.html",
-          "hash": "oOrotf3FGn+By/q1NA5Luw=="
+          "hash": "askIkKTxg3JBdXFygt4Srw=="
         }
       },
       "is_incremental": false,
@@ -1734,7 +1830,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Common.Source.html",
-          "hash": "n7tpKi/YCZMlVjKO0Vs/VA=="
+          "hash": "qw6Wpj5YqtHYQL6vu5WYnA=="
         }
       },
       "is_incremental": false,
@@ -1746,7 +1842,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Common.html",
-          "hash": "LH0v/BB5jgcv35oz82q+QA=="
+          "hash": "o6xzNjNF1fAwY4TCSoUt+A=="
         }
       },
       "is_incremental": false,
@@ -1758,7 +1854,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.Customer.html",
-          "hash": "UJdDHiYynZK7x+GFq8MB9g=="
+          "hash": "MTBi8t1wqcILX5gVaaLA0w=="
         }
       },
       "is_incremental": false,
@@ -1770,7 +1866,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddress.html",
-          "hash": "P4QdpbXYytRjFb2GTz34pw=="
+          "hash": "PJVdZ7PijbM9MDpIzFt1yg=="
         }
       },
       "is_incremental": false,
@@ -1782,7 +1878,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressCity.html",
-          "hash": "NtFfWtv4qb7zGKcetynF6Q=="
+          "hash": "WYsdTK1ik3FARrIHQlJB1Q=="
         }
       },
       "is_incremental": false,
@@ -1794,7 +1890,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressCountry.html",
-          "hash": "Y0wYAkhjDFE0Q//fGkpaJA=="
+          "hash": "JXTKNIW8OGIiHv+74xCxlQ=="
         }
       },
       "is_incremental": false,
@@ -1806,7 +1902,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressMunicipality.html",
-          "hash": "zwHKbtBNFz3yPGkDD1W20Q=="
+          "hash": "XzyZOl0BPWdkQUSOgp4F/w=="
         }
       },
       "is_incremental": false,
@@ -1818,7 +1914,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressNeighborhood.html",
-          "hash": "oTFJ4N/+i7qvjhZPh+RYMA=="
+          "hash": "ozaMMiqhVglGcGH4ChkiPw=="
         }
       },
       "is_incremental": false,
@@ -1830,7 +1926,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressState.html",
-          "hash": "2d/SRNL+OmQp59onHASHfg=="
+          "hash": "IPF8nBOl0fuplLLuYzDnJw=="
         }
       },
       "is_incremental": false,
@@ -1842,7 +1938,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCard.html",
-          "hash": "X5nRLVGpFgRusqPEWlYkTA=="
+          "hash": "QTK+9j2m2PgJzdu+WiD9+w=="
         }
       },
       "is_incremental": false,
@@ -1854,7 +1950,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardCardholder.html",
-          "hash": "G86ugt4WcLadihgwunPHfA=="
+          "hash": "n63qz3PTjvMC/HZIH/LEzQ=="
         }
       },
       "is_incremental": false,
@@ -1866,7 +1962,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardCardholderIdentification.html",
-          "hash": "ESj1o7MS3MgfOiTsQzrHgQ=="
+          "hash": "WI6Q0CBt6WX4D8jrfU76Jg=="
         }
       },
       "is_incremental": false,
@@ -1878,7 +1974,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardIssuer.html",
-          "hash": "oPZ9rhpsFQCrTtZSmrWZXw=="
+          "hash": "vmpSpc+sRIdVXJrTEXmRrw=="
         }
       },
       "is_incremental": false,
@@ -1890,7 +1986,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardPaymentMethod.html",
-          "hash": "3J2V1DmPIdjKKdeVhSpOKQ=="
+          "hash": "L+6KlkxOSX2Mo1Woe9Sa2g=="
         }
       },
       "is_incremental": false,
@@ -1902,7 +1998,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardSecurityCode.html",
-          "hash": "hVRetBES+WEs1PWg7GSGtQ=="
+          "hash": "AIcxFM6W/MJyMWXq4/fW9Q=="
         }
       },
       "is_incremental": false,
@@ -1914,7 +2010,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerDefaultAddress.html",
-          "hash": "osDQKmryEIKWZpCQgnL9aA=="
+          "hash": "pDb3Rfj1hVdhM9+4bWn6uw=="
         }
       },
       "is_incremental": false,
@@ -1926,7 +2022,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Customer.html",
-          "hash": "asgtyKfWrRn3rULtPx/8Gg=="
+          "hash": "jutaPlHUoINx88VZojMzJQ=="
         }
       },
       "is_incremental": false,
@@ -1938,7 +2034,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.ElementsResourcesPage-1.html",
-          "hash": "rNPXphyf2wqRfy+abCuVyA=="
+          "hash": "uVeMhuDYq8mVlD53obZvUQ=="
         }
       },
       "is_incremental": false,
@@ -1950,7 +2046,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.IResource.html",
-          "hash": "TPk7vqK/CdyzRGBwnDWHTg=="
+          "hash": "uP/thHa+srs4pu5xGiqjSA=="
         }
       },
       "is_incremental": false,
@@ -1962,7 +2058,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.IResourcesPage-1.html",
-          "hash": "q9j/DRTn76Dwxyki9YOjYw=="
+          "hash": "LcDr6CByOoLbafuAwu0i0g=="
         }
       },
       "is_incremental": false,
@@ -1974,7 +2070,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.IdentificationType.IdentificationType.html",
-          "hash": "muH4/8WWjK5FzZnBYSzM0w=="
+          "hash": "wL6itfsEtCy0WEuPCDXg4Q=="
         }
       },
       "is_incremental": false,
@@ -1986,7 +2082,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.IdentificationType.html",
-          "hash": "xLDSIdGfijTovbOA3Of6qA=="
+          "hash": "LlHhyc+hjnGWLY5U6Q6yVQ=="
         }
       },
       "is_incremental": false,
@@ -1998,7 +2094,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrder.html",
-          "hash": "FHEpnrqCnDaB0Qq7428HDQ=="
+          "hash": "fFBweQAV/L/BI9E6ESrhag=="
         }
       },
       "is_incremental": false,
@@ -2010,7 +2106,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderCollector.html",
-          "hash": "USp3dRqH1lQwTkY31z8WBQ=="
+          "hash": "7IZqBiarKqqTrfVfHQB9rg=="
         }
       },
       "is_incremental": false,
@@ -2022,7 +2118,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderItem.html",
-          "hash": "kh8IdiFdfUsIaaeJv1uiWg=="
+          "hash": "u9nxnyDxn42BFhozACBObg=="
         }
       },
       "is_incremental": false,
@@ -2034,7 +2130,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayer.html",
-          "hash": "DjZ4Ovx1RIKd5WQknsqujQ=="
+          "hash": "FLQ1cqKJ4xsNUpa1pW4SGA=="
         }
       },
       "is_incremental": false,
@@ -2046,7 +2142,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayment.html",
-          "hash": "gWpmHdYJiYjAB07b5b/oug=="
+          "hash": "XnfDk9a9154cRJ8Ftel+vw=="
         }
       },
       "is_incremental": false,
@@ -2058,7 +2154,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddress.html",
-          "hash": "6rSbm6oeFCsjR34D/2dyYw=="
+          "hash": "7GR+AhjZ91//TK+cAJPo8A=="
         }
       },
       "is_incremental": false,
@@ -2070,7 +2166,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCity.html",
-          "hash": "VnH9FkPxGwj4ggF6k75F7A=="
+          "hash": "K3tvEMkMmlc4xYM6UYVnQg=="
         }
       },
       "is_incremental": false,
@@ -2082,7 +2178,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCountry.html",
-          "hash": "J1GtT+6AMhjfEMgyWixT+Q=="
+          "hash": "tAz8H1XzRx6Qj43dB4fKhg=="
         }
       },
       "is_incremental": false,
@@ -2094,7 +2190,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressState.html",
-          "hash": "5nJwqPxOZuQyAmVtMzGYWQ=="
+          "hash": "FZik0TrgmZ/Zy7CWxgX4iQ=="
         }
       },
       "is_incremental": false,
@@ -2106,7 +2202,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShipment.html",
-          "hash": "NrYNvWGVv2nt6htBQRYUSw=="
+          "hash": "s8nWdcJKWXtshvioTXcBgg=="
         }
       },
       "is_incremental": false,
@@ -2118,7 +2214,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingEstimatedDelivery.html",
-          "hash": "j40tyl/m4XXMUKPR7BY94w=="
+          "hash": "7CKBJ6re8ZZEEXL66tG/rg=="
         }
       },
       "is_incremental": false,
@@ -2130,7 +2226,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingOption.html",
-          "hash": "e8seznwE0420TCPM9AvdEw=="
+          "hash": "COzl5TGeQ2+GU7EZWGFjxg=="
         }
       },
       "is_incremental": false,
@@ -2142,7 +2238,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingSpeed.html",
-          "hash": "Yz8h2Sn1AzopojaGn4U5rQ=="
+          "hash": "HfIsrCRAtZM4p3hzKPsCww=="
         }
       },
       "is_incremental": false,
@@ -2154,7 +2250,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.html",
-          "hash": "uLqqbFjce/72+VnhUOJbcw=="
+          "hash": "FX0imlYPQn0L0J/mmvYjdg=="
         }
       },
       "is_incremental": false,
@@ -2166,7 +2262,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.OAuth.OAuthCredential.html",
-          "hash": "TDMnpcB7HY/W2l9XKG5Xmw=="
+          "hash": "2PqOjxf5RZFOZ3rOYl+uIw=="
         }
       },
       "is_incremental": false,
@@ -2178,7 +2274,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.OAuth.html",
-          "hash": "kOjAcs4uivhn/m27DEH+uA=="
+          "hash": "tSHQVuYaRwaugpPF7+chtQ=="
         }
       },
       "is_incremental": false,
@@ -2190,7 +2286,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.Payment.html",
-          "hash": "iQLI9f8RF04ZsekjG39E4Q=="
+          "hash": "FvxTCf9g//4eokvme6mVCg=="
         }
       },
       "is_incremental": false,
@@ -2202,7 +2298,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfo.html",
-          "hash": "ThOP0Su5cFOOlshM0r6nAA=="
+          "hash": "LiEWlqflg1Cu9+EPyE627A=="
         }
       },
       "is_incremental": false,
@@ -2214,7 +2310,55 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfoPayer.html",
-          "hash": "OUqEDtSN/sS/UXXt1oReaA=="
+          "hash": "on6ZY2bCh4APezTx54y9ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentApplicationData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentApplicationData.html",
+          "hash": "oqIKe9cuenSsY22XmcWhfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfo.html",
+          "hash": "3GV7NA23FXx8JnqOLJceJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfoCollector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfoCollector.html",
+          "hash": "Bsq/98t3qZKA0Zm+CVsGTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfoPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfoPayer.html",
+          "hash": "/ILz3r4fDGxXmI5Xkvfsqg=="
         }
       },
       "is_incremental": false,
@@ -2226,7 +2370,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentCard.html",
-          "hash": "CXkJUVFAYmgK+M/y8hILbQ=="
+          "hash": "ko4W6IuxpDzybBB+6gbgHA=="
         }
       },
       "is_incremental": false,
@@ -2238,7 +2382,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentCardholder.html",
-          "hash": "5Ytvpfs+7l5pu0K3OByb1w=="
+          "hash": "kW5tGpyxmK0YGxYfLbvoDA=="
         }
       },
       "is_incremental": false,
@@ -2250,7 +2394,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentFeeDetail.html",
-          "hash": "fLHwYPT5mGnX8NA5afxW1A=="
+          "hash": "2t+K2UBeQ+WBbcZh+2OPyA=="
         }
       },
       "is_incremental": false,
@@ -2262,7 +2406,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentItem.html",
-          "hash": "MJG3DWi14QvlMGwgB8KBwg=="
+          "hash": "CNUVsNFJUfjRl1oEjZIt3g=="
         }
       },
       "is_incremental": false,
@@ -2274,7 +2418,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentOrder.html",
-          "hash": "hmCTeEcbLhIz9gU6nHWPnQ=="
+          "hash": "LcNhtAoeB7mLLzUkNYFPRA=="
         }
       },
       "is_incremental": false,
@@ -2286,7 +2430,19 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentPayer.html",
-          "hash": "Qmd3NVPt2WW2oPZtiukOCQ=="
+          "hash": "edtSnFDKLYRMK0olj+0EkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentPointOfInteraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentPointOfInteraction.html",
+          "hash": "kCdBl8Bq2j3uQr5aE4WjHw=="
         }
       },
       "is_incremental": false,
@@ -2298,7 +2454,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentReceiverAddress.html",
-          "hash": "g+n3UhB9otHRz16QuY/pqg=="
+          "hash": "D1s9xUqlTwh2jhiBV6xE3g=="
         }
       },
       "is_incremental": false,
@@ -2310,7 +2466,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentRefund.html",
-          "hash": "zBUJQp0zsALna06fnwQtBg=="
+          "hash": "/fxVVNjM41IAkpcVErzVnA=="
         }
       },
       "is_incremental": false,
@@ -2322,7 +2478,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentShipments.html",
-          "hash": "uolrFIrl2XsJEmwjAJ3Pjw=="
+          "hash": "6oO9OcFtHeCMgrnuJRwvug=="
         }
       },
       "is_incremental": false,
@@ -2334,7 +2490,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentStatus.html",
-          "hash": "5IUdxEMlfoLGLgg56FVw0A=="
+          "hash": "uLOPqY7p8AS6tUmQwsCYlQ=="
         }
       },
       "is_incremental": false,
@@ -2346,7 +2502,19 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTax.html",
-          "hash": "VkCuXzkEa7edd2FyMgdKDA=="
+          "hash": "MUj8TZL2vsRIdHZW6m88RQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentTransactionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTransactionData.html",
+          "hash": "HUeS1j0SRK8rX7O2m6jBSw=="
         }
       },
       "is_incremental": false,
@@ -2358,7 +2526,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTransactionDetails.html",
-          "hash": "3v5sPbPWnnrL1rcWko+6cQ=="
+          "hash": "MyNZwvXQeIL5tHe8cy+aQg=="
         }
       },
       "is_incremental": false,
@@ -2370,7 +2538,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Payment.html",
-          "hash": "VohA75ndADwvwomyhce5HQ=="
+          "hash": "jLEyoTbUUeABLMRHxlTi3w=="
         }
       },
       "is_incremental": false,
@@ -2382,7 +2550,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethod.html",
-          "hash": "bYj65DxzHE8TA0LV4wEIoA=="
+          "hash": "IDGCjbWf1yjIbKOGnt6AUA=="
         }
       },
       "is_incremental": false,
@@ -2394,7 +2562,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodFinancialInstitutions.html",
-          "hash": "6FwSCDbfopVSpBunjZJviA=="
+          "hash": "wVsaeRRdnX6YbymBDvEBNA=="
         }
       },
       "is_incremental": false,
@@ -2406,7 +2574,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettings.html",
-          "hash": "+R2kS+st7mVwUu3dpa9DTQ=="
+          "hash": "tEvFIHzc54ZATeisChEj/w=="
         }
       },
       "is_incremental": false,
@@ -2418,7 +2586,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsBin.html",
-          "hash": "4C7aCG3SOzmT7kfh4/l+DQ=="
+          "hash": "N7WlSFZ52Dd/WtiBJ9CSTA=="
         }
       },
       "is_incremental": false,
@@ -2430,7 +2598,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsCardNumber.html",
-          "hash": "bBny9+HZiSvUOM9u3KMjlg=="
+          "hash": "vVm772GoXcJxs2FTYd6IhA=="
         }
       },
       "is_incremental": false,
@@ -2442,7 +2610,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsSecurityCode.html",
-          "hash": "9t+ulxQIRQ2meWFQVOECYw=="
+          "hash": "xuJbFarUQToDyOGyDmFFZg=="
         }
       },
       "is_incremental": false,
@@ -2454,7 +2622,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.html",
-          "hash": "o1H5wgpE8Fk6o1zarVrqDw=="
+          "hash": "dEj3gSmJ3hyrmxb1OIISjQ=="
         }
       },
       "is_incremental": false,
@@ -2466,7 +2634,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PreApproval.Preapproval.html",
-          "hash": "DKfBnPmiOhf8m0Pt3n+NVA=="
+          "hash": "/0Cr/wKFazmWZHeRJECYLA=="
         }
       },
       "is_incremental": false,
@@ -2478,7 +2646,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PreApproval.PreapprovalAutoRecurring.html",
-          "hash": "+yQSMQAxoTur8C2ZfFEXrQ=="
+          "hash": "rT5LgLhc0tLcrEcaelmDsw=="
         }
       },
       "is_incremental": false,
@@ -2490,7 +2658,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.PreApproval.html",
-          "hash": "akYC64D0JIwy3O7xhem9tQ=="
+          "hash": "Dt+BoJwvrOVVaw71YnmQNA=="
         }
       },
       "is_incremental": false,
@@ -2502,7 +2670,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.Preference.html",
-          "hash": "WDs9hCaIZ+3OoZUNv+mSdw=="
+          "hash": "907FlXEJSrFXOk3hof3ytA=="
         }
       },
       "is_incremental": false,
@@ -2514,7 +2682,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceBackUrls.html",
-          "hash": "qNkf1GFbsg3lYHEOK3ELOw=="
+          "hash": "tmthTCLli1nNvdzVXr4WNQ=="
         }
       },
       "is_incremental": false,
@@ -2526,7 +2694,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceCategoryDescriptor.html",
-          "hash": "xYLloLj8natJlwPaFZjDjg=="
+          "hash": "RKWqhcnLbhQkp9aod/37jg=="
         }
       },
       "is_incremental": false,
@@ -2538,7 +2706,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceDifferentialPricing.html",
-          "hash": "uTVhD7hlg8u2Ka7pb52j7w=="
+          "hash": "nW01PqnO8NuFxUBYEWVmqw=="
         }
       },
       "is_incremental": false,
@@ -2550,7 +2718,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceFreeMethod.html",
-          "hash": "bTNKcfoIlPo+nOxOGE4WwA=="
+          "hash": "9GdqJC8RkU3TJ/UCuatmAA=="
         }
       },
       "is_incremental": false,
@@ -2562,7 +2730,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceItem.html",
-          "hash": "SkJLGSJ3KjvUB7VAB6c7+g=="
+          "hash": "Nf8hvpkH/v+9qp9BWIESlA=="
         }
       },
       "is_incremental": false,
@@ -2574,7 +2742,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePassenger.html",
-          "hash": "6cF8mx5tYM9OVGWDwRzpzQ=="
+          "hash": "0ZC67M22SH7L1ItwEwC0og=="
         }
       },
       "is_incremental": false,
@@ -2586,7 +2754,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePayer.html",
-          "hash": "SvGUQVz3485LwfXYFyZoaA=="
+          "hash": "qaCktR63eWFJH/Jh3FYDOA=="
         }
       },
       "is_incremental": false,
@@ -2598,7 +2766,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentMethod.html",
-          "hash": "BWVOakpQrlFx5/aSSsSSqg=="
+          "hash": "RecuTfUG71JKB5KvYL5pJQ=="
         }
       },
       "is_incremental": false,
@@ -2610,7 +2778,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentMethods.html",
-          "hash": "uJlBiodaeT5xsrcVQneovQ=="
+          "hash": "AbcXVAfk9vpZmx5mLbw5MA=="
         }
       },
       "is_incremental": false,
@@ -2622,7 +2790,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentType.html",
-          "hash": "1ujtxeX9JYw3e0Mzdc9DkQ=="
+          "hash": "wVVLDS6NhNaBGAKDw0tDrg=="
         }
       },
       "is_incremental": false,
@@ -2634,7 +2802,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceReceiverAddress.html",
-          "hash": "mUSPs+I8nMmT/P8hnIhDig=="
+          "hash": "nzFGSzduKHrrAt4NGHHI3Q=="
         }
       },
       "is_incremental": false,
@@ -2646,7 +2814,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceRoute.html",
-          "hash": "vFMsPCvIzeGlhCMPAf/byw=="
+          "hash": "LHY/108FmQ3St1T8QeXl+g=="
         }
       },
       "is_incremental": false,
@@ -2658,7 +2826,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceShipments.html",
-          "hash": "kB220ws/dikrho3ssI2nLQ=="
+          "hash": "c58IYYsWR2ccelhoubuHaA=="
         }
       },
       "is_incremental": false,
@@ -2670,7 +2838,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTax.html",
-          "hash": "+86l/obZSCMi2l9bV1Mi3g=="
+          "hash": "Jar6lQBmuC4cZ+CPihwcCQ=="
         }
       },
       "is_incremental": false,
@@ -2682,7 +2850,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTrack.html",
-          "hash": "QwDOSxnjmEnKsI+qyCQbGQ=="
+          "hash": "+GYrll+K7RbrCduNNKOQ/w=="
         }
       },
       "is_incremental": false,
@@ -2694,7 +2862,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTrackValues.html",
-          "hash": "PbC0CDl5eowkUgFa1iDPaQ=="
+          "hash": "oorij+BWtl1PzWXL+qjo2g=="
         }
       },
       "is_incremental": false,
@@ -2706,7 +2874,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.Preference.html",
-          "hash": "nroCbqCEL32LfoRiQS2r7g=="
+          "hash": "VB8rt0QMoYHRvT4BqSEezw=="
         }
       },
       "is_incremental": false,
@@ -2718,7 +2886,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.ResourcesList-1.html",
-          "hash": "0Cy2TjM9nSCNLHY6YakVAw=="
+          "hash": "VE/hxdbt3DPdRq35+LaorA=="
         }
       },
       "is_incremental": false,
@@ -2730,7 +2898,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.ResultsPaging.html",
-          "hash": "IX6t+d4MDBojbt4wTPJKBA=="
+          "hash": "qppyBjR69YhwhQo3poUoAw=="
         }
       },
       "is_incremental": false,
@@ -2742,7 +2910,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.ResultsResourcesPage-1.html",
-          "hash": "mf3NjspOegtL3KLE2cmPMQ=="
+          "hash": "FhRs6ak8mwwqaW+sHH6U0Q=="
         }
       },
       "is_incremental": false,
@@ -2754,7 +2922,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.User.User.html",
-          "hash": "F3BupJeRxO2vrIBAq1XCbw=="
+          "hash": "h1wSPjhTyQqK3vPgdi5/Zg=="
         }
       },
       "is_incremental": false,
@@ -2766,7 +2934,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.User.html",
-          "hash": "khCagO5pWJ4zL55vONDh1Q=="
+          "hash": "gzJ6X1ARv8N3C64ZMDN5Bw=="
         }
       },
       "is_incremental": false,
@@ -2778,7 +2946,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Resource.html",
-          "hash": "JFx4j4uWZ0fQJtSkHGYiSw=="
+          "hash": "jzUIyU0irkIUzrCKg/6L6w=="
         }
       },
       "is_incremental": false,
@@ -2790,7 +2958,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Serialization.DefaultSerializer.html",
-          "hash": "buC0RO4JD/Tb5hksvr8LTg=="
+          "hash": "a7XTlUKWzd6jkFbicNiVDg=="
         }
       },
       "is_incremental": false,
@@ -2802,7 +2970,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Serialization.ISerializer.html",
-          "hash": "E5D7izXR0BP0rf4tGquzZA=="
+          "hash": "M68pa/sAKVBpIat//SWl+A=="
         }
       },
       "is_incremental": false,
@@ -2814,7 +2982,7 @@
       "output": {
         ".html": {
           "relative_path": "sdk/MercadoPago.Serialization.html",
-          "hash": "tYitsaJSkh4lYxRyN0t/ng=="
+          "hash": "0K2hiBPePzINYRCpLMUdvw=="
         }
       },
       "is_incremental": false,
@@ -2824,25 +2992,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 1,
-          "skipped_file_count": 0
+          "total_file_count": 9,
+          "skipped_file_count": 9
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 233,
-          "skipped_file_count": 0
+          "total_file_count": 239,
+          "skipped_file_count": 239
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

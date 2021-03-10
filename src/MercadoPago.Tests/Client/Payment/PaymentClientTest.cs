@@ -268,7 +268,7 @@
             Assert.Equal(1, results.Paging.Total);
             Assert.NotNull(results.Results);
             Assert.Equal(createdPayment.Id, results.Results.First().Id);
-        }        
+        }
 
         [Fact]
         public void Search_ByExternalReference_Success()

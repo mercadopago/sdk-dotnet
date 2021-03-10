@@ -13,12 +13,12 @@
     public class PaymentCreateRequest : IdempotentRequest
     {
         /// <summary>
-        /// Payer information.  
+        /// Payer information.
         /// </summary>
         public PaymentPayerRequest Payer { get; set; }
 
         /// <summary>
-        /// When set to true, the payment can only be approved or rejected. 
+        /// When set to true, the payment can only be approved or rejected.
         /// Otherwise in_process status is added.
         /// </summary>
         public bool? BinaryMode { get; set; }
@@ -151,7 +151,7 @@
         public PaymentTransactionDetailsRequest TransactionDetails { get; set; }
 
         /// <summary>
-        /// Data that could improve fraud analysis and conversion rates. 
+        /// Data that could improve fraud analysis and conversion rates.
         /// Try to send as much information as possible.
         /// </summary>
         public PaymentAdditionalInfoRequest AdditionalInfo { get; set; }

@@ -149,7 +149,7 @@
             {
                 accessToken = MercadoPagoConfig.AccessToken;
             }
-            
+
             var request = new CreateOAuthCredentialRequest
             {
                 ClientSecret = accessToken,

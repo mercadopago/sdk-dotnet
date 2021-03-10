@@ -36,7 +36,7 @@
         public string ExternalResourceUrl { get; set; }
 
         /// <summary>
-        /// For credit card payments is the USN. For offline payment methods, 
+        /// For credit card payments is the USN. For offline payment methods,
         /// is the reference to give to the cashier or to input into the ATM.
         /// </summary>
         public string PaymentMethodReferenceId { get; set; }

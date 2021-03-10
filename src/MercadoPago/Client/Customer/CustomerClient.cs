@@ -218,10 +218,6 @@
         /// <returns>A task whose the result is the deleted customer.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
-        /// <remarks>
-        /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
-        /// </remarks>
         public Task<Customer> DeleteAsync(
             string id,
             RequestOptions requestOptions = null,
@@ -243,10 +239,6 @@
         /// <returns>The deleted customer.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
-        /// <remarks>
-        /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
-        /// </remarks>
         public Customer Delete(
             string id,
             RequestOptions requestOptions = null)

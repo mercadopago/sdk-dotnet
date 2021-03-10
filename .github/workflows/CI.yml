@@ -14,11 +14,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-    
+
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: '5.0.x'
 
       # Build
       - name: Install dependencies
@@ -26,7 +26,7 @@ jobs:
 
       - name: Build
         run: dotnet build src/MercadoPago/MercadoPago.csproj --configuration Release --no-restore
-    
+
       # Run Tests
       - name: Install tests dependencies
         run: dotnet restore src/MercadoPago.Tests/MercadoPago.Tests.csproj

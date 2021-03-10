@@ -10,7 +10,7 @@
             ],
             "dest": "obj/sdk",
             "properties": {
-                "TargetFramework": "netstandard2.0"
+                "TargetFramework": "netcoreapp3.1"
             }
         }
     ],
@@ -22,13 +22,18 @@
                 "dest": "sdk"
             },
             {
-                "files": [ "index.md", "toc.yml" ]
+                "files": [ "*.md", "toc.yml" ]
+            },
+            {
+                "files": [ "*.md" ],
+                "src": ".github/ISSUE_TEMPLATE"
             }
         ],
         "globalMetadata": {
             "_appTitle": "MercadoPago official .NET SDK",
             "_enableSearch": true
         },
+        "template": ["statictoc"],
         "markdownEngineName": "markdig",
         "dest": "docs",
         "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ]
