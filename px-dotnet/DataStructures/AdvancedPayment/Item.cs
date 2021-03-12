@@ -1,4 +1,7 @@
-﻿namespace MercadoPago.DataStructures.AdvancedPayment
+﻿using MercadoPago.Common;
+using Newtonsoft.Json;
+
+namespace MercadoPago.DataStructures.AdvancedPayment
 {
     /// <summary>
     /// Purchased item
@@ -38,6 +41,7 @@
         /// <summary>
         /// Item unit price
         /// </summary>
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitPrice { get; set; }
     }
 }

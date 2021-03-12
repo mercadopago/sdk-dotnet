@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MercadoPago.Common;
+using Newtonsoft.Json;
 
 namespace MercadoPago.DataStructures.Payment
 {
@@ -66,6 +68,7 @@ namespace MercadoPago.DataStructures.Payment
         /// <summary>
         /// Unit price
         /// </summary>
+        [JsonConverter(typeof(StringDecimalConverter))]
         public decimal? UnitPrice
         {
             get { return _unit_price; }
