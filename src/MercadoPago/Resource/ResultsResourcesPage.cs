@@ -18,7 +18,7 @@
         /// <summary>
         /// Items in this page.
         /// </summary>
-        public List<TResource> Results { get; set; }
+        public IList<TResource> Results { get; set; }
 
         /// <summary>
         /// Response from API.

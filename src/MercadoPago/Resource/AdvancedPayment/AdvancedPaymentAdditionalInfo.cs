@@ -16,7 +16,7 @@
         /// <summary>
         /// List of items to be paid.
         /// </summary>
-        public List<AdvancedPaymentItem> Items { get; set; }
+        public IList<AdvancedPaymentItem> Items { get; set; }
 
         /// <summary>
         /// Payer's information.

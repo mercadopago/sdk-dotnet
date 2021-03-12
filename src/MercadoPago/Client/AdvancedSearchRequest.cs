@@ -63,9 +63,9 @@
         /// Create the search params from properties.
         /// </summary>
         /// <returns>The search params.</returns>
-        public override Dictionary<string, object> GetParameters()
+        public override IDictionary<string, object> GetParameters()
         {
-            Dictionary<string, object> parameters = base.GetParameters();
+            IDictionary<string, object> parameters = base.GetParameters();
 
             if (!parameters.ContainsKey(SortParam))
             {

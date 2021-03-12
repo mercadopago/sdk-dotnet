@@ -30,6 +30,6 @@
         /// <summary>
         /// Error causes.
         /// </summary>
-        public List<ApiErrorCause> Cause { get; set; }
+        public IList<ApiErrorCause> Cause { get; set; }
     }
 }

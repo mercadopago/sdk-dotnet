@@ -23,7 +23,7 @@
         /// <summary>
         /// Items in this page.
         /// </summary>
-        public List<TResource> Elements { get; set; }
+        public IList<TResource> Elements { get; set; }
 
         /// <summary>
         /// Response from API.

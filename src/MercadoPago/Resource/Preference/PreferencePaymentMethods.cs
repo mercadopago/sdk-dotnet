@@ -10,12 +10,12 @@
         /// <summary>
         /// Payment methods not allowed in payment process (except account_money).
         /// </summary>
-        public List<PreferencePaymentMethod> ExcludedPaymentMethods { get; set; }
+        public IList<PreferencePaymentMethod> ExcludedPaymentMethods { get; set; }
 
         /// <summary>
         /// Payment types not allowed in payment process.
         /// </summary>
-        public List<PreferencePaymentType> ExcludedPaymentTypes { get; set; }
+        public IList<PreferencePaymentType> ExcludedPaymentTypes { get; set; }
 
         /// <summary>
         /// Payment method to be preferred on the payments methods list.

@@ -30,7 +30,7 @@
         /// <summary>
         /// Offer a shipping method as free shipping (mode:me2 only).
         /// </summary>
-        public List<PreferenceFreeMethodRequest> FreeMethods { get; set; }
+        public IList<PreferenceFreeMethodRequest> FreeMethods { get; set; }
 
         /// <summary>
         /// Shipment cost (mode:custom only).

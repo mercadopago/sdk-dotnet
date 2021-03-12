@@ -30,15 +30,15 @@
         /// <summary>
         /// Search filter parameters.
         /// </summary>
-        public Dictionary<string, object> Filters { get; set; }
+        public IDictionary<string, object> Filters { get; set; }
 
         /// <summary>
         /// Create the search params from properties.
         /// </summary>
         /// <returns>The search params.</returns>
-        public virtual Dictionary<string, object> GetParameters()
+        public virtual IDictionary<string, object> GetParameters()
         {
-            Dictionary<string, object> parameters;
+            IDictionary<string, object> parameters;
             if (Filters != null)
             {
                 parameters = new Dictionary<string, object>(Filters);

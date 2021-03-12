@@ -127,7 +127,7 @@
         /// Data that can be attached to the payment to record additional
         /// attributes of the merchant.
         /// </summary>
-        public Dictionary<string, object> Metadata { get; set; }
+        public IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
         /// Data that could improve fraud analysis and conversion rates.

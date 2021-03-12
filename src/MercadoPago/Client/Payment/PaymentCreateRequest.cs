@@ -42,7 +42,7 @@
         /// Data that can be attached to the payment to record additional
         /// attributes of the merchant.
         /// </summary>
-        public Dictionary<string, object> Metadata { get; set; }
+        public IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
         /// Amount paid.
@@ -159,7 +159,7 @@
         /// <summary>
         /// Taxes for payments.
         /// </summary>
-        public List<PaymentTaxRequest> Taxes { get; set; }
+        public IList<PaymentTaxRequest> Taxes { get; set; }
 
         /// <summary>
         /// Merchant services.
