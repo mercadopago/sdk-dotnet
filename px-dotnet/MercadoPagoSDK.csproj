@@ -240,6 +240,7 @@
     <Compile Include="DataStructures\Payment\BankInfo.cs" />
     <Compile Include="DataStructures\Payment\BankInfoCollector.cs" />
     <Compile Include="DataStructures\Payment\BankInfoPayer.cs" />
+    <Compile Include="Common\StringDecimalConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
