@@ -97,8 +97,6 @@ Payment payment = await client.CreateAsync(request, requestOptions);
 
 ```
 
-## Uso avançado
-
 ### Usar um servidor de proxy
 
 ```csharp

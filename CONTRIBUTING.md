@@ -41,7 +41,7 @@ Bug reports may also be sent in the form of a [pull request](#pull-request) cont
 
 ## Pull Request
 
-First and foremost: Source code, documentation, commit messages, review comments, and any other kind of contribution must *MUST* follow the [C# Coding Convention](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions).
+First and foremost: Source code, documentation, commit messages, review comments, and any other kind of contribution must *MUST* follow the [Coding Guidelines](CODING_GUIDELINES.md).
 
 We use the "fork and pull" model [described here](https://help.github.com/articles/about-collaborative-development-models/), where contributors push changes to their personal fork and create pull requests to bring those changes into the source repository.
 
