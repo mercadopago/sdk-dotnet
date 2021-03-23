@@ -32,7 +32,7 @@ jobs:
         run: dotnet restore src/MercadoPago.Tests/MercadoPago.Tests.csproj
 
       - name: Run tests
-        run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj -f netcoreapp3.1 --configuration Release --no-restore
+        run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj --configuration Release --no-restore
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           EMAIL: ${{ secrets.USER_EMAIL }}
