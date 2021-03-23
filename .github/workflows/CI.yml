@@ -35,4 +35,4 @@ jobs:
         run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj -f net5.0 --configuration Release --no-restore
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          EMAIL: ${{ secrets.USER_EMAIL }}
+          USER_EMAIL: ${{ secrets.USER_EMAIL }}
