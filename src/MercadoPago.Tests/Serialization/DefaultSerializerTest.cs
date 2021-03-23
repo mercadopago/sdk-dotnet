@@ -25,9 +25,10 @@
             Assert.Equal(1234567890, dummyObject.Number);
             Assert.Equal(
                 DateTime.ParseExact(
-                    "2000-01-01T18:37:42.985-02:00",
+                    "2000-01-01T18:37:42.985Z",
                     "yyyy-MM-dd'T'HH:mm:ss.fffK",
-                    CultureInfo.InvariantCulture),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.AdjustToUniversal),
                 dummyObject.DateTime);
         }
 
@@ -39,9 +40,10 @@
                 Text = "some text",
                 Number = 1234567890,
                 DateTime = DateTime.ParseExact(
-                    "2000-01-01T18:37:42.985-02:00",
+                    "2000-01-01T18:37:42.985+00:00",
                     "yyyy-MM-dd'T'HH:mm:ss.fffK",
-                    CultureInfo.InvariantCulture),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.AdjustToUniversal),
             };
             string json = serializer.SerializeToJson(dummyObject);
 
@@ -56,13 +58,14 @@
                 Text = "some text",
                 Number = 1234567890,
                 DateTime = DateTime.ParseExact(
-                    "2000-01-01T18:37:42.985-02:00",
+                    "2000-01-01T18:37:42.985+00:00",
                     "yyyy-MM-dd'T'HH:mm:ss.fffK",
-                    CultureInfo.InvariantCulture),
+                    CultureInfo.InvariantCulture,
+                    DateTimeStyles.AdjustToUniversal),
             };
             string queryString = await serializer.SerializeToQueryStringAsync(dummyObject);
 
-            Assert.Equal("text=some+text&number=1234567890&date_time=2000-01-01T18%3A37%3A42.985-02%3A00", queryString);
+            Assert.Equal("text=some+text&number=1234567890&date_time=2000-01-01T18%3A37%3A42.985Z", queryString);
         }
     }
 }
