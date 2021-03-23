@@ -29,6 +29,7 @@
                     NamingStrategy = new SnakeCaseNamingStrategy(),
                 },
                 DateFormatString = DATE_FORMAT_STRING,
+                DateTimeZoneHandling = DateTimeZoneHandling.RoundtripKind,
                 Culture = CultureInfo.InvariantCulture,
                 NullValueHandling = NullValueHandling.Ignore,
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
