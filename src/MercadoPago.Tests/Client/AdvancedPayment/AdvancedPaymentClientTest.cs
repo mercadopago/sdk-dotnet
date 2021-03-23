@@ -72,7 +72,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Approved_Success()
         {
             AdvancedPaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -84,7 +84,7 @@
             Assert.Equal(request.ExternalReference, advancedPayment.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Approved_Success()
         {
             AdvancedPaymentCreateRequest request = BuildCreateRequest(true, "approved");
@@ -96,7 +96,7 @@
             Assert.Equal(request.ExternalReference, advancedPayment.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CancelAsync_Pending_Success()
         {
             // Creates a pending advanced payment
@@ -112,7 +112,7 @@
             Assert.Equal(AdvancedPaymentStatus.Cancelled, advancedPayment.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Cancel_Pending_Success()
         {
             // Creates a pending advanced payment
@@ -164,7 +164,7 @@
             Assert.Equal(AdvancedPaymentStatus.Approved, advancedPayment.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task UpdateRealeaseDateAsync_AllDisbursements_Success()
         {
             AdvancedPaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -178,7 +178,7 @@
             Assert.NotNull(advancedPayment);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void UpdateRealeaseDate_AllDisbursements_Success()
         {
             AdvancedPaymentCreateRequest request = BuildCreateRequest(true, "approved");
@@ -192,7 +192,7 @@
             Assert.NotNull(advancedPayment);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             AdvancedPaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -207,7 +207,7 @@
             Assert.Equal(createdPayment.Id, advancedPayment.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             AdvancedPaymentCreateRequest request = BuildCreateRequest(true, "approved");
@@ -222,7 +222,7 @@
             Assert.Equal(createdPayment.Id, advancedPayment.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_ByExternalReference_Success()
         {
             AdvancedPaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -240,7 +240,7 @@
             Assert.Equal(createdPayment.Id, results.Results.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_ByExternalReference_Success()
         {
             AdvancedPaymentCreateRequest request = BuildCreateRequest(true, "approved");
