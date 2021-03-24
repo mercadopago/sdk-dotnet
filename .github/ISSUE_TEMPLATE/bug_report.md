@@ -1,6 +1,8 @@
 ---
 name: Bug report
 about: Create a report to help us improve
+title: ''
+labels: bug
 
 ---
 
@@ -9,27 +11,18 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+
+- Test case to reproduce the bug.  Try to reproduce in the latest version.
+- Code sample that fails
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Environment (please complete the following information):**
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+- OS: [e.g. Linux/Mac/Windows]
+- .NET version: [e.g. .NET Core 2.0/.NET Framework 4.7]
+- SDK version: [e.g. 2.0.0]
 
 **Additional context**
-Add any other context about the problem here.
+Add any other context about the problem here. [e.g. Links to previous bugs].

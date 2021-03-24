@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\netfx.props" />
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <AssemblyName>MercadoPago</AssemblyName>
+    <AssemblyTitle>MercadoPago</AssemblyTitle>
+    <Authors>MercadoPago</Authors>
+    <Description>Official .NET 4.6.1+ MercadoPago SDK</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <LangVersion>7.3</LangVersion>
+    <PackageId>mercadopago-sdk</PackageId>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/900583</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/dx-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mercadopago/dx-dotnet</PackageProjectUrl>
+    <PackageTags>mercadopago;payment;credit;card;checkout</PackageTags>
+    <SignAssembly>True</SignAssembly>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <TargetFrameworks>net5.0;netstandard2.0;net461</TargetFrameworks>
+    <Version>2.0.0</Version>
+    <VersionPrefix>2.0.0</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Http\" />
+    <Folder Include="Serialization\" />
+    <Folder Include="Client\" />
+    <Folder Include="Config\" />
+    <Folder Include="Resource\" />
+    <Folder Include="Error\" />
+    <Folder Include="Client\Payment\" />
+    <Folder Include="Resource\Payment\" />
+    <Folder Include="Resource\Common\" />
+    <Folder Include="Resource\Preference\" />
+    <Folder Include="Client\Preference\" />
+    <Folder Include="Client\Common\" />
+    <Folder Include="Resource\AdvancedPayment\" />
+    <Folder Include="Client\AdvancedPayment\" />
+    <Folder Include="Resource\CardToken\" />
+    <Folder Include="Client\CardToken\" />
+    <Folder Include="Resource\Customer\" />
+    <Folder Include="Client\Customer\" />
+    <Folder Include="Resource\MerchantOrder\" />
+    <Folder Include="Client\MerchantOrder\" />
+    <Folder Include="Resource\IdentificationType\" />
+    <Folder Include="Client\IdentificationType\" />
+    <Folder Include="Resource\PaymentMethod\" />
+    <Folder Include="Client\PaymentMethod\" />
+    <Folder Include="Resource\User\" />
+    <Folder Include="Client\User\" />
+    <Folder Include="Resource\OAuth\" />
+    <Folder Include="Client\OAuth\" />
+    <Folder Include="Resource\PreApproval\" />
+    <Folder Include="Client\Preapproval\" />
+  </ItemGroup>
+</Project>

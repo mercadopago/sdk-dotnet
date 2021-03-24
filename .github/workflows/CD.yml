@@ -1,0 +1,41 @@
+name: CD
+
+on:
+  workflow_run:
+    workflows: [ CI ]
+    branches: [ master ]
+    types:
+      - completed
+
+jobs:
+  publish:
+    name: Publish on NuGet
+    runs-on: [ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+
+      - name: Publish on NuGet
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          # Filepath of the project to be packaged, relative to root of repository
+          PROJECT_FILE_PATH: src/MercadoPago/MercadoPago.csproj
+
+          # NuGet package id, used for version detection & defaults to project name
+          PACKAGE_NAME: mercadopago-sdk
+
+          # Format of the git tag, [*] gets replaced with actual version
+          TAG_FORMAT: '*'
+
+          # API key to authenticate with NuGet server
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+
+          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
+          INCLUDE_SYMBOLS: false

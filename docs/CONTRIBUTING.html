@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Contributing to the Mercado Pago .NET | MercadoPago official .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Contributing to the Mercado Pago .NET | MercadoPago official .NET SDK ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="index.html" title="Home">Home</a>
+                      </li>
+                      <li>
+                          <a href="sdk/MercadoPago.Client.html" title="SDK Documentation">SDK Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="contributing-to-the-mercado-pago-net">Contributing to the Mercado Pago .NET</h1>
+
+<p>Thank you for your interest in contributing to the Mercado Pago .NET!</p>
+<h2 id="how-to-contribute">How to contribute</h2>
+<p>In order to contribute to the Mercado Pago .NET effectively we provide guidelines to address common case for contributions. Presently we have guides for the following type of changes.</p>
+<ul>
+<li>Request For Change (RFC) / Feature Request: These are suggestions / requests for features the SDK currently does not have. The SDK team evaluates these requests for adequacy / relevance / capacity and overall architectural consistency.</li>
+<li>Bug Reports: These are reports of non compliant behavior with the SDK specification and other blatantly wrong behavior of the Mercado Pago .NET.</li>
+</ul>
+<p>In addition to contributing in the form of Bug Reports and RFCs it is also possible to contribute directly in code with a Pull Request (PR). In the case of a Pull Request you should also indicate the nature of the Pull Request (Feature/Bug/etc.) to help the team asses the Pull Request. If you are enthusiastic about a particular Feature being added or a bug being fixed, a PR is often the quickest way to promote your change as the team does not have to allocate as much resources to process the contribution.</p>
+<p>In the case of PRs it is often best to consult with the SDK team before embarking on a PR, specially if it's a beefy one. Spending time on a PR that might later be rejected because major discrepancies with vision or competing contributions is an uncomfortable outcome for all involved people. Remember the SDK team with privilege overall consistency and progress over any one particular contribution.</p>
+<h2 id="coding-guidance">Coding Guidance</h2>
+<p>All contributions <em>MUST</em> follow the <a href="CODING_GUIDELINES.html">Coding Guidelines</a>. Contributions that fail to follow this guidelines will be disregarded and told to make the required modifications to do so.</p>
+<h2 id="request-for-change--feature-request">Request For Change / Feature Request</h2>
+<p>Generally speaking an RFC is needed when you want to add a new feature or change an existing one in an incompatible way that might result in a major version bump to the toolkit.</p>
+<p>Though it seems a little bureaucratic, the process is in place in order to avoid frustration of a potential contributor by making the discussions take place before any code is written. Once the design and direction is fully agreed then the contributor can work peacefully knowing that their change will be committed.</p>
+<p>As of this moment all you need to do is create an issue and use the <a href="feature_request.html">Feature Request Template</a>.</p>
+<p>Please prepend your issue title with <code>[RFC]</code> so that's easier to filter.</p>
+<h2 id="bug-reports">Bug Reports</h2>
+<p>Bugs are a reality in software. We can't fix what we don't know about, so please report liberally. If you're not sure if something is a bug or not, feel free to file it anyway.</p>
+<p>Before reporting a bug, please search existing issues and pull requests, as it's possible that someone else has already reported your error. In the off case that you find your issue as fixed/closed, please add a reference to it on your new one.</p>
+<p>Your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.</p>
+<p>Opening an issue is as easy as following <a href="https://github.com/mercadopago/sdk-dotnet/issues/new">this link</a> and filling out the given template.</p>
+<p>Bug reports may also be sent in the form of a <a href="#pull-request">pull request</a> containing a failing test.</p>
+<h2 id="pull-request">Pull Request</h2>
+<p>First and foremost: Source code, documentation, commit messages, review comments, and any other kind of contribution must <em>MUST</em> follow the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">C# Coding Convention</a>.</p>
+<p>We use the &quot;fork and pull&quot; model <a href="https://help.github.com/articles/about-collaborative-development-models/">described here</a>, where contributors push changes to their personal fork and create pull requests to bring those changes into the source repository.</p>
+<p>Your basic steps to get going:</p>
+<ul>
+<li>Fork the corresponding toolkit repository and create a branch from master for the issue you are working on.</li>
+<li>Commit as you go following our git conventions.</li>
+<li>Include tests that cover all non-trivial code. The existing tests should provide a template on how to test the toolkit correctly.</li>
+<li>Make sure all test passes.</li>
+<li>All code changes are expected to comply with the formatting style.</li>
+<li>Push your commits to GitHub and create a pull request against the corresponding toolkit component master branch.</li>
+</ul>
+<p>If taking to much time to deliver code, <strong>always</strong> <a href="https://git-scm.com/docs/git-rebase">rebase</a> towards <code>master</code> before asking for a review, and avoid reverse merge commits.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/mercadopago/dx-dotnet/blob/release/2.0.0/CONTRIBUTING.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

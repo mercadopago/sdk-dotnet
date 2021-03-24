@@ -1,0 +1,19 @@
+﻿{
+  "paging": {
+    "total": 1000,
+    "limit": 10,
+    "offset": 0
+  },
+  "results": [
+    { "name": "apple" },
+    { "name": "banana" },
+    { "name": "orange" },
+    { "name": "kiwi" },
+    { "name": "lemon" },
+    { "name": "watermelon" },
+    { "name": "grappe" },
+    { "name": "strawberry" },
+    { "name": "pineapple" },
+    { "name": "papaya" }
+  ]
+}

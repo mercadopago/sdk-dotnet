@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadoPago", "MercadoPago\MercadoPago.csproj", "{45CFE2AB-2274-4949-B94E-75121B1C7C50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercadoPago.Tests", "MercadoPago.Tests\MercadoPago.Tests.csproj", "{E6C38CC2-DA19-4123-930D-E4794D81C2D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45CFE2AB-2274-4949-B94E-75121B1C7C50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CFE2AB-2274-4949-B94E-75121B1C7C50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CFE2AB-2274-4949-B94E-75121B1C7C50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CFE2AB-2274-4949-B94E-75121B1C7C50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6C38CC2-DA19-4123-930D-E4794D81C2D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6C38CC2-DA19-4123-930D-E4794D81C2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6C38CC2-DA19-4123-930D-E4794D81C2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6C38CC2-DA19-4123-930D-E4794D81C2D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

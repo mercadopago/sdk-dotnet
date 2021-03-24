@@ -1,0 +1,3039 @@
+{
+  "homepages": [],
+  "source_base_path": "/Users/delias/Documents/git/dx-dotnet",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "output": {
+        ".html": {
+          "relative_path": "bug_report.html",
+          "hash": "9BMzY/W4vBHka3okv4yABQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "output": {
+        ".html": {
+          "relative_path": "feature_request.html",
+          "hash": "U5TEQu3r1sZ0b8dU7sndmw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CODE_OF_CONDUCT.md",
+      "output": {
+        ".html": {
+          "relative_path": "CODE_OF_CONDUCT.html",
+          "hash": "+L2r+v1M6JnJO0iSHpU8Qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CODING_GUIDELINES.md",
+      "output": {
+        ".html": {
+          "relative_path": "CODING_GUIDELINES.html",
+          "hash": "c/SnTEgDdy+yDq1c7Vvzxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "CONTRIBUTING.md",
+      "output": {
+        ".html": {
+          "relative_path": "CONTRIBUTING.html",
+          "hash": "luigPB6e9tVL0vb+TCRKog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.es.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.es.html",
+          "hash": "skzxv7RQDfkHkvlNAYVoJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "ORprgDA+m+HVcQioPvlCtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.pt.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.pt.html",
+          "hash": "0eUb6OVwcQsSPgncaP+j9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "h9Sus+WZ9gPE4Q+5Zla1XQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoPayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoPayerRequest.html",
+          "hash": "4z0cSjJb2sw4WOOQPuHJeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoRequest.html",
+          "hash": "6N7SpQFHZ0fWVGw4OP073w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCancelRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCancelRequest.html",
+          "hash": "ZbLL7Vqfdjn4OocanvHbng=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCaptureRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCaptureRequest.html",
+          "hash": "enRWri9mex41myYUuzxV4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentClient.html",
+          "hash": "NLNCiRoxDIgcBfg0VstTTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentCreateRequest.html",
+          "hash": "VCVv8SrsnBdZ2X7Pcrvacg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentDisbursementRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentDisbursementRequest.html",
+          "hash": "uB/WTdh9zMu/Ylmcbr9gWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentItemRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentItemRequest.html",
+          "hash": "ulj49LF0uKRXaf8sYzHQfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentPayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentPayerRequest.html",
+          "hash": "vWXhSRsMFh4QH4UOy5P2+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentReceiverAddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentReceiverAddressRequest.html",
+          "hash": "M3pUamVreEzNmhQ3wrwTlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundClient.html",
+          "hash": "CdXD9Lv40PSABVTYKIx23w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundCreateRequest.html",
+          "hash": "Os/b6b1HM7if3jW36PQuhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentShipmentsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentShipmentsRequest.html",
+          "hash": "mG67I0RwWBxYGIUmg+18vQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentSplitPaymentRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentSplitPaymentRequest.html",
+          "hash": "FRts6VFLVSAvSZH/zJg1+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTaxRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTaxRequest.html",
+          "hash": "mcSV10Dmw8Qqn8IyC6RdmQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTransactionDetailsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentTransactionDetailsRequest.html",
+          "hash": "0ce6oHTSPUghcfVYJHaJjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentUpdateReleaseDateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.AdvancedPaymentUpdateReleaseDateRequest.html",
+          "hash": "obzxDcRF/ARMZvDB4pQ0jw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedPayment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedPayment.html",
+          "hash": "DE3i72W4P+jZ5fQnQ1j0Zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.AdvancedSearchRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.AdvancedSearchRequest.html",
+          "hash": "usuaeAVQvdYiWOCSfPWyUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.CardToken.CardTokenClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.CardToken.CardTokenClient.html",
+          "hash": "L47PvEwVp9dfIqk9N0qOuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.CardToken.CardTokenRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.CardToken.CardTokenRequest.html",
+          "hash": "cMH6eZd5Cz46me3feoKVVA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.CardToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.CardToken.html",
+          "hash": "oVLfUm7F76Y7TBg31HUXHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Common.AddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Common.AddressRequest.html",
+          "hash": "Lk+o/xC69SrVn5aquWavAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Common.IdentificationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Common.IdentificationRequest.html",
+          "hash": "QHZUGWCPyHw5qERyo8f1Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Common.PhoneRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Common.PhoneRequest.html",
+          "hash": "5KBCQruUQgKt5gfT8b2MOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Common.html",
+          "hash": "37Olt9KYmWPT3EE5UF7w5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.CustomerCardClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.CustomerCardClient.html",
+          "hash": "NSYSCulRyqb7ti1zG34zkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.CustomerCardCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.CustomerCardCreateRequest.html",
+          "hash": "0g6nCsxG000d0AW0+PpU3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.CustomerClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.CustomerClient.html",
+          "hash": "4kX3d4/LMLO7/gWM6FxEww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.CustomerDefaultAddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.CustomerDefaultAddressRequest.html",
+          "hash": "3fIoRgXUV5TQsnX+cUcGWw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.CustomerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.CustomerRequest.html",
+          "hash": "Q+oH7yODdnkVIrQmbW4GPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Customer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Customer.html",
+          "hash": "+73rgEA4u+IfMJTUNeQrcg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.IdempotentRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.IdempotentRequest.html",
+          "hash": "ezN6p/v3G/TgfWyxk0H6xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.IdentificationType.IdentificationTypeClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.IdentificationType.IdentificationTypeClient.html",
+          "hash": "1mDtN02A0sL1eCqqq7yVcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.IdentificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.IdentificationType.html",
+          "hash": "evndPCelCzJVHGDyGXChPg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MercadoPagoClient-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MercadoPagoClient-1.html",
+          "hash": "Z7/VfxeaLXJ46ufGozhZDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderClient.html",
+          "hash": "6J6a7kPRvvimWaavbhwN4w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderCreateRequest.html",
+          "hash": "Jx7ssJxxsFy0BazPRaWX9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderItemRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderItemRequest.html",
+          "hash": "ETq5Kf2+GYmq2W0L5D3UyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderPayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderPayerRequest.html",
+          "hash": "8E3QxGABuA9dMNlLSwEDYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCityRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCityRequest.html",
+          "hash": "gyFI5UW9QdDMhmecruZk8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCountryRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCountryRequest.html",
+          "hash": "BjaToQXH0wrHJ4kcI6wSVg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressRequest.html",
+          "hash": "fBW5Xo9Ky0RnzuGKdvkS+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressStateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressStateRequest.html",
+          "hash": "7xAxI7WuyJfXQWlG5++jHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShipmentRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShipmentRequest.html",
+          "hash": "qT9kj5oTfqPP3zMq2QolkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingEstimatedDeliveryRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingEstimatedDeliveryRequest.html",
+          "hash": "QpOaKYNXtcbdacC0R3siLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingOptionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingOptionRequest.html",
+          "hash": "jXi/04gH37Fr7dwuL9XKrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingSpeedRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderShippingSpeedRequest.html",
+          "hash": "BbDrOmtn0n0iah6BiULlMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.MerchantOrderUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.MerchantOrderUpdateRequest.html",
+          "hash": "kjor+3o5tadhOt3i99wx1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.MerchantOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.MerchantOrder.html",
+          "hash": "66yB38iO8Do4pk1ckpdlbQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.OAuth.CreateOAuthCredentialRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.OAuth.CreateOAuthCredentialRequest.html",
+          "hash": "Jqc/vRhmWq5Quy6wmasG8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.OAuth.OAuthClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.OAuth.OAuthClient.html",
+          "hash": "mz34wHnIHx8xPooMt0UTow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.OAuth.RefreshOAuthCredentialRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.OAuth.RefreshOAuthCredentialRequest.html",
+          "hash": "3mMz43ww70LDGIcJ+YXL+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.OAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.OAuth.html",
+          "hash": "bMYPPDcQJSe3jfSOVOJbeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoPayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoPayerRequest.html",
+          "hash": "7HSLgLtW3UkoANgUeU87NA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentAdditionalInfoRequest.html",
+          "hash": "KmxlNX2M7YO2eRpQ7zpH3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentCancelRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCancelRequest.html",
+          "hash": "hGAE0LwoZbgciewqPhxCfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentCaptureRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCaptureRequest.html",
+          "hash": "4338cOQ5+HjRd7B9vktzsA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentCategoryDescriptorRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCategoryDescriptorRequest.html",
+          "hash": "blJf4GwZ07VYFMF0HopYIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentClient.html",
+          "hash": "vjfMfqMWJvbNabWS2pvsrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentCreateRequest.html",
+          "hash": "A5pXdVSy8vKASPIs7O2/0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentItemRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentItemRequest.html",
+          "hash": "JETsnq22kUKG6kuIWOiiUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentMerchantServicesRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentMerchantServicesRequest.html",
+          "hash": "4rSoQwGhQfUvtzFycria0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentOrderRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentOrderRequest.html",
+          "hash": "0U9RjtqwPmLdCG//x8tRwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentPassengerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentPassengerRequest.html",
+          "hash": "2pXjz1HlhDFdBJKcQCwlJg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentPayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentPayerRequest.html",
+          "hash": "8OQLUG30unmGON0EXo3oew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentReceiverAddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentReceiverAddressRequest.html",
+          "hash": "bxKV2DQ/S4y90vx5GuaQTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentRefundClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRefundClient.html",
+          "hash": "Kzzln82oudJqnag+XuDzvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentRefundCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRefundCreateRequest.html",
+          "hash": "1kGUMEJ5sVhhBJoLJkh0cg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentRouteRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentRouteRequest.html",
+          "hash": "5pdXq7ZJ4RKFVMNczzpyig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentShipmentsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentShipmentsRequest.html",
+          "hash": "WPLj26O44JfYF3vOQUjhYQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentTaxRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentTaxRequest.html",
+          "hash": "lcuBb0w5WlNKy97WTTiZmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.PaymentTransactionDetailsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.PaymentTransactionDetailsRequest.html",
+          "hash": "+BdYW1CKXUzvm+4P3z9ilQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Payment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Payment.html",
+          "hash": "BVKIUJXJlZdpUy2aiwTWCw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.PaymentMethod.PaymentMethodClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.PaymentMethod.PaymentMethodClient.html",
+          "hash": "XdmDC4y3SXWtQyTrL+wuYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.PaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.PaymentMethod.html",
+          "hash": "eR2dhYCi4bMRAMeoWxHVzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringCreateRequest.html",
+          "hash": "V+Dyb9u4sqeLzRXoKqWZsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.PreApprovalAutoRecurringUpdateRequest.html",
+          "hash": "5IXUMwet/QS7r9P17g5mgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.PreapprovalClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalClient.html",
+          "hash": "RyFqw+1kk5lk3uXeLLiqLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.PreapprovalCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalCreateRequest.html",
+          "hash": "xKXxJf3mXu+dW5zaoLwnHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.PreapprovalUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.PreapprovalUpdateRequest.html",
+          "hash": "OaNMNkXZtENBlrt2C8AacQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preapproval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preapproval.html",
+          "hash": "eJE/V2ECVB7PXNsHsvYMGg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceBackUrlsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceBackUrlsRequest.html",
+          "hash": "Z6WkUqfbma+LYnhQ+fGKAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceCategoryDescriptorRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceCategoryDescriptorRequest.html",
+          "hash": "P1S1xtKD37z319RUylf88A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceClient.html",
+          "hash": "Vd9wfJxHRshEVPoUWOLyPA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceDifferentialPricingRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceDifferentialPricingRequest.html",
+          "hash": "X+uGcDBVrQeeatDkjY3B6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceFreeMethodRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceFreeMethodRequest.html",
+          "hash": "9CZPolmD4HyvPqYPM5oMfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceItemRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceItemRequest.html",
+          "hash": "tElajsWNBQStsE6N8pXOcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferencePassengerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePassengerRequest.html",
+          "hash": "sVxL3+0Km0qH9H2eaBSFrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferencePayerRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePayerRequest.html",
+          "hash": "Wam8P8ViFuZH1Lz8z67tpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferencePaymentMethodRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentMethodRequest.html",
+          "hash": "szA56WzOogrzlbohu2RIuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferencePaymentMethodsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentMethodsRequest.html",
+          "hash": "eqnfKUAdjL1LUuAXTWTmUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferencePaymentTypeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferencePaymentTypeRequest.html",
+          "hash": "YyfKRbfx4tpYdvxcAI1F9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceReceiverAddressRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceReceiverAddressRequest.html",
+          "hash": "i0SYogEFy6jWIcXwc4VnKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceRequest.html",
+          "hash": "H4VXdfcXM6xcOhnDYPzYAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceRouteRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceRouteRequest.html",
+          "hash": "H9YvHhbvpBAa8tbkaGxwgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceShipmentsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceShipmentsRequest.html",
+          "hash": "zsFL7113CeTd4zCi70DLiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceTaxRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTaxRequest.html",
+          "hash": "BLsD6q5rmNKvKHwp2tjQAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceTrackRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTrackRequest.html",
+          "hash": "BkHVNZV3cydVTdhG+6AVQw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.PreferenceTrackValuesRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.PreferenceTrackValuesRequest.html",
+          "hash": "wVmOZjG/8vDJX28DJR0qWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.Preference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.Preference.html",
+          "hash": "i6mENO8L2XMbpUdLYwmYZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.RequestOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.RequestOptions.html",
+          "hash": "oXLaBYyatiCoNdpSnedkpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.SearchRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.SearchRequest.html",
+          "hash": "cV1+u3MJagu/D8Hd+zR9ZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.User.UserClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.User.UserClient.html",
+          "hash": "6fFVp6EScgNiPPVJyj3Ikg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.User.html",
+          "hash": "+k/KkOIKnkgg/vu7SiTNTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Client.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Client.html",
+          "hash": "WIHnMF7PplzlSbYfJs5dcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Config.MercadoPagoConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Config.MercadoPagoConfig.html",
+          "hash": "KasEmUm+Qck8BGtavo1KGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Config.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Config.html",
+          "hash": "qTsdmngOa6hXOJGO0ylArA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Error.ApiError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Error.ApiError.html",
+          "hash": "D7Qq45acjBaOHSlu2W/qGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Error.ApiErrorCause.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Error.ApiErrorCause.html",
+          "hash": "g4MQuPHK9bn1i3uCj399/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Error.MercadoPagoApiException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Error.MercadoPagoApiException.html",
+          "hash": "S/ILYYX3lf9Z8wVjnH9r8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Error.MercadoPagoException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Error.MercadoPagoException.html",
+          "hash": "M9k5cnI1v/2ogCxsbJhN8w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Error.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Error.html",
+          "hash": "Ey7SQoPB7n6iq/n0iD7Vwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.DefaultHttpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.DefaultHttpClient.html",
+          "hash": "LfRgQQYLjrSz8E4rAERspQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.DefaultRetryStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.DefaultRetryStrategy.html",
+          "hash": "OnItpBWlXy9G1Kf65a83Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.Headers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.Headers.html",
+          "hash": "+NWNS53GbVhQ8ftTPJQkGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.HttpMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.HttpMethod.html",
+          "hash": "QmUb/0GFyXmjESaGf0hqmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.IHttpClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.IHttpClient.html",
+          "hash": "5uF21IiVNshn2fRhv0pDow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.IRetryStrategy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.IRetryStrategy.html",
+          "hash": "GXhmys5FGby/2vcq5i6c3A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.MercadoPagoRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.MercadoPagoRequest.html",
+          "hash": "5LBs7u/fkeJCWVX3zs7tKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.MercadoPagoResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.MercadoPagoResponse.html",
+          "hash": "zHqlikJEgsh583LMY9QtAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.RetryResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.RetryResponse.html",
+          "hash": "nwqu89SQIiY3IpY857i93w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Http.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Http.html",
+          "hash": "gdiIVcfYE58KUGACjGE4zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPayment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPayment.html",
+          "hash": "ISnjuarkyr01ldeSn8l9YQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfo.html",
+          "hash": "DacYpVMRnWj49NrEbpvS5A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfoPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfoPayer.html",
+          "hash": "8h4lY+Sh/J9ZycsKePW2TA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursement.html",
+          "hash": "Uu+rtPozQwbZdq6KAWsBkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursementRefund.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursementRefund.html",
+          "hash": "zOS3H+OgTOkGxQZXod1x/g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentItem.html",
+          "hash": "SIIgoQAZDZKX4rFOJksXIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentPayer.html",
+          "hash": "fH+KNQMzzt76FG0FWGJhTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentReceiverAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentReceiverAddress.html",
+          "hash": "4MBiQ9n0O9TsGzN0ko2xeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentShipments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentShipments.html",
+          "hash": "/dMOFxOXntDDTrvphXDGcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentSplitPayment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentSplitPayment.html",
+          "hash": "Au/a7o6ko+YhD9417MkkaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentStatus.html",
+          "hash": "dgKiLhVeiLOmYseihyzwGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTax.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTax.html",
+          "hash": "qJQOujLUv7ciPU8Zj0m0OQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTransactionDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTransactionDetails.html",
+          "hash": "Cr+cASi5dJ6h7+gFbjEYlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.AdvancedPayment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.AdvancedPayment.html",
+          "hash": "/iW0toB7chhauyXNoGn9Ew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.CardToken.CardToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.CardToken.CardToken.html",
+          "hash": "W8mY/COkS8pcR85rera6zQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.CardToken.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.CardToken.html",
+          "hash": "vIqEEvq1yRvlGUUT+zYU9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Common.Address.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Common.Address.html",
+          "hash": "0U1bXsSklcak+OwoJmU/Fw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Common.Identification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Common.Identification.html",
+          "hash": "DSAm0rYw879WsHziIkh5xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Common.Phone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Common.Phone.html",
+          "hash": "askIkKTxg3JBdXFygt4Srw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Common.Source.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Common.Source.html",
+          "hash": "qw6Wpj5YqtHYQL6vu5WYnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Common.html",
+          "hash": "o6xzNjNF1fAwY4TCSoUt+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.Customer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.Customer.html",
+          "hash": "MTBi8t1wqcILX5gVaaLA0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddress.html",
+          "hash": "PJVdZ7PijbM9MDpIzFt1yg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddressCity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressCity.html",
+          "hash": "WYsdTK1ik3FARrIHQlJB1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddressCountry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressCountry.html",
+          "hash": "JXTKNIW8OGIiHv+74xCxlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddressMunicipality.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressMunicipality.html",
+          "hash": "XzyZOl0BPWdkQUSOgp4F/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddressNeighborhood.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressNeighborhood.html",
+          "hash": "ozaMMiqhVglGcGH4ChkiPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerAddressState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerAddressState.html",
+          "hash": "IPF8nBOl0fuplLLuYzDnJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCard.html",
+          "hash": "QTK+9j2m2PgJzdu+WiD9+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCardCardholder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardCardholder.html",
+          "hash": "n63qz3PTjvMC/HZIH/LEzQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCardCardholderIdentification.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardCardholderIdentification.html",
+          "hash": "WI6Q0CBt6WX4D8jrfU76Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCardIssuer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardIssuer.html",
+          "hash": "vmpSpc+sRIdVXJrTEXmRrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCardPaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardPaymentMethod.html",
+          "hash": "L+6KlkxOSX2Mo1Woe9Sa2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerCardSecurityCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerCardSecurityCode.html",
+          "hash": "AIcxFM6W/MJyMWXq4/fW9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.CustomerDefaultAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.CustomerDefaultAddress.html",
+          "hash": "pDb3Rfj1hVdhM9+4bWn6uw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Customer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Customer.html",
+          "hash": "jutaPlHUoINx88VZojMzJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.ElementsResourcesPage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.ElementsResourcesPage-1.html",
+          "hash": "uVeMhuDYq8mVlD53obZvUQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.IResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.IResource.html",
+          "hash": "uP/thHa+srs4pu5xGiqjSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.IResourcesPage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.IResourcesPage-1.html",
+          "hash": "LcDr6CByOoLbafuAwu0i0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.IdentificationType.IdentificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.IdentificationType.IdentificationType.html",
+          "hash": "wL6itfsEtCy0WEuPCDXg4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.IdentificationType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.IdentificationType.html",
+          "hash": "LlHhyc+hjnGWLY5U6Q6yVQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrder.html",
+          "hash": "fFBweQAV/L/BI9E6ESrhag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderCollector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderCollector.html",
+          "hash": "7IZqBiarKqqTrfVfHQB9rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderItem.html",
+          "hash": "u9nxnyDxn42BFhozACBObg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayer.html",
+          "hash": "FLQ1cqKJ4xsNUpa1pW4SGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderPayment.html",
+          "hash": "XnfDk9a9154cRJ8Ftel+vw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddress.html",
+          "hash": "7GR+AhjZ91//TK+cAJPo8A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCity.html",
+          "hash": "K3tvEMkMmlc4xYM6UYVnQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCountry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCountry.html",
+          "hash": "tAz8H1XzRx6Qj43dB4fKhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressState.html",
+          "hash": "FZik0TrgmZ/Zy7CWxgX4iQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShipment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShipment.html",
+          "hash": "s8nWdcJKWXtshvioTXcBgg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingEstimatedDelivery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingEstimatedDelivery.html",
+          "hash": "7CKBJ6re8ZZEEXL66tG/rg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingOption.html",
+          "hash": "COzl5TGeQ2+GU7EZWGFjxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingSpeed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.MerchantOrderShippingSpeed.html",
+          "hash": "HfIsrCRAtZM4p3hzKPsCww=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.MerchantOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.MerchantOrder.html",
+          "hash": "FX0imlYPQn0L0J/mmvYjdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.OAuth.OAuthCredential.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.OAuth.OAuthCredential.html",
+          "hash": "2PqOjxf5RZFOZ3rOYl+uIw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.OAuth.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.OAuth.html",
+          "hash": "tSHQVuYaRwaugpPF7+chtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.Payment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.Payment.html",
+          "hash": "FvxTCf9g//4eokvme6mVCg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfo.html",
+          "hash": "LiEWlqflg1Cu9+EPyE627A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfoPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentAdditionalInfoPayer.html",
+          "hash": "on6ZY2bCh4APezTx54y9ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentApplicationData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentApplicationData.html",
+          "hash": "oqIKe9cuenSsY22XmcWhfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfo.html",
+          "hash": "3GV7NA23FXx8JnqOLJceJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfoCollector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfoCollector.html",
+          "hash": "Bsq/98t3qZKA0Zm+CVsGTg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentBankInfoPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentBankInfoPayer.html",
+          "hash": "/ILz3r4fDGxXmI5Xkvfsqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentCard.html",
+          "hash": "ko4W6IuxpDzybBB+6gbgHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentCardholder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentCardholder.html",
+          "hash": "kW5tGpyxmK0YGxYfLbvoDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentFeeDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentFeeDetail.html",
+          "hash": "2t+K2UBeQ+WBbcZh+2OPyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentItem.html",
+          "hash": "CNUVsNFJUfjRl1oEjZIt3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentOrder.html",
+          "hash": "LcNhtAoeB7mLLzUkNYFPRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentPayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentPayer.html",
+          "hash": "edtSnFDKLYRMK0olj+0EkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentPointOfInteraction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentPointOfInteraction.html",
+          "hash": "kCdBl8Bq2j3uQr5aE4WjHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentReceiverAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentReceiverAddress.html",
+          "hash": "D1s9xUqlTwh2jhiBV6xE3g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentRefund.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentRefund.html",
+          "hash": "/fxVVNjM41IAkpcVErzVnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentShipments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentShipments.html",
+          "hash": "6oO9OcFtHeCMgrnuJRwvug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentStatus.html",
+          "hash": "uLOPqY7p8AS6tUmQwsCYlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentTax.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTax.html",
+          "hash": "MUj8TZL2vsRIdHZW6m88RQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentTransactionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTransactionData.html",
+          "hash": "HUeS1j0SRK8rX7O2m6jBSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.PaymentTransactionDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.PaymentTransactionDetails.html",
+          "hash": "MyNZwvXQeIL5tHe8cy+aQg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Payment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Payment.html",
+          "hash": "jLEyoTbUUeABLMRHxlTi3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethod.html",
+          "hash": "IDGCjbWf1yjIbKOGnt6AUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodFinancialInstitutions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodFinancialInstitutions.html",
+          "hash": "wVsaeRRdnX6YbymBDvEBNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettings.html",
+          "hash": "tEvFIHzc54ZATeisChEj/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsBin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsBin.html",
+          "hash": "N7WlSFZ52Dd/WtiBJ9CSTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsCardNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsCardNumber.html",
+          "hash": "vVm772GoXcJxs2FTYd6IhA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsSecurityCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsSecurityCode.html",
+          "hash": "xuJbFarUQToDyOGyDmFFZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PaymentMethod.html",
+          "hash": "dEj3gSmJ3hyrmxb1OIISjQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PreApproval.Preapproval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PreApproval.Preapproval.html",
+          "hash": "/0Cr/wKFazmWZHeRJECYLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PreApproval.PreapprovalAutoRecurring.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PreApproval.PreapprovalAutoRecurring.html",
+          "hash": "rT5LgLhc0tLcrEcaelmDsw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.PreApproval.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.PreApproval.html",
+          "hash": "Dt+BoJwvrOVVaw71YnmQNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.Preference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.Preference.html",
+          "hash": "907FlXEJSrFXOk3hof3ytA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceBackUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceBackUrls.html",
+          "hash": "tmthTCLli1nNvdzVXr4WNQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceCategoryDescriptor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceCategoryDescriptor.html",
+          "hash": "RKWqhcnLbhQkp9aod/37jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceDifferentialPricing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceDifferentialPricing.html",
+          "hash": "nW01PqnO8NuFxUBYEWVmqw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceFreeMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceFreeMethod.html",
+          "hash": "9GdqJC8RkU3TJ/UCuatmAA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceItem.html",
+          "hash": "Nf8hvpkH/v+9qp9BWIESlA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferencePassenger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePassenger.html",
+          "hash": "0ZC67M22SH7L1ItwEwC0og=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferencePayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePayer.html",
+          "hash": "qaCktR63eWFJH/Jh3FYDOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferencePaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentMethod.html",
+          "hash": "RecuTfUG71JKB5KvYL5pJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferencePaymentMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentMethods.html",
+          "hash": "AbcXVAfk9vpZmx5mLbw5MA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferencePaymentType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferencePaymentType.html",
+          "hash": "wVVLDS6NhNaBGAKDw0tDrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceReceiverAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceReceiverAddress.html",
+          "hash": "nzFGSzduKHrrAt4NGHHI3Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceRoute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceRoute.html",
+          "hash": "LHY/108FmQ3St1T8QeXl+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceShipments.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceShipments.html",
+          "hash": "c58IYYsWR2ccelhoubuHaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceTax.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTax.html",
+          "hash": "Jar6lQBmuC4cZ+CPihwcCQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceTrack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTrack.html",
+          "hash": "+GYrll+K7RbrCduNNKOQ/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.PreferenceTrackValues.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.PreferenceTrackValues.html",
+          "hash": "oorij+BWtl1PzWXL+qjo2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.Preference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.Preference.html",
+          "hash": "VB8rt0QMoYHRvT4BqSEezw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.ResourcesList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.ResourcesList-1.html",
+          "hash": "VE/hxdbt3DPdRq35+LaorA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.ResultsPaging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.ResultsPaging.html",
+          "hash": "qppyBjR69YhwhQo3poUoAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.ResultsResourcesPage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.ResultsResourcesPage-1.html",
+          "hash": "FhRs6ak8mwwqaW+sHH6U0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.User.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.User.User.html",
+          "hash": "h1wSPjhTyQqK3vPgdi5/Zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.User.html",
+          "hash": "gzJ6X1ARv8N3C64ZMDN5Bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Resource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Resource.html",
+          "hash": "jzUIyU0irkIUzrCKg/6L6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Serialization.DefaultSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Serialization.DefaultSerializer.html",
+          "hash": "a7XTlUKWzd6jkFbicNiVDg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Serialization.ISerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Serialization.ISerializer.html",
+          "hash": "M68pa/sAKVBpIat//SWl+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/sdk/MercadoPago.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "sdk/MercadoPago.Serialization.html",
+          "hash": "0K2hiBPePzINYRCpLMUdvw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 9,
+          "skipped_file_count": 9
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 239,
+          "skipped_file_count": 239
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
