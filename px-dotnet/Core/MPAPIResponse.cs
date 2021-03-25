@@ -40,8 +40,6 @@ namespace MercadoPago
 
             ParseRequest(httpMethod, request, payload);
             ParseResponse(response);
-
-            System.Diagnostics.Trace.WriteLine("Server response: " + this.StringResponse); 
         }
 
         /// <summary>
@@ -93,8 +91,7 @@ namespace MercadoPago
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Error parsing jsonObect");
-                    //    If not an object
+                        // Not valid Json
                     }
                 }
             }

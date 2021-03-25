@@ -518,9 +518,6 @@ namespace MercadoPago
                     for (int i = 0; i < jsonArray.Count(); i++)
                     {
                         T resource = (T)MPCoreUtils.GetResourceFromJson<T>(clazz, (JObject)jsonArray[i]);
-
-                        resource.DumpLog();
-
                         resource._lastKnownJson = MPCoreUtils.GetJsonFromResource(resource);
                         resourceArray.Add(resource);
                     }
@@ -808,19 +805,6 @@ namespace MercadoPago
             }
 
             return result.ToString();
-        }
-
-        public void DumpLog()
-        {
-            
-            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-
-
-            using (var writer = new System.IO.StringWriter())
-            {
-                ObjectDumper.Dumper.Dump(this, "Object Dumper", writer);
-                System.Diagnostics.Trace.WriteLine("Resource " + writer); 
-            }
         }
 
         /// <summary>

@@ -93,8 +93,6 @@ namespace MercadoPago
 
             T resource = (T)jObj.ToObject<T>(serializer);
 
-            resource.DumpLog();
-
             return resource;
         }
 
@@ -112,8 +110,6 @@ namespace MercadoPago
             //});
 
             T resource = JsonConvert.DeserializeObject<T>(json);//(T)jObj.ToObject<T>(serializer);
-
-            resource.DumpLog();
 
             return resource;
         }
