@@ -17,6 +17,22 @@ If you are using previous versions of .NET Framework in your project, please ref
 
 ## 📲 Installation
 
+Use one of the following options, depending on your preferred environment.
+
+### From Visual Studio
+
+1. Open the `Solution Explorer`.
+2. Right-click on a project within your solution.
+3. Click on `Manage NuGet Packages...`.
+4. Click on the `Browse` tab and search for "mercadopago-sdk".
+5. Click on the `mercadopago-sdk` package, select the appropriate version and click Install.
+
+### Using the [Package Manager](https://docs.microsoft.com/en-us/nuget/tools/package-manager-console)
+
+```bash
+Install-Package mercadopago-sdk
+```
+
 ### Using the [.NET Core command-line interface (CLI) tools](https://docs.microsoft.com/en-us/dotnet/core/tools/)
 
 ```bash
@@ -28,20 +44,6 @@ dotnet add package mercadopago-sdk
 ```bash
 nuget install mercadopago-sdk
 ```
-
-### Using the [Package Manager](https://docs.microsoft.com/en-us/nuget/tools/package-manager-console)
-
-```bash
-Install-Package mercadopago-sdk
-```
-
-### From Visual Studio
-
-1. Open the `Solution Explorer`.
-2. Right-click on a project within your solution.
-3. Click on `Manage NuGet Packages...`.
-4. Click on the `Browse` tab and search for "mercadopago-sdk".
-5. Click on the `mercadopago-sdk` package, select the appropriate version and click Install.
 
 ## 🌟 Getting Started
 
