@@ -462,7 +462,6 @@
                 Address = new CustomerDefaultAddressRequest
                 {
                     Id = "123",
-                    ZipCode = "0000200",
                     StreetName = "Street",
                     StreetNumber = 123,
                 },
