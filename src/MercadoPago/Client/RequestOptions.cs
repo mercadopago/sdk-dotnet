@@ -38,6 +38,6 @@
         /// <c>X-Idempotency-Key</c>, <c>X-Product-Id</c>, <c>X-Corporation-Id</c>,
         /// <c>X-Integrator-Id</c> and <c>X-Platform-Id</c> will be disconsidered.
         /// </remarks>
-        public IDictionary<string, string> CustomHeaders { get; }
+        public IDictionary<string, string> CustomHeaders { get; set; }
     }
 }
