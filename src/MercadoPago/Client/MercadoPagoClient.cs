@@ -341,7 +341,9 @@
         {
             if (mercadoPagoRequest.Method == HttpMethod.POST)
             {
-                if (request is IdempotentRequest idempotentRequest)
+                string idempotency = "x-idempotency-key";
+                bool headerHasIdempotencyKey = mercadoPagoRequest.ContainsHeader(idempotency);
+                if (request is IdempotentRequest idempotentRequest && !headerHasIdempotencyKey)
                 {
                     mercadoPagoRequest.Headers.Add(Headers.IDEMPOTENCY_KEY, idempotentRequest.CreateIdempotencyKey());
                 }
