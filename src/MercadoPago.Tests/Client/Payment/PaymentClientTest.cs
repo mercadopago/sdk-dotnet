@@ -270,7 +270,7 @@
             Assert.Equal(createdPayment.Id, results.Results.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_ByExternalReference_Success()
         {
             PaymentCreateRequest request = BuildCreateRequest(true, "approved");
