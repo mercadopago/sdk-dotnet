@@ -184,7 +184,7 @@
             Assert.Equal(createdOrder.Id, results.Elements.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Success()
         {
             MerchantOrderCreateRequest createRequest = BuildCreateRequest();

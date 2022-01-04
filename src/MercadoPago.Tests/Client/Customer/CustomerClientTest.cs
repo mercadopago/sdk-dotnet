@@ -351,7 +351,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task DeleteCardAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
