@@ -192,7 +192,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -226,7 +226,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Success()
         {
             CustomerRequest request = BuildCreateRequest();
