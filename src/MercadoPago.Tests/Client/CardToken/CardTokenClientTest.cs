@@ -163,7 +163,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             CustomerRequest customerRequest = BuildCustomerCreateRequest();

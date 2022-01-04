@@ -327,7 +327,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void GetCard_Success()
         {
             CustomerRequest request = BuildCreateRequest();
