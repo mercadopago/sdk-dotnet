@@ -222,7 +222,6 @@
                     Identification = IdentificationHelper.GetIdentification(User),
                     Address = new AddressRequest
                     {
-                        ZipCode = "06000000",
                         StreetName = "Street",
                         StreetNumber = "123",
                     },
@@ -254,7 +253,6 @@
                     Dimensions = "10x10x20,500",
                     ReceiverAddress = new PreferenceReceiverAddressRequest
                     {
-                        ZipCode = "06000000",
                         StreetNumber = "123",
                         StreetName = "Street",
                         Floor = "12",

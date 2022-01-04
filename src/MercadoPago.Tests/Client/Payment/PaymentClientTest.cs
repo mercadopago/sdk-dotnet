@@ -545,7 +545,6 @@
                         },
                         Address = new AddressRequest
                         {
-                            ZipCode = "0600000",
                             StreetName = "Street",
                             StreetNumber = "123",
                         },
@@ -558,7 +557,6 @@
                     {
                         ReceiverAddress = new PaymentReceiverAddressRequest
                         {
-                            ZipCode = "0600000",
                             StreetName = "Street",
                             StreetNumber = "123",
                             Apartment = "23",
