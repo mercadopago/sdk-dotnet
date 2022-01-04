@@ -66,7 +66,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Success()
         {
             CustomerRequest customerRequest = BuildCustomerCreateRequest();
@@ -97,7 +97,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Success()
         {
             CustomerRequest customerRequest = BuildCustomerCreateRequest();
@@ -128,7 +128,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             CustomerRequest customerRequest = BuildCustomerCreateRequest();
