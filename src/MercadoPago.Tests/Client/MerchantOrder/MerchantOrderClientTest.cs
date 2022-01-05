@@ -159,7 +159,7 @@
             Assert.Equal(createdOrder.Id, merchantOrder.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_Success()
         {
             MerchantOrderCreateRequest createRequest = await BuildCreateRequestAsync();
@@ -184,7 +184,7 @@
             Assert.Equal(createdOrder.Id, results.Elements.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Success()
         {
             MerchantOrderCreateRequest createRequest = BuildCreateRequest();

@@ -339,7 +339,6 @@
                     LastName = "User",
                     Address = new AddressRequest
                     {
-                        ZipCode = "06233200",
                         StreetName = "Street",
                         StreetNumber = "120",
                     },
@@ -359,7 +358,6 @@
                         RegistrationDate = DateTime.UtcNow.AddDays(-10),
                         Address = new AddressRequest
                         {
-                            ZipCode = "06233200",
                             StreetName = "Street",
                             StreetNumber = "120",
                         },
@@ -386,7 +384,6 @@
                     {
                         ReceiverAddress = new AdvancedPaymentReceiverAddressRequest
                         {
-                            ZipCode = "06233200",
                             StreetName = "Street",
                             StreetNumber = "120",
                             Floor = "1",

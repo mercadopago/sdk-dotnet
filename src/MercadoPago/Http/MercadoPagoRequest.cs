@@ -1,5 +1,6 @@
 ﻿namespace MercadoPago.Http
 {
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -55,5 +56,20 @@
         /// Request body content as JSON string.
         /// </summary>
         public string Content { get; set; }
+
+        /// <summary>
+        /// Receives a string and returns true if the string is a key of the headers
+        /// </summary>
+        public bool ContainsHeader(string header)
+        {
+            foreach (string h in Headers.Keys)
+            {
+                if (h.Equals(header, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

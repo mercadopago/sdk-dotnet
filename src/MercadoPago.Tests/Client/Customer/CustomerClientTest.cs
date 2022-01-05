@@ -71,7 +71,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -84,7 +84,7 @@
             await client.DeleteAsync(customer.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -97,7 +97,7 @@
             client.Delete(customer.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task UpdateAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -123,7 +123,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Update_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -171,7 +171,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -192,7 +192,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -226,7 +226,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -259,7 +259,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateCardAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -281,7 +281,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void CreateCard_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -303,7 +303,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetCardAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -327,7 +327,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void GetCard_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -351,7 +351,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task DeleteCardAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -375,7 +375,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void DeleteCard_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -399,7 +399,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ListCardsAsync_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -423,7 +423,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ListCards_Success()
         {
             CustomerRequest request = BuildCreateRequest();
@@ -462,7 +462,6 @@
                 Address = new CustomerDefaultAddressRequest
                 {
                     Id = "123",
-                    ZipCode = "0000200",
                     StreetName = "Street",
                     StreetNumber = 123,
                 },

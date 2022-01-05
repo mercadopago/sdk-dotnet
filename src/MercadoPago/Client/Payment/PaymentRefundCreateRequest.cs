@@ -3,7 +3,7 @@
     /// <summary>
     /// Refund creation request data.
     /// </summary>
-    public class PaymentRefundCreateRequest
+    public class PaymentRefundCreateRequest : IdempotentRequest
     {
         /// <summary>
         /// Amount to be refunded.
