@@ -31,6 +31,11 @@
         public long? FinancialInstitution { get; set; }
 
         /// <summary>
+        /// URL to access the ticket.
+        /// </summary>
+        public string TicketUrl { get; set; }
+
+        /// <summary>
         /// Bank info
         /// </summary>
         public BankInfo BankInfo { get; set; }
