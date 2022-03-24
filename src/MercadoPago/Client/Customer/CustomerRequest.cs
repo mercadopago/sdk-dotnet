@@ -40,6 +40,11 @@ namespace MercadoPago.Client.Customer
         public string DefaultAddress { get; set; }
 
         /// <summary>
+        /// Customer's default card.
+        /// </summary>
+        public string DefaultCard { get; set; }
+
+        /// <summary>
         /// Default address information.
         /// </summary>
         public CustomerDefaultAddressRequest Address { get; set; }
