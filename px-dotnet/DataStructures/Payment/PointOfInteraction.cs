@@ -18,7 +18,7 @@
         /// <summary>
         /// Linked To
         /// </summary>
-        public string linkedTo { get; set; }
+        public string LinkedTo { get; set; }
 
         /// <summary>
         /// Appication Data
