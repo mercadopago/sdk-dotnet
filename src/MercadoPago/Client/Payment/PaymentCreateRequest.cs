@@ -157,6 +157,11 @@
         public PaymentAdditionalInfoRequest AdditionalInfo { get; set; }
 
         /// <summary>
+        /// Point Of Interaction.
+        /// </summary>
+        public PaymentPointOfInteractionRequest PointOfInteraction { get; set; }
+
+        /// <summary>
         /// Taxes for payments.
         /// </summary>
         public IList<PaymentTaxRequest> Taxes { get; set; }
