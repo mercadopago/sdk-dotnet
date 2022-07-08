@@ -16,6 +16,11 @@
         public string SubType { get; set; }
 
         /// <summary>
+        /// Linked To
+        /// </summary>
+        public string LinkedTo { get; set; }
+
+        /// <summary>
         /// Appication Data
         /// </summary>
         public ApplicationData ApplicationData { get; set; }
