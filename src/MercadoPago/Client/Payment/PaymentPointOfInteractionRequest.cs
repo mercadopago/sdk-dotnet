@@ -11,5 +11,15 @@ namespace MercadoPago.Client.Payment
         /// Linked To.
         /// </summary>
         public string LinkedTo { get; set; }
+
+        /// <summary>
+        /// Type.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Transaction data.
+        /// </summary>
+        public PaymentTransactionDataRequest TransactionData { get; set; }
     }
 }
