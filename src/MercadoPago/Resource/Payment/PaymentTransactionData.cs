@@ -5,7 +5,7 @@
     /// <summary>
     /// Payment's transaction data.
     /// </summary>
-    public class    PaymentTransactionData
+    public class PaymentTransactionData
     {
         /// <summary>
         /// QR code.
@@ -53,27 +53,12 @@
         public PaymentSubscriptionSequence SubscriptionSequence { get; set; }
 
         /// <summary>
-        /// Subscription id.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Plan id.
-        /// </summary>
-        public string PlanId { get; set; }
-
-        /// <summary>
-        /// Invoice id.
-        /// </summary>
-        public string InvoiceId { get; set; }
-
-        /// <summary>
         /// Invoice period.
         /// </summary>
         public PaymentInvoicePeriod InvoicePeriod { get; set; }
 
         /// <summary>
-        /// Invoice period.
+        /// Payment reference.
         /// </summary>
         public PaymentPaymentReference PaymentReference { get; set; }
 

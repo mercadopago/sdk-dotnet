@@ -6,13 +6,9 @@ namespace MercadoPago.Resource.Payment
     public class PaymentPaymentReference
     {
         /// <summary>
-        /// Period.
+        /// Payment ID reference.
         /// </summary>
         public string Id { get; set; }
 
-        /// <summary>
-        /// Acquirer.
-        /// </summary>
-        public string Acquirer { get; set; }
     }
 }

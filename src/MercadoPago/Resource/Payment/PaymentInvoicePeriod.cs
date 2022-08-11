@@ -11,7 +11,7 @@ namespace MercadoPago.Resource.Payment
         public int? Period { get; set; }
 
         /// <summary>
-        /// Total.
+        /// Type.
         /// </summary>
         public string Type { get; set; }
     }
