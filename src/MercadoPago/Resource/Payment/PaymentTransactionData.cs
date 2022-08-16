@@ -53,6 +53,11 @@
         public PaymentSubscriptionSequence SubscriptionSequence { get; set; }
 
         /// <summary>
+        /// Subscription id.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
         /// Invoice period.
         /// </summary>
         public PaymentInvoicePeriod InvoicePeriod { get; set; }

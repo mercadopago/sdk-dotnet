@@ -19,6 +19,11 @@ namespace MercadoPago.Client.Payment
         public PaymentSubscriptionSequenceRequest SubscriptionSequence { get; set; }
 
         /// <summary>
+        /// Subscription id.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
         /// Invoice period.
         /// </summary>
         public PaymentInvoicePeriodRequest InvoicePeriod { get; set; }
