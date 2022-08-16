@@ -41,5 +41,10 @@ namespace MercadoPago.Client.Payment
         /// Payer's entity type (only for bank transfers).
         /// </summary>
         public string EntityType { get; set; }
+
+        /// <summary>
+        /// Payer's address information.
+        /// </summary>
+        public PaymentPayerAddressRequest Address { get; set; }
     }
 }

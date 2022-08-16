@@ -1,5 +1,7 @@
 ﻿namespace MercadoPago.Resource.Payment
 {
+        using System;
+
     /// <summary>
     /// Payment's transaction data.
     /// </summary>
@@ -39,5 +41,36 @@
         /// Bank info.
         /// </summary>
         public PaymentBankInfo BankInfo { get; set; }
+
+        /// <summary>
+        /// First time use.
+        /// </summary>
+        public bool FirstTimeUse { get; set; }
+
+        /// <summary>
+        /// Subscription sequence.
+        /// </summary>
+        public PaymentSubscriptionSequence SubscriptionSequence { get; set; }
+
+        /// <summary>
+        /// Subscription id.
+        /// </summary>
+        public string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Invoice period.
+        /// </summary>
+        public PaymentInvoicePeriod InvoicePeriod { get; set; }
+
+        /// <summary>
+        /// Payment reference.
+        /// </summary>
+        public PaymentPaymentReference PaymentReference { get; set; }
+
+         /// <summary>
+        /// Billing date.
+        /// </summary>
+        public string BillingDate { get; set; }
+
     }
 }

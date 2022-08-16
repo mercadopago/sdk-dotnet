@@ -41,5 +41,6 @@
         /// Payer's entity type (only for bank transfers).
         /// </summary>
         public string EntityType { get; set; }
+
     }
 }
