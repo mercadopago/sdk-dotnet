@@ -33,10 +33,14 @@ namespace MercadoPago.Client.Payment
         /// </summary>
         public PaymentPaymentReferenceRequest PaymentReference { get; set; }
 
-         /// <summary>
+        /// <summary>
         /// Billing date.
         /// </summary>
         public string BillingDate { get; set; }
 
+        /// <summary>
+        /// Ticket info.
+        /// </summary>
+        public PaymentTicketInfoRequest TicketInfo { get; set; }
     }
 }
