@@ -6,7 +6,7 @@ public class DateWithoutHourConverter : JsonConverter
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
         var date = (DateTime)value;
-        var newLookingDate = date.ToString("yyyy-MMMM-dd");
+        var newLookingDate = date.ToString("yyyy-MM-dd");
         writer.WriteValue(newLookingDate);
     }
 
