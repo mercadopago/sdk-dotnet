@@ -170,5 +170,10 @@
         /// Merchant services.
         /// </summary>
         public PaymentMerchantServicesRequest MerchantServices { get; set; }
+
+        /// <summary>
+        /// Rules.
+        /// </summary>
+        public PaymentMethodRequest PaymentMethod { get; set; }
     }
 }

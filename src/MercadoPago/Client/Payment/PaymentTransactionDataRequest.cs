@@ -37,10 +37,5 @@ namespace MercadoPago.Client.Payment
         /// Billing date.
         /// </summary>
         public string BillingDate { get; set; }
-
-        /// <summary>
-        /// Ticket info.
-        /// </summary>
-        public PaymentTicketInfoRequest TicketInfo { get; set; }
     }
 }

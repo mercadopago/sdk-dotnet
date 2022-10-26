@@ -4,9 +4,9 @@ namespace MercadoPago.Client.Payment
     using System.Collections.Generic;
 
     /// <summary>
-    /// Payment's ticket info.
+    /// Payment's rules.
     /// </summary>
-    public class PaymentTicketInfoRequest
+    public class PaymentRulesRequest
     {
 
         /// <summary>

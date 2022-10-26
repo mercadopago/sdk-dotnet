@@ -266,5 +266,10 @@
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
+
+        /// <summary>
+        /// Payment method.
+        /// </summary>
+        public PaymentMethod PaymentMethod { get; set; }
     }
 }
