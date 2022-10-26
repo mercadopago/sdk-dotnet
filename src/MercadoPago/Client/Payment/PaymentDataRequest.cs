@@ -9,7 +9,7 @@ namespace MercadoPago.Client.Payment
     public class PaymentDataRequest
     {
         /// <summary>
-        /// Payment data.
+        /// Payment rules.
         /// </summary>
         public PaymentRulesRequest Rules { get; set; }
     }
