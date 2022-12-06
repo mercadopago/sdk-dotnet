@@ -9,7 +9,7 @@ namespace MercadoPago.Client.AuthorizedPayment
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Preapproval APIs.
+    /// Client that use the Authorized Payments (also known as Invoices) APIs.
     /// </summary>
     public class AuthorizedPaymentClient : MercadoPagoClient<AuthorizedPayment>
     {
@@ -56,12 +56,12 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Get async a Preapproval by your ID.
+        /// Gets an AuthorizedPayment by ID.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
+        /// <param name="id">The AuthorizedPayment ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the Preapproval.</returns>
+        /// <returns>A task whose the result is the AuthorizedPayment.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public Task<AuthorizedPayment> GetAsync(
@@ -73,11 +73,11 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Get a Preapproval by your ID.
+        /// Gets an AuthorizedPayment by ID.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
+        /// <param name="id">The AuthorizedPayment ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The Preapproval.</returns>
+        /// <returns>The AuthorizedPayment.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public AuthorizedPayment Get(
@@ -88,12 +88,12 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Searches async for Preapprovals that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches async for AuthorizedPayment that match the criteria of <see cref="AdvancedSearchRequest"/>.
         /// </summary>
         /// <param name="request">The search request parameters.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is a page of Preapprovals.</returns>
+        /// <returns>A task whose result is a page of AuthorizedPayments.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public Task<ResultsResourcesPage<AuthorizedPayment>> SearchAsync(
@@ -109,11 +109,11 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Searches for Preapprovals that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for AuthorizedPayment that match the criteria of <see cref="AdvancedSearchRequest"/>.
         /// </summary>
         /// <param name="request">The search request parameters.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of Preapprovals.</returns>
+        /// <returns>A page of AuthorizedPayment.</returns>
         /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public ResultsResourcesPage<AuthorizedPayment> Search(
