@@ -170,5 +170,15 @@
         /// Merchant services.
         /// </summary>
         public PaymentMerchantServicesRequest MerchantServices { get; set; }
+
+        /// <summary>
+        /// 3DS.
+        ///</summary>
+        public const string PaymentThreeDSecureMode = "not_supported";
+
+        /// <summary>
+        /// 3DS Info.
+        ///</summary>
+        public PaymentThreeDSInfo ThreeDSInfo { get; set; }
     }
 }
