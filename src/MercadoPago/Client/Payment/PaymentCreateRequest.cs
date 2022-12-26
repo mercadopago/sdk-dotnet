@@ -175,5 +175,15 @@
         /// Rules.
         /// </summary>
         public PaymentMethodRequest PaymentMethod { get; set; }
+
+        ///<summary>
+        /// 3DS.
+        ///</summary>
+        public const string PaymentThreeDSecureMode = "not_supported";
+
+        /// <summary>
+        /// 3DS Info.
+        ///</summary>
+        public PaymentThreeDSInfo ThreeDSInfo { get; set; }
     }
 }

@@ -271,5 +271,14 @@
         /// Payment method.
         /// </summary>
         public PaymentMethod PaymentMethod { get; set; }
+
+        /// 3DS.
+        /// </summary>
+        public const string PaymentThreeDSecureMode = "not_supported";
+
+        /// <summary>
+        /// 3DS Info.
+        ///</summary>
+        public PaymentThreeDSInfo ThreeDSInfo { get; set; }
     }
 }
