@@ -179,7 +179,7 @@
         ///<summary>
         /// 3DS.
         ///</summary>
-        public const string PaymentThreeDSecureMode = "not_supported";
+        public string PaymentThreeDSecureMode { get; set; }
 
         /// <summary>
         /// 3DS Info.
