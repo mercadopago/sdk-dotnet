@@ -276,5 +276,11 @@
         /// 3DS Info.
         ///</summary>
         public PaymentThreeDSInfo ThreeDSInfo { get; set; }
+
+        /// <summary>
+        /// Internal data that can be attached to the payment to record additional
+        /// attributes of the merchant.
+        /// </summary>
+        public IDictionary<string, object> InternalMetadata { get; set; }
     }
 }
