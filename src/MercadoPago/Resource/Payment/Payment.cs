@@ -268,11 +268,6 @@
         public MercadoPagoResponse ApiResponse { get; set; }
 
         /// <summary>
-        /// 3DS.
-        /// </summary>
-        public string PaymentThreeDSecureMode { get; set; }
-
-        /// <summary>
         /// 3DS Info.
         ///</summary>
         public PaymentThreeDSInfo ThreeDSInfo { get; set; }
