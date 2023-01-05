@@ -272,10 +272,6 @@
         /// </summary>
         public PaymentMethod PaymentMethod { get; set; }
 
-        /// 3DS.
-        /// </summary>
-        public string PaymentThreeDSecureMode { get; set; }
-
         /// <summary>
         /// 3DS Info.
         ///</summary>
