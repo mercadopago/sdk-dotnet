@@ -275,7 +275,7 @@
         /// <summary>
         /// 3DS Info.
         ///</summary>
-        public PaymentThreeDSInfo ThreeDSInfo { get; set; }
+        public PaymentThreeDSInfo ThreeDsinfo { get; set; }
 
         /// <summary>
         /// Internal data that can be attached to the payment to record additional

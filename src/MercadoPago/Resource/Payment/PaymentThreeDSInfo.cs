@@ -13,6 +13,6 @@ namespace MercadoPago.Resource.Payment
           /// <summary>
           /// CReq.
           /// </summary>
-          public string CReq { get; set; }
+          public string Creq { get; set; }
      }
 }
