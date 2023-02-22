@@ -1,4 +1,6 @@
-﻿namespace MercadoPago.Resource.Payment
+﻿using System.Numerics;
+
+namespace MercadoPago.Resource.Payment
 {
     /// <summary>
     /// Payer's bank info.
@@ -13,7 +15,7 @@
         /// <summary>
         /// Account ID.
         /// </summary>
-        public long? AccountId { get; set; }
+        public BigInteger? AccountId { get; set; }
 
         /// <summary>
         /// Account long name.
