@@ -179,6 +179,6 @@
         ///<summary>
         /// 3DS.
         ///</summary>
-        public string PaymentThreeDSecureMode { get; set; }
+        public string ThreeDSecureMode { get; set; }
     }
 }

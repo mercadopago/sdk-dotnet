@@ -1,10 +1,7 @@
-using System;
-using System.Globalization;
 using System.IO;
+using MercadoPago.Client.Payment;
 using MercadoPago.Serialization;
-using MercadoPago.Tests.Serialization;
 using Xunit;
-using MercadoPago.Resource.Payment;
 
 namespace MercadoPago.Tests.Client.Payment
 {
@@ -19,9 +16,18 @@ namespace MercadoPago.Tests.Client.Payment
         }
 
         [Fact]
+        public void Serialize_PaymentCreateRequestThreeDSecureModeFromJson_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/CardPaymentWith3dsRequest.json");
+            var paymentCreateRequest = serializer.DeserializeFromJson<PaymentCreateRequest>(json);
+
+            Assert.Equal("optional", paymentCreateRequest.ThreeDSecureMode);
+        }
+
+        [Fact]
         public void Deserialize_PaymentThreeDSInfoFromJson_Success()
         {
-            string json = File.ReadAllText("Client/Mock/CardPaymentWith3dsResponse.json");
+            var json = File.ReadAllText("Client/Mock/CardPaymentWith3dsResponse.json");
             var payment = serializer.DeserializeFromJson<MercadoPago.Resource.Payment.Payment>(json);
 
             Assert.Equal("https://acs-public.tp.mastercard.com/api/v1/browser_challenges", payment.ThreeDsinfo.ExternalResourceUrl);
