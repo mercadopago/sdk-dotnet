@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using MercadoPago.Http;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Payment resource.
@@ -266,5 +267,22 @@
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
+
+        /// <summary>
+        /// Payment method.
+        /// </summary>
+        public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// 3DS Info.
+        ///</summary>
+        [JsonProperty(PropertyName = "three_dsinfo")]
+        public PaymentThreeDSInfo ThreeDSInfo { get; set; }
+
+        /// <summary>
+        /// Internal data that can be attached to the payment to record additional
+        /// attributes of the merchant.
+        /// </summary>
+        public IDictionary<string, object> InternalMetadata { get; set; }
     }
 }
