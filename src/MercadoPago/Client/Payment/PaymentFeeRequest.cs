@@ -17,6 +17,5 @@ namespace MercadoPago.Client.Payment
         /// Value.
         /// </summary>
         public decimal Value { get; set; }
-
     }
 }

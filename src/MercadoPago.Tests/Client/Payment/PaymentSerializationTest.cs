@@ -30,8 +30,8 @@ namespace MercadoPago.Tests.Client.Payment
             var json = File.ReadAllText("Client/Mock/CardPaymentWith3dsResponse.json");
             var payment = serializer.DeserializeFromJson<MercadoPago.Resource.Payment.Payment>(json);
 
-            Assert.Equal("https://acs-public.tp.mastercard.com/api/v1/browser_challenges", payment.ThreeDsinfo.ExternalResourceUrl);
-            Assert.Equal("eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6ImE4NDQ1NTE2LThjNzktNGQ1NC04MjRmLTU5YzgzNDRiY2FjNCIsImFj", payment.ThreeDsinfo.Creq);
+            Assert.Equal("https://acs-public.tp.mastercard.com/api/v1/browser_challenges", payment.ThreeDSInfo.ExternalResourceUrl);
+            Assert.Equal("eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6ImE4NDQ1NTE2LThjNzktNGQ1NC04MjRmLTU5YzgzNDRiY2FjNCIsImFj", payment.ThreeDSInfo.Creq);
         }
 
     }
