@@ -12,7 +12,7 @@
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
-    <PackageReference Include="Moq" Version="4.14.7" />
+    <PackageReference Include="Moq" Version="4.18.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +32,7 @@
     <Folder Include="Client\MerchantOrder\" />
     <Folder Include="Client\Preapproval\" />
     <Folder Include="Config\" />
+    <Folder Include="Client\AuthorizedPayment\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MercadoPago\MercadoPago.csproj" />
@@ -42,6 +43,7 @@
     <None Remove="Client\Mock\DummyListResponse.json" />
     <None Remove="Config\SDK.config" />
     <None Remove="mono_crash.11a6748113.0.json" />
+    <None Remove="Client\AuthorizedPayment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Serialization\DummySerializableObject.json">
@@ -59,6 +61,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Client\Mock\CardPaymentWith3dsRequest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Client\Mock\AuthorizedPaymentGetResponse.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Client\Mock\AuthorizedPaymentSearchResponse.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

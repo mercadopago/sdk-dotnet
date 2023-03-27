@@ -5,7 +5,7 @@ namespace MercadoPago.Resource.AuthorizedPayment
     /// <summary>
     /// Payment status related to the invoice.
     /// </summary>
-    public class AuthorizedPaymentPayment
+    public class AuthorizedPaymentStatus
     {
         /// <summary>
         /// Unique payment identifier.
