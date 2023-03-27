@@ -28,12 +28,12 @@ namespace MercadoPago.Resource.AuthorizedPayment
         /// <summary>
         /// Creation date.
         /// </summary>
-        public DateTime? DateCreated { get; set; }
+        public DateTimeOffset? DateCreated { get; set; }
 
         /// <summary>
         /// Last modified date.
         /// </summary>
-        public DateTime? LastModified { get; set; }
+        public DateTimeOffset? LastModified { get; set; }
 
         /// <summary>
         /// Subscription ID for which the invoice was created.
@@ -72,7 +72,18 @@ namespace MercadoPago.Resource.AuthorizedPayment
         /// <summary>
         /// Date on which we will try to make the payment.
         /// </summary>
-        public DateTime? DebitDate { get; set; }
+        public DateTimeOffset? DebitDate { get; set; }
+
+        /// <summary>
+        /// Status of the invoice.
+        /// <list type="bullet">
+        ///     <item><c>scheduled</c>: Authorized payment scheduled to collect</item>
+        ///     <item><c>processed:</c>: Authorized payment collected or exceeded retries</item>
+        ///     <item><c>recycling</c>: Authorized payment in attempt to collect</item>
+        ///     <item><c>cancelled</c>: Authorized payment canceled</item>
+        /// </list>
+        /// </summary>
+        public string Status { get; set; }
 
         /// <summary>
         /// How many times we try to collect the invoice.
@@ -95,7 +106,7 @@ namespace MercadoPago.Resource.AuthorizedPayment
         ///   <item><c>done</c>: Summarized result in the subscription</item>
         /// </list>
         /// </summary>
-        public AuthorizedPaymentPayment Payment { get; set; }
+        public AuthorizedPaymentStatus Payment { get; set; }
 
         /// <summary>
         /// Response from API.
