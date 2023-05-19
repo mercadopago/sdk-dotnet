@@ -276,7 +276,7 @@
         /// <summary>
         /// 3DS Info.
         ///</summary>
-        [JsonProperty(PropertyName = "three_dsinfo")]
+        [JsonProperty(PropertyName = "three_ds_info")]
         public PaymentThreeDSInfo ThreeDSInfo { get; set; }
 
         /// <summary>
