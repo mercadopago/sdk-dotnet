@@ -46,5 +46,10 @@ namespace MercadoPago.Client.Payment
         /// Payer's address information.
         /// </summary>
         public PaymentPayerAddressRequest Address { get; set; }
+
+        /// <summary>
+        /// Payer's phone information.
+        /// </summary>
+        public PaymentPayerPhoneRequest Phone { get; set; }
     }
 }
