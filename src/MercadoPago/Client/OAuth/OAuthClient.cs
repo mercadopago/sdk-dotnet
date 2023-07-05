@@ -1,4 +1,4 @@
-﻿namespace MercadoPago.Client.OAuth
+namespace MercadoPago.Client.OAuth
 {
     using System.Text;
     using System.Threading;
@@ -127,6 +127,8 @@
         /// Creates async an OAuth credentials.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="clientId">Client Id.</param>
+        /// <param name="clientSecret">Client Secret.</param>
         /// <param name="redirectUri">Redirect Uri.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
@@ -135,24 +137,16 @@
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public Task<OAuthCredential> CreateOAuthCredentialAsync(
             string authorizationCode,
+            string clientId,
+            string clientSecret,
             string redirectUri,
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            string accessToken;
-            if (requestOptions != null)
-            {
-                accessToken = string.IsNullOrWhiteSpace(requestOptions.AccessToken) ?
-                    MercadoPagoConfig.AccessToken : requestOptions.AccessToken;
-            }
-            else
-            {
-                accessToken = MercadoPagoConfig.AccessToken;
-            }
-
             var request = new CreateOAuthCredentialRequest
             {
-                ClientSecret = accessToken,
+                ClientId = clientId,
+                ClientSecret = clientSecret,
                 Code = authorizationCode,
                 RedirectUri = redirectUri,
             };
@@ -168,6 +162,8 @@
         /// Creates an OAuth credentials.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="clientId">Client Id.</param>
+        /// <param name="clientSecret">Client Secret.</param>
         /// <param name="redirectUri">Redirect Uri.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The OAuth credential.</returns>
@@ -175,23 +171,15 @@
         /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
         public OAuthCredential CreateOAuthCredential(
             string authorizationCode,
+            string clientId,
+            string clientSecret,
             string redirectUri,
             RequestOptions requestOptions = null)
         {
-            string accessToken;
-            if (requestOptions != null)
-            {
-                accessToken = string.IsNullOrWhiteSpace(requestOptions.AccessToken) ?
-                    MercadoPagoConfig.AccessToken : requestOptions.AccessToken;
-            }
-            else
-            {
-                accessToken = MercadoPagoConfig.AccessToken;
-            }
-
             var request = new CreateOAuthCredentialRequest
             {
-                ClientSecret = accessToken,
+                ClientId = clientId,
+                ClientSecret = clientSecret,
                 Code = authorizationCode,
                 RedirectUri = redirectUri,
             };
