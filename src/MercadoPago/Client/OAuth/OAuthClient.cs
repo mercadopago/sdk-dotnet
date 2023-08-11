@@ -122,9 +122,51 @@ namespace MercadoPago.Client.OAuth
                 .Append(redirectUri)
                 .ToString();
         }
+        /// <summary>
+        /// Creates an OAuth credentials asynchronously using
+        /// access token as client secret.
+        /// </summary>
+        /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="redirectUri">Redirect Uri.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <returns>A task whose the result is the OAuth credential.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public Task<OAuthCredential> CreateOAuthCredentialAsync(
+            string authorizationCode,
+            string redirectUri,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            string accessToken;
+            if (requestOptions != null)
+            {
+                accessToken = string.IsNullOrWhiteSpace(requestOptions.AccessToken) ?
+                    MercadoPagoConfig.AccessToken : requestOptions.AccessToken;
+            }
+            else
+            {
+                accessToken = MercadoPagoConfig.AccessToken;
+            }
+
+            var request = new CreateOAuthCredentialRequest
+            {
+                ClientSecret = accessToken,
+                Code = authorizationCode,
+                RedirectUri = redirectUri,
+            };
+            return SendAsync(
+                "/oauth/token",
+                HttpMethod.POST,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
 
         /// <summary>
-        /// Creates async an OAuth credentials.
+        /// Creates an OAuth credentials asynchronously with
+        /// client id and client secret.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
         /// <param name="clientId">Client Id.</param>
@@ -159,7 +201,47 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Creates an OAuth credentials.
+        /// Creates an OAuth credentials using
+        /// access token as client secret.
+        /// </summary>
+        /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="redirectUri">Redirect Uri.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <returns>The OAuth credential.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public OAuthCredential CreateOAuthCredential(
+            string authorizationCode,
+            string redirectUri,
+            RequestOptions requestOptions = null)
+        {
+            string accessToken;
+            if (requestOptions != null)
+            {
+                accessToken = string.IsNullOrWhiteSpace(requestOptions.AccessToken) ?
+                    MercadoPagoConfig.AccessToken : requestOptions.AccessToken;
+            }
+            else
+            {
+                accessToken = MercadoPagoConfig.AccessToken;
+            }
+
+            var request = new CreateOAuthCredentialRequest
+            {
+                ClientSecret = accessToken,
+                Code = authorizationCode,
+                RedirectUri = redirectUri,
+            };
+            return Send(
+                "/oauth/token",
+                HttpMethod.POST,
+                request,
+                requestOptions);
+        }
+
+        /// <summary>
+        /// Creates an OAuth credentials with
+        /// client id and client secret.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
         /// <param name="clientId">Client Id.</param>
