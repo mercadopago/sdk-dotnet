@@ -1,4 +1,4 @@
-﻿namespace MercadoPago.Client.OAuth
+namespace MercadoPago.Client.OAuth
 {
     using System.Text;
     using System.Threading;
@@ -122,9 +122,9 @@
                 .Append(redirectUri)
                 .ToString();
         }
-
         /// <summary>
-        /// Creates async an OAuth credentials.
+        /// Creates an OAuth credentials asynchronously using
+        /// access token as client secret.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
         /// <param name="redirectUri">Redirect Uri.</param>
@@ -165,7 +165,44 @@
         }
 
         /// <summary>
-        /// Creates an OAuth credentials.
+        /// Creates an OAuth credentials asynchronously with
+        /// client id and client secret.
+        /// </summary>
+        /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="clientId">Client Id.</param>
+        /// <param name="clientSecret">Client Secret.</param>
+        /// <param name="redirectUri">Redirect Uri.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <returns>A task whose the result is the OAuth credential.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public Task<OAuthCredential> CreateOAuthCredentialAsync(
+            string authorizationCode,
+            string clientId,
+            string clientSecret,
+            string redirectUri,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            var request = new CreateOAuthCredentialRequest
+            {
+                ClientId = clientId,
+                ClientSecret = clientSecret,
+                Code = authorizationCode,
+                RedirectUri = redirectUri,
+            };
+            return SendAsync(
+                "/oauth/token",
+                HttpMethod.POST,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Creates an OAuth credentials using
+        /// access token as client secret.
         /// </summary>
         /// <param name="authorizationCode">Authorization code.</param>
         /// <param name="redirectUri">Redirect Uri.</param>
@@ -192,6 +229,39 @@
             var request = new CreateOAuthCredentialRequest
             {
                 ClientSecret = accessToken,
+                Code = authorizationCode,
+                RedirectUri = redirectUri,
+            };
+            return Send(
+                "/oauth/token",
+                HttpMethod.POST,
+                request,
+                requestOptions);
+        }
+
+        /// <summary>
+        /// Creates an OAuth credentials with
+        /// client id and client secret.
+        /// </summary>
+        /// <param name="authorizationCode">Authorization code.</param>
+        /// <param name="clientId">Client Id.</param>
+        /// <param name="clientSecret">Client Secret.</param>
+        /// <param name="redirectUri">Redirect Uri.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <returns>The OAuth credential.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public OAuthCredential CreateOAuthCredential(
+            string authorizationCode,
+            string clientId,
+            string clientSecret,
+            string redirectUri,
+            RequestOptions requestOptions = null)
+        {
+            var request = new CreateOAuthCredentialRequest
+            {
+                ClientId = clientId,
+                ClientSecret = clientSecret,
                 Code = authorizationCode,
                 RedirectUri = redirectUri,
             };

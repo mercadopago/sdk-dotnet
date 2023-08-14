@@ -1,4 +1,4 @@
-﻿namespace MercadoPago.Client.OAuth
+namespace MercadoPago.Client.OAuth
 {
     /// <summary>
     /// Data to create an OAuth credential.
@@ -6,7 +6,12 @@
     public class CreateOAuthCredentialRequest
     {
         /// <summary>
-        /// Client secret (Access Token).
+        /// Client Id
+        /// </summary>
+        public string ClientId { get; set; }
+
+        /// <summary>
+        /// Client secret
         /// </summary>
         public string ClientSecret { get; set; }
 
