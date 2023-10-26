@@ -1,5 +1,6 @@
 ﻿namespace MercadoPago.Config
 {
+    using System;
     using System.Configuration;
     using System.Reflection;
     using MercadoPago.Http;
@@ -23,13 +24,21 @@
         private static ISerializer serializer;
         private static IRetryStrategy retryStrategy;
 
-        static MercadoPagoConfig() =>
+        static MercadoPagoConfig()
+        {
             Version = new AssemblyName(typeof(MercadoPagoConfig).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+            TrackingId = $"platform:{Environment.Version.Major}|{Environment.Version},type:SDK{Version},so;";
+        }
 
         /// <summary>
         /// Actual SDK version.
         /// </summary>
         public static string Version { get; }
+
+        /// <summary>
+        /// SDK Tracking Id.
+        /// </summary>
+        public static string TrackingId { get; }
 
         /// <summary>
         /// Base URL of MercadoPago's APIs.

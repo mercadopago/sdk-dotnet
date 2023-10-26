@@ -56,6 +56,7 @@
                 [Headers.ACCEPT] = ACCEPT_VALUE,
                 [Headers.PRODUCT_ID] = MercadoPagoConfig.ProductId,
                 [Headers.USER_AGENT] = $"MercadoPago DotNet SDK/{MercadoPagoConfig.Version}",
+                [Headers.TRACKING_ID] = MercadoPagoConfig.TrackingId,
             };
 
         /// <summary>
