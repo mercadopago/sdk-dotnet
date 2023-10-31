@@ -49,5 +49,10 @@
         /// Platform ID header name.
         /// </summary>
         public const string PLATFORM_ID = "X-Platform-Id";
+
+        /// <summary>
+        /// Tracking ID header name.
+        /// </summary>
+        public const string TRACKING_ID = "X-Tracking-Id";
     }
 }
