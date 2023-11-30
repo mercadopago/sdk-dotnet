@@ -18,7 +18,7 @@
         public string QrCodeBase64 { get; set; }
 
         /// <summary>
-        /// Transaction ID.
+        /// BACEN identifier for Pix.
         /// </summary>
         public string TransactionId { get; set; }
 

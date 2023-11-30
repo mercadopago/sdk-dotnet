@@ -40,5 +40,10 @@
         /// is the reference to give to the cashier or to input into the ATM.
         /// </summary>
         public string PaymentMethodReferenceId { get; set; }
+
+        /// <summary>
+        /// BACEN identifier for Pix
+        /// </summary>
+        public string TransactionId { get; set; }
     }
 }
