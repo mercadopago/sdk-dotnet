@@ -89,9 +89,12 @@ All methods that make API calls accept an optional `RequestOptions` object. This
 
 ```csharp
 using MercadoPago.Client;
+using MercadoPago.Http;
 
 var requestOptions = new RequestOptions();
 requestOptions.AccessToken = "YOUR_ACCESS_TOKEN";
+requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, "YOUR_IDEMPOTENCY_KEY");
+
 // ...
 
 var client = new PaymentClient();
