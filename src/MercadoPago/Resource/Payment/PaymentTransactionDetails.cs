@@ -1,4 +1,6 @@
-﻿namespace MercadoPago.Resource.Payment
+﻿using MercadoPago.Client.Payment;
+
+namespace MercadoPago.Resource.Payment
 {
     /// <summary>
     /// Transaction details.
@@ -45,5 +47,36 @@
         /// BACEN identifier for Pix
         /// </summary>
         public string TransactionId { get; set; }
+
+        /// <summary>
+        /// Acquirer reference
+        /// </summary>
+        public string AcquirerReference { get; set; }
+
+        /// <summary>
+        /// Barcode information
+        /// </summary>
+        public PaymentBarcode Barcode { get; set; }
+
+        /// <summary>
+        /// Boleto digitable line
+        /// </summary>
+        public string DigitableLine { get; set; }
+
+        /// <summary>
+        /// Verification Code
+        /// </summary>
+        public string VerificationCode { get; set; }
+
+        /// <summary>
+        /// Payable Deferral Period
+        /// </summary>
+        public string PayableDeferralPeriod { get; set; }
+
+        /// <summary>
+        /// Bank transfer id
+        /// </summary>
+        public string BankTransferId { get; set; }
+
     }
 }
