@@ -2,6 +2,9 @@
 
 namespace MercadoPago.Resource.Payment
 {
+    /// <summary>
+    /// Barcode information.
+    /// </summary>
     public class PaymentBarcode
     {
         /// <summary>
