@@ -33,6 +33,21 @@
         public string RefreshToken { get; set; }
 
         /// <summary>
+        /// Identification number (Mercado Pago ID).
+        /// </summary>
+        public long UserId { get; set; }
+
+        /// <summary>
+        /// Public key of the application.
+        /// </summary>
+        public string PublicKey { get; set; }
+
+        /// <summary>
+        /// Production or test mode.
+        /// </summary>
+        public bool LiveMode { get; set; }
+
+        /// <summary>
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
