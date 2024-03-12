@@ -146,6 +146,11 @@
         public string PaymentMethodOptionId { get; set; }
 
         /// <summary>
+        /// Marketplace.
+        /// </summary>
+        public string Marketplace { get; set; }
+
+        /// <summary>
         /// Transaction details.
         /// </summary>
         public PaymentTransactionDetailsRequest TransactionDetails { get; set; }
