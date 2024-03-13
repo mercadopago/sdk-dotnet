@@ -12,5 +12,10 @@ namespace MercadoPago.Client.Payment
         /// Payment rules.
         /// </summary>
         public PaymentRulesRequest Rules { get; set; }
+
+        /// <summary>
+        /// Authentication.
+        /// </summary>
+        public PaymentAuthenticationRequest authentication { get; set; }
     }
 }
