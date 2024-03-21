@@ -18,8 +18,8 @@
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net5.0;netstandard2.0;net461</TargetFrameworks>
-    <Version>2.3.7</Version>
-    <VersionPrefix>2.3.7</VersionPrefix>
+    <Version>2.3.8</Version>
+    <VersionPrefix>2.3.8</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
