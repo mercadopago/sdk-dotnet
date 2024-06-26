@@ -186,9 +186,10 @@
         ///</summary>
         public string ThreeDSecureMode { get; set; }
 
-        /// <summary>
+        ///<summary>
         /// Rules.
-        /// </summary>
-        public PaymentFowardDataRequest { get; set; }
+        ///</summary>
+        public PaymentFowardDataRequest  PaymentFowardDataRequest{ get; set; }
     }
 }
+

@@ -21,6 +21,11 @@ namespace MercadoPago.Client.Common
         public string Country { get; set; }
 
         /// <summary>
+        /// Street name where the sub-commerce is located
+        /// </summary>
+        public string AddressStreet { get; set; }
+
+        /// <summary>
         /// Street number where the sub-commerce is located
         /// </summary>
         public string AddressDoorNumber { get; set; }
@@ -29,6 +34,12 @@ namespace MercadoPago.Client.Common
         /// Sub trade name
         /// </summary>
         public string LegalName { get; set; }
+
+        /// <summary>
+        /// City where is located
+        /// </summary>
+        public string City { get; set; }
+        
 
         /// <summary>
         /// State where the sub commerce is located
@@ -41,14 +52,24 @@ namespace MercadoPago.Client.Common
         public string RegionCode { get; set; }
 
         /// <summary>
-        /// Sub-commerce CPF or CNPJ number
+        /// Sub-commerce CPF or CNPJ type
         /// </summary>
         public string DocumentType { get; set; }
+
+        /// <summary>
+        /// Sub-commerce CPF or CNPJ number
+        /// </summary>
+        public string DocumentNumber { get; set; }
 
         /// <summary>
         /// Sub-commerce telephone number
         /// </summary>
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Sub-commerce telephone number
+        /// </summary>
+        public string Zip { get; set; }
 
         /// <summary>
         /// Payment Facilitator URL
