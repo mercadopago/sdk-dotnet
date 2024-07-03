@@ -13,7 +13,7 @@ namespace MercadoPago.Client.Common
         /// <summary>
         /// Sub-commerce MCC as determined by Abecs and/or primary CNAE
         /// </summary>
-        public string MCC { get; set; }
+        public string Mcc { get; set; }
 
         /// <summary>
         /// Country in which the sub commerce is located
