@@ -28,7 +28,7 @@ namespace MercadoPago.Client.Common
         /// <summary>
         /// Street number where the sub-commerce is located
         /// </summary>
-        public string AddressDoorNumber { get; set; }
+        public int AddressDoorNumber { get; set; }
 
         /// <summary>
         /// Sub trade name
