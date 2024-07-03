@@ -189,7 +189,7 @@
         ///<summary>
         /// Rules.
         ///</summary>
-        public PaymentFowardDataRequest  PaymentFowardDataRequest{ get; set; }
+        public PaymentForwardDataRequest  PaymentForwardDataRequest{ get; set; }
     }
 }
 

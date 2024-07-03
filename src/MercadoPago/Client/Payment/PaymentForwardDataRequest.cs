@@ -5,7 +5,7 @@ namespace MercadoPago.Client.Payment
     /// <summary>
     /// FowardData information
     /// </summary>
-    public class PaymentFowardDataRequest
+    public class PaymentForwardDataRequest
     {
         /// <summary>
         /// Payer's personal identification.
