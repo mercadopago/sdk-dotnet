@@ -185,5 +185,11 @@
         /// 3DS.
         ///</summary>
         public string ThreeDSecureMode { get; set; }
+
+        ///<summary>
+        /// Rules.
+        ///</summary>
+        public PaymentForwardDataRequest  PaymentForwardDataRequest{ get; set; }
     }
 }
+
