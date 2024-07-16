@@ -12,5 +12,10 @@ namespace MercadoPago.Client.Payment
         /// Payment data.
         /// </summary>
         public PaymentDataRequest Data { get; set; }
+
+        /// <summary>
+        /// Type.
+        /// </summary>
+        public string Type { get; set; }
     }
 }
