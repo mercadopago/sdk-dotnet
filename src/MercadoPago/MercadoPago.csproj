@@ -6,7 +6,7 @@
     <AssemblyName>MercadoPago</AssemblyName>
     <AssemblyTitle>MercadoPago</AssemblyTitle>
     <Authors>MercadoPago</Authors>
-    <Description>Official .NET 4.6.1+ MercadoPago SDK</Description>
+    <Description>Official .NET 6.0+ MercadoPago SDK</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <LangVersion>7.3</LangVersion>
@@ -17,26 +17,14 @@
     <PackageTags>mercadopago;payment;credit;card;checkout</PackageTags>
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <TargetFrameworks>net5.0;netstandard2.0;net461</TargetFrameworks>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
     <Version>2.3.10</Version>
     <VersionPrefix>2.3.10</VersionPrefix>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
