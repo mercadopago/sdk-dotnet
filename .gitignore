@@ -117,6 +117,7 @@ ClientBin/
 *.publishsettings
 node_modules/
 orleans.codegen.cs
+samples
 
 # Microsoft Fakes
 FakesAssemblies/
