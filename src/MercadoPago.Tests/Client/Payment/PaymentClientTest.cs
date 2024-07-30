@@ -245,7 +245,7 @@
             PaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
             Payment createdPayment = await client.CreateAsync(request);
 
-            await Task.Delay(3000);
+            await Task.Delay(5000);
 
             var searchRequest = new AdvancedSearchRequest
             {
