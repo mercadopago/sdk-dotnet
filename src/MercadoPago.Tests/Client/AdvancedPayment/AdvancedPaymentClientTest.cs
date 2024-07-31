@@ -437,7 +437,7 @@
                 }
                 else
                 {
-                    throw ex;
+                    throw;
                 }
             }
 
@@ -462,7 +462,7 @@
                 }
                 else
                 {
-                    throw ex;
+                    throw;
                 }
             }
 
@@ -553,13 +553,13 @@
                     {
                         if (++attempts == maxAttempts)
                         {
-                            throw ex;
+                            throw;
                         }
                         await Task.Delay(1000);
                     }
                     else
                     {
-                        throw ex;
+                        throw;
                     }
                 }
             }
@@ -583,13 +583,13 @@
                     {
                         if (++attempts == maxAttempts)
                         {
-                            throw ex;
+                            throw;
                         }
                         Thread.Sleep(1000);
                     }
                     else
                     {
-                        throw ex;
+                        throw;
                     }
                 }
             }

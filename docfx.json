@@ -1,41 +1,41 @@
 {
-    "metadata": [
+  "metadata": [
+    {
+      "src": [
         {
-            "src": [
-                {
-                    "files": [ "MercadoPago/MercadoPago.csproj" ],
-                    "exclude": [ "**/bin/**", "**/obj/**" ],
-                    "src": "src"
-                }
-            ],
-            "dest": "obj/sdk",
-            "properties": {
-                "TargetFramework": "netcoreapp3.1"
-            }
+          "files": ["MercadoPago/MercadoPago.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"],
+          "src": "src"
         }
-    ],
-    "build": {
-        "content": [
-            {
-                "files": [ "**/*.yml" ],
-                "src": "obj/sdk",
-                "dest": "sdk"
-            },
-            {
-                "files": [ "*.md", "toc.yml" ]
-            },
-            {
-                "files": [ "*.md" ],
-                "src": ".github/ISSUE_TEMPLATE"
-            }
-        ],
-        "globalMetadata": {
-            "_appTitle": "MercadoPago official .NET SDK",
-            "_enableSearch": true
-        },
-        "template": ["statictoc"],
-        "markdownEngineName": "markdig",
-        "dest": "docs",
-        "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ]
+      ],
+      "dest": "obj/sdk",
+      "properties": {
+        "TargetFramework": "net6.0"
+      }
     }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**/*.yml"],
+        "src": "obj/sdk",
+        "dest": "sdk"
+      },
+      {
+        "files": ["*.md", "toc.yml"]
+      },
+      {
+        "files": ["*.md"],
+        "src": ".github/ISSUE_TEMPLATE"
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "MercadoPago official .NET SDK",
+      "_enableSearch": true
+    },
+    "template": ["statictoc"],
+    "markdownEngineName": "markdig",
+    "dest": "docs",
+    "xrefService": ["https://xref.docs.microsoft.com/query?uid={uid}"]
+  }
 }

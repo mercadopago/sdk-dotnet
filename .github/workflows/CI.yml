@@ -18,7 +18,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '6.0.x'
 
       # Build
       - name: Install dependencies
@@ -32,7 +32,7 @@ jobs:
         run: dotnet restore src/MercadoPago.Tests/MercadoPago.Tests.csproj
 
       - name: Run tests
-        run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj -f net5.0 --configuration Release --no-restore
+        run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj -f net6.0 --configuration Release --no-restore
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}

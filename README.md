@@ -11,7 +11,7 @@ The official Mercado Pago .NET SDK.
 
 ## 💡 Requirements
 
-**.NET Standard 2.0+**, **.NET Core 2.0+**, and **.NET Framework 4.6.1+**.
+**.NET Standard 2.1+**, **.NET Core 2.0+**, and **.NET Framework 6.0+**.
 
 If you are using previous versions of .NET Framework in your project, please refer to the [older versions](https://github.com/mercadopago/sdk-dotnet/tree/master-dotnet-framework) of the SDK.
 
