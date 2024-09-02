@@ -14,12 +14,12 @@ namespace MercadoPago.Resource.Payment
         public PaymentRules Rules { get; set; }
 
         /// <summary>
-        /// Reference Information.
+        /// Reference Id.
         /// </summary>
         public string ReferenceId { get; set; }
 
         /// <summary>
-        /// External Reference Information.
+        /// External Reference Id.
         /// </summary>
         public string ExternalReferenceId { get; set; }
 
