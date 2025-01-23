@@ -58,5 +58,7 @@
     <Folder Include="Client\OAuth\" />
     <Folder Include="Resource\PreApproval\" />
     <Folder Include="Client\Preapproval\" />
+    <Folder Include="Resource\Order\" />
+    <Folder Include="Client\Order\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿namespace MercadoPago.Error
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
     using MercadoPago.Http;
 
@@ -38,6 +39,28 @@
                 {
                     messageSb.Append($" | API message: {ApiError.Message}");
                 }
+
+                if (ApiError.Errors != null && ApiError.Errors.Count > 0)
+                {
+                    var messageDetails = new List<string>();
+                    foreach (var error in ApiError.Errors)
+                    {
+                        if (error.Details != null && error.Details.Count > 0)
+                        {
+                            foreach (var detail in error.Details)
+                            {
+                                messageDetails.Add(detail);
+                            }
+                        }
+                    }
+
+                    if (messageDetails.Count > 0)
+                    {
+                        var detailsString = string.Join("| ", messageDetails);
+                        messageSb.Append($" | API message details: {detailsString}");
+                    }
+                }
+
                 return messageSb.ToString();
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace MercadoPago.Error
+﻿using System.Collections.Generic;
+
+namespace MercadoPago.Error
 {
     /// <summary>
     /// Cause of the the API error.
@@ -26,5 +28,11 @@
         /// Some APIs uses <see cref="Description"/> others <see cref="Message"/>.
         /// </summary>
         public string Message { get; set; }
+
+        /// <summary>
+        /// Details message.
+        /// Some APIs uses <see cref="Details"/> others <see cref="Details"/>.
+        /// </summary>
+        public List<string> Details { get; set; }
     }
 }
