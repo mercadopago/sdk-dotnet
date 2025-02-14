@@ -20,12 +20,12 @@
         /// <summary>
         /// Departure date.
         /// </summary>
-        public DateTime? DepartureDateTime { get; set; }
+        public DateTimeOffset? DepartureDateTime { get; set; }
 
         /// <summary>
         /// Arrival date.
         /// </summary>
-        public DateTime? ArrivalDateTime { get; set; }
+        public DateTimeOffset? ArrivalDateTime { get; set; }
 
         /// <summary>
         /// Company.
