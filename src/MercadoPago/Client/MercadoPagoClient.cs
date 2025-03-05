@@ -353,7 +353,7 @@
         private TResponse ParseResponse<TResponse>(MercadoPagoResponse response)
             where TResponse : IResource, new()
         {
-            if (response.StatusCode != 200 && response.StatusCode != 201)
+            if (response.StatusCode > 299)
             {
                 throw BuildApiErrorException(response);
             }
@@ -368,7 +368,9 @@
                 throw BuildInvalidResponseException(response);
             }
 
-            resource.ApiResponse = response;
+            if (!string.IsNullOrEmpty(response.Content)) {
+                resource.ApiResponse = response;
+            }
 
             return resource;
         }

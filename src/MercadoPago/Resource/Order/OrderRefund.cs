@@ -1,33 +1,36 @@
 namespace MercadoPago.Resource.Order
 {
+    using MercadoPago.Http;
+
     /// <summary>
-    /// Refund class.
+    /// Transaction class.
     /// </summary>
-    public class OrderRefund
+    public class OrderRefund : IResource
     {
         /// <summary>
-        /// Refund ID.
-        /// </summary>
+        /// Payments information.
+        /// </summary>        
         public string Id { get; set; }
 
         /// <summary>
-        /// Transaction ID.
-        /// </summary>
-        public string TransactionId { get; set; }
-
-        /// <summary>
-        /// Reference ID.
-        /// </summary>  
-        public string referenceId {get; set;}
-
-        /// <summary>
-        /// Status Refund.
-        /// </summary>
+        /// Payments information.
+        /// </summary>        
         public string Status { get; set; }
 
         /// <summary>
-        /// Amount Refund.
+        /// Payments information.
+        /// </summary>        
+        public string StatusDetail { get; set; }
+
+        /// <summary>
+        /// Refunds information.
         /// </summary>
-        public string Amount { get; set; }
+        public OrderTransactionRefund Transactions { get; set; }
+
+        /// <summary>
+        /// Response from API.
+        /// </summary>
+        public MercadoPagoResponse ApiResponse { get; set; }
+
     }
 }
