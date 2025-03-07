@@ -16,12 +16,12 @@
     public class OrderClientTest : BaseClientTest
     {
 
-        public const string automatic = "automatic";
-        public const string manual = "manual";
-        public const string processed = "processed";
-        public const string canceled = "canceled";
-        public const string refunded = "refunded";
-        public const string partiallyRefunded = "partially_refunded";
+        private const string automatic = "automatic";
+        private const string manual = "manual";
+        private const string processed = "processed";
+        private const string canceled = "canceled";
+        private const string refunded = "refunded";
+        private const string partiallyRefunded = "partially_refunded";
 
         private readonly OrderClient orderClient;
 
@@ -78,7 +78,6 @@
         public async Task Create_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
-            await Task.Delay(3000);
 
             Order order = await orderClient.CreateAsync(request);
 
@@ -91,9 +90,8 @@
         public async Task Process_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automatic);
-            await Task.Delay(3000);
-
             Order createOrder = await orderClient.CreateAsync(request);
+
             var requestOptions = new RequestOptions{};
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
@@ -107,9 +105,8 @@
         public async Task Get_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
-            await Task.Delay(3000);
-
             Order createOrder = await orderClient.CreateAsync(request);
+
             Order order = orderClient.Get(createOrder.Id);
             
             Assert.NotNull(order);
@@ -120,9 +117,8 @@
         public async Task Capture_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, manual);
-            await Task.Delay(3000);
-
             Order createOrder = await orderClient.CreateAsync(request);
+
             var requestOptions = new RequestOptions{};
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
@@ -136,9 +132,8 @@
         public async Task Cancel_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automatic);
-            await Task.Delay(3000);
-
             Order createOrder = await orderClient.CreateAsync(request);
+
             var requestOptions = new RequestOptions{};
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
@@ -152,7 +147,6 @@
         public async Task RefundTotal_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
-            await Task.Delay(3000);
 
             Order createOrder = await orderClient.CreateAsync(request);
             var requestOptions = new RequestOptions{};
@@ -170,9 +164,8 @@
         public async Task RefundPartial_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
-            await Task.Delay(3000);
-
             Order createOrder = await orderClient.CreateAsync(request);
+
             var requestOptions = new RequestOptions{};
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
@@ -201,7 +194,6 @@
             Order createOrder = await orderClient.CreateAsync(request);
 
             CardToken cardToken = await cardTokenClient.CreateTestCardToken(User, "approved");
-            await Task.Delay(3000);
 
             OrderTransactionRequest transaction = new OrderTransactionRequest{
                 Payments = new List<OrderPaymentRequest>{
@@ -233,8 +225,6 @@
         public async Task UpdateTransaction_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automatic);
-            await Task.Delay(3000);
-
             Order order = await orderClient.CreateAsync(request);
 
             OrderPaymentRequest paymentRequest = new OrderPaymentRequest {
@@ -256,9 +246,8 @@
         public async Task DeleteTransaction_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automatic);
-            await Task.Delay(3000);
-
             Order order = await orderClient.CreateAsync(request);
+
             OrderTransaction orderTransaction = orderClient.DeleteTransaction(order.Id, order.Transactions.Payments[0].Id);
             
             Assert.Null(orderTransaction);
