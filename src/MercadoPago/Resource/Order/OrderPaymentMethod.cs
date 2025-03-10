@@ -34,5 +34,50 @@ namespace MercadoPago.Resource.Order
         /// Number of installments.
         /// </summary>
         public int Installments { get; set; }
+
+        /// <summary>
+        /// Payment Method issuer.
+        /// </summary>
+        public string IssuerId { get; set; }
+
+        /// <summary>
+        /// External Resource URL Payment Method.
+        /// </summary>
+        public string ExternalResourceUrl { get; set; }
+
+        /// <summary>
+        /// Barcode Content.
+        /// </summary>
+        public string BarcodeContent { get; set; }
+
+        /// <summary>
+        /// Reference.
+        /// </summary>
+        public string Reference { get; set; }
+
+        /// <summary>
+        /// Verification Code.
+        /// </summary>
+        public string VerificationCode { get; set; }
+
+        /// <summary>
+        /// Financial Institution.
+        /// </summary>
+        public string FinancialInstitution { get; set; }
+
+        /// <summary>
+        /// Digitable Line.
+        /// </summary>
+        public string DigitableLine { get; set; }
+
+        /// <summary>
+        /// QR Code.
+        /// </summary>
+        public string QrCode { get; set; }
+
+        /// <summary>
+        /// QR Code Base64.
+        /// </summary>
+        public string QrCodeBase64 { get; set; }
     }
 }

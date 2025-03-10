@@ -1,11 +1,12 @@
 namespace MercadoPago.Resource.Order
 {
     using System.Collections.Generic;
+    using MercadoPago.Http;
 
     /// <summary>
     /// Transaction class.
     /// </summary>
-    public class OrderTransaction
+    public class OrderTransaction : IResource
     {
         /// <summary>
         /// Payments information.
@@ -15,7 +16,12 @@ namespace MercadoPago.Resource.Order
         /// <summary>
         /// Refunds information.
         /// </summary>
-        public IList<OrderRefund> Refunds { get; set; }
+        public IList<OrderRefundItem> Refunds { get; set; }
+
+        /// <summary>
+        /// Response from API.
+        /// </summary>
+        public MercadoPagoResponse ApiResponse { get; set; }
 
     }
 }
