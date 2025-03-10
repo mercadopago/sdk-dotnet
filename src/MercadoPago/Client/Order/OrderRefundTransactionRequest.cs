@@ -6,12 +6,12 @@ namespace MercadoPago.Client.Order
     public class OrderRefundTransactionRequest
     {
         /// <summary>
-        /// Payment amount.
+        /// Id.
         /// </summary>       
         public string Id { get; set; }
 
         /// <summary>
-        /// Payment amount.
+        /// Refund amount.
         /// </summary>       
         public string Amount { get; set; }
 

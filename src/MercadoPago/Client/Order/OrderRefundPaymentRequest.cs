@@ -10,7 +10,7 @@ namespace MercadoPago.Client.Order
     public class OrderRefundPaymentRequest
     {
         /// <summary>
-        /// Payment amount.
+        /// Transactions.
         /// </summary>       
         public IList<OrderRefundTransactionRequest> Transactions { get; set; }
 
