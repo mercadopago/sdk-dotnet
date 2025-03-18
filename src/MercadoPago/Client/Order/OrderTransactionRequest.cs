@@ -5,7 +5,7 @@ namespace MercadoPago.Client.Order
     /// <summary>
     /// Transaction class.
     /// </summary>
-    public class OrderTransactionRequest
+    public class OrderTransactionRequest : IdempotentRequest
     {
         /// <summary>
         /// List of payments.

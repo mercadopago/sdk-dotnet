@@ -43,6 +43,7 @@
                 if (ApiError.Errors != null && ApiError.Errors.Count > 0)
                 {
                     var messageDetails = new List<string>();
+                    var message = new List<string>();
                     foreach (var error in ApiError.Errors)
                     {
                         if (error.Details != null && error.Details.Count > 0)
@@ -51,6 +52,11 @@
                             {
                                 messageDetails.Add(detail);
                             }
+                        }
+
+                        if (error.Message != null) {
+                            var errorMessage = string.Join("| ", error.Message);
+                            messageSb.Append($" | API message error: {errorMessage}");
                         }
                     }
 

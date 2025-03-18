@@ -3,7 +3,7 @@ namespace MercadoPago.Client.Order
     /// <summary>
     /// Payment class.
     /// </summary>       
-    public class OrderPaymentRequest
+    public class OrderPaymentRequest : IdempotentRequest
     {
         /// <summary>
         /// Payment amount.
