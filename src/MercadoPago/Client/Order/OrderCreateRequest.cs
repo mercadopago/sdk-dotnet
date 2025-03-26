@@ -9,7 +9,7 @@ namespace MercadoPago.Client.Order
     /// Check the parameters
     /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
     /// </remarks>
-    public class OrderCreateRequest : IdempotentRequest 
+    public class OrderCreateRequest : IdempotentRequest
     {
         /// <summary>
         /// Order type.
@@ -17,14 +17,14 @@ namespace MercadoPago.Client.Order
         public string Type { get; set; }
 
         /// <summary>
-        /// Total amount of the order.
-        /// </summary>
-        public string TotalAmount { get; set; }
-
-        /// <summary>
         /// Reference you can synchronize with your payment system.
         /// </summary>
         public string ExternalReference { get; set; }
+
+        /// <summary>
+        /// Total amount of the order.
+        /// </summary>
+        public string TotalAmount { get; set; }
 
         /// <summary>
         /// Capture mode.
@@ -57,6 +57,11 @@ namespace MercadoPago.Client.Order
         public string ExpirationTime { get; set; }
 
         /// <summary>
+        /// Checkout available at.
+        /// </summary>
+        public string CheckoutAvailableAt { get; set; }
+
+        /// <summary>
         /// Order transaction information.
         /// </summary>
         public OrderTransactionRequest Transactions { get; set; }
@@ -70,5 +75,10 @@ namespace MercadoPago.Client.Order
         /// Items information.
         /// </summary>
         public IList<OrderItemsRequest> Items { get; set; }
+
+        /// <summary>
+        /// Configuration.
+        /// </summary>
+        public OrderConfigRequest Config { get; set; }
     }
 }

@@ -6,11 +6,6 @@ namespace MercadoPago.Client.Order
     public class OrderItemsRequest
     {
         /// <summary>
-        /// ID of the item.
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
         /// Title of the item.
         /// </summary>
         public string Title { get; set; }
@@ -21,9 +16,14 @@ namespace MercadoPago.Client.Order
         public string UnitPrice { get; set; }
 
         /// <summary>
-        /// Description of the item.
+        /// Quantity of the item.
         /// </summary>
-        public string Description { get; set; }
+        public int? Quantity { get; set; }
+
+        /// <summary>
+        /// External code of the item.
+        /// </summary>
+        public string ExternalCode { get; set; }
 
         /// <summary>
         /// Category of the item.
@@ -31,19 +31,13 @@ namespace MercadoPago.Client.Order
         public string CategoryId { get; set; }
 
         /// <summary>
-        /// Type of the item.
+        /// Description of the item.
         /// </summary>
-        public string Type { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Picture URL of the item.
         /// </summary>
         public string PictureUrl { get; set; }
-
-        /// <summary>
-        /// Quantity of the item.
-        /// </summary>
-        public int Quantity { get; set; }
     }
-
 }

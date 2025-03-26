@@ -8,12 +8,12 @@ namespace MercadoPago.Client.Order
         /// <summary>
         /// Number.
         /// </summary>
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         /// <summary>
         /// Total.
         /// </summary>
-        public int Total { get; set; }
+        public int? Total { get; set; }
     }
 
 }

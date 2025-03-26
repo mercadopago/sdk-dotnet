@@ -92,11 +92,11 @@
             OrderCreateRequest request = await BuildRequest(manual, automatic);
             Order createOrder = await orderClient.CreateAsync(request);
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
             Order orderProcess = orderClient.Process(createOrder.Id, requestOptions);
-            
+
             Assert.NotNull(orderProcess);
             Assert.Equal(processed, orderProcess.Status);
         }
@@ -108,7 +108,7 @@
             Order createOrder = await orderClient.CreateAsync(request);
 
             Order order = orderClient.Get(createOrder.Id);
-            
+
             Assert.NotNull(order);
             Assert.Equal(processed, order.Status);
         }
@@ -119,11 +119,11 @@
             OrderCreateRequest request = await BuildRequest(automatic, manual);
             Order createOrder = await orderClient.CreateAsync(request);
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
             Order orderCapture = orderClient.Capture(createOrder.Id, requestOptions);
-            
+
             Assert.NotNull(orderCapture);
             Assert.Equal(processed, orderCapture.Status);
         }
@@ -134,11 +134,11 @@
             OrderCreateRequest request = await BuildRequest(manual, automatic);
             Order createOrder = await orderClient.CreateAsync(request);
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
             Order orderCanceled = orderClient.Cancel(createOrder.Id, requestOptions);
-            
+
             Assert.NotNull(orderCanceled);
             Assert.Equal(canceled, orderCanceled.Status);
         }
@@ -149,11 +149,11 @@
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
 
             Order createOrder = await orderClient.CreateAsync(request);
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
             OrderRefund orderRefund = orderClient.Refund(createOrder.Id, null, requestOptions);
-            
+
             Assert.NotNull(orderRefund);
             Assert.Equal(refunded, orderRefund.Status);
             Assert.Equal(refunded, orderRefund.StatusDetail);
@@ -166,7 +166,7 @@
             OrderCreateRequest request = await BuildRequest(automatic, automatic);
             Order createOrder = await orderClient.CreateAsync(request);
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
             OrderRefundPaymentRequest refund = new OrderRefundPaymentRequest
@@ -180,7 +180,7 @@
             };
 
             OrderRefund orderProcess = orderClient.Refund(createOrder.Id, refund, requestOptions);
-            
+
             Assert.NotNull(orderProcess);
             Assert.Equal(processed, orderProcess.Status);
             Assert.Equal(partiallyRefunded, orderProcess.StatusDetail);
@@ -195,7 +195,8 @@
 
             CardToken cardToken = await cardTokenClient.CreateTestCardToken(User, "approved");
 
-            OrderTransactionRequest transaction = new OrderTransactionRequest{
+            OrderTransactionRequest transaction = new OrderTransactionRequest
+            {
                 Payments = new List<OrderPaymentRequest>{
                     new OrderPaymentRequest{
                         Amount = "1000.00",
@@ -209,14 +210,14 @@
                 }
             };
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
             OrderTransaction orderTransaction = orderClient.CreateTransaction(createOrder.Id, transaction, requestOptions);
-            
+
             Assert.NotNull(orderTransaction);
             Assert.NotEmpty(orderTransaction.Payments);
             Assert.NotEmpty(orderTransaction.Payments[0].Id);
-            
+
             Order orderGet = orderClient.Get(createOrder.Id);
             Assert.Equal(orderTransaction.Payments[0].Id, orderGet.Transactions.Payments[0].Id);
         }
@@ -227,18 +228,20 @@
             OrderCreateRequest request = await BuildRequest(manual, automatic);
             Order order = await orderClient.CreateAsync(request);
 
-            OrderPaymentRequest paymentRequest = new OrderPaymentRequest {
-                PaymentMethod = new OrderPaymentMethodRequest{
+            OrderPaymentRequest paymentRequest = new OrderPaymentRequest
+            {
+                PaymentMethod = new OrderPaymentMethodRequest
+                {
                     Id = "master",
                     Type = "credit_card",
                     Installments = 3
                 }
             };
 
-            var requestOptions = new RequestOptions{};
+            var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
             OrderUpdateTransaction transactionRequest = orderClient.UpdateTransaction(order.Id, order.Transactions.Payments[0].Id, paymentRequest, requestOptions);
-            
+
             Assert.Equal(transactionRequest.PaymentMethod.Installments, paymentRequest.PaymentMethod.Installments);
         }
 
@@ -249,7 +252,7 @@
             Order order = await orderClient.CreateAsync(request);
 
             OrderTransaction orderTransaction = orderClient.DeleteTransaction(order.Id, order.Transactions.Payments[0].Id);
-            
+
             Assert.Null(orderTransaction);
 
             Order getOrder = orderClient.Get(order.Id);
@@ -267,7 +270,8 @@
                 ExternalReference = "ext_ref_1234",
                 ProcessingMode = processingMode,
                 CaptureMode = captureMode,
-                Transactions = new OrderTransactionRequest{
+                Transactions = new OrderTransactionRequest
+                {
                     Payments = new List<OrderPaymentRequest>
                     {
                         new OrderPaymentRequest
@@ -280,7 +284,7 @@
                                 Token = cardToken.Id,
                                 Installments = 1,
                             }
-                        }    
+                        }
                     }
                 },
                 Payer = new OrderPayerRequest

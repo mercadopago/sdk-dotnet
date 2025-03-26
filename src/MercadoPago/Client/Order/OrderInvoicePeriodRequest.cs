@@ -13,7 +13,7 @@ namespace MercadoPago.Client.Order
         /// <summary>
         /// Period of invoice.
         /// </summary>
-        public int Period { get; set; }
+        public int? Period { get; set; }
     }
 
 }

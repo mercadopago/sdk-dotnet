@@ -2,7 +2,7 @@ namespace MercadoPago.Client.Order
 {
     /// <summary>
     /// Payer class.
-    /// </summary> 
+    /// </summary>
     public class OrderPayerRequest
     {
         /// <summary>
@@ -11,35 +11,33 @@ namespace MercadoPago.Client.Order
         public string Email { get; set; }
 
         /// <summary>
-        /// Payer's firt name.
-        /// </summary>        
+        /// Payer's first name.
+        /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
         /// Payer's last name.
-        /// </summary>       
+        /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
         /// Customer ID.
-        /// </summary>       
+        /// </summary>
         public string CustomerId { get; set; }
 
         /// <summary>
         /// Identification information.
-        /// </summary>       
+        /// </summary>
         public OrderIdentificationRequest Identification { get; set; }
 
         /// <summary>
         /// Phone information.
-        /// </summary>       
+        /// </summary>
         public OrderPhoneRequest Phone { get; set; }
 
         /// <summary>
         /// Address information.
-        /// </summary>       
+        /// </summary>
         public OrderAddressRequest Address { get; set; }
-
     }
-
 }
