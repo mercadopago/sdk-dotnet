@@ -1,6 +1,5 @@
 ﻿namespace MercadoPago.Client.Order
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using MercadoPago.Error;
@@ -349,7 +348,7 @@
             return transactionClient.Create(id, request, requestOptions);
         }
 
-         /// <summary>
+        /// <summary>
         /// Update a transaction as an asynchronous operation.
         /// </summary>
         /// <param name="id">The order id.</param>
@@ -397,7 +396,7 @@
             return transactionClient.Update(id, transactionId, request, requestOptions);
         }
 
-         /// <summary>
+        /// <summary>
         /// Delete a transaction as an asynchronous operation.
         /// </summary>
         /// <param name="id">The order id.</param>

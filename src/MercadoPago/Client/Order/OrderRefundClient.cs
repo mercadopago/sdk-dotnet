@@ -1,6 +1,5 @@
 ﻿namespace MercadoPago.Client.Order
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using MercadoPago.Error;
