@@ -6,11 +6,6 @@ namespace MercadoPago.Resource.Order
     public class OrderItems
     {
         /// <summary>
-        /// ID of the item.
-        /// </summary>        
-        public string Id { get; set; }
-
-        /// <summary>
         /// Title of the item.
         /// </summary>
         public string Title { get; set; }
@@ -43,6 +38,6 @@ namespace MercadoPago.Resource.Order
         /// <summary>
         /// Quantity of the item.
         /// </summary>
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
     }
 }

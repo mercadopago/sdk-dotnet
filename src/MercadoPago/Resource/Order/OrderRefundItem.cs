@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
@@ -17,17 +19,22 @@ namespace MercadoPago.Resource.Order
 
         /// <summary>
         /// Reference ID.
-        /// </summary>  
-        public string referenceId {get; set;}
+        /// </summary>
+        public string ReferenceId { get; set; }
 
         /// <summary>
-        /// Status Refund.
+        /// Refund amount.
+        /// </summary>
+        public string Amount { get; set; }
+
+        /// <summary>
+        /// Refund status.
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Amount Refund.
+        /// Refund items.
         /// </summary>
-        public string Amount { get; set; }
+        public IList<OrderItems> Items { get; set; }
     }
 }

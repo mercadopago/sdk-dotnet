@@ -152,7 +152,7 @@
             var requestOptions = new RequestOptions { };
             requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
 
-            OrderRefund orderRefund = orderClient.Refund(createOrder.Id, null, requestOptions);
+            Order orderRefund = orderClient.Refund(createOrder.Id, null, requestOptions);
 
             Assert.NotNull(orderRefund);
             Assert.Equal(refunded, orderRefund.Status);
@@ -179,7 +179,7 @@
                 }
             };
 
-            OrderRefund orderProcess = orderClient.Refund(createOrder.Id, refund, requestOptions);
+            Order orderProcess = orderClient.Refund(createOrder.Id, refund, requestOptions);
 
             Assert.NotNull(orderProcess);
             Assert.Equal(processed, orderProcess.Status);

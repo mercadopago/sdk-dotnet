@@ -274,7 +274,7 @@
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
         /// </remarks>
-        public Task<OrderRefund> RefundAsync(
+        public Task<Order> RefundAsync(
             string id,
             OrderRefundPaymentRequest request = null,
             RequestOptions requestOptions = null,
@@ -296,7 +296,7 @@
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
         /// </remarks>
-        public OrderRefund Refund(
+        public Order Refund(
             string id,
             OrderRefundPaymentRequest request = null,
             RequestOptions requestOptions = null)
