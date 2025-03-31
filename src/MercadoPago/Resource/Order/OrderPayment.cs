@@ -63,5 +63,20 @@ namespace MercadoPago.Resource.Order
         /// Payment Method information.
         /// </summary>
         public OrderPaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Automatic Payments information.
+        /// </summary>
+        public OrderAutomaticPayments AutomaticPayments { get; set; }
+
+        /// <summary>
+        /// Stored Credential information.
+        /// </summary>
+        public OrderStoredCredential StoredCredential { get; set; }
+
+        /// <summary>
+        /// Subscription Data information.
+        /// </summary>
+        public OrderSubscriptionData SubscriptionData { get; set; }
     }
 }
