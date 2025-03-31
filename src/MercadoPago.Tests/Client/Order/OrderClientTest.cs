@@ -17,6 +17,7 @@
     {
 
         private const string automatic = "automatic";
+        private const string automaticAsync = "automatic_async";
         private const string manual = "manual";
         private const string processed = "processed";
         private const string canceled = "canceled";
@@ -77,7 +78,7 @@
         [Fact]
         public async Task Create_Success()
         {
-            OrderCreateRequest request = await BuildRequest(automatic, automatic);
+            OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
 
             Order order = await orderClient.CreateAsync(request);
 
@@ -89,7 +90,7 @@
         [Fact]
         public async Task Process_Success()
         {
-            OrderCreateRequest request = await BuildRequest(manual, automatic);
+            OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
             Order createOrder = await orderClient.CreateAsync(request);
 
             var requestOptions = new RequestOptions { };
@@ -104,7 +105,7 @@
         [Fact]
         public async Task Get_Success()
         {
-            OrderCreateRequest request = await BuildRequest(automatic, automatic);
+            OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
             Order createOrder = await orderClient.CreateAsync(request);
 
             Order order = orderClient.Get(createOrder.Id);
@@ -131,7 +132,7 @@
         [Fact]
         public async Task Cancel_Success()
         {
-            OrderCreateRequest request = await BuildRequest(manual, automatic);
+            OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
             Order createOrder = await orderClient.CreateAsync(request);
 
             var requestOptions = new RequestOptions { };
@@ -146,7 +147,7 @@
         [Fact]
         public async Task RefundTotal_Success()
         {
-            OrderCreateRequest request = await BuildRequest(automatic, automatic);
+            OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
 
             Order createOrder = await orderClient.CreateAsync(request);
             var requestOptions = new RequestOptions { };
@@ -163,7 +164,7 @@
         [Fact]
         public async Task RefundPartial_Success()
         {
-            OrderCreateRequest request = await BuildRequest(automatic, automatic);
+            OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
             Order createOrder = await orderClient.CreateAsync(request);
 
             var requestOptions = new RequestOptions { };
@@ -190,7 +191,7 @@
         [Fact]
         public async Task CreateTransaction_Success()
         {
-            OrderCreateRequest request = BuildRequestWithoutTransaction(manual, automatic);
+            OrderCreateRequest request = BuildRequestWithoutTransaction(manual, automaticAsync);
             Order createOrder = await orderClient.CreateAsync(request);
 
             CardToken cardToken = await cardTokenClient.CreateTestCardToken(User, "approved");
@@ -225,7 +226,7 @@
         [Fact]
         public async Task UpdateTransaction_Success()
         {
-            OrderCreateRequest request = await BuildRequest(manual, automatic);
+            OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
             Order order = await orderClient.CreateAsync(request);
 
             OrderPaymentRequest paymentRequest = new OrderPaymentRequest
@@ -248,7 +249,7 @@
         [Fact]
         public async Task DeleteTransaction_Success()
         {
-            OrderCreateRequest request = await BuildRequest(manual, automatic);
+            OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
             Order order = await orderClient.CreateAsync(request);
 
             OrderTransaction orderTransaction = orderClient.DeleteTransaction(order.Id, order.Transactions.Payments[0].Id);
