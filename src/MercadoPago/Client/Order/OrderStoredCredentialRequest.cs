@@ -1,8 +1,10 @@
+// API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
+
 namespace MercadoPago.Client.Order
 {
     /// <summary>
     /// Stored Credential class.
-    /// </summary>       
+    /// </summary>
     public class OrderStoredCredentialRequest
     {
         /// <summary>
@@ -16,14 +18,14 @@ namespace MercadoPago.Client.Order
         public string Reason { get; set; }
 
         /// <summary>
-        /// Stored Payment Method.
+        /// Store Payment Method.
         /// </summary>
-        public bool? StoredPaymentMethod { get; set; }
+        public bool? StorePaymentMethod { get; set; }
 
         /// <summary>
         /// First Payment.
         /// </summary>
-        public bool FirstPayment { get; set; }
+        public bool? FirstPayment { get; set; }
     }
 
 }

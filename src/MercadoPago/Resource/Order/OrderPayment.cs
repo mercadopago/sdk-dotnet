@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+
+// API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
+
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
@@ -26,9 +30,34 @@ namespace MercadoPago.Resource.Order
         public string StatusDetail { get; set; }
 
         /// <summary>
+        /// Attempt number.
+        /// </summary>
+        public int? AttemptNumber { get; set; }
+
+        /// <summary>
+        /// Attempts.
+        /// </summary>
+        public IList<OrderAttempt> Attempts { get; set; }
+
+        /// <summary>
+        /// Date of expiration.
+        /// </summary>
+        public string DateOfExpiration { get; set; }
+
+        /// <summary>
+        /// Expiration time.
+        /// </summary>
+        public string ExpirationTime { get; set; }
+
+        /// <summary>
         /// Payment amount.
         /// </summary>
         public string Amount { get; set; }
+
+        /// <summary>
+        /// Paid amount.
+        /// </summary>
+        public string PaidAmount { get; set; }
 
         /// <summary>
         /// Payment Method information.
@@ -36,9 +65,9 @@ namespace MercadoPago.Resource.Order
         public OrderPaymentMethod PaymentMethod { get; set; }
 
         /// <summary>
-        /// Automatic Payment information.
+        /// Automatic Payments information.
         /// </summary>
-        public OrderAutomaticPayment AutomaticPayment { get; set; }
+        public OrderAutomaticPayments AutomaticPayments { get; set; }
 
         /// <summary>
         /// Stored Credential information.
@@ -49,6 +78,5 @@ namespace MercadoPago.Resource.Order
         /// Subscription Data information.
         /// </summary>
         public OrderSubscriptionData SubscriptionData { get; set; }
-
     }
 }

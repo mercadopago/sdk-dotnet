@@ -1,9 +1,9 @@
-﻿namespace MercadoPago.Client.Preference
+namespace MercadoPago.Client.Common
 {
     /// <summary>
     /// Differential pricing configuration.
     /// </summary>
-    public class PreferenceDifferentialPricingRequest
+    public class DifferentialPricingRequest
     {
         /// <summary>
         /// Differential pricing ID.

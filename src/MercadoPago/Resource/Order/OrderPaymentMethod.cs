@@ -1,3 +1,5 @@
+// API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
+
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
@@ -21,6 +23,11 @@ namespace MercadoPago.Resource.Order
         public string Type { get; set; }
 
         /// <summary>
+        /// Number of installments.
+        /// </summary>
+        public int Installments { get; set; }
+
+        /// <summary>
         /// Payment Method Token.
         /// </summary>
         public string Token { get; set; }
@@ -31,19 +38,9 @@ namespace MercadoPago.Resource.Order
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Number of installments.
+        /// Ticket URL.
         /// </summary>
-        public int Installments { get; set; }
-
-        /// <summary>
-        /// Payment Method issuer.
-        /// </summary>
-        public string IssuerId { get; set; }
-
-        /// <summary>
-        /// External Resource URL Payment Method.
-        /// </summary>
-        public string ExternalResourceUrl { get; set; }
+        public string TicketUrl { get; set; }
 
         /// <summary>
         /// Barcode Content.
@@ -56,6 +53,11 @@ namespace MercadoPago.Resource.Order
         public string Reference { get; set; }
 
         /// <summary>
+        /// Reference ID.
+        /// </summary>
+        public string ReferenceId { get; set; }
+
+        /// <summary>
         /// Verification Code.
         /// </summary>
         public string VerificationCode { get; set; }
@@ -66,11 +68,6 @@ namespace MercadoPago.Resource.Order
         public string FinancialInstitution { get; set; }
 
         /// <summary>
-        /// Digitable Line.
-        /// </summary>
-        public string DigitableLine { get; set; }
-
-        /// <summary>
         /// QR Code.
         /// </summary>
         public string QrCode { get; set; }
@@ -79,5 +76,10 @@ namespace MercadoPago.Resource.Order
         /// QR Code Base64.
         /// </summary>
         public string QrCodeBase64 { get; set; }
+
+        /// <summary>
+        /// Digitable Line.
+        /// </summary>
+        public string DigitableLine { get; set; }
     }
 }

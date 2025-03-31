@@ -1,6 +1,5 @@
 ﻿namespace MercadoPago.Client.Order
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using MercadoPago.Error;
@@ -11,7 +10,7 @@
     /// <summary>
     /// Client that use the Order APIs.
     /// </summary>
-    public class OrderRefundClient : MercadoPagoClient<OrderRefund>
+    public class OrderRefundClient : MercadoPagoClient<Order>
     {
 
         /// <summary>
@@ -70,7 +69,7 @@
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
         /// </remarks>
-        public Task<OrderRefund> RefundAsync(
+        public Task<Order> RefundAsync(
             string id,
             OrderRefundPaymentRequest request = null,
             RequestOptions requestOptions = null,
@@ -92,7 +91,7 @@
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com.br/developers/en/reference/order/online-payments/create/post">here</a>.
         /// </remarks>
-        public OrderRefund Refund(
+        public Order Refund(
             string id,
             OrderRefundPaymentRequest request = null,
             RequestOptions requestOptions = null)

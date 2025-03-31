@@ -3,13 +3,13 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Payer class.
+    /// Sponsor class.
     /// </summary>
-    public class OrderPayer
+    public class OrderSponsor
     {
         /// <summary>
-        /// Customer ID.
+        /// Sponsor ID.
         /// </summary>
-        public string CustomerId { get; set; }
+        public string Id { get; set; }
     }
 }

@@ -1,9 +1,11 @@
+// API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
+
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
     /// Automatic Payments class.
     /// </summary>
-    public class OrderAutomaticPayment
+    public class OrderAutomaticPayments
     {
         /// <summary>
         /// Payment Profile ID.
@@ -23,6 +25,6 @@ namespace MercadoPago.Resource.Order
         /// <summary>
         /// Retries.
         /// </summary>
-        public int Retries { get; set; }
+        public int? Retries { get; set; }
     }
 }
