@@ -57,30 +57,45 @@ To generate a `card token` read the [Checkout API](https://www.mercadopago.com/d
 
 ```csharp
 using System;
-using System.Threading.Tasks;
-using MercadoPago.Client.Payment;
 using MercadoPago.Config;
-using MercadoPago.Resource.Payment;
+using MercadoPago.Client.Common;
+using MercadoPago.Client.Order;
+using MercadoPago.Resource.Order;
+using System.Collections.Generic;
 
-MercadoPagoConfig.AccessToken = "YOUR_ACCESS_TOKEN";
+MercadoPagoConfig.AccessToken = "{{ACCESS_TOKEN}}";
 
-var request = new PaymentCreateRequest
+var request = new OrderCreateRequest
 {
-    TransactionAmount = 10,
-    Token = "CARD_TOKEN",
-    Description = "Payment description",
-    Installments = 1,
-    PaymentMethodId = "visa",
-    Payer = new PaymentPayerRequest
+    Type = "online",
+    TotalAmount = "1000.00",
+    ExternalReference = "ext_ref_1234",
+    Transactions = new OrderTransactionRequest
     {
-        Email = "test.payer@email.com",
+        Payments = new List<OrderPaymentRequest>
+            {
+                new OrderPaymentRequest
+                {
+                    Amount = "1000.00",
+                    PaymentMethod = new OrderPaymentMethodRequest
+                    {
+                        Id = "master",
+                        Type = "credit_card",
+                        Token = "{{CARD_TOKEN}}",
+                        Installments = 1,
+                    }
+                }
+            }
+    },
+    Payer = new OrderPayerRequest
+    {
+        Email = "{{PAYER_EMAIL}}",
     }
 };
 
-var client = new PaymentClient();
-Payment payment = await client.CreateAsync(request);
-
-Console.WriteLine($"Payment ID: {payment.Id}");
+var client = new OrderClient();
+Order order = client.Create(request);
+Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(order, Newtonsoft.Json.Formatting.Indented));
 ```
 
 ### Per-request configuration
@@ -90,16 +105,16 @@ All methods that make API calls accept an optional `RequestOptions` object. This
 ```csharp
 using MercadoPago.Client;
 using MercadoPago.Http;
+using MercadoPago.Client.Order;
+using MercadoPago.Resource.Order;
 
 var requestOptions = new RequestOptions();
 requestOptions.AccessToken = "YOUR_ACCESS_TOKEN";
 requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, "YOUR_IDEMPOTENCY_KEY");
 
 // ...
-
-var client = new PaymentClient();
-Payment payment = await client.CreateAsync(request, requestOptions);
-
+var client = new OrderClient();
+Order order = client.Create(request, requestOptions);
 ```
 
 ### Using a proxy server
@@ -136,10 +151,11 @@ MercadoPagoConfig.RetryStrategy = retryStrategy;
 ## 📚 Documentation
 
 Visit our Developer Site for further information regarding:
- - [APIs](https://www.mercadopago.com/developers/en/reference)
- - [Checkout Pro](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-pro/introduction)
- - [Checkout API](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-api/introduction)
- - [Web Tokenize Checkout](https://www.mercadopago.com/developers/en/guides/online-payments/web-tokenize-checkout/introduction)
+
+- [APIs](https://www.mercadopago.com/developers/en/reference)
+- [Checkout Pro](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-pro/introduction)
+- [Checkout API](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-api/introduction)
+- [Web Tokenize Checkout](https://www.mercadopago.com/developers/en/guides/online-payments/web-tokenize-checkout/introduction)
 
 Check our [SDK docs](https://mercadopago.github.io/sdk-dotnet/) to explore all available functionalities.
 
