@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Class PaymentSubscriptionSequenceRequest | MercadoPago official .NET SDK </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Class PaymentSubscriptionSequenceRequest | MercadoPago official .NET SDK ">
+    
+    <meta name="description" content="Payment&#39;s subscription sequence.">
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.json">
+      <meta property="docfx:tocrel" content="toc.json">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../index.html" title="Home">Home</a>
+                      </li>
+                      <li>
+                          <a href="../sdk/MercadoPago.Client.html" title="SDK Documentation">SDK Documentation</a>
+                      </li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.html" title="MercadoPago.Client" class="">MercadoPago.Client</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedSearchRequest.html" title="AdvancedSearchRequest" class="">AdvancedSearchRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.IdempotentRequest.html" title="IdempotentRequest" class="">IdempotentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MercadoPagoClient-1.html" title="MercadoPagoClient&lt;TResource&gt;" class="">MercadoPagoClient&lt;TResource&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.RequestOptions.html" title="RequestOptions" class="">RequestOptions</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.SearchRequest.html" title="SearchRequest" class="">SearchRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.AdvancedPayment.html" title="MercadoPago.Client.AdvancedPayment" class="">MercadoPago.Client.AdvancedPayment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoPayerRequest.html" title="AdvancedPaymentAdditionalInfoPayerRequest" class="">AdvancedPaymentAdditionalInfoPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentAdditionalInfoRequest.html" title="AdvancedPaymentAdditionalInfoRequest" class="">AdvancedPaymentAdditionalInfoRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentCancelRequest.html" title="AdvancedPaymentCancelRequest" class="">AdvancedPaymentCancelRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentCaptureRequest.html" title="AdvancedPaymentCaptureRequest" class="">AdvancedPaymentCaptureRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentClient.html" title="AdvancedPaymentClient" class="">AdvancedPaymentClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentCreateRequest.html" title="AdvancedPaymentCreateRequest" class="">AdvancedPaymentCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentDisbursementRequest.html" title="AdvancedPaymentDisbursementRequest" class="">AdvancedPaymentDisbursementRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentItemRequest.html" title="AdvancedPaymentItemRequest" class="">AdvancedPaymentItemRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentPayerRequest.html" title="AdvancedPaymentPayerRequest" class="">AdvancedPaymentPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentReceiverAddressRequest.html" title="AdvancedPaymentReceiverAddressRequest" class="">AdvancedPaymentReceiverAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundClient.html" title="AdvancedPaymentRefundClient" class="">AdvancedPaymentRefundClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentRefundCreateRequest.html" title="AdvancedPaymentRefundCreateRequest" class="">AdvancedPaymentRefundCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentShipmentsRequest.html" title="AdvancedPaymentShipmentsRequest" class="">AdvancedPaymentShipmentsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentSplitPaymentRequest.html" title="AdvancedPaymentSplitPaymentRequest" class="">AdvancedPaymentSplitPaymentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentTaxRequest.html" title="AdvancedPaymentTaxRequest" class="">AdvancedPaymentTaxRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentTransactionDetailsRequest.html" title="AdvancedPaymentTransactionDetailsRequest" class="">AdvancedPaymentTransactionDetailsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.AdvancedPayment.AdvancedPaymentUpdateReleaseDateRequest.html" title="AdvancedPaymentUpdateReleaseDateRequest" class="">AdvancedPaymentUpdateReleaseDateRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.AuthorizedPayment.html" title="MercadoPago.Client.AuthorizedPayment" class="">MercadoPago.Client.AuthorizedPayment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.AuthorizedPayment.AuthorizedPaymentClient.html" title="AuthorizedPaymentClient" class="">AuthorizedPaymentClient</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.CardToken.html" title="MercadoPago.Client.CardToken" class="">MercadoPago.Client.CardToken</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.CardToken.CardTokenClient.html" title="CardTokenClient" class="">CardTokenClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.CardToken.CardTokenRequest.html" title="CardTokenRequest" class="">CardTokenRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Common.html" title="MercadoPago.Client.Common" class="">MercadoPago.Client.Common</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Common.AddressRequest.html" title="AddressRequest" class="">AddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Common.DifferentialPricingRequest.html" title="DifferentialPricingRequest" class="">DifferentialPricingRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Common.IdentificationRequest.html" title="IdentificationRequest" class="">IdentificationRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Common.PhoneRequest.html" title="PhoneRequest" class="">PhoneRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Common.SubMerchant.html" title="SubMerchant" class="">SubMerchant</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Customer.html" title="MercadoPago.Client.Customer" class="">MercadoPago.Client.Customer</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Customer.CustomerCardClient.html" title="CustomerCardClient" class="">CustomerCardClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Customer.CustomerCardCreateRequest.html" title="CustomerCardCreateRequest" class="">CustomerCardCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Customer.CustomerClient.html" title="CustomerClient" class="">CustomerClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Customer.CustomerDefaultAddressRequest.html" title="CustomerDefaultAddressRequest" class="">CustomerDefaultAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Customer.CustomerRequest.html" title="CustomerRequest" class="">CustomerRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.IdentificationType.html" title="MercadoPago.Client.IdentificationType" class="">MercadoPago.Client.IdentificationType</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.IdentificationType.IdentificationTypeClient.html" title="IdentificationTypeClient" class="">IdentificationTypeClient</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.MerchantOrder.html" title="MercadoPago.Client.MerchantOrder" class="">MercadoPago.Client.MerchantOrder</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderClient.html" title="MerchantOrderClient" class="">MerchantOrderClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderCreateRequest.html" title="MerchantOrderCreateRequest" class="">MerchantOrderCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderItemRequest.html" title="MerchantOrderItemRequest" class="">MerchantOrderItemRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderPayerRequest.html" title="MerchantOrderPayerRequest" class="">MerchantOrderPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCityRequest.html" title="MerchantOrderReceiverAddressCityRequest" class="">MerchantOrderReceiverAddressCityRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressCountryRequest.html" title="MerchantOrderReceiverAddressCountryRequest" class="">MerchantOrderReceiverAddressCountryRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressRequest.html" title="MerchantOrderReceiverAddressRequest" class="">MerchantOrderReceiverAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderReceiverAddressStateRequest.html" title="MerchantOrderReceiverAddressStateRequest" class="">MerchantOrderReceiverAddressStateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderShipmentRequest.html" title="MerchantOrderShipmentRequest" class="">MerchantOrderShipmentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderShippingEstimatedDeliveryRequest.html" title="MerchantOrderShippingEstimatedDeliveryRequest" class="">MerchantOrderShippingEstimatedDeliveryRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderShippingOptionRequest.html" title="MerchantOrderShippingOptionRequest" class="">MerchantOrderShippingOptionRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderShippingSpeedRequest.html" title="MerchantOrderShippingSpeedRequest" class="">MerchantOrderShippingSpeedRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.MerchantOrder.MerchantOrderUpdateRequest.html" title="MerchantOrderUpdateRequest" class="">MerchantOrderUpdateRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.OAuth.html" title="MercadoPago.Client.OAuth" class="">MercadoPago.Client.OAuth</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.OAuth.CreateOAuthCredentialRequest.html" title="CreateOAuthCredentialRequest" class="">CreateOAuthCredentialRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.OAuth.OAuthClient.html" title="OAuthClient" class="">OAuthClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.OAuth.RefreshOAuthCredentialRequest.html" title="RefreshOAuthCredentialRequest" class="">RefreshOAuthCredentialRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Order.html" title="MercadoPago.Client.Order" class="">MercadoPago.Client.Order</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderAddressRequest.html" title="OrderAddressRequest" class="">OrderAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderAutomaticPaymentRequest.html" title="OrderAutomaticPaymentRequest" class="">OrderAutomaticPaymentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderClient.html" title="OrderClient" class="">OrderClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderConfigRequest.html" title="OrderConfigRequest" class="">OrderConfigRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderCreateRequest.html" title="OrderCreateRequest" class="">OrderCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderIdentificationRequest.html" title="OrderIdentificationRequest" class="">OrderIdentificationRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderInvoicePeriodRequest.html" title="OrderInvoicePeriodRequest" class="">OrderInvoicePeriodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderItemsRequest.html" title="OrderItemsRequest" class="">OrderItemsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderOnlineConfigRequest.html" title="OrderOnlineConfigRequest" class="">OrderOnlineConfigRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderPayerRequest.html" title="OrderPayerRequest" class="">OrderPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderPaymentMethodConfigRequest.html" title="OrderPaymentMethodConfigRequest" class="">OrderPaymentMethodConfigRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderPaymentMethodRequest.html" title="OrderPaymentMethodRequest" class="">OrderPaymentMethodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderPaymentRequest.html" title="OrderPaymentRequest" class="">OrderPaymentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderPhoneRequest.html" title="OrderPhoneRequest" class="">OrderPhoneRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderRefundClient.html" title="OrderRefundClient" class="">OrderRefundClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderRefundPaymentRequest.html" title="OrderRefundPaymentRequest" class="">OrderRefundPaymentRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderRefundTransactionRequest.html" title="OrderRefundTransactionRequest" class="">OrderRefundTransactionRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderStoredCredentialRequest.html" title="OrderStoredCredentialRequest" class="">OrderStoredCredentialRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderSubscriptionDataRequest.html" title="OrderSubscriptionDataRequest" class="">OrderSubscriptionDataRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderSubscriptionSequenceRequest.html" title="OrderSubscriptionSequenceRequest" class="">OrderSubscriptionSequenceRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderTransactionClient.html" title="OrderTransactionClient" class="">OrderTransactionClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderTransactionRequest.html" title="OrderTransactionRequest" class="">OrderTransactionRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Order.OrderTransactionUpdateClient.html" title="OrderTransactionUpdateClient" class="">OrderTransactionUpdateClient</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Payment.html" title="MercadoPago.Client.Payment" class="">MercadoPago.Client.Payment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentAdditionalInfoPayerRequest.html" title="PaymentAdditionalInfoPayerRequest" class="">PaymentAdditionalInfoPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentAdditionalInfoRequest.html" title="PaymentAdditionalInfoRequest" class="">PaymentAdditionalInfoRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentAuthenticationRequest.html" title="PaymentAuthenticationRequest" class="">PaymentAuthenticationRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentCancelRequest.html" title="PaymentCancelRequest" class="">PaymentCancelRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentCaptureRequest.html" title="PaymentCaptureRequest" class="">PaymentCaptureRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentCategoryDescriptorRequest.html" title="PaymentCategoryDescriptorRequest" class="">PaymentCategoryDescriptorRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentClient.html" title="PaymentClient" class="">PaymentClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentCreateRequest.html" title="PaymentCreateRequest" class="">PaymentCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentDataRequest.html" title="PaymentDataRequest" class="">PaymentDataRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentDiscountRequest.html" title="PaymentDiscountRequest" class="">PaymentDiscountRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentFeeRequest.html" title="PaymentFeeRequest" class="">PaymentFeeRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentForwardDataRequest.html" title="PaymentForwardDataRequest" class="">PaymentForwardDataRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentInvoicePeriodRequest.html" title="PaymentInvoicePeriodRequest" class="">PaymentInvoicePeriodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentItemRequest.html" title="PaymentItemRequest" class="">PaymentItemRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentMerchantServicesRequest.html" title="PaymentMerchantServicesRequest" class="">PaymentMerchantServicesRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentMethodRequest.html" title="PaymentMethodRequest" class="">PaymentMethodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentOrderRequest.html" title="PaymentOrderRequest" class="">PaymentOrderRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPassengerRequest.html" title="PaymentPassengerRequest" class="">PaymentPassengerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPayerAddressRequest.html" title="PaymentPayerAddressRequest" class="">PaymentPayerAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPayerPhoneRequest.html" title="PaymentPayerPhoneRequest" class="">PaymentPayerPhoneRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPayerRequest.html" title="PaymentPayerRequest" class="">PaymentPayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPaymentReferenceRequest.html" title="PaymentPaymentReferenceRequest" class="">PaymentPaymentReferenceRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentPointOfInteractionRequest.html" title="PaymentPointOfInteractionRequest" class="">PaymentPointOfInteractionRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentReceiverAddressRequest.html" title="PaymentReceiverAddressRequest" class="">PaymentReceiverAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentRefundClient.html" title="PaymentRefundClient" class="">PaymentRefundClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentRefundCreateRequest.html" title="PaymentRefundCreateRequest" class="">PaymentRefundCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentRouteRequest.html" title="PaymentRouteRequest" class="">PaymentRouteRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentRulesRequest.html" title="PaymentRulesRequest" class="">PaymentRulesRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentShipmentsRequest.html" title="PaymentShipmentsRequest" class="">PaymentShipmentsRequest</a>
+                          </li>
+                          <li class="active">
+                            <a href="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.html" title="PaymentSubscriptionSequenceRequest" class="active">PaymentSubscriptionSequenceRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentTaxRequest.html" title="PaymentTaxRequest" class="">PaymentTaxRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentTransactionDataRequest.html" title="PaymentTransactionDataRequest" class="">PaymentTransactionDataRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Payment.PaymentTransactionDetailsRequest.html" title="PaymentTransactionDetailsRequest" class="">PaymentTransactionDetailsRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.PaymentMethod.html" title="MercadoPago.Client.PaymentMethod" class="">MercadoPago.Client.PaymentMethod</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.PaymentMethod.PaymentMethodClient.html" title="PaymentMethodClient" class="">PaymentMethodClient</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Preapproval.html" title="MercadoPago.Client.Preapproval" class="">MercadoPago.Client.Preapproval</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Preapproval.PreApprovalAutoRecurringCreateRequest.html" title="PreApprovalAutoRecurringCreateRequest" class="">PreApprovalAutoRecurringCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preapproval.PreApprovalAutoRecurringUpdateRequest.html" title="PreApprovalAutoRecurringUpdateRequest" class="">PreApprovalAutoRecurringUpdateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preapproval.PreapprovalClient.html" title="PreapprovalClient" class="">PreapprovalClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preapproval.PreapprovalCreateRequest.html" title="PreapprovalCreateRequest" class="">PreapprovalCreateRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preapproval.PreapprovalUpdateRequest.html" title="PreapprovalUpdateRequest" class="">PreapprovalUpdateRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.Preference.html" title="MercadoPago.Client.Preference" class="">MercadoPago.Client.Preference</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceBackUrlsRequest.html" title="PreferenceBackUrlsRequest" class="">PreferenceBackUrlsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceCategoryDescriptorRequest.html" title="PreferenceCategoryDescriptorRequest" class="">PreferenceCategoryDescriptorRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceClient.html" title="PreferenceClient" class="">PreferenceClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceFreeMethodRequest.html" title="PreferenceFreeMethodRequest" class="">PreferenceFreeMethodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceItemRequest.html" title="PreferenceItemRequest" class="">PreferenceItemRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferencePassengerRequest.html" title="PreferencePassengerRequest" class="">PreferencePassengerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferencePayerRequest.html" title="PreferencePayerRequest" class="">PreferencePayerRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferencePaymentMethodRequest.html" title="PreferencePaymentMethodRequest" class="">PreferencePaymentMethodRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferencePaymentMethodsRequest.html" title="PreferencePaymentMethodsRequest" class="">PreferencePaymentMethodsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferencePaymentTypeRequest.html" title="PreferencePaymentTypeRequest" class="">PreferencePaymentTypeRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceReceiverAddressRequest.html" title="PreferenceReceiverAddressRequest" class="">PreferenceReceiverAddressRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceRequest.html" title="PreferenceRequest" class="">PreferenceRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceRouteRequest.html" title="PreferenceRouteRequest" class="">PreferenceRouteRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceShipmentsRequest.html" title="PreferenceShipmentsRequest" class="">PreferenceShipmentsRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceTaxRequest.html" title="PreferenceTaxRequest" class="">PreferenceTaxRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceTrackRequest.html" title="PreferenceTrackRequest" class="">PreferenceTrackRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Client.Preference.PreferenceTrackValuesRequest.html" title="PreferenceTrackValuesRequest" class="">PreferenceTrackValuesRequest</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Client.User.html" title="MercadoPago.Client.User" class="">MercadoPago.Client.User</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Client.User.UserClient.html" title="UserClient" class="">UserClient</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Config.html" title="MercadoPago.Config" class="">MercadoPago.Config</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Config.MercadoPagoConfig.html" title="MercadoPagoConfig" class="">MercadoPagoConfig</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Error.html" title="MercadoPago.Error" class="">MercadoPago.Error</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Error.ApiError.html" title="ApiError" class="">ApiError</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Error.ApiErrorCause.html" title="ApiErrorCause" class="">ApiErrorCause</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Error.MercadoPagoApiException.html" title="MercadoPagoApiException" class="">MercadoPagoApiException</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Error.MercadoPagoException.html" title="MercadoPagoException" class="">MercadoPagoException</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Http.html" title="MercadoPago.Http" class="">MercadoPago.Http</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Http.DefaultHttpClient.html" title="DefaultHttpClient" class="">DefaultHttpClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.DefaultRetryStrategy.html" title="DefaultRetryStrategy" class="">DefaultRetryStrategy</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.Headers.html" title="Headers" class="">Headers</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.HttpMethod.html" title="HttpMethod" class="">HttpMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.IHttpClient.html" title="IHttpClient" class="">IHttpClient</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.IRetryStrategy.html" title="IRetryStrategy" class="">IRetryStrategy</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.MercadoPagoRequest.html" title="MercadoPagoRequest" class="">MercadoPagoRequest</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.MercadoPagoResponse.html" title="MercadoPagoResponse" class="">MercadoPagoResponse</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Http.RetryResponse.html" title="RetryResponse" class="">RetryResponse</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.html" title="MercadoPago.Resource" class="">MercadoPago.Resource</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.ElementsResourcesPage-1.html" title="ElementsResourcesPage&lt;TResource&gt;" class="">ElementsResourcesPage&lt;TResource&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.IResource.html" title="IResource" class="">IResource</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.IResourcesPage-1.html" title="IResourcesPage&lt;TResouce&gt;" class="">IResourcesPage&lt;TResouce&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.ResourcesList-1.html" title="ResourcesList&lt;TResource&gt;" class="">ResourcesList&lt;TResource&gt;</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.ResultsPaging.html" title="ResultsPaging" class="">ResultsPaging</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.ResultsResourcesPage-1.html" title="ResultsResourcesPage&lt;TResource&gt;" class="">ResultsResourcesPage&lt;TResource&gt;</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.AdvancedPayment.html" title="MercadoPago.Resource.AdvancedPayment" class="">MercadoPago.Resource.AdvancedPayment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPayment.html" title="AdvancedPayment" class="">AdvancedPayment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfo.html" title="AdvancedPaymentAdditionalInfo" class="">AdvancedPaymentAdditionalInfo</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentAdditionalInfoPayer.html" title="AdvancedPaymentAdditionalInfoPayer" class="">AdvancedPaymentAdditionalInfoPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursement.html" title="AdvancedPaymentDisbursement" class="">AdvancedPaymentDisbursement</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentDisbursementRefund.html" title="AdvancedPaymentDisbursementRefund" class="">AdvancedPaymentDisbursementRefund</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentItem.html" title="AdvancedPaymentItem" class="">AdvancedPaymentItem</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentPayer.html" title="AdvancedPaymentPayer" class="">AdvancedPaymentPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentReceiverAddress.html" title="AdvancedPaymentReceiverAddress" class="">AdvancedPaymentReceiverAddress</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentShipments.html" title="AdvancedPaymentShipments" class="">AdvancedPaymentShipments</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentSplitPayment.html" title="AdvancedPaymentSplitPayment" class="">AdvancedPaymentSplitPayment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentStatus.html" title="AdvancedPaymentStatus" class="">AdvancedPaymentStatus</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTax.html" title="AdvancedPaymentTax" class="">AdvancedPaymentTax</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AdvancedPayment.AdvancedPaymentTransactionDetails.html" title="AdvancedPaymentTransactionDetails" class="">AdvancedPaymentTransactionDetails</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.AuthorizedPayment.html" title="MercadoPago.Resource.AuthorizedPayment" class="">MercadoPago.Resource.AuthorizedPayment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.AuthorizedPayment.AuthorizedPayment.html" title="AuthorizedPayment" class="">AuthorizedPayment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.AuthorizedPayment.AuthorizedPaymentStatus.html" title="AuthorizedPaymentStatus" class="">AuthorizedPaymentStatus</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.CardToken.html" title="MercadoPago.Resource.CardToken" class="">MercadoPago.Resource.CardToken</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.CardToken.CardToken.html" title="CardToken" class="">CardToken</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.Common.html" title="MercadoPago.Resource.Common" class="">MercadoPago.Resource.Common</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.Common.Address.html" title="Address" class="">Address</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Common.Identification.html" title="Identification" class="">Identification</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Common.Phone.html" title="Phone" class="">Phone</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Common.Source.html" title="Source" class="">Source</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.Customer.html" title="MercadoPago.Resource.Customer" class="">MercadoPago.Resource.Customer</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.Customer.html" title="Customer" class="">Customer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddress.html" title="CustomerAddress" class="">CustomerAddress</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddressCity.html" title="CustomerAddressCity" class="">CustomerAddressCity</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddressCountry.html" title="CustomerAddressCountry" class="">CustomerAddressCountry</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddressMunicipality.html" title="CustomerAddressMunicipality" class="">CustomerAddressMunicipality</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddressNeighborhood.html" title="CustomerAddressNeighborhood" class="">CustomerAddressNeighborhood</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerAddressState.html" title="CustomerAddressState" class="">CustomerAddressState</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCard.html" title="CustomerCard" class="">CustomerCard</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCardCardholder.html" title="CustomerCardCardholder" class="">CustomerCardCardholder</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCardCardholderIdentification.html" title="CustomerCardCardholderIdentification" class="">CustomerCardCardholderIdentification</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCardIssuer.html" title="CustomerCardIssuer" class="">CustomerCardIssuer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCardPaymentMethod.html" title="CustomerCardPaymentMethod" class="">CustomerCardPaymentMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerCardSecurityCode.html" title="CustomerCardSecurityCode" class="">CustomerCardSecurityCode</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Customer.CustomerDefaultAddress.html" title="CustomerDefaultAddress" class="">CustomerDefaultAddress</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.IdentificationType.html" title="MercadoPago.Resource.IdentificationType" class="">MercadoPago.Resource.IdentificationType</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.IdentificationType.IdentificationType.html" title="IdentificationType" class="">IdentificationType</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.MerchantOrder.html" title="MercadoPago.Resource.MerchantOrder" class="">MercadoPago.Resource.MerchantOrder</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrder.html" title="MerchantOrder" class="">MerchantOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderCollector.html" title="MerchantOrderCollector" class="">MerchantOrderCollector</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderItem.html" title="MerchantOrderItem" class="">MerchantOrderItem</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderPayer.html" title="MerchantOrderPayer" class="">MerchantOrderPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderPayment.html" title="MerchantOrderPayment" class="">MerchantOrderPayment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddress.html" title="MerchantOrderReceiverAddress" class="">MerchantOrderReceiverAddress</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCity.html" title="MerchantOrderReceiverAddressCity" class="">MerchantOrderReceiverAddressCity</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressCountry.html" title="MerchantOrderReceiverAddressCountry" class="">MerchantOrderReceiverAddressCountry</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderReceiverAddressState.html" title="MerchantOrderReceiverAddressState" class="">MerchantOrderReceiverAddressState</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderShipment.html" title="MerchantOrderShipment" class="">MerchantOrderShipment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderShippingEstimatedDelivery.html" title="MerchantOrderShippingEstimatedDelivery" class="">MerchantOrderShippingEstimatedDelivery</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderShippingOption.html" title="MerchantOrderShippingOption" class="">MerchantOrderShippingOption</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.MerchantOrder.MerchantOrderShippingSpeed.html" title="MerchantOrderShippingSpeed" class="">MerchantOrderShippingSpeed</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.OAuth.html" title="MercadoPago.Resource.OAuth" class="">MercadoPago.Resource.OAuth</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.OAuth.OAuthCredential.html" title="OAuthCredential" class="">OAuthCredential</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.Order.html" title="MercadoPago.Resource.Order" class="">MercadoPago.Resource.Order</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.Order.html" title="Order" class="">Order</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderAttempt.html" title="OrderAttempt" class="">OrderAttempt</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderIntegrationData.html" title="OrderIntegrationData" class="">OrderIntegrationData</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderItems.html" title="OrderItems" class="">OrderItems</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderPayer.html" title="OrderPayer" class="">OrderPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderPayment.html" title="OrderPayment" class="">OrderPayment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderPaymentMethod.html" title="OrderPaymentMethod" class="">OrderPaymentMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderRefundItem.html" title="OrderRefundItem" class="">OrderRefundItem</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderSponsor.html" title="OrderSponsor" class="">OrderSponsor</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderTransaction.html" title="OrderTransaction" class="">OrderTransaction</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Order.OrderUpdateTransaction.html" title="OrderUpdateTransaction" class="">OrderUpdateTransaction</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.Payment.html" title="MercadoPago.Resource.Payment" class="">MercadoPago.Resource.Payment</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.Payment.html" title="Payment" class="">Payment</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentAdditionalInfo.html" title="PaymentAdditionalInfo" class="">PaymentAdditionalInfo</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentAdditionalInfoPayer.html" title="PaymentAdditionalInfoPayer" class="">PaymentAdditionalInfoPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentApplicationData.html" title="PaymentApplicationData" class="">PaymentApplicationData</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentBankInfo.html" title="PaymentBankInfo" class="">PaymentBankInfo</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentBankInfoCollector.html" title="PaymentBankInfoCollector" class="">PaymentBankInfoCollector</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentBankInfoPayer.html" title="PaymentBankInfoPayer" class="">PaymentBankInfoPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentBarcode.html" title="PaymentBarcode" class="">PaymentBarcode</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentCard.html" title="PaymentCard" class="">PaymentCard</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentCardholder.html" title="PaymentCardholder" class="">PaymentCardholder</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentData.html" title="PaymentData" class="">PaymentData</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentDiscount.html" title="PaymentDiscount" class="">PaymentDiscount</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentFee.html" title="PaymentFee" class="">PaymentFee</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentFeeDetail.html" title="PaymentFeeDetail" class="">PaymentFeeDetail</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentInvoicePeriod.html" title="PaymentInvoicePeriod" class="">PaymentInvoicePeriod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentItem.html" title="PaymentItem" class="">PaymentItem</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentMethod.html" title="PaymentMethod" class="">PaymentMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentOrder.html" title="PaymentOrder" class="">PaymentOrder</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentPayer.html" title="PaymentPayer" class="">PaymentPayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentPaymentReference.html" title="PaymentPaymentReference" class="">PaymentPaymentReference</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentPointOfInteraction.html" title="PaymentPointOfInteraction" class="">PaymentPointOfInteraction</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentReceiverAddress.html" title="PaymentReceiverAddress" class="">PaymentReceiverAddress</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentRefund.html" title="PaymentRefund" class="">PaymentRefund</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentRules.html" title="PaymentRules" class="">PaymentRules</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentShipments.html" title="PaymentShipments" class="">PaymentShipments</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentStatus.html" title="PaymentStatus" class="">PaymentStatus</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentSubscriptionSequence.html" title="PaymentSubscriptionSequence" class="">PaymentSubscriptionSequence</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentTax.html" title="PaymentTax" class="">PaymentTax</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentThreeDSInfo.html" title="PaymentThreeDSInfo" class="">PaymentThreeDSInfo</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentTransactionData.html" title="PaymentTransactionData" class="">PaymentTransactionData</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Payment.PaymentTransactionDetails.html" title="PaymentTransactionDetails" class="">PaymentTransactionDetails</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.PaymentMethod.html" title="MercadoPago.Resource.PaymentMethod" class="">MercadoPago.Resource.PaymentMethod</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethod.html" title="PaymentMethod" class="">PaymentMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethodFinancialInstitutions.html" title="PaymentMethodFinancialInstitutions" class="">PaymentMethodFinancialInstitutions</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethodSettings.html" title="PaymentMethodSettings" class="">PaymentMethodSettings</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsBin.html" title="PaymentMethodSettingsBin" class="">PaymentMethodSettingsBin</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsCardNumber.html" title="PaymentMethodSettingsCardNumber" class="">PaymentMethodSettingsCardNumber</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PaymentMethod.PaymentMethodSettingsSecurityCode.html" title="PaymentMethodSettingsSecurityCode" class="">PaymentMethodSettingsSecurityCode</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.PreApproval.html" title="MercadoPago.Resource.PreApproval" class="">MercadoPago.Resource.PreApproval</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.PreApproval.Preapproval.html" title="Preapproval" class="">Preapproval</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.PreApproval.PreapprovalAutoRecurring.html" title="PreapprovalAutoRecurring" class="">PreapprovalAutoRecurring</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.Preference.html" title="MercadoPago.Resource.Preference" class="">MercadoPago.Resource.Preference</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.Preference.html" title="Preference" class="">Preference</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceBackUrls.html" title="PreferenceBackUrls" class="">PreferenceBackUrls</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceCategoryDescriptor.html" title="PreferenceCategoryDescriptor" class="">PreferenceCategoryDescriptor</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceDifferentialPricing.html" title="PreferenceDifferentialPricing" class="">PreferenceDifferentialPricing</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceFreeMethod.html" title="PreferenceFreeMethod" class="">PreferenceFreeMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceItem.html" title="PreferenceItem" class="">PreferenceItem</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferencePassenger.html" title="PreferencePassenger" class="">PreferencePassenger</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferencePayer.html" title="PreferencePayer" class="">PreferencePayer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferencePaymentMethod.html" title="PreferencePaymentMethod" class="">PreferencePaymentMethod</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferencePaymentMethods.html" title="PreferencePaymentMethods" class="">PreferencePaymentMethods</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferencePaymentType.html" title="PreferencePaymentType" class="">PreferencePaymentType</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceReceiverAddress.html" title="PreferenceReceiverAddress" class="">PreferenceReceiverAddress</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceRoute.html" title="PreferenceRoute" class="">PreferenceRoute</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceShipments.html" title="PreferenceShipments" class="">PreferenceShipments</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceTax.html" title="PreferenceTax" class="">PreferenceTax</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceTrack.html" title="PreferenceTrack" class="">PreferenceTrack</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Resource.Preference.PreferenceTrackValues.html" title="PreferenceTrackValues" class="">PreferenceTrackValues</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Resource.User.html" title="MercadoPago.Resource.User" class="">MercadoPago.Resource.User</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Resource.User.User.html" title="User" class="">User</a>
+                          </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="MercadoPago.Serialization.html" title="MercadoPago.Serialization" class="">MercadoPago.Serialization</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="MercadoPago.Serialization.DefaultSerializer.html" title="DefaultSerializer" class="">DefaultSerializer</a>
+                          </li>
+                          <li class="">
+                            <a href="MercadoPago.Serialization.ISerializer.html" title="ISerializer" class="">ISerializer</a>
+                          </li>
+                        </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest">
+
+
+
+  <h1 id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest" class="text-break">Class PaymentSubscriptionSequenceRequest</h1>
+  <div class="markdown level0 summary"><p>Payment's subscription sequence.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><span class="xref">PaymentSubscriptionSequenceRequest</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MercadoPago.html">MercadoPago</a>.<a class="xref" href="MercadoPago.Client.html">Client</a>.<a class="xref" href="MercadoPago.Client.Payment.html">Payment</a></h6>
+  <h6><strong>Assembly</strong>: MercadoPago.dll</h6>
+  <h5 id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PaymentSubscriptionSequenceRequest</code></pre>
+  </div>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/renanneri01/sdk-dotnet/new/enhancement/PUBLICAPI-2188/apiSpec/new?filename=MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Number.md&amp;value=---%0Auid%3A%20MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Number%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/renanneri01/sdk-dotnet/blob/enhancement/PUBLICAPI-2188/src/MercadoPago/Client/Payment/PaymentSubscriptionSequenceRequest.cs/#L11">View Source</a>
+  </span>
+  <a id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Number_" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Number*"></a>
+  <h4 id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Number" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Number">Number</h4>
+  <div class="markdown level1 summary"><p>Number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Number { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/renanneri01/sdk-dotnet/new/enhancement/PUBLICAPI-2188/apiSpec/new?filename=MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Total.md&amp;value=---%0Auid%3A%20MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Total%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/renanneri01/sdk-dotnet/blob/enhancement/PUBLICAPI-2188/src/MercadoPago/Client/Payment/PaymentSubscriptionSequenceRequest.cs/#L16">View Source</a>
+  </span>
+  <a id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Total_" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Total*"></a>
+  <h4 id="MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest_Total" data-uid="MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest.Total">Total</h4>
+  <div class="markdown level1 summary"><p>Total.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? Total { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/renanneri01/sdk-dotnet/new/enhancement/PUBLICAPI-2188/apiSpec/new?filename=MercadoPago_Client_Payment_PaymentSubscriptionSequenceRequest.md&amp;value=---%0Auid%3A%20MercadoPago.Client.Payment.PaymentSubscriptionSequenceRequest%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/renanneri01/sdk-dotnet/blob/enhancement/PUBLICAPI-2188/src/MercadoPago/Client/Payment/PaymentSubscriptionSequenceRequest.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
