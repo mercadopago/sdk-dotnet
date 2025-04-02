@@ -1,24 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
 
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Mercado Pago .Net | MercadoPago official .NET SDK </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Mercado Pago .Net | MercadoPago official .NET SDK ">
-    <meta name="generator" content="docfx 2.56.6.0">
-
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles/docfx.vendor.css">
-    <link rel="stylesheet" href="styles/docfx.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <meta property="docfx:navrel" content="toc">
-    <meta property="docfx:tocrel" content="toc">
-
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Mercado Pago .Net | MercadoPago official .NET SDK </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Mercado Pago .Net | MercadoPago official .NET SDK ">
+    
+    
+      <link rel="shortcut icon" href="favicon.ico">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.json">
+      <meta property="docfx:tocrel" content="toc.json">
+    
     <meta property="docfx:rel" content="">
-
+    
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
@@ -52,7 +52,8 @@
                       <li>
                           <a href="sdk/MercadoPago.Client.html" title="SDK Documentation">SDK Documentation</a>
                       </li>
-                </ul>    </div>
+                </ul>
+            </div>
           </div>
         </nav>
 
@@ -71,7 +72,7 @@
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <ul id="pagination" data-first=First data-prev=Previous data-next=Next data-last=Last></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -90,15 +91,7 @@
 <p><strong>.NET Standard 2.1+</strong>, <strong>.NET Core 2.0+</strong>, and <strong>.NET Framework 6.0+</strong>.</p>
 <p>If you are using previous versions of .NET Framework in your project, please refer to the <a href="https://github.com/mercadopago/sdk-dotnet/tree/master-dotnet-framework">older versions</a> of the SDK.</p>
 <h2 id="-installation">📲 Installation</h2>
-<h3 id="using-the-net-core-command-line-interface-cli-tools">Using the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">.NET Core command-line interface (CLI) tools</a></h3>
-<pre><code class="lang-bash">dotnet add package mercadopago-sdk
-</code></pre>
-<h3 id="using-the-nuget-command-line-interface-cli">Using the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">NuGet Command Line Interface (CLI)</a></h3>
-<pre><code class="lang-bash">nuget install mercadopago-sdk
-</code></pre>
-<h3 id="using-the-package-manager">Using the <a href="https://docs.microsoft.com/en-us/nuget/tools/package-manager-console">Package Manager</a></h3>
-<pre><code class="lang-bash">Install-Package mercadopago-sdk
-</code></pre>
+<p>Use one of the following options, depending on your preferred environment.</p>
 <h3 id="from-visual-studio">From Visual Studio</h3>
 <ol>
 <li>Open the <code>Solution Explorer</code>.</li>
@@ -107,50 +100,76 @@
 <li>Click on the <code>Browse</code> tab and search for &quot;mercadopago-sdk&quot;.</li>
 <li>Click on the <code>mercadopago-sdk</code> package, select the appropriate version and click Install.</li>
 </ol>
+<h3 id="using-the-package-manager">Using the <a href="https://docs.microsoft.com/en-us/nuget/tools/package-manager-console">Package Manager</a></h3>
+<pre><code class="lang-bash">Install-Package mercadopago-sdk
+</code></pre>
+<h3 id="using-the-net-core-command-line-interface-cli-tools">Using the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">.NET Core command-line interface (CLI) tools</a></h3>
+<pre><code class="lang-bash">dotnet add package mercadopago-sdk
+</code></pre>
+<h3 id="using-the-nuget-command-line-interface-cli">Using the <a href="https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference">NuGet Command Line Interface (CLI)</a></h3>
+<pre><code class="lang-bash">nuget install mercadopago-sdk
+</code></pre>
 <h2 id="-getting-started">🌟 Getting Started</h2>
 <p>First time using Mercado Pago? Create your <a href="https://www.mercadopago.com">Mercado Pago account</a>.</p>
 <p>Copy your <code>Access Token</code> in the <a href="https://www.mercadopago.com/developers/panel/credentials">credentials panel</a> and replace the text <code>YOUR_ACCESS_TOKEN</code> with it.</p>
 <h3 id="simple-usage">Simple usage</h3>
 <p>To generate a <code>card token</code> read the <a href="https://www.mercadopago.com/developers/en/guides/online-payments/checkout-api/introduction">Checkout API</a> documentation.</p>
 <pre><code class="lang-csharp">using System;
-using System.Threading.Tasks;
-using MercadoPago.Client.Payment;
 using MercadoPago.Config;
-using MercadoPago.Resource.Payment;
+using MercadoPago.Client.Common;
+using MercadoPago.Client.Order;
+using MercadoPago.Resource.Order;
+using System.Collections.Generic;
 
-MercadoPagoConfig.AccessToken = &quot;YOUR_ACCESS_TOKEN&quot;;
+MercadoPagoConfig.AccessToken = &quot;{{ACCESS_TOKEN}}&quot;;
 
-var request = new PaymentCreateRequest
+var request = new OrderCreateRequest
 {
-    TransactionAmount = 10,
-    Token = &quot;CARD_TOKEN&quot;,
-    Description = &quot;Payment description&quot;,
-    Installments = 1,
-    PaymentMethodId = &quot;visa&quot;,
-    Payer = new PaymentPayerRequest
+    Type = &quot;online&quot;,
+    TotalAmount = &quot;1000.00&quot;,
+    ExternalReference = &quot;ext_ref_1234&quot;,
+    Transactions = new OrderTransactionRequest
     {
-        Email = &quot;test.payer@email.com&quot;,
+        Payments = new List&lt;OrderPaymentRequest&gt;
+            {
+                new OrderPaymentRequest
+                {
+                    Amount = &quot;1000.00&quot;,
+                    PaymentMethod = new OrderPaymentMethodRequest
+                    {
+                        Id = &quot;master&quot;,
+                        Type = &quot;credit_card&quot;,
+                        Token = &quot;{{CARD_TOKEN}}&quot;,
+                        Installments = 1,
+                    }
+                }
+            }
+    },
+    Payer = new OrderPayerRequest
+    {
+        Email = &quot;{{PAYER_EMAIL}}&quot;,
     }
 };
 
-var client = new PaymentClient();
-Payment payment = await client.CreateAsync(request);
-
-Console.WriteLine($&quot;Payment ID: {payment.Id}&quot;);
+var client = new OrderClient();
+Order order = client.Create(request);
+Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(order, Newtonsoft.Json.Formatting.Indented));
 </code></pre>
 <h3 id="per-request-configuration">Per-request configuration</h3>
 <p>All methods that make API calls accept an optional <code>RequestOptions</code> object. This can be used to configure some special options of the request, such as changing credentials or custom headers.</p>
 <pre><code class="lang-csharp">using MercadoPago.Client;
+using MercadoPago.Http;
+using MercadoPago.Client.Order;
+using MercadoPago.Resource.Order;
 
 var requestOptions = new RequestOptions();
 requestOptions.AccessToken = &quot;YOUR_ACCESS_TOKEN&quot;;
+requestOptions.CustomHeaders.Add(Headers.IDEMPOTENCY_KEY, &quot;YOUR_IDEMPOTENCY_KEY&quot;);
+
 // ...
-
-var client = new PaymentClient();
-Payment payment = await client.CreateAsync(request, requestOptions);
-
+var client = new OrderClient();
+Order order = client.Create(request, requestOptions);
 </code></pre>
-<h2 id="advanced-usage">Advanced usage</h2>
 <h3 id="using-a-proxy-server">Using a proxy server</h3>
 <pre><code class="lang-csharp">using System.Net;
 using System.Net.Http;
@@ -193,6 +212,7 @@ MercadoPagoConfig.RetryStrategy = retryStrategy;
 <pre><code>MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre
 For more information, see the LICENSE file.
 </code></pre>
+
 </article>
           </div>
 
@@ -201,12 +221,12 @@ For more information, see the LICENSE file.
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/mercadopago/dx-dotnet/blob/release/2.0.0/README.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/renanneri01/sdk-dotnet/blob/master/README.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -221,14 +241,14 @@ For more information, see the LICENSE file.
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
 
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
   </body>

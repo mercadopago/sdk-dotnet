@@ -273,11 +273,11 @@
         {
             var mercadoPagoRequest = BuildRequest(path, httpMethod, requestOptions);
             var queryString = string.Empty;
+            
+            AddIdempotencyKey(mercadoPagoRequest, request);
 
             if (request != null)
             {
-                AddIdempotencyKey(mercadoPagoRequest, request);
-
                 if (httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT)
                 {
                     mercadoPagoRequest.Content = Serializer.SerializeToJson(request);
@@ -340,12 +340,16 @@
 
         private void AddIdempotencyKey(MercadoPagoRequest mercadoPagoRequest, object request)
         {
-            if (mercadoPagoRequest.Method == HttpMethod.POST)
+            if (mercadoPagoRequest.Method == HttpMethod.POST || mercadoPagoRequest.Method == HttpMethod.PUT)
             {
                 bool headerHasIdempotencyKey = mercadoPagoRequest.ContainsHeader(Headers.IDEMPOTENCY_KEY);
                 if (request is IdempotentRequest idempotentRequest && !headerHasIdempotencyKey)
                 {
                     mercadoPagoRequest.Headers.Add(Headers.IDEMPOTENCY_KEY, idempotentRequest.CreateIdempotencyKey());
+                }
+
+                if (request == null && !headerHasIdempotencyKey) {
+                    mercadoPagoRequest.Headers.Add(Headers.IDEMPOTENCY_KEY, Guid.NewGuid().ToString());
                 }
             }
         }
@@ -353,7 +357,7 @@
         private TResponse ParseResponse<TResponse>(MercadoPagoResponse response)
             where TResponse : IResource, new()
         {
-            if (response.StatusCode != 200 && response.StatusCode != 201)
+            if (response.StatusCode > 299)
             {
                 throw BuildApiErrorException(response);
             }
@@ -368,7 +372,9 @@
                 throw BuildInvalidResponseException(response);
             }
 
-            resource.ApiResponse = response;
+            if (!string.IsNullOrEmpty(response.Content)) {
+                resource.ApiResponse = response;
+            }
 
             return resource;
         }

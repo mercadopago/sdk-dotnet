@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using MercadoPago.Client.Common;
 
     /// <summary>
     /// Parameters to create/update a preference.
@@ -107,7 +108,7 @@
         /// <summary>
         /// Differential pricing configuration for this preference.
         /// </summary>
-        public PreferenceDifferentialPricingRequest DifferentialPricing { get; set; }
+        public DifferentialPricingRequest DifferentialPricing { get; set; }
 
         /// <summary>
         /// Sponsor Id.

@@ -23,6 +23,11 @@
         public string Error { get; set; }
 
         /// <summary>
+        /// Errors identification.
+        /// </summary>
+        public IList<ApiErrorCause> Errors { get; set; }
+
+        /// <summary>
         /// Error message.
         /// </summary>
         public string Message { get; set; }

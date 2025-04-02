@@ -15,3 +15,5 @@ repos:
       - id: pre_commit_hook
         stages: [commit]
         verbose: true
+      - id: post_commit_hook
+        stages: [ post-commit ]

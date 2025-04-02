@@ -18,8 +18,8 @@
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
-    <Version>2.4.2</Version>
-    <VersionPrefix>2.4.2</VersionPrefix>
+    <Version>2.5.0</Version>
+    <VersionPrefix>2.5.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,5 +58,7 @@
     <Folder Include="Client\OAuth\" />
     <Folder Include="Resource\PreApproval\" />
     <Folder Include="Client\Preapproval\" />
+    <Folder Include="Resource\Order\" />
+    <Folder Include="Client\Order\" />
   </ItemGroup>
 </Project>
