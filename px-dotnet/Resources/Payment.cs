@@ -262,7 +262,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Identifies the seller
         /// </summary>
-        public int? CollectorId { get; set; }
+        public long? CollectorId { get; set; }
 
         /// <summary>
         /// Payment type
@@ -335,7 +335,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Discount campaign ID
         /// </summary>
-        public int? CampaignId { get; set; }
+        public long? CampaignId { get; set; }
 
         /// <summary>
         /// Discount campaign with a specific code
@@ -355,7 +355,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Id of the scheme for the absorption of financing fee
         /// </summary>
-        public int? DifferentialPricingId { get; set; }
+        public long? DifferentialPricingId { get; set; }
 
         /// <summary>
         /// Fee collected by a marketplace or MercadoPago Application
@@ -422,7 +422,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Selected quantity of installments
         /// </summary>
-        public int? Installments { get; set; }
+        public long? Installments { get; set; }
 
         /// <summary>
         /// URL where mercadopago will send notifications associated to changes in this payment
@@ -444,7 +444,7 @@ namespace MercadoPago.Resources
         /// Try to send as much information as possible.
         /// </summary>
         public AdditionalInfo? AdditionalInfo { get; set; }
-        
+
         /// <summary>
         /// Processing mode to define if an specific merchannt id should be used.
         /// </summary>

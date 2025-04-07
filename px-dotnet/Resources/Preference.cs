@@ -42,7 +42,7 @@ namespace MercadoPago.Resources
         /// </remarks>
         [GETEndpoint("/checkout/preferences/:id")]
         public static Preference FindById(string id, bool useCache, MPRequestOptions requestOptions)
-        {            
+        {
             return (Preference)ProcessMethod<Preference>(typeof(Preference), "FindById", id, useCache, requestOptions);
         }
 
@@ -100,7 +100,7 @@ namespace MercadoPago.Resources
         public Boolean Update(MPRequestOptions requestOptions)
         {
             return ProcessMethodBool<Preference>("Update", WITHOUT_CACHE, requestOptions);
-        }         
+        }
         #endregion
 
         #region Properties
@@ -208,7 +208,7 @@ namespace MercadoPago.Resources
         /// <summary>
         /// Your MercadoPago seller ID
         /// </summary>
-        public int? CollectorId { get; set; }
+        public long? CollectorId { get; set; }
 
         /// <summary>
         /// Application owner ID that use MercadoLibre API
