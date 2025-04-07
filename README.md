@@ -11,7 +11,7 @@ This library provides developers with a simple set of bindings to help you integ
 
 4.5 .Net Framework or higher
 
-## 📲 Installation 
+## 📲 Installation
 
 ### Using our nuget package
 
@@ -19,15 +19,15 @@ First time using Mercado Pago? Create your [Mercado Pago account](https://www.me
 
 **Using Package Manager**
 
-`PM> Install-Package mercadopago-sdk -Version 1.11.2`
+`PM> Install-Package mercadopago-sdk -Version 1.11.3`
 
 **Using .Net CLI**
 
-`> dotnet add package mercadopago-sdk --version 1.11.2`
+`> dotnet add package mercadopago-sdk --version 1.11.3`
 
 **Using Packet CLI**
 
-`> paket add mercadopago-sdk --version 1.11.2`
+`> paket add mercadopago-sdk --version 1.11.3`
 
 Copy the access_token in the [credentials](https://www.mercadopago.com/mlb/account/credentials) section of the page and replace YOUR_ACCESS_TOKEN with it.
 
@@ -35,8 +35,8 @@ That's it! Mercado Pago SDK has been successfully installed.
 
 ## 🌟 Getting Started
 
-  Simple usage looks like:
-    
+Simple usage looks like:
+
 ```csharp
 using MercadoPago;
 using MercadoPago.Resources;
@@ -50,7 +50,7 @@ Payment payment = new Payment
     TransactionAmount = 100,
     Token = "YOUR_CARD_TOKEN",
     Description = "Ergonomic Silk Shirt",
-    PaymentMethodId = "visa", 
+    PaymentMethodId = "visa",
     Installments = 1,
     Payer = new Payer {
         Email = "test.payer@email.com",
@@ -62,22 +62,23 @@ payment.Save();
 Console.Out.WriteLine(payment.Status);
 ```
 
-## 📚 Documentation 
+## 📚 Documentation
 
 Visit our Dev Site for further information regarding:
- - Payments APIs: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/api/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/api/introduction/)
- - Mercado Pago checkout: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/web-payment-checkout/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/web-payment-checkout/introduction/)
- - Web Tokenize checkout: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/web-tokenize-checkout/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/web-tokenize-checkout/introduction/)
+
+- Payments APIs: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/api/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/api/introduction/)
+- Mercado Pago checkout: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/web-payment-checkout/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/web-payment-checkout/introduction/)
+- Web Tokenize checkout: [Spanish](https://www.mercadopago.com.ar/developers/es/guides/payments/web-tokenize-checkout/introduction/) / [Portuguese](https://www.mercadopago.com.br/developers/pt/guides/payments/web-tokenize-checkout/introduction/)
 
 Check [our official code reference](https://mercadopago.github.io/dx-dotnet/) to explore all available functionalities.
 
-## ❤️ Support 
+## ❤️ Support
 
 If you require technical support, please contact our support team at [developers.mercadopago.com](https://developers.mercadopago.com)
 
-## 🏻 License 
+## 🏻 License
 
 ```
-MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre 
+MIT license. Copyright (c) 2021 - Mercado Pago / Mercado Libre
 For more information, see the LICENSE file.
 ```

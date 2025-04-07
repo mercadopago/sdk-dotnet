@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageVersion>1.11.2</PackageVersion>
+    <PackageVersion>1.11.3</PackageVersion>
     <Authors>MercadoPago</Authors>
     <Description>MercadoPago SDK para .Net</Description>
     <Owners>MercadoPago</Owners>
@@ -25,7 +25,7 @@
     <Title>Mercado Pago SDK</Title>
     <NeutralLanguage>es</NeutralLanguage>
     <PackageTags>mercadopago</PackageTags>
-    <ReleaseVersion>1.11.2</ReleaseVersion>
+    <ReleaseVersion>1.11.3</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
