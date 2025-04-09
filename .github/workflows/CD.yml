@@ -1,0 +1,35 @@
+name: CD
+
+on:
+  workflow_run:
+    workflows: [CI]
+    branches: [master-dotnet-framework]
+    types:
+      - completed
+
+jobs:
+  publish:
+    name: Publish on NuGet
+    runs-on: [windows-2019]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup NuGet.exe
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Restore NuGet packages
+        run: nuget restore px-dotnet.sln
+
+      - name: Build Solution
+        run: msbuild px-dotnet.sln /p:Configuration=Release
+
+      - name: Create NuGet package
+        run: nuget pack MercadoPagoSDK/MercadoPagoSDK.nuspec -Properties Configuration=Release
+
+      - name: Upload to NuGet
+        run: nuget push *.nupkg -Source nuget.org -ApiKey ${{ secrets.NUGET_API_KEY }}
