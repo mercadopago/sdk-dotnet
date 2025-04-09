@@ -1,11 +1,8 @@
 name: CD
 
 on:
-  workflow_run:
-    workflows: [CI]
-    branches: [master-dotnet-framework]
-    types:
-      - completed
+  release:
+    types: [created]
 
 jobs:
   publish:
