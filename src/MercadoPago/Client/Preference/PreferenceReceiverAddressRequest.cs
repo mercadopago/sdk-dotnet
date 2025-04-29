@@ -8,6 +8,11 @@
     public class PreferenceReceiverAddressRequest : AddressRequest
     {
         /// <summary>
+        /// Zip Code.
+        /// </summary>
+        public string ZipCode { get; set; }
+
+        /// <summary>
         /// Country.
         /// </summary>
         public string Country { get; set; }
@@ -21,6 +26,16 @@
         /// City.
         /// </summary>
         public string City { get; set; }
+
+        /// <summary>
+        /// Street Name.
+        /// </summary>
+        public string StreetName { get; set; }
+
+        /// <summary>
+        /// Street Number.
+        /// </summary>
+        public int StreetNumber { get; set; }
 
         /// <summary>
         /// Floor.

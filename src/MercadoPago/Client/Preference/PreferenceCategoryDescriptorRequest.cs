@@ -14,5 +14,10 @@
         /// Flight information.
         /// </summary>
         public PreferenceRouteRequest Route { get; set; }
+
+        /// <summary>
+        /// Type.
+        /// </summary>
+        public string Type { get; set; }
     }
 }
