@@ -15,9 +15,5 @@
         /// </summary>
         public PaymentRouteRequest Route { get; set; }
 
-        /// <summary>
-        /// Type.
-        /// </summary>
-        public string Type { get; set; }
     }
 }

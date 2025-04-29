@@ -530,7 +530,6 @@
                                     DepartureDateTime = DateTime.Now.AddDays(30),
                                     Destination = "destination",
                                 },
-                                Type = "type"
                             },
                         },
                     },
