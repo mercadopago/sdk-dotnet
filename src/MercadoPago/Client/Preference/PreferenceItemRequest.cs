@@ -30,7 +30,7 @@
         /// <summary>
         /// Category of the item.
         /// </summary>
-        public string CategoryId { get; set; }
+        public string CategoryID { get; set; }
 
         /// <summary>
         /// Item's quantity.

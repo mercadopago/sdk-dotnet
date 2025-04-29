@@ -106,6 +106,7 @@
                         Quantity = 1,
                         Title = "Item 1",
                         UnitPrice = 100,
+                        CategoryID = "cat",
                     },
                     new PreferenceItemRequest
                     {
@@ -115,6 +116,7 @@
                         Quantity = 2,
                         Title = "Item 2",
                         UnitPrice = 200,
+                        CategoryID = "cat",
                     },
                 },
             };
@@ -145,6 +147,7 @@
                         Quantity = 1,
                         Title = "Item 1",
                         UnitPrice = 100,
+                        CategoryID = "cat",
                     },
                     new PreferenceItemRequest
                     {
@@ -154,6 +157,7 @@
                         Quantity = 2,
                         Title = "Item 2",
                         UnitPrice = 200,
+                        CategoryID = "cat",
                     },
                 },
             };
@@ -207,6 +211,7 @@
                         Quantity = 1,
                         Title = "Title",
                         UnitPrice = 100,
+                        CategoryID = "cat",
                     },
                 },
                 Payer = new PreferencePayerRequest
@@ -225,6 +230,7 @@
                         StreetName = "Street",
                         StreetNumber = "123",
                     },
+                    RegistrationDate = DateTime.UtcNow.AddDays(-10),
                 },
                 PaymentMethods = new PreferencePaymentMethodsRequest
                 {
@@ -253,7 +259,8 @@
                     Dimensions = "10x10x20,500",
                     ReceiverAddress = new PreferenceReceiverAddressRequest
                     {
-                        StreetNumber = "123",
+                        ZipCode = "00000-000",
+                        StreetNumber = 123,
                         StreetName = "Street",
                         Floor = "12",
                         Apartment = "120A",
