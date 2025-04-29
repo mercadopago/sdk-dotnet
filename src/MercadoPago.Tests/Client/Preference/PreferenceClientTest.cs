@@ -106,7 +106,7 @@
                         Quantity = 1,
                         Title = "Item 1",
                         UnitPrice = 100,
-                        CategoryID = "cat",
+                        CategoryID = "category1",
                     },
                     new PreferenceItemRequest
                     {
@@ -116,7 +116,7 @@
                         Quantity = 2,
                         Title = "Item 2",
                         UnitPrice = 200,
-                        CategoryID = "cat",
+                        CategoryID = "category2",
                     },
                 },
             };
@@ -147,7 +147,7 @@
                         Quantity = 1,
                         Title = "Item 1",
                         UnitPrice = 100,
-                        CategoryID = "cat",
+                        CategoryID = "category1",
                     },
                     new PreferenceItemRequest
                     {
@@ -157,7 +157,7 @@
                         Quantity = 2,
                         Title = "Item 2",
                         UnitPrice = 200,
-                        CategoryID = "cat",
+                        CategoryID = "category2",
                     },
                 },
             };
@@ -211,7 +211,7 @@
                         Quantity = 1,
                         Title = "Title",
                         UnitPrice = 100,
-                        CategoryID = "cat",
+                        CategoryID = "category",
                     },
                 },
                 Payer = new PreferencePayerRequest
