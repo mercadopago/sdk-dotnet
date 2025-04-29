@@ -18,6 +18,6 @@
         /// <summary>
         /// Number.
         /// </summary>
-        public string StreetNumber { get; set; }
+        public int StreetNumber { get; set; }
     }
 }

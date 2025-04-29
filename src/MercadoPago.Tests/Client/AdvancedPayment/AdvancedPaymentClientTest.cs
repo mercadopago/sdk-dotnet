@@ -340,7 +340,7 @@
                     Address = new AddressRequest
                     {
                         StreetName = "Street",
-                        StreetNumber = "120",
+                        StreetNumber = 120,
                     },
                     Identification = IdentificationHelper.GetIdentification(User),
                 },
@@ -359,7 +359,7 @@
                         Address = new AddressRequest
                         {
                             StreetName = "Street",
-                            StreetNumber = "120",
+                            StreetNumber = 120,
                         },
                         Phone = new PhoneRequest
                         {
