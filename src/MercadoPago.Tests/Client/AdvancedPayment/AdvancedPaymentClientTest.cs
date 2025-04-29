@@ -385,7 +385,7 @@
                         ReceiverAddress = new AdvancedPaymentReceiverAddressRequest
                         {
                             StreetName = "Street",
-                            StreetNumber = "120",
+                            StreetNumber = 120,
                             Floor = "1",
                             Apartment = "A",
                         },
