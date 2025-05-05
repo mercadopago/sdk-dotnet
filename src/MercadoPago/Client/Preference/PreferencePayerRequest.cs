@@ -62,5 +62,10 @@
         /// Date of the last purchase.
         /// </summary>
         public DateTime? LastPurchase { get; set; }
+
+        /// <summary>
+        /// Date of registration.
+        /// </summary>
+        public DateTime? RegistrationDate { get; set; }
     }
 }
