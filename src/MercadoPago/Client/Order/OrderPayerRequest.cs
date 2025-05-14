@@ -13,6 +13,11 @@ namespace MercadoPago.Client.Order
         public string Email { get; set; }
 
         /// <summary>
+        /// Payer's entity type.
+        /// </summary>
+        public string EntityType { get; set; }
+
+        /// <summary>
         /// Payer's first name.
         /// </summary>
         public string FirstName { get; set; }

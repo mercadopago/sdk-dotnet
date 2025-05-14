@@ -82,5 +82,10 @@ namespace MercadoPago.Client.Order
         /// Configuration.
         /// </summary>
         public OrderConfigRequest Config { get; set; }
+
+        /// <summary>
+        /// Additional info for the order.
+        /// </summary>
+        public IDictionary<string, object> AdditionalInfo { get; set; }
     }
 }

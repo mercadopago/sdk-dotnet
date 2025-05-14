@@ -129,5 +129,10 @@ namespace MercadoPago.Resource.Order
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
+
+        /// <summary>
+        /// Additional info for the order.
+        /// </summary>
+        public IDictionary<string, object> AdditionalInfo { get; set; }
     }
 }

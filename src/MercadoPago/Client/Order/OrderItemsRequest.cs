@@ -33,6 +33,11 @@ namespace MercadoPago.Client.Order
         public string CategoryId { get; set; }
 
         /// <summary>
+        /// Type of the item.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Description of the item.
         /// </summary>
         public string Description { get; set; }
@@ -41,5 +46,15 @@ namespace MercadoPago.Client.Order
         /// Picture URL of the item.
         /// </summary>
         public string PictureUrl { get; set; }
+
+        /// <summary>
+        /// Warranty of the item.
+        /// </summary>
+        public bool? Warranty { get; set; }
+
+        /// <summary>
+        /// Event date of the item.
+        /// </summary>
+        public string EventDate { get; set; }
     }
 }
