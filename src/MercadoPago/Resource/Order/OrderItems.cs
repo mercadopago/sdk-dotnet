@@ -41,5 +41,15 @@ namespace MercadoPago.Resource.Order
         /// Quantity of the item.
         /// </summary>
         public int? Quantity { get; set; }
+
+        /// <summary>
+        /// Warranty of the item.
+        /// </summary>
+        public bool? Warranty { get; set; }
+
+        /// <summary>
+        /// Event date of the item.
+        /// </summary>
+        public string EventDate { get; set; }
     }
 }
