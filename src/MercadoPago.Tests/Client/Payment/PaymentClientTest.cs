@@ -546,7 +546,7 @@
                         Address = new AddressRequest
                         {
                             StreetName = "Street",
-                            StreetNumber = "123",
+                            StreetNumber = 123,
                         },
                         AuthenticationType = "None",
                         IsFirstPurchaseOnline = false,
@@ -558,7 +558,7 @@
                         ReceiverAddress = new PaymentReceiverAddressRequest
                         {
                             StreetName = "Street",
-                            StreetNumber = "123",
+                            StreetNumber = 123,
                             Apartment = "23",
                             Floor = "First",
                             CityName = "City",

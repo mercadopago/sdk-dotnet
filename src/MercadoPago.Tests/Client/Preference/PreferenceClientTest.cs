@@ -223,7 +223,7 @@
                     Address = new AddressRequest
                     {
                         StreetName = "Street",
-                        StreetNumber = "123",
+                        StreetNumber = 123,
                     },
                 },
                 PaymentMethods = new PreferencePaymentMethodsRequest
@@ -253,7 +253,8 @@
                     Dimensions = "10x10x20,500",
                     ReceiverAddress = new PreferenceReceiverAddressRequest
                     {
-                        StreetNumber = "123",
+                        ZipCode = "00000-000",
+                        StreetNumber = 123,
                         StreetName = "Street",
                         Floor = "12",
                         Apartment = "120A",
