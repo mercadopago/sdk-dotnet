@@ -284,5 +284,15 @@
         /// attributes of the merchant.
         /// </summary>
         public IDictionary<string, object> InternalMetadata { get; set; }
+
+        /// <summary>
+        /// Forward data information.
+        /// </summary>
+        public PaymentForwardData ForwardData { get; set; }
+
+        /// <summary>
+        /// Expanded data information.
+        /// </summary>
+        public PaymentExpandedData Expanded { get; set; }
     }
 }
