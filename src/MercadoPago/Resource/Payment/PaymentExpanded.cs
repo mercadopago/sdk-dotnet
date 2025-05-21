@@ -1,5 +1,7 @@
 namespace MercadoPago.Resource.Payment
 {
+    using MercadoPago.Client.Common;
+
     /// <summary>
     /// Expanded data information.
     /// </summary>
@@ -19,17 +21,6 @@ namespace MercadoPago.Resource.Payment
         /// <summary>
         /// Reference information.
         /// </summary>
-        public PaymentReferenceData Reference { get; set; }
-    }
-
-    /// <summary>
-    /// Reference data information.
-    /// </summary>
-    public class PaymentReferenceData
-    {
-        /// <summary>
-        /// Network transaction ID.
-        /// </summary>
-        public string NetworkTransactionId { get; set; }
+        public NetworkTransactionData Reference { get; set; }
     }
 }
