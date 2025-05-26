@@ -12,5 +12,9 @@ namespace MercadoPago.Client.Payment
         /// </summary>
         public SubMerchant SubMerchant { get; set; }
 
-        }
+        /// <summary>
+        /// Network transaction data.
+        /// </summary>
+        public NetworkTransactionData NetworkTransactionData { get; set; }
+    }
 }

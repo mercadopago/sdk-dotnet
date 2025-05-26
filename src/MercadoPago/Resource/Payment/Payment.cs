@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using MercadoPago.Http;
     using Newtonsoft.Json;
+    using MercadoPago.Client.Common;
 
     /// <summary>
     /// Payment resource.
@@ -284,5 +285,15 @@
         /// attributes of the merchant.
         /// </summary>
         public IDictionary<string, object> InternalMetadata { get; set; }
+
+        /// <summary>
+        /// Forward data information.
+        /// </summary>
+        public NetworkTransactionData ForwardData { get; set; }
+
+        /// <summary>
+        /// Expanded data information.
+        /// </summary>
+        public PaymentExpandedData Expanded { get; set; }
     }
 }
