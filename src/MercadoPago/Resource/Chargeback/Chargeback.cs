@@ -2,6 +2,7 @@ namespace MercadoPago.Resource.Chargeback
 {
     using System;
     using System.Collections.Generic;
+    using MercadoPago.Http;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -62,5 +63,11 @@ namespace MercadoPago.Resource.Chargeback
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// Response from API.
+        /// </summary>
+        [JsonIgnore]
+        public MercadoPagoResponse ApiResponse { get; set; }
     }
 }
