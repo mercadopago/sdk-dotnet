@@ -1,0 +1,328 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Mercado Pago .NET SDK - Cursor Rules
+
+## Project Overview
+Este é o SDK oficial do Mercado Pago para .NET, uma biblioteca de processamento de pagamentos direcionada para .NET 6.0+ e .NET Standard 2.1+. O SDK segue princípios de arquitetura limpa com clara separação entre clients, resources, configuração e manipulação HTTP.
+
+## Estrutura e Organização do Projeto
+
+### Estrutura de Diretórios Principal
+```
+src/
+├── MercadoPago/                    # Biblioteca principal do SDK
+│   ├── Client/                     # Classes de cliente da API
+│   │   ├── {Domain}/              # Clientes específicos por domínio (Payment, Order, etc.)
+│   │   ├── Common/                # Componentes compartilhados do cliente
+│   │   └── MercadoPagoClient.cs   # Classe base do cliente
+│   ├── Resource/                   # Modelos de dados e recursos
+│   │   ├── {Domain}/              # Recursos específicos por domínio
+│   │   └── Common/                # Componentes compartilhados de recursos
+│   ├── Config/                     # Classes de configuração
+│   ├── Http/                       # Manipulação e comunicação HTTP
+│   ├── Serialization/             # Lógica de serialização JSON
+│   └── Error/                      # Tratamento de erros e exceções
+├── MercadoPago.Tests/             # Testes unitários e de integração
+└── MercadoPago.sln                # Arquivo de solução
+examples/                          # Exemplos de uso e amostras
+docs/                             # Arquivos de documentação
+```
+
+## Convenções de Nomenclatura
+
+### Classes e Interfaces
+- **Classes de Cliente**: `{Domain}Client` (ex: `PaymentClient`, `OrderClient`)
+- **Classes de Recurso**: `{Domain}` ou `{Domain}{Concept}` (ex: `Payment`, `PaymentPayer`)
+- **Classes de Requisição**: `{Domain}{Action}Request` (ex: `PaymentCreateRequest`, `OrderCreateRequest`)
+- **Nomenclatura de Interface**: Prefixo com `I` (ex: `IResource`, `IHttpClient`, `ISerializer`)
+- **Classes de Configuração**: `{Purpose}Config` (ex: `MercadoPagoConfig`)
+
+### Propriedades e Campos
+- Use **PascalCase** para todas as propriedades e métodos públicos
+- Use **camelCase** para campos privados e variáveis locais
+- Use nomes descritivos que indiquem claramente o propósito
+- Propriedades booleanas devem usar prefixos `Is`, `Has`, `Can`, ou `Should` quando apropriado
+
+### Arquivos e Diretórios
+- Use **PascalCase** para nomes de arquivos correspondentes aos nomes das classes
+- Nomes de diretórios devem ser **PascalCase** e representar agrupamentos lógicos
+- Arquivos de teste devem terminar com `Test` (ex: `PaymentClientTest.cs`)
+
+## Padrões de Código e Arquitetura
+
+### Padrão de Cliente
+Todos os clientes de API devem:
+- Herdar de `MercadoPagoClient<TResource>`
+- Estar localizados no diretório `Client/{Domain}/`
+- Fornecer métodos síncronos e assíncronos
+- Seguir o padrão: métodos `{Action}Async()` e `{Action}()`
+- Aceitar parâmetro opcional `RequestOptions` para configuração por requisição
+- Usar injeção de dependência para `IHttpClient` e `ISerializer`
+
+```csharp
+public class PaymentClient : MercadoPagoClient<Payment>
+{
+    public async Task<Payment> CreateAsync(PaymentCreateRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+    {
+        return await SendAsync("/v1/payments", HttpMethod.POST, request, requestOptions, cancellationToken);
+    }
+
+    public Payment Create(PaymentCreateRequest request, RequestOptions requestOptions = null)
+    {
+        return CreateAsync(request, requestOptions).ConfigureAwait(false).GetAwaiter().GetResult();
+    }
+}
+```
+
+### Padrão de Recurso
+Todas as classes de recurso devem:
+- Implementar a interface `IResource`
+- Estar localizadas no diretório `Resource/{Domain}/`
+- Usar tipos anuláveis para propriedades opcionais
+- Incluir documentação XML para todas as propriedades públicas
+- Ter uma propriedade `ApiResponse` do tipo `MercadoPagoResponse`
+
+```csharp
+/// <summary>
+/// Recurso de pagamento.
+/// </summary>
+public class Payment : IResource
+{
+    /// <summary>
+    /// ID do pagamento.
+    /// </summary>
+    public long? Id { get; set; }
+
+    /// <summary>
+    /// Status do pagamento.
+    /// </summary>
+    public string Status { get; set; }
+
+    /// <summary>
+    /// Informações da resposta da API.
+    /// </summary>
+    public MercadoPagoResponse ApiResponse { get; set; }
+}
+```
+
+### Padrão de Requisição
+Classes de requisição devem:
+- Terminar com sufixo `Request`
+- Estar localizadas junto ao seu cliente correspondente
+- Usar tipos anuláveis para parâmetros opcionais
+- Implementar `IdempotentRequest` quando aplicável
+- Incluir atributos de validação quando necessário
+
+## Estilo de Código e Formatação
+
+### Diretrizes Gerais
+- Seguir @Convenções de Codificação C#
+- Usar **4 espaços** para indentação (sem tabs)
+- Usar finais de linha **LF**
+- Remover espaços em branco no final das linhas
+- Inserir nova linha final em todos os arquivos
+- Comprimento máximo de linha: **120 caracteres** (limite flexível)
+
+### Linguagem e Documentação
+- Usar **Português** para todo código, comentários, documentação e mensagens de commit
+- Fornecer documentação XML para todas as APIs públicas
+- Incluir tags `<summary>` para todas as classes, métodos e propriedades públicas
+- Adicionar tags `<param>` e `<returns>` para métodos com parâmetros/valores de retorno
+- Referenciar documentação externa com tags `<a href="">` quando aplicável
+
+### Comentários
+Comentar sobre:
+- Lógica de negócios ou algoritmos complexos
+- Decisões que se desviam das convenções comuns
+- Seções de código sensíveis ao desempenho
+- Implementações relacionadas à segurança
+- Soluções alternativas ou hacks não óbvios
+
+Evitar comentar sobre:
+- Estrutura de código autoexplicativa
+- Comportamento óbvio que pode ser entendido pelo código circundante
+- Detalhes de implementação já cobertos pelas assinaturas dos métodos
+
+## Dependências e Bibliotecas
+
+### Dependências Principais
+- **Newtonsoft.Json** (13.0.1+): Serialização/deserialização JSON
+- **System.Configuration.ConfigurationManager** (6.0.0+): Gerenciamento de configuração
+- **.NET 6.0** e **.NET Standard 2.1**: Frameworks alvo
+
+### Dependências de Teste
+- **xUnit** (2.4.1+): Framework principal de testes
+- **Moq** (4.18.4+): Framework de mock para testes unitários
+- **Microsoft.NET.Test.Sdk**: SDK de teste para .NET
+
+### Diretrizes de Dependência
+- Manter dependências mínimas e bem justificadas
+- Usar intervalos de versão específicos para garantir compatibilidade
+- Preferir bibliotecas .NET Standard para maior compatibilidade
+- Documentar quaisquer requisitos especiais de dependência
+
+## Padrões de Teste
+
+### Organização de Testes
+- Espelhar a estrutura do projeto principal no projeto de teste
+- Usar convenção de nomenclatura `{ClassName}Test`
+- Agrupar testes relacionados na mesma classe de teste
+- Usar nomes descritivos para métodos de teste: `{Method}_{Scenario}_{ExpectedResult}`
+
+### Padrões de Teste
+```csharp
+[Fact]
+public async Task CreateAsync_ValidRequest_Success()
+{
+    // Arrange
+    var request = BuildValidRequest();
+    
+    // Act
+    var result = await client.CreateAsync(request);
+    
+    // Assert
+    Assert.NotNull(result);
+    Assert.NotNull(result.Id);
+}
+
+[Fact]
+public void Create_ValidRequest_Success()
+{
+    // Versão síncrona do mesmo teste
+}
+```
+
+### Diretrizes de Teste
+- Escrever versões assíncronas e síncronas de testes quando aplicável
+- Usar `[Collection("Uses User Email")]` para testes que requerem contexto de usuário
+- Mockar dependências externas usando Moq
+- Usar dados de teste realistas que refletem respostas reais da API
+- Incluir testes de integração para caminhos críticos
+
+## Tratamento de Erros
+
+### Padrões de Exceção
+- Usar `MercadoPagoApiException` para erros relacionados à API
+- Incluir informações detalhadas de erro nas mensagens de exceção
+- Preservar stack traces originais ao relançar exceções
+- Usar códigos de status HTTP apropriados para diferentes cenários de erro
+
+### Validação
+- Validar parâmetros obrigatórios nos pontos de entrada dos métodos
+- Usar tipos anuláveis para representar valores opcionais
+- Lançar `ArgumentNullException` para parâmetros obrigatórios nulos
+- Fornecer mensagens de erro claras para falhas de validação
+
+## Configuração e Setup
+
+### Padrão de Configuração
+- Usar classe estática `MercadoPagoConfig` para configuração global
+- Suportar configuração tanto programática quanto via app.config/web.config
+- Fornecer padrões sensatos para todas as opções de configuração
+- Permitir substituições por requisição via `RequestOptions`
+
+### Suporte a Ambiente
+- Suportar múltiplos ambientes (sandbox, produção)
+- Usar URLs base apropriadas para diferentes ambientes
+- Incluir estratégias adequadas de retry e configurações de timeout
+- Suportar configuração de proxy para ambientes corporativos
+
+## Diretrizes de Git e Branching
+
+### Nomenclatura de Branches
+- `feature/{feature-name}`: Novas funcionalidades ou melhorias
+- `hotfix/{issue-description}`: Correções críticas de bugs
+- `doc/{documentation-improvement}`: Atualizações de documentação
+- Usar kebab-case para nomes de branches
+
+### Mensagens de Commit
+Seguir as sete regras de boas mensagens de commit Git:
+1. Separar assunto do corpo com linha em branco
+2. Limitar linha de assunto a 72 caracteres
+3. Capitalizar a linha de assunto
+4. Não terminar linha de assunto com ponto
+5. Usar modo imperativo na linha de assunto
+6. Quebrar corpo em 72 caracteres
+7. Usar corpo para explicar o que e por que vs. como
+
+### Exemplos
+```
+Adiciona suporte para endpoints da API de Order
+
+- Implementa OrderClient com operações CRUD
+- Adiciona modelos de recurso e classes de requisição Order
+- Inclui testes unitários abrangentes
+- Atualiza documentação com exemplos de uso
+```
+
+## Performance e Boas Práticas
+
+### Uso do HttpClient
+- Reutilizar instâncias de `HttpClient` através de injeção de dependência
+- Implementar estratégias adequadas de retry para falhas transitórias
+- Usar padrões async/await consistentemente
+- Suportar tokens de cancelamento para operações de longa duração
+
+### Gerenciamento de Memória
+- Descartar recursos adequadamente
+- Usar `ConfigureAwait(false)` para código de biblioteca
+- Evitar chamadas assíncronas bloqueantes em métodos síncronos
+- Implementar tratamento adequado de exceções para prevenir vazamentos de recursos
+
+### Considerações de Segurança
+- Nunca logar informações sensíveis (tokens de acesso, dados de cartão)
+- Usar HTTPS para todas as comunicações com API
+- Implementar validação adequada de entrada
+- Seguir práticas seguras de codificação para processamento de pagamentos
+
+## Padrões de Documentação
+
+### Documentação de Código
+- Documentar todas as APIs públicas com comentários XML
+- Incluir exemplos de uso na documentação
+- Referenciar documentação oficial da API do Mercado Pago
+- Manter arquivos README atualizados
+
+### Documentação de API
+- Gerar documentação usando DocFX
+- Incluir exemplos de código para cenários comuns
+- Documentar mudanças breaking no CHANGELOG.md
+- Fornecer guias de migração para atualizações de versão major
+
+## Gerenciamento de Versão
+
+### Estratégia de Versionamento
+- Seguir Versionamento Semântico (SemVer)
+- Incrementar versão major para mudanças breaking
+- Incrementar versão minor para novas funcionalidades
+- Incrementar versão patch para correções de bugs
+
+### Compatibilidade
+- Manter compatibilidade retroativa dentro de versões major
+- Documentar claramente quaisquer mudanças breaking
+- Fornecer avisos de depreciação antes de remover funcionalidades
+- Suportar múltiplas versões do framework .NET quando possível
+
+## Diretrizes Adicionais
+
+### Internacionalização
+- Usar Português para todas as mensagens voltadas ao usuário
+- Suportar múltiplos locales para mensagens de erro quando aplicável
+- Usar formatação invariante de cultura para comunicações com API
+- Considerar manipulação de fuso horário para valores de data/hora
+
+### Logging e Monitoramento
+- Usar logging estruturado quando disponível
+- Incluir IDs de correlação para rastreamento de requisições
+- Logar eventos de negócio importantes e erros
+- Evitar logar informações sensíveis de pagamento
+
+### Code Reviews
+- Garantir que todo código segue os padrões estabelecidos
+- Verificar tratamento adequado de erros e casos de borda
+- Verificar vulnerabilidades de segurança
+- Validar cobertura de testes para novas funcionalidades
+- Confirmar que a documentação está atualizada apropriadamente 
