@@ -295,5 +295,65 @@
         /// Expanded data information.
         /// </summary>
         public PaymentExpandedData Expanded { get; set; }
+
+        /// <summary>
+        /// Money release status.
+        /// </summary>
+        public string MoneyReleaseStatus { get; set; }
+
+        /// <summary>
+        /// Site ID.
+        /// </summary>
+        public string SiteId { get; set; }
+
+        /// <summary>
+        /// Brand ID.
+        /// </summary>
+        public string BrandId { get; set; }
+
+        /// <summary>
+        /// Build version.
+        /// </summary>
+        public string BuildVersion { get; set; }
+
+        /// <summary>
+        /// Financing group.
+        /// </summary>
+        public string FinancingGroup { get; set; }
+
+        /// <summary>
+        /// Device identifier.
+        /// </summary>
+        public string DeviceIdentifier { get; set; }
+
+        /// <summary>
+        /// Device ID.
+        /// </summary>
+        public string DeviceId { get; set; }
+
+        /// <summary>
+        /// Application fee.
+        /// </summary>
+        public decimal? ApplicationFee { get; set; }
+
+        /// <summary>
+        /// Acquirer reconciliation.
+        /// </summary>
+        public IList<IDictionary<string, object>> AcquirerReconciliation { get; set; }
+
+        /// <summary>
+        /// Accounts information.
+        /// </summary>
+        public IDictionary<string, object> AccountsInfo { get; set; }
+
+        /// <summary>
+        /// Tags.
+        /// </summary>
+        public IDictionary<string, object> Tags { get; set; }
+
+        /// <summary>
+        /// Charges details.
+        /// </summary>
+        public IList<IDictionary<string, object>> ChargesDetails { get; set; }
     }
 }
