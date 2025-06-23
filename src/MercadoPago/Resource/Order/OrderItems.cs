@@ -8,6 +8,11 @@ namespace MercadoPago.Resource.Order
     public class OrderItems
     {
         /// <summary>
+        /// External code of the item.
+        /// </summary>
+        public string ExternalCode { get; set; }
+
+        /// <summary>
         /// Title of the item.
         /// </summary>
         public string Title { get; set; }
