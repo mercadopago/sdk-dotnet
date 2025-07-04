@@ -49,7 +49,7 @@ nuget install mercadopago-sdk
 
 Primeira vez usando o Mercado Pago? Crie sua [conta do Mercado Pago](https://www.mercadopago.com).
 
-Copie seu `Access Token` do [painel de credenciais](https://www.mercadopago.com/developers/panel/credentials) e substitua o texto `YOUR_ACCESS_TOKEN` com ele.
+Copie seu `Access Token` do [painel de credenciais](https://www.mercadopago.com/developers/panel/app) e substitua o texto `YOUR_ACCESS_TOKEN` com ele.
 
 ### Uso simples
 
