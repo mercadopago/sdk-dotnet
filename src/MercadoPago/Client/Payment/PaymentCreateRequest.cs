@@ -172,6 +172,16 @@
         public IList<PaymentTaxRequest> Taxes { get; set; }
 
         /// <summary>
+        /// Amounts information.
+        /// </summary>
+        public PaymentAmountsRequest Amounts { get; set; }
+
+        /// <summary>
+        /// Counter currency information.
+        /// </summary>
+        public PaymentCounterCurrencyRequest CounterCurrency { get; set; }
+
+        /// <summary>
         /// Merchant services.
         /// </summary>
         public PaymentMerchantServicesRequest MerchantServices { get; set; }
