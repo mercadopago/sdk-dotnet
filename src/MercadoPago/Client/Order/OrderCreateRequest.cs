@@ -3,6 +3,7 @@
 namespace MercadoPago.Client.Order
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Parameters to create a order.
@@ -31,7 +32,8 @@ namespace MercadoPago.Client.Order
         /// <summary>
         /// Capture mode.
         /// </summary>
-        public string CaptureMode { get; set; }
+        [JsonProperty("capture_mode")]
+        public string CaptureMode { get; set; } = "automatic_async";
 
         /// <summary>
         /// Configures which procesing modes to use.
