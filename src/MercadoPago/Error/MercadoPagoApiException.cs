@@ -40,7 +40,7 @@
                     messageSb.Append($" | API message: {ApiError.Message}");
                 }
 
-                if (ApiError.Errors != null && ApiError.Errors.Count > 0)
+                if (ApiError?.Errors != null && ApiError.Errors.Count > 0)
                 {
                     var messageDetails = new List<string>();
                     var message = new List<string>();

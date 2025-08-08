@@ -260,6 +260,7 @@
             Assert.Null(getOrder.Transactions);
         }
 
+
         private async Task<OrderCreateRequest> BuildRequest(string processingMode, string captureMode)
         {
 
