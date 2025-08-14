@@ -11,7 +11,7 @@ internal class GetOrderExample
         var token = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
         if (string.IsNullOrWhiteSpace(token))
         {
-            throw new InvalidOperationException("Defina a variável de ambiente ACCESS_TOKEN.");
+            throw new InvalidOperationException("Set the ACCESS_TOKEN environment variable");
         }
         MercadoPagoConfig.AccessToken = token;
 
