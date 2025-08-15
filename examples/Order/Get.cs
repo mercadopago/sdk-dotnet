@@ -1,6 +1,5 @@
 using System;
 using MercadoPago.Config;
-using MercadoPago.Client.Common;
 using MercadoPago.Client.Order;
 using MercadoPago.Resource.Order;
 using System.Collections.Generic;
@@ -9,13 +8,19 @@ internal class GetOrderExample
 {
     private static void Main(string[] args)
     {
-        MercadoPagoConfig.AccessToken = "{{ACCESS_TOKEN}}";
+        var token = Environment.GetEnvironmentVariable("ACCESS_TOKEN");
+        if (string.IsNullOrWhiteSpace(token))
+        {
+            throw new InvalidOperationException("Set the ACCESS_TOKEN environment variable");
+        }
+        MercadoPagoConfig.AccessToken = token;
 
         var request = new OrderCreateRequest
         {
             Type = "online",
             TotalAmount = "1000.00",
             ExternalReference = "ext_ref_1234",
+            CaptureMode = "automatic_async",
             Transactions = new OrderTransactionRequest
             {
                 Payments = new List<OrderPaymentRequest>
@@ -25,17 +30,38 @@ internal class GetOrderExample
                         Amount = "1000.00",
                         PaymentMethod = new OrderPaymentMethodRequest
                         {
-                            Id = "master",
-                            Type = "credit_card",
-                            Token = "{{CARD_TOKEN}}",
-                            Installments = 1,
+                            Id = "boleto",
+                            Type = "ticket"
                         }
                     }
                 }
             },
             Payer = new OrderPayerRequest
             {
-                Email = "{{PAYER_EMAIL}}",
+                Email = Environment.GetEnvironmentVariable("USER_EMAIL") ?? "{{PAYER_EMAIL}}",
+            },
+            AdditionalInfo = new Dictionary<string, object>
+            {
+                ["payer"] = new Dictionary<string, object>
+                {
+                    ["authentication_type"] = "senha",
+                    ["registration_date"] = "2023-01-01T10:00:00Z",
+                    ["is_prime_user"] = true,
+                    ["is_first_purchase_online"] = false
+                },
+                ["shipment"] = new Dictionary<string, object>
+                {
+                    ["express"] = true
+                },
+                ["platform"] = new Dictionary<string, object>
+                {
+                    ["seller"] = new Dictionary<string, object>
+                    {
+                        ["id"] = "123456",
+                        ["name"] = "Minha Loja",
+                        ["email"] = "contato@minhaloja.com"
+                    }
+                }
             }
         };
 
