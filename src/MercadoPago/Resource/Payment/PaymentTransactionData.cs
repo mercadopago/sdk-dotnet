@@ -1,6 +1,6 @@
 ﻿namespace MercadoPago.Resource.Payment
 {
-        using System;
+    using System;
 
     /// <summary>
     /// Payment's transaction data.
@@ -67,10 +67,15 @@
         /// </summary>
         public PaymentPaymentReference PaymentReference { get; set; }
 
-         /// <summary>
+        /// <summary>
         /// Billing date.
         /// </summary>
         public string BillingDate { get; set; }
+
+        /// <summary>
+        /// Indicates if the user is present during the transaction.
+        /// </summary>
+        public bool? UserPresent { get; set; }
 
     }
 }

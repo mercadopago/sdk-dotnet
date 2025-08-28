@@ -37,5 +37,10 @@ namespace MercadoPago.Client.Payment
         /// Billing date.
         /// </summary>
         public string BillingDate { get; set; }
+
+        /// <summary>
+        /// Indicates if the user is present during the transaction.
+        /// </summary>
+        public bool? UserPresent { get; set; }
     }
 }
