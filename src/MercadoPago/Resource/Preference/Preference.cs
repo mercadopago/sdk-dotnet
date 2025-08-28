@@ -146,6 +146,16 @@
         public IList<PreferenceTrack> Tracks { get; set; }
 
         /// <summary>
+        /// Amounts information.
+        /// </summary>
+        public PreferenceAmountsResponse Amounts { get; set; }
+
+        /// <summary>
+        /// Counter currency information.
+        /// </summary>
+        public PreferenceCounterCurrencyResponse CounterCurrency { get; set; }
+
+        /// <summary>
         /// Data that can be attached to the preference to record additional
         /// attributes of the merchant.
         /// </summary>

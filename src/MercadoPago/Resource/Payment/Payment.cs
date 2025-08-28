@@ -255,6 +255,16 @@
         public IList<PaymentTax> Taxes { get; set; }
 
         /// <summary>
+        /// Amounts information.
+        /// </summary>
+        public PaymentAmountsResponse Amounts { get; set; }
+
+        /// <summary>
+        /// Counter currency information.
+        /// </summary>
+        public PaymentCounterCurrencyResponse CounterCurrency { get; set; }
+
+        /// <summary>
         /// Refunds.
         /// </summary>
         public IList<PaymentRefund> Refunds { get; set; }
