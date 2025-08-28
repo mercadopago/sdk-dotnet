@@ -1,6 +1,6 @@
 # Releases
 
-## VERSION Unreleased
+## VERSION 2.9.0
 - Order: set default `capture_mode = "automatic_async"` and update fields/tests.
 - Examples: fix `examples/Order/Create.cs` example.
 - Examples: improve `examples/Order/Get.cs` (env vars, boleto, additional_info).
