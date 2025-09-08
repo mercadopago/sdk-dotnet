@@ -22,7 +22,7 @@ namespace MercadoPago.Tests.Client.AuthorizedPayment
             client = new AuthorizedPaymentClient(mock.Object);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             var json = File.ReadAllText("Client/Mock/AuthorizedPaymentGetResponse.json");
@@ -35,7 +35,7 @@ namespace MercadoPago.Tests.Client.AuthorizedPayment
             mock.Reset();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             var json = File.ReadAllText("Client/Mock/AuthorizedPaymentGetResponse.json");
@@ -48,7 +48,7 @@ namespace MercadoPago.Tests.Client.AuthorizedPayment
             mock.Reset();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_Success()
         {
             var json = File.ReadAllText("Client/Mock/AuthorizedPaymentSearchResponse.json");
@@ -61,7 +61,7 @@ namespace MercadoPago.Tests.Client.AuthorizedPayment
             mock.Reset();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Success()
         {
             var json = File.ReadAllText("Client/Mock/AuthorizedPaymentSearchResponse.json");

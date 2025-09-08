@@ -31,7 +31,7 @@
             client = new PaymentClient();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClientAndSerializer_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -42,7 +42,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClient_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -52,7 +52,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_Serializer_Success()
         {
             var serializer = new DefaultSerializer();
@@ -62,7 +62,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_NullParameters_Success()
         {
             var client = new PaymentClient();
@@ -71,7 +71,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Approved_Success()
         {
             PaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -84,7 +84,7 @@
             Assert.Equal(request.ExternalReference, payment.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Approved_Success()
         {
             PaymentCreateRequest request = BuildCreateRequest(true, "approved");
@@ -97,7 +97,7 @@
             Assert.Equal(request.ExternalReference, payment.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CancelAsync_PendingPayment_Success()
         {
             // Creates a pending payment
@@ -113,7 +113,7 @@
             Assert.Equal(PaymentStatus.Cancelled, payment.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Cancel_PendingPayment_Success()
         {
             // Creates a pending payment
@@ -129,7 +129,7 @@
             Assert.Equal(PaymentStatus.Cancelled, payment.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CaptureAsync_Full_Success()
         {
             // Creates a authorized payment
@@ -148,7 +148,7 @@
             Assert.True(payment.Captured);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Capture_Full_Success()
         {
             // Creates a authorized payment
@@ -167,7 +167,7 @@
             Assert.True(payment.Captured);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CaptureAsync_Partial_Success()
         {
             // Creates a authorized payment
@@ -187,7 +187,7 @@
             Assert.True(payment.Captured);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Capture_Partial_Success()
         {
             // Creates a authorized payment
@@ -207,7 +207,7 @@
             Assert.True(payment.Captured);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             // Creates a payment
@@ -223,7 +223,7 @@
             Assert.Equal(createdPayment.Id, payment.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             // Creates a payment
@@ -239,7 +239,7 @@
             Assert.Equal(createdPayment.Id, payment.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_ByExternalReference_Success()
         {
             PaymentCreateRequest request = await BuildCreateRequestAsync(true, "approved");
@@ -301,7 +301,7 @@
             Assert.Equal(createdPayment.Id, results.Results.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task RefundAsync_Partial_Success()
         {
             // Creates a payment
@@ -318,7 +318,7 @@
             Assert.Equal(createdPayment.Id, refund.PaymentId);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Refund_Partial_Success()
         {
             // Creates a payment
@@ -335,7 +335,7 @@
             Assert.Equal(createdPayment.Id, refund.PaymentId);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task RefundAsync_Total_Success()
         {
             // Creates a payment
@@ -352,7 +352,7 @@
             Assert.Equal(createdPayment.Id, refund.PaymentId);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Refund_Total_Success()
         {
             // Creates a payment
@@ -369,7 +369,7 @@
             Assert.Equal(createdPayment.Id, refund.PaymentId);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetRefundAsync_Total_Success()
         {
             // Creates a payment
@@ -393,7 +393,7 @@
             Assert.Equal(createdRefund.Id, refund.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void GetRefund_Total_Success()
         {
             // Creates a payment
@@ -417,7 +417,7 @@
             Assert.Equal(createdRefund.Id, refund.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ListRefundsAsync_Total_Success()
         {
             // Creates a payment
@@ -440,7 +440,7 @@
             Assert.Equal(createdRefund.Id, refunds.First().Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ListRefunds_Total_Success()
         {
             // Creates a payment

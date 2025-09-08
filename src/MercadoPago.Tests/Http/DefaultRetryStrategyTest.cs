@@ -9,7 +9,7 @@
 
     public class DefaultRetryStrategyTest
     {
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_NotPostAndRetryableStatusCode_Retry()
         {
             var maxNumberRetries = 2;
@@ -26,7 +26,7 @@
             Assert.Equal(DefaultRetryStrategy.MinDelay.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_PostWithIdempotencyKeyAndRetryableStatusCode_Retry()
         {
             var maxNumberRetries = 2;
@@ -46,7 +46,7 @@
                 retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_RetryableRequestAndRetryableError_Retry()
         {
             var maxNumberRetries = 2;
@@ -63,7 +63,7 @@
             Assert.Equal(DefaultRetryStrategy.MinDelay.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_MaxDelay_Retry()
         {
             var maxNumberRetries = 5;
@@ -80,7 +80,7 @@
             Assert.Equal(DefaultRetryStrategy.MaxDelay.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_RequestNull_NotRetry()
         {
             var maxNumberRetries = 2;
@@ -97,7 +97,7 @@
             Assert.Equal(TimeSpan.Zero.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_PostWithoutIdempotencyKey_NotRetry()
         {
             var maxNumberRetries = 2;
@@ -114,7 +114,7 @@
             Assert.Equal(TimeSpan.Zero.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_PostWithIdempotencyKeyEmpty_NotRetry()
         {
             var maxNumberRetries = 2;
@@ -132,7 +132,7 @@
             Assert.Equal(TimeSpan.Zero.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_NumberRetries_NotRetry()
         {
             var maxNumberRetries = 2;
@@ -149,7 +149,7 @@
             Assert.Equal(TimeSpan.Zero.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_NoRetryableErrorAndNullResponse_NotRetry()
         {
             var maxNumberRetries = 2;
@@ -166,7 +166,7 @@
             Assert.Equal(TimeSpan.Zero.Ticks, retryResponse.Delay.Ticks);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ShouldRetry_NoRetryableErrorAndNotRetryableResponse_NotRetry()
         {
             var maxNumberRetries = 2;

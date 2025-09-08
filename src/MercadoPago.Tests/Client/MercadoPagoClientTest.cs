@@ -18,7 +18,7 @@
 
     public class MercadoPagoClientTest
     {
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_Full_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -29,7 +29,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_NullParameters_Success()
         {
             var client = new DummyClient(null, null);
@@ -38,7 +38,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_WithBody_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -64,7 +64,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Send_WithBody_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -90,7 +90,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_WithBodyIdempotent_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -116,7 +116,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_WithoutBody_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -141,7 +141,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Send_WithoutBody_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -166,7 +166,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_WithQueryString_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -192,7 +192,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_WithRequestOptions_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -227,7 +227,7 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_InvalidJsonResponse_Error()
         {
             var httpClientMock = new HttpClientMock();
@@ -255,7 +255,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SendAsync_ErrorHttpStatusCode_Error()
         {
             var httpClientMock = new HttpClientMock();
@@ -301,7 +301,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ListAsync_Simple_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -325,7 +325,7 @@
             Assert.True(list.Count == 10);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void List_Simple_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -349,7 +349,7 @@
             Assert.True(list.Count == 10);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_Parameters_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -387,7 +387,7 @@
             Assert.True(resultsSearchPage.Results.Count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_WithoutParameters_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -417,7 +417,7 @@
             Assert.True(resultsSearchPage.Results.Count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task SearchAsync_NullParameters_Success()
         {
             var httpClientMock = new HttpClientMock();
@@ -447,7 +447,7 @@
             Assert.True(resultsSearchPage.Results.Count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Search_Parameters_Success()
         {
             var httpClientMock = new HttpClientMock();

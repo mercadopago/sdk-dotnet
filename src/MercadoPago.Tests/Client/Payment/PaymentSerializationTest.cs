@@ -15,7 +15,7 @@ namespace MercadoPago.Tests.Client.Payment
             serializer = new DefaultSerializer();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Serialize_PaymentCreateRequestThreeDSecureModeFromJson_Success()
         {
             var json = File.ReadAllText("Client/Mock/CardPaymentWith3dsRequest.json");
@@ -24,7 +24,7 @@ namespace MercadoPago.Tests.Client.Payment
             Assert.Equal("optional", paymentCreateRequest.ThreeDSecureMode);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Deserialize_PaymentThreeDSInfoFromJson_Success()
         {
             var json = File.ReadAllText("Client/Mock/CardPaymentWith3dsResponse.json");

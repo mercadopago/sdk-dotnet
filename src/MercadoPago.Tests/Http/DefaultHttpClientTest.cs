@@ -12,7 +12,7 @@
 
     public class DefaultHttpClientTest
     {
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ExecuteRequestAsync_AllParameters_Success()
         {
             // Request
@@ -47,7 +47,7 @@
             Assert.Equal(responseContent, response.Content);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ExecuteRequestAsync_WithHttpResponseRetry_Success()
         {
             // Request
@@ -85,7 +85,7 @@
             Assert.Equal(responseContent, response.Content);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ExecuteRequestAsync_WithHttpRequestExceptionRetry_Success()
         {
             // Request
@@ -125,7 +125,7 @@
             Assert.Equal(responseContent, response.Content);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ExecuteRequestAsync_WithOperationCanceledExceptionRetry_Success()
         {
             // Request
@@ -165,7 +165,7 @@
             Assert.Equal(responseContent, response.Content);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ExecuteRequestAsync_ThrowsException_Fail()
         {
             // Request

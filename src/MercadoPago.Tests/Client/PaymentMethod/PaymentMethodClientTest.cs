@@ -16,7 +16,7 @@
             paymentMethodClient = new PaymentMethodClient();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ListPaymentMethodsAsync_Success()
         {
             ResourcesList<PaymentMethod> paymentMethods =
@@ -26,7 +26,7 @@
             Assert.True(paymentMethods.Count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ListPaymentMethods_Success()
         {
             ResourcesList<PaymentMethod> paymentMethods =

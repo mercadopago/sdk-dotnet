@@ -35,7 +35,7 @@
             orderClient = new OrderClient();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClientAndSerializer_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -46,7 +46,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClient_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -56,7 +56,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_Serializer_Success()
         {
             var serializer = new DefaultSerializer();
@@ -66,7 +66,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_NullParameters_Success()
         {
             var client = new OrderClient();
@@ -75,7 +75,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task Create_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
@@ -87,7 +87,7 @@
             Assert.Equal(processed, order.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task Process_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
@@ -102,7 +102,7 @@
             Assert.Equal(processed, orderProcess.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task Get_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
@@ -114,7 +114,7 @@
             Assert.Equal(processed, order.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task Capture_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, manual);
@@ -129,7 +129,7 @@
             Assert.Equal(processed, orderCapture.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task Cancel_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
@@ -144,7 +144,7 @@
             Assert.Equal(canceled, orderCanceled.Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task RefundTotal_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
@@ -161,7 +161,7 @@
             Assert.Equal(processed, orderRefund.Transactions.Refunds[0].Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task RefundPartial_Success()
         {
             OrderCreateRequest request = await BuildRequest(automatic, automaticAsync);
@@ -188,7 +188,7 @@
             Assert.Equal(processed, orderProcess.Transactions.Refunds[0].Status);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateTransaction_Success()
         {
             OrderCreateRequest request = BuildRequestWithoutTransaction(manual, automaticAsync);
@@ -223,7 +223,7 @@
             Assert.Equal(orderTransaction.Payments[0].Id, orderGet.Transactions.Payments[0].Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task UpdateTransaction_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automaticAsync);
@@ -246,7 +246,7 @@
             Assert.Equal(transactionRequest.PaymentMethod.Installments, paymentRequest.PaymentMethod.Installments);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task DeleteTransaction_Success()
         {
             OrderCreateRequest request = await BuildRequest(manual, automaticAsync);

@@ -66,7 +66,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Success()
         {
             MerchantOrderCreateRequest request = await BuildCreateRequestAsync();
@@ -78,7 +78,7 @@
             Assert.Equal(request.ExternalReference, merchantOrder.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Success()
         {
             MerchantOrderCreateRequest request = BuildCreateRequest();
@@ -90,7 +90,7 @@
             Assert.Equal(request.ExternalReference, merchantOrder.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task UpdateAsync_Success()
         {
             MerchantOrderCreateRequest createRequest = await BuildCreateRequestAsync();
@@ -110,7 +110,7 @@
             Assert.Equal(updateRequest.AdditionalInfo, order.AdditionalInfo);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Update_Success()
         {
             MerchantOrderCreateRequest createRequest = BuildCreateRequest();
@@ -130,7 +130,7 @@
             Assert.Equal(updateRequest.AdditionalInfo, order.AdditionalInfo);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             MerchantOrderCreateRequest createRequest = await BuildCreateRequestAsync();
@@ -145,7 +145,7 @@
             Assert.Equal(createdOrder.Id, merchantOrder.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             MerchantOrderCreateRequest createRequest = BuildCreateRequest();

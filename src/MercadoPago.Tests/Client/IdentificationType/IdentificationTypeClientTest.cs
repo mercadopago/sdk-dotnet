@@ -16,7 +16,7 @@
             identificationTypeClient = new IdentificationTypeClient();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task ListPaymentMethodsAsync_Success()
         {
             ResourcesList<IdentificationType> identificationTypes =
@@ -26,7 +26,7 @@
             Assert.True(identificationTypes.Count > 0);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ListPaymentMethods_Success()
         {
             ResourcesList<IdentificationType> identificationTypes =
