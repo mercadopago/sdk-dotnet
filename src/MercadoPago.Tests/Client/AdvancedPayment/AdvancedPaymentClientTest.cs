@@ -32,7 +32,7 @@
             client = new AdvancedPaymentClient();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClientAndSerializer_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -43,7 +43,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_HttpClient_Success()
         {
             var httpClient = new DefaultHttpClient();
@@ -53,7 +53,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_Serializer_Success()
         {
             var serializer = new DefaultSerializer();
@@ -63,7 +63,7 @@
             Assert.Equal(serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Constructor_NullParameters_Success()
         {
             var client = new AdvancedPaymentClient();

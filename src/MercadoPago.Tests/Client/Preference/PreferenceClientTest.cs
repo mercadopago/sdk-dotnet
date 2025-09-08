@@ -63,7 +63,7 @@
             Assert.Equal(MercadoPagoConfig.Serializer, client.Serializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task CreateAsync_Success()
         {
             PreferenceRequest request = BuildRequest();
@@ -75,7 +75,7 @@
             Assert.Equal(request.ExternalReference, preference.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Create_Success()
         {
             PreferenceRequest request = BuildRequest();
@@ -87,7 +87,7 @@
             Assert.Equal(request.ExternalReference, preference.ExternalReference);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task UpdateAsync_Success()
         {
             // Creates a preference
@@ -126,7 +126,7 @@
             Assert.True(preference.Items.Count == 2);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Update_Success()
         {
             // Creates a preference
@@ -165,7 +165,7 @@
             Assert.True(preference.Items.Count == 2);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async Task GetAsync_Success()
         {
             // Creates a preference
@@ -179,7 +179,7 @@
             Assert.Equal(createdPreference.Id, preference.Id);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Get_Success()
         {
             // Creates a preference

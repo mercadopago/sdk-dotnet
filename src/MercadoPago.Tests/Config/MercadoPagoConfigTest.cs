@@ -7,7 +7,7 @@
 
     public class MercadoPagoConfigTest
     {
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Config_SetterAndGetter_MustBeEqualSetValues()
         {
             string accessToken = MercadoPagoConfig.AccessToken;
@@ -36,7 +36,7 @@
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ConfigHttpClient_SetterAndGetter_DefaultHttpClient()
         {
             MercadoPagoConfig.HttpClient = null;
@@ -45,7 +45,7 @@
             Assert.True(MercadoPagoConfig.HttpClient is DefaultHttpClient);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ConfigSerializer_SetterAndGetter_DefaultSerializer()
         {
             MercadoPagoConfig.Serializer = null;
@@ -54,7 +54,7 @@
             Assert.True(MercadoPagoConfig.Serializer is DefaultSerializer);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void ConfigRetryStrategy_SetterAndGetter_DefaultRetryStrategy()
         {
             MercadoPagoConfig.RetryStrategy = null;

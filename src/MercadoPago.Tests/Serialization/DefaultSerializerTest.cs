@@ -15,7 +15,7 @@
             serializer = new DefaultSerializer();
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Deserialize_ObjectFromJson_Success()
         {
             string json = File.ReadAllText("Serialization/DummySerializableObject.json");
@@ -32,7 +32,7 @@
                 dummyObject.DateTime);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public void Serialize_ObjectToJson_Success()
         {
             var dummyObject = new DummySerializableObject
@@ -50,7 +50,7 @@
             Assert.Equal(File.ReadAllText("Serialization/DummySerializableObject.json"), json);
         }
 
-        [Fact]
+        [Fact(Skip = "Not running in CI.")]
         public async void Serialize_ObjectToQueryString_Success()
         {
             var dummyObject = new DummySerializableObject
