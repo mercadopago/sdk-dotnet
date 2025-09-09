@@ -41,6 +41,11 @@ namespace MercadoPago.Resource.Order
         public string CountryCode { get; set; }
 
         /// <summary>
+        /// Currency of the Order.
+        /// </summary>
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Status of Order.
         /// </summary>
         public string Status { get; set; }
@@ -124,6 +129,11 @@ namespace MercadoPago.Resource.Order
         /// Payer information.
         /// </summary>
         public OrderPayer Payer { get; set; }
+
+        /// <summary>
+        /// Shipment information.
+        /// </summary>
+        public OrderShipment Shipment { get; set; }
 
         /// <summary>
         /// Response from API.

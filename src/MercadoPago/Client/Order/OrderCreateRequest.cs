@@ -30,6 +30,11 @@ namespace MercadoPago.Client.Order
         public string TotalAmount { get; set; }
 
         /// <summary>
+        /// Currency of the order.
+        /// </summary>
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Capture mode.
         /// </summary>
         [JsonProperty("capture_mode")]
@@ -84,6 +89,11 @@ namespace MercadoPago.Client.Order
         /// Configuration.
         /// </summary>
         public OrderConfigRequest Config { get; set; }
+
+        /// <summary>
+        /// Shipment information.
+        /// </summary>
+        public OrderShipmentRequest Shipment { get; set; }
 
         /// <summary>
         /// Additional info for the order.

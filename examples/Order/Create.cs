@@ -15,6 +15,7 @@ internal class CreateOrderExample
         {
             Type = "online",
             TotalAmount = "1000.00",
+            Currency = "BRL",
             ExternalReference = "ext_ref_1234",
             Transactions = new OrderTransactionRequest
             {
@@ -36,6 +37,18 @@ internal class CreateOrderExample
             Payer = new OrderPayerRequest
             {
                 Email = "{{PAYER_EMAIL}}",
+            },
+            Shipment = new OrderShipmentRequest
+            {
+                Address = new OrderAddressRequest
+                {
+                    StreetName = "R. Ângelo Piva",
+                    StreetNumber = "144",
+                    ZipCode = "06210110",
+                    City = "Osasco",
+                    State = "SP",
+                    Complement = "303"
+                }
             },
             AdditionalInfo = new Dictionary<string, object>
             {
