@@ -81,5 +81,10 @@ namespace MercadoPago.Resource.Order
         /// Digitable Line.
         /// </summary>
         public string DigitableLine { get; set; }
+
+        /// <summary>
+        /// Transaction security information for 3DS.
+        /// </summary>
+        public OrderTransactionSecurity TransactionSecurity { get; set; }
     }
 }
