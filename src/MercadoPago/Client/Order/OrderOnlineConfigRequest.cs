@@ -38,5 +38,10 @@ namespace MercadoPago.Client.Order
         /// Differential pricing.
         /// </summary>
         public DifferentialPricingRequest DifferentialPricing { get; set; }
+
+        /// <summary>
+        /// Transaction security configuration for 3DS.
+        /// </summary>
+        public OrderTransactionSecurityRequest TransactionSecurity { get; set; }
     }
 }
