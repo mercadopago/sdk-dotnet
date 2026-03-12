@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 // API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
 
 namespace MercadoPago.Resource.Order
@@ -51,5 +53,15 @@ namespace MercadoPago.Resource.Order
         /// Event date of the item.
         /// </summary>
         public string EventDate { get; set; }
+
+        /// <summary>
+        /// Unit measure of the item.
+        /// </summary>
+        public string UnitMeasure { get; set; }
+
+        /// <summary>
+        /// External categories of the item.
+        /// </summary>
+        public IList<OrderExternalCategory> ExternalCategories { get; set; }
     }
 }

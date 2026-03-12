@@ -8,6 +8,11 @@ namespace MercadoPago.Resource.Order
     public class OrderTransactionSecurity
     {
         /// <summary>
+        /// ID.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// URL for the 3DS Challenge.
         /// </summary>
         public string Url { get; set; }
