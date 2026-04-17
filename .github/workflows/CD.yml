@@ -21,21 +21,8 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
+      - name: Build and Pack
+        run: dotnet pack src/MercadoPago/MercadoPago.csproj --configuration Release --output ./nupkg
+
       - name: Publish on NuGet
-        id: publish_nuget
-        uses: rohith/publish-nuget@v2
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: src/MercadoPago/MercadoPago.csproj
-
-          # NuGet package id, used for version detection & defaults to project name
-          PACKAGE_NAME: mercadopago-sdk
-
-          # Format of the git tag, [*] gets replaced with actual version
-          TAG_FORMAT: '*'
-
-          # API key to authenticate with NuGet server
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: false
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
