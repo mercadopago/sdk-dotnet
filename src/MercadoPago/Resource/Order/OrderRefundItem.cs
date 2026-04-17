@@ -38,5 +38,10 @@ namespace MercadoPago.Resource.Order
         /// Refund items.
         /// </summary>
         public IList<OrderItems> Items { get; set; }
+
+        /// <summary>
+        /// E2E ID.
+        /// </summary>
+        public string E2eId { get; set; }
     }
 }

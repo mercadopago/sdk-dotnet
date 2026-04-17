@@ -21,6 +21,11 @@ namespace MercadoPago.Resource.Order
         public IList<OrderRefundItem> Refunds { get; set; }
 
         /// <summary>
+        /// Chargebacks information.
+        /// </summary>
+        public IList<OrderChargeback> Chargebacks { get; set; }
+
+        /// <summary>
         /// Response from API.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }

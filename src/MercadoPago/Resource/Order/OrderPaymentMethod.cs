@@ -86,5 +86,15 @@ namespace MercadoPago.Resource.Order
         /// Transaction security information for 3DS.
         /// </summary>
         public OrderTransactionSecurity TransactionSecurity { get; set; }
+
+        /// <summary>
+        /// E2E ID.
+        /// </summary>
+        public string E2eId { get; set; }
+
+        /// <summary>
+        /// Redirect URL.
+        /// </summary>
+        public string RedirectUrl { get; set; }
     }
 }

@@ -16,6 +16,8 @@
 
         private readonly OrderTransactionClient transactionClient;
 
+        private readonly OrderSearchClient searchClient;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderClient"/> class.
         /// </summary>
@@ -29,6 +31,7 @@
         {
             refundClient = new OrderRefundClient(httpClient, serializer);
             transactionClient = new OrderTransactionClient(httpClient, serializer);
+            searchClient = new OrderSearchClient(httpClient, serializer);
         }
 
         /// <summary>
@@ -436,6 +439,38 @@
             RequestOptions requestOptions = null)
         {
             return transactionClient.Delete(id, transactionId, requestOptions);
+        }
+
+        /// <summary>
+        /// Search orders as an asynchronous operation.
+        /// </summary>
+        /// <param name="request">The search request parameters.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <returns>A task whose the result is the search response.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public Task<OrderSearchResponse> SearchAsync(
+            OrderSearchRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return searchClient.SearchAsync(request, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Search orders.
+        /// </summary>
+        /// <param name="request">The search request parameters.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
+        /// <returns>The search response.</returns>
+        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        public OrderSearchResponse Search(
+            OrderSearchRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return searchClient.Search(request, requestOptions);
         }
 
     }

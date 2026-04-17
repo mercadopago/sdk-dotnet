@@ -78,5 +78,20 @@ namespace MercadoPago.Resource.Order
         /// Subscription Data information.
         /// </summary>
         public OrderSubscriptionData SubscriptionData { get; set; }
+
+        /// <summary>
+        /// Refunded amount.
+        /// </summary>
+        public string RefundedAmount { get; set; }
+
+        /// <summary>
+        /// Provider.
+        /// </summary>
+        public string Provider { get; set; }
+
+        /// <summary>
+        /// Discounts information.
+        /// </summary>
+        public IList<OrderPaymentDiscount> Discounts { get; set; }
     }
 }

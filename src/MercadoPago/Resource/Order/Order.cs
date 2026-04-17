@@ -144,5 +144,20 @@ namespace MercadoPago.Resource.Order
         /// Additional info for the order.
         /// </summary>
         public IDictionary<string, object> AdditionalInfo { get; set; }
+
+        /// <summary>
+        /// Taxes of the order.
+        /// </summary>
+        public IList<OrderTax> Taxes { get; set; }
+
+        /// <summary>
+        /// Discounts of the order.
+        /// </summary>
+        public OrderDiscounts Discounts { get; set; }
+
+        /// <summary>
+        /// Type response of the order.
+        /// </summary>
+        public OrderTypeResponse TypeResponse { get; set; }
     }
 }

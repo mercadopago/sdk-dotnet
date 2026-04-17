@@ -11,5 +11,10 @@ namespace MercadoPago.Resource.Order
         /// Customer ID.
         /// </summary>
         public string CustomerId { get; set; }
+
+        /// <summary>
+        /// Entity type.
+        /// </summary>
+        public string EntityType { get; set; }
     }
 }
