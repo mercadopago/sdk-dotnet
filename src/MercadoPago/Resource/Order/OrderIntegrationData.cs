@@ -3,32 +3,34 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Integration data class.
+    /// Represents integration metadata for an <see cref="Order"/>, identifying the corporation, application,
+    /// integrator, platform, and sponsor involved in the transaction.
     /// </summary>
     public class OrderIntegrationData
     {
         /// <summary>
-        /// Corporation ID.
+        /// Identifier of the corporation associated with this integration, used for multi-entity billing scenarios.
         /// </summary>
         public string CorporationId { get; set; }
 
         /// <summary>
-        /// Application ID.
+        /// MercadoPago application identifier that created this order, obtained from the developer dashboard.
         /// </summary>
         public string ApplicationId { get; set; }
 
         /// <summary>
-        /// Integrator ID.
+        /// Certified integrator identifier assigned by MercadoPago to track third-party integration partners.
         /// </summary>
         public string IntegratorId { get; set; }
 
         /// <summary>
-        /// Platform ID.
+        /// E-commerce platform identifier (e.g., for WooCommerce, Shopify, or custom platforms) used for analytics.
         /// </summary>
         public string PlatformId { get; set; }
 
         /// <summary>
-        /// Sponsor.
+        /// Sponsor account that receives a share of the transaction fees.
+        /// See <see cref="OrderSponsor"/> for the sponsor identifier.
         /// </summary>
         public OrderSponsor Sponsor { get; set; }
     }

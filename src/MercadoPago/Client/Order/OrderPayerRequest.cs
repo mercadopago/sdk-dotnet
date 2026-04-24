@@ -3,17 +3,19 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Payer class.
+    /// Represents the payer (buyer) associated with a payment order, including personal
+    /// information, identification documents, contact details, and billing address.
     /// </summary>
+    /// <seealso cref="OrderCreateRequest"/>
     public class OrderPayerRequest
     {
         /// <summary>
-        /// Payer's email.
+        /// Payer's email address, used for notifications and identification.
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Payer's entity type.
+        /// Entity type of the payer (e.g., "individual" or "association").
         /// </summary>
         public string EntityType { get; set; }
 
@@ -28,23 +30,26 @@ namespace MercadoPago.Client.Order
         public string LastName { get; set; }
 
         /// <summary>
-        /// Customer ID.
+        /// MercadoPago customer ID, used to link the payer to a stored customer profile.
         /// </summary>
         public string CustomerId { get; set; }
 
         /// <summary>
-        /// Identification information.
+        /// Payer's identity document information (type and number).
         /// </summary>
+        /// <seealso cref="OrderIdentificationRequest"/>
         public OrderIdentificationRequest Identification { get; set; }
 
         /// <summary>
-        /// Phone information.
+        /// Payer's phone contact information.
         /// </summary>
+        /// <seealso cref="OrderPhoneRequest"/>
         public OrderPhoneRequest Phone { get; set; }
 
         /// <summary>
-        /// Address information.
+        /// Payer's billing address.
         /// </summary>
+        /// <seealso cref="OrderAddressRequest"/>
         public OrderAddressRequest Address { get; set; }
     }
 }

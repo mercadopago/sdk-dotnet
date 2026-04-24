@@ -9,7 +9,9 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods of Customers APIs.
+    /// Client for the MercadoPago Customers API (<c>/v1/customers</c>).
+    /// Provides full CRUD operations on customer profiles and convenience methods for managing
+    /// the customer's saved cards through an internal <see cref="CustomerCardClient"/> instance.
     /// </summary>
     public class CustomerClient : MercadoPagoClient<Customer>
     {
@@ -59,14 +61,14 @@
         }
 
         /// <summary>
-        /// Get async a customer by your ID.
+        /// Retrieves a customer by its ID asynchronously.
         /// </summary>
-        /// <param name="id">The customer id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
@@ -85,13 +87,13 @@
         }
 
         /// <summary>
-        /// Get a customer by your ID.
+        /// Retrieves a customer by its ID synchronously.
         /// </summary>
-        /// <param name="id">The customer id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
@@ -108,14 +110,14 @@
         }
 
         /// <summary>
-        /// Creates a customer as an asynchronous operation.
+        /// Creates a new customer profile asynchronously.
         /// </summary>
-        /// <param name="request">The data to create the customer.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the created customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="CustomerRequest"/> with the customer data to create.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the newly created <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
@@ -134,13 +136,13 @@
         }
 
         /// <summary>
-        /// Creates a customer.
+        /// Creates a new customer profile synchronously.
         /// </summary>
-        /// <param name="request">The data to create the customer.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The created customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="CustomerRequest"/> with the customer data to create.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The newly created <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
@@ -157,15 +159,16 @@
         }
 
         /// <summary>
-        /// Updates a customer as an asynchronous operation.
+        /// Updates an existing customer profile asynchronously.
+        /// Only the properties set in <paramref name="request"/> are modified; unset properties remain unchanged.
         /// </summary>
-        /// <param name="id">The ID of the customer.</param>
-        /// <param name="request">The data to update the customer.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the updated customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to update.</param>
+        /// <param name="request">A <see cref="CustomerRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the updated <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/put/">here</a>.
@@ -185,14 +188,15 @@
         }
 
         /// <summary>
-        /// Updates a customer.
+        /// Updates an existing customer profile synchronously.
+        /// Only the properties set in <paramref name="request"/> are modified; unset properties remain unchanged.
         /// </summary>
-        /// <param name="id">The ID of the customer.</param>
-        /// <param name="request">The data to update the customer.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The updated customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to update.</param>
+        /// <param name="request">A <see cref="CustomerRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The updated <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference//customers/_customers_id/put/">here</a>.
@@ -210,14 +214,14 @@
         }
 
         /// <summary>
-        /// Delete async a customer by your ID.
+        /// Deletes a customer by its ID asynchronously.
         /// </summary>
-        /// <param name="id">The customer id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the deleted customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to delete.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the deleted <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<Customer> DeleteAsync(
             string id,
             RequestOptions requestOptions = null,
@@ -232,13 +236,13 @@
         }
 
         /// <summary>
-        /// Delete a customer by your ID.
+        /// Deletes a customer by its ID synchronously.
         /// </summary>
-        /// <param name="id">The customer id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The deleted customer.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to delete.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The deleted <see cref="Customer"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Customer Delete(
             string id,
             RequestOptions requestOptions = null)
@@ -251,14 +255,16 @@
         }
 
         /// <summary>
-        /// Searches async for customers that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for customers matching the specified criteria asynchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is a page of customers.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a paginated list of matching <see cref="Customer"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_search/get/">here</a>.
@@ -276,13 +282,15 @@
         }
 
         /// <summary>
-        /// Searches for customers that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for customers matching the specified criteria synchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of customers.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A paginated list of matching <see cref="Customer"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_search/get/">here</a>.
@@ -298,15 +306,16 @@
         }
 
         /// <summary>
-        /// Get async the card of the customer.
+        /// Retrieves a specific saved card for a customer asynchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.GetAsync"/>.
         /// </summary>
-        /// <param name="id">The customer ID.</param>
-        /// <param name="cardId">The card ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the customer card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/get/">here</a>.
@@ -321,14 +330,15 @@
         }
 
         /// <summary>
-        /// Get the card of the customer.
+        /// Retrieves a specific saved card for a customer synchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.Get"/>.
         /// </summary>
-        /// <param name="id">The customer ID.</param>
-        /// <param name="cardId">The card ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The customer card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/get/">here</a>.
@@ -342,15 +352,16 @@
         }
 
         /// <summary>
-        /// Creates a card for customer as an asynchronous operation.
+        /// Saves a new card for a customer asynchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.CreateAsync"/>.
         /// </summary>
-        /// <param name="id">Customer ID.</param>
-        /// <param name="request">Request to create the card.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the created card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer to associate the card with.</param>
+        /// <param name="request">A <see cref="CustomerCardCreateRequest"/> containing the card token to save.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the newly created <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/post/">here</a>.
@@ -365,14 +376,15 @@
         }
 
         /// <summary>
-        /// Creates a card for customer.
+        /// Saves a new card for a customer synchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.Create"/>.
         /// </summary>
-        /// <param name="customerId">Customer ID.</param>
-        /// <param name="request">Request to create the card.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The created card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="customerId">The unique identifier of the customer to associate the card with.</param>
+        /// <param name="request">A <see cref="CustomerCardCreateRequest"/> containing the card token to save.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The newly created <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/post/">here</a>.
@@ -386,15 +398,16 @@
         }
 
         /// <summary>
-        /// Deletes async the card of the customer.
+        /// Deletes a saved card from a customer profile asynchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.DeleteAsync"/>.
         /// </summary>
-        /// <param name="id">The customer ID.</param>
-        /// <param name="cardId">The card ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the deleted customer card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to delete.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the deleted <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/delete/">here</a>.
@@ -409,14 +422,15 @@
         }
 
         /// <summary>
-        /// Deletes the card of the customer.
+        /// Deletes a saved card from a customer profile synchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.Delete"/>.
         /// </summary>
-        /// <param name="id">The customer ID.</param>
-        /// <param name="cardId">The card ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The deleted customer card.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to delete.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The deleted <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/delete/">here</a>.
@@ -430,14 +444,15 @@
         }
 
         /// <summary>
-        /// List the cards of the customer as an asynchronous operation.
+        /// Lists all saved cards for a customer asynchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.ListAsync"/>.
         /// </summary>
-        /// <param name="id">Customer ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the list of cards.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer whose cards to list.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a <see cref="ResourcesList{CustomerCard}"/> of saved cards.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/get/">here</a>.
@@ -451,13 +466,14 @@
         }
 
         /// <summary>
-        /// List the cards of the customer.
+        /// Lists all saved cards for a customer synchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.List"/>.
         /// </summary>
-        /// <param name="id">Customer ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The list of cards.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the customer whose cards to list.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A <see cref="ResourcesList{CustomerCard}"/> of saved cards.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/get/">here</a>.

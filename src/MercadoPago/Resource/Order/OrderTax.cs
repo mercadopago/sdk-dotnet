@@ -1,22 +1,23 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// OrderTax class.
+    /// Represents a tax entry applied to an <see cref="Order"/>, defining the tax type,
+    /// applicable payer condition, and the tax amount.
     /// </summary>
     public class OrderTax
     {
         /// <summary>
-        /// Payer condition.
+        /// Tax condition of the payer that triggers this tax (e.g., fiscal status or registration category).
         /// </summary>
         public string PayerCondition { get; set; }
 
         /// <summary>
-        /// Type.
+        /// Tax type identifier (e.g., "IVA", "IGF", "VAT") defining which tax regulation applies.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Value.
+        /// Tax amount or rate value applied to the order, expressed in the order currency or as a percentage.
         /// </summary>
         public string Value { get; set; }
     }

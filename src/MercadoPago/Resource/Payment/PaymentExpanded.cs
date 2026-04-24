@@ -3,23 +3,28 @@ namespace MercadoPago.Resource.Payment
     using MercadoPago.Client.Common;
 
     /// <summary>
-    /// Expanded data information.
+    /// Expanded payment data containing additional gateway-level details
+    /// returned when the payment is processed in gateway mode.
     /// </summary>
     public class PaymentExpandedData
     {
         /// <summary>
-        /// Gateway information.
+        /// Gateway-specific data including network transaction references
+        /// used for recurring and subsequent transactions.
         /// </summary>
+        /// <seealso cref="PaymentGatewayData"/>
         public PaymentGatewayData Gateway { get; set; }
     }
 
     /// <summary>
-    /// Gateway data information.
+    /// Gateway-level data containing network transaction references
+    /// for payments processed in gateway mode.
     /// </summary>
     public class PaymentGatewayData
     {
         /// <summary>
-        /// Reference information.
+        /// Network transaction reference data from the payment processor,
+        /// typically used for recurring or merchant-initiated transactions.
         /// </summary>
         public NetworkTransactionData Reference { get; set; }
     }

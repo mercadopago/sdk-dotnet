@@ -4,50 +4,52 @@
     using MercadoPago.Client.Common;
 
     /// <summary>
-    /// Shipping address.
+    /// Shipping destination address for the buyer. Extends <see cref="AddressRequest"/> with
+    /// additional geographic fields and apartment details used in the Checkout Pro shipping flow.
     /// </summary>
+    /// <seealso cref="PreferenceShipmentsRequest"/>
     public class PreferenceReceiverAddressRequest : AddressRequest
     {
         /// <summary>
-        /// Country.
+        /// Full country name of the shipping destination (e.g., <c>"Argentina"</c>, <c>"Brasil"</c>).
         /// </summary>
         public string CountryName { get; set; }
 
         /// <summary>
-        /// State.
+        /// State or province name of the shipping destination.
         /// </summary>
         public string StateName { get; set; }
 
         /// <summary>
-        /// City.
+        /// City name of the shipping destination.
         /// </summary>
         public string CityName { get; set; }
 
         /// <summary>
-        /// Country (deprecated, use CountryName instead).
+        /// Country name. Deprecated: use <see cref="CountryName"/> instead.
         /// </summary>
         [Obsolete("Use CountryName instead. This property will be removed in a future version.")]
         public string Country { get => CountryName; set => CountryName = value; }
 
         /// <summary>
-        /// State (deprecated, use StateName instead).
+        /// State name. Deprecated: use <see cref="StateName"/> instead.
         /// </summary>
         [Obsolete("Use StateName instead. This property will be removed in a future version.")]
         public string State { get => StateName; set => StateName = value; }
 
         /// <summary>
-        /// City (deprecated, use CityName instead).
+        /// City name. Deprecated: use <see cref="CityName"/> instead.
         /// </summary>
         [Obsolete("Use CityName instead. This property will be removed in a future version.")]
         public string City { get => CityName; set => CityName = value; }
 
         /// <summary>
-        /// Floor.
+        /// Floor number or identifier within the building.
         /// </summary>
         public string Floor { get; set; }
 
         /// <summary>
-        /// Apartment.
+        /// Apartment or unit number within the building.
         /// </summary>
         public string Apartment { get; set; }
     }

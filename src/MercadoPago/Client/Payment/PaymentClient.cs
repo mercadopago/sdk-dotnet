@@ -9,8 +9,13 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Payments APIs.
+    /// Client for the MercadoPago Payments API (v1). Provides operations to create, retrieve,
+    /// cancel, and capture payments, as well as search for payments and manage refunds.
     /// </summary>
+    /// <remarks>
+    /// This is the primary entry point for payment processing. Refund operations are delegated
+    /// internally to <see cref="PaymentRefundClient"/>.
+    /// </remarks>
     public class PaymentClient : MercadoPagoClient<Payment>
     {
         private readonly PaymentRefundClient refundClient;
@@ -59,14 +64,14 @@
         }
 
         /// <summary>
-        /// Get async a payment by your ID.
+        /// Retrieves a payment by its unique identifier asynchronously.
         /// </summary>
-        /// <param name="id">The payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request (e.g., access token, custom headers).</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
@@ -85,13 +90,13 @@
         }
 
         /// <summary>
-        /// Get a payment by your ID.
+        /// Retrieves a payment by its unique identifier.
         /// </summary>
-        /// <param name="id">The payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request (e.g., access token, custom headers).</param>
+        /// <returns>The <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
@@ -108,14 +113,14 @@
         }
 
         /// <summary>
-        /// Creates a payment as an asynchronous operation.
+        /// Creates a new payment asynchronously.
         /// </summary>
-        /// <param name="request">The data to create the payment.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="PaymentCreateRequest"/> containing the payment details (payer, amount, payment method, etc.).</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request (e.g., access token, idempotency key, custom headers).</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the created <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
@@ -134,13 +139,13 @@
         }
 
         /// <summary>
-        /// Creates a payment.
+        /// Creates a new payment.
         /// </summary>
-        /// <param name="request">The data to create the payment.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="PaymentCreateRequest"/> containing the payment details (payer, amount, payment method, etc.).</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request (e.g., access token, idempotency key, custom headers).</param>
+        /// <returns>The created <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
@@ -157,14 +162,14 @@
         }
 
         /// <summary>
-        /// Cancels a pending payment async.
+        /// Cancels a pending payment asynchronously. Only payments with status "pending" can be cancelled.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the cancelled payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the cancelled <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<Payment> CancelAsync(
             long id,
             RequestOptions requestOptions = null,
@@ -180,13 +185,13 @@
         }
 
         /// <summary>
-        /// Cancels a pending payment.
+        /// Cancels a pending payment. Only payments with status "pending" can be cancelled.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The cancelled payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The cancelled <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Payment Cancel(
             long id,
             RequestOptions requestOptions = null)
@@ -200,14 +205,15 @@
         }
 
         /// <summary>
-        /// Captures a authorized payment async.
+        /// Captures an authorized payment for its full amount asynchronously. The payment must have
+        /// been created with <c>Capture = false</c> to use this operation.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the captured payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the captured <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<Payment> CaptureAsync(
             long id,
             RequestOptions requestOptions = null,
@@ -217,13 +223,14 @@
         }
 
         /// <summary>
-        /// Captures a authorized payment.
+        /// Captures an authorized payment for its full amount. The payment must have been created
+        /// with <c>Capture = false</c> to use this operation.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The captured payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The captured <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Payment Capture(
             long id,
             RequestOptions requestOptions = null)
@@ -232,15 +239,16 @@
         }
 
         /// <summary>
-        /// Captures a authorized payment async.
+        /// Captures an authorized payment asynchronously, optionally for a partial amount. The payment
+        /// must have been created with <c>Capture = false</c> to use this operation.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="amount">Amount to capture (if null, will capture the total payment amount).</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the captured payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="amount">The amount to capture. If <c>null</c>, the full authorized amount is captured.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the captured <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<Payment> CaptureAsync(
             long id,
             decimal? amount,
@@ -260,14 +268,15 @@
         }
 
         /// <summary>
-        /// Captures a authorized payment.
+        /// Captures an authorized payment, optionally for a partial amount. The payment must have
+        /// been created with <c>Capture = false</c> to use this operation.
         /// </summary>
-        /// <param name="id">Payment id.</param>
-        /// <param name="amount">Amount to capture (if null, will capture the total payment amount).</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The captured payment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="amount">The amount to capture. If <c>null</c>, the full authorized amount is captured.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The captured <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Payment Capture(
             long id,
             decimal? amount,
@@ -285,14 +294,14 @@
         }
 
         /// <summary>
-        /// Searches async for payments that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for payments matching the specified criteria asynchronously.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is a page of payments.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="SearchRequest"/> containing filter, sorting, and pagination parameters.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a <see cref="ResultsResourcesPage{T}"/> containing the matching payments.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
@@ -310,13 +319,13 @@
         }
 
         /// <summary>
-        /// Searches for payments that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for payments matching the specified criteria.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of payments.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="SearchRequest"/> containing filter, sorting, and pagination parameters.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>A <see cref="ResultsResourcesPage{T}"/> containing the matching payments.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
@@ -332,15 +341,15 @@
         }
 
         /// <summary>
-        /// Creates async a refund for payment.
+        /// Creates a partial refund for a payment asynchronously. Delegates to <see cref="PaymentRefundClient"/>.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="amount">The amount to refund.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="amount">The amount to refund. If <c>null</c>, the full payment amount is refunded.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the created <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<PaymentRefund> RefundAsync(
             long id,
             decimal? amount,
@@ -351,14 +360,14 @@
         }
 
         /// <summary>
-        /// Creates a refund for payment.
+        /// Creates a partial refund for a payment. Delegates to <see cref="PaymentRefundClient"/>.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="amount">The amount to refund.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="amount">The amount to refund. If <c>null</c>, the full payment amount is refunded.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The created <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public PaymentRefund Refund(
             long id,
             decimal? amount,
@@ -368,14 +377,14 @@
         }
 
         /// <summary>
-        /// Creates async a total refund for payment.
+        /// Creates a total refund for a payment asynchronously. Delegates to <see cref="PaymentRefundClient"/>.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the created <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<PaymentRefund> RefundAsync(
             long id,
             RequestOptions requestOptions = null,
@@ -385,13 +394,13 @@
         }
 
         /// <summary>
-        /// Creates a total refund for payment.
+        /// Creates a total refund for a payment. Delegates to <see cref="PaymentRefundClient"/>.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The created <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public PaymentRefund Refund(
             long id,
             RequestOptions requestOptions = null)
@@ -400,15 +409,15 @@
         }
 
         /// <summary>
-        /// Gets async a refund by id from the payment.
+        /// Retrieves a specific refund associated with a payment asynchronously.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="refundId">The refund ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="refundId">The unique refund identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<PaymentRefund> GetRefundAsync(
             long id,
             long refundId,
@@ -419,14 +428,14 @@
         }
 
         /// <summary>
-        /// Gets a refund by id from the payment.
+        /// Retrieves a specific refund associated with a payment.
         /// </summary>
-        /// <param name="paymentId">The payment ID.</param>
-        /// <param name="refundId">The refund ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>A task whose the result is the refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="paymentId">The unique payment identifier.</param>
+        /// <param name="refundId">The unique refund identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The <see cref="PaymentRefund"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public PaymentRefund GetRefund(
             long paymentId,
             long refundId,
@@ -436,14 +445,14 @@
         }
 
         /// <summary>
-        /// Lists async the refunds of the payment.
+        /// Lists all refunds for a payment asynchronously.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the list of refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a <see cref="ResourcesList{T}"/> of <see cref="PaymentRefund"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<ResourcesList<PaymentRefund>> ListRefundsAsync(
             long id,
             RequestOptions requestOptions = null,
@@ -453,13 +462,13 @@
         }
 
         /// <summary>
-        /// Lists the refunds of the payment.
+        /// Lists all refunds for a payment.
         /// </summary>
-        /// <param name="id">The payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>A task whose the result is the list of refund.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>A <see cref="ResourcesList{T}"/> of <see cref="PaymentRefund"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public ResourcesList<PaymentRefund> ListRefunds(
             long id,
             RequestOptions requestOptions = null)

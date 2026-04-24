@@ -4,32 +4,35 @@
     using MercadoPago.Client.Common;
 
     /// <summary>
-    /// Additional info payer information.
+    /// Payer details included in the additional information section of an advanced payment request.
+    /// Providing accurate payer data improves fraud analysis and conversion rates.
     /// </summary>
+    /// <see cref="AdvancedPaymentAdditionalInfoRequest"/>
     public class AdvancedPaymentAdditionalInfoPayerRequest
     {
         /// <summary>
-        /// Payer's name.
+        /// Payer's first name as it appears on their identification document.
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Payer's last name.
+        /// Payer's last name as it appears on their identification document.
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// Payer's phone.
+        /// Payer's phone information, including area code and number.
         /// </summary>
         public PhoneRequest Phone { get; set; }
 
         /// <summary>
-        /// Payer's address.
+        /// Payer's residential or billing address.
         /// </summary>
         public AddressRequest Address { get; set; }
 
         /// <summary>
-        /// Date of registration of the payer on your site.
+        /// Date when the payer registered on your platform.
+        /// Used by the fraud prevention engine to assess account maturity.
         /// </summary>
         public DateTime? RegistrationDate { get; set; }
     }

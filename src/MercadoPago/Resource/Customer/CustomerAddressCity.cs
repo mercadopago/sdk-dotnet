@@ -1,17 +1,18 @@
 ﻿namespace MercadoPago.Resource.Customer
 {
     /// <summary>
-    /// City information.
+    /// City component of a <see cref="CustomerAddress"/>. The identifier and
+    /// name correspond to MercadoPago's geographic catalog.
     /// </summary>
     public class CustomerAddressCity
     {
         /// <summary>
-        /// City ID.
+        /// MercadoPago internal identifier for the city.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// City name.
+        /// Display name of the city.
         /// </summary>
         public string Name { get; set; }
     }

@@ -8,15 +8,19 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Order APIs.
+    /// Client responsible for refunding payment orders via the MercadoPago Orders API.
+    /// Supports full-order refunds and partial (per-transaction) refunds through
+    /// <c>POST /v1/orders/{id}/refund</c>.
     /// </summary>
+    /// <seealso cref="OrderClient"/>
+    /// <seealso cref="OrderRefundPaymentRequest"/>
     public class OrderRefundClient : MercadoPagoClient<Order>
     {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderRefundClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         /// <param name="serializer">
         /// The serializer that will be used to serialize the HTTP requests content
         /// and to deserialize the HTTP response content.
@@ -29,7 +33,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderRefundClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         public OrderRefundClient(IHttpClient httpClient)
             : base(httpClient, null)
         {
@@ -56,15 +60,16 @@
         }
 
         /// <summary>
-        /// Process a order as an asynchronous operation.
+        /// Refunds an order as an asynchronous operation. Pass a <paramref name="request"/>
+        /// to perform a partial refund on specific transactions, or omit it for a full refund.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order refund partial.</param>
+        /// <param name="id">The order ID to refund.</param>
+        /// <param name="request">Optional refund details specifying transactions and amounts for partial refunds.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the updated order after the refund.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
@@ -79,14 +84,15 @@
         }
 
         /// <summary>
-        /// Process a order.
+        /// Refunds an order synchronously. Pass a <paramref name="request"/> to perform a
+        /// partial refund on specific transactions, or omit it for a full refund.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order refund partial.</param>
+        /// <param name="id">The order ID to refund.</param>
+        /// <param name="request">Optional refund details specifying transactions and amounts for partial refunds.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The updated order after the refund.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com.br/developers/en/reference/order/online-payments/create/post">here</a>.

@@ -5,42 +5,43 @@ using System.Collections.Generic;
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Refund class.
+    /// Represents a refund record within an <see cref="OrderTransaction"/>, tracking partial or full
+    /// refunds issued against a payment in the order.
     /// </summary>
     public class OrderRefundItem
     {
         /// <summary>
-        /// Refund ID.
+        /// Unique identifier assigned to this refund by MercadoPago.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Transaction ID.
+        /// Identifier of the original <see cref="OrderPayment"/> transaction that was refunded.
         /// </summary>
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// Reference ID.
+        /// External reference identifier used to correlate this refund with a record in your own system.
         /// </summary>
         public string ReferenceId { get; set; }
 
         /// <summary>
-        /// Refund amount.
+        /// Amount refunded to the payer, expressed in the order currency. May be less than the original payment for partial refunds.
         /// </summary>
         public string Amount { get; set; }
 
         /// <summary>
-        /// Refund status.
+        /// Current processing status of the refund (e.g., "approved", "pending", "rejected").
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Refund items.
+        /// List of <see cref="OrderItems"/> that were refunded. Used for item-level refund tracking.
         /// </summary>
         public IList<OrderItems> Items { get; set; }
 
         /// <summary>
-        /// E2E ID.
+        /// End-to-end identifier for PIX refund transfers, used for reconciliation with the Brazilian Central Bank.
         /// </summary>
         public string E2eId { get; set; }
     }

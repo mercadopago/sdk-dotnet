@@ -3,13 +3,16 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Shipment class.
+    /// Represents the shipping details for a payment order, including the delivery address.
     /// </summary>
+    /// <seealso cref="OrderCreateRequest"/>
+    /// <seealso cref="OrderAddressRequest"/>
     public class OrderShipmentRequest
     {
         /// <summary>
-        /// Shipment address information.
+        /// Delivery address where the order items will be shipped.
         /// </summary>
+        /// <seealso cref="OrderAddressRequest"/>
         public OrderAddressRequest Address { get; set; }
     }
 }

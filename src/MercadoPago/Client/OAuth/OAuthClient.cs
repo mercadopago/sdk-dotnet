@@ -12,7 +12,10 @@ namespace MercadoPago.Client.OAuth
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods to create a OAuth Credential.
+    /// Client for the MercadoPago OAuth API (<c>/oauth/token</c>).
+    /// Implements the OAuth 2.0 authorization-code flow: building authorization URLs,
+    /// exchanging authorization codes for access/refresh tokens, and refreshing expired tokens.
+    /// Uses an internal <see cref="UserClient"/> to resolve the user's country for the authorization URL.
     /// </summary>
     public class OAuthClient : MercadoPagoClient<OAuthCredential>
     {
@@ -62,15 +65,20 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Gets async the URL to generate authorization code.
+        /// Builds the MercadoPago authorization URL asynchronously.
+        /// The URL is country-specific (e.g., <c>auth.mercadopago.com.br</c>) and is
+        /// determined by fetching the current user's country via the Users API.
         /// </summary>
-        /// <param name="appId">Application ID</param>
-        /// <param name="redirectUri">Redirect URL configured</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the URL to obtain the authorization code.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="appId">The application (client) ID registered in the MercadoPago developer portal.</param>
+        /// <param name="redirectUri">The redirect URI registered for the application, where the authorization code will be sent.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>
+        /// A task whose result is the full authorization URL to redirect the user to,
+        /// or <c>null</c> if the user's country could not be determined.
+        /// </returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public async Task<string> GetAuthorizationURLAsync(
             string appId,
             string redirectUri,
@@ -94,14 +102,19 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Gets the URL to generate authorization code.
+        /// Builds the MercadoPago authorization URL synchronously.
+        /// The URL is country-specific (e.g., <c>auth.mercadopago.com.br</c>) and is
+        /// determined by fetching the current user's country via the Users API.
         /// </summary>
-        /// <param name="appId">Application ID.</param>
-        /// <param name="redirectUri">Redirect URL configured.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A task whose the result is the URL to obtain the authorization code.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="appId">The application (client) ID registered in the MercadoPago developer portal.</param>
+        /// <param name="redirectUri">The redirect URI registered for the application, where the authorization code will be sent.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>
+        /// The full authorization URL to redirect the user to,
+        /// or <c>null</c> if the user's country could not be determined.
+        /// </returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public string GetAuthorizationURL(
             string appId,
             string redirectUri,
@@ -123,16 +136,16 @@ namespace MercadoPago.Client.OAuth
                 .ToString();
         }
         /// <summary>
-        /// Creates an OAuth credentials asynchronously using
-        /// access token as client secret.
+        /// Exchanges an authorization code for OAuth credentials asynchronously,
+        /// using the configured access token as the client secret.
         /// </summary>
-        /// <param name="authorizationCode">Authorization code.</param>
-        /// <param name="redirectUri">Redirect Uri.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="authorizationCode">The authorization code received from the MercadoPago authorization redirect.</param>
+        /// <param name="redirectUri">The redirect URI that was used in the original authorization request.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="OAuthCredential"/> containing the access and refresh tokens.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<OAuthCredential> CreateOAuthCredentialAsync(
             string authorizationCode,
             string redirectUri,
@@ -165,18 +178,18 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Creates an OAuth credentials asynchronously with
-        /// client id and client secret.
+        /// Exchanges an authorization code for OAuth credentials asynchronously,
+        /// using explicit client ID and client secret values.
         /// </summary>
-        /// <param name="authorizationCode">Authorization code.</param>
-        /// <param name="clientId">Client Id.</param>
-        /// <param name="clientSecret">Client Secret.</param>
-        /// <param name="redirectUri">Redirect Uri.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="authorizationCode">The authorization code received from the MercadoPago authorization redirect.</param>
+        /// <param name="clientId">The application (client) ID registered in the MercadoPago developer portal.</param>
+        /// <param name="clientSecret">The application (client) secret from the MercadoPago developer portal.</param>
+        /// <param name="redirectUri">The redirect URI that was used in the original authorization request.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="OAuthCredential"/> containing the access and refresh tokens.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<OAuthCredential> CreateOAuthCredentialAsync(
             string authorizationCode,
             string clientId,
@@ -201,15 +214,15 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Creates an OAuth credentials using
-        /// access token as client secret.
+        /// Exchanges an authorization code for OAuth credentials synchronously,
+        /// using the configured access token as the client secret.
         /// </summary>
-        /// <param name="authorizationCode">Authorization code.</param>
-        /// <param name="redirectUri">Redirect Uri.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="authorizationCode">The authorization code received from the MercadoPago authorization redirect.</param>
+        /// <param name="redirectUri">The redirect URI that was used in the original authorization request.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="OAuthCredential"/> containing the access and refresh tokens.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public OAuthCredential CreateOAuthCredential(
             string authorizationCode,
             string redirectUri,
@@ -240,17 +253,17 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Creates an OAuth credentials with
-        /// client id and client secret.
+        /// Exchanges an authorization code for OAuth credentials synchronously,
+        /// using explicit client ID and client secret values.
         /// </summary>
-        /// <param name="authorizationCode">Authorization code.</param>
-        /// <param name="clientId">Client Id.</param>
-        /// <param name="clientSecret">Client Secret.</param>
-        /// <param name="redirectUri">Redirect Uri.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="authorizationCode">The authorization code received from the MercadoPago authorization redirect.</param>
+        /// <param name="clientId">The application (client) ID registered in the MercadoPago developer portal.</param>
+        /// <param name="clientSecret">The application (client) secret from the MercadoPago developer portal.</param>
+        /// <param name="redirectUri">The redirect URI that was used in the original authorization request.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="OAuthCredential"/> containing the access and refresh tokens.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public OAuthCredential CreateOAuthCredential(
             string authorizationCode,
             string clientId,
@@ -273,14 +286,15 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Refresh OAuth credential async.
+        /// Refreshes an expired OAuth access token asynchronously using a previously obtained refresh token.
+        /// The configured access token is used as the client secret for authentication.
         /// </summary>
-        /// <param name="refreshToken">Refresh token.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refreshed OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="refreshToken">The refresh token obtained from a previous credential creation call.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the refreshed <see cref="OAuthCredential"/> with a new access token.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<OAuthCredential> RefreshOAuthCredentialAsync(
             string refreshToken,
             RequestOptions requestOptions = null,
@@ -311,13 +325,14 @@ namespace MercadoPago.Client.OAuth
         }
 
         /// <summary>
-        /// Refresh OAuth credential.
+        /// Refreshes an expired OAuth access token synchronously using a previously obtained refresh token.
+        /// The configured access token is used as the client secret for authentication.
         /// </summary>
-        /// <param name="refreshToken">Refresh token.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The refreshed OAuth credential.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="refreshToken">The refresh token obtained from a previous credential creation call.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The refreshed <see cref="OAuthCredential"/> with a new access token.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public OAuthCredential RefreshOAuthCredential(
             string refreshToken,
             RequestOptions requestOptions = null)

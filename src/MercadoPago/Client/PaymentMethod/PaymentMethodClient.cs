@@ -9,7 +9,10 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods of Payment Method APIs.
+    /// Client for the MercadoPago Payment Methods API (<c>/v1/payment_methods</c>).
+    /// Returns the list of payment methods available for the country associated with
+    /// the current access token (e.g., credit cards, debit cards, bank transfers, cash).
+    /// Useful for building payment forms that display only relevant options to the buyer.
     /// </summary>
     public class PaymentMethodClient : MercadoPagoClient<PaymentMethod>
     {
@@ -56,13 +59,14 @@
         }
 
         /// <summary>
-        /// Lists async the Payment Methods.
+        /// Lists all available payment methods asynchronously for the country
+        /// associated with the current access token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the list of Payment Method.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a <see cref="ResourcesList{PaymentMethod}"/> of available payment methods.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payment_methods/_payment_methods/get/">here</a>.
@@ -80,12 +84,13 @@
         }
 
         /// <summary>
-        /// Lists the Payment Methods.
+        /// Lists all available payment methods synchronously for the country
+        /// associated with the current access token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The list of Payment Method.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A <see cref="ResourcesList{PaymentMethod}"/> of available payment methods.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/payment_methods/_payment_methods/get/">here</a>.

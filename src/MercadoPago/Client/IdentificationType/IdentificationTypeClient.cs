@@ -9,7 +9,10 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods of Identification Type APIs.
+    /// Client for the MercadoPago Identification Types API (<c>/v1/identification_types</c>).
+    /// Returns the list of accepted government-issued document types (e.g., CPF, CNPJ, DNI)
+    /// for the country associated with the current access token. The results are used to
+    /// populate the <see cref="Common.IdentificationRequest.Type"/> field in payment and customer requests.
     /// </summary>
     public class IdentificationTypeClient : MercadoPagoClient<IdentificationType>
     {
@@ -56,13 +59,14 @@
         }
 
         /// <summary>
-        /// Lists async the Identification Types.
+        /// Lists all available identification types asynchronously for the country
+        /// associated with the current access token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the list of Identification Type.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a <see cref="ResourcesList{IdentificationType}"/> of accepted document types.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/identification_types/_identification_types/get/">here</a>.
@@ -80,12 +84,13 @@
         }
 
         /// <summary>
-        /// Lists the Identification Types.
+        /// Lists all available identification types synchronously for the country
+        /// associated with the current access token.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The list of Identification Type.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A <see cref="ResourcesList{IdentificationType}"/> of accepted document types.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/identification_types/_identification_types/get/">here</a>.

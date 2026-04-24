@@ -1,47 +1,48 @@
 ﻿namespace MercadoPago.Resource.MerchantOrder
 {
     /// <summary>
-    /// Item information.
+    /// Represents a product or service item within a <see cref="MerchantOrder"/>.
+    /// Contains details such as title, description, pricing, and quantity.
     /// </summary>
     public class MerchantOrderItem
     {
         /// <summary>
-        /// Item code.
+        /// Item code or SKU that uniquely identifies the product in the merchant's catalog.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Item name.
+        /// Display name of the item shown to the buyer.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Long item description.
+        /// Detailed description of the item, providing additional product information beyond the title.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Image URL.
+        /// URL of the item's image, used for display in the checkout and order summary.
         /// </summary>
         public string PictureUrl { get; set; }
 
         /// <summary>
-        /// Category of the item.
+        /// Category identifier of the item within the merchant's product taxonomy.
         /// </summary>
         public string CategoryId { get; set; }
 
         /// <summary>
-        /// Item's quantity.
+        /// Number of units of this item included in the order.
         /// </summary>
         public int? Quantity { get; set; }
 
         /// <summary>
-        /// Unit price.
+        /// Price per unit of the item, in the currency specified by <see cref="CurrencyId"/>.
         /// </summary>
         public decimal? UnitPrice { get; set; }
 
         /// <summary>
-        /// Currency ID. ISO_4217 code.
+        /// ISO 4217 currency code for the item price (e.g., <c>ARS</c>, <c>BRL</c>, <c>MXN</c>).
         /// </summary>
         public string CurrencyId { get; set; }
     }

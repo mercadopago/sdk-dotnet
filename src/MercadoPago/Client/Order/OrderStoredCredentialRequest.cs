@@ -3,27 +3,30 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Stored Credential class.
+    /// Stored credential information for recurring or merchant-initiated transactions.
+    /// Indicates whether a card-on-file is being used and who initiated the payment,
+    /// as required by card network regulations.
     /// </summary>
+    /// <seealso cref="OrderPaymentRequest"/>
     public class OrderStoredCredentialRequest
     {
         /// <summary>
-        /// Payment Initiator.
+        /// Who initiated the payment: "cardholder" for customer-initiated or "merchant" for merchant-initiated transactions.
         /// </summary>
         public string PaymentInitiator { get; set; }
 
         /// <summary>
-        /// Reason.
+        /// Reason for storing the credential (e.g., "recurring_payment", "installment").
         /// </summary>
         public string Reason { get; set; }
 
         /// <summary>
-        /// Store Payment Method.
+        /// Indicates whether to store the payment method for future transactions.
         /// </summary>
         public bool? StorePaymentMethod { get; set; }
 
         /// <summary>
-        /// First Payment.
+        /// Indicates whether this is the first payment in a series of recurring charges.
         /// </summary>
         public bool? FirstPayment { get; set; }
     }

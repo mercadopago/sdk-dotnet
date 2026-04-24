@@ -3,17 +3,18 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Phone class.
+    /// Represents the payer's phone contact information within a payment order.
     /// </summary>
+    /// <seealso cref="OrderPayerRequest"/>
     public class OrderPhoneRequest
     {
         /// <summary>
-        /// Area Code.
+        /// Phone area code (e.g., "11" for Sao Paulo, "54" for Argentina country code).
         /// </summary>
         public string AreaCode { get; set; }
 
         /// <summary>
-        /// Phone number.
+        /// Phone number without the area code.
         /// </summary>
         public string Number { get; set; }
     }

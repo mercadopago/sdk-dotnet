@@ -3,29 +3,32 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Data that could improve fraud analysis and conversion rates.
-    /// Try to send as much information as possible.
+    /// Supplementary data attached to an advanced payment request to improve fraud analysis and
+    /// conversion rates. Send as much information as possible for best results.
     /// </summary>
+    /// <see cref="AdvancedPaymentCreateRequest"/>
     public class AdvancedPaymentAdditionalInfoRequest
     {
         /// <summary>
-        /// IP from where the request comes from (only for bank transfers).
+        /// IP address from which the payment request originates. Required only for bank transfer payments.
         /// </summary>
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// List of items to be paid.
+        /// List of items being purchased in this advanced payment.
         /// </summary>
         public IList<AdvancedPaymentItemRequest> Items { get; set; }
 
         /// <summary>
-        /// Payer's information.
+        /// Additional payer details used for fraud scoring and risk analysis.
         /// </summary>
+        /// <see cref="AdvancedPaymentAdditionalInfoPayerRequest"/>
         public AdvancedPaymentAdditionalInfoPayerRequest Payer { get; set; }
 
         /// <summary>
-        /// Shipping information.
+        /// Shipping details for the items associated with this advanced payment.
         /// </summary>
+        /// <see cref="AdvancedPaymentShipmentsRequest"/>
         public AdvancedPaymentShipmentsRequest Shipments { get; set; }
     }
 }

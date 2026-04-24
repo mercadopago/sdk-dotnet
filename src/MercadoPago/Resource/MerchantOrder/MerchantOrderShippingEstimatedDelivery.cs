@@ -3,22 +3,23 @@
     using System;
 
     /// <summary>
-    /// Estimated delivery time information.
+    /// Represents the estimated delivery date and time window for a <see cref="MerchantOrderShippingOption"/>.
+    /// Provides the buyer with an expected delivery range.
     /// </summary>
     public class MerchantOrderShippingEstimatedDelivery
     {
         /// <summary>
-        /// Estimated delivery date.
+        /// Estimated date when the shipment will be delivered.
         /// </summary>
         public DateTime? Date { get; set; }
 
         /// <summary>
-        /// Estimated lower delivery time.
+        /// Start of the estimated delivery time window (e.g., "08:00").
         /// </summary>
         public string TimeFrom { get; set; }
 
         /// <summary>
-        /// Estimated upper delivery time.
+        /// End of the estimated delivery time window (e.g., "18:00").
         /// </summary>
         public string TimeTo { get; set; }
     }

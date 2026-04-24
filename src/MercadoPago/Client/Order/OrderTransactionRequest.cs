@@ -5,13 +5,20 @@ namespace MercadoPago.Client.Order
     using System.Collections.Generic;
 
     /// <summary>
-    /// Transaction class.
+    /// Request payload for adding a transaction to an existing order via
+    /// <c>POST /v1/orders/{id}/transactions</c>. A transaction groups one or more
+    /// individual payments that together fulfil the order amount.
     /// </summary>
+    /// <seealso cref="OrderCreateRequest"/>
+    /// <seealso cref="OrderTransactionClient.Create(string, OrderTransactionRequest, RequestOptions)"/>
+    /// <seealso cref="OrderPaymentRequest"/>
     public class OrderTransactionRequest : IdempotentRequest
     {
         /// <summary>
-        /// List of payments.
+        /// List of payments that compose this transaction. Each payment specifies an amount,
+        /// payment method, and optional recurring-payment configuration.
         /// </summary>
+        /// <seealso cref="OrderPaymentRequest"/>
         public IList<OrderPaymentRequest> Payments { get; set; }
     }
 

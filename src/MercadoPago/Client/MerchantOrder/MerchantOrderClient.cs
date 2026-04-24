@@ -9,8 +9,14 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods of Merchant Order APIs.
+    /// Client that manages Merchant Order API operations including creation, retrieval,
+    /// update, and search.
     /// </summary>
+    /// <remarks>
+    /// A merchant order groups one or more payments together with shipping information
+    /// in marketplace scenarios. It tracks the overall fulfillment status of items
+    /// purchased by a buyer, linking payments to shipments.
+    /// </remarks>
     public class MerchantOrderClient : MercadoPagoClient<MerchantOrder>
     {
         /// <summary>
@@ -56,14 +62,14 @@
         }
 
         /// <summary>
-        /// Get async a Merchant Order by your ID.
+        /// Retrieves a merchant order by its ID as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The Merchant Order ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the merchant order to retrieve.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the merchant order matching the specified ID.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/get/">here</a>.
@@ -82,13 +88,13 @@
         }
 
         /// <summary>
-        /// Get a Merchant Order by your ID.
+        /// Retrieves a merchant order by its ID.
         /// </summary>
-        /// <param name="id">The Merchant Order ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the merchant order to retrieve.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The merchant order matching the specified ID.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/get/">here</a>.
@@ -105,14 +111,15 @@
         }
 
         /// <summary>
-        /// Creates a Merchant Order as an asynchronous operation.
+        /// Creates a merchant order as an asynchronous operation, grouping items,
+        /// payments, and shipping details into a single order.
         /// </summary>
-        /// <param name="request">The data to create the Merchant Order.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The data to create the merchant order, including items, payer, and notification URL.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the newly created merchant order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders/post/">here</a>.
@@ -131,13 +138,14 @@
         }
 
         /// <summary>
-        /// Creates a Merchant Order.
+        /// Creates a merchant order, grouping items, payments, and shipping details
+        /// into a single order.
         /// </summary>
-        /// <param name="request">The data to create the Merchant Order.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The created Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The data to create the merchant order, including items, payer, and notification URL.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The newly created merchant order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders/post/">here</a>.
@@ -154,15 +162,15 @@
         }
 
         /// <summary>
-        /// Updates a Merchant Order as an asynchronous operation.
+        /// Updates an existing merchant order as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The ID of the Merchant Order.</param>
-        /// <param name="request">The data to update the Merchant Order.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the updated Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the merchant order to update.</param>
+        /// <param name="request">The fields to update on the merchant order. Only provided fields are modified.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the updated merchant order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/put/">here</a>.
@@ -182,14 +190,14 @@
         }
 
         /// <summary>
-        /// Updates a Merchant Order.
+        /// Updates an existing merchant order.
         /// </summary>
-        /// <param name="id">The ID of the Merchant Order.</param>
-        /// <param name="request">The data to update the Merchant Order.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>A task whose the result is the updated Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the merchant order to update.</param>
+        /// <param name="request">The fields to update on the merchant order. Only provided fields are modified.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The updated merchant order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/put/">here</a>.
@@ -207,14 +215,14 @@
         }
 
         /// <summary>
-        /// Searches async for Merchant Order that match the criteria of <see cref="SearchRequest"/>.
+        /// Searches for merchant orders matching the specified criteria as an asynchronous operation.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is a page of Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The search parameters including filters, sorting, and pagination.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a paginated list of merchant orders matching the search criteria.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_search/get/">here</a>.
@@ -232,13 +240,13 @@
         }
 
         /// <summary>
-        /// Searches for Merchant Order that match the criteria of <see cref="SearchRequest"/>.
+        /// Searches for merchant orders matching the specified criteria.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of Merchant Order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The search parameters including filters, sorting, and pagination.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>A paginated list of merchant orders matching the search criteria.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_search/get/">here</a>.

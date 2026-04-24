@@ -3,12 +3,13 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Sponsor class.
+    /// Represents a sponsor account within <see cref="OrderIntegrationData"/> that receives a share
+    /// of the transaction fees for marketplace or platform integrations.
     /// </summary>
     public class OrderSponsor
     {
         /// <summary>
-        /// Sponsor ID.
+        /// MercadoPago user identifier of the sponsor account that receives a fee split from this order.
         /// </summary>
         public string Id { get; set; }
     }

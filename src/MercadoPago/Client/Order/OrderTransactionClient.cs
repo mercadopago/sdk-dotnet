@@ -8,8 +8,14 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Order APIs.
+    /// Client responsible for managing individual transactions within a payment order.
+    /// Supports creating, updating, and deleting transactions via the MercadoPago Orders API
+    /// (<c>/v1/orders/{id}/transactions</c>). Update operations are delegated to
+    /// <see cref="OrderTransactionUpdateClient"/> internally.
     /// </summary>
+    /// <seealso cref="OrderClient"/>
+    /// <seealso cref="OrderTransactionUpdateClient"/>
+    /// <seealso cref="OrderTransactionRequest"/>
     public class OrderTransactionClient : MercadoPagoClient<OrderTransaction>
     {
 
@@ -18,7 +24,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderTransactionClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         /// <param name="serializer">
         /// The serializer that will be used to serialize the HTTP requests content
         /// and to deserialize the HTTP response content.
@@ -32,7 +38,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderTransactionClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         public OrderTransactionClient(IHttpClient httpClient)
             : base(httpClient, null)
         {
@@ -59,15 +65,15 @@
         }
 
         /// <summary>
-        /// Create a transaction as an asynchronous operation.
+        /// Adds a new transaction to an existing order as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID to add the transaction to.</param>
+        /// <param name="request">The transaction data including one or more payments.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the newly created transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
@@ -82,14 +88,14 @@
         }
 
         /// <summary>
-        /// Create a transaction.
+        /// Adds a new transaction to an existing order synchronously.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID to add the transaction to.</param>
+        /// <param name="request">The transaction data including one or more payments.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The newly created transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
@@ -103,16 +109,16 @@
         }
 
         /// <summary>
-        /// Update a transaction as an asynchronous operation.
+        /// Updates the payment details of an existing transaction as an asynchronous operation.
         /// </summary>
-        /// <param name="orderId">The order id.</param>
-        /// /// <param name="transactionId">The transaction id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="orderId">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to update.</param>
+        /// <param name="request">The updated payment data for the transaction.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the updated transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the updated transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
@@ -128,15 +134,15 @@
         }
 
         /// <summary>
-        /// Update a transaction.
+        /// Updates the payment details of an existing transaction synchronously.
         /// </summary>
-        /// <param name="orderId">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="orderId">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to update.</param>
+        /// <param name="request">The updated payment data for the transaction.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The updated transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
@@ -151,14 +157,15 @@
         }
 
         /// <summary>
-        /// Delete a transaction as an asynchronous operation.
+        /// Removes a transaction from an order as an asynchronous operation.
         /// </summary>
-        /// <param name="oderId">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="oderId">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to delete.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the deleted transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.
@@ -173,13 +180,14 @@
         }
 
         /// <summary>
-        /// Delete a transaction.
+        /// Removes a transaction from an order synchronously.
         /// </summary>
-        /// <param name="oderId">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="oderId">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to delete.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The deleted transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.

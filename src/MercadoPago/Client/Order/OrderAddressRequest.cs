@@ -3,47 +3,49 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Address class.
+    /// Represents a physical address used in payer or shipment information within a payment order.
     /// </summary>
+    /// <seealso cref="OrderPayerRequest"/>
+    /// <seealso cref="OrderShipmentRequest"/>
     public class OrderAddressRequest
     {
         /// <summary>
-        /// Street Name.
+        /// Street name of the address (e.g., "Av. Corrientes").
         /// </summary>
         public string StreetName { get; set; }
 
         /// <summary>
-        /// Street Number.
+        /// Street number or house number of the address.
         /// </summary>
         public string StreetNumber { get; set; }
 
         /// <summary>
-        /// Zip Code.
+        /// Postal or ZIP code of the address.
         /// </summary>
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Neighborhood.
+        /// Neighborhood or district name.
         /// </summary>
         public string Neighborhood { get; set; }
 
         /// <summary>
-        /// State.
+        /// State or province name.
         /// </summary>
         public string State { get; set; }
 
         /// <summary>
-        /// City.
+        /// City name.
         /// </summary>
         public string City { get; set; }
 
         /// <summary>
-        /// Complement.
+        /// Additional address details such as apartment or suite number.
         /// </summary>
         public string Complement { get; set; }
 
         /// <summary>
-        /// Floor.
+        /// Floor number within a building, if applicable.
         /// </summary>
         public string Floor { get; set; }
     }

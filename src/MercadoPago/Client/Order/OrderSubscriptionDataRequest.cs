@@ -3,28 +3,35 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Subscription Data class.
+    /// Subscription-specific metadata for a payment within a recurring billing cycle.
+    /// Provides invoice identification, billing dates, and sequencing information.
     /// </summary>
+    /// <seealso cref="OrderPaymentRequest"/>
+    /// <seealso cref="OrderSubscriptionSequenceRequest"/>
+    /// <seealso cref="OrderInvoicePeriodRequest"/>
     public class OrderSubscriptionDataRequest
     {
         /// <summary>
-        /// Invoice ID.
+        /// Unique identifier of the invoice associated with this billing cycle.
         /// </summary>
         public string InvoiceId { get; set; }
 
         /// <summary>
-        /// Billing Date.
+        /// Date when the subscription billing occurs (ISO 8601 format).
         /// </summary>
         public string BillingDate { get; set; }
 
         /// <summary>
-        /// Subscription Sequence.
+        /// Sequence position of this payment within the overall subscription lifecycle
+        /// (e.g., payment 3 of 12).
         /// </summary>
+        /// <seealso cref="OrderSubscriptionSequenceRequest"/>
         public OrderSubscriptionSequenceRequest SubscriptionSequence { get; set; }
 
         /// <summary>
-        /// Invoice Period.
+        /// Billing period configuration describing the recurrence interval (e.g., monthly).
         /// </summary>
+        /// <seealso cref="OrderInvoicePeriodRequest"/>
         public OrderInvoicePeriodRequest InvoicePeriod { get; set; }
     }
 

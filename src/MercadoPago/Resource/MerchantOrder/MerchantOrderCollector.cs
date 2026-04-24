@@ -1,17 +1,18 @@
 ﻿namespace MercadoPago.Resource.MerchantOrder
 {
     /// <summary>
-    /// Seller information from Merchant Order.
+    /// Represents the seller (collector) who owns a <see cref="MerchantOrder"/>.
+    /// Contains the seller's MercadoPago account identification.
     /// </summary>
     public class MerchantOrderCollector
     {
         /// <summary>
-        /// Collector ID.
+        /// Unique MercadoPago user ID of the seller (collector).
         /// </summary>
         public long? Id { get; set; }
 
         /// <summary>
-        /// Collector nickname.
+        /// Display nickname of the seller on the MercadoPago platform.
         /// </summary>
         public string Nickname { get; set; }
     }

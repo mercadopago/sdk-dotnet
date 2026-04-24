@@ -9,7 +9,9 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Preapproval APIs.
+    /// Client for the MercadoPago Preapproval (Subscriptions) API (<c>/preapproval</c>).
+    /// Provides full CRUD operations on subscriptions and a search endpoint for querying
+    /// existing subscriptions with pagination, sorting, and filtering.
     /// </summary>
     public class PreapprovalClient : MercadoPagoClient<Preapproval>
     {
@@ -56,14 +58,14 @@
         }
 
         /// <summary>
-        /// Get async a Preapproval by your ID.
+        /// Retrieves a preapproval (subscription) by its ID asynchronously.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the preapproval to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<Preapproval> GetAsync(
             string id,
             RequestOptions requestOptions = null,
@@ -73,13 +75,13 @@
         }
 
         /// <summary>
-        /// Get a Preapproval by your ID.
+        /// Retrieves a preapproval (subscription) by its ID synchronously.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the preapproval to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Preapproval Get(
             string id,
             RequestOptions requestOptions = null)
@@ -88,14 +90,14 @@
         }
 
         /// <summary>
-        /// Creates a Preapproval as an asynchronous operation.
+        /// Creates a new preapproval (subscription) asynchronously.
         /// </summary>
-        /// <param name="request">The data to create a Preapproval.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="PreapprovalCreateRequest"/> with the subscription data to create.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the newly created <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/subscriptions/_preapproval/post/">here</a>.
@@ -109,13 +111,13 @@
         }
 
         /// <summary>
-        /// Creates a Preapproval.
+        /// Creates a new preapproval (subscription) synchronously.
         /// </summary>
-        /// <param name="request">The data to create a Preapproval.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The created Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="PreapprovalCreateRequest"/> with the subscription data to create.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The newly created <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/subscriptions/_preapproval/post/">here</a>.
@@ -128,16 +130,16 @@
         }
 
         /// <summary>
-        /// Updates a Preapproval as an asynchronous operation.
-        /// Just send in <paramref name="request"/> the properties you want to update.
+        /// Updates an existing preapproval (subscription) asynchronously.
+        /// Only the properties set in <paramref name="request"/> are modified; unset properties remain unchanged.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
-        /// <param name="request">The data to update the Preapproval.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the updated Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the preapproval to update.</param>
+        /// <param name="request">A <see cref="PreapprovalUpdateRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the updated <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<Preapproval> UpdateAsync(
             string id,
             PreapprovalUpdateRequest request,
@@ -148,15 +150,15 @@
         }
 
         /// <summary>
-        /// Updates a Preapproval.
-        /// Just send in <paramref name="request"/> the properties you want to update.
+        /// Updates an existing preapproval (subscription) synchronously.
+        /// Only the properties set in <paramref name="request"/> are modified; unset properties remain unchanged.
         /// </summary>
-        /// <param name="id">The Preapproval ID.</param>
-        /// <param name="request">The data to update the Preapproval.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The updated Preapproval.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique identifier of the preapproval to update.</param>
+        /// <param name="request">A <see cref="PreapprovalUpdateRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The updated <see cref="Preapproval"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Preapproval Update(
             string id,
             PreapprovalUpdateRequest request,
@@ -166,14 +168,16 @@
         }
 
         /// <summary>
-        /// Searches async for Preapprovals that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for preapprovals (subscriptions) matching the specified criteria asynchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is a page of Preapprovals.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a paginated list of matching <see cref="Preapproval"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<ResultsResourcesPage<Preapproval>> SearchAsync(
             SearchRequest request,
             RequestOptions requestOptions = null,
@@ -187,13 +191,15 @@
         }
 
         /// <summary>
-        /// Searches for Preapprovals that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for preapprovals (subscriptions) matching the specified criteria synchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of Preapprovals.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A paginated list of matching <see cref="Preapproval"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public ResultsResourcesPage<Preapproval> Search(
             SearchRequest request,
             RequestOptions requestOptions = null)

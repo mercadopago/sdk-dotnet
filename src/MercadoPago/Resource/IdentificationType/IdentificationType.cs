@@ -3,7 +3,11 @@
     using MercadoPago.Http;
 
     /// <summary>
-    /// Identification Type resource.
+    /// Represents an identification document type supported by MercadoPago for
+    /// a given country (e.g. <c>CPF</c> in Brazil, <c>DNI</c> in Argentina).
+    /// Returned as a list by the Identification Types API. Use
+    /// <see cref="Client.IdentificationType.IdentificationTypeClient"/> to
+    /// retrieve the available types for the caller's country.
     /// </summary>
     /// <remarks>
     /// For more information, access
@@ -12,32 +16,35 @@
     public class IdentificationType : IResource
     {
         /// <summary>
-        /// Identification type ID.
+        /// Short identifier code for this document type (e.g. <c>CPF</c>,
+        /// <c>DNI</c>, <c>CNPJ</c>).
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Identification type name.
+        /// Human-readable name of the identification type.
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Identification number data type.
+        /// Data type of the identification number (e.g. <c>number</c>,
+        /// <c>string</c>).
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Identification type min length.
+        /// Minimum allowed length for identification numbers of this type.
         /// </summary>
         public int? MinLength { get; set; }
 
         /// <summary>
-        /// Identification type max length.
+        /// Maximum allowed length for identification numbers of this type.
         /// </summary>
         public int? MaxLength { get; set; }
 
         /// <summary>
-        /// Response from API.
+        /// Raw HTTP response returned by the MercadoPago API for the request
+        /// that produced this resource.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
     }

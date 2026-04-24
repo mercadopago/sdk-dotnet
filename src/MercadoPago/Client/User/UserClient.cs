@@ -8,7 +8,10 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client to get the User information.
+    /// Client for the MercadoPago Users API (<c>/users/me</c>).
+    /// Retrieves the profile of the user associated with the current access token,
+    /// including country, site, and account details. Also used internally by
+    /// <see cref="OAuth.OAuthClient"/> to determine the country-specific authorization URL.
     /// </summary>
     public class UserClient : MercadoPagoClient<User>
     {
@@ -55,13 +58,15 @@
         }
 
         /// <summary>
-        /// Get async the User information using the Access Token.
+        /// Retrieves the profile of the authenticated user asynchronously.
+        /// The user is identified by the access token configured in
+        /// <see cref="Config.MercadoPagoConfig"/> or overridden via <paramref name="requestOptions"/>.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the User.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="User"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<User> GetAsync(
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
@@ -75,12 +80,14 @@
         }
 
         /// <summary>
-        /// Get the User information using the Access Token.
+        /// Retrieves the profile of the authenticated user synchronously.
+        /// The user is identified by the access token configured in
+        /// <see cref="Config.MercadoPagoConfig"/> or overridden via <paramref name="requestOptions"/>.
         /// </summary>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The User.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="User"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public User Get(
             RequestOptions requestOptions = null)
         {

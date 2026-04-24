@@ -3,28 +3,33 @@
 namespace MercadoPago.Client.Payment
 {
     /// <summary>
-    /// Payer information.
+    /// Payer information attached to a <see cref="PaymentCreateRequest"/>.
+    /// Identifies the person or entity making the payment, including personal data,
+    /// contact information, and address.
     /// </summary>
     public class PaymentPayerRequest
     {
         /// <summary>
-        /// Payer's identification type (mandatory if the payer is a Customer).
+        /// Payer type. Mandatory when the payer is a registered MercadoPago customer.
+        /// Possible values: "customer", "registered", "guest".
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Payer's ID.
+        /// Payer's unique identifier in MercadoPago.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Email of the payer.
+        /// Email address of the payer. Required for most payment methods.
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
-        /// Payer's personal identification.
+        /// Payer's personal identification document (e.g., CPF, DNI).
+        /// Required for card payments in most countries.
         /// </summary>
+        /// <seealso cref="IdentificationRequest"/>
         public IdentificationRequest Identification { get; set; }
 
         /// <summary>
@@ -38,18 +43,21 @@ namespace MercadoPago.Client.Payment
         public string LastName { get; set; }
 
         /// <summary>
-        /// Payer's entity type (only for bank transfers).
+        /// Payer's entity type, applicable only for bank transfer payments.
+        /// Possible values: "individual", "association".
         /// </summary>
         public string EntityType { get; set; }
 
         /// <summary>
-        /// Payer's address information.
+        /// Payer's address details, including street, neighborhood, city, and federal unit.
         /// </summary>
+        /// <seealso cref="PaymentPayerAddressRequest"/>
         public PaymentPayerAddressRequest Address { get; set; }
 
         /// <summary>
-        /// Payer's phone information.
+        /// Payer's phone number details, including area code and number.
         /// </summary>
+        /// <seealso cref="PaymentPayerPhoneRequest"/>
         public PaymentPayerPhoneRequest Phone { get; set; }
     }
 }

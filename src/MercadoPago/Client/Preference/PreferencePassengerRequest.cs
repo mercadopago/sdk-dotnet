@@ -3,23 +3,26 @@
     using MercadoPago.Client.Common;
 
     /// <summary>
-    /// Passenger info.
+    /// Passenger identity information for travel-related items. Used within
+    /// <see cref="PreferenceCategoryDescriptorRequest"/> to provide passenger details for
+    /// fraud prevention analysis.
     /// </summary>
     public class PreferencePassengerRequest
     {
         /// <summary>
-        /// First name.
+        /// Passenger's first name as it appears on the travel document.
         /// </summary>
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Last name.
+        /// Passenger's last name as it appears on the travel document.
         /// </summary>
         public string LastName { get; set; }
 
         /// <summary>
-        /// Identification.
+        /// Passenger's identification document (e.g., passport number, national ID).
         /// </summary>
+        /// <seealso cref="IdentificationRequest"/>
         public IdentificationRequest Identification { get; set; }
     }
 }

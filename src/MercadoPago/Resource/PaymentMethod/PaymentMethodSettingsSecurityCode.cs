@@ -1,23 +1,26 @@
 ﻿namespace MercadoPago.Resource.PaymentMethod
 {
     /// <summary>
-    /// Security code settings.
+    /// Security code (CVV/CVC) rules within a
+    /// <see cref="PaymentMethodSettings"/>. Describes whether the code is
+    /// required, its length, and its physical position on the card.
     /// </summary>
     public class PaymentMethodSettingsSecurityCode
     {
         /// <summary>
-        /// Whether the security code is mandatory or not.
+        /// Indicates whether the security code is required. Typical values:
+        /// <c>mandatory</c>, <c>optional</c>.
         /// </summary>
         public string Mode { get; set; }
 
         /// <summary>
-        /// Secutiry code length.
+        /// Expected number of digits in the security code (typically 3 or 4).
         /// </summary>
         public int? Length { get; set; }
 
         /// <summary>
-        /// Whether the security code is located in the back or in the front
-        /// of the card.
+        /// Physical location of the security code on the card
+        /// (e.g. <c>back</c>, <c>front</c>).
         /// </summary>
         public string CardLocation { get; set; }
     }

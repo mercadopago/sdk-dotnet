@@ -1,17 +1,18 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// OrderDiscountPaymentMethod class.
+    /// Represents a discount applied to a specific payment method type within <see cref="OrderDiscounts"/>,
+    /// adjusting the total amount when that payment method is used.
     /// </summary>
     public class OrderDiscountPaymentMethod
     {
         /// <summary>
-        /// Type.
+        /// Payment method type that qualifies for this discount (e.g., "credit_card", "debit_card", "account_money").
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// New total amount.
+        /// Adjusted total order amount after applying this payment-method-specific discount.
         /// </summary>
         public string NewTotalAmount { get; set; }
     }

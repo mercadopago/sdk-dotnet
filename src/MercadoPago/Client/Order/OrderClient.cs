@@ -8,8 +8,15 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Order APIs.
+    /// Primary client for the MercadoPago Orders API. Provides a unified interface for the
+    /// full order lifecycle: creation, retrieval, processing, capture, cancellation, refunds,
+    /// transaction management, and search.
+    /// Internally delegates to <see cref="OrderRefundClient"/>, <see cref="OrderTransactionClient"/>,
+    /// and <see cref="OrderSearchClient"/> for specialized operations.
     /// </summary>
+    /// <seealso cref="OrderCreateRequest"/>
+    /// <seealso cref="OrderRefundClient"/>
+    /// <seealso cref="OrderTransactionClient"/>
     public class OrderClient : MercadoPagoClient<Order>
     {
         private readonly OrderRefundClient refundClient;
@@ -21,7 +28,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         /// <param name="serializer">
         /// The serializer that will be used to serialize the HTTP requests content
         /// and to deserialize the HTTP response content.
@@ -37,7 +44,7 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         public OrderClient(IHttpClient httpClient)
             : this(httpClient, null)
         {
@@ -64,14 +71,14 @@
         }
 
         /// <summary>
-        /// Creates a order as an asynchronous operation.
+        /// Creates a new payment order as an asynchronous operation.
         /// </summary>
-        /// <param name="request">The data to create a order.</param>
+        /// <param name="request">The order creation data including type, amounts, transactions, payer, and items.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the newly created order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
@@ -85,13 +92,13 @@
         }
 
         /// <summary>
-        /// Creates a order.
+        /// Creates a new payment order synchronously.
         /// </summary>
-        /// <param name="request">The data to create a order.</param>
+        /// <param name="request">The order creation data including type, amounts, transactions, payer, and items.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The newly created order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com.br/developers/pt/reference/order/online-payments/create/post">here</a>.
@@ -104,14 +111,14 @@
         }
 
         /// <summary>
-        /// Get a order as an asynchronous operation.
+        /// Retrieves an existing order by its ID as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is an order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the requested order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/get-order/get">here</a>.
@@ -125,13 +132,13 @@
         }
 
         /// <summary>
-        /// Get a order.
+        /// Retrieves an existing order by its ID synchronously.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>An order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The requested order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/get-order/get">here</a>.
@@ -144,14 +151,15 @@
         }
 
         /// <summary>
-        /// Process a order as an asynchronous operation.
+        /// Submits an order for payment processing as an asynchronous operation.
+        /// The order must have at least one transaction before it can be processed.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to process.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the processed order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the processed order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online/process-order/post">here</a>.
@@ -165,13 +173,14 @@
         }
 
         /// <summary>
-        /// Process a order.
+        /// Submits an order for payment processing synchronously.
+        /// The order must have at least one transaction before it can be processed.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to process.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The processed order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online/process-order/post">here</a>.
@@ -184,14 +193,15 @@
         }
 
         /// <summary>
-        /// Capture a order as an asynchronous operation.
+        /// Captures a previously authorized order as an asynchronous operation.
+        /// Only applicable when the order was created with <c>capture_mode</c> set to "manual".
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to capture.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the captured order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the captured order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/capture/post">here</a>.
@@ -205,13 +215,14 @@
         }
 
         /// <summary>
-        /// Capture a order.
+        /// Captures a previously authorized order synchronously.
+        /// Only applicable when the order was created with <c>capture_mode</c> set to "manual".
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to capture.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The captured order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/capture/post">here</a>.
@@ -224,14 +235,15 @@
         }
 
         /// <summary>
-        /// Cancel a order as an asynchronous operation.
+        /// Cancels an order as an asynchronous operation. Only orders that have not yet
+        /// been fully processed can be canceled.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to cancel.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the canceled order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the canceled order.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/cancel-order/post">here</a>.
@@ -245,13 +257,14 @@
         }
 
         /// <summary>
-        /// Cancel a order.
+        /// Cancels an order synchronously. Only orders that have not yet
+        /// been fully processed can be canceled.
         /// </summary>
-        /// <param name="id">The order id.</param>
+        /// <param name="id">The order ID to cancel.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The canceled order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/cancel-order/post">here</a>.
@@ -264,15 +277,17 @@
         }
 
         /// <summary>
-        /// Refund a order or transaction as an asynchronous operation.
+        /// Refunds an entire order or specific transactions as an asynchronous operation.
+        /// Pass a <paramref name="request"/> to target specific transactions for partial refunds,
+        /// or omit it to refund the full order.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order refund.</param>
+        /// <param name="id">The order ID to refund.</param>
+        /// <param name="request">Optional refund details specifying transactions and amounts for partial refunds.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refunded order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the updated order after the refund.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
@@ -287,14 +302,16 @@
         }
 
         /// <summary>
-        /// Refund a order or transaction.
+        /// Refunds an entire order or specific transactions synchronously.
+        /// Pass a <paramref name="request"/> to target specific transactions for partial refunds,
+        /// or omit it to refund the full order.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order refund.</param>
+        /// <param name="id">The order ID to refund.</param>
+        /// <param name="request">Optional refund details specifying transactions and amounts for partial refunds.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The refunded order.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The updated order after the refund.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
@@ -308,15 +325,15 @@
         }
 
         /// <summary>
-        /// Create a transaction as an asynchronous operation.
+        /// Adds a new transaction to an existing order as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID to add the transaction to.</param>
+        /// <param name="request">The transaction data including one or more payments.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the newly created transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
@@ -331,14 +348,14 @@
         }
 
         /// <summary>
-        /// Create a transaction.
+        /// Adds a new transaction to an existing order synchronously.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID to add the transaction to.</param>
+        /// <param name="request">The transaction data including one or more payments.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The newly created transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
@@ -352,16 +369,16 @@
         }
 
         /// <summary>
-        /// Update a transaction as an asynchronous operation.
+        /// Updates the payment details of an existing transaction as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to update.</param>
+        /// <param name="request">The updated payment data for the transaction.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the updated transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the updated transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
@@ -377,15 +394,15 @@
         }
 
         /// <summary>
-        /// Update a transaction.
+        /// Updates the payment details of an existing transaction synchronously.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
-        /// <param name="request">The order transaction.</param>
+        /// <param name="id">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to update.</param>
+        /// <param name="request">The updated payment data for the transaction.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <returns>The updated transaction.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
@@ -400,14 +417,15 @@
         }
 
         /// <summary>
-        /// Delete a transaction as an asynchronous operation.
+        /// Removes a transaction from an order as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="id">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to delete.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the deleted transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.
@@ -422,13 +440,14 @@
         }
 
         /// <summary>
-        /// Delete a transaction.
+        /// Removes a transaction from an order synchronously.
         /// </summary>
-        /// <param name="id">The order id.</param>
-        /// <param name="transactionId">The transaction id.</param>
+        /// <param name="id">The order ID that owns the transaction.</param>
+        /// <param name="transactionId">The transaction ID to delete.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The deleted transaction.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.
@@ -442,14 +461,14 @@
         }
 
         /// <summary>
-        /// Search orders as an asynchronous operation.
+        /// Searches for orders matching the given criteria as an asynchronous operation.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
+        /// <param name="request">The search filters, pagination, and sorting parameters.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the search response.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>A task whose result is the paginated search response containing matching orders.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<OrderSearchResponse> SearchAsync(
             OrderSearchRequest request,
             RequestOptions requestOptions = null,
@@ -459,13 +478,13 @@
         }
 
         /// <summary>
-        /// Search orders.
+        /// Searches for orders matching the given criteria synchronously.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
+        /// <param name="request">The search filters, pagination, and sorting parameters.</param>
         /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The search response.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <returns>The paginated search response containing matching orders.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public OrderSearchResponse Search(
             OrderSearchRequest request,
             RequestOptions requestOptions = null)

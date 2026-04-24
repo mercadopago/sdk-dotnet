@@ -1,22 +1,24 @@
 namespace MercadoPago.Resource.Payment
 {
     /// <summary>
-    /// Collector amounts response within PaymentAmountsResponse.
+    /// Amount information from the collector's (seller's) perspective
+    /// within the <see cref="PaymentAmountsResponse"/>.
     /// </summary>
     public class PaymentCollectorAmountResponse
     {
         /// <summary>
-        /// Currency identifier.
+        /// ISO 4217 currency code for the collector's amounts (e.g., "ARS", "BRL", "MXN").
         /// </summary>
         public string CurrencyId { get; set; }
 
         /// <summary>
-        /// Transaction amount.
+        /// Total transaction amount in the collector's currency.
         /// </summary>
         public decimal? Transaction { get; set; }
 
         /// <summary>
-        /// Net amount received by collector.
+        /// Net amount received by the collector after deducting
+        /// all applicable fees and commissions.
         /// </summary>
         public decimal? NetReceived { get; set; }
     }

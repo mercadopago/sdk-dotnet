@@ -2,82 +2,86 @@
 namespace MercadoPago.Resource.Customer
 {
     /// <summary>
-    /// Custommer's address.
+    /// Represents a full address associated with a <see cref="Customer"/>.
+    /// Includes geographic breakdown (city, state, country, neighborhood, and
+    /// municipality) and is returned within the customer's
+    /// <see cref="Customer.Addresses"/> collection.
     /// </summary>
     public class CustomerAddress
     {
         /// <summary>
-        /// Address ID.
+        /// Unique identifier of this address within the customer's address list.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Phone number.
+        /// Contact phone number associated with this address.
         /// </summary>
         public string Phone { get; set; }
 
         /// <summary>
-        /// Address name.
+        /// User-defined label for this address (e.g. "Home", "Office").
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Floor.
+        /// Floor number or identifier within the building.
         /// </summary>
         public string Floor { get; set; }
 
         /// <summary>
-        /// Apartment.
+        /// Apartment or unit identifier within the building.
         /// </summary>
         public string Apartment { get; set; }
 
         /// <summary>
-        /// Street name.
+        /// Street name component of the address.
         /// </summary>
         public string StreetName { get; set; }
 
         /// <summary>
-        /// Street number.
+        /// Street number (house or building number) of the address.
         /// </summary>
         public int? StreetNumer { get; set; }
 
         /// <summary>
-        /// Postal code.
+        /// Postal / ZIP code of the address.
         /// </summary>
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// City information.
+        /// City information for this address.
         /// </summary>
         public CustomerAddressCity City { get; set; }
 
         /// <summary>
-        /// State information.
+        /// State or province information for this address.
         /// </summary>
         public CustomerAddressState State { get; set; }
 
         /// <summary>
-        /// Country information.
+        /// Country information for this address.
         /// </summary>
         public CustomerAddressCountry Country { get; set; }
 
         /// <summary>
-        /// Neighborhood information.
+        /// Neighborhood (barrio) information for this address.
         /// </summary>
         public CustomerAddressNeighborhood Neighborhood { get; set; }
 
         /// <summary>
-        /// Municipality information.
+        /// Municipality (municipio) information for this address.
         /// </summary>
         public CustomerAddressMunicipality Municipality { get; set; }
 
         /// <summary>
-        /// Additional info.
+        /// Free-text additional information or delivery instructions for this
+        /// address.
         /// </summary>
         public string Comments { get; set; }
 
         /// <summary>
-        /// Address date of creation.
+        /// Date and time when this address was created within the customer record.
         /// </summary>
         public DateTime? DateCreated { get; set; }
     }

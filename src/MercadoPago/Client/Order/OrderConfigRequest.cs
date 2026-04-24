@@ -3,17 +3,23 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Configuration class.
+    /// Top-level configuration for a payment order, grouping payment method restrictions
+    /// and online checkout behavior settings.
     /// </summary>
+    /// <seealso cref="OrderCreateRequest"/>
+    /// <seealso cref="OrderPaymentMethodConfigRequest"/>
+    /// <seealso cref="OrderOnlineConfigRequest"/>
     public class OrderConfigRequest
     {
         /// <summary>
-        /// Payment method configuration.
+        /// Payment method restrictions and defaults, such as excluded methods, maximum
+        /// installments, and the default payment method.
         /// </summary>
         public OrderPaymentMethodConfigRequest PaymentMethod { get; set; }
 
         /// <summary>
-        /// Online configuration.
+        /// Configuration specific to the online checkout flow, including redirect URLs,
+        /// differential pricing, and 3-D Secure settings.
         /// </summary>
         public OrderOnlineConfigRequest Online { get; set; }
     }

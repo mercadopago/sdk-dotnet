@@ -3,17 +3,18 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Invoice Period class.
+    /// Represents the billing period for a subscription invoice within <see cref="OrderSubscriptionData"/>,
+    /// defining the recurrence interval and type.
     /// </summary>
     public class OrderInvoicePeriod
     {
         /// <summary>
-        /// Type of invoice.
+        /// Billing period type that defines the recurrence unit (e.g., "daily", "monthly", "yearly").
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Period of invoice.
+        /// Number of <see cref="Type"/> units that make up one billing cycle (e.g., 1 for monthly, 3 for quarterly).
         /// </summary>
         public int? Period { get; set; }
     }

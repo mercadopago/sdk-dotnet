@@ -8,8 +8,12 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Preferences APIs.
+    /// Client that manages the full lifecycle of Checkout Pro preferences, including
+    /// creation, retrieval, and updates. Use this client to configure the payment experience
+    /// for buyers via the MercadoPago Checkout Preferences API.
     /// </summary>
+    /// <seealso cref="PreferenceRequest"/>
+    /// <seealso cref="MercadoPago.Resource.Preference.Preference"/>
     public class PreferenceClient : MercadoPagoClient<Preference>
     {
         /// <summary>
@@ -55,14 +59,14 @@
         }
 
         /// <summary>
-        /// Get async a preference by your ID.
+        /// Retrieves a checkout preference by its ID as an asynchronous operation.
         /// </summary>
-        /// <param name="id">The preference id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The preference ID returned when the preference was created.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A task whose result is the <see cref="Preference"/> with the current preference data.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
@@ -76,13 +80,13 @@
         }
 
         /// <summary>
-        /// Get async a preference by your ID.
+        /// Retrieves a checkout preference by its ID.
         /// </summary>
-        /// <param name="id">The preference id.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A task whose the result is the preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The preference ID returned when the preference was created.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <returns>The <see cref="Preference"/> with the current preference data.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
@@ -95,14 +99,14 @@
         }
 
         /// <summary>
-        /// Creates a preference as an asynchronous operation.
+        /// Creates a new Checkout Pro preference as an asynchronous operation.
         /// </summary>
-        /// <param name="request">The data to create a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the created preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="PreferenceRequest"/> with items, payer data, and checkout configuration.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A task whose result is the created <see cref="Preference"/> including its generated ID and init point URL.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
@@ -116,13 +120,13 @@
         }
 
         /// <summary>
-        /// Creates a preference.
+        /// Creates a new Checkout Pro preference.
         /// </summary>
-        /// <param name="request">The data to create a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The created preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">The <see cref="PreferenceRequest"/> with items, payer data, and checkout configuration.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <returns>The created <see cref="Preference"/> including its generated ID and init point URL.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
@@ -135,16 +139,16 @@
         }
 
         /// <summary>
-        /// Updates a preference as an asynchronous operation.
-        /// Just send in <paramref name="request"/> the properties you want to update.
+        /// Updates an existing checkout preference as an asynchronous operation.
+        /// Only include in <paramref name="request"/> the properties you want to update.
         /// </summary>
-        /// <param name="id">The preference ID.</param>
-        /// <param name="request">The data to update a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the updated preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The preference ID to update.</param>
+        /// <param name="request">The <see cref="PreferenceRequest"/> containing only the fields to modify.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the request.</param>
+        /// <returns>A task whose result is the updated <see cref="Preference"/>.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
@@ -159,15 +163,15 @@
         }
 
         /// <summary>
-        /// Updates a preference.
-        /// Just send in <paramref name="request"/> the properties you want to update.
+        /// Updates an existing checkout preference.
+        /// Only include in <paramref name="request"/> the properties you want to update.
         /// </summary>
-        /// <param name="id">The preference ID.</param>
-        /// <param name="request">The data to update a preference.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The updated preference.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The preference ID to update.</param>
+        /// <param name="request">The <see cref="PreferenceRequest"/> containing only the fields to modify.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> with custom headers or access token.</param>
+        /// <returns>The updated <see cref="Preference"/>.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
         /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
