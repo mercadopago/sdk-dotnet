@@ -74,7 +74,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/get-payment/get/">here</a>.
         /// </remarks>
         public Task<Payment> GetAsync(
             long id,
@@ -99,7 +99,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/get-payment/get/">here</a>.
         /// </remarks>
         public Payment Get(
             long id,
@@ -123,7 +123,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/create-payment/post/">here</a>.
         /// </remarks>
         public Task<Payment> CreateAsync(
             PaymentCreateRequest request,
@@ -148,7 +148,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/create-payment/post/">here</a>.
         /// </remarks>
         public Payment Create(
             PaymentCreateRequest request,
@@ -304,7 +304,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/search-payments/get/">here</a>.
         /// </remarks>
         public Task<ResultsResourcesPage<Payment>> SearchAsync(
             SearchRequest request,
@@ -328,7 +328,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/search-payments/get/">here</a>.
         /// </remarks>
         public ResultsResourcesPage<Payment> Search(
             SearchRequest request,

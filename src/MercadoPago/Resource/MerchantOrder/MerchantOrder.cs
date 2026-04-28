@@ -11,7 +11,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
     /// </remarks>
     public class MerchantOrder : IResource
     {

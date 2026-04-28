@@ -71,7 +71,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/get-customer/get/">here</a>.
         /// </remarks>
         public Task<Customer> GetAsync(
             string id,
@@ -96,7 +96,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/get-customer/get/">here</a>.
         /// </remarks>
         public Customer Get(
             string id,
@@ -120,7 +120,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/create-customer/post/">here</a>.
         /// </remarks>
         public Task<Customer> CreateAsync(
             CustomerRequest request,
@@ -145,7 +145,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/create-customer/post/">here</a>.
         /// </remarks>
         public Customer Create(
             CustomerRequest request,
@@ -171,7 +171,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_id/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/update-customer/put/">here</a>.
         /// </remarks>
         public Task<Customer> UpdateAsync(
             string id,
@@ -199,7 +199,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference//customers/_customers_id/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/update-customer/put">here</a>.
         /// </remarks>
         public Customer Update(
             string id,
@@ -267,7 +267,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/search-customer/get/">here</a>.
         /// </remarks>
         public Task<ResultsResourcesPage<Customer>> SearchAsync(
             SearchRequest request,
@@ -293,7 +293,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/customers/_customers_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/search-customer/get/">here</a>.
         /// </remarks>
         public ResultsResourcesPage<Customer> Search(
             SearchRequest request,
@@ -318,7 +318,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/get-card/get/">here</a>.
         /// </remarks>
         public Task<CustomerCard> GetCardAsync(
             string id,
@@ -341,7 +341,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/get-card/get/">here</a>.
         /// </remarks>
         public CustomerCard GetCard(
             string id,
@@ -364,7 +364,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/save-card/post/">here</a>.
         /// </remarks>
         public Task<CustomerCard> CreateCardAsync(
             string id,
@@ -387,7 +387,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/save-card/post/">here</a>.
         /// </remarks>
         public CustomerCard CreateCard(
             string customerId,
@@ -410,7 +410,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/delete/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/delete-card/delete/">here</a>.
         /// </remarks>
         public Task<CustomerCard> DeleteCardAsync(
             string id,
@@ -433,7 +433,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards_id/delete/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/delete-card/delete/">here</a>.
         /// </remarks>
         public CustomerCard DeleteCard(
             string id,
@@ -455,7 +455,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/get-customer-cards/get/">here</a>.
         /// </remarks>
         public Task<ResourcesList<CustomerCard>> ListCardsAsync(
             string id,
@@ -476,7 +476,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/cards/_customers_customer_id_cards/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cards/get-customer-cards/get/">here</a>.
         /// </remarks>
         public ResourcesList<CustomerCard> ListCards(
             string id,

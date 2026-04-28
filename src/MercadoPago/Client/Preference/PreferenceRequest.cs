@@ -11,8 +11,8 @@
     /// </summary>
     /// <remarks>
     /// Check the documentation
-    /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>
-    /// and <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences_id/put/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/create-preference/post/">here</a>
+    /// and <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/update-preference/put/">here</a>.
     /// </remarks>
     /// <seealso cref="PreferenceClient"/>
     public class PreferenceRequest

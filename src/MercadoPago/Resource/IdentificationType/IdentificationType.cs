@@ -11,7 +11,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/identification_types/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/identification-types/get">here</a>.
     /// </remarks>
     public class IdentificationType : IResource
     {

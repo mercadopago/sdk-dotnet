@@ -76,7 +76,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public Task<AdvancedPayment> GetAsync(
             long id,
@@ -101,7 +101,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public AdvancedPayment Get(
             long id,
@@ -126,7 +126,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public Task<AdvancedPayment> CreateAsync(
             AdvancedPaymentCreateRequest request,
@@ -152,7 +152,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public AdvancedPayment Create(
             AdvancedPaymentCreateRequest request,
@@ -378,7 +378,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public Task<ResultsResourcesPage<AdvancedPayment>> SearchAsync(
             SearchRequest request,
@@ -402,7 +402,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/_advanced_payments_id_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
         /// </remarks>
         public ResultsResourcesPage<AdvancedPayment> Search(
             SearchRequest request,

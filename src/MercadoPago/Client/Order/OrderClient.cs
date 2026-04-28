@@ -81,7 +81,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/create-order/post/">here</a>.
         /// </remarks>
         public Task<Order> CreateAsync(
             OrderCreateRequest request,
@@ -101,7 +101,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com.br/developers/pt/reference/order/online-payments/create/post">here</a>.
+        /// <a href="https://www.mercadopago.com.br/developers/pt/reference/online-payments/checkout-api/create-order/post">here</a>.
         /// </remarks>
         public Order Create(
             OrderCreateRequest request,
@@ -121,7 +121,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/get-order/get">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/get-order/get">here</a>.
         /// </remarks>
         public Task<Order> GetAsync(
             string id,
@@ -141,7 +141,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/get-order/get">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/get-order/get">here</a>.
         /// </remarks>
         public Order Get(
             string id,
@@ -162,7 +162,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online/process-order/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/process-order/post">here</a>.
         /// </remarks>
         public Task<Order> ProcessAsync(
             string id,
@@ -183,7 +183,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online/process-order/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/process-order/post">here</a>.
         /// </remarks>
         public Order Process(
             string id,
@@ -204,7 +204,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/capture/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/capture-order/post">here</a>.
         /// </remarks>
         public Task<Order> CaptureAsync(
             string id,
@@ -225,7 +225,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/capture/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/capture-order/post">here</a>.
         /// </remarks>
         public Order Capture(
             string id,
@@ -246,7 +246,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/cancel-order/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cancel-order/post">here</a>.
         /// </remarks>
         public Task<Order> CancelAsync(
             string id,
@@ -267,7 +267,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/cancel-order/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/cancel-order/post">here</a>.
         /// </remarks>
         public Order Cancel(
             string id,
@@ -290,7 +290,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/refund-order/post">here</a>.
         /// </remarks>
         public Task<Order> RefundAsync(
             string id,
@@ -314,7 +314,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/refund/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/refund-order/post">here</a>.
         /// </remarks>
         public Order Refund(
             string id,
@@ -336,7 +336,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/add-transaction-order/post">here</a>.
         /// </remarks>
         public Task<OrderTransaction> CreateTransactionAsync(
             string id,
@@ -358,7 +358,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/add-transaction/post">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/add-transaction-order/post">here</a>.
         /// </remarks>
         public OrderTransaction CreateTransaction(
             string id,
@@ -381,7 +381,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/update-transaction-order/put">here</a>.
         /// </remarks>
         public Task<OrderUpdateTransaction> UpdateTransactionAsync(
             string id,
@@ -405,7 +405,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/update-transaction/put">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/update-transaction-order/put">here</a>.
         /// </remarks>
         public OrderUpdateTransaction UpdateTransaction(
             string id,
@@ -428,7 +428,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/delete-transaction-order/delete">here</a>.
         /// </remarks>
         public Task<OrderTransaction> DeleteTransactionAsync(
             string id,
@@ -450,7 +450,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/delete-transaction/delete">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/delete-transaction-order/delete">here</a>.
         /// </remarks>
         public OrderTransaction DeleteTransaction(
             string id,

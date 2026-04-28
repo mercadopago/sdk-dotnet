@@ -10,7 +10,7 @@
     /// </summary>
     /// <remarks>
     /// Check the parameters
-    /// <a href="https://www.mercadopago.com/developers/en/reference/payments/_payments/post/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/create-payment/post/">here</a>.
     /// </remarks>
     public class PaymentCreateRequest : IdempotentRequest
     {

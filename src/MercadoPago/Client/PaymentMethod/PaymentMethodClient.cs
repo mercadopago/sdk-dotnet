@@ -69,7 +69,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payment_methods/_payment_methods/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/payment-methods/get/">here</a>.
         /// </remarks>
         public Task<ResourcesList<PaymentMethod>> ListAsync(
             RequestOptions requestOptions = null,
@@ -93,7 +93,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/payment_methods/_payment_methods/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/payment-methods/get/">here</a>.
         /// </remarks>
         public ResourcesList<PaymentMethod> List(
             RequestOptions requestOptions = null)

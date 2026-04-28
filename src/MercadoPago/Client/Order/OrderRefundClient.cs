@@ -72,7 +72,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/refund-order/post/">here</a>.
         /// </remarks>
         public Task<Order> RefundAsync(
             string id,
@@ -95,7 +95,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com.br/developers/en/reference/order/online-payments/create/post">here</a>.
+        /// <a href="https://www.mercadopago.com.br/developers/en/reference/online-payments/checkout-api/refund-order/post">here</a>.
         /// </remarks>
         public Order Refund(
             string id,

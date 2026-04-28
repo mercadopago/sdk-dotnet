@@ -72,7 +72,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/get-merchant-order/get/">here</a>.
         /// </remarks>
         public Task<MerchantOrder> GetAsync(
             long id,
@@ -97,7 +97,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/get-merchant-order/get/">here</a>.
         /// </remarks>
         public MerchantOrder Get(
             long id,
@@ -122,7 +122,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/">here</a>.
         /// </remarks>
         public Task<MerchantOrder> CreateAsync(
             MerchantOrderCreateRequest request,
@@ -148,7 +148,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/">here</a>.
         /// </remarks>
         public MerchantOrder Create(
             MerchantOrderCreateRequest request,
@@ -173,7 +173,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/update-merchant-order/put/">here</a>.
         /// </remarks>
         public Task<MerchantOrder> UpdateAsync(
             long id,
@@ -200,7 +200,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_id/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/update-merchant-order/put/">here</a>.
         /// </remarks>
         public MerchantOrder Update(
             long id,
@@ -225,7 +225,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/search-merchant-order/get/">here</a>.
         /// </remarks>
         public Task<ElementsResourcesPage<MerchantOrder>> SearchAsync(
             SearchRequest request,
@@ -249,7 +249,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/merchant_orders/_merchant_orders_search/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/merchant_orders/search-merchant-order/get/">here</a>.
         /// </remarks>
         public ElementsResourcesPage<MerchantOrder> Search(
             SearchRequest request,

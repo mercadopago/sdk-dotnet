@@ -13,7 +13,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/customers/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/customers/create-customer/post">here</a>.
     /// </remarks>
     public class Customer : IResource
     {

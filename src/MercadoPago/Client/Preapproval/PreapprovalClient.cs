@@ -100,7 +100,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/subscriptions/_preapproval/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/subscriptions/create-preapproval/post/">here</a>.
         /// </remarks>
         public Task<Preapproval> CreateAsync(
             PreapprovalCreateRequest request,
@@ -120,7 +120,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/subscriptions/_preapproval/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/subscriptions/create-preapproval/post/">here</a>.
         /// </remarks>
         public Preapproval Create(
             PreapprovalCreateRequest request,

@@ -11,7 +11,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/create-preference/post">here</a>.
     /// </remarks>
     public class Preference : IResource
     {

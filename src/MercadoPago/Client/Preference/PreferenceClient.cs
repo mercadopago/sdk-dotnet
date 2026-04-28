@@ -69,7 +69,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/get-preference/get">here</a>.
         /// </remarks>
         public Task<Preference> GetAsync(
             string id,
@@ -89,7 +89,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/_checkout_preferences_id/get/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/get-preference/get">here</a>.
         /// </remarks>
         public Preference Get(
             string id,
@@ -109,7 +109,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/create-preference/post/">here</a>.
         /// </remarks>
         public Task<Preference> CreateAsync(
             PreferenceRequest request,
@@ -129,7 +129,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/create-preference/post/">here</a>.
         /// </remarks>
         public Preference Create(
             PreferenceRequest request,
@@ -151,7 +151,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/update-preference/put">here</a>.
         /// </remarks>
         public Task<Preference> UpdateAsync(
             string id,
@@ -174,7 +174,7 @@
         /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         /// <remarks>
         /// Check the API documentation
-        /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/put/">here</a>.
+        /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/update-preference/put">here</a>.
         /// </remarks>
         public Preference Update(
             string id,

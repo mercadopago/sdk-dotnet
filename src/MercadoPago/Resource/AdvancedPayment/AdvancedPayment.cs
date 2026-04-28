@@ -10,7 +10,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/advanced_payments/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference">here</a>.
     /// </remarks>
     public class AdvancedPayment : IResource
     {

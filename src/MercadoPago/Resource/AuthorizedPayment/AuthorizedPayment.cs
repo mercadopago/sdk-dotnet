@@ -14,7 +14,7 @@ namespace MercadoPago.Resource.AuthorizedPayment
     /// </summary>
     /// <remarks>
     /// For more information check the documentation
-    /// <a href="https://www.mercadopago.com.br/developers/en/reference/subscriptions/resource/">here</a>
+    /// <a href="https://www.mercadopago.com.br/developers/en/reference/online-payments/subscriptions/create-preapproval/post">here</a>
     /// </remarks>
     public class AuthorizedPayment : IResource
     {

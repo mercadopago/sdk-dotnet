@@ -12,7 +12,7 @@
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/payments/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api-payments/create-payment/post">here</a>.
     /// </remarks>
     public class Payment : IResource
     {

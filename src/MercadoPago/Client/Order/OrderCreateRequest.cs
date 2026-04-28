@@ -12,7 +12,7 @@ namespace MercadoPago.Client.Order
     /// </summary>
     /// <remarks>
     /// Check the parameters
-    /// <a href="https://www.mercadopago.com/developers/en/reference/order/online-payments/create/post/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/create-order/post/">here</a>.
     /// </remarks>
     /// <seealso cref="OrderClient.Create(OrderCreateRequest, RequestOptions)"/>
     /// <seealso cref="OrderClient.CreateAsync(OrderCreateRequest, RequestOptions, System.Threading.CancellationToken)"/>
