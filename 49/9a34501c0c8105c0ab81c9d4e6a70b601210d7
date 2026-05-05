@@ -1,0 +1,14 @@
+CODE_OF_CONDUCT.md
+  h_73c5875c7a1334 1,6,8,28,31,42-43,48-49,51,55-57,59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "499a34501c0c8105c0ab81c9d4e6a70b601210d7",
+  "prompts": {},
+  "humans": {
+    "h_73c5875c7a1334": {
+      "author": "Daniel Alfaro"
+    }
+  }
+}
