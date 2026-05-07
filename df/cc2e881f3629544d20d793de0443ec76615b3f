@@ -1,0 +1,22 @@
+src/MercadoPago.Tests/MercadoPago.Tests.csproj
+  s_3db28d0d1288e5::t_ab06d248fc561a 11
+  s_3db28d0d1288e5::t_401bb5b9a723ee 14
+  s_3db28d0d1288e5::t_efca9e02c75c7c 12
+  s_3db28d0d1288e5::t_f5c3ae4459b58c 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "dfcc2e881f3629544d20d793de0443ec76615b3f",
+  "prompts": {},
+  "sessions": {
+    "s_3db28d0d1288e5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1efe60b6-79c1-4907-9782-0020c13d78b6",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Daniel Alfaro <daniel.alfaro@mercadolibre.com.co>"
+    }
+  }
+}
