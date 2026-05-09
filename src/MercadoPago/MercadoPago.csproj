@@ -12,9 +12,14 @@
     <LangVersion>7.3</LangVersion>
     <PackageId>mercadopago-sdk</PackageId>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/900583</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/dx-dotnet/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/mercadopago/dx-dotnet</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/sdk-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mercadopago/sdk-dotnet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>mercadopago;payment;credit;card;checkout</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/mercadopago/sdk-dotnet</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
@@ -25,6 +30,11 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
