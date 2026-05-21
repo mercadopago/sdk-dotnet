@@ -3,17 +3,19 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Identification class.
+    /// Represents a payer's identity document used for order verification and compliance.
     /// </summary>
+    /// <seealso cref="OrderPayerRequest"/>
     public class OrderIdentificationRequest
     {
         /// <summary>
-        /// Type of identification.
+        /// Type of identification document (e.g., "CPF", "CNPJ", "DNI", "CURP").
+        /// Accepted values depend on the payer's country.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Unique number of that identification.
+        /// Unique number of the identification document.
         /// </summary>
         public string Number { get; set; }
     }

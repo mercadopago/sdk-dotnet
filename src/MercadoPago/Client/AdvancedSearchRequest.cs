@@ -5,64 +5,73 @@
 
 
     /// <summary>
-    /// Class with more advanced search parameters.
+    /// Extended search request that adds sorting, ordering criteria, and date-range filtering
+    /// on top of the basic pagination provided by <see cref="SearchRequest"/>.
+    /// Used by client methods such as
+    /// <see cref="AuthorizedPayment.AuthorizedPaymentClient.SearchAsync"/>
+    /// and <see cref="Customer.CustomerClient.SearchAsync"/> to query the MercadoPago Search API.
     /// </summary>
     public class AdvancedSearchRequest : SearchRequest
     {
         /// <summary>
-        /// Sort param name.
+        /// Query-string parameter name for the sort field (<c>sort</c>).
         /// </summary>
         public const string SortParam = "sort";
 
         /// <summary>
-        /// Criteria param name.
+        /// Query-string parameter name for the ordering criteria (<c>criteria</c>).
         /// </summary>
         public const string CriteriaParam = "criteria";
 
         /// <summary>
-        /// Range param name.
+        /// Query-string parameter name for the range field (<c>range</c>).
         /// </summary>
         public const string RangeParam = "range";
 
         /// <summary>
-        /// Begin date param name.
+        /// Query-string parameter name for the range start date (<c>begin_date</c>).
         /// </summary>
         public const string BeginDateParam = "begin_date";
 
         /// <summary>
-        /// End date param name.
+        /// Query-string parameter name for the range end date (<c>end_date</c>).
         /// </summary>
         public const string EndDateParam = "end_date";
 
         /// <summary>
-        /// Which property to order.
+        /// Name of the resource property to sort results by (e.g., <c>"date_created"</c>).
         /// </summary>
         public string Sort { get; set; }
 
         /// <summary>
-        /// Order the items <c>desc</c> or <c>asc</c>.
+        /// Sort direction. Accepted values are <c>"desc"</c> (descending) or <c>"asc"</c> (ascending).
         /// </summary>
         public string Criteria { get; set; }
 
         /// <summary>
-        /// Which property to apply range.
+        /// Name of the resource property on which to apply the date range filter
+        /// defined by <see cref="BeginDate"/> and <see cref="EndDate"/>
+        /// (e.g., <c>"date_created"</c>, <c>"date_last_updated"</c>).
         /// </summary>
         public string Range { get; set; }
 
         /// <summary>
-        /// Begin date of the range.
+        /// Inclusive start date for the range filter specified by <see cref="Range"/>.
         /// </summary>
         public DateTime? BeginDate { get; set; }
 
         /// <summary>
-        /// End date of the range.
+        /// Inclusive end date for the range filter specified by <see cref="Range"/>.
         /// </summary>
         public DateTime? EndDate { get; set; }
 
         /// <summary>
-        /// Create the search params from properties.
+        /// Builds a dictionary of query-string parameters by merging the base pagination
+        /// parameters from <see cref="SearchRequest.GetParameters"/> with sorting and
+        /// date-range parameters. Parameters already present in <see cref="SearchRequest.Filters"/>
+        /// are not overwritten.
         /// </summary>
-        /// <returns>The search params.</returns>
+        /// <returns>A dictionary of parameter names to values ready to be serialized as query-string arguments.</returns>
         public override IDictionary<string, object> GetParameters()
         {
             IDictionary<string, object> parameters = base.GetParameters();

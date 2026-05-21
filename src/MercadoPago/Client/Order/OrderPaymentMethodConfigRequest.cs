@@ -5,32 +5,34 @@ using System.Collections.Generic;
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Payment method configuration class.
+    /// Configuration that restricts or customizes the payment methods available to the payer
+    /// during checkout, including exclusion lists and installment limits.
     /// </summary>
+    /// <seealso cref="OrderConfigRequest"/>
     public class OrderPaymentMethodConfigRequest
     {
         /// <summary>
-        /// Not allowed payment method IDs.
+        /// List of payment method IDs that are not allowed for this order (e.g., "visa", "master").
         /// </summary>
         public List<string> NotAllowedIds { get; set; }
 
         /// <summary>
-        /// Not allowed payment method types.
+        /// List of payment method types that are not allowed (e.g., "credit_card", "ticket").
         /// </summary>
         public List<string> NotAllowedTypes { get; set; }
 
         /// <summary>
-        /// Default payment method ID.
+        /// Payment method ID to pre-select as the default in the checkout.
         /// </summary>
         public string DefaultId { get; set; }
 
         /// <summary>
-        /// Max installments.
+        /// Maximum number of installments the payer can choose.
         /// </summary>
         public string MaxInstallments { get; set; }
 
         /// <summary>
-        ///  Default installments.
+        /// Default number of installments pre-selected in the checkout.
         /// </summary>
         public string DefaultInstallments { get; set; }
     }

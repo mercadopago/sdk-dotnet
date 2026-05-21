@@ -3,12 +3,16 @@
     using MercadoPago.Resource.Common;
 
     /// <summary>
-    /// Identification information.
+    /// Extended identification for a cardholder, inheriting
+    /// <see cref="Identification.Type"/> and <see cref="Identification.Number"/>
+    /// from <see cref="Identification"/> and adding a <see cref="Subtype"/>
+    /// for finer classification.
     /// </summary>
     public class CustomerCardCardholderIdentification : Identification
     {
         /// <summary>
-        /// Identification subtype.
+        /// Optional subtype that further classifies the identification
+        /// document (e.g. distinguishing natural person from legal entity).
         /// </summary>
         public string Subtype { get; set; }
     }

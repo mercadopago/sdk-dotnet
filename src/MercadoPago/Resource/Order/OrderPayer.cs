@@ -3,17 +3,17 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Payer class.
+    /// Represents the payer associated with an <see cref="Order"/>, identifying who is responsible for the payment.
     /// </summary>
     public class OrderPayer
     {
         /// <summary>
-        /// Customer ID.
+        /// MercadoPago customer identifier for the payer, used to retrieve saved cards and payment preferences.
         /// </summary>
         public string CustomerId { get; set; }
 
         /// <summary>
-        /// Entity type.
+        /// Legal entity type of the payer (e.g., "individual" for a person, "association" for a business entity).
         /// </summary>
         public string EntityType { get; set; }
     }

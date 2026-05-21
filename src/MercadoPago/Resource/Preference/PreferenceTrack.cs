@@ -1,17 +1,19 @@
 ﻿namespace MercadoPago.Resource.Preference
 {
     /// <summary>
-    /// Track to be executed during the users's interaction in the Checkout flow.
+    /// Represents a tracking pixel or conversion tag executed during the buyer's interaction
+    /// in the Checkout Pro flow. Used to integrate with advertising platforms for conversion tracking.
     /// </summary>
     public class PreferenceTrack
     {
         /// <summary>
-        /// Track type (<c>google_ad</c> or <c>facebook_ad</c>).
+        /// Type of tracking integration. Supported values: <c>google_ad</c> for Google Ads
+        /// conversion tracking, or <c>facebook_ad</c> for Facebook Pixel tracking.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Values according the track type.
+        /// Configuration values specific to the tracking type (e.g., conversion IDs, pixel IDs).
         /// </summary>
         public PreferenceTrackValues Values { get; set; }
     }

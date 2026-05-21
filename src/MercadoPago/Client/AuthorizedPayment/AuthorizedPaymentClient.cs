@@ -9,7 +9,10 @@ namespace MercadoPago.Client.AuthorizedPayment
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client that use the Authorized Payments (also known as Invoices) APIs.
+    /// Client for the MercadoPago Authorized Payments API (also known as Invoices).
+    /// Provides methods to retrieve individual authorized payments and to search for them
+    /// with pagination, sorting, and filtering via <see cref="SearchRequest"/>
+    /// or <see cref="AdvancedSearchRequest"/>.
     /// </summary>
     public class AuthorizedPaymentClient : MercadoPagoClient<AuthorizedPayment>
     {
@@ -56,14 +59,14 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Gets an AuthorizedPayment by ID.
+        /// Retrieves an authorized payment by its ID asynchronously.
         /// </summary>
-        /// <param name="id">The AuthorizedPayment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the AuthorizedPayment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique numeric identifier of the authorized payment to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="AuthorizedPayment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<AuthorizedPayment> GetAsync(
             long id,
             RequestOptions requestOptions = null,
@@ -73,13 +76,13 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Gets an AuthorizedPayment by ID.
+        /// Retrieves an authorized payment by its ID synchronously.
         /// </summary>
-        /// <param name="id">The AuthorizedPayment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The AuthorizedPayment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The unique numeric identifier of the authorized payment to retrieve.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="AuthorizedPayment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public AuthorizedPayment Get(
             long id,
             RequestOptions requestOptions = null)
@@ -88,14 +91,16 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Searches async for AuthorizedPayment that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for authorized payments matching the specified criteria asynchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose result is a page of AuthorizedPayments.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is a paginated list of matching <see cref="AuthorizedPayment"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<ResultsResourcesPage<AuthorizedPayment>> SearchAsync(
             SearchRequest request,
             RequestOptions requestOptions = null,
@@ -109,13 +114,15 @@ namespace MercadoPago.Client.AuthorizedPayment
         }
 
         /// <summary>
-        /// Searches for AuthorizedPayment that match the criteria of <see cref="AdvancedSearchRequest"/>.
+        /// Searches for authorized payments matching the specified criteria synchronously.
+        /// Supports pagination, sorting, and date-range filtering when an
+        /// <see cref="AdvancedSearchRequest"/> is provided.
         /// </summary>
-        /// <param name="request">The search request parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A page of AuthorizedPayment.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">Search parameters including filters, pagination, and optional sorting/date-range criteria.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A paginated list of matching <see cref="AuthorizedPayment"/> resources.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public ResultsResourcesPage<AuthorizedPayment> Search(
             SearchRequest request,
             RequestOptions requestOptions = null)

@@ -3,17 +3,18 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Subscription Sequence class.
+    /// Represents the sequence position of a payment within a subscription lifecycle, as part of
+    /// <see cref="OrderSubscriptionData"/>.
     /// </summary>
     public class OrderSubscriptionSequence
     {
         /// <summary>
-        /// Number.
+        /// Current sequence number of this payment within the subscription (e.g., 3 for the third billing cycle).
         /// </summary>
         public int? Number { get; set; }
 
         /// <summary>
-        /// Total.
+        /// Total number of planned payments in the subscription. Null if the subscription has no fixed end date.
         /// </summary>
         public int? Total { get; set; }
     }

@@ -8,7 +8,10 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client to use Card Token API.
+    /// Client for the MercadoPago Card Token API (<c>/v1/card_tokens</c>).
+    /// Card tokens are single-use, short-lived representations of card data that allow
+    /// payments to be created without transmitting raw card details.
+    /// Use this client to create new card tokens or to retrieve existing ones by ID.
     /// </summary>
     public class CardTokenClient : MercadoPagoClient<CardToken>
     {
@@ -55,14 +58,14 @@
         }
 
         /// <summary>
-        /// Get async the card token data by your ID (token).
+        /// Retrieves card token data by its ID asynchronously.
         /// </summary>
-        /// <param name="id">The card token ID (token).</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the card token.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The card token identifier (the token string returned when the token was created).</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the <see cref="CardToken"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<CardToken> GetAsync(
             string id,
             RequestOptions requestOptions = null,
@@ -77,13 +80,13 @@
         }
 
         /// <summary>
-        /// Get the card token data by your ID (token).
+        /// Retrieves card token data by its ID synchronously.
         /// </summary>
-        /// <param name="id">The card token ID (token).</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The card token.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="id">The card token identifier (the token string returned when the token was created).</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The <see cref="CardToken"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public CardToken Get(
             string id,
             RequestOptions requestOptions = null)
@@ -96,14 +99,15 @@
         }
 
         /// <summary>
-        /// Creates a card token as an asynchronous operation.
+        /// Creates a new card token asynchronously from a saved card reference.
+        /// The resulting token can then be used as the <c>token</c> field when creating a payment.
         /// </summary>
-        /// <param name="request">The data to create the card token.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>A task whose the result is the created card token.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="CardTokenRequest"/> containing the card ID, customer ID, and security code.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the newly created <see cref="CardToken"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public Task<CardToken> CreateAsync(
             CardTokenRequest request,
             RequestOptions requestOptions = null,
@@ -118,13 +122,14 @@
         }
 
         /// <summary>
-        /// Creates a card token.
+        /// Creates a new card token synchronously from a saved card reference.
+        /// The resulting token can then be used as the <c>token</c> field when creating a payment.
         /// </summary>
-        /// <param name="request">The data to create the card token.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>The created card token.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="request">A <see cref="CardTokenRequest"/> containing the card ID, customer ID, and security code.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The newly created <see cref="CardToken"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
         public CardToken Create(
             CardTokenRequest request,
             RequestOptions requestOptions = null)

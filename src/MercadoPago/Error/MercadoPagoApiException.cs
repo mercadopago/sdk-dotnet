@@ -6,15 +6,24 @@
     using MercadoPago.Http;
 
     /// <summary>
-    /// Exception thrown when the API response is unsuccessful.
+    /// Exception thrown when a MercadoPago API request returns a non-success HTTP status code.
     /// </summary>
+    /// <remarks>
+    /// Carries the full <see cref="MercadoPagoResponse"/> and, when available, a deserialized
+    /// <see cref="Error.ApiError"/> with structured error details. The <see cref="Message"/>
+    /// property is built dynamically by concatenating the status code, API message, and any
+    /// nested error details for convenient logging.
+    /// </remarks>
     public class MercadoPagoApiException : Exception
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MercadoPagoApiException"/> class.
         /// </summary>
-        /// <param name="message">Message of the exception.</param>
-        /// <param name="response">Response from API.</param>
+        /// <param name="message">A summary message describing the failure context.</param>
+        /// <param name="response">
+        /// The raw <see cref="MercadoPagoResponse"/> received from the API, or <c>null</c>
+        /// if no response was received.
+        /// </param>
         public MercadoPagoApiException(string message, MercadoPagoResponse response)
             : base(message)
         {
@@ -23,7 +32,8 @@
         }
 
         /// <summary>
-        /// Exception message.
+        /// Gets a composite message that includes the base message, HTTP status code,
+        /// API error message, and any nested error details or messages.
         /// </summary>
         public override string Message
         {
@@ -72,17 +82,19 @@
         }
 
         /// <summary>
-        /// Status code returned by the API.
+        /// Gets the HTTP status code returned by the API (e.g., 400, 401, 404, 500), or <c>null</c> if no response was received.
         /// </summary>
         public int? StatusCode { get; }
 
         /// <summary>
-        /// The error response from API.
+        /// Gets or sets the deserialized <see cref="Error.ApiError"/> containing structured error
+        /// details such as error codes, causes, and messages from the API response body.
         /// </summary>
         public ApiError ApiError { get; set; }
 
         /// <summary>
-        /// Api response that caused the exception.
+        /// Gets the raw <see cref="MercadoPagoResponse"/> that triggered this exception, including
+        /// the full response body, headers, and status code.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; }
     }

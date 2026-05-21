@@ -3,28 +3,29 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Transaction security information for 3DS.
+    /// Represents 3-D Secure (3DS) transaction security data within an <see cref="OrderPaymentMethod"/>,
+    /// used for cardholder authentication and fraud prevention.
     /// </summary>
     public class OrderTransactionSecurity
     {
         /// <summary>
-        /// ID.
+        /// Unique identifier of the 3DS authentication session.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// URL for the 3DS Challenge.
+        /// URL where the payer is redirected to complete the 3DS challenge authentication step.
         /// </summary>
         public string Url { get; set; }
 
         /// <summary>
-        /// Validation mode used.
+        /// Validation mode that determines when 3DS authentication is triggered.
         /// Possible values: "on_fraud_risk", "never".
         /// </summary>
         public string Validation { get; set; }
 
         /// <summary>
-        /// Liability shift configuration.
+        /// Liability shift configuration that determines whether the transaction requires a liability shift to the issuer.
         /// Possible values: "required".
         /// </summary>
         public string LiabilityShift { get; set; }

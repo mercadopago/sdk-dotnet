@@ -3,12 +3,13 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Shipment class.
+    /// Represents the shipping details for an <see cref="Order"/>, containing the delivery address
+    /// for physical goods.
     /// </summary>
     public class OrderShipment
     {
         /// <summary>
-        /// Shipment address information.
+        /// Delivery address for this shipment. See <see cref="OrderShipmentAddress"/> for street, city, and postal code fields.
         /// </summary>
         public OrderShipmentAddress Address { get; set; }
     }

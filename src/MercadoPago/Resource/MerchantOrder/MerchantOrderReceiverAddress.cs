@@ -1,82 +1,83 @@
 ﻿namespace MercadoPago.Resource.MerchantOrder
 {
     /// <summary>
-    /// Shipping address of a Merchant Order.
+    /// Represents the shipping destination address for a <see cref="MerchantOrderShipment"/>.
+    /// Contains the full address details including street, city, state, country, and geolocation coordinates.
     /// </summary>
     public class MerchantOrderReceiverAddress
     {
         /// <summary>
-        /// Receiver address ID.
+        /// Unique identifier of the receiver address in MercadoPago.
         /// </summary>
         public long? Id { get; set; }
 
         /// <summary>
-        /// Street name and number of receiver address.
+        /// Full address line combining street name and number (e.g., "Av. Corrientes 1234").
         /// </summary>
         public string AddressLine { get; set; }
 
         /// <summary>
-        /// Apartment.
+        /// Apartment number or identifier within the building.
         /// </summary>
         public string Apartment { get; set; }
 
         /// <summary>
-        /// City information.
+        /// City where the shipment will be delivered.
         /// </summary>
         public MerchantOrderReceiverAddressCity City { get; set; }
 
         /// <summary>
-        /// State information.
+        /// State or province where the shipment will be delivered.
         /// </summary>
         public MerchantOrderReceiverAddressState State { get; set; }
 
         /// <summary>
-        /// Country information.
+        /// Country where the shipment will be delivered.
         /// </summary>
         public MerchantOrderReceiverAddressCountry Country { get; set; }
 
         /// <summary>
-        /// Comment about receiver address.
+        /// Additional delivery instructions or comments about the address (e.g., "Ring bell twice").
         /// </summary>
         public string Comment { get; set; }
 
         /// <summary>
-        /// Contact information.
+        /// Name of the contact person at the delivery address.
         /// </summary>
         public string Contact { get; set; }
 
         /// <summary>
-        /// Postal code.
+        /// Postal or ZIP code of the delivery address.
         /// </summary>
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Street name.
+        /// Name of the street at the delivery address.
         /// </summary>
         public string StreetName { get; set; }
 
         /// <summary>
-        /// Street number.
+        /// Street number at the delivery address.
         /// </summary>
         public string StreetNumber { get; set; }
 
         /// <summary>
-        /// Floor.
+        /// Floor number or identifier within the building.
         /// </summary>
         public string Floor { get; set; }
 
         /// <summary>
-        /// Phone.
+        /// Contact phone number at the delivery address.
         /// </summary>
         public string Phone { get; set; }
 
         /// <summary>
-        /// Latitude.
+        /// Geographic latitude coordinate of the delivery address for mapping purposes.
         /// </summary>
         public string Latitude { get; set; }
 
         /// <summary>
-        /// Longitude.
+        /// Geographic longitude coordinate of the delivery address for mapping purposes.
         /// </summary>
         public string Longitude { get; set; }
     }

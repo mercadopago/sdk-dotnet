@@ -6,27 +6,28 @@ namespace MercadoPago.Resource.Order
     using MercadoPago.Http;
 
     /// <summary>
-    /// Transaction class.
+    /// Represents the transaction container within an <see cref="Order"/>, grouping all payment attempts,
+    /// refunds, and chargebacks associated with the order.
     /// </summary>
     public class OrderTransaction : IResource
     {
         /// <summary>
-        /// Payments information.
+        /// List of <see cref="OrderPayment"/> records representing each payment attempt made against this order.
         /// </summary>
         public IList<OrderPayment> Payments { get; set; }
 
         /// <summary>
-        /// Refunds information.
+        /// List of <see cref="OrderRefundItem"/> records representing partial or full refunds issued for this order.
         /// </summary>
         public IList<OrderRefundItem> Refunds { get; set; }
 
         /// <summary>
-        /// Chargebacks information.
+        /// List of <see cref="OrderChargeback"/> records representing disputes initiated by the payer's financial institution.
         /// </summary>
         public IList<OrderChargeback> Chargebacks { get; set; }
 
         /// <summary>
-        /// Response from API.
+        /// Raw HTTP response returned by the MercadoPago API for this request.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
 

@@ -3,61 +3,67 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Data to create a Advanced Payment.
+    /// Request payload for creating an advanced (split) payment that distributes funds
+    /// across multiple receivers. This is the top-level DTO sent to the
+    /// <see cref="AdvancedPaymentClient.Create"/> and <see cref="AdvancedPaymentClient.CreateAsync"/> methods.
     /// </summary>
     public class AdvancedPaymentCreateRequest : IdempotentRequest
     {
         /// <summary>
-        /// Advanced payment description.
+        /// Human-readable description of the advanced payment, shown to the payer during checkout.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// ID given by the merchant in their system.
+        /// Unique reference identifier assigned by the merchant in their own system for reconciliation.
         /// </summary>
         public string ExternalReference { get; set; }
 
         /// <summary>
-        /// Payer information.
+        /// Information about the buyer making the payment.
         /// </summary>
+        /// <see cref="AdvancedPaymentPayerRequest"/>
         public AdvancedPaymentPayerRequest Payer { get; set; }
 
         /// <summary>
-        /// List of payments made by the payer.
+        /// List of split payments made by the payer, each representing a distinct payment method or card.
         /// </summary>
+        /// <see cref="AdvancedPaymentSplitPaymentRequest"/>
         public IList<AdvancedPaymentSplitPaymentRequest> Payments { get; set; }
 
         /// <summary>
-        /// List of payments that correspond to each seller.
+        /// List of disbursements specifying how funds are distributed to each seller or receiver.
         /// </summary>
+        /// <see cref="AdvancedPaymentDisbursementRequest"/>
         public IList<AdvancedPaymentDisbursementRequest> Disbursements { get; set; }
 
         /// <summary>
-        /// Application ID.
+        /// MercadoPago application identifier that originated this payment.
         /// </summary>
         public string ApplicationId { get; set; }
 
         /// <summary>
-        /// When set to true, the payment can only be approved or rejected.
-        /// Otherwise, the payment may be pending.
+        /// When set to <c>true</c>, the payment can only be approved or rejected.
+        /// When <c>false</c> or <c>null</c>, the payment may remain in a pending state.
         /// </summary>
         public bool? BinaryMode { get; set; }
 
         /// <summary>
-        /// Determines if the payment should be captured (<c>true</c>)
-        /// or just reserved (<c>false</c>).
+        /// Determines whether the payment should be immediately captured (<c>true</c>)
+        /// or only authorized and reserved for later capture (<c>false</c>).
         /// </summary>
         public bool? Capture { get; set; }
 
         /// <summary>
-        /// Data that could improve fraud analysis and conversion rates.
-        /// Try to send as much information as possible.
+        /// Supplementary data that improves fraud analysis and conversion rates.
+        /// Send as much information as possible for best results.
         /// </summary>
+        /// <see cref="AdvancedPaymentAdditionalInfoRequest"/>
         public AdvancedPaymentAdditionalInfoRequest AdditionalInfo { get; set; }
 
         /// <summary>
-        /// Data that can be attached to the advanced payment to record additional
-        /// attributes of the merchant.
+        /// Arbitrary key-value pairs attached to the advanced payment for storing
+        /// custom merchant-specific attributes. Keys must be strings.
         /// </summary>
         public IDictionary<string, object> Metadata { get; set; }
     }

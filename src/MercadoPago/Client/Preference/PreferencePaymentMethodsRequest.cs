@@ -3,32 +3,37 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Set up payment methods.
+    /// Configuration for which payment methods and installment options are available at checkout.
+    /// Use this to exclude specific methods or types, set defaults, and limit installment plans.
     /// </summary>
+    /// <seealso cref="PreferenceRequest"/>
     public class PreferencePaymentMethodsRequest
     {
         /// <summary>
-        /// Payment methods not allowed in payment process (except account_money).
+        /// List of specific payment methods to exclude from checkout (except <c>account_money</c>,
+        /// which cannot be excluded). Each entry identifies a payment method by its ID.
         /// </summary>
+        /// <seealso cref="PreferencePaymentMethodRequest"/>
         public IList<PreferencePaymentMethodRequest> ExcludedPaymentMethods { get; set; }
 
         /// <summary>
-        /// Payment types not allowed in payment process.
+        /// List of payment types to exclude from checkout (e.g., <c>"ticket"</c>, <c>"atm"</c>).
         /// </summary>
+        /// <seealso cref="PreferencePaymentTypeRequest"/>
         public IList<PreferencePaymentTypeRequest> ExcludedPaymentTypes { get; set; }
 
         /// <summary>
-        /// Payment method to be preferred on the payments methods list.
+        /// ID of the payment method to pre-select in the checkout payment methods list.
         /// </summary>
         public string DefaultPaymentMethodId { get; set; }
 
         /// <summary>
-        /// Maximum number of credit card installments to be accepted.
+        /// Maximum number of credit card installments accepted for this preference.
         /// </summary>
         public int? Installments { get; set; }
 
         /// <summary>
-        /// Prefered number of credit card installments.
+        /// Preferred number of credit card installments to pre-select at checkout.
         /// </summary>
         public int? DefaultInstallments { get; set; }
     }

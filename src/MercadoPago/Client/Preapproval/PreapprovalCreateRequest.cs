@@ -1,42 +1,48 @@
 ﻿namespace MercadoPago.Client.Preapproval
 {
     /// <summary>
-    /// Data to create a Preapproval.
+    /// Request DTO for creating a new preapproval (subscription) in the MercadoPago
+    /// Subscriptions API. Used with <see cref="PreapprovalClient.CreateAsync"/>
+    /// and <see cref="PreapprovalClient.Create"/>.
     /// </summary>
     public class PreapprovalCreateRequest
     {
         /// <summary>
-        /// Payer email.
+        /// Email address of the payer (subscriber). MercadoPago will send subscription
+        /// notifications and payment receipts to this address.
         /// </summary>
         public string PayerEmail { get; set; }
 
         /// <summary>
-        /// Return URL.
+        /// URL the subscriber is redirected to after approving or declining the subscription.
         /// </summary>
         public string BackUrl { get; set; }
 
         /// <summary>
-        /// Seller ID.
+        /// MercadoPago user ID of the seller (collector) who will receive the subscription payments.
         /// </summary>
         public long? CollectorId { get; set; }
 
         /// <summary>
-        /// Preapproval title.
+        /// Human-readable title or description displayed to the subscriber on the checkout
+        /// and in billing notifications (e.g., <c>"Monthly Premium Plan"</c>).
         /// </summary>
         public string Reason { get; set; }
 
         /// <summary>
-        /// Preapproval reference value.
+        /// Integrator-defined reference that links this subscription to an entity in the
+        /// integrator's system (e.g., an internal subscription or plan ID).
         /// </summary>
         public string ExternalReference { get; set; }
 
         /// <summary>
-        /// Preapproval status.
+        /// Initial status of the subscription (e.g., <c>"pending"</c>, <c>"authorized"</c>).
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Recurring data.
+        /// Automatic recurring billing configuration that defines the charge amount,
+        /// currency, frequency, and date range. See <see cref="PreApprovalAutoRecurringCreateRequest"/>.
         /// </summary>
         public PreApprovalAutoRecurringCreateRequest AutoRecurring { get; set; }
     }

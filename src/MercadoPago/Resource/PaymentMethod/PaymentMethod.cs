@@ -4,86 +4,104 @@
     using MercadoPago.Http;
 
     /// <summary>
-    /// Payment Method resource.
+    /// Represents a payment method available in MercadoPago for the caller's
+    /// country (e.g. Visa, Mastercard, Pix, OXXO). Returned as a list by the
+    /// Payment Methods API. Use
+    /// <see cref="Client.PaymentMethod.PaymentMethodClient"/> to retrieve the
+    /// available payment methods.
     /// </summary>
     /// <remarks>
     /// For more information, access
-    /// <a href="https://www.mercadopago.com/developers/en/reference/payment_methods/resource/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-api/payment-methods/get">here</a>.
     /// </remarks>
     public class PaymentMethod : IResource
     {
         /// <summary>
-        /// Payment method ID.
+        /// Unique payment method identifier (e.g. <c>visa</c>, <c>pix</c>,
+        /// <c>bolbradesco</c>).
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Payment method name.
+        /// Display name of the payment method (e.g. "Visa", "Pix").
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// Types of payment method.
+        /// Payment type identifier that classifies this method (e.g.
+        /// <c>credit_card</c>, <c>debit_card</c>, <c>ticket</c>,
+        /// <c>bank_transfer</c>).
         /// </summary>
         public string PaymentTypeId { get; set; }
 
         /// <summary>
-        /// Payment method status.
+        /// Current availability status of the payment method (e.g.
+        /// <c>active</c>, <c>deactive</c>, <c>temporally_deactive</c>).
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Logo to display in secure sites.
+        /// HTTPS URL of the payment method logo, suitable for use on secure
+        /// pages.
         /// </summary>
         public string SecureThumbnail { get; set; }
 
         /// <summary>
-        /// Logo to show.
+        /// URL of the payment method logo thumbnail.
         /// </summary>
         public string Thumbnail { get; set; }
 
         /// <summary>
-        /// Whether the capture can be delayed or not.
+        /// Indicates whether the payment method supports deferred (two-step)
+        /// capture (<c>supported</c>, <c>unsupported</c>, or
+        /// <c>does_not_apply</c>).
         /// </summary>
         public string DeferredCapture { get; set; }
 
         /// <summary>
-        /// Payment method settings.
+        /// List of validation settings for this payment method, including BIN
+        /// patterns, card number length, and security code rules.
         /// </summary>
         public IList<PaymentMethodSettings> Settings { get; set; }
 
         /// <summary>
-        /// List of additional information that must be supplied by the payer.
+        /// List of additional payer information fields required by this
+        /// payment method (e.g. <c>cardholder_name</c>,
+        /// <c>cardholder_identification_number</c>).
         /// </summary>
         public IList<string> AdditionalInfoNeeded { get; set; }
 
         /// <summary>
-        /// Minimum amount that can be processed with this payment method.
+        /// Minimum transaction amount allowed for this payment method.
         /// </summary>
         public decimal? MinAllowedAmount { get; set; }
 
         /// <summary>
-        /// Maximum amount that can be processed with this payment method.
+        /// Maximum transaction amount allowed for this payment method.
         /// </summary>
         public decimal? MaxAllowedAmount { get; set; }
 
         /// <summary>
-        /// How many time in minutes could happen until processing of the payment.
+        /// Estimated time in minutes for the payment to be accredited after
+        /// processing.
         /// </summary>
         public long? AccreditationTime { get; set; }
 
         /// <summary>
-        /// Financial institution processing this payment method.
+        /// Financial institutions that process this payment method (e.g.
+        /// banks available for bank-transfer methods).
         /// </summary>
         public IList<PaymentMethodFinancialInstitutions> FinancialInstitutions { get; set; }
 
         /// <summary>
-        /// Processing modes.
+        /// Processing modes supported by this payment method (e.g.
+        /// <c>aggregator</c>, <c>gateway</c>).
         /// </summary>
         public IList<string> ProcessingModes { get; set; }
 
         /// <summary>
-        /// Response from API.
+        /// Raw HTTP response returned by the MercadoPago API for the request
+        /// that produced this resource.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
     }

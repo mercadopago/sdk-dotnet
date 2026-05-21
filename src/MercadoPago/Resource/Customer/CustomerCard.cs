@@ -4,72 +4,78 @@
     using MercadoPago.Http;
 
     /// <summary>
-    /// Customer card data.
+    /// Represents a payment card saved for a <see cref="Customer"/> in
+    /// MercadoPago. Cards are tokenized; only masked digits (BIN and last four)
+    /// are stored. Use <see cref="Client.Customer.CustomerCardClient"/> to add,
+    /// retrieve, and delete customer cards.
     /// </summary>
     public class CustomerCard : IResource
     {
         /// <summary>
-        /// Card ID.
+        /// Unique identifier of the saved card.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Customer ID.
+        /// Identifier of the <see cref="Customer"/> who owns this card.
         /// </summary>
         public string CustomerId { get; set; }
 
         /// <summary>
-        /// Card's expiration month.
+        /// Expiration month of the card (1-12).
         /// </summary>
         public int? ExpirationMonth { get; set; }
 
         /// <summary>
-        /// Card's expiration year.
+        /// Four-digit expiration year of the card.
         /// </summary>
         public int? ExpirationYear { get; set; }
 
         /// <summary>
-        /// Card's first six digits.
+        /// First six digits of the card number (BIN). Used to identify the
+        /// issuer and card type.
         /// </summary>
         public string FirstSixDigits { get; set; }
 
         /// <summary>
-        /// Card's last four digits.
+        /// Last four digits of the card number, useful for display to the
+        /// customer.
         /// </summary>
         public string LastFourDigits { get; set; }
 
         /// <summary>
-        /// Payment method information.
+        /// Payment method associated with this card (e.g. Visa, Mastercard).
         /// </summary>
         public CustomerCardPaymentMethod PaymentMethod { get; set; }
 
         /// <summary>
-        /// Security code information.
+        /// Security code (CVV/CVC) configuration for this card.
         /// </summary>
         public CustomerCardSecurityCode SecurityCode { get; set; }
 
         /// <summary>
-        /// Issuer information.
+        /// Card issuer (bank or financial institution) information.
         /// </summary>
         public CustomerCardIssuer Issuer { get; set; }
 
         /// <summary>
-        /// Carholder information.
+        /// Cardholder name and identification details.
         /// </summary>
         public CustomerCardCardholder Cardholder { get; set; }
 
         /// <summary>
-        /// Card's date of creation.
+        /// Date and time when this card was saved.
         /// </summary>
         public DateTime? DateCreated { get; set; }
 
         /// <summary>
-        /// Card's date last update.
+        /// Date and time of the last update to this card record.
         /// </summary>
         public DateTime? DateLastUpdated { get; set; }
 
         /// <summary>
-        /// Response from API.
+        /// Raw HTTP response returned by the MercadoPago API for the request
+        /// that produced this resource.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
     }

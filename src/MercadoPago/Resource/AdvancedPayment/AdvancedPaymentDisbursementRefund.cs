@@ -5,42 +5,44 @@
     using MercadoPago.Resource.Common;
 
     /// <summary>
-    /// Disbursement refund.
+    /// Represents a refund applied to a specific <see cref="AdvancedPaymentDisbursement"/>
+    /// within an <see cref="AdvancedPayment"/>. Contains details about the refunded amount,
+    /// status, and funding source of the refund.
     /// </summary>
     public class AdvancedPaymentDisbursementRefund : IResource
     {
         /// <summary>
-        /// Refund Id.
+        /// Unique identifier of the refund, assigned by MercadoPago.
         /// </summary>
         public long? Id { get; set; }
 
         /// <summary>
-        /// Payment Id.
+        /// Identifier of the original payment that was refunded.
         /// </summary>
         public long? PaymentId { get; set; }
 
         /// <summary>
-        /// Amount refunded.
+        /// Amount that was refunded. For partial refunds, this may be less than the original payment amount.
         /// </summary>
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// Date of creation.
+        /// Date and time when the refund was created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
 
         /// <summary>
-        /// Status of refund.
+        /// Current status of the refund (e.g., approved, pending, or rejected).
         /// </summary>
         public string Status { get; set; }
 
         /// <summary>
-        /// Source of the refund.
+        /// Funding source from which the refund is drawn (e.g., collector or marketplace account).
         /// </summary>
         public Source Source { get; set; }
 
         /// <summary>
-        /// Response from API.
+        /// Raw HTTP response returned by the MercadoPago API for this request.
         /// </summary>
         public MercadoPagoResponse ApiResponse { get; set; }
     }

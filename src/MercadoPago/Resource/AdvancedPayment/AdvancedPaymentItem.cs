@@ -1,42 +1,44 @@
 ﻿namespace MercadoPago.Resource.AdvancedPayment
 {
     /// <summary>
-    /// Purchased item.
+    /// Represents a purchased item included in the <see cref="AdvancedPaymentAdditionalInfo"/>
+    /// of an <see cref="AdvancedPayment"/>. Provides product details used for fraud prevention
+    /// and transaction enrichment.
     /// </summary>
     public class AdvancedPaymentItem
     {
         /// <summary>
-        /// Item code.
+        /// Item code or SKU that uniquely identifies the product in the merchant's catalog.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Item name.
+        /// Display name of the item shown to the payer.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Long item description.
+        /// Detailed description of the item, providing additional product information.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Image URL.
+        /// URL of the item's image. Used for display in the checkout flow.
         /// </summary>
         public string PictureUrl { get; set; }
 
         /// <summary>
-        /// Category of the item.
+        /// Category identifier of the item within the merchant's product taxonomy.
         /// </summary>
         public string CategoryId { get; set; }
 
         /// <summary>
-        /// Item's quantity.
+        /// Number of units of this item being purchased.
         /// </summary>
         public int? Quantity { get; set; }
 
         /// <summary>
-        /// Unit price.
+        /// Price per unit of the item, in the transaction currency.
         /// </summary>
         public decimal? UnitPrice { get; set; }
     }

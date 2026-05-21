@@ -5,62 +5,63 @@ using System.Collections.Generic;
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Items class.
+    /// Represents a product or service line item within an <see cref="Order"/>, including pricing,
+    /// quantity, and categorization details.
     /// </summary>
     public class OrderItems
     {
         /// <summary>
-        /// Title of the item.
+        /// Display name of the item shown to the payer during checkout.
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Unit price of the item.
+        /// Price per unit of this item, expressed in the order currency.
         /// </summary>
         public string UnitPrice { get; set; }
 
         /// <summary>
-        /// Description of the item.
+        /// Detailed description of the item, providing additional information beyond the title.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Category Id of the item.
+        /// MercadoPago category identifier for this item, used for risk analysis and reporting.
         /// </summary>
         public string CategoryId { get; set; }
 
         /// <summary>
-        /// Type of the item.
+        /// Item type classification (e.g., "physical", "digital", "service") that may affect shipping and tax rules.
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Picture URL of the item.
+        /// URL of the item image displayed to the payer during the checkout flow.
         /// </summary>
         public string PictureUrl { get; set; }
 
         /// <summary>
-        /// Quantity of the item.
+        /// Number of units of this item included in the order.
         /// </summary>
         public int? Quantity { get; set; }
 
         /// <summary>
-        /// Warranty of the item.
+        /// Indicates whether this item includes a warranty.
         /// </summary>
         public bool? Warranty { get; set; }
 
         /// <summary>
-        /// Event date of the item.
+        /// ISO 8601 date associated with the item, typically used for event tickets or scheduled services.
         /// </summary>
         public string EventDate { get; set; }
 
         /// <summary>
-        /// Unit measure of the item.
+        /// Unit of measurement for the item quantity (e.g., "unit", "kg", "meter").
         /// </summary>
         public string UnitMeasure { get; set; }
 
         /// <summary>
-        /// External categories of the item.
+        /// List of <see cref="OrderExternalCategory"/> entries representing external classification codes for this item.
         /// </summary>
         public IList<OrderExternalCategory> ExternalCategories { get; set; }
     }

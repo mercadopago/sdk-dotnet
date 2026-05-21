@@ -1,23 +1,26 @@
 ﻿namespace MercadoPago.Resource.Preference
 {
     /// <summary>
-    /// Values of tracks to be executed during the users's interaction in the
-    /// Checkout flow.
+    /// Represents the configuration values for a <see cref="PreferenceTrack"/>,
+    /// containing the identifiers needed for Google Ads or Facebook Pixel conversion tracking.
     /// </summary>
     public class PreferenceTrackValues
     {
         /// <summary>
-        /// <c>conversion_id</c> for GTM's Google Ads Conversion Tracking tag.
+        /// Google Ads conversion ID, used with GTM's Google Ads Conversion Tracking tag.
+        /// Required when the <see cref="PreferenceTrack.Type"/> is <c>google_ad</c>.
         /// </summary>
         public string ConversionId { get; set; }
 
         /// <summary>
-        /// <c>conversion_label</c> for GTM's Google Ads Conversion Tracking tag.
+        /// Google Ads conversion label, used with GTM's Google Ads Conversion Tracking tag.
+        /// Required when the <see cref="PreferenceTrack.Type"/> is <c>google_ad</c>.
         /// </summary>
         public string ConversionLabel { get; set; }
 
         /// <summary>
-        /// <c>pixel_id</c> for Facebook Pixel.
+        /// Facebook Pixel identifier, used for Facebook conversion tracking.
+        /// Required when the <see cref="PreferenceTrack.Type"/> is <c>facebook_ad</c>.
         /// </summary>
         public string PixelId { get; set; }
     }

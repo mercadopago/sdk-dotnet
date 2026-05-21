@@ -1,17 +1,18 @@
 ﻿namespace MercadoPago.Resource.MerchantOrder
 {
     /// <summary>
-    /// City information.
+    /// Represents the city component of a <see cref="MerchantOrderReceiverAddress"/>
+    /// within a merchant order shipment.
     /// </summary>
     public class MerchantOrderReceiverAddressCity
     {
         /// <summary>
-        /// City ID.
+        /// MercadoPago internal identifier for the city.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// City name.
+        /// Display name of the city (e.g., "Buenos Aires", "Sao Paulo").
         /// </summary>
         public string Name { get; set; }
     }

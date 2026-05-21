@@ -5,43 +5,48 @@ using MercadoPago.Client.Common;
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Configuration class.
+    /// Configuration for the online checkout experience, including redirect URLs after payment,
+    /// differential pricing, and 3-D Secure transaction security settings.
     /// </summary>
+    /// <seealso cref="OrderConfigRequest"/>
     public class OrderOnlineConfigRequest
     {
         /// <summary>
-        /// Callback URL.
+        /// URL that receives server-to-server notifications about the payment result.
         /// </summary>
         public string CallbackUrl { get; set; }
 
         /// <summary>
-        /// Success URL.
+        /// URL where the payer is redirected after a successful payment.
         /// </summary>
         public string SuccessUrl { get; set; }
 
         /// <summary>
-        /// Pending URL.
+        /// URL where the payer is redirected when the payment status is pending.
         /// </summary>
         public string PendingUrl { get; set; }
 
         /// <summary>
-        /// Failure URL.
+        /// URL where the payer is redirected after a failed payment.
         /// </summary>
         public string FailureUrl { get; set; }
 
         /// <summary>
-        /// Auto return URL.
+        /// URL to which the payer is automatically returned after completing the checkout flow.
         /// </summary>
         public string AutoReturnUrl { get; set; }
 
         /// <summary>
-        /// Differential pricing.
+        /// Differential pricing configuration that allows offering different prices
+        /// depending on the payment method selected by the payer.
         /// </summary>
         public DifferentialPricingRequest DifferentialPricing { get; set; }
 
         /// <summary>
-        /// Transaction security configuration for 3DS.
+        /// 3-D Secure transaction security configuration, controlling when authentication
+        /// is required and liability shift behavior.
         /// </summary>
+        /// <seealso cref="OrderTransactionSecurityRequest"/>
         public OrderTransactionSecurityRequest TransactionSecurity { get; set; }
     }
 }

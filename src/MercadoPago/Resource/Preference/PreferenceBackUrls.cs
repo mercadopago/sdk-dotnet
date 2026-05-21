@@ -1,22 +1,23 @@
 ﻿namespace MercadoPago.Resource.Preference
 {
     /// <summary>
-    /// Back URLs from <see cref="Preference"/>.
+    /// Represents the redirect URLs configured in a <see cref="Preference"/> that the buyer
+    /// is sent to after completing (or failing) the Checkout Pro flow.
     /// </summary>
     public class PreferenceBackUrls
     {
         /// <summary>
-        /// URL to return when the payment succeed.
+        /// URL where the buyer is redirected when the payment succeeds.
         /// </summary>
         public string Success { get; set; }
 
         /// <summary>
-        /// URL to return when the payment is pending.
+        /// URL where the buyer is redirected when the payment is pending review or processing.
         /// </summary>
         public string Pending { get; set; }
 
         /// <summary>
-        /// URL to return when the payment fail.
+        /// URL where the buyer is redirected when the payment fails or is rejected.
         /// </summary>
         public string Failure { get; set; }
     }

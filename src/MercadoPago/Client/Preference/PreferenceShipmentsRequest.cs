@@ -3,52 +3,65 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Shipments information.
+    /// Shipping configuration for a Checkout Pro preference. The available properties depend on the
+    /// selected <see cref="Mode"/>: <c>"custom"</c> for seller-managed shipping or <c>"me2"</c>
+    /// for MercadoEnvios-managed shipping.
     /// </summary>
+    /// <seealso cref="PreferenceRequest"/>
     public class PreferenceShipmentsRequest
     {
         /// <summary>
-        /// Shipment mode.
+        /// Shipment mode. Use <c>"custom"</c> for seller-managed shipping or <c>"me2"</c> for
+        /// MercadoEnvios integration. Use <c>"not_specified"</c> when shipping does not apply.
         /// </summary>
         public string Mode { get; set; }
 
         /// <summary>
-        /// The payer have the option to pick up the shipment in your store (mode:me2 only).
+        /// <c>true</c> to allow the buyer to pick up the shipment at your store.
+        /// Only available when <see cref="Mode"/> is <c>"me2"</c>.
         /// </summary>
         public bool? LocalPickup { get; set; }
 
         /// <summary>
-        /// Dimensions of the shipment in cm x cm x cm, gr (mode:me2 only).
+        /// Package dimensions in the format <c>"height x width x length, weight"</c>
+        /// (e.g., <c>"30x30x30,500"</c> for 30cm x 30cm x 30cm and 500g).
+        /// Only available when <see cref="Mode"/> is <c>"me2"</c>.
         /// </summary>
         public string Dimensions { get; set; }
 
         /// <summary>
-        /// Select default shipping method in checkout (mode:me2 only).
+        /// ID of the default shipping method pre-selected at checkout.
+        /// Only available when <see cref="Mode"/> is <c>"me2"</c>.
         /// </summary>
         public string DefaultShippingMethod { get; set; }
 
         /// <summary>
-        /// Offer a shipping method as free shipping (mode:me2 only).
+        /// List of shipping methods offered as free shipping to the buyer.
+        /// Only available when <see cref="Mode"/> is <c>"me2"</c>.
         /// </summary>
+        /// <seealso cref="PreferenceFreeMethodRequest"/>
         public IList<PreferenceFreeMethodRequest> FreeMethods { get; set; }
 
         /// <summary>
-        /// Shipment cost (mode:custom only).
+        /// Fixed shipment cost charged to the buyer.
+        /// Only available when <see cref="Mode"/> is <c>"custom"</c>.
         /// </summary>
         public decimal? Cost { get; set; }
 
         /// <summary>
-        /// Free shipping for mode:custom.
+        /// <c>true</c> to offer free shipping to the buyer.
+        /// Only available when <see cref="Mode"/> is <c>"custom"</c>.
         /// </summary>
         public bool? FreeShipping { get; set; }
 
         /// <summary>
-        /// Shipping address.
+        /// Shipping destination address where the buyer will receive the product.
         /// </summary>
+        /// <seealso cref="PreferenceReceiverAddressRequest"/>
         public PreferenceReceiverAddressRequest ReceiverAddress { get; set; }
 
         /// <summary>
-        /// If use express shipment.
+        /// <c>true</c> to enable express shipment for faster delivery.
         /// </summary>
         public bool? ExpressShipment { get; set; }
     }

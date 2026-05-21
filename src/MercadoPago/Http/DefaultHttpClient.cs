@@ -10,9 +10,22 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Default <see cref="IHttpClient"/> implementation that uses
-    /// <see cref="HttpClient"/> to make HTTP requests.
+    /// Default <see cref="IHttpClient"/> implementation that sends HTTP requests using
+    /// <see cref="HttpClient"/> and supports automatic retries via <see cref="IRetryStrategy"/>.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// A lazily-initialized, shared <see cref="HttpClient"/> with a 30-second timeout is used
+    /// when no explicit instance is provided. TLS 1.2 support is enabled in the static
+    /// constructor via <see cref="ServicePointManager.SecurityProtocol"/>.
+    /// </para>
+    /// <para>
+    /// The <see cref="SendAsync"/> method implements a retry loop: after each failed attempt it
+    /// consults the supplied <see cref="IRetryStrategy"/> to decide whether to retry and how
+    /// long to wait. Transient errors (<see cref="HttpRequestException"/> and non-user-initiated
+    /// <see cref="OperationCanceledException"/>) are treated as retryable.
+    /// </para>
+    /// </remarks>
     public class DefaultHttpClient : IHttpClient
     {
         private static string JSON_CONTENT_TYPE = "application/json";
@@ -32,11 +45,12 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultHttpClient"/> class.
+        /// Initializes a new instance of the <see cref="DefaultHttpClient"/> class with the
+        /// specified <see cref="HttpClient"/>.
         /// </summary>
         /// <param name="httpClient">
-        /// The <see cref="HttpClient"/> instance to use.
-        /// If <c>null</c> a default instance of <see cref="HttpClient"/> will be created.
+        /// The <see cref="HttpClient"/> to use for outgoing requests. Callers own the
+        /// lifetime of this instance and should not dispose it while the SDK is in use.
         /// </param>
         public DefaultHttpClient(HttpClient httpClient)
         {
@@ -44,7 +58,8 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultHttpClient"/> class.
+        /// Initializes a new instance of the <see cref="DefaultHttpClient"/> class using the
+        /// shared, lazily-created <see cref="HttpClient"/> singleton with a 30-second timeout.
         /// </summary>
         public DefaultHttpClient()
             : this(LazyDefaultHttpClient.Value)
@@ -52,22 +67,36 @@
         }
 
         /// <summary>
-        /// Default HTTP timeout.
+        /// Gets the default timeout applied to the shared <see cref="HttpClient"/> instance. Value is 30 seconds.
         /// </summary>
         public static TimeSpan DefaultHttpTimeout => TimeSpan.FromSeconds(30);
 
         /// <summary>
-        /// <see cref="HttpClient"/> used in requests.
+        /// Gets the underlying <see cref="HttpClient"/> instance that executes outgoing HTTP requests.
         /// </summary>
         public HttpClient HttpClient { get; }
 
         /// <summary>
-        /// Sends a HTTP request to MercadoPago's APIs.
+        /// Sends an HTTP request to MercadoPago APIs, automatically retrying on transient failures
+        /// according to the provided <paramref name="retryStrategy"/>.
         /// </summary>
-        /// <param name="request">Request data.</param>
-        /// <param name="retryStrategy">Strategy to be used when it is necessary to retry the request.</param>
-        /// <param name="cancellationToken">Cancellation token to cancel operation.</param>
-        /// <returns>A Task with response data.</returns>
+        /// <param name="request">
+        /// The <see cref="MercadoPagoRequest"/> containing the URL, HTTP method, headers, and optional body.
+        /// </param>
+        /// <param name="retryStrategy">
+        /// The <see cref="IRetryStrategy"/> consulted after each attempt to determine whether a
+        /// retry should be performed and how long to delay before the next attempt.
+        /// </param>
+        /// <param name="cancellationToken">
+        /// A <see cref="CancellationToken"/> that can be used to cancel the operation. If the token
+        /// is already cancelled, the exception is rethrown immediately without retrying.
+        /// </param>
+        /// <returns>
+        /// A <see cref="Task{MercadoPagoResponse}"/> representing the asynchronous operation,
+        /// containing the mapped API response on success.
+        /// </returns>
+        /// <exception cref="HttpRequestException">Thrown when a network-level error persists after all retries.</exception>
+        /// <exception cref="OperationCanceledException">Thrown when the caller cancels the request via <paramref name="cancellationToken"/>.</exception>
         public async Task<MercadoPagoResponse> SendAsync(
             MercadoPagoRequest request,
             IRetryStrategy retryStrategy,

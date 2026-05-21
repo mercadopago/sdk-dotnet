@@ -1,17 +1,18 @@
 ﻿namespace MercadoPago.Resource.Customer
 {
     /// <summary>
-    /// Issuer information.
+    /// Card issuer (bank or financial institution) associated with a
+    /// <see cref="CustomerCard"/>.
     /// </summary>
     public class CustomerCardIssuer
     {
         /// <summary>
-        /// Issuer ID.
+        /// MercadoPago internal identifier for the card issuer.
         /// </summary>
         public int? Id { get; set; }
 
         /// <summary>
-        /// Issuer name.
+        /// Display name of the card issuer (e.g. "Banco Nacion", "Itau").
         /// </summary>
         public string Name { get; set; }
     }

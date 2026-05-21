@@ -1,17 +1,19 @@
 ﻿namespace MercadoPago.Resource.Customer
 {
     /// <summary>
-    /// Municipality information.
+    /// Municipality (municipio) component of a <see cref="CustomerAddress"/>.
+    /// Used in countries where municipality is a distinct administrative
+    /// division (e.g. Brazil, Colombia).
     /// </summary>
     public class CustomerAddressMunicipality
     {
         /// <summary>
-        /// Municipality ID.
+        /// MercadoPago internal identifier for the municipality.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Municipality name.
+        /// Display name of the municipality.
         /// </summary>
         public string Name { get; set; }
     }

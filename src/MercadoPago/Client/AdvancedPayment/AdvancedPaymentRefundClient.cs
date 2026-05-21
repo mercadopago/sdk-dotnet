@@ -9,8 +9,13 @@
     using MercadoPago.Serialization;
 
     /// <summary>
-    /// Client with methods to refund advanced payments.
+    /// Client that manages refund operations for advanced payment disbursements.
     /// </summary>
+    /// <remarks>
+    /// This client handles both full and partial refunds of individual disbursements,
+    /// as well as bulk refunds of all disbursements within an advanced payment.
+    /// It is typically accessed through <see cref="AdvancedPaymentClient"/> rather than used directly.
+    /// </remarks>
     public class AdvancedPaymentRefundClient : MercadoPagoClient<AdvancedPaymentDisbursementRefund>
     {
         /// <summary>
@@ -27,16 +32,16 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdvancedPaymentClient"/> class.
+        /// Initializes a new instance of the <see cref="AdvancedPaymentRefundClient"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">The HTTP client that will be used in HTTP requests.</param>
         public AdvancedPaymentRefundClient(IHttpClient httpClient)
             : this(httpClient, null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdvancedPaymentClient"/> class.
+        /// Initializes a new instance of the <see cref="AdvancedPaymentRefundClient"/> class.
         /// </summary>
         /// <param name="serializer">
         /// The serializer that will be used to serialize the HTTP requests content
@@ -48,7 +53,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AdvancedPaymentClient"/> class.
+        /// Initializes a new instance of the <see cref="AdvancedPaymentRefundClient"/> class.
         /// </summary>
         public AdvancedPaymentRefundClient()
             : this(null, null)
@@ -56,14 +61,15 @@
         }
 
         /// <summary>
-        /// Refunds async all disbursements of a advanced payment.
+        /// Refunds all disbursements of an advanced payment as an asynchronous operation.
+        /// Each disbursement will receive a full refund.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refunds list.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment to fully refund.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the list of refunds created for each disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<ResourcesList<AdvancedPaymentDisbursementRefund>> RefundAllAsync(
             long advancedPaymentId,
             RequestOptions requestOptions = null,
@@ -78,13 +84,14 @@
         }
 
         /// <summary>
-        /// Refunds async all disbursements of a advanced payment.
+        /// Refunds all disbursements of an advanced payment.
+        /// Each disbursement will receive a full refund.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A task whose the result is the refunds list.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment to fully refund.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The list of refunds created for each disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public ResourcesList<AdvancedPaymentDisbursementRefund> RefundAll(
             long advancedPaymentId,
             RequestOptions requestOptions = null)
@@ -97,16 +104,17 @@
         }
 
         /// <summary>
-        /// Refunds async a disbursement of a advanced payment.
+        /// Refunds a specific disbursement of an advanced payment as an asynchronous operation,
+        /// optionally for a partial amount.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="disbursementId">Disbursement ID.</param>
-        /// <param name="amount">Amount to be refunded.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refund of the disbursement.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment.</param>
+        /// <param name="disbursementId">The unique identifier of the disbursement to refund.</param>
+        /// <param name="amount">The amount to refund. Pass <c>null</c> for a full refund of the disbursement.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the refund details for the disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<AdvancedPaymentDisbursementRefund> RefundAsync(
             long advancedPaymentId,
             long disbursementId,
@@ -127,15 +135,15 @@
         }
 
         /// <summary>
-        /// Refunds a disbursement of a advanced payment.
+        /// Refunds a specific disbursement of an advanced payment, optionally for a partial amount.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="disbursementId">Disbursement ID.</param>
-        /// <param name="amount">Amount to be refunded.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The refund of the disbursement.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment.</param>
+        /// <param name="disbursementId">The unique identifier of the disbursement to refund.</param>
+        /// <param name="amount">The amount to refund. Pass <c>null</c> for a full refund of the disbursement.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The refund details for the disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public AdvancedPaymentDisbursementRefund Refund(
             long advancedPaymentId,
             long disbursementId,
@@ -154,15 +162,16 @@
         }
 
         /// <summary>
-        /// Refunds async a disbursement of a advanced payment.
+        /// Performs a full refund on a specific disbursement of an advanced payment
+        /// as an asynchronous operation.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="disbursementId">Disbursement ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
-        /// <returns>A task whose the result is the refund of the disbursement.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment.</param>
+        /// <param name="disbursementId">The unique identifier of the disbursement to refund.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the refund details for the disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public Task<AdvancedPaymentDisbursementRefund> RefundAsync(
             long advancedPaymentId,
             long disbursementId,
@@ -178,14 +187,14 @@
         }
 
         /// <summary>
-        /// Refunds a disbursement of a advanced payment.
+        /// Performs a full refund on a specific disbursement of an advanced payment.
         /// </summary>
-        /// <param name="advancedPaymentId">Advanced Payment ID.</param>
-        /// <param name="disbursementId">Disbursement ID.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>The refund of the disbursement.</returns>
-        /// <exception cref="MercadoPagoException">If a unexpected exception occurs.</exception>
-        /// <exception cref="MercadoPagoApiException">If the API returns a error.</exception>
+        /// <param name="advancedPaymentId">The unique identifier of the advanced payment.</param>
+        /// <param name="disbursementId">The unique identifier of the disbursement to refund.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> for custom request configuration such as access tokens or custom headers.</param>
+        /// <returns>The refund details for the disbursement.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
         public AdvancedPaymentDisbursementRefund Refund(
             long advancedPaymentId,
             long disbursementId,

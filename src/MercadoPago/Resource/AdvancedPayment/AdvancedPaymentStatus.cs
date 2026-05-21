@@ -1,48 +1,49 @@
 ﻿namespace MercadoPago.Resource.AdvancedPayment
 {
     /// <summary>
-    /// Advanced Payment Status.
+    /// Defines the possible status values for an <see cref="AdvancedPayment"/>.
+    /// Use these constants to compare against the <see cref="AdvancedPayment.Status"/> property.
     /// </summary>
     public class AdvancedPaymentStatus
     {
         /// <summary>
-        /// The advanced payment has been approved and accredited.
+        /// The advanced payment has been approved and the funds have been accredited.
         /// </summary>
         public const string Approved = "approved";
 
         /// <summary>
-        /// The user has not yet completed the payment process.
+        /// The payer has not yet completed the payment process. The payment is awaiting action.
         /// </summary>
         public const string Pending = "pending";
 
         /// <summary>
-        /// The payment has been authorized but not captured yet.
+        /// The payment has been authorized but not yet captured. A capture call is required to complete the charge.
         /// </summary>
         public const string Authorized = "authorized";
 
         /// <summary>
-        /// Advanced payment was rejected. The user may retry payment.
+        /// The advanced payment was rejected by the payment processor. The payer may retry with a different payment method.
         /// </summary>
         public const string Rejected = "rejected";
 
         /// <summary>
-        /// Advanced ayment was cancelled by one of the parties or because
-        /// time for payment has expired.
+        /// The advanced payment was cancelled by one of the parties or because
+        /// the time allowed for payment has expired.
         /// </summary>
         public const string Cancelled = "cancelled";
 
         /// <summary>
-        /// Advanced payment was refunded to the user.
+        /// The advanced payment was fully refunded to the payer.
         /// </summary>
         public const string Refunded = "refunded";
 
         /// <summary>
-        /// Part of the advanced payment was returned to the user.
+        /// A partial amount of the advanced payment was refunded to the payer.
         /// </summary>
         public const string PartiallyRefunded = "partially_refunded";
 
         /// <summary>
-        /// Was made a chargeback in the buyer’s credit card.
+        /// A chargeback was initiated on the buyer’s credit card by the card issuer.
         /// </summary>
         public const string ChargedBack = "charged_back";
     }

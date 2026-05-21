@@ -3,17 +3,21 @@
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Payment class.
+    /// Identifies a single transaction within an order refund request and the amount to refund.
+    /// Used inside <see cref="OrderRefundPaymentRequest"/> to perform full or partial refunds
+    /// on individual transactions.
     /// </summary>
+    /// <seealso cref="OrderRefundPaymentRequest"/>
     public class OrderRefundTransactionRequest
     {
         /// <summary>
-        /// Id.
+        /// Unique identifier of the transaction to refund.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Refund amount.
+        /// Amount to refund for this transaction, expressed as a decimal string (e.g., "50.00").
+        /// If omitted, the full transaction amount is refunded.
         /// </summary>
         public string Amount { get; set; }
 

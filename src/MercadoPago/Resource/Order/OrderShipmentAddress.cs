@@ -3,42 +3,43 @@
 namespace MercadoPago.Resource.Order
 {
     /// <summary>
-    /// Shipment Address class.
+    /// Represents the physical delivery address for an <see cref="OrderShipment"/>, including street,
+    /// city, state, and postal code details.
     /// </summary>
     public class OrderShipmentAddress
     {
         /// <summary>
-        /// Street Name.
+        /// Name of the street or avenue for the delivery address.
         /// </summary>
         public string StreetName { get; set; }
 
         /// <summary>
-        /// Street Number.
+        /// Street number or house number at the delivery address.
         /// </summary>
         public string StreetNumber { get; set; }
 
         /// <summary>
-        /// Zip Code.
+        /// Postal or ZIP code for the delivery address.
         /// </summary>
         public string ZipCode { get; set; }
 
         /// <summary>
-        /// Neighborhood.
+        /// Neighborhood or district name within the city.
         /// </summary>
         public string Neighborhood { get; set; }
 
         /// <summary>
-        /// City.
+        /// City name for the delivery address.
         /// </summary>
         public string City { get; set; }
 
         /// <summary>
-        /// State.
+        /// State or province name for the delivery address.
         /// </summary>
         public string State { get; set; }
 
         /// <summary>
-        /// Complement.
+        /// Additional address details such as apartment number, floor, or building name.
         /// </summary>
         public string Complement { get; set; }
     }

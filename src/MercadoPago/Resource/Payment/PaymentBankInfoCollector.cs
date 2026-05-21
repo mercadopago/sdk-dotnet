@@ -3,17 +3,19 @@
 namespace MercadoPago.Resource.Payment
 {
     /// <summary>
-    /// Collector's bank info.
+    /// Bank account information for the collector (seller) receiving
+    /// funds in a bank transfer or Pix payment.
     /// </summary>
     public class PaymentBankInfoCollector
     {
         /// <summary>
-        /// Account ID.
+        /// Unique identifier of the collector's bank account.
         /// </summary>
         public BigInteger? AccountId { get; set; }
 
         /// <summary>
-        /// Account long name.
+        /// Full descriptive name of the collector's bank account,
+        /// typically including the account holder's name and bank.
         /// </summary>
         public string LongName { get; set; }
     }

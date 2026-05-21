@@ -12,21 +12,31 @@
     using HttpMethod = Http.HttpMethod;
 
     /// <summary>
-    /// Base class for APIs clients.
+    /// Abstract base class for all MercadoPago API client implementations.
+    /// Provides the core HTTP request pipeline including serialization, header management,
+    /// idempotency key injection, retry strategies, and response parsing.
+    /// Each concrete client (e.g., <see cref="Customer.CustomerClient"/>, <see cref="CardToken.CardTokenClient"/>)
+    /// extends this class for a specific API resource type.
     /// </summary>
-    /// <typeparam name="TResource">Type of the resource.</typeparam>
+    /// <typeparam name="TResource">
+    /// The primary resource type returned by the API endpoints this client wraps.
+    /// Must implement <see cref="IResource"/> and provide a parameterless constructor.
+    /// </typeparam>
     public abstract class MercadoPagoClient<TResource>
         where TResource : IResource, new()
     {
         private const string ACCEPT_VALUE = "application/json";
 
         /// <summary>
-        /// Constructor of the <see cref="MercadoPagoClient{TResource}"/> class.
+        /// Initializes a new instance of the <see cref="MercadoPagoClient{TResource}"/> class.
         /// </summary>
-        /// <param name="httpClient">The http client that will be used in HTTP requests.</param>
+        /// <param name="httpClient">
+        /// The HTTP client used to execute requests.
+        /// When <c>null</c>, falls back to <see cref="MercadoPagoConfig.HttpClient"/>.
+        /// </param>
         /// <param name="serializer">
-        /// The serializer that will be used to serialize the HTTP requests content
-        /// and to deserialize the HTTP response content.
+        /// The serializer used to convert request objects to JSON and to deserialize
+        /// API response bodies. When <c>null</c>, falls back to <see cref="MercadoPagoConfig.Serializer"/>.
         /// </param>
         protected MercadoPagoClient(
             IHttpClient httpClient,
@@ -48,7 +58,8 @@
         public ISerializer Serializer { get; }
 
         /// <summary>
-        /// The defaults headers that will be sended in every request.
+        /// The default headers sent with every API request, including <c>Accept</c>,
+        /// <c>User-Agent</c>, product ID, and tracking ID.
         /// </summary>
         protected IDictionary<string, string> DefaultHeaders =>
             new Dictionary<string, string>
@@ -60,16 +71,21 @@
             };
 
         /// <summary>
-        /// Send a async request to api <paramref name="path"/> with HTTP method <paramref name="httpMethod"/>.
-        /// The content body is in <paramref name="request"/>.
+        /// Sends an asynchronous HTTP request to the specified API endpoint and
+        /// deserializes the response into <typeparamref name="TResource"/>.
+        /// For POST/PUT requests the <paramref name="request"/> is serialized as a JSON body;
+        /// for GET requests it is serialized as query-string parameters.
         /// </summary>
-        /// <param name="path">Path of the endpoint.</param>
-        /// <param name="httpMethod">HTTP method.</param>
-        /// <param name="request">Object with request data.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <param name="path">Relative path appended to <see cref="MercadoPagoConfig.BaseUrl"/> (e.g., <c>"/v1/payments"</c>).</param>
+        /// <param name="httpMethod">The HTTP method to use (GET, POST, PUT, DELETE).</param>
+        /// <param name="request">
+        /// Request payload. Serialized as JSON body for POST/PUT, or as query-string for GET.
+        /// Pass <c>null</c> when no body or parameters are needed.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
         /// <returns>
-        /// A task whose result is a resource that represents the API response.
+        /// A task whose result is the deserialized <typeparamref name="TResource"/> from the API response.
         /// </returns>
         protected Task<TResource> SendAsync(
             string path,
@@ -87,14 +103,18 @@
         }
 
         /// <summary>
-        /// Send a request to api <paramref name="path"/> with HTTP method <paramref name="httpMethod"/>.
-        /// The content body is in <paramref name="request"/>.
+        /// Sends a synchronous HTTP request to the specified API endpoint and
+        /// deserializes the response into <typeparamref name="TResource"/>.
+        /// This is a blocking wrapper around <see cref="SendAsync"/>.
         /// </summary>
-        /// <param name="path">Path of the endpoint.</param>
-        /// <param name="httpMethod">HTTP method.</param>
-        /// <param name="request">Object with request data.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <returns>A resource that represents the API response.</returns>
+        /// <param name="path">Relative path appended to <see cref="MercadoPagoConfig.BaseUrl"/> (e.g., <c>"/v1/payments"</c>).</param>
+        /// <param name="httpMethod">The HTTP method to use (GET, POST, PUT, DELETE).</param>
+        /// <param name="request">
+        /// Request payload. Serialized as JSON body for POST/PUT, or as query-string for GET.
+        /// Pass <c>null</c> when no body or parameters are needed.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The deserialized <typeparamref name="TResource"/> from the API response.</returns>
         protected TResource Send(
             string path,
             HttpMethod httpMethod,
@@ -106,15 +126,16 @@
         }
 
         /// <summary>
-        /// List async the resources from <paramref name="path"/>.
+        /// Retrieves a list of resources asynchronously from the specified API endpoint.
+        /// The response is deserialized into a <see cref="ResourcesList{TResource}"/>.
         /// </summary>
-        /// <param name="path">Path of API.</param>
-        /// <param name="httpMethod">HTTP method.</param>
-        /// <param name="request">Object with request data.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
-        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <param name="path">Relative API path that returns an array of resources (e.g., <c>"/v1/customers/{id}/cards"</c>).</param>
+        /// <param name="httpMethod">The HTTP method to use (typically GET).</param>
+        /// <param name="request">Optional request payload or query parameters. Pass <c>null</c> when not needed.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
         /// <returns>
-        /// A task whose result is a list of resources.
+        /// A task whose result is a <see cref="ResourcesList{TResource}"/> containing the items returned by the API.
         /// </returns>
         protected Task<ResourcesList<TResource>> ListAsync(
             string path,
@@ -132,14 +153,15 @@
         }
 
         /// <summary>
-        /// List the resources from <paramref name="path"/>.
+        /// Retrieves a list of resources synchronously from the specified API endpoint.
+        /// This is a blocking wrapper around <see cref="ListAsync"/>.
         /// </summary>
-        /// <param name="path">Path of API.</param>
-        /// <param name="httpMethod">HTTP method.</param>
-        /// <param name="request">Object with request data.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/></param>
+        /// <param name="path">Relative API path that returns an array of resources (e.g., <c>"/v1/customers/{id}/cards"</c>).</param>
+        /// <param name="httpMethod">The HTTP method to use (typically GET).</param>
+        /// <param name="request">Optional request payload or query parameters. Pass <c>null</c> when not needed.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
         /// <returns>
-        /// A task whose result is a list of resources.
+        /// A <see cref="ResourcesList{TResource}"/> containing the items returned by the API.
         /// </returns>
         protected ResourcesList<TResource> List(
             string path,
@@ -157,15 +179,23 @@
         }
 
         /// <summary>
-        /// Searches async and returns a result page with resources.
+        /// Executes a paginated search asynchronously against the specified search endpoint
+        /// and returns a page of matching resources.
+        /// Search parameters from <paramref name="request"/> are serialized as query-string arguments.
         /// </summary>
-        /// <typeparam name="TPageResult">The type of page.</typeparam>
-        /// <param name="path">Path of search API.</param>
-        /// <param name="request">Object with search parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <typeparam name="TPageResult">
+        /// The page result type (e.g., <c>ResultsResourcesPage&lt;T&gt;</c>) that implements
+        /// <see cref="IResourcesPage{TResource}"/>.
+        /// </typeparam>
+        /// <param name="path">Relative search endpoint path (e.g., <c>"/v1/customers/search"</c>).</param>
+        /// <param name="request">
+        /// A <see cref="SearchRequest"/> (or <see cref="AdvancedSearchRequest"/>) containing
+        /// pagination, filter, sorting, and date-range parameters.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
         /// <returns>
-        /// A task whose result is a search response page.
+        /// A task whose result is a <typeparamref name="TPageResult"/> containing the matched resources and paging metadata.
         /// </returns>
         protected Task<TPageResult> SearchAsync<TPageResult>(
             string path,
@@ -183,13 +213,21 @@
         }
 
         /// <summary>
-        /// Searches and returns a result page with resources.
+        /// Executes a paginated search synchronously against the specified search endpoint
+        /// and returns a page of matching resources.
+        /// This is a blocking wrapper around <see cref="SearchAsync{TPageResult}"/>.
         /// </summary>
-        /// <typeparam name="TPageResult">The type of page.</typeparam>
-        /// <param name="path">Path of search API.</param>
-        /// <param name="request">Object with search parameters.</param>
-        /// <param name="requestOptions"><see cref="RequestOptions"/>.</param>
-        /// <returns>A search response page.</returns>
+        /// <typeparam name="TPageResult">
+        /// The page result type (e.g., <c>ResultsResourcesPage&lt;T&gt;</c>) that implements
+        /// <see cref="IResourcesPage{TResource}"/>.
+        /// </typeparam>
+        /// <param name="path">Relative search endpoint path (e.g., <c>"/v1/customers/search"</c>).</param>
+        /// <param name="request">
+        /// A <see cref="SearchRequest"/> (or <see cref="AdvancedSearchRequest"/>) containing
+        /// pagination, filter, sorting, and date-range parameters.
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>A <typeparamref name="TPageResult"/> containing the matched resources and paging metadata.</returns>
         protected TPageResult Search<TPageResult>(
             string path,
             SearchRequest request,

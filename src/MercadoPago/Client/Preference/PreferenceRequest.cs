@@ -5,103 +5,117 @@
     using MercadoPago.Client.Common;
 
     /// <summary>
-    /// Parameters to create/update a preference.
+    /// Request payload for creating or updating a Checkout Pro preference that defines the
+    /// payment experience for the buyer, including items, payer data, payment methods,
+    /// shipping options, redirect URLs, and other checkout behavior.
     /// </summary>
     /// <remarks>
     /// Check the documentation
-    /// <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences/post/">here</a>
-    /// and <a href="https://www.mercadopago.com/developers/en/reference/preferences/_checkout_preferences_id/put/">here</a>.
+    /// <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/create-preference/post/">here</a>
+    /// and <a href="https://www.mercadopago.com/developers/en/reference/online-payments/checkout-pro/preferences/update-preference/put/">here</a>.
     /// </remarks>
+    /// <seealso cref="PreferenceClient"/>
     public class PreferenceRequest
     {
         /// <summary>
-        /// List of items to be paid.
+        /// List of items the buyer will pay for. At least one item is required to create a preference.
         /// </summary>
+        /// <seealso cref="PreferenceItemRequest"/>
         public IList<PreferenceItemRequest> Items { get; set; }
 
         /// <summary>
-        /// Payer information.
+        /// Buyer information used to pre-fill checkout fields and improve fraud analysis.
         /// </summary>
+        /// <seealso cref="PreferencePayerRequest"/>
         public PreferencePayerRequest Payer { get; set; }
 
         /// <summary>
-        /// Set up payment methods.
+        /// Configuration for allowed, excluded, and default payment methods and installment options.
         /// </summary>
+        /// <seealso cref="PreferencePaymentMethodsRequest"/>
         public PreferencePaymentMethodsRequest PaymentMethods { get; set; }
 
         /// <summary>
-        /// URLs to return to the sellers website.
+        /// URLs where the buyer is redirected after completing, pending, or failing a payment.
         /// </summary>
+        /// <seealso cref="PreferenceBackUrlsRequest"/>
         public PreferenceBackUrlsRequest BackUrls { get; set; }
 
         /// <summary>
-        /// Shipments information.
+        /// Shipping configuration including mode, dimensions, cost, free shipping methods, and receiver address.
         /// </summary>
+        /// <seealso cref="PreferenceShipmentsRequest"/>
         public PreferenceShipmentsRequest Shipments { get; set; }
 
         /// <summary>
-        /// URL where you'd like to receive a payment notification.
+        /// Webhook URL where MercadoPago will send payment status notifications (IPN).
         /// </summary>
         public string NotificationUrl { get; set; }
 
         /// <summary>
-        /// How will look the payment in the card bill (e.g.: MERCADOPAGO).
+        /// Text that will appear on the buyer's credit card statement (e.g., "MERCADOPAGO").
         /// </summary>
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Reference you can synchronize with your payment system.
+        /// External reference that you can synchronize with your own payment system to reconcile orders.
         /// </summary>
         public string ExternalReference { get; set; }
 
         /// <summary>
-        /// <c>true</c> if a preference expire, <c>false</c> if not.
+        /// <c>true</c> if this preference expires, <c>false</c> otherwise.
+        /// When enabled, use <see cref="ExpirationDateFrom"/> and <see cref="ExpirationDateTo"/> to define the active window.
         /// </summary>
         public bool? Expires { get; set; }
 
         /// <summary>
-        /// Expiration date of cash payment.
+        /// Expiration date for cash payment methods (e.g., boleto, ticket). After this date
+        /// the payment slip can no longer be used.
         /// </summary>
         public DateTime? DateOfExpiration { get; set; }
 
         /// <summary>
-        /// Date since the preference will be active.
+        /// Date from which the preference becomes active. Requires <see cref="Expires"/> to be <c>true</c>.
         /// </summary>
         public DateTime? ExpirationDateFrom { get; set; }
 
         /// <summary>
-        /// Date when the preference will be expired.
+        /// Date after which the preference expires and can no longer accept payments.
+        /// Requires <see cref="Expires"/> to be <c>true</c>.
         /// </summary>
         public DateTime? ExpirationDateTo { get; set; }
 
         /// <summary>
-        /// Origin of the payment. Default value: NONE.
+        /// Origin of the payment. Used for marketplace integrations. Default value: <c>NONE</c>.
         /// </summary>
         public string Marketplace { get; set; }
 
         /// <summary>
-        /// Marketplace's fee charged by application owner.
+        /// Fee amount charged by the marketplace application owner on each payment.
         /// </summary>
         public decimal? MarketplaceFee { get; set; }
 
         /// <summary>
-        /// Purpose of the Preference.
+        /// Purpose of the preference. Set to <c>"wallet_purchase"</c> to restrict payment
+        /// to MercadoPago wallet users only, or <c>"onboarding_credits"</c> to offer
+        /// MercadoPago credits as a payment option.
         /// </summary>
         public string Purpose { get; set; }
 
         /// <summary>
-        /// Additional info.
+        /// Additional information about the preference, such as an internal order note or context string.
         /// </summary>
         public string AdditionalInfo { get; set; }
 
         /// <summary>
-        /// If specified, your buyers will be redirected back to your site
-        /// immediately after completing the purchase.
+        /// Auto-return behavior after payment. When set to <c>"approved"</c>, the buyer is
+        /// redirected back to your site immediately after completing a successful purchase.
+        /// Requires <see cref="BackUrls"/> to be configured.
         /// </summary>
         public string AutoReturn { get; set; }
 
         /// <summary>
-        /// Operation type.
+        /// Operation type that identifies the kind of transaction (e.g., <c>"regular_payment"</c>).
         /// </summary>
         public string OperationType { get; set; }
 
@@ -111,39 +125,45 @@
         public DifferentialPricingRequest DifferentialPricing { get; set; }
 
         /// <summary>
-        /// Sponsor Id.
+        /// MercadoPago user ID of the sponsor in a marketplace integration.
         /// </summary>
         public long? SponsorId { get; set; }
 
         /// <summary>
-        /// Configures which processing modes to use.
+        /// Processing modes to use for this preference (e.g., <c>"aggregator"</c> or <c>"gateway"</c>).
         /// </summary>
         public IList<string> ProcessingModes { get; set; }
 
         /// <summary>
-        /// When set to true, the payment can only be approved or rejected.
-        /// Otherwise in_process status is added.
+        /// When set to <c>true</c>, the payment can only be approved or rejected.
+        /// Otherwise an <c>in_process</c> status is also possible.
         /// </summary>
         public bool? BinaryMode { get; set; }
 
         /// <summary>
-        /// Taxes for preferences.
+        /// List of taxes applied to this preference, such as VAT or IVA.
         /// </summary>
+        /// <seealso cref="PreferenceTaxRequest"/>
         public IList<PreferenceTaxRequest> Taxes { get; set; }
 
         /// <summary>
-        /// Tracks to be executed during the users's interaction in the Checkout flow.
+        /// Tracking configurations (e.g., Google Ads, Facebook Pixel) executed during the
+        /// buyer's interaction in the Checkout Pro flow.
         /// </summary>
+        /// <seealso cref="PreferenceTrackRequest"/>
         public IList<PreferenceTrackRequest> Tracks { get; set; }
 
         /// <summary>
-        /// Amounts information.
+        /// Breakdown of amounts for the collector (seller) and the payer (buyer) in the transaction.
         /// </summary>
+        /// <seealso cref="PreferenceAmountsRequest"/>
         public PreferenceAmountsRequest Amounts { get; set; }
 
         /// <summary>
-        /// Counter currency information.
+        /// Counter-currency configuration for cross-border payments where the buyer pays in
+        /// a different currency than the seller receives.
         /// </summary>
+        /// <seealso cref="PreferenceCounterCurrencyRequest"/>
         public PreferenceCounterCurrencyRequest CounterCurrency { get; set; }
 
         /// <summary>

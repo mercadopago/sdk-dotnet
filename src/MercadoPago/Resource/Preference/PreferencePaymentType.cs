@@ -1,12 +1,13 @@
 ﻿namespace MercadoPago.Resource.Preference
 {
     /// <summary>
-    /// Payment type information from <see cref="Preference"/>
+    /// Represents a payment type that can be excluded from a <see cref="Preference"/>
+    /// checkout flow via <see cref="PreferencePaymentMethods"/>.
     /// </summary>
     public class PreferencePaymentType
     {
         /// <summary>
-        /// Payment type ID.
+        /// Identifier of the payment type (e.g., <c>credit_card</c>, <c>debit_card</c>, <c>ticket</c>, <c>bank_transfer</c>).
         /// </summary>
         public string Id { get; set; }
     }
