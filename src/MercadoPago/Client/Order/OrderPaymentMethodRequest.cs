@@ -34,6 +34,11 @@ namespace MercadoPago.Client.Order
         /// Number of installments selected by the payer for this payment.
         /// </summary>
         public int Installments { get; set; }
+
+        /// <summary>
+        /// Financial institution code (required for PSE in Colombia, e.g. "1007" Bancolombia).
+        /// </summary>
+        public string FinancialInstitution { get; set; }
     }
 
 }
