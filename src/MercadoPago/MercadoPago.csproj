@@ -18,8 +18,8 @@
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
-    <Version>3.0.1</Version>
-    <VersionPrefix>3.0.1</VersionPrefix>
+    <Version>3.0.2</Version>
+    <VersionPrefix>3.0.2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
