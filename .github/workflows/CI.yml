@@ -38,6 +38,6 @@ jobs:
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
 
       - name: Dependency Review
-        uses: actions/dependency-review-action@v4
+        uses: actions/dependency-review-action@v5
         with:
           fail-on-severity: high
