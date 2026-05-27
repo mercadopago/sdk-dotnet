@@ -36,3 +36,8 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_EMAIL: ${{ secrets.USER_EMAIL }}
+
+      - name: Dependency audit
+        run: |
+          dotnet list package --vulnerable --include-transitive 2>&1 | tee vuln.txt
+          grep -q "has the following vulnerable packages" vuln.txt && exit 1 || exit 0
