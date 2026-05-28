@@ -1,0 +1,25 @@
+src/MercadoPago.Tests/Client/Point/PointClientTest.cs
+  s_ca33c7d96b2139::t_faa02acedbf88a 1-67
+src/MercadoPago.Tests/Client/DisbursementRefund/DisbursementRefundClientTest.cs
+  s_ca33c7d96b2139::t_ddee8b181d3240 1-60
+src/MercadoPago.Tests/Client/Chargeback/ChargebackClientTest.cs
+  s_ca33c7d96b2139::t_e0a65769d67505 1-60
+src/MercadoPago.Tests/Client/PreApprovalPlan/PreApprovalPlanClientTest.cs
+  s_ca33c7d96b2139::t_98e023a0c5b9fc 1-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "e95226d345a5c4eb23848a139cca3a35172ac0fc",
+  "prompts": {},
+  "sessions": {
+    "s_ca33c7d96b2139": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31d8d73a-8320-4e75-89be-a5971fd08efd",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Daniel Alfaro <daniel.alfaro@mercadolibre.com.co>"
+    }
+  }
+}

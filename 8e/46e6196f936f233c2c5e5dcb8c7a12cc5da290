@@ -1,0 +1,25 @@
+examples/DisbursementRefund/CreateDisbursementRefund.cs
+  s_ca33c7d96b2139::t_3782eb0538dfb9 1-17
+examples/Chargeback/SearchChargeback.cs
+  s_ca33c7d96b2139::t_08a2df8be5ad06 1-24
+examples/PreApprovalPlan/CreatePreApprovalPlan.cs
+  s_ca33c7d96b2139::t_d07d25c5981c62 1-23
+examples/Point/CreatePaymentIntent.cs
+  s_ca33c7d96b2139::t_b1211dd22d7f76 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "8e46e6196f936f233c2c5e5dcb8c7a12cc5da290",
+  "prompts": {},
+  "sessions": {
+    "s_ca33c7d96b2139": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31d8d73a-8320-4e75-89be-a5971fd08efd",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Daniel Alfaro <daniel.alfaro@mercadolibre.com.co>"
+    }
+  }
+}

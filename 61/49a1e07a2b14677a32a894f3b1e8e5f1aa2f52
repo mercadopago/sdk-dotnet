@@ -1,0 +1,49 @@
+src/MercadoPago/Client/DisbursementRefund/DisbursementRefundCreateRequest.cs
+  s_ca33c7d96b2139::t_136e6d0a69dd5d 1-15
+src/MercadoPago/Resource/Point/PointPaymentIntent.cs
+  s_ca33c7d96b2139::t_791238072c5b38 1-46
+src/MercadoPago/Resource/Chargeback/Chargeback.cs
+  s_ca33c7d96b2139::t_b0d33e5d0b1c78 1-70
+src/MercadoPago/Client/PreApprovalPlan/PreApprovalPlanCreateRequest.cs
+  s_ca33c7d96b2139::t_d7667c43503797 1-30
+src/MercadoPago/Client/DisbursementRefund/DisbursementRefundClient.cs
+  s_ca33c7d96b2139::t_5ad4f10d6d17d6 68,71,76,89,92,96
+  s_ca33c7d96b2139::t_9804b0f1da35d0 1-6,8-67,69-70,72-75,77-88,90-91,93-95,97-197
+  s_ca33c7d96b2139::t_d8cbd6b9df5a84 7
+src/MercadoPago/Client/PreApprovalPlan/PreApprovalPlanClient.cs
+  s_ca33c7d96b2139::t_62dde27d80192c 1-204
+src/MercadoPago/Client/PreApprovalPlan/PreApprovalPlanAutoRecurringRequest.cs
+  s_ca33c7d96b2139::t_c29ba4742338ca 1-34
+src/MercadoPago/Client/Point/PointCreatePaymentIntentRequest.cs
+  s_ca33c7d96b2139::t_8b8fe58bc2bc83 1-34
+src/MercadoPago/Client/Chargeback/ChargebackClient.cs
+  s_ca33c7d96b2139::t_a9d7013c8e948d 1-135
+src/MercadoPago/Resource/PreApprovalPlan/PreApprovalPlanAutoRecurring.cs
+  s_ca33c7d96b2139::t_68211a49cffd39 1-49
+src/MercadoPago/Resource/DisbursementRefund/DisbursementRefund.cs
+  s_ca33c7d96b2139::t_197720b9514870 1-50
+src/MercadoPago/Client/PreApprovalPlan/PreApprovalPlanUpdateRequest.cs
+  s_ca33c7d96b2139::t_e9d5c62b67a29b 1-31
+src/MercadoPago/Client/Point/PointClient.cs
+  s_ca33c7d96b2139::t_c3d059df5677d5 1-196
+src/MercadoPago/Client/Point/PointPaymentRequest.cs
+  s_ca33c7d96b2139::t_99fe4f3682aa73 1-23
+src/MercadoPago/Resource/PreApprovalPlan/PreApprovalPlan.cs
+  s_ca33c7d96b2139::t_951745f75d6872 1-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.12",
+  "base_commit_sha": "6149a1e07a2b14677a32a894f3b1e8e5f1aa2f52",
+  "prompts": {},
+  "sessions": {
+    "s_ca33c7d96b2139": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31d8d73a-8320-4e75-89be-a5971fd08efd",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Daniel Alfaro <daniel.alfaro@mercadolibre.com.co>"
+    }
+  }
+}
