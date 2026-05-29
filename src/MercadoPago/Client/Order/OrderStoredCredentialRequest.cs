@@ -29,6 +29,13 @@ namespace MercadoPago.Client.Order
         /// Indicates whether this is the first payment in a series of recurring charges.
         /// </summary>
         public bool? FirstPayment { get; set; }
+
+        /// <summary>
+        /// Reference to the previous transaction in a recurring series. Required from the second
+        /// charge onwards to link this payment to the original card-network authorization.
+        /// Type: string (transaction ID).
+        /// </summary>
+        public string PrevTransactionRef { get; set; }
     }
 
 }

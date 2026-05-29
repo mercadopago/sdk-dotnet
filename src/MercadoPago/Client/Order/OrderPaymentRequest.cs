@@ -24,6 +24,13 @@ namespace MercadoPago.Client.Order
         public string ExpirationTime { get; set; }
 
         /// <summary>
+        /// Absolute date and time (ISO 8601) after which this payment can no longer be collected.
+        /// Distinct from <see cref="ExpirationTime"/> which is a relative duration or TTL.
+        /// Type: string (ISO 8601, e.g. "2026-06-01T00:00:00.000-04:00").
+        /// </summary>
+        public string DateOfExpiration { get; set; }
+
+        /// <summary>
         /// Payment method details including method type, card token, and installments.
         /// </summary>
         /// <seealso cref="OrderPaymentMethodRequest"/>
