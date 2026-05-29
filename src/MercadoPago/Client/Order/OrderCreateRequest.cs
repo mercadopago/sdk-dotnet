@@ -109,5 +109,11 @@ namespace MercadoPago.Client.Order
         /// Free-form dictionary for any additional metadata to attach to the order.
         /// </summary>
         public IDictionary<string, object> AdditionalInfo { get; set; }
+
+        /// <summary>
+        /// Integration metadata identifying the integrator, platform, corporation, and sponsor.
+        /// </summary>
+        /// <seealso cref="OrderIntegrationDataRequest"/>
+        public OrderIntegrationDataRequest IntegrationData { get; set; }
     }
 }
