@@ -1,5 +1,11 @@
 # Releases
 
+## VERSION 3.2.0 - 2026-05-27
+- PreApprovalPlan: subscription plan template management — Create, Get, Update, Search (`POST/GET/PUT /preapproval_plan`).
+- Point: in-person payment intent management for Point devices — Create, Get, Cancel (`POST/GET/DELETE /point/integration-api/...`).
+- Chargeback: read-only access to payment dispute records — Get, Search (`GET /v1/chargebacks`).
+- DisbursementRefund: refund management for advanced (split) payments — ListAll, CreateAll, Create (`GET/POST /v1/advanced_payments/{id}/refunds`).
+
 ## VERSION 2.9.0
 - Order: set default `capture_mode = "automatic_async"` and update fields/tests.
 - Examples: fix `examples/Order/Create.cs` example.
