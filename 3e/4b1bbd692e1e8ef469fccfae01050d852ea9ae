@@ -1,0 +1,27 @@
+src/MercadoPago/Resource/Order/Order.cs
+  s_5fdf4ed1da0b67::t_2be85ff79b7f2c 132-136
+src/MercadoPago/Resource/Order/OrderOnlineConfig.cs
+  s_5fdf4ed1da0b67::t_3305d8992f35b9 1-45
+src/MercadoPago/Resource/Order/OrderPayer.cs
+  s_5fdf4ed1da0b67::t_95a605db7468cd 19-33
+src/MercadoPago/Resource/Order/OrderConfig.cs
+  s_5fdf4ed1da0b67::t_34d30313a193a8 1-21
+src/MercadoPago/Resource/Order/OrderStoredCredential.cs
+  s_5fdf4ed1da0b67::t_e96b980699f4d4 30-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "3e4b1bbd692e1e8ef469fccfae01050d852ea9ae",
+  "prompts": {},
+  "sessions": {
+    "s_5fdf4ed1da0b67": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2c44a824-72f5-457b-9a43-0dbfe5cec3a2",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
