@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MercadoPago.Client.Common;
 
 // API version: d0494f1c-8d81-4c76-ae1d-0c65bb8ef6de
@@ -11,6 +12,16 @@ namespace MercadoPago.Client.Order
     /// <seealso cref="OrderConfigRequest"/>
     public class OrderOnlineConfigRequest
     {
+        /// <summary>
+        /// Date and time from which the order is available for payment.
+        /// </summary>
+        public string AvailableFrom { get; set; }
+
+        /// <summary>
+        /// Restricts which users can pay the order (e.g., "account_only").
+        /// </summary>
+        public string AllowedUserType { get; set; }
+
         /// <summary>
         /// URL that receives server-to-server notifications about the payment result.
         /// </summary>
@@ -35,6 +46,17 @@ namespace MercadoPago.Client.Order
         /// URL to which the payer is automatically returned after completing the checkout flow.
         /// </summary>
         public string AutoReturnUrl { get; set; }
+
+        /// <summary>
+        /// Controls automatic redirect behavior after payment (e.g., "approved" or "all").
+        /// </summary>
+        public string AutoReturn { get; set; }
+
+        /// <summary>
+        /// Tracking pixel configuration for the Checkout Pro flow.
+        /// </summary>
+        /// <seealso cref="OrderTrackRequest"/>
+        public IList<OrderTrackRequest> Tracks { get; set; }
 
         /// <summary>
         /// Differential pricing configuration that allows offering different prices

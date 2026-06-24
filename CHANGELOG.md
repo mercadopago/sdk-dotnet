@@ -1,6 +1,6 @@
 # Releases
 
-## VERSION 3.2.0 - 2026-05-27
+## VERSION 3.3.0-beta.1 - 2026-06-24
 - PreApprovalPlan: subscription plan template management — Create, Get, Update, Search (`POST/GET/PUT /preapproval_plan`).
 - Point: in-person payment intent management for Point devices — Create, Get, Cancel (`POST/GET/DELETE /point/integration-api/...`).
 - Chargeback: read-only access to payment dispute records — Get, Search (`GET /v1/chargebacks`).

@@ -29,11 +29,17 @@ namespace MercadoPago.Client.Order
         /// <summary>
         /// Maximum number of installments the payer can choose.
         /// </summary>
-        public string MaxInstallments { get; set; }
+        public int? MaxInstallments { get; set; }
 
         /// <summary>
         /// Default number of installments pre-selected in the checkout.
         /// </summary>
-        public string DefaultInstallments { get; set; }
+        public int? DefaultInstallments { get; set; }
+
+        /// <summary>
+        /// Installment plan configuration, including interest-free rules.
+        /// </summary>
+        /// <seealso cref="OrderInstallmentsRequest"/>
+        public OrderInstallmentsRequest Installments { get; set; }
     }
 }

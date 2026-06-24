@@ -48,5 +48,10 @@ namespace MercadoPago.Client.Order
         /// Floor number within a building, if applicable.
         /// </summary>
         public string Floor { get; set; }
+
+        /// <summary>
+        /// Apartment or unit number within a building, if applicable.
+        /// </summary>
+        public string Apartment { get; set; }
     }
 }

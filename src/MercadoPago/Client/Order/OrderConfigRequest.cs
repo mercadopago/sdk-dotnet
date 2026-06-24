@@ -12,6 +12,16 @@ namespace MercadoPago.Client.Order
     public class OrderConfigRequest
     {
         /// <summary>
+        /// Text shown on the payer's credit card statement.
+        /// </summary>
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// Default offline payment expiration duration in ISO 8601 duration format.
+        /// </summary>
+        public string DefaultPaymentDueDate { get; set; }
+
+        /// <summary>
         /// Payment method restrictions and defaults, such as excluded methods, maximum
         /// installments, and the default payment method.
         /// </summary>
