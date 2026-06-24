@@ -1,0 +1,61 @@
+src/MercadoPago/Client/Order/OrderFreeMethodRequest.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-16
+src/MercadoPago/Client/Order/OrderAddressRequest.cs
+  s_b08f98df60efb1::t_ef4c9d51ec608e 51-55
+src/MercadoPago/Client/Order/OrderInstallmentsRequest.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-17
+src/MercadoPago/Client/Order/OrderTrackRequest.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-23
+src/MercadoPago/Resource/Order/OrderOnlineConfig.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-55
+src/MercadoPago/Client/Order/OrderConfigRequest.cs
+  s_b08f98df60efb1::t_ef4c9d51ec608e 15-23
+src/MercadoPago/Resource/Order/OrderTrack.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-23
+src/MercadoPago/Resource/Order/OrderConfig.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-33
+src/MercadoPago/Resource/Order/OrderShipmentAddress.cs
+  s_b08f98df60efb1::t_64462b96c56bf0 45-54
+src/MercadoPago.Tests/Client/Order/OrderClientMockedTest.cs
+  s_b08f98df60efb1::t_c21c711acc4d05 140-152
+  s_b08f98df60efb1::t_6800c15c157536 212-213,217
+  s_b08f98df60efb1::t_de973f16476143 10,17-139,153-211,214-216,218-220,271
+src/MercadoPago/Resource/Order/OrderFreeMethod.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-16
+src/MercadoPago/MercadoPago.csproj
+  s_b08f98df60efb1::t_7a1b38f8343c84 21-22
+CHANGELOG.md
+  s_b08f98df60efb1::t_7a1b38f8343c84 3
+src/MercadoPago/Resource/Order/OrderShipment.cs
+  s_b08f98df60efb1::t_64462b96c56bf0 5-6,13-38
+src/MercadoPago/Client/Order/OrderPaymentMethodConfigRequest.cs
+  s_b08f98df60efb1::t_ef4c9d51ec608e 32,37-43
+src/MercadoPago/Resource/Order/OrderPaymentMethodConfig.cs
+  s_b08f98df60efb1::t_64462b96c56bf0 3-4,16-29
+src/MercadoPago/Client/Order/OrderShipmentRequest.cs
+  s_b08f98df60efb1::t_ef4c9d51ec608e 5-6,14-39
+src/MercadoPago/Client/Order/OrderOnlineConfigRequest.cs
+  s_b08f98df60efb1::t_ef4c9d51ec608e 1,15-24,50-59
+src/MercadoPago/Client/Order/OrderInstallmentsInterestFreeRequest.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-23
+src/MercadoPago/Resource/Order/Order.cs
+  s_b08f98df60efb1::t_64462b96c56bf0 75-78,146-150
+src/MercadoPago/Resource/Order/OrderOnlineRetries.cs
+  s_b08f98df60efb1::t_3e43dcae7b0764 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "f6810746ecd8013290a8c557a40fb672f400e9dc",
+  "prompts": {},
+  "sessions": {
+    "s_b08f98df60efb1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef729-1d04-79c1-892b-72ad89396038",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
