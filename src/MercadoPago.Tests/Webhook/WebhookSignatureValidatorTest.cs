@@ -22,7 +22,7 @@
             var parts = new System.Collections.Generic.List<string>(3);
             if (!string.IsNullOrWhiteSpace(dataId))
             {
-                parts.Add($"id:{dataId.ToLowerInvariant()}");
+                parts.Add($"id:{dataId}");
             }
 
             if (!string.IsNullOrWhiteSpace(requestId))
@@ -58,12 +58,12 @@
                 BuildHeader(hash, ts), RequestId, DataIdLower, Secret);
         }
 
-        // --- Canonical case 2: dataId in uppercase — SDK must lowercase before HMAC ---
+        // --- Canonical case 2: dataId in uppercase — SDK must preserve casing in HMAC ---
         [Fact]
         public void Validate_DataIdInUppercase_StillValidates()
         {
             var ts = CurrentTs();
-            var hash = ComputeHash(DataIdLower, RequestId, ts, Secret);
+            var hash = ComputeHash(DataIdRaw, RequestId, ts, Secret);
 
             WebhookSignatureValidator.Validate(
                 BuildHeader(hash, ts), RequestId, DataIdRaw, Secret);

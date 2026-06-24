@@ -51,7 +51,7 @@
         /// <param name="dataId">
         /// The value of the <c>data.id</c> query string parameter. Optional in the manifest:
         /// if <c>null</c>, empty, or whitespace, the <c>id:</c> pair is omitted. When present,
-        /// the value is lowercased before being included in the manifest.
+        /// the value is included in the manifest exactly as received.
         /// </param>
         /// <param name="secret">
         /// The secret signature configured for the application in Tus Integraciones.
@@ -217,7 +217,7 @@
             var parts = new List<string>(3);
             if (dataId != null)
             {
-                parts.Add($"id:{dataId.ToLowerInvariant()}");
+                parts.Add($"id:{dataId}");
             }
 
             if (requestId != null)
