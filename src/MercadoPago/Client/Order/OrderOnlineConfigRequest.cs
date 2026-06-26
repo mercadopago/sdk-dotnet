@@ -53,7 +53,7 @@ namespace MercadoPago.Client.Order
         public string AutoReturn { get; set; }
 
         /// <summary>
-        /// Tracking pixel configuration for the Checkout Pro flow.
+        /// Tracking pixel configuration for the online checkout flow.
         /// </summary>
         /// <seealso cref="OrderTrackRequest"/>
         public IList<OrderTrackRequest> Tracks { get; set; }

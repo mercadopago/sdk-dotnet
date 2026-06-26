@@ -11,7 +11,7 @@ namespace MercadoPago.Resource.Order
     public class OrderOnlineConfig
     {
         /// <summary>
-        /// URL the payer is redirected to after completing or abandoning the Checkout Pro flow.
+        /// URL the payer is redirected to after completing or abandoning the online checkout flow.
         /// </summary>
         public string CallbackUrl { get; set; }
 
@@ -47,7 +47,7 @@ namespace MercadoPago.Resource.Order
         public OrderOnlineRetries Retries { get; set; }
 
         /// <summary>
-        /// Tracking pixel configuration returned for the Checkout Pro flow.
+        /// Tracking pixel configuration returned for the online checkout flow.
         /// </summary>
         /// <seealso cref="OrderTrack"/>
         public IList<OrderTrack> Tracks { get; set; }

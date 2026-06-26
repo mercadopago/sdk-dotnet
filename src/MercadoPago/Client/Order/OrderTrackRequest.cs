@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MercadoPago.Client.Order
 {
     /// <summary>
-    /// Tracking pixel configuration for the online Checkout Pro flow.
+    /// Tracking pixel configuration for an online checkout flow.
     /// </summary>
     /// <seealso cref="OrderOnlineConfigRequest"/>
     public class OrderTrackRequest
