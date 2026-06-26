@@ -1,0 +1,25 @@
+src/MercadoPago/Client/Order/OrderTrackRequest.cs
+  s_b08f98df60efb1::t_c29225d219352e 8
+src/MercadoPago/Client/Order/OrderOnlineConfigRequest.cs
+  s_b08f98df60efb1::t_c29225d219352e 56
+src/MercadoPago/Resource/Order/OrderOnlineConfig.cs
+  s_b08f98df60efb1::t_c29225d219352e 14,50
+src/MercadoPago/Resource/Order/OrderTrack.cs
+  s_b08f98df60efb1::t_c29225d219352e 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "b11efa95704703c74d480ddde7ef39c726ed8854",
+  "prompts": {},
+  "sessions": {
+    "s_b08f98df60efb1": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019ef729-1d04-79c1-892b-72ad89396038",
+        "model": "gpt-5.5"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
