@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_bbc064d2e6bcfe::t_ae5c0daf9dbc57 3
+src/MercadoPago/MercadoPago.csproj
+  s_bbc064d2e6bcfe::t_04def53a28fa23 21-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "08983931c7ef916f473327c496dd994cfdb3a607",
+  "prompts": {},
+  "sessions": {
+    "s_bbc064d2e6bcfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3100ee6-f553-4f81-9999-d6454a2b876b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
