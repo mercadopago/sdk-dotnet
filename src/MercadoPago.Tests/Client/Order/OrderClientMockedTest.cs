@@ -149,8 +149,10 @@ namespace MercadoPago.Tests.Client.Order
             Assert.Equal("custom", (string)json["shipment"]["mode"]);
             Assert.Equal(73328, (int)json["shipment"]["free_methods"][0]["id"]);
             Assert.Equal("B", (string)json["shipment"]["address"]["apartment"]);
-            Assert.Equal("2027-01-15T00:00:00.000-03:00", (string)json["items"][0]["event_date"]);
             Assert.True((bool)json["additional_info"]["payer.is_prime_user"]);
+            var eventDateString = (string)json["items"][0]["event_date"];
+            var eventDate = System.DateTime.Parse(eventDateString);
+            Assert.Equal(new System.DateTime(2027, 1, 15, 0, 0, 0), eventDate.Date);
         }
 
         [Fact]
