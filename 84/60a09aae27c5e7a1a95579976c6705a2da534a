@@ -1,0 +1,19 @@
+src/MercadoPago/Serialization/DefaultSerializer.cs
+  s_bbc064d2e6bcfe::t_7261dae9335a48 42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "8460a09aae27c5e7a1a95579976c6705a2da534a",
+  "prompts": {},
+  "sessions": {
+    "s_bbc064d2e6bcfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3100ee6-f553-4f81-9999-d6454a2b876b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
