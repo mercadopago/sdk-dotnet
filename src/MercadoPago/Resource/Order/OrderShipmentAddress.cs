@@ -42,5 +42,15 @@ namespace MercadoPago.Resource.Order
         /// Additional address details such as apartment number, floor, or building name.
         /// </summary>
         public string Complement { get; set; }
+
+        /// <summary>
+        /// Floor number within a building, if applicable.
+        /// </summary>
+        public string Floor { get; set; }
+
+        /// <summary>
+        /// Apartment or unit number within a building, if applicable.
+        /// </summary>
+        public string Apartment { get; set; }
     }
 }

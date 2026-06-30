@@ -72,6 +72,11 @@ namespace MercadoPago.Resource.Order
         public string ClientToken { get; set; }
 
         /// <summary>
+        /// URL to redirect the payer to the Checkout Pro payment flow.
+        /// </summary>
+        public string CheckoutUrl { get; set; }
+
+        /// <summary>
         /// Processing mode that determines how the payment is handled (e.g., "aggregator", "gateway").
         /// </summary>
         public string ProcessingMode { get; set; }
@@ -137,6 +142,12 @@ namespace MercadoPago.Resource.Order
         /// Shipping details for this order, including the delivery <see cref="OrderShipmentAddress"/>.
         /// </summary>
         public OrderShipment Shipment { get; set; }
+
+        /// <summary>
+        /// Order-level configuration returned by the API, including online checkout and payment method rules.
+        /// </summary>
+        /// <seealso cref="OrderConfig"/>
+        public OrderConfig Config { get; set; }
 
         /// <summary>
         /// Raw HTTP response returned by the MercadoPago API for this request.
