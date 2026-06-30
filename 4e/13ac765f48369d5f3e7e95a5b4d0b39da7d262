@@ -1,0 +1,19 @@
+src/MercadoPago.Tests/Client/Order/OrderClientMockedTest.cs
+  s_bbc064d2e6bcfe::t_fdaab615e50e5d 138-144,158
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "4e13ac765f48369d5f3e7e95a5b4d0b39da7d262",
+  "prompts": {},
+  "sessions": {
+    "s_bbc064d2e6bcfe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3100ee6-f553-4f81-9999-d6454a2b876b",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Luis Sanchez <luismiguel.sanchezgarcia@mercadolibre.com.co>"
+    }
+  }
+}
