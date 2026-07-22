@@ -60,5 +60,11 @@
         /// Date and time of the payer's last purchase on the merchant's platform.
         /// </summary>
         public DateTime? LastPurchase { get; set; }
+
+        /// <summary>
+        /// Payer's personal identification document data (type and number).
+        /// </summary>
+        /// <seealso cref="IdentificationRequest"/>
+        public IdentificationRequest Identification { get; set; }
     }
 }

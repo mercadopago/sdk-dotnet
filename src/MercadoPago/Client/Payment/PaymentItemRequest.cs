@@ -34,6 +34,11 @@
         public string CategoryId { get; set; }
 
         /// <summary>
+        /// Item classification type (e.g., "travel", "physical_goods").
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Quantity of this item being purchased.
         /// </summary>
         public int? Quantity { get; set; }
