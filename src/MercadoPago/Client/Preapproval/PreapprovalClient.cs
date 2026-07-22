@@ -71,7 +71,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/preapproval/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/preapproval/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/preapproval/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/preapproval/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/preapproval/{id}", HttpMethod.PUT, request, requestOptions, cancellationToken);
+            return SendAsync($"/preapproval/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@
             PreapprovalUpdateRequest request,
             RequestOptions requestOptions = null)
         {
-            return Send($"/preapproval/{id}", HttpMethod.PUT, request, requestOptions);
+            return Send($"/preapproval/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions);
         }
 
         /// <summary>

@@ -79,7 +79,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{customerId}/cards/{cardId}",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards/{EncodePathParam(cardId)}",
                 HttpMethod.GET,
                 requestOptions,
                 null,
@@ -105,7 +105,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{customerId}/cards/{cardId}",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards/{EncodePathParam(cardId)}",
                 HttpMethod.GET,
                 null,
                 requestOptions);
@@ -132,7 +132,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{customerId}/cards",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards",
                 HttpMethod.POST,
                 request,
                 requestOptions,
@@ -158,7 +158,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{customerId}/cards",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards",
                 HttpMethod.POST,
                 request,
                 requestOptions);
@@ -185,7 +185,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{customerId}/cards/{cardId}",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards/{EncodePathParam(cardId)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions,
@@ -211,7 +211,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{customerId}/cards/{cardId}",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards/{EncodePathParam(cardId)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions);
@@ -236,7 +236,7 @@
             CancellationToken cancellationToken = default)
         {
             return ListAsync(
-                $"/v1/customers/{customerId}/cards",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards",
                 HttpMethod.GET,
                 null,
                 requestOptions,
@@ -260,7 +260,7 @@
             RequestOptions requestOptions = null)
         {
             return List(
-                $"/v1/customers/{customerId}/cards",
+                $"/v1/customers/{EncodePathParam(customerId)}/cards",
                 HttpMethod.GET,
                 null,
                 requestOptions);

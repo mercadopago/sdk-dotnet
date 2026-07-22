@@ -10,7 +10,7 @@
     /// <summary>
     /// Client responsible for managing individual transactions within a payment order.
     /// Supports creating, updating, and deleting transactions via the MercadoPago Orders API
-    /// (<c>/v1/orders/{id}/transactions</c>). Update operations are delegated to
+    /// (<c>/v1/orders/{EncodePathParam(id)}/transactions</c>). Update operations are delegated to
     /// <see cref="OrderTransactionUpdateClient"/> internally.
     /// </summary>
     /// <seealso cref="OrderClient"/>
@@ -84,7 +84,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}/transactions", HttpMethod.POST, request, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}/transactions", HttpMethod.POST, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@
             OrderTransactionRequest request,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}/transactions", HttpMethod.POST, request, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}/transactions", HttpMethod.POST, request, requestOptions);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{oderId}/transactions/{transactionId}", HttpMethod.DELETE, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(oderId)}/transactions/{EncodePathParam(transactionId)}", HttpMethod.DELETE, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@
             string transactionId,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{oderId}/transactions/{transactionId}", HttpMethod.DELETE, null, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(oderId)}/transactions/{EncodePathParam(transactionId)}", HttpMethod.DELETE, null, requestOptions);
         }
 
     }

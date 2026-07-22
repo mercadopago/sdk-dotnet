@@ -79,7 +79,7 @@ namespace MercadoPago.Client.Point
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/point/integration-api/devices/{deviceId}/payment-intents",
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}/payment-intents",
                 HttpMethod.POST,
                 request,
                 requestOptions,
@@ -101,7 +101,7 @@ namespace MercadoPago.Client.Point
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/point/integration-api/devices/{deviceId}/payment-intents",
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}/payment-intents",
                 HttpMethod.POST,
                 request,
                 requestOptions);
@@ -122,7 +122,7 @@ namespace MercadoPago.Client.Point
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/point/integration-api/payment-intents/{paymentIntentId}",
+                $"/point/integration-api/payment-intents/{EncodePathParam(paymentIntentId)}",
                 HttpMethod.GET,
                 null,
                 requestOptions,
@@ -142,7 +142,7 @@ namespace MercadoPago.Client.Point
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/point/integration-api/payment-intents/{paymentIntentId}",
+                $"/point/integration-api/payment-intents/{EncodePathParam(paymentIntentId)}",
                 HttpMethod.GET,
                 null,
                 requestOptions);
@@ -165,7 +165,7 @@ namespace MercadoPago.Client.Point
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/point/integration-api/devices/{deviceId}/payment-intents/{paymentIntentId}",
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}/payment-intents/{EncodePathParam(paymentIntentId)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions,
@@ -187,7 +187,7 @@ namespace MercadoPago.Client.Point
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/point/integration-api/devices/{deviceId}/payment-intents/{paymentIntentId}",
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}/payment-intents/{EncodePathParam(paymentIntentId)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions);

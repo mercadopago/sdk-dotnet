@@ -58,6 +58,14 @@
         public ISerializer Serializer { get; }
 
         /// <summary>
+        /// Encodes a dynamic URL path segment before it is interpolated into an endpoint path.
+        /// </summary>
+        protected static string EncodePathParam(object value)
+        {
+            return Uri.EscapeDataString(value?.ToString() ?? string.Empty);
+        }
+
+        /// <summary>
         /// The default headers sent with every API request, including <c>Accept</c>,
         /// <c>User-Agent</c>, product ID, and tracking ID.
         /// </summary>

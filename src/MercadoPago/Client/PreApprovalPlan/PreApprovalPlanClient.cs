@@ -76,7 +76,7 @@ namespace MercadoPago.Client.PreApprovalPlan
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/preapproval_plan/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/preapproval_plan/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace MercadoPago.Client.PreApprovalPlan
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/preapproval_plan/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/preapproval_plan/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace MercadoPago.Client.PreApprovalPlan
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/preapproval_plan/{id}", HttpMethod.PUT, request, requestOptions, cancellationToken);
+            return SendAsync($"/preapproval_plan/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace MercadoPago.Client.PreApprovalPlan
             PreApprovalPlanUpdateRequest request,
             RequestOptions requestOptions = null)
         {
-            return Send($"/preapproval_plan/{id}", HttpMethod.PUT, request, requestOptions);
+            return Send($"/preapproval_plan/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions);
         }
 
         /// <summary>

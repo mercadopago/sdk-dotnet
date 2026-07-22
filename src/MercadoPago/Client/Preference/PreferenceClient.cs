@@ -76,7 +76,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/checkout/preferences/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/checkout/preferences/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/checkout/preferences/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/checkout/preferences/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/checkout/preferences/{id}", HttpMethod.PUT, request, requestOptions, cancellationToken);
+            return SendAsync($"/checkout/preferences/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@
             PreferenceRequest request,
             RequestOptions requestOptions = null)
         {
-            return Send($"/checkout/preferences/{id}", HttpMethod.PUT, request, requestOptions);
+            return Send($"/checkout/preferences/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions);
         }
     }
 }

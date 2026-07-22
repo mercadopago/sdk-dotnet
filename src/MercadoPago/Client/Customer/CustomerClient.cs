@@ -79,7 +79,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.GET,
                 null,
                 requestOptions,
@@ -103,7 +103,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.GET,
                 null,
                 requestOptions);
@@ -180,7 +180,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.PUT,
                 request,
                 requestOptions,
@@ -207,7 +207,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.PUT,
                 request,
                 requestOptions);
@@ -228,7 +228,7 @@
             CancellationToken cancellationToken = default)
         {
             return SendAsync(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions,
@@ -248,7 +248,7 @@
             RequestOptions requestOptions = null)
         {
             return Send(
-                $"/v1/customers/{id}",
+                $"/v1/customers/{EncodePathParam(id)}",
                 HttpMethod.DELETE,
                 null,
                 requestOptions);

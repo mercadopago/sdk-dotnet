@@ -128,7 +128,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}/process", HttpMethod.POST, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}/process", HttpMethod.POST, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}/process", HttpMethod.POST, null, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}/process", HttpMethod.POST, null, requestOptions);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}/capture", HttpMethod.POST, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}/capture", HttpMethod.POST, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -231,7 +231,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}/capture", HttpMethod.POST, null, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}/capture", HttpMethod.POST, null, requestOptions);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}/cancel", HttpMethod.POST, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}/cancel", HttpMethod.POST, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@
             string id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}/cancel", HttpMethod.POST, null, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}/cancel", HttpMethod.POST, null, requestOptions);
         }
 
         /// <summary>

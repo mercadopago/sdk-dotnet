@@ -9,7 +9,7 @@
 
     /// <summary>
     /// Internal client that handles the HTTP PUT operation for updating a transaction's
-    /// payment details via <c>PUT /v1/orders/{orderId}/transactions/{transactionId}</c>.
+    /// payment details via <c>PUT /v1/orders/{EncodePathParam(orderId)}/transactions/{EncodePathParam(transactionId)}</c>.
     /// This client exists because the update response type (<see cref="OrderUpdateTransaction"/>)
     /// differs from the create/delete response type (<see cref="OrderTransaction"/>),
     /// requiring a separate generic base class binding.
@@ -84,7 +84,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{orderId}/transactions/{transactionId}", HttpMethod.PUT, request, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(orderId)}/transactions/{EncodePathParam(transactionId)}", HttpMethod.PUT, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@
             OrderPaymentRequest request,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{orderId}/transactions/{transactionId}", HttpMethod.PUT, request, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(orderId)}/transactions/{EncodePathParam(transactionId)}", HttpMethod.PUT, request, requestOptions);
         }
 
     }

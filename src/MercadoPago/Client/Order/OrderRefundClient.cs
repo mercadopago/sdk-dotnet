@@ -10,7 +10,7 @@
     /// <summary>
     /// Client responsible for refunding payment orders via the MercadoPago Orders API.
     /// Supports full-order refunds and partial (per-transaction) refunds through
-    /// <c>POST /v1/orders/{id}/refund</c>.
+    /// <c>POST /v1/orders/{EncodePathParam(id)}/refund</c>.
     /// </summary>
     /// <seealso cref="OrderClient"/>
     /// <seealso cref="OrderRefundPaymentRequest"/>
@@ -80,7 +80,7 @@
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/orders/{id}/refund", HttpMethod.POST, request, requestOptions, cancellationToken);
+            return SendAsync($"/v1/orders/{EncodePathParam(id)}/refund", HttpMethod.POST, request, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@
             OrderRefundPaymentRequest request = null,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/orders/{id}/refund", HttpMethod.POST, request, requestOptions);
+            return Send($"/v1/orders/{EncodePathParam(id)}/refund", HttpMethod.POST, request, requestOptions);
         }
 
     }
