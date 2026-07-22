@@ -141,6 +141,28 @@
             Assert.Equal("world", dummyResource.Name);
         }
 
+        [Fact]
+        public async Task SendAsync_WithEncodedPathParam_Success()
+        {
+            var httpClientMock = new HttpClientMock();
+            var httpClient = new DefaultHttpClient(httpClientMock.HttpClient);
+            var client = new DummyCustomerClient(httpClient, null);
+            var id = "../../applications/123";
+            var url = $"{MercadoPagoConfig.BaseUrl}/v1/customers/..%2F..%2Fapplications%2F123";
+
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent("{'name':'world'}"),
+            };
+
+            httpClientMock.MockRequest(url, System.Net.Http.HttpMethod.Get, httpResponse);
+
+            DummyResource dummyResource = await client.GetCustomerAsync(id);
+
+            Assert.NotNull(dummyResource);
+            Assert.Equal("world", dummyResource.Name);
+        }
+
         [Fact(Skip = "Not running in CI.")]
         public void Send_WithoutBody_Success()
         {
@@ -483,6 +505,22 @@
             Assert.Equal(0, resultsSearchPage.Paging.Offset);
             Assert.NotNull(resultsSearchPage.Results);
             Assert.True(resultsSearchPage.Results.Count > 0);
+        }
+    }
+
+    internal class DummyCustomerClient : MercadoPagoClient<DummyResource>
+    {
+        public DummyCustomerClient(IHttpClient httpClient, ISerializer serializer)
+            : base(httpClient, serializer)
+        {
+        }
+
+        public Task<DummyResource> GetCustomerAsync(string id)
+        {
+            return SendAsync(
+                $"/v1/customers/{EncodePathParam(id)}",
+                MercadoPago.Http.HttpMethod.GET,
+                null);
         }
     }
 }

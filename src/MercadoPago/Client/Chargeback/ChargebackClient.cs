@@ -75,7 +75,7 @@ namespace MercadoPago.Client.Chargeback
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/v1/chargebacks/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/v1/chargebacks/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace MercadoPago.Client.Chargeback
             long id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/v1/chargebacks/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/v1/chargebacks/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>

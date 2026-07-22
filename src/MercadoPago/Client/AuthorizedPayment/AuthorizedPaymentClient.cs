@@ -72,7 +72,7 @@ namespace MercadoPago.Client.AuthorizedPayment
             RequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return SendAsync($"/authorized_payments/{id}", HttpMethod.GET, null, requestOptions, cancellationToken);
+            return SendAsync($"/authorized_payments/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace MercadoPago.Client.AuthorizedPayment
             long id,
             RequestOptions requestOptions = null)
         {
-            return Send($"/authorized_payments/{id}", HttpMethod.GET, null, requestOptions);
+            return Send($"/authorized_payments/{EncodePathParam(id)}", HttpMethod.GET, null, requestOptions);
         }
 
         /// <summary>
