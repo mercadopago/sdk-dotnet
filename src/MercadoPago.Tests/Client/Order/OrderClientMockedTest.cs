@@ -128,10 +128,10 @@ namespace MercadoPago.Tests.Client.Order
                         EventDate = "2027-01-15T00:00:00.000-03:00"
                     }
                 },
-                AdditionalInfo = new Dictionary<string, object>
+                AdditionalInfo = new OrderAdditionalInfoRequest
                 {
-                    ["payer.registration_date"] = "2020-01-15T00:00:00.000-03:00",
-                    ["payer.is_prime_user"] = true
+                    RegistrationDate = "2020-01-15T00:00:00.000-03:00",
+                    IsPrimeUser = true
                 }
             };
 
@@ -258,10 +258,10 @@ namespace MercadoPago.Tests.Client.Order
                     }
                 },
                 Payer = new OrderPayerRequest { Email = "test_user@example.com" },
-                AdditionalInfo = new Dictionary<string, object>
+                AdditionalInfo = new OrderAdditionalInfoRequest
                 {
-                    ["payer"] = new Dictionary<string, object> { ["authentication_type"] = "senha" },
-                    ["shipment"] = new Dictionary<string, object> { ["express"] = true }
+                    AuthenticationType = "senha",
+                    Express = true
                 }
             };
 

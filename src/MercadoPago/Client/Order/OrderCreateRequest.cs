@@ -106,9 +106,12 @@ namespace MercadoPago.Client.Order
         public OrderShipmentRequest Shipment { get; set; }
 
         /// <summary>
-        /// Free-form dictionary for any additional metadata to attach to the order.
+        /// Typed additional metadata to attach to the order for fraud analysis and risk scoring.
+        /// Contains payer behaviour signals and shipment preferences using the dotted-key convention
+        /// required by the Orders API.
         /// </summary>
-        public IDictionary<string, object> AdditionalInfo { get; set; }
+        /// <seealso cref="OrderAdditionalInfoRequest"/>
+        public OrderAdditionalInfoRequest AdditionalInfo { get; set; }
 
         /// <summary>
         /// Integration metadata identifying the integrator, platform, corporation, and sponsor.

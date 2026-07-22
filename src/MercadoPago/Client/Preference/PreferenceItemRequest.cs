@@ -34,6 +34,12 @@
         public string CategoryId { get; set; }
 
         /// <summary>
+        /// Item type identifier used for industry-specific processing rules
+        /// (e.g., <c>"product"</c>, <c>"service"</c>, <c>"travel"</c>).
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
         /// Number of units of this item. Must be an integer greater than zero.
         /// </summary>
         public int? Quantity { get; set; }
