@@ -46,8 +46,13 @@ namespace MercadoPago.Client.Order
         public string CaptureMode { get; set; } = "automatic_async";
 
         /// <summary>
-        /// Configures which processing mode to use for the order (e.g., "aggregator" or "gateway").
+        /// Configures the order processing mode.
         /// </summary>
+        /// <remarks>
+        /// Supported values:
+        /// - "manual": Requires explicit processing using POST /v1/orders/{order_id}/process.
+        /// - "automatic": Processes the order immediately.
+        /// </remarks>
         public string ProcessingMode { get; set; }
 
         /// <summary>

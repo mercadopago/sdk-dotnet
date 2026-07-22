@@ -32,8 +32,10 @@ namespace MercadoPago.Client.Order
 
         /// <summary>
         /// Number of installments selected by the payer for this payment.
+        /// Only applicable to payment methods that support installments (e.g., credit cards).
+        /// Leave null for payment methods that do not support installments (e.g., Pix, bank transfer).
         /// </summary>
-        public int Installments { get; set; }
+        public int? Installments { get; set; }
 
         /// <summary>
         /// Financial institution code (required for PSE in Colombia, e.g. "1007" Bancolombia).
