@@ -25,8 +25,10 @@ namespace MercadoPago.Resource.Order
 
         /// <summary>
         /// Number of installments selected by the payer for this payment.
+        /// Only applicable for payment methods that support installments (e.g., credit cards).
+        /// Leave null for payment methods that do not support installments (e.g., Pix, bank_transfer).
         /// </summary>
-        public int Installments { get; set; }
+        public int? Installments { get; set; }
 
         /// <summary>
         /// Secure, single-use token representing the payer's card data, generated client-side by the MercadoPago SDK.
