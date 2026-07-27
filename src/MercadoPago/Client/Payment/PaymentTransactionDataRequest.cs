@@ -50,5 +50,32 @@ namespace MercadoPago.Client.Payment
         /// otherwise, <c>false</c>. Affects fraud analysis rules.
         /// </summary>
         public bool? UserPresent { get; set; }
+
+        /// <summary>
+        /// <c>true</c> if this is the first transaction stored under a
+        /// CREDENTIAL_ON_FILE agreement; otherwise, <c>false</c>.
+        /// </summary>
+        public bool FirstTransaction { get; set; }
+
+        /// <summary>
+        /// Storage stage of the credential-on-file agreement.
+        /// Use <c>"store"</c> when storing the credential for the first time,
+        /// or <c>"stored"</c> for subsequent uses of a stored credential.
+        /// </summary>
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// Indicates who initiated the transaction.
+        /// Use <c>"customer"</c> for customer-initiated transactions (CIT)
+        /// or <c>"merchant"</c> for merchant-initiated transactions (MIT).
+        /// </summary>
+        public string TransactionInitiator { get; set; }
+
+        /// <summary>
+        /// Reference to a related resource within the CREDENTIAL_ON_FILE flow,
+        /// such as a mandate or agreement identifier.
+        /// </summary>
+        /// <seealso cref="PaymentReferenceRequest"/>
+        public PaymentReferenceRequest Reference { get; set; }
     }
 }

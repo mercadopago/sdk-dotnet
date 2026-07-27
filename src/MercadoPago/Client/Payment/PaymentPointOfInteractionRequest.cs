@@ -15,9 +15,15 @@ namespace MercadoPago.Client.Payment
         public string LinkedTo { get; set; }
 
         /// <summary>
-        /// Type of the point of interaction (e.g., "PSP_TRANSFER", "CHECKOUT").
+        /// Type of the point of interaction (e.g., "PSP_TRANSFER", "CHECKOUT", "CREDENTIAL_ON_FILE").
         /// </summary>
         public string Type { get; set; }
+
+        /// <summary>
+        /// Sub-type providing further detail about the interaction channel
+        /// (e.g., a specific POS terminal type or checkout variant).
+        /// </summary>
+        public string SubType { get; set; }
 
         /// <summary>
         /// Transaction data associated with this point of interaction, including
