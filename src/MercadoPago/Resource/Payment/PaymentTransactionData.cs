@@ -95,5 +95,33 @@
         /// </summary>
         public bool? UserPresent { get; set; }
 
+        /// <summary>
+        /// Indicates whether this is the first transaction stored under a
+        /// CREDENTIAL_ON_FILE agreement (<c>true</c>) or a subsequent use
+        /// of a stored credential (<c>false</c>).
+        /// </summary>
+        public bool FirstTransaction { get; set; }
+
+        /// <summary>
+        /// Storage stage of the credential-on-file agreement.
+        /// Returns <c>"store"</c> when the credential is being stored for the first time,
+        /// or <c>"stored"</c> for subsequent uses.
+        /// </summary>
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// Indicates who initiated the transaction.
+        /// Returns <c>"customer"</c> for customer-initiated transactions (CIT)
+        /// or <c>"merchant"</c> for merchant-initiated transactions (MIT).
+        /// </summary>
+        public string TransactionInitiator { get; set; }
+
+        /// <summary>
+        /// Reference to a related resource within the CREDENTIAL_ON_FILE flow,
+        /// such as a mandate or agreement identifier.
+        /// </summary>
+        /// <seealso cref="PaymentReference"/>
+        public PaymentReference Reference { get; set; }
+
     }
 }
