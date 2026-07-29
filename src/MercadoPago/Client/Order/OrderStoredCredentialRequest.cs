@@ -35,6 +35,7 @@ namespace MercadoPago.Client.Order
         /// charge onwards to link this payment to the original card-network authorization.
         /// Type: string (transaction ID).
         /// </summary>
+        [Newtonsoft.Json.JsonProperty("previous_transaction_reference")]
         public string PrevTransactionRef { get; set; }
     }
 
