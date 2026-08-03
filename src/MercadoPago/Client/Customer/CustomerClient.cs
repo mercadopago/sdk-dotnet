@@ -398,6 +398,48 @@
         }
 
         /// <summary>
+        /// Updates a saved card for a customer asynchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.UpdateAsync"/>.
+        /// </summary>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to update.</param>
+        /// <param name="request">A <see cref="CustomerCardCreateRequest"/> containing the new card token.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <param name="cancellationToken">Token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the updated <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
+        public Task<CustomerCard> UpdateCardAsync(
+            string id,
+            string cardId,
+            CustomerCardCreateRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return cardClient.UpdateAsync(id, cardId, request, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates a saved card for a customer synchronously.
+        /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.Update"/>.
+        /// </summary>
+        /// <param name="id">The unique identifier of the customer who owns the card.</param>
+        /// <param name="cardId">The unique identifier of the card to update.</param>
+        /// <param name="request">A <see cref="CustomerCardCreateRequest"/> containing the new card token.</param>
+        /// <param name="requestOptions">Per-request overrides for access token, retry strategy, and custom headers. May be <c>null</c>.</param>
+        /// <returns>The updated <see cref="CustomerCard"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs during the request.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error response.</exception>
+        public CustomerCard UpdateCard(
+            string id,
+            string cardId,
+            CustomerCardCreateRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return cardClient.Update(id, cardId, request, requestOptions);
+        }
+
+        /// <summary>
         /// Deletes a saved card from a customer profile asynchronously.
         /// This is a convenience wrapper that delegates to <see cref="CustomerCardClient.DeleteAsync"/>.
         /// </summary>

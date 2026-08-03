@@ -1,0 +1,10 @@
+{
+  "id": "card123",
+  "customer_id": "customer456",
+  "expiration_month": 12,
+  "expiration_year": 2025,
+  "first_six_digits": "411111",
+  "last_four_digits": "1111",
+  "date_created": "2023-01-01T00:00:00.000-04:00",
+  "date_last_updated": "2023-06-01T00:00:00.000-04:00"
+}
