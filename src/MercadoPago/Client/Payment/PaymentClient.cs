@@ -162,6 +162,51 @@
         }
 
         /// <summary>
+        /// Updates a payment asynchronously.
+        /// </summary>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="request">The <see cref="PaymentUpdateRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <param name="cancellationToken">Cancellation token to cancel the asynchronous operation.</param>
+        /// <returns>A task whose result is the updated <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
+        public Task<Payment> UpdateAsync(
+            long id,
+            PaymentUpdateRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return SendAsync(
+                $"/v1/payments/{id}",
+                HttpMethod.PUT,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates a payment.
+        /// </summary>
+        /// <param name="id">The unique payment identifier.</param>
+        /// <param name="request">The <see cref="PaymentUpdateRequest"/> containing the fields to update.</param>
+        /// <param name="requestOptions"><see cref="RequestOptions"/> to customize the request.</param>
+        /// <returns>The updated <see cref="Payment"/> resource.</returns>
+        /// <exception cref="MercadoPagoException">If an unexpected exception occurs.</exception>
+        /// <exception cref="MercadoPagoApiException">If the API returns an error.</exception>
+        public Payment Update(
+            long id,
+            PaymentUpdateRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return Send(
+                $"/v1/payments/{id}",
+                HttpMethod.PUT,
+                request,
+                requestOptions);
+        }
+
+        /// <summary>
         /// Cancels a pending payment asynchronously. Only payments with status "pending" can be cancelled.
         /// </summary>
         /// <param name="id">The unique payment identifier.</param>
