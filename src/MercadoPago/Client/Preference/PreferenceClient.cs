@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using MercadoPago.Error;
     using MercadoPago.Http;
+    using MercadoPago.Resource;
     using MercadoPago.Resource.Preference;
     using MercadoPago.Serialization;
 
@@ -182,6 +183,34 @@
             RequestOptions requestOptions = null)
         {
             return Send($"/checkout/preferences/{EncodePathParam(id)}", HttpMethod.PUT, request, requestOptions);
+        }
+
+        /// <summary>
+        /// Searches preferences matching the given filters as an asynchronous operation.
+        /// </summary>
+        public Task<ResultsResourcesPage<Preference>> SearchAsync(
+            SearchRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return SearchAsync<ResultsResourcesPage<Preference>>(
+                "/checkout/preferences/search",
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Searches preferences matching the given filters.
+        /// </summary>
+        public ResultsResourcesPage<Preference> Search(
+            SearchRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return Search<ResultsResourcesPage<Preference>>(
+                "/checkout/preferences/search",
+                request,
+                requestOptions);
         }
     }
 }

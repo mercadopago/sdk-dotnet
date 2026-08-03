@@ -27,5 +27,9 @@
         /// HTTP DELETE method, used to remove resources.
         /// </summary>
         DELETE,
+        /// <summary>
+        /// HTTP PATCH method, used to partially update existing resources.
+        /// </summary>
+        PATCH,
     }
 }

@@ -20,6 +20,11 @@ namespace MercadoPago.Client.Point
     /// </remarks>
     public class PointClient : MercadoPagoClient<PointPaymentIntent>
     {
+        private readonly PointDevicesClient devicesClient;
+        private readonly PointDeviceOperatingModeClient operatingModeClient;
+        private readonly PointPaymentIntentListClient intentListClient;
+        private readonly PointPaymentIntentStatusClient intentStatusClient;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PointClient"/> class.
         /// </summary>
@@ -31,6 +36,10 @@ namespace MercadoPago.Client.Point
         public PointClient(IHttpClient httpClient, ISerializer serializer)
             : base(httpClient, serializer)
         {
+            devicesClient = new PointDevicesClient(httpClient, serializer);
+            operatingModeClient = new PointDeviceOperatingModeClient(httpClient, serializer);
+            intentListClient = new PointPaymentIntentListClient(httpClient, serializer);
+            intentStatusClient = new PointPaymentIntentStatusClient(httpClient, serializer);
         }
 
         /// <summary>
@@ -192,5 +201,172 @@ namespace MercadoPago.Client.Point
                 null,
                 requestOptions);
         }
+
+        /// <summary>
+        /// Retrieves all Point devices associated with the authenticated account asynchronously.
+        /// </summary>
+        public Task<PointDevicesResponse> GetDevicesAsync(
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return devicesClient.SendAsync(
+                "/point/integration-api/devices",
+                HttpMethod.GET,
+                null,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves all Point devices associated with the authenticated account.
+        /// </summary>
+        public PointDevicesResponse GetDevices(RequestOptions requestOptions = null)
+        {
+            return devicesClient.Send(
+                "/point/integration-api/devices",
+                HttpMethod.GET,
+                null,
+                requestOptions);
+        }
+
+        /// <summary>
+        /// Changes the operating mode of a specific Point device asynchronously.
+        /// </summary>
+        public Task<PointDeviceOperatingModeResponse> ChangeDeviceOperatingModeAsync(
+            string deviceId,
+            PointDeviceOperatingModeRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return operatingModeClient.SendAsync(
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}",
+                HttpMethod.PATCH,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Changes the operating mode of a specific Point device.
+        /// </summary>
+        public PointDeviceOperatingModeResponse ChangeDeviceOperatingMode(
+            string deviceId,
+            PointDeviceOperatingModeRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return operatingModeClient.Send(
+                $"/point/integration-api/devices/{EncodePathParam(deviceId)}",
+                HttpMethod.PATCH,
+                request,
+                requestOptions);
+        }
+
+        /// <summary>
+        /// Retrieves a list of payment intent events within a date range asynchronously.
+        /// </summary>
+        public Task<PointPaymentIntentListResponse> GetPaymentIntentListAsync(
+            PointPaymentIntentListRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return intentListClient.SendAsync(
+                "/point/integration-api/payment-intents/events",
+                HttpMethod.GET,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves a list of payment intent events within a date range.
+        /// </summary>
+        public PointPaymentIntentListResponse GetPaymentIntentList(
+            PointPaymentIntentListRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return intentListClient.Send(
+                "/point/integration-api/payment-intents/events",
+                HttpMethod.GET,
+                request,
+                requestOptions);
+        }
+
+        /// <summary>
+        /// Retrieves the status events of a specific payment intent asynchronously.
+        /// </summary>
+        public Task<PointPaymentIntentStatusResponse> GetPaymentIntentStatusAsync(
+            string paymentIntentId,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return intentStatusClient.SendAsync(
+                $"/point/integration-api/payment-intents/{EncodePathParam(paymentIntentId)}/events",
+                HttpMethod.GET,
+                null,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves the status events of a specific payment intent.
+        /// </summary>
+        public PointPaymentIntentStatusResponse GetPaymentIntentStatus(
+            string paymentIntentId,
+            RequestOptions requestOptions = null)
+        {
+            return intentStatusClient.Send(
+                $"/point/integration-api/payment-intents/{EncodePathParam(paymentIntentId)}/events",
+                HttpMethod.GET,
+                null,
+                requestOptions);
+        }
+    }
+
+    internal class PointDevicesClient : MercadoPagoClient<PointDevicesResponse>
+    {
+        public PointDevicesClient(IHttpClient httpClient, ISerializer serializer)
+            : base(httpClient, serializer) { }
+
+        public new Task<PointDevicesResponse> SendAsync(string path, HttpMethod method, object request, RequestOptions opts, CancellationToken ct)
+            => base.SendAsync(path, method, request, opts, ct);
+
+        public new PointDevicesResponse Send(string path, HttpMethod method, object request, RequestOptions opts)
+            => base.Send(path, method, request, opts);
+    }
+
+    internal class PointDeviceOperatingModeClient : MercadoPagoClient<PointDeviceOperatingModeResponse>
+    {
+        public PointDeviceOperatingModeClient(IHttpClient httpClient, ISerializer serializer)
+            : base(httpClient, serializer) { }
+
+        public new Task<PointDeviceOperatingModeResponse> SendAsync(string path, HttpMethod method, object request, RequestOptions opts, CancellationToken ct)
+            => base.SendAsync(path, method, request, opts, ct);
+
+        public new PointDeviceOperatingModeResponse Send(string path, HttpMethod method, object request, RequestOptions opts)
+            => base.Send(path, method, request, opts);
+    }
+
+    internal class PointPaymentIntentListClient : MercadoPagoClient<PointPaymentIntentListResponse>
+    {
+        public PointPaymentIntentListClient(IHttpClient httpClient, ISerializer serializer)
+            : base(httpClient, serializer) { }
+
+        public new Task<PointPaymentIntentListResponse> SendAsync(string path, HttpMethod method, object request, RequestOptions opts, CancellationToken ct)
+            => base.SendAsync(path, method, request, opts, ct);
+
+        public new PointPaymentIntentListResponse Send(string path, HttpMethod method, object request, RequestOptions opts)
+            => base.Send(path, method, request, opts);
+    }
+
+    internal class PointPaymentIntentStatusClient : MercadoPagoClient<PointPaymentIntentStatusResponse>
+    {
+        public PointPaymentIntentStatusClient(IHttpClient httpClient, ISerializer serializer)
+            : base(httpClient, serializer) { }
+
+        public new Task<PointPaymentIntentStatusResponse> SendAsync(string path, HttpMethod method, object request, RequestOptions opts, CancellationToken ct)
+            => base.SendAsync(path, method, request, opts, ct);
+
+        public new PointPaymentIntentStatusResponse Send(string path, HttpMethod method, object request, RequestOptions opts)
+            => base.Send(path, method, request, opts);
     }
 }
