@@ -1,6 +1,7 @@
 ﻿namespace MercadoPago.Tests.Client.AdvancedPayment
 {
     using System;
+    using System.IO;
     using System.Threading.Tasks;
     using MercadoPago.Client.AdvancedPayment;
     using MercadoPago.Config;
@@ -18,6 +19,7 @@
     using System.Linq;
     using System.Threading;
     using MercadoPago.Error;
+    using Moq;
 
     [Collection("Uses User Email")]
     public class AdvancedPaymentClientTest : BaseClientTest
@@ -286,6 +288,48 @@
 
             Assert.NotNull(results);
             Assert.True(results.Count == 2);
+        }
+
+        [Fact]
+        public async Task UpdateAsync_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/AdvancedPaymentUpdateResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var advancedPaymentClient = new AdvancedPaymentClient(mock.Object);
+            var request = new AdvancedPaymentUpdateRequest { Capture = true };
+            AdvancedPayment result = await advancedPaymentClient.UpdateAsync(987654321L, request);
+
+            Assert.NotNull(result);
+            Assert.Equal(987654321L, result.Id);
+            Assert.True(result.Capture);
+        }
+
+        [Fact]
+        public void Update_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/AdvancedPaymentUpdateResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var advancedPaymentClient = new AdvancedPaymentClient(mock.Object);
+            var request = new AdvancedPaymentUpdateRequest { Capture = true };
+            AdvancedPayment result = advancedPaymentClient.Update(987654321L, request);
+
+            Assert.NotNull(result);
+            Assert.Equal(987654321L, result.Id);
+            Assert.True(result.Capture);
         }
 
         private async Task<AdvancedPaymentCreateRequest> BuildCreateRequestAsync(

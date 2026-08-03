@@ -2,14 +2,19 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Threading;
     using System.Threading.Tasks;
+    using MercadoPago.Client;
     using MercadoPago.Client.Common;
     using MercadoPago.Client.Preference;
     using MercadoPago.Config;
     using MercadoPago.Http;
+    using MercadoPago.Resource;
     using MercadoPago.Resource.Preference;
     using MercadoPago.Serialization;
     using MercadoPago.Tests.Client.Helper;
+    using Moq;
     using Xunit;
 
     [Collection("Uses User Email")]
@@ -191,6 +196,52 @@
 
             Assert.NotNull(preference);
             Assert.Equal(createdPreference.Id, preference.Id);
+        }
+
+        [Fact]
+        public async Task SearchAsync_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PreferenceSearchResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var client = new PreferenceClient(mock.Object);
+            var request = new SearchRequest { Limit = 10, Offset = 0 };
+            ResultsResourcesPage<Preference> result = await client.SearchAsync(request);
+
+            Assert.NotNull(result);
+            Assert.NotNull(result.Paging);
+            Assert.Equal(1, result.Paging.Total);
+            Assert.NotNull(result.Results);
+            Assert.Equal("123456789-abc-def", result.Results[0].Id);
+        }
+
+        [Fact]
+        public void Search_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PreferenceSearchResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var client = new PreferenceClient(mock.Object);
+            var request = new SearchRequest { Limit = 10, Offset = 0 };
+            ResultsResourcesPage<Preference> result = client.Search(request);
+
+            Assert.NotNull(result);
+            Assert.NotNull(result.Paging);
+            Assert.Equal(1, result.Paging.Total);
+            Assert.NotNull(result.Results);
+            Assert.Equal("REF001", result.Results[0].ExternalReference);
         }
 
         private PreferenceRequest BuildRequest()

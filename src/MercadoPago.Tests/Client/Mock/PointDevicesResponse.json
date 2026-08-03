@@ -1,0 +1,13 @@
+{
+  "devices": [
+    {
+      "id": "PAX_A910__SMARTPOS123456",
+      "operating_mode": "PDV"
+    }
+  ],
+  "paging": {
+    "total": 1,
+    "offset": 0,
+    "limit": 50
+  }
+}

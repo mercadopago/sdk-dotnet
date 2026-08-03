@@ -1,0 +1,15 @@
+{
+  "id": "7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73",
+  "events": [
+    {
+      "payment_intent_id": "7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73",
+      "status": "OPEN",
+      "device_id": "PAX_A910__SMARTPOS123456"
+    },
+    {
+      "payment_intent_id": "7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73",
+      "status": "FINISHED",
+      "device_id": "PAX_A910__SMARTPOS123456"
+    }
+  ]
+}
