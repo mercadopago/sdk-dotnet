@@ -1,0 +1,13 @@
+{
+  "paging": {
+    "total": 1,
+    "offset": 0,
+    "limit": 10
+  },
+  "results": [
+    {
+      "id": "123456789-abc-def",
+      "external_reference": "REF001"
+    }
+  ]
+}

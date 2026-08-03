@@ -16,6 +16,7 @@
     using MercadoPago.Serialization;
     using MercadoPago.Tests.Client.CardToken;
     using MercadoPago.Tests.Client.Helper;
+    using Moq;
     using Xunit;
 
     [Collection("Uses User Email")]
@@ -95,6 +96,46 @@
             Assert.NotNull(payment.Id);
             Assert.True(payment.Captured);
             Assert.Equal(request.ExternalReference, payment.ExternalReference);
+        }
+
+        [Fact(Skip = "Not running in CI.")]
+        public async Task UpdateAsync_Success()
+        {
+            var httpMock = new Mock<MercadoPago.Http.IHttpClient>();
+            var json = System.IO.File.ReadAllText("Client/Mock/PaymentUpdateResponse.json");
+            var response = new MercadoPago.Http.MercadoPagoResponse(200, null, json);
+            httpMock.Setup(httpClient => httpClient.SendAsync(
+                It.IsAny<MercadoPago.Http.MercadoPagoRequest>(),
+                It.IsAny<MercadoPago.Http.IRetryStrategy>(),
+                It.IsAny<CancellationToken>()).Result).Returns(response);
+
+            var paymentClient = new PaymentClient(httpMock.Object);
+            var updateRequest = new PaymentUpdateRequest { Status = "cancelled" };
+            Payment payment = await paymentClient.UpdateAsync(123456789, updateRequest);
+
+            Assert.NotNull(payment);
+            Assert.Equal(123456789, payment.Id);
+            Assert.Equal("cancelled", payment.Status);
+        }
+
+        [Fact(Skip = "Not running in CI.")]
+        public void Update_Success()
+        {
+            var httpMock = new Mock<MercadoPago.Http.IHttpClient>();
+            var json = System.IO.File.ReadAllText("Client/Mock/PaymentUpdateResponse.json");
+            var response = new MercadoPago.Http.MercadoPagoResponse(200, null, json);
+            httpMock.Setup(httpClient => httpClient.SendAsync(
+                It.IsAny<MercadoPago.Http.MercadoPagoRequest>(),
+                It.IsAny<MercadoPago.Http.IRetryStrategy>(),
+                It.IsAny<CancellationToken>()).Result).Returns(response);
+
+            var paymentClient = new PaymentClient(httpMock.Object);
+            var updateRequest = new PaymentUpdateRequest { Status = "cancelled" };
+            Payment payment = paymentClient.Update(123456789, updateRequest);
+
+            Assert.NotNull(payment);
+            Assert.Equal(123456789, payment.Id);
+            Assert.Equal("cancelled", payment.Status);
         }
 
         [Fact(Skip = "Not running in CI.")]
