@@ -15,7 +15,7 @@
         private const string DataIdLower = "ord01jq4s4ky8hwq6na5pxb65b3d3";
 
         private static string CurrentTs() =>
-            DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString(System.Globalization.CultureInfo.InvariantCulture);
+            DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         private static string ComputeHash(string dataId, string requestId, string ts, string secret)
         {
@@ -133,7 +133,7 @@
         [Fact]
         public void Validate_TimestampOutsideTolerance_ThrowsTimestampOutOfTolerance()
         {
-            var staleTs = (DateTimeOffset.UtcNow.AddMinutes(-30).ToUnixTimeMilliseconds())
+            var staleTs = (DateTimeOffset.UtcNow.AddMinutes(-30).ToUnixTimeSeconds())
                 .ToString(System.Globalization.CultureInfo.InvariantCulture);
             var hash = ComputeHash(DataIdLower, RequestId, staleTs, Secret);
 
@@ -153,6 +153,18 @@
             WebhookSignatureValidator.Validate(
                 BuildHeader(hash, ts), RequestId, DataIdLower, Secret,
                 tolerance: TimeSpan.FromMinutes(5));
+        }
+
+        // --- ts in seconds with tolerance: verifies the unit conversion fix ---
+        [Fact]
+        public void Validate_TimestampInSeconds_WithinTolerance_DoesNotThrow()
+        {
+            var ts = DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(System.Globalization.CultureInfo.InvariantCulture);
+            var hash = ComputeHash(DataIdLower, RequestId, ts, Secret);
+
+            WebhookSignatureValidator.Validate(
+                BuildHeader(hash, ts), RequestId, DataIdLower, Secret,
+                tolerance: TimeSpan.FromHours(1));
         }
 
         // --- Canonical case 9: data.id absent → manifest excludes id: ---
