@@ -1,0 +1,6 @@
+{
+  "id": 123456789,
+  "status": "cancelled",
+  "capture": false,
+  "transaction_amount": 100.0
+}

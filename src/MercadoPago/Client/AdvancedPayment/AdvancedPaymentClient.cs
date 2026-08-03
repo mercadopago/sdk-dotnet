@@ -529,5 +529,37 @@
             return refundClient.Refund(
                 id, disbursementId, null, requestOptions);
         }
+
+        /// <summary>
+        /// Updates an advanced payment asynchronously.
+        /// </summary>
+        public Task<AdvancedPayment> UpdateAsync(
+            long id,
+            AdvancedPaymentUpdateRequest request,
+            RequestOptions requestOptions = null,
+            CancellationToken cancellationToken = default)
+        {
+            return SendAsync(
+                $"/v1/advanced_payments/{id}",
+                HttpMethod.PUT,
+                request,
+                requestOptions,
+                cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates an advanced payment.
+        /// </summary>
+        public AdvancedPayment Update(
+            long id,
+            AdvancedPaymentUpdateRequest request,
+            RequestOptions requestOptions = null)
+        {
+            return Send(
+                $"/v1/advanced_payments/{id}",
+                HttpMethod.PUT,
+                request,
+                requestOptions);
+        }
     }
 }

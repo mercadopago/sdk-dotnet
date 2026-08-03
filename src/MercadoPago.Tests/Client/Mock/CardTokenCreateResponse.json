@@ -1,0 +1,11 @@
+{
+  "id": "cardtoken789",
+  "status": "active",
+  "date_created": "2023-01-01T00:00:00.000-04:00",
+  "date_last_updated": "2023-01-01T00:00:00.000-04:00",
+  "date_due": "2023-01-08T00:00:00.000-04:00",
+  "luhn_validation": true,
+  "live_mode": false,
+  "require_esc": false,
+  "security_code_length": 3
+}
