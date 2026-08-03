@@ -9,7 +9,7 @@
     <Description>Official .NET 8.0+ MercadoPago SDK</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <PackageId>mercadopago-sdk</PackageId>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/900583</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/dx-dotnet/master/LICENSE</PackageLicenseUrl>
