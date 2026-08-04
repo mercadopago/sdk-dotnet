@@ -118,7 +118,7 @@
                     normalizedRequestId);
             }
 
-            if (!long.TryParse(parsed.Timestamp, NumberStyles.None, CultureInfo.InvariantCulture, out var timestampMs))
+            if (!long.TryParse(parsed.Timestamp, NumberStyles.None, CultureInfo.InvariantCulture, out var timestampSeconds))
             {
                 throw new InvalidWebhookSignatureException(
                     SignatureFailureReason.MalformedSignatureHeader,
@@ -157,7 +157,7 @@
 
             if (tolerance.HasValue)
             {
-                var driftMs = Math.Abs(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - timestampMs);
+                var driftMs = Math.Abs(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - (timestampSeconds * 1000L));
                 if (driftMs > (long)tolerance.Value.TotalMilliseconds)
                 {
                     throw new InvalidWebhookSignatureException(
