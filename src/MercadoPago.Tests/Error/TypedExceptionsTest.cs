@@ -92,7 +92,7 @@ namespace MercadoPago.Tests.Error
         public void DefaultRetryStrategy_Retries429()
         {
             var strategy = new DefaultRetryStrategy(3);
-            var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost/");
+            var request = new HttpRequestMessage(System.Net.Http.HttpMethod.Get, "http://localhost/");
             var response = new HttpResponseMessage((HttpStatusCode)429);
             var result = strategy.ShouldRetry(request, response, hadRetryableError: false, numberRetries: 0);
             Assert.True(result.Retry);
@@ -102,7 +102,7 @@ namespace MercadoPago.Tests.Error
         public void DefaultRetryStrategy_DoesNotRetry_4xxNon429()
         {
             var strategy = new DefaultRetryStrategy(3);
-            var request = new HttpRequestMessage(HttpMethod.Get, "http://localhost/");
+            var request = new HttpRequestMessage(System.Net.Http.HttpMethod.Get, "http://localhost/");
             var response = new HttpResponseMessage(HttpStatusCode.BadRequest); // 400
             var result = strategy.ShouldRetry(request, response, hadRetryableError: false, numberRetries: 0);
             Assert.False(result.Retry);
