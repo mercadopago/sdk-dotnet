@@ -106,8 +106,10 @@
                 return false;
             }
 
-            return httpResponse.StatusCode == HttpStatusCode.Conflict
-                || (int)httpResponse.StatusCode >= (int)HttpStatusCode.InternalServerError;
+            var status = (int)httpResponse.StatusCode;
+            return status == 409    // Conflict (existing behaviour)
+                || status == 429    // Too Many Requests (added for rate-limit retry)
+                || status >= 500;   // Server errors
         }
 
         private static TimeSpan ExponentialBackoffDelay(int numberRetries)

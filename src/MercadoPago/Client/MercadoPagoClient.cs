@@ -438,10 +438,9 @@
                 apiError = null;
             }
 
-            return new MercadoPagoApiException("Error response from API.", response)
-            {
-                ApiError = apiError,
-            };
+            var exception = MercadoPagoExceptionFactory.Build(response);
+            exception.ApiError = apiError;
+            return exception;
         }
 
         private MercadoPagoApiException BuildInvalidResponseException(MercadoPagoResponse response)
