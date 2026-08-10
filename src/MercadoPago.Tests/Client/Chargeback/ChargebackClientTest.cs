@@ -56,7 +56,7 @@ namespace MercadoPago.Tests.Client.Chargeback
         }
 
         [Fact(Skip = "Not running in CI.")]
-        public async void GetAsync_Success()
+        public async Task GetAsync_Success()
         {
             var chargeback = await client.GetAsync(123456789L);
             Assert.NotNull(chargeback);

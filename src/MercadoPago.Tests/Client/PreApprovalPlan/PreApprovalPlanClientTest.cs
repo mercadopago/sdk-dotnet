@@ -56,7 +56,7 @@ namespace MercadoPago.Tests.Client.PreApprovalPlan
         }
 
         [Fact(Skip = "Not running in CI.")]
-        public async void CreateAsync_Success()
+        public async Task CreateAsync_Success()
         {
             var request = new PreApprovalPlanCreateRequest
             {

@@ -51,7 +51,7 @@
         }
 
         [Fact(Skip = "Not running in CI.")]
-        public async void Serialize_ObjectToQueryString_Success()
+        public async Task Serialize_ObjectToQueryString_Success()
         {
             var dummyObject = new DummySerializableObject
             {
