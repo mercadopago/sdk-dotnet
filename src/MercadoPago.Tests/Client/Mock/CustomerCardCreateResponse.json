@@ -1,0 +1,8 @@
+{
+  "id": "card999",
+  "customer_id": "customer456",
+  "expiration_month": 6,
+  "expiration_year": 2026,
+  "first_six_digits": "555555",
+  "last_four_digits": "4444"
+}

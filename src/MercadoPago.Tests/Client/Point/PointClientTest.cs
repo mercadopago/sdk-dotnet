@@ -244,5 +244,85 @@ namespace MercadoPago.Tests.Client.Point
             Assert.NotNull(result.Events);
             Assert.Equal(2, result.Events.Count);
         }
+
+        [Fact]
+        public async Task GetAsync_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PointPaymentIntentGetResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var pointClient = new PointClient(mock.Object);
+            var result = await pointClient.GetAsync("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73");
+
+            Assert.NotNull(result);
+            Assert.Equal("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73", result.Id);
+            Assert.Equal("OPEN", result.State);
+        }
+
+        [Fact]
+        public void Get_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PointPaymentIntentGetResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var pointClient = new PointClient(mock.Object);
+            var result = pointClient.Get("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73");
+
+            Assert.NotNull(result);
+            Assert.Equal("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73", result.Id);
+            Assert.Equal("OPEN", result.State);
+        }
+
+        [Fact]
+        public async Task CancelAsync_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PointPaymentIntentCancelResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var pointClient = new PointClient(mock.Object);
+            var result = await pointClient.CancelAsync("PAX_A910__SMARTPOS123456", "7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73");
+
+            Assert.NotNull(result);
+            Assert.Equal("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73", result.Id);
+            Assert.Equal("CANCELLED", result.State);
+        }
+
+        [Fact]
+        public void Cancel_Success()
+        {
+            var json = File.ReadAllText("Client/Mock/PointPaymentIntentCancelResponse.json");
+            var response = new MercadoPagoResponse(200, null, json);
+            var mock = new Mock<IHttpClient>();
+            mock.Setup(h => h.SendAsync(
+                    It.IsAny<MercadoPagoRequest>(),
+                    It.IsAny<IRetryStrategy>(),
+                    It.IsAny<CancellationToken>()).Result)
+                .Returns(response);
+
+            var pointClient = new PointClient(mock.Object);
+            var result = pointClient.Cancel("PAX_A910__SMARTPOS123456", "7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73");
+
+            Assert.NotNull(result);
+            Assert.Equal("7f25f9aa-eaea-4b1a-b5e7-a8a1a7988d73", result.Id);
+            Assert.Equal("CANCELLED", result.State);
+        }
     }
 }
