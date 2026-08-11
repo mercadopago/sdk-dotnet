@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  test:
+    name: Test on .NET ${{ matrix.dotnet-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        dotnet-version: ["8.0.x", "10.0.x"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+
+      - name: Setup .NET ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Install dependencies
+        run: dotnet restore src/MercadoPago/MercadoPago.csproj
+
+      - name: Build
+        run: dotnet build src/MercadoPago/MercadoPago.csproj --configuration Release --no-restore
+
+      - name: Install test dependencies
+        run: dotnet restore src/MercadoPago.Tests/MercadoPago.Tests.csproj
+
+      - name: Run unit tests
+        run: dotnet test src/MercadoPago.Tests/MercadoPago.Tests.csproj --configuration Release --no-restore --filter "FullyQualifiedName!~IT"
+
+      - name: Dependency review
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v4
+        with:
+          fail-on-severity: high

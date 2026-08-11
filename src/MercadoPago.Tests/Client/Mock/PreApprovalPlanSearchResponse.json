@@ -1,0 +1,16 @@
+{
+  "paging": {
+    "total": 1,
+    "limit": 10,
+    "offset": 0
+  },
+  "results": [
+    {
+      "id": "plan-abc-123",
+      "reason": "Monthly yoga subscription",
+      "status": "active",
+      "back_url": "https://example.com/back",
+      "collector_id": 823549964
+    }
+  ]
+}

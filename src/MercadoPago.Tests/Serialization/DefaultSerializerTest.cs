@@ -3,6 +3,7 @@
     using System;
     using System.Globalization;
     using System.IO;
+    using System.Threading.Tasks;
     using MercadoPago.Serialization;
     using Xunit;
 
@@ -51,7 +52,7 @@
         }
 
         [Fact(Skip = "Not running in CI.")]
-        public async void Serialize_ObjectToQueryString_Success()
+        public async Task Serialize_ObjectToQueryString_Success()
         {
             var dummyObject = new DummySerializableObject
             {

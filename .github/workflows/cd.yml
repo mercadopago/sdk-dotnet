@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Publish to NuGet
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore dependencies
+        run: dotnet restore src/MercadoPago/MercadoPago.csproj
+
+      - name: Build and pack
+        run: dotnet pack src/MercadoPago/MercadoPago.csproj --configuration Release --no-restore --output ./nupkg
+
+      - name: Publish to NuGet
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

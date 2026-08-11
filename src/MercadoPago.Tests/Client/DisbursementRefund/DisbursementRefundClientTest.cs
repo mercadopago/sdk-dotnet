@@ -1,5 +1,6 @@
 namespace MercadoPago.Tests.Client.DisbursementRefund
 {
+    using System.Threading.Tasks;
     using MercadoPago.Client.DisbursementRefund;
     using MercadoPago.Http;
     using MercadoPago.Serialization;
@@ -51,7 +52,7 @@ namespace MercadoPago.Tests.Client.DisbursementRefund
         }
 
         [Fact(Skip = "Not running in CI.")]
-        public async void ListAllAsync_Success()
+        public async Task ListAllAsync_Success()
         {
             var refunds = await client.ListAllAsync(123456789L);
             Assert.NotNull(refunds);
