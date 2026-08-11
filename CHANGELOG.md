@@ -1,5 +1,14 @@
 # Releases
 
+## VERSION 3.5.0 - 2026-08-11
+- feat(order): add Automatic Payments example — two-step recurring flow ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
+- feat: add `Update` to `PaymentClient` ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
+- feat: add `CustomerCard.Update` and `CardToken` raw card fields ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
+- feat: add `GetDevices`, `ChangeDeviceOperatingMode`, `GetPaymentIntentList`, `GetPaymentIntentStatus` to `PointClient`; `Search` to `PreferenceClient`; `Update` to `AdvancedPaymentClient` ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
+- fix(order): add `JsonProperty` for `previous_transaction_reference` serialization ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
+- ci: standardize CI/CD workflows ([#268](https://github.com/mercadopago/sdk-dotnet/pull/268))
+- ci: add mock-based unit tests ([#268](https://github.com/mercadopago/sdk-dotnet/pull/268))
+
 ## VERSION 3.4.0 - 2026-08-04
 - feat: SDK ergonomics — typed exceptions, configurable retry and auto-pagination ([#265](https://github.com/mercadopago/sdk-dotnet/pull/265)). `MercadoPagoApiException` now has 12 specific subtypes per HTTP status code. Request options gain optional `MaxRetries`, `RetryOn`, `InitialDelayMs`, `MaxDelayMs` and `OnRetry` callback. New auto-pagination support on search endpoints.
 - feat: add missing API methods — `DisbursementRefundClient.List()`, `AdvancedPaymentClient.Update()`, `CustomerCardClient.Update()`, `PaymentClient.Update()` ([#264](https://github.com/mercadopago/sdk-dotnet/pull/264))
