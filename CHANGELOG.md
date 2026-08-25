@@ -1,5 +1,8 @@
 # Releases
 
+## VERSION 3.6.0 - 2026-08-25
+- feat: add COF network data support — new fields on `PaymentNetworkDataRequest`/`PaymentNetworkData`, `PaymentPointOfInteractionRequest`/`PaymentPointOfInteraction`, and `OrderStoredCredential`
+
 ## VERSION 3.5.0 - 2026-08-11
 - feat(order): add Automatic Payments example — two-step recurring flow ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
 - feat: add `Update` to `PaymentClient` ([#262](https://github.com/mercadopago/sdk-dotnet/pull/262))
