@@ -39,6 +39,10 @@
         /// <seealso cref="PaymentTransactionData"/>
         public PaymentTransactionData TransactionData { get; set; }
 
+        /// <summary>
+        /// Card-network identifiers returned for a credential-on-file payment.
+        /// </summary>
+        /// <seealso cref="PaymentNetworkData"/>
         public PaymentNetworkData NetworkData { get; set; }
     }
 }
