@@ -90,6 +90,11 @@
         public string BillingDate { get; set; }
 
         /// <summary>
+        /// Legacy card-network transaction identifier within transaction data.
+        /// </summary>
+        public string NetworkTransactionId { get; set; }
+
+        /// <summary>
         /// Indicates whether the payer was physically present during the
         /// transaction. Relevant for POS and in-person payment scenarios.
         /// </summary>
