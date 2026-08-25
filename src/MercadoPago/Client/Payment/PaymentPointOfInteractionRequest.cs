@@ -31,5 +31,7 @@ namespace MercadoPago.Client.Payment
         /// </summary>
         /// <seealso cref="PaymentTransactionDataRequest"/>
         public PaymentTransactionDataRequest TransactionData { get; set; }
+
+        public PaymentNetworkDataRequest NetworkData { get; set; }
     }
 }

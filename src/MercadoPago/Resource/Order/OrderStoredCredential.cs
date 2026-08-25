@@ -27,5 +27,8 @@ namespace MercadoPago.Resource.Order
         /// Indicates whether this is the first payment in a series using these stored credentials.
         /// </summary>
         public bool? FirstPayment { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("previous_transaction_reference")]
+        public string PreviousTransactionReference { get; set; }
     }
 }

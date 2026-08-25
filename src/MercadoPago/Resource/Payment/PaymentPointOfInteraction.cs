@@ -38,5 +38,7 @@
         /// </summary>
         /// <seealso cref="PaymentTransactionData"/>
         public PaymentTransactionData TransactionData { get; set; }
+
+        public PaymentNetworkData NetworkData { get; set; }
     }
 }
