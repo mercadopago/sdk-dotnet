@@ -78,6 +78,16 @@ namespace MercadoPago.Tests.Client.Payment
         }
 
         [Fact]
+        public void Deserialize_ExpandedGatewayReferenceNetworkData_Success()
+        {
+            var payment = serializer.DeserializeFromJson<MercadoPago.Resource.Payment.Payment>(
+                "{\"expanded\":{\"gateway\":{\"reference\":{\"network_data\":{\"transaction_id\":\"ABC123\",\"transaction_link_id\":\"550e8400\"}}}}}");
+
+            Assert.Equal("ABC123", payment.Expanded.Gateway.Reference.NetworkData.TransactionId);
+            Assert.Equal("550e8400", payment.Expanded.Gateway.Reference.NetworkData.TransactionLinkId);
+        }
+
+        [Fact]
         public void Serialize_CustomerCardIssuerAndPaymentMethod_Success()
         {
             var json = serializer.SerializeToJson(new CustomerCardCreateRequest
