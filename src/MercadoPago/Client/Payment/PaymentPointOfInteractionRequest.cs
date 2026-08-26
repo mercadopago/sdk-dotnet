@@ -31,5 +31,11 @@ namespace MercadoPago.Client.Payment
         /// </summary>
         /// <seealso cref="PaymentTransactionDataRequest"/>
         public PaymentTransactionDataRequest TransactionData { get; set; }
+
+        /// <summary>
+        /// Card-network identifiers for a credential-on-file payment.
+        /// </summary>
+        /// <seealso cref="PaymentNetworkDataRequest"/>
+        public PaymentNetworkDataRequest NetworkData { get; set; }
     }
 }

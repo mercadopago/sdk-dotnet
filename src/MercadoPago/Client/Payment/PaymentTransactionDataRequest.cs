@@ -46,6 +46,11 @@ namespace MercadoPago.Client.Payment
         public string BillingDate { get; set; }
 
         /// <summary>
+        /// Legacy card-network transaction identifier within transaction data.
+        /// </summary>
+        public string NetworkTransactionId { get; set; }
+
+        /// <summary>
         /// <c>true</c> if the user (cardholder) is present during the transaction;
         /// otherwise, <c>false</c>. Affects fraud analysis rules.
         /// </summary>
