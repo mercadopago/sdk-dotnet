@@ -12,5 +12,7 @@ namespace MercadoPago.Client.Common
         /// for the original payment, used to link follow-up transactions to the initial one.
         /// </summary>
         public string NetworkTransactionId { get; set; }
+
+        public MercadoPago.Resource.Payment.PaymentNetworkData NetworkData { get; set; }
     }
 }

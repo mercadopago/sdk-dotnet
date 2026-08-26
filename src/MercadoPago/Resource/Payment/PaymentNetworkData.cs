@@ -9,7 +9,7 @@ namespace MercadoPago.Resource.Payment
         /// <summary>
         /// Identifier assigned to the transaction by the card network.
         /// </summary>
-        public string NetworkTransactionId { get; set; }
+        public string TransactionId { get; set; }
 
         /// <summary>
         /// Identifier that links related transactions in the card network.

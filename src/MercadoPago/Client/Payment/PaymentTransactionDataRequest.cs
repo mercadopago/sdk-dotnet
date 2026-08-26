@@ -50,6 +50,8 @@ namespace MercadoPago.Client.Payment
         /// </summary>
         public string NetworkTransactionId { get; set; }
 
+        public PaymentNetworkDataRequest NetworkData { get; set; }
+
         /// <summary>
         /// <c>true</c> if the user (cardholder) is present during the transaction;
         /// otherwise, <c>false</c>. Affects fraud analysis rules.

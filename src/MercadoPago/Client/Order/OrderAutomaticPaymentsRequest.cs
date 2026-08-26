@@ -29,6 +29,22 @@ namespace MercadoPago.Client.Order
         /// Number of retry attempts allowed if the automatic payment fails.
         /// </summary>
         public int? Retries { get; set; }
+
+        public OrderAutomaticPaymentsSubscriptionRequest Subscription { get; set; }
     }
+
+    public class OrderAutomaticPaymentsSubscriptionRequest
+    {
+        public string Id { get; set; }
+        public OrderSubscriptionSequenceRequest Sequence { get; set; }
+        public OrderAutomaticPaymentsInvoiceRequest Invoice { get; set; }
+    }
+    public class OrderAutomaticPaymentsInvoiceRequest
+    {
+        public string Id { get; set; }
+        public string BillingDate { get; set; }
+        public OrderAutomaticPaymentsPeriodRequest Period { get; set; }
+    }
+    public class OrderAutomaticPaymentsPeriodRequest { public int? Interval { get; set; } public string Type { get; set; } }
 
 }

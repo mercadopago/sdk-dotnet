@@ -94,6 +94,8 @@
         /// </summary>
         public string NetworkTransactionId { get; set; }
 
+        public PaymentNetworkData NetworkData { get; set; }
+
         /// <summary>
         /// Indicates whether the payer was physically present during the
         /// transaction. Relevant for POS and in-person payment scenarios.

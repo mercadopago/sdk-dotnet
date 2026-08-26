@@ -13,5 +13,9 @@
         /// the card data to be stored on the customer profile.
         /// </summary>
         public string Token { get; set; }
+
+        public string IssuerId { get; set; }
+
+        public string PaymentMethodId { get; set; }
     }
 }
