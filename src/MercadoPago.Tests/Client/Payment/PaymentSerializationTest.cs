@@ -1,4 +1,6 @@
 using System.IO;
+using System.Text.Json;
+using MercadoPago.Client.Customer;
 using MercadoPago.Client.Payment;
 using MercadoPago.Serialization;
 using Xunit;
@@ -34,6 +36,60 @@ namespace MercadoPago.Tests.Client.Payment
             Assert.Equal("eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6ImE4NDQ1NTE2LThjNzktNGQ1NC04MjRmLTU5YzgzNDRiY2FjNCIsImFj", payment.ThreeDSInfo.Creq);
         }
 
+        [Fact]
+        public void Serialize_NetworkDataInsideTransactionData_Success()
+        {
+            var request = new PaymentCreateRequest
+            {
+                PointOfInteraction = new PaymentPointOfInteractionRequest
+                {
+                    TransactionData = new PaymentTransactionDataRequest
+                    {
+                        NetworkTransactionId = "network-transaction-id",
+                        NetworkData = new PaymentNetworkDataRequest
+                        {
+                            TransactionId = "VISA-TID-ABC123",
+                            TransactionLinkId = "550e8400-e29b-41d4-a716-446655440000",
+                        },
+                    },
+                },
+            };
+
+            using var document = JsonDocument.Parse(serializer.SerializeToJson(request));
+            var transactionData = document.RootElement
+                .GetProperty("point_of_interaction")
+                .GetProperty("transaction_data");
+            var networkData = transactionData.GetProperty("network_data");
+
+            Assert.Equal("network-transaction-id", transactionData.GetProperty("network_transaction_id").GetString());
+            Assert.Equal("VISA-TID-ABC123", networkData.GetProperty("transaction_id").GetString());
+            Assert.Equal("550e8400-e29b-41d4-a716-446655440000", networkData.GetProperty("transaction_link_id").GetString());
+            Assert.False(document.RootElement.GetProperty("point_of_interaction").TryGetProperty("network_data", out _));
+        }
+
+        [Fact]
+        public void Deserialize_NetworkDataInsideTransactionData_Success()
+        {
+            var payment = serializer.DeserializeFromJson<MercadoPago.Resource.Payment.Payment>(
+                "{\"point_of_interaction\":{\"transaction_data\":{\"network_data\":{\"transaction_id\":\"VISA-TID-ABC123\",\"transaction_link_id\":\"550e8400-e29b-41d4-a716-446655440000\"}}}}");
+
+            Assert.Equal("VISA-TID-ABC123", payment.PointOfInteraction.TransactionData.NetworkData.TransactionId);
+            Assert.Equal("550e8400-e29b-41d4-a716-446655440000", payment.PointOfInteraction.TransactionData.NetworkData.TransactionLinkId);
+        }
+
+        [Fact]
+        public void Serialize_CustomerCardIssuerAndPaymentMethod_Success()
+        {
+            var json = serializer.SerializeToJson(new CustomerCardCreateRequest
+            {
+                Token = "token",
+                IssuerId = "123",
+                PaymentMethodId = "visa",
+            });
+
+            Assert.Contains("\"issuer_id\":\"123\"", json);
+            Assert.Contains("\"payment_method_id\":\"visa\"", json);
+        }
+
     }
 }
-

@@ -61,6 +61,9 @@
         /// </summary>
         public const string TRACKING_ID = "X-Tracking-Id";
 
+        /// <summary>
+        /// Header used to request expanded response nodes.
+        /// </summary>
         public const string EXPAND_RESPONDE_NODES = "X-Expand-Responde-Nodes";
     }
 }

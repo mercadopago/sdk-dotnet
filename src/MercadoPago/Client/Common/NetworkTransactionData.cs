@@ -13,6 +13,9 @@ namespace MercadoPago.Client.Common
         /// </summary>
         public string NetworkTransactionId { get; set; }
 
+        /// <summary>
+        /// Card-network identifiers returned by an expanded gateway reference.
+        /// </summary>
         public MercadoPago.Resource.Payment.PaymentNetworkData NetworkData { get; set; }
     }
 }
