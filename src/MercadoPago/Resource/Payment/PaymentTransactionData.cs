@@ -95,6 +95,12 @@
         public string NetworkTransactionId { get; set; }
 
         /// <summary>
+        /// Card-network transaction identifiers returned for this transaction.
+        /// Deserialized from <c>network_data</c> inside <c>transaction_data</c>.
+        /// </summary>
+        public PaymentNetworkData NetworkData { get; set; }
+
+        /// <summary>
         /// Indicates whether the payer was physically present during the
         /// transaction. Relevant for POS and in-person payment scenarios.
         /// </summary>

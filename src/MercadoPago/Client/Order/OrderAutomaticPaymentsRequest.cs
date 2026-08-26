@@ -29,6 +29,42 @@ namespace MercadoPago.Client.Order
         /// Number of retry attempts allowed if the automatic payment fails.
         /// </summary>
         public int? Retries { get; set; }
+
+        /// <summary>
+        /// Subscription and invoice information for the automatic payment.
+        /// </summary>
+        public OrderAutomaticPaymentsSubscriptionRequest Subscription { get; set; }
+    }
+
+    /// <summary>
+    /// Subscription details associated with an automatic payment request.
+    /// </summary>
+    public class OrderAutomaticPaymentsSubscriptionRequest
+    {
+        /// <summary>Subscription identifier.</summary>
+        public string Id { get; set; }
+        /// <summary>Position of this payment within the subscription.</summary>
+        public OrderSubscriptionSequenceRequest Sequence { get; set; }
+        /// <summary>Invoice information for this subscription payment.</summary>
+        public OrderAutomaticPaymentsInvoiceRequest Invoice { get; set; }
+    }
+    /// <summary>Invoice details associated with an automatic payment subscription.</summary>
+    public class OrderAutomaticPaymentsInvoiceRequest
+    {
+        /// <summary>Invoice identifier.</summary>
+        public string Id { get; set; }
+        /// <summary>Invoice billing date in ISO 8601 format.</summary>
+        public string BillingDate { get; set; }
+        /// <summary>Billing period for the invoice.</summary>
+        public OrderAutomaticPaymentsPeriodRequest Period { get; set; }
+    }
+    /// <summary>Billing-period details for an automatic payment invoice.</summary>
+    public class OrderAutomaticPaymentsPeriodRequest
+    {
+        /// <summary>Number of period units.</summary>
+        public int? Interval { get; set; }
+        /// <summary>Unit of the billing period.</summary>
+        public string Type { get; set; }
     }
 
 }

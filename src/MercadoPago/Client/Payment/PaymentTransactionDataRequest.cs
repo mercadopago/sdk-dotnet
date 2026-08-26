@@ -51,6 +51,12 @@ namespace MercadoPago.Client.Payment
         public string NetworkTransactionId { get; set; }
 
         /// <summary>
+        /// Card-network transaction identifiers associated with this transaction.
+        /// Serialized as <c>network_data</c> inside <c>transaction_data</c>.
+        /// </summary>
+        public PaymentNetworkDataRequest NetworkData { get; set; }
+
+        /// <summary>
         /// <c>true</c> if the user (cardholder) is present during the transaction;
         /// otherwise, <c>false</c>. Affects fraud analysis rules.
         /// </summary>

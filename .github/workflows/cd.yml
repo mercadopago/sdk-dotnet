@@ -8,6 +8,9 @@ jobs:
   publish:
     name: Publish to NuGet
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - name: Checkout code
@@ -24,5 +27,29 @@ jobs:
       - name: Build and pack
         run: dotnet pack src/MercadoPago/MercadoPago.csproj --configuration Release --no-restore --output ./nupkg
 
+      - name: Authenticate to NuGet.org with OIDC
+        id: nuget-login
+        env:
+          # Public NuGet.org owner for the mercadopago-sdk package; not a credential.
+          NUGET_USERNAME: MercadoPago
+          NUGET_OIDC_AUDIENCE: https://www.nuget.org
+        run: |
+          set -euo pipefail
+
+          oidc_response=$(curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${NUGET_OIDC_AUDIENCE}")
+          oidc_token=$(jq --raw-output '.value' <<< "${oidc_response}")
+
+          token_response=$(curl --fail-with-body --silent --show-error \
+            -X POST https://www.nuget.org/api/v2/token \
+            -H 'Content-Type: application/json' \
+            -H "Authorization: Bearer ${oidc_token}" \
+            --data "$(jq --null-input --arg username "${NUGET_USERNAME}" '{username: $username, tokenType: "ApiKey"}')")
+          api_key=$(jq --raw-output '.apiKey' <<< "${token_response}")
+
+          echo "::add-mask::${api_key}"
+          echo "NUGET_API_KEY=${api_key}" >> "${GITHUB_OUTPUT}"
+
       - name: Publish to NuGet
-        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
