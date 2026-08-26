@@ -30,7 +30,8 @@ jobs:
       - name: Authenticate to NuGet.org with OIDC
         id: nuget-login
         env:
-          NUGET_USERNAME: ${{ secrets.NUGET_USER }}
+          # Public NuGet.org owner for the mercadopago-sdk package; not a credential.
+          NUGET_USERNAME: MercadoPago
           NUGET_OIDC_AUDIENCE: https://www.nuget.org
         run: |
           set -euo pipefail
