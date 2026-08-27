@@ -1,8 +1,8 @@
 ﻿namespace MercadoPago.Client.Payment
 {
     /// <summary>
-    /// Internal request payload used by <see cref="PaymentClient.Capture"/> and
-    /// <see cref="PaymentClient.CaptureAsync"/> to capture a previously authorized payment.
+    /// Internal request payload used by <see cref="PaymentClient.Capture(long, decimal?, RequestOptions)"/> and
+    /// <see cref="PaymentClient.CaptureAsync(long, decimal?, RequestOptions, System.Threading.CancellationToken)"/> to capture a previously authorized payment.
     /// Supports capturing for the full amount or a partial amount.
     /// </summary>
     public class PaymentCaptureRequest

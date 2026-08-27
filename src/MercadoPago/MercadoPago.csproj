@@ -11,9 +11,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <LangVersion>8.0</LangVersion>
     <PackageId>mercadopago-sdk</PackageId>
-    <PackageIconUrl>https://avatars2.githubusercontent.com/u/900583</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/mercadopago/dx-dotnet/master/LICENSE</PackageLicenseUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/mercadopago/dx-dotnet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>mercadopago;payment;credit;card;checkout</PackageTags>
     <SignAssembly>True</SignAssembly>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -25,6 +26,11 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\\..\\README.md" Pack="true" PackagePath="\\" />
+    <None Include="icon.png" Pack="true" PackagePath="\\" />
   </ItemGroup>
 
   <ItemGroup>
