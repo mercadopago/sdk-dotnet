@@ -1,5 +1,9 @@
 # Releases
 
+## VERSION 3.7.0 - 2026-08-27
+- feat: add nested credential-on-file network data, expanded gateway network data, and automatic payment subscription support
+- ci: publish to NuGet through GitHub OIDC trusted publishing
+
 ## VERSION 3.6.0 - 2026-08-25
 - feat: add COF network data support — new fields on `PaymentNetworkDataRequest`/`PaymentNetworkData`, `PaymentPointOfInteractionRequest`/`PaymentPointOfInteraction`, and `OrderStoredCredential`
 
