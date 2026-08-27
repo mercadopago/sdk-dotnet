@@ -28,6 +28,9 @@ namespace MercadoPago.Resource.Order
         /// </summary>
         public bool? FirstPayment { get; set; }
 
+        /// <summary>
+        /// Reference to the transaction that originally stored the credential for this payment method.
+        /// </summary>
         [Newtonsoft.Json.JsonProperty("previous_transaction_reference")]
         public string PreviousTransactionReference { get; set; }
     }
