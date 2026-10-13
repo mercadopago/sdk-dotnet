@@ -4,8 +4,8 @@
   <p><strong>The official Mercado Pago SDK for .NET applications.</strong></p>
   <p>Integrate Mercado Pago payments with an idiomatic client for .NET and .NET Standard.</p>
   <p>
-    <a href="https://github.com/mercadopago/sdk-dotnet/actions/workflows/ci.yml"><img src="assets/badges/ci.svg" alt="CI workflow" /></a>
-    <a href="#installation"><img src="assets/badges/package.svg" alt="NuGet package" /></a>
+    <a href="https://github.com/mercadopago/sdk-dotnet/actions/workflows/ci.yml"><img src="https://github.com/mercadopago/sdk-dotnet/actions/workflows/ci.yml/badge.svg?branch=master" alt="CI status" /></a>
+    <a href="#installation"><img src="assets/badges/package.svg" alt="NuGet package version" /></a>
     <img src="assets/badges/runtime.svg" alt=".NET 8.0 or later" />
     <a href="LICENSE"><img src="assets/badges/license.svg" alt="MIT license" /></a>
   </p>
