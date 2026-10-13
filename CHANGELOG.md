@@ -1,6 +1,6 @@
 # Releases
 
-## Unreleased
+## VERSION 3.7.1 - 2026-10-13
 - fix(payment): make request `FirstTimeUse` and `FirstTransaction` nullable so unset fields are omitted from COF and legacy payment payloads while explicit `false` values are preserved.
 - compatibility: the two request properties now return `bool?` instead of `bool`; consumers must recompile and handle nullable values when reading them. Set the applicable field explicitly when required by the API.
 
