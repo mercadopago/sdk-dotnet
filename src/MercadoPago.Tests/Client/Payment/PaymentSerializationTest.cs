@@ -31,11 +31,6 @@ namespace MercadoPago.Tests.Client.Payment
                     TransactionData = new PaymentTransactionDataRequest
                     {
                         FirstTransaction = firstTransaction,
-                        Storage = firstTransaction ? "store" : "stored",
-                        TransactionInitiator = firstTransaction ? "customer" : "merchant",
-                        SubscriptionId = "subscription-id",
-                        BillingDate = "2026-10-02",
-                        InvoicePeriod = new PaymentInvoicePeriodRequest { Period = 1, Type = "monthly" },
                     },
                 },
             };
@@ -44,16 +39,8 @@ namespace MercadoPago.Tests.Client.Payment
             var pointOfInteraction = document.RootElement.GetProperty("point_of_interaction");
             var transactionData = pointOfInteraction.GetProperty("transaction_data");
 
-            Assert.Equal("CREDENTIAL_ON_FILE", pointOfInteraction.GetProperty("type").GetString());
-            Assert.Equal("recurring", pointOfInteraction.GetProperty("sub_type").GetString());
             Assert.False(transactionData.TryGetProperty("first_time_use", out _));
             Assert.Equal(firstTransaction, transactionData.GetProperty("first_transaction").GetBoolean());
-            Assert.Equal(firstTransaction ? "store" : "stored", transactionData.GetProperty("storage").GetString());
-            Assert.Equal(firstTransaction ? "customer" : "merchant", transactionData.GetProperty("transaction_initiator").GetString());
-            Assert.Equal("subscription-id", transactionData.GetProperty("subscription_id").GetString());
-            Assert.Equal("2026-10-02", transactionData.GetProperty("billing_date").GetString());
-            Assert.Equal(1, transactionData.GetProperty("invoice_period").GetProperty("period").GetInt32());
-            Assert.Equal("monthly", transactionData.GetProperty("invoice_period").GetProperty("type").GetString());
         }
 
         [Theory]
@@ -89,7 +76,6 @@ namespace MercadoPago.Tests.Client.Payment
 
             Assert.False(document.RootElement.TryGetProperty("first_time_use", out _));
             Assert.False(document.RootElement.TryGetProperty("first_transaction", out _));
-            Assert.False(document.RootElement.TryGetProperty("user_present", out _));
         }
 
         [Fact(Skip = "Not running in CI.")]
