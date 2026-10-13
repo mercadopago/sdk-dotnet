@@ -1,13 +1,24 @@
-# Mercado Pago .Net
+<div align="center">
+  <img src="assets/mercado-pago.svg" alt="Mercado Pago" width="120" />
+  <h1>Mercado Pago SDK for .NET</h1>
+  <p><strong>The official Mercado Pago SDK for .NET applications.</strong></p>
+  <p>Integrate Mercado Pago payments with an idiomatic client for .NET and .NET Standard.</p>
+  <p>
+    <a href="https://github.com/mercadopago/sdk-dotnet/actions/workflows/ci.yml"><img src="assets/badges/ci.svg" alt="CI workflow" /></a>
+    <a href="#installation"><img src="assets/badges/package.svg" alt="NuGet package" /></a>
+    <img src="assets/badges/runtime.svg" alt=".NET 8.0 or later" />
+    <a href="LICENSE"><img src="assets/badges/license.svg" alt="MIT license" /></a>
+  </p>
+  <p>
+    <a href="#installation">Installation</a> ·
+    <a href="#getting-started">Getting started</a> ·
+    <a href="#documentation">Documentation</a> ·
+    <a href="#contributing">Contributing</a>
+  </p>
+  <p><a href="README.es.md">Español</a> · <a href="README.pt.md">Português</a></p>
+</div>
 
-[Portuguese](README.pt.md) / [Spanish](README.es.md)
-
-![CI](https://github.com/mercadopago/sdk-dotnet/workflows/CI/badge.svg)
-[![NuGet](http://img.shields.io/nuget/v/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk)
-[![Download count](https://img.shields.io/nuget/dt/mercadopago-sdk.svg)](https://www.nuget.org/packages/mercadopago-sdk/)
-[![APM](https://img.shields.io/apm/l/vim-mode)](https://github.com/mercadopago/sdk-dotnet)
-
-The official Mercado Pago .NET SDK.
+---
 
 ## 💡 Requirements
 
@@ -27,19 +38,19 @@ Use one of the following options, depending on your preferred environment.
 4. Click on the `Browse` tab and search for "mercadopago-sdk".
 5. Click on the `mercadopago-sdk` package, select the appropriate version and click Install.
 
-### Using the [Package Manager](https://docs.microsoft.com/en-us/nuget/tools/package-manager-console)
+### Using the Package Manager
 
 ```bash
 Install-Package mercadopago-sdk
 ```
 
-### Using the [.NET Core command-line interface (CLI) tools](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+### Using the .NET Core command-line interface (CLI) tools
 
 ```bash
 dotnet add package mercadopago-sdk
 ```
 
-### Using the [NuGet Command Line Interface (CLI)](https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference)
+### Using the NuGet Command Line Interface (CLI)
 
 ```bash
 nuget install mercadopago-sdk
@@ -150,14 +161,10 @@ MercadoPagoConfig.RetryStrategy = retryStrategy;
 
 ## 📚 Documentation
 
-Visit our Developer Site for further information regarding:
-
-- [APIs](https://www.mercadopago.com/developers/en/reference)
-- [Checkout Pro](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-pro/introduction)
-- [Checkout API](https://www.mercadopago.com/developers/en/guides/online-payments/checkout-api/introduction)
-- [Web Tokenize Checkout](https://www.mercadopago.com/developers/en/guides/online-payments/web-tokenize-checkout/introduction)
-
-Check our [SDK docs](https://mercadopago.github.io/sdk-dotnet/) to explore all available functionalities.
+- [SDK guides](docs/README.md): errors, webhooks, retries, and production guidance.
+- [Examples](examples/README.md): integration flows supported by this SDK.
+- [API reference](https://www.mercadopago.com/developers/en/reference): request fields and response schemas.
+- [Generated SDK reference](https://mercadopago.github.io/sdk-dotnet/): public classes and methods.
 
 ## 🤝 Contributing
 
