@@ -14,7 +14,11 @@ namespace MercadoPago.Client.Payment
         /// <c>true</c> if this is the first transaction using this payment method
         /// in the subscription; otherwise, <c>false</c>.
         /// </summary>
-        public bool FirstTimeUse { get; set; }
+        /// <remarks>
+        /// Omitted when <c>null</c>. Leave unset for CREDENTIAL_ON_FILE payments,
+        /// which use <see cref="FirstTransaction"/> instead.
+        /// </remarks>
+        public bool? FirstTimeUse { get; set; }
 
         /// <summary>
         /// Subscription sequence details, including the current payment number
@@ -66,7 +70,11 @@ namespace MercadoPago.Client.Payment
         /// <c>true</c> if this is the first transaction stored under a
         /// CREDENTIAL_ON_FILE agreement; otherwise, <c>false</c>.
         /// </summary>
-        public bool FirstTransaction { get; set; }
+        /// <remarks>
+        /// Omitted when <c>null</c>. Set explicitly for CREDENTIAL_ON_FILE payments,
+        /// including <c>false</c> for subsequent transactions.
+        /// </remarks>
+        public bool? FirstTransaction { get; set; }
 
         /// <summary>
         /// Storage stage of the credential-on-file agreement.

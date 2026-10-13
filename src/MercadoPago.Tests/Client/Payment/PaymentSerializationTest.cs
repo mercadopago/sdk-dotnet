@@ -17,6 +17,67 @@ namespace MercadoPago.Tests.Client.Payment
             serializer = new DefaultSerializer();
         }
 
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void Serialize_CredentialOnFile_OmitsFirstTimeUse(bool firstTransaction)
+        {
+            var request = new PaymentCreateRequest
+            {
+                PointOfInteraction = new PaymentPointOfInteractionRequest
+                {
+                    Type = "CREDENTIAL_ON_FILE",
+                    SubType = "recurring",
+                    TransactionData = new PaymentTransactionDataRequest
+                    {
+                        FirstTransaction = firstTransaction,
+                    },
+                },
+            };
+
+            using var document = JsonDocument.Parse(serializer.SerializeToJson(request));
+            var pointOfInteraction = document.RootElement.GetProperty("point_of_interaction");
+            var transactionData = pointOfInteraction.GetProperty("transaction_data");
+
+            Assert.False(transactionData.TryGetProperty("first_time_use", out _));
+            Assert.Equal(firstTransaction, transactionData.GetProperty("first_transaction").GetBoolean());
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void Serialize_Subscriptions_OmitsFirstTransaction(bool firstTimeUse)
+        {
+            var request = new PaymentCreateRequest
+            {
+                PointOfInteraction = new PaymentPointOfInteractionRequest
+                {
+                    Type = "SUBSCRIPTIONS",
+                    TransactionData = new PaymentTransactionDataRequest
+                    {
+                        FirstTimeUse = firstTimeUse,
+                    },
+                },
+            };
+
+            using var document = JsonDocument.Parse(serializer.SerializeToJson(request));
+            var transactionData = document.RootElement
+                .GetProperty("point_of_interaction")
+                .GetProperty("transaction_data");
+
+            Assert.Equal(firstTimeUse, transactionData.GetProperty("first_time_use").GetBoolean());
+            Assert.False(transactionData.TryGetProperty("first_transaction", out _));
+        }
+
+        [Fact]
+        public void Serialize_TransactionData_OmitsUnsetBooleans()
+        {
+            using var document = JsonDocument.Parse(serializer.SerializeToJson(new PaymentTransactionDataRequest()));
+
+            Assert.False(document.RootElement.TryGetProperty("first_time_use", out _));
+            Assert.False(document.RootElement.TryGetProperty("first_transaction", out _));
+        }
+
         [Fact(Skip = "Not running in CI.")]
         public void Serialize_PaymentCreateRequestThreeDSecureModeFromJson_Success()
         {

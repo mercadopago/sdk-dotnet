@@ -1,5 +1,9 @@
 # Releases
 
+## Unreleased
+- fix(payment): make request `FirstTimeUse` and `FirstTransaction` nullable so unset fields are omitted from COF and legacy payment payloads while explicit `false` values are preserved.
+- compatibility: the two request properties now return `bool?` instead of `bool`; consumers must recompile and handle nullable values when reading them. Set the applicable field explicitly when required by the API.
+
 ## VERSION 3.7.0 - 2026-08-27
 - feat: add nested credential-on-file network data, expanded gateway network data, and automatic payment subscription support
 - ci: publish to NuGet through GitHub OIDC trusted publishing
